@@ -1,0 +1,163 @@
+<mjml>
+  <mj-head>
+    <mj-include path="../styles.mjml" />
+    <mj-title>Why Hire One Person When You Can Get a Whole Team? | Your Brand</mj-title>
+    <mj-preview>Fixed price. Full team. Full accountability. Not a day rate.&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp; </mj-preview>
+  </mj-head>
+  <mj-body mj-class="whitebg">
+    <!-- Header -->
+    <mj-include path="../header.mjml" />
+    <!-- Hero Section - Centred -->
+    <mj-wrapper mj-class="whitebg">
+      <mj-section padding="55px 40px 20px 40px">
+        <mj-column width="550px">
+          <mj-text mj-class="label pink" align="center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
+          <mj-text mj-class="h1 extrabold" align="center">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</mj-text>
+          <mj-text mj-class="body" align="center">Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <!-- Hero Image -->
+    <mj-wrapper mj-class="whitebg">
+      <mj-section padding="25px 35px 10px 35px">
+        <mj-column>
+          <mj-image src="https://example.com 0000 000000f0129c71c?w=1200&h=600&fit=crop&q=85" fluid-on-mobile="true" alt="A team collaborating around a table" border-radius="8px" />
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <!-- Greeting -->
+    <mj-wrapper mj-class="whitebg">
+      <mj-section padding="30px 40px 10px 40px">
+        <mj-column>
+          <mj-text mj-class="body" align="left">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</mj-text>
+          <mj-text mj-class="body" align="left">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <!-- Three Questions - Stacked Alert Boxes -->
+    <!-- Question 1 -->
+    <mj-wrapper mj-class="whitebg">
+      <mj-section background-color="#fff5f9" border-left="4px solid #e83a7a" padding="25px 35px 20px 25px">
+        <mj-column width="10%" vertical-align="top">
+          <mj-text mj-class="h2 pink extrabold" align="center" padding="0">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</mj-text>
+        </mj-column>
+        <mj-column width="90%" vertical-align="middle">
+          <mj-text mj-class="body bold" align="left">Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</mj-text>
+          <mj-text mj-class="body" align="left" padding="0">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <!-- Question 2 -->
+    <mj-wrapper mj-class="whitebg">
+      <mj-section background-color="#fff5f9" border-left="4px solid #e83a7a" padding="25px 35px 20px 25px">
+        <mj-column width="10%" vertical-align="top">
+          <mj-text mj-class="h2 pink extrabold" align="center" padding="0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
+        </mj-column>
+        <mj-column width="90%" vertical-align="middle">
+          <mj-text mj-class="body bold" align="left">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</mj-text>
+          <mj-text mj-class="body" align="left" padding="0">Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <!-- Question 3 -->
+    <mj-wrapper mj-class="whitebg">
+      <mj-section background-color="#fff5f9" border-left="4px solid #e83a7a" padding="25px 35px 20px 25px">
+        <mj-column width="10%" vertical-align="top">
+          <mj-text mj-class="h2 pink extrabold" align="center" padding="0">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</mj-text>
+        </mj-column>
+        <mj-column width="90%" vertical-align="middle">
+          <mj-text mj-class="body bold" align="left">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
+          <mj-text mj-class="body" align="left" padding="0">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <!-- Statement / Pull Quote -->
+    <mj-wrapper background-color="#fff5f9">
+      <mj-section padding="50px 50px" border-left="4px solid #e83a7a">
+        <mj-column width="580px">
+          <mj-text mj-class="h2 extrabold" align="center" line-height="44px">Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <!-- How It Works Section -->
+    <mj-wrapper mj-class="whitebg">
+      <mj-section padding="45px 35px 15px 35px">
+        <mj-column width="500px">
+          <mj-text mj-class="label pink" align="center">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</mj-text>
+          <mj-text mj-class="h3 extrabold" align="center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
+          <mj-text mj-class="body" align="center">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <!-- Process Steps - Dual Column -->
+    <mj-wrapper mj-class="whitebg">
+      <mj-section padding="0 35px 15px 35px">
+        <mj-column width="50%" padding="0 10px 25px 10px">
+          <mj-text mj-class="h5 pink extrabold" align="left">Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</mj-text>
+          <mj-text mj-class="body bold" align="left">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</mj-text>
+          <mj-text mj-class="body" align="left">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
+        </mj-column>
+        <mj-column width="50%" padding="0 10px 25px 10px">
+          <mj-text mj-class="h5 pink extrabold" align="left">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</mj-text>
+          <mj-text mj-class="body bold" align="left">Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</mj-text>
+          <mj-text mj-class="body" align="left">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <!-- Stats - Contractor vs Your Brand -->
+    <mj-wrapper mj-class="whitebg">
+      <mj-section padding="45px 40px 40px 40px" css-class="border-top-light">
+        <mj-column width="50%" padding="0 15px">
+          <mj-text mj-class="label" align="center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
+          <mj-text mj-class="h4 extrabold" align="center">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</mj-text>
+          <mj-text mj-class="body" align="center">Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</mj-text>
+        </mj-column>
+        <mj-column width="50%" padding="0 15px">
+          <mj-text mj-class="label pink" align="center">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</mj-text>
+          <mj-text mj-class="h4 pink extrabold" align="center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
+          <mj-text mj-class="body" align="center">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</mj-text>
+        </mj-column>
+      </mj-section>
+      <mj-section padding="0 40px 40px 40px">
+        <mj-column width="50%" padding="0 15px">
+          <mj-text mj-class="h4 extrabold" align="center">Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</mj-text>
+          <mj-text mj-class="body" align="center">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</mj-text>
+        </mj-column>
+        <mj-column width="50%" padding="0 15px">
+          <mj-text mj-class="h4 pink extrabold" align="center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
+          <mj-text mj-class="body" align="center">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</mj-text>
+        </mj-column>
+      </mj-section>
+      <mj-section padding="0 40px 40px 40px">
+        <mj-column width="50%" padding="0 15px">
+          <mj-text mj-class="h4 extrabold" align="center">Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</mj-text>
+          <mj-text mj-class="body" align="center">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</mj-text>
+        </mj-column>
+        <mj-column width="50%" padding="0 15px">
+          <mj-text mj-class="h4 pink extrabold" align="center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
+          <mj-text mj-class="body" align="center">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <!-- Final CTA Section -->
+    <mj-wrapper mj-class="whitebg">
+      <mj-section padding="55px 40px" css-class="border-top-light">
+        <mj-column>
+          <mj-text mj-class="h3 extrabold" align="center">Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</mj-text>
+          <mj-text mj-class="body" align="center">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</mj-text>
+          <mj-button background-color="#e83a7a" color="#ffffff" border-radius="50px" inner-padding="20px 48px" font-family="'Inter', Arial, sans-serif" font-size="18px" font-weight="700" href="https://example.com" align="center">Call to action</mj-button>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <!-- Sign Off -->
+    <mj-wrapper mj-class="whitebg">
+      <mj-section padding="0 40px 40px 40px">
+        <mj-column>
+          <mj-text mj-class="body" align="left">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <!-- Footer -->
+    <mj-include path="../footer.mjml" />
+  </mj-body>
+</mjml>

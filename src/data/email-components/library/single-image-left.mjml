@@ -1,0 +1,15 @@
+<!-- #-START-# Single Image Left -->
+<mj-wrapper mj-class="whitebg">
+  <mj-section>
+    <mj-column vertical-align="middle" width="45%" padding="0 10px">
+      <mj-image src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=450&fit=crop&q=85" fluid-on-mobile="true" align="left" alt="Support and product team planning session" border-radius="8px" />
+    </mj-column>
+    <mj-column vertical-align="middle" width="55%" padding="0 10px">
+      <mj-text mj-class="h3 text-primary extrabold" align="left" padding-bottom="12px">Use a visual lead when context matters first</mj-text>
+      <mj-text mj-class="body text-muted" align="left" padding-bottom="12px">This split pattern suits campaign recaps, onboarding reminders, and product education where the image supports a short narrative.</mj-text>
+      <mj-text mj-class="body text-muted" align="left" padding-bottom="20px">Keep the action focused so readers can move from context to next step quickly.</mj-text>
+      <mj-button background-color="#2f67ef" color="#ffffff" border-radius="50px" inner-padding="16px 40px" font-family="'Inter', Arial, sans-serif" font-size="18px" font-weight="700" href="https://templatehedgehog.com" align="left" padding-bottom="0">See implementation</mj-button>
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# Single Image Left -->

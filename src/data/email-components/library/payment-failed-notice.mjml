@@ -1,0 +1,12 @@
+<!-- #-START-# Payment Failed Notice -->
+<mj-wrapper mj-class="whitebg">
+  <mj-section background-color="#fff1f2" border-left="4px solid #dc2626" padding="28px 35px">
+    <mj-column width="500px">
+      <mj-text mj-class="label text-primary" align="left" padding-bottom="8px">Billing</mj-text>
+      <mj-text mj-class="h5 text-primary extrabold" align="left" padding-bottom="10px">Payment could not be processed</mj-text>
+      <mj-text mj-class="body text-muted" align="left" padding-bottom="18px">Your latest invoice failed. Update your billing method to avoid service interruption.</mj-text>
+      <mj-button mj-class="thbluebg white body bold" align="left" border-radius="999px" inner-padding="14px 28px" href="https://templatehedgehog.com">Update billing</mj-button>
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# Payment Failed Notice -->

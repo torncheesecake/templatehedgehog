@@ -1,0 +1,25 @@
+<!-- #-START-# Product Update Digest -->
+<mj-wrapper mj-class="whitebg">
+  <mj-section padding-bottom="18px">
+    <mj-column width="520px">
+      <mj-text mj-class="label thblue" align="center" padding-bottom="10px">Product update</mj-text>
+      <mj-text mj-class="h4 text-primary extrabold" align="center" padding-bottom="10px">What shipped this month</mj-text>
+      <mj-text mj-class="body text-muted" align="center">A short digest for release owners, QA leads, and lifecycle teams tracking delivery impact.</mj-text>
+    </mj-column>
+  </mj-section>
+  <mj-section padding-top="0">
+    <mj-column width="33.33%" padding="0 10px">
+      <mj-text mj-class="h6 text-primary extrabold" align="center" padding-bottom="6px">01</mj-text>
+      <mj-text mj-class="small text-muted" align="center">New component pack</mj-text>
+    </mj-column>
+    <mj-column width="33.33%" padding="0 10px">
+      <mj-text mj-class="h6 text-primary extrabold" align="center" padding-bottom="6px">02</mj-text>
+      <mj-text mj-class="small text-muted" align="center">Outlook checks expanded</mj-text>
+    </mj-column>
+    <mj-column width="33.33%" padding="0 10px">
+      <mj-text mj-class="h6 text-primary extrabold" align="center" padding-bottom="6px">03</mj-text>
+      <mj-text mj-class="small text-muted" align="center">Build scripts hardened</mj-text>
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# Product Update Digest -->

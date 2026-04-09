@@ -1,0 +1,122 @@
+<mjml>
+  <mj-head>
+    <mj-include path="../styles.mjml" />
+    <mj-title>Title</mj-title>
+    <mj-preview>Pre-header&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp; </mj-preview>
+  </mj-head>
+  <mj-body mj-class="superlightbg">
+    <mj-wrapper>
+      <mj-section padding="0" mj-class="whitebg" border-left="1px solid #005296" border-right="1px solid #005296" border-top="1px solid #005296">
+        <mj-column padding-left="0" padding-right="0">
+          <mj-image src="https://example.com Product.com/core/media/media.nl?id=1095817&c=1018014&h=K2wK-tNXP1BLpPkh3XvCsr2YmNCgdlth35hZNlYsYnbUNklX" />
+        </mj-column>
+      </mj-section>
+      <mj-section padding-top="0" mj-class="whitebg" border-left="1px solid #005296" border-right="1px solid #005296">
+        <mj-column>
+          <mj-text mj-class="h1 e3blue bold" align="center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <!-- #-START-# edge image left -->
+    <mj-wrapper>
+      <mj-section padding-top="0" mj-class="whitebg" border-left="1px solid #005296" border-right="1px solid #005296">
+        <mj-column width="30%" vertical-align="middle" padding-right="0">
+          <mj-image src="https://example.com Product.com/core/media/media.nl?id=1320977&c=1018014&h=2EW-KimD9EHTDte8WjbTGILqTEiwC9V3ireTNXMTMb7xbTFp" width="300px" padding="0" fluid-on-mobile="false" />
+        </mj-column>
+        <mj-column width="70%" vertical-align="middle">
+          <mj-text mj-class="body dark">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</mj-text>
+          <mj-text mj-class="body dark">Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <!-- #-END-# edge image left -->
+    <!-- #-START-# single image right reverse -->
+    <mj-wrapper>
+      <mj-section direction="rtl" padding-top="0" mj-class="whitebg" border-left="1px solid #005296" border-right="1px solid #005296">
+        <mj-column vertical-align="middle">
+          <mj-image src="https://example.com Product.com/core/media/media.nl?id=1079578&amp;c=1018014&amp;h=dULLka7pvA5lW6mt9ceKHpxVoKFGm5EJPa6JcG3swP_Olp_-&amp;fcts=+44 0000 000000&amp;whence=" width="285px" fluid-on-mobile="true" alt="" />
+        </mj-column>
+        <mj-column vertical-align="top">
+          <mj-text mj-class="h3 e3blue bold">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</mj-text>
+          <mj-text mj-class="body dark" align="left">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
+          <mj-text mj-class="body dark" align="left">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</mj-text>
+          <mj-text mj-class="body dark" align="left">Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</mj-text>
+          <mj-text mj-class="body dark" align="left">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</mj-text>
+          <mj-button align="center" background-color="#005296" inner-padding="15px 26px 15px 26px" text-decoration="none" text-transform="uppercase" target="_blank" href="https://example.com" font-size="12px" border-radius="3px">Call to action</mj-button>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <!-- #-END-# single image right reverse -->
+    <!-- #-START-#  single image left -->
+    <mj-wrapper>
+      <mj-section padding-top="0" mj-class="whitebg" border-left="1px solid #005296" border-right="1px solid #005296">
+        <mj-column vertical-align="top">
+          <mj-image src="https://example.com Product.com/core/media/media.nl?id=1320976&c=1018014&h=YSxLdCkDR78Diw8BrsGYI_budAXB-Qn4ILseVbw-WZXgbJg2" width="285px" fluid-on-mobile="true" align="left" alt="" />
+        </mj-column>
+        <mj-column padding-left="15px" padding-right="20px" vertical-align="middle">
+          <mj-text mj-class="h2 e3blue bold">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
+          <mj-text mj-class="body dark" align="left">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</mj-text>
+          <mj-text mj-class="body dark" align="left">Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</mj-text>
+          <mj-text mj-class="body dark">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</mj-text>
+          <mj-button align="center" background-color="#005296" inner-padding="15px 26px 15px 26px" text-decoration="none" text-transform="uppercase" target="_blank" href="https://example.com" font-size="12px" border-radius="3px">Call to action</mj-button>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <!-- #-END-# single image left -->
+    <!-- #-START-# single image right reverse -->
+    <mj-wrapper>
+      <mj-section direction="rtl" padding-top="0" mj-class="whitebg" border-left="1px solid #005296" border-right="1px solid #005296">
+        <mj-column vertical-align="top">
+          <mj-image src="https://example.com Product.com/core/media/media.nl?id=1320978&c=1018014&h=TmkdH60oJyJOrRcgYHXQo_tjFn6rE7lZFuryLVzPp_2P_WPs" width="285px" fluid-on-mobile="true" alt="" />
+        </mj-column>
+        <mj-column vertical-align="top">
+          <mj-text mj-class="h3 e3blue bold">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
+          <mj-text mj-class="body dark" align="left">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</mj-text>
+          <mj-text mj-class="body dark" align="left">Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</mj-text>
+          <mj-text mj-class="body dark" align="left">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</mj-text>
+          <mj-button align="center" background-color="#005296" inner-padding="15px 26px 15px 26px" text-decoration="none" text-transform="uppercase" target="_blank" href="https://example.com" font-size="12px" border-radius="3px">Call to action</mj-button>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <!-- #-END-# single image right reverse -->
+    <!-- #-START-#  single image left -->
+    <mj-wrapper>
+      <mj-section padding-top="0" mj-class="whitebg" border-left="1px solid #005296" border-right="1px solid #005296">
+        <mj-column vertical-align="top">
+          <mj-image src="https://example.com Product.com/core/media/media.nl?id=1324284&c=1018014&h=02Kghpa6XadwDDvWxsPLDJk2A1Pv6pVEr9P71VdAdi6hFmly" width="285px" fluid-on-mobile="true" align="left" alt="" />
+        </mj-column>
+        <mj-column padding-left="15px" padding-right="20px" vertical-align="middle">
+          <mj-text mj-class="h2 e3blue bold">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
+          <mj-text mj-class="body dark" align="left">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</mj-text>
+          <mj-text mj-class="body dark" align="left">Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</mj-text>
+          <mj-text mj-class="body dark">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</mj-text>
+          <mj-button align="center" background-color="#005296" inner-padding="15px 26px 15px 26px" text-decoration="none" text-transform="uppercase" target="_blank" href="https://example.com Product/Your Business-systems-training/" font-size="12px" border-radius="3px">Call to action</mj-button>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <!-- #-END-# single image left -->
+    <mj-wrapper>
+      <mj-section mj-class="e3bluebg">
+      <mj-column width="250px">
+        <mj-image src="https://example.com Product.com/core/media/media.nl?id=1324585&c=1018014&h=bonvWq_SfqFaCwrhRRI2WgSWEUa0pSR_6h0lHXPI46f3GHNM" width="183px"></mj-image>
+      </mj-column>
+       <mj-column width="250px">
+        <mj-image src="https://example.com Product.com/core/media/media.nl?id=1321280&c=1018014&h=5P11ownkQaJNZGQ_E90wWlqgefzve96IAtBhlOFeoiHJwM5f" width="135px"></mj-image>
+      </mj-column>
+      </mj-section>
+      <mj-section mj-class="e3bluebg" padding-top="0">
+        <mj-column width="500px">
+          <mj-text mj-class="h3 white" align="center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
+          <mj-button align="center" background-color="#ffffff" color="#005296" inner-padding="15px 26px 15px 26px" text-decoration="none" text-transform="uppercase" target="_blank" href="https://example.com" font-size="12px" border-radius="3px" mj-class="bold">Call to action</mj-button>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <mj-wrapper>
+      <mj-section mj-class="whitebg" border-bottom="1px solid #005296" border-left="1px solid #005296" border-right="1px solid #005296">
+        <mj-column>
+          <mj-image src="https://example.com Product.com/core/media/media.nl?id=47866&c=1018014&h=ac553eb23d1c03ec3c2b" width="250px" align="center" />
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+  </mj-body>
+</mjml>

@@ -1,0 +1,28 @@
+<!-- #-START-# Shipping Notification Tracker -->
+<mj-wrapper mj-class="whitebg">
+  <mj-section>
+    <mj-column width="520px">
+      <mj-text mj-class="label thblue" align="center" padding-bottom="12px">Shipping update</mj-text>
+      <mj-text mj-class="h3 text-primary extrabold" align="center" padding-bottom="10px">Your shipment is moving</mj-text>
+      <mj-text mj-class="body text-muted" align="center" padding-bottom="24px">Track each delivery stage from dispatch to arrival with a clear status timeline your customers can scan quickly.</mj-text>
+    </mj-column>
+  </mj-section>
+  <mj-section padding-top="0">
+    <mj-column width="33.33%" padding="0 8px">
+      <mj-text mj-class="small thblue bold" align="center" padding-bottom="6px">01</mj-text>
+      <mj-text mj-class="small text-primary bold" align="center" padding-bottom="4px">Packed</mj-text>
+      <mj-text mj-class="small text-muted" align="center">Label created</mj-text>
+    </mj-column>
+    <mj-column width="33.33%" padding="0 8px">
+      <mj-text mj-class="small thblue bold" align="center" padding-bottom="6px">02</mj-text>
+      <mj-text mj-class="small text-primary bold" align="center" padding-bottom="4px">In transit</mj-text>
+      <mj-text mj-class="small text-muted" align="center">Regional hub</mj-text>
+    </mj-column>
+    <mj-column width="33.33%" padding="0 8px">
+      <mj-text mj-class="small thblue bold" align="center" padding-bottom="6px">03</mj-text>
+      <mj-text mj-class="small text-primary bold" align="center" padding-bottom="4px">Delivered</mj-text>
+      <mj-text mj-class="small text-muted" align="center">Signed at door</mj-text>
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# Shipping Notification Tracker -->

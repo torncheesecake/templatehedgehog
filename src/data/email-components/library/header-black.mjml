@@ -1,0 +1,17 @@
+<!-- #-START-# header black -->
+<mj-wrapper mj-class="blackbg">
+  <mj-section padding-top="20px" padding-bottom="3px">
+    <mj-group>
+      <mj-column width="32%" padding="0 0 0 15px">
+        <mj-image src="/brand/hedgehog-mark-email.png" width="34px" alt="TemplateHedgehog icon" align="left" href="https://templatehedgehog.com" target="_blank" padding="0" />
+        <mj-text align="left" padding="6px 0 0 0" font-family="'Manrope', 'Inter', Arial, sans-serif" font-size="13px" font-weight="700" color="#ffffff">
+          <a href="https://templatehedgehog.com" style="color:#ffffff; text-decoration:none;">TemplateHedgehog</a>
+        </mj-text>
+      </mj-column>
+      <mj-column width="68%" padding="0 15px 0 0">
+        <mj-text mj-class="small white" align="right" padding-top="9px">Not displaying correctly? <a href="https://templatehedgehog.com" style="color:#ffffff; text-decoration: underline;">View online</a>.</mj-text>
+      </mj-column>
+    </mj-group>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# header black -->

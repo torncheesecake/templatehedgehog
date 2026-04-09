@@ -1,0 +1,26 @@
+<!-- #-START-# Triple Image -->
+<mj-wrapper mj-class="whitebg">
+  <mj-section padding-bottom="20px">
+    <mj-column>
+      <mj-text mj-class="h3 text-primary extrabold" align="center" padding-bottom="0">Three quick highlights</mj-text>
+    </mj-column>
+  </mj-section>
+  <mj-section padding="0 24px">
+    <mj-column width="33.33%" vertical-align="top" padding="0 8px 18px 8px">
+      <mj-image src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop&q=85" fluid-on-mobile="true" alt="Launch planning meeting" border-radius="8px" padding="0 0 12px 0" />
+      <mj-text mj-class="h6 text-primary extrabold" align="center" padding="0 0 6px 0">Launch planning</mj-text>
+      <mj-text mj-class="small text-muted" align="center" padding="0">Finalise scope and responsibilities before campaign handoff.</mj-text>
+    </mj-column>
+    <mj-column width="33.33%" vertical-align="top" padding="0 8px 18px 8px">
+      <mj-image src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=400&h=300&fit=crop&q=85" fluid-on-mobile="true" alt="Delivery checklist" border-radius="8px" padding="0 0 12px 0" />
+      <mj-text mj-class="h6 text-primary extrabold" align="center" padding="0 0 6px 0">Delivery checklist</mj-text>
+      <mj-text mj-class="small text-muted" align="center" padding="0">Validate links, sender settings, and final segment logic.</mj-text>
+    </mj-column>
+    <mj-column width="33.33%" vertical-align="top" padding="0 8px 18px 8px">
+      <mj-image src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop&q=85" fluid-on-mobile="true" alt="Post-send reporting" border-radius="8px" padding="0 0 12px 0" />
+      <mj-text mj-class="h6 text-primary extrabold" align="center" padding="0 0 6px 0">Post-send reporting</mj-text>
+      <mj-text mj-class="small text-muted" align="center" padding="0">Track delivery, opens, and conversion trend from day one.</mj-text>
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# Triple Image -->

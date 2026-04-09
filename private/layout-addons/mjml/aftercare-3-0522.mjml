@@ -1,0 +1,47 @@
+<mjml>
+  <mj-head>
+    <mj-include path="../styles.mjml" />
+    <mj-title>Join the Your Product elite with Gold Aftercare</mj-title>
+    <mj-preview>Your Product support from the Your Brand&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp; </mj-preview>
+  </mj-head>
+  <mj-body mj-class="whitebg">
+    <mj-include path="../header.mjml" />
+    <mj-hero css-class="hero" mode="fluid-height" background-url="https://example.com" background-height="329px" background-width="640px" background-color="white" padding="30px 30px">
+      <mj-text mj-class="h1-display dark" padding-top="10px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
+    </mj-hero>
+    </mj-wrapper>
+    <mj-wrapper>
+  <mj-section>
+    <mj-column width="500px">
+    <mj-text mj-class="h4 dark" font-weight="300" padding-top="10px" align="center">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</mj-text>
+          <mj-text mj-class="body white" align="left" padding-bottom="10px">Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <mj-wrapper mj-class="darkbluebg">
+      <mj-section>
+        <mj-column>
+          <mj-text mj-class="h2 white" padding-bottom="10px">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</mj-text>
+          <mj-text mj-class="body white">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <mj-wrapper mj-class="grapebg">
+      <mj-section>
+        <mj-column>
+          <mj-text mj-class="h2 superlight" padding-bottom="10px">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</mj-text>
+          <mj-text mj-class="body superlight">Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <mj-wrapper mj-class="superlightbg">
+      <mj-section>
+        <mj-column width="500px">
+          <mj-text mj-class="h3 dark" align="center">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</mj-text>
+          <mj-text mj-class="body dark" align="center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <mj-include path="../footer.mjml" />
+  </mj-body>
+</mjml>

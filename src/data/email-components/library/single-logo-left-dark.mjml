@@ -1,0 +1,17 @@
+<!-- #-START-# single logo left dark -->
+<mj-wrapper mj-class="darkbg">
+  <mj-section css-class="center">
+    <mj-column width="32%" vertical-align="middle">
+      <mj-image src="/brand/hedgehog-mark-email.png" width="36px" alt="TemplateHedgehog icon" padding="0 0 8px 0" />
+      <mj-text align="left" padding="0" font-family="'Manrope', 'Inter', Arial, sans-serif" font-size="13px" font-weight="700" color="#ffffff">
+        <a href="https://templatehedgehog.com" style="color:#ffffff; text-decoration:none;">TemplateHedgehog</a>
+      </mj-text>
+    </mj-column>
+    <mj-column width="65%" vertical-align="middle">
+      <mj-text mj-class="body white">
+        Discover more tips and guides from our team of specialists on the <a href="https://templatehedgehog.com" style="color: #ffffff;">TemplateHedgehog resource hub</a>.
+      </mj-text>
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# single logo left dark -->

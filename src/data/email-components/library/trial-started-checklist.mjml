@@ -1,0 +1,17 @@
+<!-- #-START-# Trial Started Checklist -->
+<mj-wrapper mj-class="whitebg">
+  <mj-section padding-bottom="18px">
+    <mj-column width="520px">
+      <mj-text mj-class="label thblue" align="left" padding-bottom="10px">Trial started</mj-text>
+      <mj-text mj-class="h4 text-primary extrabold" align="left" padding-bottom="10px">Three things to do in your first hour</mj-text>
+    </mj-column>
+  </mj-section>
+  <mj-section padding-top="0">
+    <mj-column>
+      <mj-text mj-class="small text-primary bold" align="left" padding-bottom="8px">1. Connect your sending domain and default sender profile</mj-text>
+      <mj-text mj-class="small text-primary bold" align="left" padding-bottom="8px">2. Import one layout and customise copy for your first campaign</mj-text>
+      <mj-text mj-class="small text-primary bold" align="left" padding-bottom="8px">3. Run a test send to Gmail and Outlook before launch</mj-text>
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# Trial Started Checklist -->

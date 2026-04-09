@@ -1,0 +1,11 @@
+<!-- #-START-# Text Centred -->
+<mj-wrapper mj-class="whitebg">
+  <mj-section>
+    <mj-column width="500px">
+      <mj-text mj-class="h3 text-primary extrabold" align="center" padding-bottom="12px">Share the key decision before the next section</mj-text>
+      <mj-text mj-class="body text-muted" align="center" padding-bottom="20px">This centred block works well for milestone updates, deadline reminders, and release notes between heavier visual sections.</mj-text>
+      <mj-button background-color="#2f67ef" color="#ffffff" border-radius="50px" inner-padding="16px 40px" font-family="'Inter', Arial, sans-serif" font-size="18px" font-weight="700" href="https://templatehedgehog.com" align="center" padding-bottom="0">Review this pattern</mj-button>
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# Text Centred -->

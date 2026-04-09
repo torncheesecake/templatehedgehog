@@ -1,0 +1,39 @@
+<mjml>
+  <mj-head>
+    <mj-include path="../styles.mjml" />
+    <mj-title>Are You Maximising Your Product? Discover Your Score in Just 1 Minute</mj-title>
+    <mj-preview>Unlock your NETscore in 1 minute and see how well you're using Your Product. elit&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp; </mj-preview>
+  </mj-head>
+  <mj-body mj-class="sandbg">
+    <mj-include path="../header.mjml" />
+    <mj-wrapper mj-class="sandbg">
+      <mj-section>
+        <mj-column>
+          <mj-text mj-class="h1-display black" align="left" padding-bottom="20px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
+          <mj-text mj-class="body dark" align="left">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <mj-section padding-top="0">
+      <mj-column>
+        <mj-text mj-class="h2 dark" align="left">Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</mj-text>
+        <mj-text mj-class="body dark" align="left">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section padding-top="0">
+      <mj-column>
+        <mj-text mj-class="h4 dark" align="center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
+      </mj-column>
+    </mj-section>
+    </mj-wrapper>
+    <mj-wrapper>
+      <mj-section mj-class="sandbg" padding-top="0">
+        <mj-column>
+          <mj-text mj-class="h2 dark" align="left">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</mj-text>
+          <mj-text mj-class="body dark" align="left">Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <mj-include path="../footer.mjml" />
+  </mj-body>
+</mjml>

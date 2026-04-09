@@ -1,0 +1,11 @@
+<!-- #-START-# Text Left -->
+<mj-wrapper mj-class="whitebg">
+  <mj-section>
+    <mj-column>
+      <mj-text mj-class="h3 text-primary extrabold" align="left" padding-bottom="12px">Build campaign emails without rewriting every block</mj-text>
+      <mj-text mj-class="body text-muted" align="left" padding-bottom="20px">Use this pattern for practical implementation notes, rollout summaries, or product callouts where one clear action should follow the copy.</mj-text>
+      <mj-button background-color="#2f67ef" color="#ffffff" border-radius="50px" inner-padding="16px 40px" font-family="'Inter', Arial, sans-serif" font-size="18px" font-weight="700" href="https://templatehedgehog.com" align="left" padding-bottom="0">Read implementation guide</mj-button>
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# Text Left -->

@@ -3,24 +3,45 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "build:components": "tsx scripts/build-components.ts",
+    "build:examples": "tsx scripts/build-examples.ts",
+    "build:layout-addons": "tsx scripts/build-layout-addons.ts",
+    "build:layouts": "tsx scripts/build-layouts.ts",
+    "build:pack": "tsx scripts/build-pack.ts",
+    "predev": "npm run build:components && npm run build:layouts && npm run build:examples && npm run build:pack",
+    "prebuild": "npm run build:components && npm run build:layouts && npm run build:examples && npm run build:pack",
+    "prestart": "npm run build:components && npm run build:layouts && npm run build:examples && npm run build:pack",
     "dev": "next dev",
     "build": "next build",
+    "build:pages": "npm run prebuild && ./scripts/build-pages.sh",
     "start": "next start",
+    "test:unit": "tsx --test src/components/ui/CodeBlock.test.tsx src/components/ui/HtmlPreviewFrame.test.tsx src/data/layout-addons/layout-addons.test.ts src/lib/analytics.test.ts src/lib/clipboard.test.ts src/lib/download.test.ts src/lib/downloadToken.test.ts src/lib/html-snippets.test.ts src/lib/mjml/compile.test.ts src/lib/mjml/safety.test.ts src/lib/pack.test.ts src/lib/packSize.test.ts src/lib/versioning.test.ts src/app/api/download/route.integration.test.ts src/app/api/downloads/[token]/route.test.ts src/app/api/mjml/compile/route.test.ts src/app/api/waitlist/route.test.ts src/app/api/webhooks/stripe/route.test.ts",
     "lint": "eslint"
   },
   "dependencies": {
-    "next": "16.1.6",
-    "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "@aws-sdk/client-s3": "^3.1015.0",
+    "archiver": "^7.0.1",
+    "ioredis": "^5.10.1",
+    "lucide-react": "^0.577.0",
+    "mjml": "^5.0.0-beta.2",
+    "next": "^16.2.1",
+    "prettier": "^3.8.1",
+    "prism-react-renderer": "^2.4.1",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "shiki": "^4.0.2",
+    "stripe": "^20.4.1"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4",
+    "@tailwindcss/postcss": "^4.2.2",
+    "@types/archiver": "^7.0.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "16.1.6",
-    "tailwindcss": "^4",
+    "eslint": "^9.39.4",
+    "eslint-config-next": "^16.2.1",
+    "tailwindcss": "^4.2.2",
+    "tsx": "^4.21.0",
     "typescript": "^5"
   }
 }

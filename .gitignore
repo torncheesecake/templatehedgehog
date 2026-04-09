@@ -16,6 +16,7 @@
 # next.js
 /.next/
 /out/
+/.next_stale_*/
 
 # production
 /build
@@ -23,6 +24,11 @@
 # misc
 .DS_Store
 *.pem
+/.playwright-cli/
+/.tmp/
+/output/
+/archive/
+/private/downloads/*.zip
 
 # debug
 npm-debug.log*
@@ -32,6 +38,7 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.example
 
 # vercel
 .vercel

@@ -1,0 +1,35 @@
+<!-- #-START-# Four Item Grid -->
+<mj-wrapper mj-class="whitebg">
+  <mj-section padding-bottom="16px">
+    <mj-column>
+      <mj-text mj-class="h4 text-primary extrabold" align="center" padding-bottom="8px">Four-item highlight grid</mj-text>
+      <mj-text mj-class="body text-muted" align="center" padding-bottom="0">
+        Use this block for feature spots, product picks, or compact operational updates.
+      </mj-text>
+    </mj-column>
+  </mj-section>
+
+  <mj-section padding="0 24px">
+    <mj-column width="25%" vertical-align="top" padding="0 8px 18px 8px">
+      <mj-image src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=260&h=260&fit=crop&q=85" fluid-on-mobile="true" alt="Launch checklist" border-radius="8px" padding="0 0 10px 0" />
+      <mj-text mj-class="small text-primary bold" align="center" padding="0 0 3px 0">Launch checklist</mj-text>
+      <mj-text mj-class="small text-muted" align="center" padding="0">Ready to send</mj-text>
+    </mj-column>
+    <mj-column width="25%" vertical-align="top" padding="0 8px 18px 8px">
+      <mj-image src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=260&h=260&fit=crop&q=85" fluid-on-mobile="true" alt="Campaign draft" border-radius="8px" padding="0 0 10px 0" />
+      <mj-text mj-class="small text-primary bold" align="center" padding="0 0 3px 0">Campaign draft</mj-text>
+      <mj-text mj-class="small text-muted" align="center" padding="0">Copy approved</mj-text>
+    </mj-column>
+    <mj-column width="25%" vertical-align="top" padding="0 8px 18px 8px">
+      <mj-image src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=260&h=260&fit=crop&q=85" fluid-on-mobile="true" alt="Automation rules" border-radius="8px" padding="0 0 10px 0" />
+      <mj-text mj-class="small text-primary bold" align="center" padding="0 0 3px 0">Automation rules</mj-text>
+      <mj-text mj-class="small text-muted" align="center" padding="0">Segment updated</mj-text>
+    </mj-column>
+    <mj-column width="25%" vertical-align="top" padding="0 8px 18px 8px">
+      <mj-image src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=260&h=260&fit=crop&q=85" fluid-on-mobile="true" alt="Delivery report" border-radius="8px" padding="0 0 10px 0" />
+      <mj-text mj-class="small text-primary bold" align="center" padding="0 0 3px 0">Delivery report</mj-text>
+      <mj-text mj-class="small text-muted" align="center" padding="0">92% inbox rate</mj-text>
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# Four Item Grid -->

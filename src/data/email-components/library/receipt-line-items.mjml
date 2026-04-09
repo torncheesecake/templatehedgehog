@@ -1,0 +1,21 @@
+<!-- #-START-# Receipt Line Items -->
+<mj-wrapper mj-class="whitebg">
+  <mj-section padding-bottom="16px">
+    <mj-column width="520px">
+      <mj-text mj-class="label thblue" align="left" padding-bottom="10px">Receipt</mj-text>
+      <mj-text mj-class="h4 text-primary extrabold" align="left" padding-bottom="10px">Payment confirmation for invoice #TH-90314</mj-text>
+      <mj-text mj-class="body text-muted" align="left">Thanks for your payment. A copy of this receipt has been stored in your billing history.</mj-text>
+    </mj-column>
+  </mj-section>
+  <mj-section padding-top="0">
+    <mj-column>
+      <mj-table>
+        <tr><th align="left" style="padding: 0 0 10px; color: #1a1a1a;">Item</th><th align="right" style="padding: 0 0 10px; color: #1a1a1a;">Amount</th></tr>
+        <tr><td style="padding: 9px 0; color: #4a5568; border-top: 1px solid #dbe5f1;">Workspace Pro (Monthly)</td><td align="right" style="padding: 9px 0; color: #4a5568; border-top: 1px solid #dbe5f1;">GBP 99.00</td></tr>
+        <tr><td style="padding: 9px 0; color: #4a5568;">Priority support add-on</td><td align="right" style="padding: 9px 0; color: #4a5568;">GBP 40.00</td></tr>
+        <tr><td style="padding: 9px 0; color: #4a5568;">VAT (20%)</td><td align="right" style="padding: 9px 0; color: #4a5568;">GBP 27.80</td></tr>
+      </mj-table>
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# Receipt Line Items -->

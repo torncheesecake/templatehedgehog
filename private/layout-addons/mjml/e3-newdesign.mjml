@@ -1,0 +1,71 @@
+<mjml>
+  <mj-head>
+    <mj-include path="../styles.mjml" />
+    <mj-title>Title</mj-title>
+    <mj-preview>Pre-header&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp; </mj-preview>
+  </mj-head>
+  <mj-body background-color="#0f1833">
+    <mj-wrapper background-url="https://example.com" background-repeat="no-repeat" background-size="cover" full-width="full-width">
+      <mj-hero css-class="hero" mode="Fixed-height" background-color="transparent" padding="50px 30px">
+        <mj-image padding-top="0" src="https://example.com Business-experts-logo-whiteoutline.png" width="206px" align="left" css-class="left-d center-m" />
+        <mj-text mj-class="h1-display white" padding-top="50px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
+        <mj-text mj-class="h4 white" font-weight="300" padding-top="10px" align="left">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</mj-text>
+      </mj-hero>
+    </mj-wrapper>
+    <mj-wrapper mj-class="whitebg" border-bottom="1px solid lightgrey">
+      <mj-section>
+        <mj-column>
+          <mj-text mj-class="h2 dark">Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</mj-text>
+          <mj-text mj-class="body dark">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</mj-text>
+          <mj-text mj-class="body dark">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
+          <mj-button href="www.erpexperts.co.uk">Call to action</mj-button>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <!-- #-START-# hero image left  -->
+    <mj-wrapper mj-class="whitebg">
+      <mj-section padding="0">
+        <mj-column padding="0" vertical-align="middle">
+          <mj-image src="https://example.com" width="320px" padding="0" fluid-on-mobile="true" alt="" />
+        </mj-column>
+        <mj-column padding="30px 20px 20px 20px" vertical-align="middle">
+          <mj-text mj-class="h2 dark" align="center">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</mj-text>
+          <mj-text mj-class="body dark" align="center">Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</mj-text>
+          <!-- #-START-# Primary Call to Action -->
+          <mj-button href="www.erpexperts.co.uk">Call to action</mj-button>
+        </mj-column>
+        <!-- #-END-# Primary Call to Action -->
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <!-- #-END-# hero image left -->
+    <mj-wrapper background-color="#70297b">
+      <mj-section>
+        <mj-column vertical-align="middle">
+          <mj-text mj-class="h2 superlight center" align="center">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</mj-text>
+          <mj-text mj-class="body superlight" align="center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
+        </mj-column>
+        <mj-column vertical-align="middle">
+          <mj-button background-color="transparent" border="1px solid white"color="white" href="www.erpexperts.co.uk">Call to action</mj-button>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <mj-wrapper background-url="https://example.com" background-repeat="no-repeat" background-size="cover" full-width="full-width">
+      <mj-section>
+        <mj-column>
+          <mj-social align="center" font-size="15px" icon-size="30px" mode="horizontal">
+            <mj-social-element name="facebook" color="white" href="https://example.com"> </mj-social-element>
+            <mj-social-element name="twitter" href="https://example.com" color="white"> </mj-social-element>
+            <mj-social-element name="linkedin" href="https://example.com" color="white"> </mj-social-element>
+          </mj-social>
+        </mj-column>
+      </mj-section>
+      <mj-section>
+        <mj-column>
+          <mj-image src="https://example.com" width="50px" alt="Your Business Logo" />
+          <mj-text mj-class="body dark" align="center">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+  </mj-body>
+</mjml>

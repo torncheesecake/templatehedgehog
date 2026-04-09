@@ -1,0 +1,155 @@
+<mjml>
+  <mj-head>
+    <mj-include path="../styles.mjml" />
+    <mj-title>Your Product AI: Gimmick or Value Add? | Your Brand</mj-title>
+    <mj-preview>We saved 4 hours a week on reporting with AI. Here's how.&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp; </mj-preview>
+  </mj-head>
+  <mj-body mj-class="whitebg">
+    <!-- Header -->
+    <mj-include path="../header.mjml" />
+    <!-- Hero Section - Centred -->
+    <mj-wrapper mj-class="whitebg">
+      <mj-section padding="55px 40px 20px 40px">
+        <mj-column width="550px">
+          <mj-text mj-class="label pink" align="center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
+          <mj-text mj-class="h1 extrabold" align="center">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</mj-text>
+          <mj-text mj-class="body" align="center">Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <!-- Hero Image -->
+    <mj-wrapper mj-class="whitebg">
+      <mj-section padding="25px 35px 10px 35px">
+        <mj-column>
+          <mj-image src="https://example.com 0000 000000-bcc4688e7485?w=1200&h=600&fit=crop&q=85" fluid-on-mobile="true" alt="AI-powered reporting and data analytics" border-radius="8px" />
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <!-- Intro Text - Left Aligned -->
+    <mj-wrapper mj-class="whitebg">
+      <mj-section padding="30px 40px 10px 40px">
+        <mj-column>
+          <mj-text mj-class="body" align="left">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</mj-text>
+          <mj-text mj-class="body" align="left">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
+          <mj-text mj-class="body" align="left">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <!-- Alert Box - The Result -->
+    <mj-wrapper mj-class="whitebg">
+      <mj-section background-color="#fff5f9" border-left="4px solid #e83a7a" padding="35px 35px 25px 25px">
+        <mj-column width="10%" vertical-align="middle">
+          <mj-raw>
+            <div style="text-align: center;">
+              <svg xmlns="https://example.com" width="32" height="32" viewBox="+44 0000 000000" fill="none" stroke="#e83a7a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: inline-block;">
+                <path d="M22 11.08V12a+44 0000 000000" />
+                <polyline points="+44 0000 000000" />
+              </svg>
+            </div>
+          </mj-raw>
+        </mj-column>
+        <mj-column width="90%" vertical-align="middle">
+          <mj-text mj-class="body bold" align="left">Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</mj-text>
+          <mj-text mj-class="small" align="left" padding="0">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <!-- Statement / Pull Quote -->
+    <mj-wrapper background-color="#fff5f9">
+      <mj-section padding="50px 50px" border-left="4px solid #e83a7a">
+        <mj-column width="580px">
+          <mj-text mj-class="h2 extrabold" align="center" line-height="44px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <!-- Dual Text - Before & After -->
+    <mj-wrapper mj-class="whitebg">
+      <mj-section padding="45px 35px 15px 35px">
+        <mj-column width="500px">
+          <mj-text mj-class="label pink" align="center">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</mj-text>
+          <mj-text mj-class="h3 extrabold" align="center">Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</mj-text>
+          <mj-text mj-class="body" align="center">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</mj-text>
+        </mj-column>
+      </mj-section>
+      <mj-section padding="0 35px 40px 35px">
+        <mj-column width="50%" padding="0 10px 25px 10px">
+          <mj-text mj-class="h5 extrabold" align="left">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
+          <mj-text mj-class="body" align="left">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</mj-text>
+        </mj-column>
+        <mj-column width="50%" padding="0 10px 25px 10px">
+          <mj-text mj-class="h5 pink extrabold" align="left">Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</mj-text>
+          <mj-text mj-class="body" align="left">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <!-- Video Section -->
+    <mj-wrapper mj-class="whitebg">
+      <mj-section padding="40px 35px" css-class="border-top-light">
+        <mj-column width="500px">
+          <mj-text mj-class="label pink" align="center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
+          <mj-text mj-class="h3 extrabold" align="center">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</mj-text>
+          <mj-text mj-class="body" align="center">Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</mj-text>
+        </mj-column>
+      </mj-section>
+      <mj-section padding="0 35px 15px 35px">
+        <mj-column>
+          <mj-image src="https://example.com 0000 000000b55fcc595e?w=1200&h=675&fit=crop&q=85" fluid-on-mobile="true" alt="Watch the AI reporting demo video" border-radius="8px" href="https://example.com" />
+        </mj-column>
+      </mj-section>
+      <mj-section padding="10px 35px 40px 35px">
+        <mj-column>
+          <mj-button background-color="#1a1a1a" color="#ffffff" border-radius="50px" inner-padding="16px 40px" font-family="'Inter', Arial, sans-serif" font-size="18px" font-weight="700" href="https://example.com" align="center">Call to action</mj-button>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <!-- Stats / Social Proof -->
+    <mj-wrapper mj-class="whitebg">
+      <mj-section padding="45px 40px 40px 40px" css-class="border-top-light">
+        <mj-column width="33.33%" padding="0 15px">
+          <mj-text mj-class="h2 pink extrabold" align="center">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</mj-text>
+          <mj-text mj-class="body bold" align="center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
+          <mj-text mj-class="small" align="center">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</mj-text>
+        </mj-column>
+        <mj-column width="33.33%" padding="0 15px">
+          <mj-text mj-class="h2 pink extrabold" align="center">Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</mj-text>
+          <mj-text mj-class="body bold" align="center">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</mj-text>
+          <mj-text mj-class="small" align="center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
+        </mj-column>
+        <mj-column width="33.33%" padding="0 15px">
+          <mj-text mj-class="h2 pink extrabold" align="center">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</mj-text>
+          <mj-text mj-class="body bold" align="center">Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</mj-text>
+          <mj-text mj-class="small" align="center">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <!-- Testimonial 
+    <mj-wrapper background-color="#fff5f9">
+      <mj-section padding="50px 50px">
+        <mj-column>
+          <mj-text mj-class="h1 pink extrabold" align="center" padding="0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
+          <mj-text mj-class="h4 extrabold" align="center">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <!-- Final CTA Section -->
+    <mj-wrapper mj-class="whitebg">
+      <mj-section padding="55px 40px" css-class="border-top-light">
+        <mj-column>
+          <mj-text mj-class="h3 extrabold" align="center">Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</mj-text>
+          <mj-text mj-class="body" align="center">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</mj-text>
+          <mj-button background-color="#e83a7a" color="#ffffff" border-radius="50px" inner-padding="20px 48px" font-family="'Inter', Arial, sans-serif" font-size="18px" font-weight="700" href="mailto:hello@yourbrand.com?subject=Your Product AI Demo" align="center">Call to action</mj-button>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <!-- Sign Off -->
+    <mj-wrapper mj-class="whitebg">
+      <mj-section padding="0 40px 40px 40px">
+        <mj-column>
+          <mj-text mj-class="body" align="left">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <!-- Footer -->
+    <mj-include path="../footer.mjml" />
+  </mj-body>
+</mjml>

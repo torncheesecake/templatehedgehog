@@ -1,0 +1,15 @@
+<!-- #-START-# Single Image Right -->
+<mj-wrapper mj-class="whitebg">
+  <mj-section>
+    <mj-column vertical-align="middle" width="55%" padding="0 10px">
+      <mj-text mj-class="h3 text-primary extrabold" align="left" padding-bottom="12px">Present the rollout plan in a compact split</mj-text>
+      <mj-text mj-class="body text-muted" align="left" padding-bottom="12px">Lead with concise copy, keep one supporting visual on the right, and drive readers to one decision-point action.</mj-text>
+      <mj-text mj-class="body text-muted" align="left" padding-bottom="20px">Useful for feature launches, timeline updates, and customer operations notices.</mj-text>
+      <mj-button background-color="#2f67ef" color="#ffffff" border-radius="50px" inner-padding="16px 40px" font-family="'Inter', Arial, sans-serif" font-size="18px" font-weight="700" href="https://templatehedgehog.com" align="left" padding-bottom="0">Open full example</mj-button>
+    </mj-column>
+    <mj-column vertical-align="middle" width="45%" padding="25px 10px 0 10px">
+      <mj-image src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=600&h=450&fit=crop&q=85" fluid-on-mobile="true" align="right" alt="Team reviewing release delivery timeline" border-radius="8px" />
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# Single Image Right -->

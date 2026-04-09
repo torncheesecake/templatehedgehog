@@ -1,0 +1,44 @@
+<mjml>
+  <mj-head>
+    <mj-include path="../styles.mjml" />
+    <mj-title>Valuable Insights and Guidance from Your Brand</mj-title>
+    <mj-preview>Discover our latest blog articles on Your Product Your Business, from beginner guides to advanced optimisation tips.&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;</mj-preview>
+  </mj-head>
+  <mj-body mj-class="whitebg">
+    <mj-include path="../header.mjml" />
+    <mj-wrapper>
+      <mj-section>
+        <mj-column>
+          <mj-image src="https://example.com 0000 000000b~mv2.jpg" padding-bottom="30px" alt="Handshake" />
+          <mj-text mj-class="h2 dark" align="left">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
+          <mj-text mj-class="body dark" align="left">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</mj-text>
+        </mj-column>
+      </mj-section>
+      <mj-section>
+        <mj-column>
+          <mj-text mj-class="h4 dark" align="left">Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</mj-text>
+          <mj-text mj-class="body dark" align="left">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</mj-text>
+          <mj-button mj-class="mediumbluebg white body" padding-top="10px" href="https://example.com Product">Call to action</mj-button>
+        </mj-column>
+        <mj-column>
+          <mj-text mj-class="h4 dark" align="left">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
+          <mj-text mj-class="body dark" align="left">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</mj-text>
+          <mj-button mj-class="mediumbluebg white body" padding-top="10px" href="https://example.com Product-support">Call to action</mj-button>
+        </mj-column>
+      </mj-section>
+      <mj-section>
+        <mj-column>
+          <mj-text mj-class="h4 dark" align="left">Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</mj-text>
+          <mj-text mj-class="body dark" align="left">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</mj-text>
+          <mj-button mj-class="mediumbluebg white body" padding-top="10px" href="https://example.com Product-can-help-you-achieve-your-sustainability-goals">Call to action</mj-button>
+        </mj-column>
+        <mj-column>
+          <mj-text mj-class="h4 dark" align="left">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
+          <mj-text mj-class="body dark" align="left">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</mj-text>
+          <mj-button mj-class="mediumbluebg white body" padding-top="10px" href="https://example.com Business-system-for-it-directors">Call to action</mj-button>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <mj-include path="../footer.mjml" />
+  </mj-body>
+</mjml>

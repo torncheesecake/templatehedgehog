@@ -1,0 +1,14 @@
+<!-- #-START-# Header -->
+<mj-wrapper mj-class="whitebg">
+  <mj-section padding="25px 35px">
+    <mj-column vertical-align="middle">
+      <mj-text mj-class="h6 text-primary extrabold" align="left" padding-bottom="0">TemplateHedgehog weekly build brief</mj-text>
+    </mj-column>
+  </mj-section>
+  <mj-section padding="0 35px 20px">
+    <mj-column>
+      <mj-text mj-class="small text-muted" align="left" padding-bottom="0">Prepared for product, lifecycle, and delivery teams shipping campaigns this week.</mj-text>
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# Header -->

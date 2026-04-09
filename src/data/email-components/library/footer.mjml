@@ -1,0 +1,43 @@
+<!-- #-START-# Footer -->
+<mj-wrapper mj-class="whitebg">
+  <mj-section css-class="border-top-light">
+    <mj-column>
+      <mj-text mj-class="h3 text-primary extrabold" align="center" padding-bottom="8px">Need help before you send?</mj-text>
+      <mj-text mj-class="body text-muted" align="center" padding-bottom="35px">Review implementation notes, compatibility caveats, and delivery checks before final export.</mj-text>
+    </mj-column>
+  </mj-section>
+
+  <mj-section>
+    <mj-column width="50%" padding="0 20px 30px 20px">
+      <mj-text mj-class="h6 text-primary bold" align="center" padding="0">
+        <a href="https://templatehedgehog.com" style="color: #1a1a1a; text-decoration: none;">Support centre</a>
+      </mj-text>
+    </mj-column>
+
+    <mj-column width="50%" padding="0 20px 30px 20px">
+      <mj-text mj-class="h6 text-primary bold" align="center" padding="0">
+        <a href="https://templatehedgehog.com" style="color: #1a1a1a; text-decoration: none;">Documentation</a>
+      </mj-text>
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+
+<mj-wrapper mj-class="whitebg">
+  <mj-section css-class="border-top-light">
+    <mj-column width="100%">
+      <mj-text mj-class="body text-muted" align="center" padding="0 0 25px 0">
+        <a href="https://templatehedgehog.com" style="color:#4a5568;text-decoration:none;">TemplateHedgehog</a>
+      </mj-text>
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+
+<mj-wrapper background-color="#102447">
+  <mj-section padding="30px 35px 30px 35px">
+    <mj-column>
+      <mj-text mj-class="small white" align="center" padding-bottom="12px">You are receiving this message because team email notifications are enabled.</mj-text>
+      <mj-text mj-class="small white" align="center" padding="0">Manage preferences at templatehedgehog.com/preferences.</mj-text>
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# Footer -->

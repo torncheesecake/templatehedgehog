@@ -1,0 +1,27 @@
+<!-- #-START-# Related Products Row -->
+<mj-wrapper mj-class="whitebg">
+  <mj-section padding-bottom="16px">
+    <mj-column>
+      <mj-text mj-class="h5 text-primary extrabold" align="center" padding-bottom="8px">Recommended add-ons</mj-text>
+      <mj-text mj-class="small text-muted" align="center" padding-bottom="0">Use this row for accessory upsell, renewal extras, or post-purchase guidance.</mj-text>
+    </mj-column>
+  </mj-section>
+  <mj-section padding="0 24px">
+    <mj-column width="33.33%" vertical-align="top" padding="0 8px 18px 8px">
+      <mj-image src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=320&h=320&fit=crop&q=85" fluid-on-mobile="true" alt="Docking stand" border-radius="8px" padding="0 0 10px 0" />
+      <mj-text mj-class="small text-primary bold" align="center" padding="0 0 4px 0">Docking stand</mj-text>
+      <mj-text mj-class="small text-muted" align="center" padding="0">GBP 45.00</mj-text>
+    </mj-column>
+    <mj-column width="33.33%" vertical-align="top" padding="0 8px 18px 8px">
+      <mj-image src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=320&h=320&fit=crop&q=85" fluid-on-mobile="true" alt="Filter kit" border-radius="8px" padding="0 0 10px 0" />
+      <mj-text mj-class="small text-primary bold" align="center" padding="0 0 4px 0">Filter kit</mj-text>
+      <mj-text mj-class="small text-muted" align="center" padding="0">GBP 29.00</mj-text>
+    </mj-column>
+    <mj-column width="33.33%" vertical-align="top" padding="0 8px 18px 8px">
+      <mj-image src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=320&h=320&fit=crop&q=85" fluid-on-mobile="true" alt="Extended care plan" border-radius="8px" padding="0 0 10px 0" />
+      <mj-text mj-class="small text-primary bold" align="center" padding="0 0 4px 0">Care plan</mj-text>
+      <mj-text mj-class="small text-muted" align="center" padding="0">GBP 79.00</mj-text>
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# Related Products Row -->

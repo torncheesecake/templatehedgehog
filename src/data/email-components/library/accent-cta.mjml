@@ -1,0 +1,17 @@
+<!-- #-START-# Primary CTA Block -->
+<mj-wrapper mj-class="whitebg">
+  <mj-section>
+    <mj-column>
+      <mj-text mj-class="h6 text-primary extrabold" align="center" padding-bottom="10px">
+        Ready to roll this into production?
+      </mj-text>
+      <mj-text mj-class="small text-muted" align="center" padding-bottom="18px">
+        Use this closeout block when the email needs one final clear action.
+      </mj-text>
+      <mj-button background-color="#2f67ef" color="#ffffff" align="center" border-radius="999px" inner-padding="15px 32px" href="https://templatehedgehog.com">
+        Start build
+      </mj-button>
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# Primary CTA Block -->

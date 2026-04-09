@@ -1,0 +1,168 @@
+<!-- Purpose: Deliver weekly editorial updates with digest and article blocks. -->
+<!-- Components: header-e3-center.mjml, weekly-digest-list.mjml, multi-article-newsletter-grid.mjml, newsletter-editor-note.mjml, footer-24-white.mjml -->
+<!-- Production use: Used for recurring newsletter and editorial programmes. -->
+<mjml>
+  <mj-head>
+    <mj-preview>TemplateHedgehog reusable email block</mj-preview>
+    <mj-attributes>
+      <mj-all font-family="'Manrope', 'Inter', Arial, sans-serif" />
+      <mj-body width="640px" background-color="#f3f4f6" />
+      <mj-wrapper padding="0" full-width="full-width" />
+      <mj-section padding="28px 34px" />
+      <mj-column padding="0" />
+      <mj-image padding="0 0 14px 0" />
+      <mj-text padding="0 0 12px 0" font-size="16px" line-height="28px" color="#1a1a1a" />
+      <mj-button padding="0" font-size="16px" font-weight="700" border-radius="999px" inner-padding="14px 30px" />
+
+      <mj-class name="h1" font-size="42px" line-height="46px" font-weight="800" />
+      <mj-class name="h2" font-size="36px" line-height="40px" font-weight="800" />
+      <mj-class name="h3" font-size="30px" line-height="34px" font-weight="800" />
+      <mj-class name="h4" font-size="26px" line-height="30px" font-weight="800" />
+      <mj-class name="h5" font-size="22px" line-height="26px" font-weight="800" />
+      <mj-class name="h6" font-size="20px" line-height="24px" font-weight="800" />
+      <mj-class name="h1-display" font-size="56px" line-height="60px" font-weight="800" />
+      <mj-class name="body" font-family="'Inter', Arial, sans-serif" font-size="17px" line-height="28px" />
+      <mj-class name="small" font-family="'Inter', Arial, sans-serif" font-size="14px" line-height="23px" />
+      <mj-class name="label" font-family="'Inter', Arial, sans-serif" font-size="12px" font-weight="700" text-transform="uppercase" letter-spacing="0.12em" />
+      <mj-class name="bold" font-weight="700" />
+      <mj-class name="extrabold" font-weight="800" />
+      <mj-class name="white" color="#ffffff" />
+      <mj-class name="light" color="#94a3b8" />
+      <mj-class name="medium" color="#4a5568" />
+      <mj-class name="dark" color="#1a1a1a" />
+      <mj-class name="text-primary" color="#1a1a1a" />
+      <mj-class name="text-muted" color="#4a5568" />
+      <mj-class name="thblue" color="#2f67ef" />
+      <mj-class name="whitebg" background-color="#ffffff" />
+      <mj-class name="superlightbg" background-color="#f8fafc" />
+      <mj-class name="thbluebg" background-color="#2f67ef" />
+      <mj-class name="blackbg" background-color="#0f172a" />
+      <mj-class name="darkbg" background-color="#102447" />
+      <mj-class name="rocketbluebg" background-color="#183b7a" />
+      <mj-class name="e3bluebg" background-color="#183b7a" />
+      <mj-class name="transbg" background-color="transparent" />
+      <mj-class name="badge" font-family="'Inter', Arial, sans-serif" font-size="12px" line-height="16px" font-weight="700" letter-spacing="0.12em" text-transform="uppercase" />
+      <mj-class name="button" font-weight="700" />
+    </mj-attributes>
+    <mj-style>
+      .border-top-light { border-top: 1px solid rgba(26, 26, 26, 0.1) !important; }
+      .border-bottom-light { border-bottom: 1px solid rgba(26, 26, 26, 0.1) !important; }
+      .grayscale img { filter: grayscale(100%); }
+    </mj-style>
+    
+    <mj-raw>
+      <meta name="color-scheme" content="light dark" />
+      <meta name="supported-color-schemes" content="light dark" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    </mj-raw>
+  </mj-head>
+  <mj-body background-color="#f3f4f6">
+<!-- #-START-# Header Centered -->
+<mj-wrapper mj-class="whitebg">
+  <mj-section padding="20px">
+    <mj-column>
+      <mj-image src="https://placehold.co/240x80/png?text=TemplateHedgehog+Logo" width="206px" padding="0" align="center" href="https://templatehedgehog.com" alt="TemplateHedgehog" />
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# Header Centered -->
+
+<!-- #-START-# Weekly Digest List -->
+<mj-wrapper mj-class="whitebg">
+  <mj-section padding-bottom="16px">
+    <mj-column width="520px">
+      <mj-text mj-class="label thblue" align="left" padding-bottom="10px">Weekly digest</mj-text>
+      <mj-text mj-class="h4 text-primary extrabold" align="left" padding-bottom="10px">This week at a glance</mj-text>
+    </mj-column>
+  </mj-section>
+  <mj-section padding-top="0">
+    <mj-column>
+      <mj-text mj-class="body text-primary bold" align="left" padding-bottom="4px">Lorem ipsum dolor sit amet</mj-text>
+      <mj-text mj-class="small text-muted" align="left" padding-bottom="14px">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</mj-text>
+      <mj-text mj-class="body text-primary bold" align="left" padding-bottom="4px">Mauris pharetra magna luctus</mj-text>
+      <mj-text mj-class="small text-muted" align="left" padding-bottom="14px">Ut eu tellus nibh. Mauris pharetra magna luctus leo maximus.</mj-text>
+      <mj-text mj-class="body text-primary bold" align="left" padding-bottom="4px">Consectetur adipiscing elit</mj-text>
+      <mj-text mj-class="small text-muted" align="left" padding-bottom="0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</mj-text>
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# Weekly Digest List -->
+
+<!-- #-START-# Multi Article Newsletter Grid -->
+<mj-wrapper mj-class="whitebg">
+  <mj-section padding-bottom="18px">
+    <mj-column>
+      <mj-text mj-class="label thblue" align="center" padding-bottom="10px">Newsletter</mj-text>
+      <mj-text mj-class="h4 text-primary extrabold" align="center" padding-bottom="10px">More to explore</mj-text>
+    </mj-column>
+  </mj-section>
+  <mj-section padding-top="0">
+    <mj-column width="50%" padding="0 8px 18px 8px">
+      <mj-image src="https://images.unsplash.com/photo-1516321165247-4aa89a48be28?w=420&h=280&fit=crop&q=85" alt="Article one" border-radius="8px" padding-bottom="10px" />
+      <mj-text mj-class="small text-primary bold" align="left" padding-bottom="4px">Article one</mj-text>
+      <mj-text mj-class="small text-muted" align="left">Short summary</mj-text>
+    </mj-column>
+    <mj-column width="50%" padding="0 8px 18px 8px">
+      <mj-image src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=420&h=280&fit=crop&q=85" alt="Article two" border-radius="8px" padding-bottom="10px" />
+      <mj-text mj-class="small text-primary bold" align="left" padding-bottom="4px">Article two</mj-text>
+      <mj-text mj-class="small text-muted" align="left">Short summary</mj-text>
+    </mj-column>
+  </mj-section>
+  <mj-section padding-top="0">
+    <mj-column width="50%" padding="0 8px 0 8px">
+      <mj-image src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=420&h=280&fit=crop&q=85" alt="Article three" border-radius="8px" padding-bottom="10px" />
+      <mj-text mj-class="small text-primary bold" align="left" padding-bottom="4px">Article three</mj-text>
+      <mj-text mj-class="small text-muted" align="left">Short summary</mj-text>
+    </mj-column>
+    <mj-column width="50%" padding="0 8px 0 8px">
+      <mj-image src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?w=420&h=280&fit=crop&q=85" alt="Article four" border-radius="8px" padding-bottom="10px" />
+      <mj-text mj-class="small text-primary bold" align="left" padding-bottom="4px">Article four</mj-text>
+      <mj-text mj-class="small text-muted" align="left">Short summary</mj-text>
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# Multi Article Newsletter Grid -->
+
+<!-- #-START-# Newsletter Editor Note -->
+<mj-wrapper mj-class="whitebg">
+  <mj-section padding-bottom="18px">
+    <mj-column width="520px">
+      <mj-text mj-class="label thblue" align="left" padding-bottom="10px">Editor's note</mj-text>
+      <mj-text mj-class="h4 text-primary extrabold" align="left" padding-bottom="10px">A short note from the team</mj-text>
+      <mj-text mj-class="body text-muted" align="left">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu tellus nibh. Mauris pharetra magna luctus leo maximus, eu dapibus tellus nibh amet.</mj-text>
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# Newsletter Editor Note -->
+
+<!-- #-START-# footer -->
+<mj-wrapper mj-class="whitebg">
+  <mj-section padding-top="30px">
+    <mj-column vertical-align="middle">
+      <mj-image src="https://placehold.co/240x80/png?text=TemplateHedgehog+Logo" width="180px" alt="TemplateHedgehog logo" href="https://templatehedgehog.com" />
+      <mj-text mj-class="body dark" align="center">Find out what makes us tick</mj-text>
+      <mj-social align="center" font-size="15px" icon-size="30px" mode="horizontal">
+        <mj-social-element name="facebook" color="white" href="https://templatehedgehog.com"> </mj-social-element>
+        <mj-social-element name="twitter" href="https://templatehedgehog.com" color="white"> </mj-social-element>
+        <mj-social-element name="linkedin" href="https://templatehedgehog.com" color="white"> </mj-social-element>
+      </mj-social>
+    </mj-column>
+  </mj-section>
+  <mj-section>
+    <mj-column>
+      <mj-text mj-class="body dark" align="center">Copyright &copy; 2026 TemplateHedgehog. All rights reserved.</mj-text>
+    </mj-column>
+  </mj-section>
+  <mj-section padding-top="0px">
+    <mj-column>
+      <mj-text mj-class="body dark" align="center">Our office:<br /> Example House, River Street,<br /> London, WC2N 5DU</mj-text>
+      <mj-text mj-class="body dark" align="center" padding-top="0px">Support: <a href="mailto:support@templatehedgehog.com" target="_blank">support@templatehedgehog.com</a></mj-text>
+      <mj-text mj-class="body dark" align="center" padding-top="0px">Contact: <a href="mailto:hello@templatehedgehog.com" target="_blank">hello@templatehedgehog.com</a></mj-text>
+      <mj-text mj-class="body dark" align="center" padding-top="0px">Call: +44 0000 000 000</mj-text>
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!--  #-END-# footer -->
+  </mj-body>
+</mjml>

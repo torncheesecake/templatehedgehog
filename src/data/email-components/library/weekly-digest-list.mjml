@@ -1,0 +1,20 @@
+<!-- #-START-# Weekly Digest List -->
+<mj-wrapper mj-class="whitebg">
+  <mj-section padding-bottom="16px">
+    <mj-column width="520px">
+      <mj-text mj-class="label thblue" align="left" padding-bottom="10px">Weekly digest</mj-text>
+      <mj-text mj-class="h4 text-primary extrabold" align="left" padding-bottom="10px">This week at a glance</mj-text>
+    </mj-column>
+  </mj-section>
+  <mj-section padding-top="0">
+    <mj-column>
+      <mj-text mj-class="body text-primary bold" align="left" padding-bottom="4px">Template review complete for Q2 onboarding sequence</mj-text>
+      <mj-text mj-class="small text-muted" align="left" padding-bottom="14px">Content, legal copy, and localisation placeholders are now signed off.</mj-text>
+      <mj-text mj-class="body text-primary bold" align="left" padding-bottom="4px">Deliverability baseline improved on Yahoo and Outlook</mj-text>
+      <mj-text mj-class="small text-muted" align="left" padding-bottom="14px">Updated markup reduced clipping and improved read rates in legacy desktop clients.</mj-text>
+      <mj-text mj-class="body text-primary bold" align="left" padding-bottom="4px">Next release window opens on Friday</mj-text>
+      <mj-text mj-class="small text-muted" align="left" padding-bottom="0">Final QA checklist and stakeholder approvals must be complete by 16:00.</mj-text>
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# Weekly Digest List -->

@@ -1,0 +1,42 @@
+<mjml>
+  <mj-head>
+    <mj-include path="../styles.mjml" />
+    <mj-title>🎉 Cheers to Success in the New Year with Your Brand!</mj-title>
+    <mj-preview>Start the New Year Right with Your Brand&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp; </mj-preview>
+  </mj-head>
+  <mj-body mj-class="whitebg">
+    <mj-include path="../header.mjml" />
+    <mj-wrapper>
+      <mj-section padding="0">
+        <mj-column padding="0">
+          <mj-image src="https://example.com 0000 000000b6c929c35efc~mv2.jpg" padding="0px" alt="christmas">
+        </mj-column>
+      </mj-section>
+      </mj-hero>
+    </mj-wrapper>
+    <mj-wrapper mj-class="whitebg">
+      <mj-section>
+        <mj-column>
+          <mj-text mj-class="h2 black" align="left" padding-bottom="10px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
+          <mj-text mj-class="body black" align="left">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <mj-wrapper>
+      <mj-section padding-top="0">
+        <mj-column>
+          <mj-text mj-class="body dark" align="left">Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <mj-wrapper>
+      <mj-section mj-class="whitebg" padding-top="0">
+        <mj-column>
+          <mj-text mj-class="body dark">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</mj-text>
+          <mj-button mj-class="purplebg white body" padding-top="10px" href="https://example.com">Call to action</mj-button>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <mj-include path="../footer.mjml" />
+  </mj-body>
+</mjml>

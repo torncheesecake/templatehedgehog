@@ -1,0 +1,33 @@
+<!-- requires styles_jp.mjml -->
+<!-- #-START-# JP Tiles With Buttons 2 Col -->
+<mj-wrapper mj-class="whitebg">
+  <mj-section padding="0 24px">
+    <mj-column width="50%" vertical-align="top" padding="0 8px 24px 8px">
+      <mj-image src="https://placehold.co/640x360/png?text=TemplateHedgehog+Visual" fluid-on-mobile="true" padding="0 0 14px 0" alt="Release checklist visual" />
+      <mj-text mj-class="h3 medium bold" align="center" padding="0 0 8px 0">Care and maintenance</mj-text>
+      <mj-text mj-class="body medium" align="center" padding="0 0 14px 0">Use this card for maintenance guidance, rollout checks, or support prep before a high-volume campaign.</mj-text>
+      <mj-button href="https://templatehedgehog.com" align="center" padding="0" border-radius="24px" inner-padding="12px 22px" background-color="#d3d3d4" color="#111111" target="_blank" font-size="13px" line-height="14px" mj-class="bold">View guide</mj-button>
+    </mj-column>
+    <mj-column width="50%" vertical-align="top" padding="0 8px 24px 8px">
+      <mj-image src="https://placehold.co/640x360/png?text=TemplateHedgehog+Visual" fluid-on-mobile="true" padding="0 0 14px 0" alt="Accessory setup visual" />
+      <mj-text mj-class="h3 medium bold" align="center" padding="0 0 8px 0">Accessory setup</mj-text>
+      <mj-text mj-class="body medium" align="center" padding="0 0 14px 0">Pair a short setup walkthrough with a single CTA to reduce first-week support volume.</mj-text>
+      <mj-button href="https://templatehedgehog.com" align="center" padding="0" border-radius="24px" inner-padding="12px 22px" background-color="#d3d3d4" color="#111111" target="_blank" font-size="13px" line-height="14px" mj-class="bold">View guide</mj-button>
+    </mj-column>
+  </mj-section>
+  <mj-section padding="0 24px">
+    <mj-column width="50%" vertical-align="top" padding="0 8px 24px 8px">
+      <mj-image src="https://placehold.co/640x360/png?text=TemplateHedgehog+Visual" fluid-on-mobile="true" padding="0 0 14px 0" alt="Troubleshooting visual" />
+      <mj-text mj-class="h3 medium bold" align="center" padding="0 0 8px 0">Troubleshooting</mj-text>
+      <mj-text mj-class="body medium" align="center" padding="0 0 14px 0">Document known fixes with concise steps so customers can resolve common issues quickly.</mj-text>
+      <mj-button href="https://templatehedgehog.com" align="center" padding="0" border-radius="24px" inner-padding="12px 22px" background-color="#d3d3d4" color="#111111" target="_blank" font-size="13px" line-height="14px" mj-class="bold">View guide</mj-button>
+    </mj-column>
+    <mj-column width="50%" vertical-align="top" padding="0 8px 24px 8px">
+      <mj-image src="https://placehold.co/640x360/png?text=TemplateHedgehog+Visual" fluid-on-mobile="true" padding="0 0 14px 0" alt="Performance tips visual" />
+      <mj-text mj-class="h3 medium bold" align="center" padding="0 0 8px 0">Performance tips</mj-text>
+      <mj-text mj-class="body medium" align="center" padding="0 0 14px 0">Use this slot for optimisation advice that improves conversion and reduces post-send churn.</mj-text>
+      <mj-button href="https://templatehedgehog.com" align="center" padding="0" border-radius="24px" inner-padding="12px 22px" background-color="#d3d3d4" color="#111111" target="_blank" font-size="13px" line-height="14px" mj-class="bold">View guide</mj-button>
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# JP Tiles With Buttons 2 Col -->

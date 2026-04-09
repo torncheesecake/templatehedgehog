@@ -1,0 +1,49 @@
+<!-- #-START-# buy direct left dark -->
+<mj-wrapper mj-class="darkbg" padding-bottom="10px">
+  <mj-section>
+    <mj-column>
+      <mj-text mj-class="h2 white" align="center">More benefits when you buy directly from TemplateHedgehog</mj-text>
+    </mj-column>
+  </mj-section>
+  <mj-section padding-top="0">
+    <mj-group>
+      <mj-column>
+        <mj-social icon-size="48px" mode="horizontal" align="left" padding="0 0 10px 0">
+          <mj-social-element src="https://placehold.co/96x96/2f67ef/ffffff/png?text=TH" name="promise" mj-class="body white" color="white" padding="0 20px 0 0">
+            TemplateHedgehog Price Promise, with 35&#8208;day money&#8208;back guarantee
+          </mj-social-element>
+        </mj-social>
+      </mj-column>
+    </mj-group>
+    <mj-group>
+      <mj-column>
+        <mj-social icon-size="48px" mode="horizontal" align="left" padding="0 0 10px 0">
+          <mj-social-element src="https://placehold.co/96x96/2f67ef/ffffff/png?text=TH" name="delivery" mj-class="body white" color="white" padding="0 20px 0 0">
+            Free next&#8208;day delivery and free returns
+          </mj-social-element>
+        </mj-social>
+      </mj-column>
+    </mj-group>
+  </mj-section>
+  <mj-section padding-top="0">
+    <mj-group>
+      <mj-column>
+        <mj-social icon-size="48px" mode="horizontal" align="left" padding="0 0 10px 0">
+          <mj-social-element src="https://placehold.co/96x96/2f67ef/ffffff/png?text=TH" name="guarantee" mj-class="body white" color="white" padding="0 20px 0 0">
+            2&#8208;year guarantee, activated automatically
+          </mj-social-element>
+        </mj-social>
+      </mj-column>
+    </mj-group>
+    <mj-group>
+      <mj-column>
+        <mj-social icon-size="48px" mode="horizontal" align="left" padding="0 0 10px 0">
+          <mj-social-element src="https://placehold.co/96x96/2f67ef/ffffff/png?text=TH" name="pay-monthly" mj-class="body white" color="white" padding="0 20px 0 0">
+            Monthly payments to spread the cost
+          </mj-social-element>
+        </mj-social>
+      </mj-column>
+    </mj-group>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# buy direct left dark -->

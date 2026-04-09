@@ -1,0 +1,15 @@
+<!-- #-START-# Alert Box -->
+<mj-wrapper mj-class="whitebg">
+  <mj-section background-color="#eef4ff" border-left="4px solid #2f67ef" padding="25px 35px">
+    <mj-column width="10%" vertical-align="middle">
+      <mj-raw>
+        <div style="text-align: center; color: #2f67ef; font-size: 22px; font-weight: 700;">i</div>
+      </mj-raw>
+    </mj-column>
+    <mj-column width="90%" vertical-align="middle">
+      <mj-text mj-class="body text-primary bold" align="left" padding-bottom="8px">Action needed: sender domain verification</mj-text>
+      <mj-text mj-class="small text-muted" align="left" padding="0">Verify your sending domain before 22 March 2026 to prevent deliverability warnings in Outlook and Yahoo clients.</mj-text>
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# Alert Box -->

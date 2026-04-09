@@ -1,0 +1,24 @@
+<!-- #-START-# Dual Image -->
+<mj-wrapper mj-class="whitebg">
+  <mj-section padding-bottom="20px">
+    <mj-column width="500px">
+      <mj-text mj-class="h3 text-primary extrabold" align="center" padding-bottom="12px">Promote two updates in one send</mj-text>
+      <mj-text mj-class="body text-muted" align="center" padding-bottom="0">
+        Use this balanced split when you need to feature a primary launch item and one supporting operational update.
+      </mj-text>
+    </mj-column>
+  </mj-section>
+  <mj-section padding="0 24px">
+    <mj-column width="50%" vertical-align="top" padding="0 8px 20px 8px">
+      <mj-image src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop&q=85" fluid-on-mobile="true" alt="Checkout flow update" border-radius="8px" padding="0 0 14px 0" />
+      <mj-text mj-class="h5 text-primary extrabold" align="left" padding="0 0 8px 0">Checkout refresh</mj-text>
+      <mj-text mj-class="body text-muted" align="left" padding="0">New saved card handling and clearer tax totals now live for all web customers.</mj-text>
+    </mj-column>
+    <mj-column width="50%" vertical-align="top" padding="0 8px 20px 8px">
+      <mj-image src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=600&h=400&fit=crop&q=85" fluid-on-mobile="true" alt="Shipment tracking timeline" border-radius="8px" padding="0 0 14px 0" />
+      <mj-text mj-class="h5 text-primary extrabold" align="left" padding="0 0 8px 0">Delivery tracking</mj-text>
+      <mj-text mj-class="body text-muted" align="left" padding="0">Customers now see courier checkpoints in a single timeline without opening support tickets.</mj-text>
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# Dual Image -->

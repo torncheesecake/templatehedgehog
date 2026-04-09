@@ -1,0 +1,35 @@
+<mjml>
+  <mj-head>
+    <mj-include path="../styles.mjml" />
+    <mj-title>Exclusive Event Invitation</mj-title>
+    <mj-preview>Join us for an unforgettable experience - Lorem ipsum dolor sit amet.</mj-preview>
+  </mj-head>
+  <mj-body mj-class="blackbg">
+    <mj-include path="../header-black-e3.mjml" />
+    <mj-section background-url="https://example.com" background-size="cover" background-repeat="no-repeat" mj-class="blackbg">
+      <mj-column width="600px">
+        <mj-text mj-class="h1-display white" padding-top="100px" padding-bottom="100px" align="center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section mj-class="blackbg">
+      <mj-column>
+        <mj-text mj-class="h2 gold" align="center">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</mj-text>
+        <mj-text mj-class="body white" align="center">Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</mj-text>
+        <mj-button background-color="#ffd700" color="#000000" align="center" href="https://example.com">Call to action</mj-button>
+      </mj-column>
+    </mj-section>
+    <mj-section mj-class="darkerbg">
+      <mj-column>
+        <mj-text mj-class="h3 gold" align="center">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</mj-text>
+        <mj-text mj-class="body white" align="center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section mj-class="blackbg">
+      <mj-column>
+        <mj-text mj-class="body white" align="center">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</mj-text>
+        <mj-button background-color="#ffd700" color="#000000" align="center" href="https://example.com">Call to action</mj-button>
+      </mj-column>
+    </mj-section>
+    <mj-include path="../footer.mjml" />
+  </mj-body>
+</mjml>

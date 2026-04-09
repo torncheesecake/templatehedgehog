@@ -1,0 +1,30 @@
+<!-- START footer nostores -->
+<mj-wrapper mj-class="whitebg">
+  <mj-section padding-top="25px">
+    <mj-group>
+      <mj-column width="30%" padding="0 0 0 15px">
+        <mj-image src="/brand/hedgehog-mark-email.png" width="28px" alt="TemplateHedgehog icon" align="left" href="https://templatehedgehog.com" target="_blank" padding="0" />
+        <mj-text align="left" padding="6px 0 0 0" font-family="'Manrope', 'Inter', Arial, sans-serif" font-size="12px" font-weight="700" color="#1a1a1a">
+          <a href="https://templatehedgehog.com" style="color:#1a1a1a; text-decoration:none;">TemplateHedgehog</a>
+        </mj-text>
+      </mj-column>
+      <mj-column width="70%" padding="0 15px 0 0">
+        <mj-text mj-class="small light" align="right" padding-top="3px"><a href="https://templatehedgehog.com" target="_blank" style="color:#999999; text-decoration: underline;">Privacy policy</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="https://templatehedgehog.com" target="_blank" style="color:#999999; text-decoration: underline;">Manage preferences</a></mj-text>
+      </mj-column>
+    </mj-group>
+  </mj-section>
+  <mj-section padding-top="3px">
+    <mj-column>
+      <mj-divider/>
+    </mj-column>
+  </mj-section>
+  <mj-section padding-top="0" padding-bottom="40px">
+    <mj-column>
+      <mj-text mj-class="small light">Add your sender address to the safe-sender list so future updates arrive cleanly. If you’d prefer not to receive emails from us, please <a style="color:#666666; text-decoration:underline;" target="_blank" href="https://templatehedgehog.com/preferences">click here</a> to manage your preferences.</mj-text>
+      <mj-text mj-class="small light">The TemplateHedgehog mobile app requires iOS 10 or Android 5.0 and above.</mj-text>
+      <mj-text mj-class="small light">Use your own legal and compliance copy before production send.</mj-text>
+      <mj-text mj-class="small light">TemplateHedgehog Ltd. Example House, London, WC2N 5DU.</mj-text>
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- END footer nostores -->

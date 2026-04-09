@@ -1,0 +1,15 @@
+<!-- #-START-# Editorial Newsletter Feature -->
+<mj-wrapper mj-class="whitebg">
+  <mj-section padding="0">
+    <mj-column padding="0" vertical-align="middle" width="48%">
+      <mj-image src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?w=640&h=720&fit=crop&q=85" padding="0" fluid-on-mobile="true" alt="Editorial feature" />
+    </mj-column>
+    <mj-column vertical-align="middle" width="52%" padding="36px 30px">
+      <mj-text mj-class="label thblue" align="left" padding-bottom="10px">Editorial feature</mj-text>
+      <mj-text mj-class="h4 text-primary extrabold" align="left" padding-bottom="10px">Lead story for this edition</mj-text>
+      <mj-text mj-class="body text-muted" align="left" padding-bottom="18px">This week we break down the design decisions behind high-performing lifecycle email systems.</mj-text>
+      <mj-button mj-class="thbluebg white body bold" align="left" border-radius="999px" inner-padding="14px 28px" href="https://templatehedgehog.com">Read story</mj-button>
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# Editorial Newsletter Feature -->

@@ -1,0 +1,46 @@
+<mjml>
+  <mj-head>
+    <mj-include path="../styles.mjml" />
+    <mj-title>Explore Our Latest Blog Insights</mj-title>
+    <mj-preview>Don't miss out on our expert insights and latest updates!</mj-preview>
+  </mj-head>
+  <mj-body>
+    <mj-include path="../header.mjml" />
+    <mj-section mj-class="superlightbg">
+      <mj-column>
+        <mj-text mj-class="h2 e3blue">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
+        <mj-text mj-class="body medium">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section mj-class="whitebg">
+      <mj-column>
+        <mj-image src="https://example.com" alt="Featured Blog Article"></mj-image>
+        <mj-text mj-class="h2 e3blue">Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</mj-text>
+        <mj-text mj-class="body medium">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</mj-text>
+        <mj-button mj-class="navybg white" href="https://example.com">Call to action</mj-button>
+      </mj-column>
+    </mj-section>
+    <mj-section>
+      <mj-column>
+        <mj-image src="https://example.com" alt="Blog Article 1"></mj-image>
+        <mj-text mj-class="h3 e3blue">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
+        <mj-text mj-class="body medium">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</mj-text>
+        <mj-button mj-class="navybg white" href="https://example.com">Call to action</mj-button>
+      </mj-column>
+      <mj-column>
+        <mj-image src="https://example.com" alt="Blog Article 2"></mj-image>
+        <mj-text mj-class="h3 e3blue">Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</mj-text>
+        <mj-text mj-class="body medium">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</mj-text>
+        <mj-button mj-class="navybg white" href="https://example.com">Call to action</mj-button>
+      </mj-column>
+    </mj-section>
+    <mj-section mj-class="extralightbg">
+      <mj-column>
+        <mj-text mj-class="h2 e3blue">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
+        <mj-text mj-class="body medium">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</mj-text>
+        <mj-button mj-class="navybg white" href="https://example.com">Call to action</mj-button>
+      </mj-column>
+    </mj-section>
+    <mj-include path="../footer.mjml" />
+  </mj-body>
+</mjml>

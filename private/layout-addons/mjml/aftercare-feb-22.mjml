@@ -1,0 +1,72 @@
+<mjml>
+  <mj-head>
+    <mj-raw>
+      <meta name="color-scheme" content="light dark">
+      <meta name="supported-color-schemes" content="light dark">
+    </mj-raw>
+    <mj-include path="../styles.mjml" />
+    <mj-title>Get the most from Your Product with Gold Aftercare</mj-title>
+    <mj-preview>Get the most from Your Product with Gold Aftercaree&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp; </mj-preview>
+  </mj-head>
+  <mj-body mj-class="superlightbg">
+    <mj-wrapper>
+      <mj-section mj-class="whitebg" border-top="1px solid #005296" border-left="1px solid #005296" border-right="1px solid #005296">
+        <mj-column>
+          <mj-image src="https://example.com Product.com/core/media/media.nl?id=47866&c=1018014&h=ac553eb23d1c03ec3c2b" width="250px" padding="0" align="center" />
+        </mj-column>
+      </mj-section>
+      <mj-section padding-top="0" mj-class="whitebg" border-left="1px solid #005296" border-right="1px solid #005296">
+        <mj-column padding-top="0">
+          <mj-text mj-class="h1 e3blue" align="center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <mj-wrapper>
+      <mj-section padding="1px" mj-class="whitebg" border-left="1px solid #005296" border-right="1px solid #005296">
+        <mj-column padding="0">
+          <mj-image src="https://example.com" width="598px" />
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <mj-wrapper>
+      <mj-section padding="1px" mj-class="whitebg" border-left="1px solid #005296" border-right="1px solid #005296">
+        <mj-column padding-bottom="0">
+          <mj-text align="center" mj-class="h2 dark" padding-bottom="0">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <mj-wrapper>
+      <mj-section mj-class="whitebg" border-left="1px solid #005296" border-right="1px solid #005296" padding-top="10px">
+        <mj-column>
+          <mj-text mj-class="body dark">Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</mj-text>
+          <mj-text mj-class="body dark">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</mj-text>
+          <mj-text mj-class="body dark">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
+          <mj-text mj-class="h2 dark">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</mj-text>
+          <mj-text mj-class="body dark">Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</mj-text>
+          <mj-text mj-class="body dark">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <mj-wrapper>
+      <mj-section mj-class="e3bluebg">
+        <mj-column width="50%">
+          <mj-image src="https://example.com Product.com/core/media/media.nl?id=1324585&c=1018014&h=bonvWq_SfqFaCwrhRRI2WgSWEUa0pSR_6h0lHXPI46f3GHNM" width="183px"></mj-image>
+        </mj-column>
+        <mj-column width="50%">
+          <mj-image src="https://example.com Product.com/core/media/media.nl?id=1321280&c=1018014&h=5P11ownkQaJNZGQ_E90wWlqgefzve96IAtBhlOFeoiHJwM5f" width="135px"></mj-image>
+        </mj-column>
+      </mj-section>
+      <mj-section mj-class="e3bluebg" padding-top="0">
+        <mj-column>
+          <mj-text mj-class="h3 white" align="center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
+          <mj-button align="center" background-color="#ffffff" color="#005296" inner-padding="15px 26px 15px 26px" text-decoration="none" text-transform="uppercase" target="_blank" href="https://example.com" font-size="12px" border-radius="3px" mj-class="bold">Call to action</mj-button>
+        </mj-column>
+      </mj-section>
+      <mj-section background-color="#0c68b4">
+        <mj-column>
+          <mj-text mj-class="body white" align="center">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+  </mj-body>
+</mjml>

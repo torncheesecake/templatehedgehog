@@ -1,0 +1,41 @@
+<svg width="256" height="160" viewBox="0 0 256 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="spikeA" x1="26" y1="38" x2="134" y2="112" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1FA2FF"/>
+      <stop offset="1" stop-color="#0A52B5"/>
+    </linearGradient>
+    <linearGradient id="spikeB" x1="102" y1="18" x2="206" y2="98" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2CC3FF"/>
+      <stop offset="1" stop-color="#0A4EB1"/>
+    </linearGradient>
+    <linearGradient id="bodyDark" x1="30" y1="114" x2="170" y2="130" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0A2C79"/>
+      <stop offset="1" stop-color="#0A4DB2"/>
+    </linearGradient>
+    <linearGradient id="chin" x1="96" y1="118" x2="176" y2="144" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1F86E8"/>
+      <stop offset="1" stop-color="#0D58C8"/>
+    </linearGradient>
+    <linearGradient id="face" x1="118" y1="58" x2="236" y2="138" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F4FAFF"/>
+      <stop offset="1" stop-color="#DCEBFA"/>
+    </linearGradient>
+  </defs>
+
+  <path d="M22 92C56 76 89 72 121 78L96 52C128 55 154 63 178 76L164 40C185 53 202 69 216 92L233 100C232 114 223 127 208 134L176 142H34C54 115 82 95 126 84L22 92Z" fill="url(#spikeA)"/>
+
+  <path d="M148 26L177 76L140 64L148 26Z" fill="url(#spikeB)"/>
+  <path d="M183 24L207 80L174 72L183 24Z" fill="url(#spikeB)"/>
+  <path d="M214 36L230 86L205 78L214 36Z" fill="url(#spikeB)"/>
+
+  <path d="M31 142C52 113 79 94 129 82C111 82 92 86 71 95C55 102 42 111 31 122V142Z" fill="#1266D6"/>
+  <path d="M35 142C57 115 86 97 140 84C118 87 97 95 77 108C60 119 47 131 35 142Z" fill="url(#bodyDark)"/>
+
+  <path d="M83 137C100 116 123 107 157 107C146 113 136 122 129 132C123 140 119 145 118 148H83V137Z" fill="url(#chin)"/>
+
+  <path d="M110 120C128 102 152 88 181 83C201 79 220 82 239 90C238 98 232 106 223 111C218 114 208 120 194 128C180 135 168 141 157 143H120C121 139 124 135 130 131C136 126 147 122 163 117C176 113 188 107 197 101L174 88C157 90 142 98 129 111L110 120Z" fill="url(#face)"/>
+
+  <circle cx="194" cy="90" r="7" fill="#0A4DAF"/>
+
+  <path d="M148 63C155 63 163 66 171 72C162 71 155 68 148 63Z" fill="#CFE2F5"/>
+</svg>

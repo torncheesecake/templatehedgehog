@@ -1,0 +1,9 @@
+<!-- #-START-# Primary CTA -->
+<mj-wrapper mj-class="whitebg">
+  <mj-section>
+    <mj-column>
+      <mj-button background-color="#2f67ef" color="#ffffff" border-radius="50px" inner-padding="16px 40px" font-family="'Inter', Arial, sans-serif" font-size="18px" font-weight="700" href="https://templatehedgehog.com">Open release notes</mj-button>
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# Primary CTA -->

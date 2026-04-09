@@ -1,0 +1,51 @@
+<mjml>
+  <mj-head>
+    <mj-include path="../styles.mjml" />
+    <mj-title>Lorem Ipsum Dolor Sit Amet</mj-title>
+    <mj-preview>Lorem ipsum dolor sit amet, consectetur adipiscing elit&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp; </mj-preview>
+  </mj-head>
+  <mj-body mj-class="whitebg">
+    <mj-include path="../header.mjml" />
+    <mj-wrapper>
+      <mj-section>
+        <mj-column>
+          <mj-image src="https://example.com" padding="0px" alt="Main Celebration Image" />
+          <mj-text mj-class="body dark" align="left" padding-top="10px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
+          <mj-text mj-class="body dark" align="left">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <mj-wrapper mj-class="whitebg">
+      <mj-section>
+        <mj-column>
+          <mj-image src="https://example.com" alt="Left Image"></mj-image>
+        </mj-column>
+        <mj-column>
+          <mj-text mj-class="h3 black" align="left" padding-bottom="10px">Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</mj-text>
+          <mj-text mj-class="body black" align="left">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</mj-text>
+          <mj-button href="https://example.com" align="center" padding-left="0px">Call to action</mj-button>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <mj-wrapper>
+      <mj-section direction="rtl">
+        <mj-column>
+          <mj-image src="https://example.com" alt="Right Image"></mj-image>
+        </mj-column>
+        <mj-column>
+          <mj-text mj-class="body black" align="left" padding-bottom="10px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
+          <mj-text mj-class="body black" align="left">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</mj-text>
+          <mj-button href="https://example.com" align="center" padding-left="0px">Call to action</mj-button>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <mj-wrapper>
+      <mj-section>
+        <mj-column>
+          <mj-text mj-class="body dark" align="center">Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <mj-include path="../footer.mjml" />
+  </mj-body>
+</mjml>

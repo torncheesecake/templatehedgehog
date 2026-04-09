@@ -1,0 +1,32 @@
+<svg width="1080" height="180" viewBox="0 0 1080 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="th-bg" x1="10" y1="8" x2="168" y2="172" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#10283B"/>
+      <stop offset="1" stop-color="#081A28"/>
+    </linearGradient>
+    <linearGradient id="th-accent" x1="58" y1="50" x2="138" y2="138" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7BE0FF"/>
+      <stop offset="1" stop-color="#3AAAD9"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="10" y="10" width="160" height="160" rx="36" fill="url(#th-bg)"/>
+  <rect x="10" y="10" width="160" height="160" rx="36" stroke="#2E5C78" stroke-opacity="0.6" stroke-width="2"/>
+
+  <path d="M49 77L59 64L70 78" fill="#64D7FF"/>
+  <path d="M64 71L77 55L90 73" fill="#78E1FF"/>
+  <path d="M82 68L96 50L110 70" fill="#89E7FF"/>
+  <path d="M102 71L116 56L129 73" fill="#74DDFF"/>
+
+  <path d="M41 98C41 78.67 56.67 63 76 63H90C109.33 63 125 78.67 125 98V103H41V98Z" fill="url(#th-accent)"/>
+  <circle cx="101" cy="91" r="3" fill="#0B2637"/>
+  <circle cx="120" cy="98" r="4" fill="#0B2637"/>
+
+  <rect x="43" y="106" width="84" height="29" rx="7" fill="#0E2A3C" stroke="#2E6687" stroke-width="1.8"/>
+  <path d="M71 106V135" stroke="#2E6687" stroke-width="1.8"/>
+  <path d="M99 106V135" stroke="#2E6687" stroke-width="1.8"/>
+  <path d="M43 120.5H127" stroke="#2E6687" stroke-width="1.8"/>
+
+  <text x="214" y="78" fill="#DDF1FF" font-size="52" font-family="Avenir Next, Segoe UI, Arial, sans-serif" font-weight="700" letter-spacing="0.2">Template</text>
+  <text x="214" y="128" fill="#7BDFFF" font-size="52" font-family="Avenir Next, Segoe UI, Arial, sans-serif" font-weight="700" letter-spacing="0.2">Hedgehog</text>
+</svg>

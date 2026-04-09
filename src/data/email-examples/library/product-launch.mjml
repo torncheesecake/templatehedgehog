@@ -1,0 +1,181 @@
+<!-- Purpose: Launch a new offer with hero framing, feature support, and CTA. -->
+<!-- Components: header.mjml, hero-centred.mjml, dual-image.mjml, primary-cta.mjml, footer.mjml -->
+<!-- Production use: Used for launch campaigns and announcement sends. -->
+<mjml>
+  <mj-head>
+    <mj-preview>TemplateHedgehog reusable email block</mj-preview>
+    <mj-attributes>
+      <mj-all font-family="'Manrope', 'Inter', Arial, sans-serif" />
+      <mj-body width="640px" background-color="#f3f4f6" />
+      <mj-wrapper padding="0" full-width="full-width" />
+      <mj-section padding="28px 34px" />
+      <mj-column padding="0" />
+      <mj-image padding="0 0 14px 0" />
+      <mj-text padding="0 0 12px 0" font-size="16px" line-height="28px" color="#1a1a1a" />
+      <mj-button padding="0" font-size="16px" font-weight="700" border-radius="999px" inner-padding="14px 30px" />
+
+      <mj-class name="h1" font-size="42px" line-height="46px" font-weight="800" />
+      <mj-class name="h2" font-size="36px" line-height="40px" font-weight="800" />
+      <mj-class name="h3" font-size="30px" line-height="34px" font-weight="800" />
+      <mj-class name="h4" font-size="26px" line-height="30px" font-weight="800" />
+      <mj-class name="h5" font-size="22px" line-height="26px" font-weight="800" />
+      <mj-class name="h6" font-size="20px" line-height="24px" font-weight="800" />
+      <mj-class name="h1-display" font-size="56px" line-height="60px" font-weight="800" />
+      <mj-class name="body" font-family="'Inter', Arial, sans-serif" font-size="17px" line-height="28px" />
+      <mj-class name="small" font-family="'Inter', Arial, sans-serif" font-size="14px" line-height="23px" />
+      <mj-class name="label" font-family="'Inter', Arial, sans-serif" font-size="12px" font-weight="700" text-transform="uppercase" letter-spacing="0.12em" />
+      <mj-class name="bold" font-weight="700" />
+      <mj-class name="extrabold" font-weight="800" />
+      <mj-class name="white" color="#ffffff" />
+      <mj-class name="light" color="#94a3b8" />
+      <mj-class name="medium" color="#4a5568" />
+      <mj-class name="dark" color="#1a1a1a" />
+      <mj-class name="text-primary" color="#1a1a1a" />
+      <mj-class name="text-muted" color="#4a5568" />
+      <mj-class name="thblue" color="#2f67ef" />
+      <mj-class name="whitebg" background-color="#ffffff" />
+      <mj-class name="superlightbg" background-color="#f8fafc" />
+      <mj-class name="thbluebg" background-color="#2f67ef" />
+      <mj-class name="blackbg" background-color="#0f172a" />
+      <mj-class name="darkbg" background-color="#102447" />
+      <mj-class name="rocketbluebg" background-color="#183b7a" />
+      <mj-class name="e3bluebg" background-color="#183b7a" />
+      <mj-class name="transbg" background-color="transparent" />
+      <mj-class name="badge" font-family="'Inter', Arial, sans-serif" font-size="12px" line-height="16px" font-weight="700" letter-spacing="0.12em" text-transform="uppercase" />
+      <mj-class name="button" font-weight="700" />
+    </mj-attributes>
+    <mj-style>
+      .border-top-light { border-top: 1px solid rgba(26, 26, 26, 0.1) !important; }
+      .border-bottom-light { border-bottom: 1px solid rgba(26, 26, 26, 0.1) !important; }
+      .grayscale img { filter: grayscale(100%); }
+    </mj-style>
+    
+    <mj-raw>
+      <meta name="color-scheme" content="light dark" />
+      <meta name="supported-color-schemes" content="light dark" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    </mj-raw>
+  </mj-head>
+  <mj-body background-color="#f3f4f6">
+<!-- #-START-# Header -->
+<mj-wrapper mj-class="whitebg">
+  <mj-section padding="25px 35px">
+    <mj-column vertical-align="middle">
+      <mj-image src="https://placehold.co/240x80/png?text=TemplateHedgehog+Logo" width="240px" padding="0" align="left" href="https://templatehedgehog.com" alt="TemplateHedgehog" />
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# Header -->
+
+<!-- #-START-# Hero Centred -->
+<mj-wrapper mj-class="whitebg">
+  <mj-section padding="50px 40px 30px 40px">
+    <mj-column width="550px">
+      <mj-text mj-class="label text-muted" align="center" padding-bottom="15px">LOREM IPSUM</mj-text>
+      <mj-text mj-class="h1 text-primary extrabold" align="center" padding-bottom="18px">
+        Lorem ipsum dolor sit amet <span style="color: #2f67ef;">consectetur adipiscing</span>
+      </mj-text>
+      <mj-text mj-class="body text-muted" align="center" padding-bottom="0">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu tellus nibh. Mauris pharetra magna luctus leo maximus, eu dapibus tellus nibh amet.
+      </mj-text>
+    </mj-column>
+  </mj-section>
+  <mj-section padding="0">
+    <mj-column padding="0">
+      <mj-image src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1280&h=640&fit=crop&q=85" padding="0" fluid-on-mobile="true" alt="Lorem ipsum" />
+    </mj-column>
+  </mj-section>
+  <mj-section padding="30px 40px 40px 40px">
+    <mj-column width="500px">
+      <mj-text mj-class="body text-muted" align="center" padding-bottom="25px">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu tellus nibh. Mauris pharetra magna luctus leo maximus, eu dapibus tellus nibh amet.
+      </mj-text>
+      <mj-button background-color="#2f67ef" color="#ffffff" align="center" border-radius="50px" inner-padding="18px 45px" href="https://templatehedgehog.com" target="_blank">
+        TemplateHedgehog
+      </mj-button>
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# Hero Centred -->
+
+<!-- #-START-# Dual Image -->
+<mj-wrapper mj-class="whitebg">
+  <mj-section padding-bottom="20px">
+    <mj-column width="500px">
+      <mj-text mj-class="h3 text-primary extrabold" align="center" padding-bottom="12px">Lorem ipsum dolor sit amet</mj-text>
+      <mj-text mj-class="body text-muted" align="center" padding-bottom="0">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu tellus nibh. Mauris pharetra magna luctus leo maximus, eu dapibus tellus nibh amet.
+      </mj-text>
+    </mj-column>
+  </mj-section>
+  <mj-section padding-top="0">
+    <mj-column width="50%" padding="0 12px 0 0">
+      <mj-image src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop&q=85" fluid-on-mobile="true" alt="Lorem ipsum" border-radius="8px" padding-bottom="15px" />
+      <mj-text mj-class="h5 text-primary extrabold" align="left" padding-bottom="8px">Lorem ipsum</mj-text>
+      <mj-text mj-class="body text-muted" align="left">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu tellus nibh.</mj-text>
+    </mj-column>
+    <mj-column width="50%" padding="0 0 0 12px">
+      <mj-image src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=600&h=400&fit=crop&q=85" fluid-on-mobile="true" alt="Lorem ipsum" border-radius="8px" padding-bottom="15px" />
+      <mj-text mj-class="h5 text-primary extrabold" align="left" padding-bottom="8px">Lorem ipsum</mj-text>
+      <mj-text mj-class="body text-muted" align="left">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu tellus nibh.</mj-text>
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# Dual Image -->
+
+<!-- #-START-# Primary CTA -->
+<mj-wrapper mj-class="whitebg">
+  <mj-section>
+    <mj-column>
+      <mj-button background-color="#2f67ef" color="#ffffff" border-radius="50px" inner-padding="16px 40px" font-family="'Inter', Arial, sans-serif" font-size="18px" font-weight="700" href="https://templatehedgehog.com">TemplateHedgehog</mj-button>
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# Primary CTA -->
+
+<!-- #-START-# Footer -->
+<mj-wrapper mj-class="whitebg">
+  <mj-section css-class="border-top-light">
+    <mj-column>
+      <mj-text mj-class="h3 text-primary extrabold" align="center" padding-bottom="8px">Lorem ipsum dolor sit amet</mj-text>
+      <mj-text mj-class="body text-muted" align="center" padding-bottom="35px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu tellus nibh.</mj-text>
+    </mj-column>
+  </mj-section>
+
+  <mj-section>
+    <mj-column width="50%" padding="0 20px 30px 20px">
+      <mj-text mj-class="h6 text-primary bold" align="center" padding="0">
+        <a href="https://templatehedgehog.com" style="color: #1a1a1a; text-decoration: none;">TemplateHedgehog</a>
+      </mj-text>
+    </mj-column>
+
+    <mj-column width="50%" padding="0 20px 30px 20px">
+      <mj-text mj-class="h6 text-primary bold" align="center" padding="0">
+        <a href="https://templatehedgehog.com" style="color: #1a1a1a; text-decoration: none;">TemplateHedgehog</a>
+      </mj-text>
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+
+<mj-wrapper mj-class="whitebg">
+  <mj-section css-class="border-top-light">
+    <mj-column width="100%">
+      <mj-text mj-class="body text-muted" align="center" padding="0 0 25px 0">
+        <a href="https://templatehedgehog.com" style="color:#4a5568;text-decoration:none;">TemplateHedgehog</a>
+      </mj-text>
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+
+<mj-wrapper background-color="#102447">
+  <mj-section padding="30px 35px 30px 35px">
+    <mj-column>
+      <mj-text mj-class="small white" align="center" padding-bottom="12px">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</mj-text>
+      <mj-text mj-class="small white" align="center" padding="0">Lorem ipsum dolor sit amet.</mj-text>
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# Footer -->
+  </mj-body>
+</mjml>

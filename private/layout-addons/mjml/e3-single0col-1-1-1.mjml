@@ -1,0 +1,104 @@
+<mjml>
+  <mj-head>
+    <mj-include path="../styles.mjml" />
+    <mj-title>Title</mj-title>
+    <mj-preview>Pre-header&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp; </mj-preview>
+  </mj-head>
+  <mj-body background-color="#002f4b">
+    <mj-wrapper background-color="#002f4b">
+      <mj-section>
+        <mj-column width="40%" vertical-align="middle">
+          <mj-image src="https://example.com Business-experts-europe-mono.png" width="206px" align="left" css-class="left-d center-m" />
+        </mj-column>
+        <mj-column width="60%" vertical-align="middle">
+          <mj-text mj-class="h4 white" align="right">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <mj-wrapper background-color="#002f4b">
+      <mj-section padding-top="0">
+      </mj-section>
+      <mj-section padding="0">
+        <mj-column padding="0">
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    
+    <!-- #-START-# hero image left  -->
+    <mj-wrapper mj-class="whitebg">
+      <mj-section padding="0">
+        <mj-column padding="0" vertical-align="middle">
+          <mj-image src="https://example.com" width="320px" padding="0" fluid-on-mobile="true" alt="" />
+        </mj-column>
+        <mj-column padding="30px 20px 20px 20px" vertical-align="middle">
+          <mj-text mj-class="h1 dark" align="center">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</mj-text>
+          <mj-text mj-class="body dark" align="center">Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</mj-text>
+          <!-- #-START-# Primary Call to Action -->
+          <mj-button align="center" background-color="#0c68b4" inner-padding="12px 26px 12px 26px" text-decoration="none" text-transform="uppercase" target="_blank" href="www.erpexperts.co.uk" font-size="16px" border-radius="3px">Call to action</mj-button>
+        </mj-column>
+        <!-- #-END-# Primary Call to Action -->
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <!-- #-END-# hero image left -->
+   <!-- #-START-# hero image right reverse  -->
+<mj-wrapper mj-class="whitebg">
+  <mj-section padding="0" direction="rtl">
+    <mj-column padding="0" vertical-align="middle">
+      <mj-image src="https://example.com" width="320px" padding="0" fluid-on-mobile="true" alt="" />
+    </mj-column>
+    <mj-column padding="30px 20px 20px 20px" vertical-align="middle">
+      <mj-text mj-class="h1 dark" align="center">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</mj-text>
+      <mj-text mj-class="body dark" align="center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
+       <!-- #-START-# Primary Call to Action -->
+          <mj-button align="center" background-color="#0c68b4" inner-padding="12px 26px 12px 26px" text-decoration="none" text-transform="uppercase" target="_blank" href="www.erpexperts.co.uk" font-size="16px" border-radius="3px">Call to action</mj-button>
+    </mj-column>
+    <!-- #-END-# Primary Call to Action -->
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# hero image right reverse -->
+    <mj-wrapper background-color="#002f4b">
+      <mj-section>
+        <mj-column>
+          <mj-text mj-class="h3 white" align="center">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <mj-wrapper mj-class="whitebg" border-top="1px solid lightgrey" border-bottom="1px solid lightgrey">
+      <mj-section>
+        <mj-column>
+          <mj-image src="https://example.com Product.com/core/media/media.nl?id=1206172&c=1018014&h=s1VrAde9hgke2xMmRgByAgt1xzJEUDEKtBOwCkRNtXelgyf_" padding="0" />
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <mj-wrapper mj-class="whitebg">
+      <mj-section>
+        <mj-column>
+          <mj-social font-size="15px" icon-size="30px" mode="horizontal">
+            <mj-social-element name="e3" src="https://example.com Product.com/core/media/media.nl?id=246248&c=1018014&h=24dad0b553e1de3d2f1b" href="">
+            </mj-social-element>
+            <mj-social-element name="facebook" href="https://example.com">
+            </mj-social-element>
+            <mj-social-element name="linkedin" href="https://example.com Business-experts-europe">
+            </mj-social-element>
+            <mj-social-element name="twitter" href="https://example.com">
+            </mj-social-element>
+            <mj-social-element name="telephone" src="https://example.com Product.com/core/media/media.nl?id=252785&c=1018014&h=cf0dd2a4188e56762cf0" href="https://example.com Product.com/app/login/secure/privatelogin.nl?c=1018014">
+            </mj-social-element>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <mj-wrapper background-color="#002f4b">
+      <mj-section>
+        <mj-column vertical-align="top">
+          <mj-image align="left" src="https://example.com Business-experts-europe-mono.png" width="206px" />
+          <mj-text mj-class="small white">Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</mj-text>
+        </mj-column>
+        <mj-column vertical-align="bottom">
+          <mj-text mj-class="small white" css-class="right-d left-m">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+  </mj-body>
+</mjml>

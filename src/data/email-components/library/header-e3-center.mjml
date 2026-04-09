@@ -1,0 +1,12 @@
+<!-- #-START-# Header Centered -->
+<mj-wrapper mj-class="whitebg">
+  <mj-section padding="20px">
+    <mj-column>
+      <mj-image src="/brand/hedgehog-mark-email.png" width="48px" padding="0" align="center" href="https://templatehedgehog.com" alt="TemplateHedgehog icon" />
+      <mj-text align="center" padding="8px 0 0 0" font-family="'Manrope', 'Inter', Arial, sans-serif" font-size="16px" font-weight="700" color="#1a1a1a">
+        <a href="https://templatehedgehog.com" style="color:#1a1a1a; text-decoration:none;">TemplateHedgehog</a>
+      </mj-text>
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# Header Centered -->

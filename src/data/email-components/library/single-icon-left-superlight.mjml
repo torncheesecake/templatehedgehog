@@ -1,0 +1,12 @@
+<!-- #-START-# single icon left superlight -->
+<mj-wrapper mj-class="superlightbg" padding-bottom="20px">
+  <mj-section>
+    <mj-column width="15%" vertical-align="middle" padding-bottom="0">
+      <mj-image src="https://placehold.co/96x96/2f67ef/ffffff/png?text=TH" width="48px" alt="" />
+    </mj-column>
+    <mj-column width="85%" vertical-align="middle" padding-bottom="0">
+      <mj-text mj-class="body dark" css-class="center">Protecting your privacy is engineered into everything we do. You can learn more about how we handle personal information in our <a href="https://templatehedgehog.com" target="_blank" style="font-family: Futura BT, arial, sans-serif; font-size:14px; line-height:18px; padding:0 0 10px 0; color: #333333; text-decoration: underline;l">Privacy Policy here</a>.</mj-text>
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# single icon left superlight -->

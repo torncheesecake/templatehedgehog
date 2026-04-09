@@ -1,0 +1,33 @@
+<!-- #-START-# Hero Banner With CTA -->
+<mj-hero
+  mode="fluid-height"
+  height="380px"
+  background-width="1200px"
+  background-height="600px"
+  background-url="https://images.unsplash.com/photo-1557682250-33bd709cbe85?w=1200&h=600&fit=crop&q=85"
+  background-color="#12263f"
+  padding="90px 34px"
+>
+  <mj-text mj-class="label white" align="center" padding-bottom="12px">
+    PRODUCT UPDATE
+  </mj-text>
+
+  <mj-text mj-class="h2 white extrabold" align="center" padding-bottom="16px" css-class="hero-text">
+    Launch smarter campaigns with reusable email blocks
+  </mj-text>
+
+  <mj-text mj-class="body white" align="center" padding-bottom="26px" css-class="hero-text">
+    Build a clean email in minutes with production-ready sections your team can reuse every week.
+  </mj-text>
+
+  <mj-button background-color="#2f67ef" color="#ffffff" align="center" border-radius="999px" inner-padding="16px 34px" href="https://templatehedgehog.com">
+    View update
+  </mj-button>
+</mj-hero>
+
+<mj-style>
+  .hero-text div {
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.36);
+  }
+</mj-style>
+<!-- #-END-# Hero Banner With CTA -->

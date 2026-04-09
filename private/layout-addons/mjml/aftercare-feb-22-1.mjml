@@ -1,0 +1,27 @@
+<mjml>
+  <mj-head>
+    <mj-raw>
+      <meta name="color-scheme" content="light dark">
+      <meta name="supported-color-schemes" content="light dark">
+    </mj-raw>
+    <mj-include path="../styles.mjml" />
+    <mj-title>Get the most from Your Product with Gold Aftercare</mj-title>
+    <mj-preview>Get the most from Your Product with Gold Aftercaree&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp; </mj-preview>
+        
+  </mj-head>
+  <mj-body mj-class="superlightbg">
+      <mj-wrapper css-class="footerbg" padding-top="20px">
+      <mj-section mj-class="whitebg" border-radius="20px" >
+        <mj-column>
+          <mj-text mj-class="h3 dark" align="center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
+          <mj-button align="center" background-color="#ffffff" color="#005296" inner-padding="15px 26px 15px 26px" text-decoration="none" text-transform="uppercase" target="_blank" href="https://example.com" font-size="12px" border-radius="3px" mj-class="bold">Call to action</mj-button>
+        </mj-column>
+      </mj-section>
+      <mj-section>
+        <mj-column>
+          <mj-text mj-class="body dark" align="center">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+  </mj-body>
+</mjml>

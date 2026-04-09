@@ -1,0 +1,34 @@
+<!-- #-START-# Multi Article Newsletter Grid -->
+<mj-wrapper mj-class="whitebg">
+  <mj-section padding-bottom="18px">
+    <mj-column>
+      <mj-text mj-class="label thblue" align="center" padding-bottom="10px">Newsletter</mj-text>
+      <mj-text mj-class="h4 text-primary extrabold" align="center" padding-bottom="10px">More to explore</mj-text>
+    </mj-column>
+  </mj-section>
+  <mj-section padding="0 24px">
+    <mj-column width="50%" vertical-align="top" padding="0 8px 20px 8px">
+      <mj-image src="https://images.unsplash.com/photo-1516321165247-4aa89a48be28?w=420&h=280&fit=crop&q=85" fluid-on-mobile="true" alt="Article one" border-radius="8px" padding="0 0 10px 0" />
+      <mj-text mj-class="small text-primary bold" align="left" padding="0 0 4px 0">Article one</mj-text>
+      <mj-text mj-class="small text-muted" align="left" padding="0">Short summary</mj-text>
+    </mj-column>
+    <mj-column width="50%" vertical-align="top" padding="0 8px 20px 8px">
+      <mj-image src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=420&h=280&fit=crop&q=85" fluid-on-mobile="true" alt="Article two" border-radius="8px" padding="0 0 10px 0" />
+      <mj-text mj-class="small text-primary bold" align="left" padding="0 0 4px 0">Article two</mj-text>
+      <mj-text mj-class="small text-muted" align="left" padding="0">Short summary</mj-text>
+    </mj-column>
+  </mj-section>
+  <mj-section padding="0 24px">
+    <mj-column width="50%" vertical-align="top" padding="0 8px 20px 8px">
+      <mj-image src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=420&h=280&fit=crop&q=85" fluid-on-mobile="true" alt="Article three" border-radius="8px" padding="0 0 10px 0" />
+      <mj-text mj-class="small text-primary bold" align="left" padding="0 0 4px 0">Article three</mj-text>
+      <mj-text mj-class="small text-muted" align="left" padding="0">Short summary</mj-text>
+    </mj-column>
+    <mj-column width="50%" vertical-align="top" padding="0 8px 20px 8px">
+      <mj-image src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?w=420&h=280&fit=crop&q=85" fluid-on-mobile="true" alt="Article four" border-radius="8px" padding="0 0 10px 0" />
+      <mj-text mj-class="small text-primary bold" align="left" padding="0 0 4px 0">Article four</mj-text>
+      <mj-text mj-class="small text-muted" align="left" padding="0">Short summary</mj-text>
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# Multi Article Newsletter Grid -->

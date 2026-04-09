@@ -1,0 +1,12 @@
+<!-- #-START-# Reactivation Offer Banner -->
+<mj-wrapper mj-class="whitebg">
+  <mj-section background-color="#eef4ff" padding="30px 35px">
+    <mj-column width="520px">
+      <mj-text mj-class="label thblue" align="center" padding-bottom="10px">Reactivation</mj-text>
+      <mj-text mj-class="h4 text-primary extrabold" align="center" padding-bottom="10px">Come back and pick up where you left off</mj-text>
+      <mj-text mj-class="body text-muted" align="center" padding-bottom="18px">Your projects are ready to continue. Return today and pick up exactly where your team left off.</mj-text>
+      <mj-button mj-class="thbluebg white body bold" align="center" border-radius="999px" inner-padding="16px 34px" href="https://templatehedgehog.com">Resume account</mj-button>
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# Reactivation Offer Banner -->

@@ -1,0 +1,28 @@
+<!-- #-START-# support 3 col dark -->
+<mj-wrapper mj-class="darkbg">
+  <mj-section>
+    <mj-column>
+      <mj-text mj-class="h2 white" align="center">Here to help</mj-text>
+      <mj-text mj-class="body white" align="center">If you need support or expert advice, talking to us is easy.</mj-text>
+    </mj-column>
+  </mj-section>
+  <mj-section padding-top="0" padding-bottom="10px">
+    <mj-group>
+      <mj-column css-class="ios-fix">
+        <mj-image align="center" src="https://placehold.co/96x96/2f67ef/ffffff/png?text=TH" width="48px" href="https://templatehedgehog.com" target="_blank" />
+        <mj-text mj-class="body white" align="center">Online support</mj-text>
+      </mj-column>
+      <mj-column css-class="ios-fix">
+        <mj-image src="https://placehold.co/96x96/2f67ef/ffffff/png?text=TH" align="center" width="48px" href="tel:+44 0000 000 000" />
+        <mj-text mj-class="body white" align="center">+44 0000 000 000</mj-text>
+      </mj-column>
+      <mj-column css-class="ios-fix">
+        <mj-image src="https://placehold.co/96x96/2f67ef/ffffff/png?text=TH" align="center" width="48px" href="https://templatehedgehog.com" target="_blank" />
+        <mj-text mj-class="body white" align="center">
+          Email
+        </mj-text>
+      </mj-column>
+    </mj-group>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# support 3 col dark -->

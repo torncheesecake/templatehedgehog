@@ -1,0 +1,147 @@
+<!-- Purpose: Welcome new users and guide first activation steps. -->
+<!-- Components: header.mjml, welcome-email-hero.mjml, onboarding-step-card.mjml, app-download-superlight.mjml, footer-onboarding.mjml -->
+<!-- Production use: Used in SaaS lifecycle onboarding after signup or account creation. -->
+<mjml>
+  <mj-head>
+    <mj-preview>TemplateHedgehog reusable email block</mj-preview>
+    <mj-attributes>
+      <mj-all font-family="'Manrope', 'Inter', Arial, sans-serif" />
+      <mj-body width="640px" background-color="#f3f4f6" />
+      <mj-wrapper padding="0" full-width="full-width" />
+      <mj-section padding="28px 34px" />
+      <mj-column padding="0" />
+      <mj-image padding="0 0 14px 0" />
+      <mj-text padding="0 0 12px 0" font-size="16px" line-height="28px" color="#1a1a1a" />
+      <mj-button padding="0" font-size="16px" font-weight="700" border-radius="999px" inner-padding="14px 30px" />
+
+      <mj-class name="h1" font-size="42px" line-height="46px" font-weight="800" />
+      <mj-class name="h2" font-size="36px" line-height="40px" font-weight="800" />
+      <mj-class name="h3" font-size="30px" line-height="34px" font-weight="800" />
+      <mj-class name="h4" font-size="26px" line-height="30px" font-weight="800" />
+      <mj-class name="h5" font-size="22px" line-height="26px" font-weight="800" />
+      <mj-class name="h6" font-size="20px" line-height="24px" font-weight="800" />
+      <mj-class name="h1-display" font-size="56px" line-height="60px" font-weight="800" />
+      <mj-class name="body" font-family="'Inter', Arial, sans-serif" font-size="17px" line-height="28px" />
+      <mj-class name="small" font-family="'Inter', Arial, sans-serif" font-size="14px" line-height="23px" />
+      <mj-class name="label" font-family="'Inter', Arial, sans-serif" font-size="12px" font-weight="700" text-transform="uppercase" letter-spacing="0.12em" />
+      <mj-class name="bold" font-weight="700" />
+      <mj-class name="extrabold" font-weight="800" />
+      <mj-class name="white" color="#ffffff" />
+      <mj-class name="light" color="#94a3b8" />
+      <mj-class name="medium" color="#4a5568" />
+      <mj-class name="dark" color="#1a1a1a" />
+      <mj-class name="text-primary" color="#1a1a1a" />
+      <mj-class name="text-muted" color="#4a5568" />
+      <mj-class name="thblue" color="#2f67ef" />
+      <mj-class name="whitebg" background-color="#ffffff" />
+      <mj-class name="superlightbg" background-color="#f8fafc" />
+      <mj-class name="thbluebg" background-color="#2f67ef" />
+      <mj-class name="blackbg" background-color="#0f172a" />
+      <mj-class name="darkbg" background-color="#102447" />
+      <mj-class name="rocketbluebg" background-color="#183b7a" />
+      <mj-class name="e3bluebg" background-color="#183b7a" />
+      <mj-class name="transbg" background-color="transparent" />
+      <mj-class name="badge" font-family="'Inter', Arial, sans-serif" font-size="12px" line-height="16px" font-weight="700" letter-spacing="0.12em" text-transform="uppercase" />
+      <mj-class name="button" font-weight="700" />
+    </mj-attributes>
+    <mj-style>
+      .border-top-light { border-top: 1px solid rgba(26, 26, 26, 0.1) !important; }
+      .border-bottom-light { border-bottom: 1px solid rgba(26, 26, 26, 0.1) !important; }
+      .grayscale img { filter: grayscale(100%); }
+    </mj-style>
+    
+    <mj-raw>
+      <meta name="color-scheme" content="light dark" />
+      <meta name="supported-color-schemes" content="light dark" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    </mj-raw>
+  </mj-head>
+  <mj-body background-color="#f3f4f6">
+<!-- #-START-# Header -->
+<mj-wrapper mj-class="whitebg">
+  <mj-section padding="25px 35px">
+    <mj-column vertical-align="middle">
+      <mj-image src="https://placehold.co/240x80/png?text=TemplateHedgehog+Logo" width="240px" padding="0" align="left" href="https://templatehedgehog.com" alt="TemplateHedgehog" />
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# Header -->
+
+<!-- #-START-# Welcome Email Hero -->
+<mj-wrapper mj-class="whitebg">
+  <mj-section padding="44px 35px 28px 35px">
+    <mj-column width="520px">
+      <mj-text mj-class="label thblue" align="center" padding-bottom="12px">Welcome</mj-text>
+      <mj-text mj-class="h2 text-primary extrabold" align="center" padding-bottom="12px">Welcome to the product</mj-text>
+      <mj-text mj-class="body text-muted" align="center" padding-bottom="22px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu tellus nibh. Mauris pharetra magna luctus leo maximus.</mj-text>
+      <mj-button mj-class="thbluebg white body bold" align="center" border-radius="999px" inner-padding="16px 34px" href="https://templatehedgehog.com">TemplateHedgehog</mj-button>
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# Welcome Email Hero -->
+
+<!-- #-START-# Onboarding Step Card -->
+<mj-wrapper mj-class="whitebg">
+  <mj-section>
+    <mj-column width="520px">
+      <mj-text mj-class="label thblue" align="left" padding-bottom="8px">Onboarding step 2 of 4</mj-text>
+      <mj-text mj-class="h4 text-primary extrabold" align="left" padding-bottom="10px">Connect your workspace</mj-text>
+      <mj-text mj-class="body text-muted" align="left" padding-bottom="18px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu tellus nibh.</mj-text>
+      <mj-button mj-class="thbluebg white body bold" align="left" border-radius="999px" inner-padding="14px 28px" href="https://templatehedgehog.com">TemplateHedgehog</mj-button>
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# Onboarding Step Card -->
+
+<!-- #-START-# app download superlight  -->
+<mj-wrapper mj-class="superlightbg">
+  <mj-section>
+    <mj-column padding-bottom="0">
+      <mj-text mj-class="h3 dark" css-class="center">Download the TemplateHedgehog mobile app</mj-text>
+    </mj-column>
+  </mj-section>
+  <mj-section padding-top="0">
+    <mj-column>
+      <mj-text mj-class="body dark" css-class="center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eu elit ultrices, interdum lacus porta, fringilla turpis. Mauris eleifend augue vel arcu ultrices, eget tincidunt dui ullamcorper. </mj-text>
+    </mj-column>
+    <mj-group>
+      <mj-column>
+        <mj-image src="https://placehold.co/135x40/png?text=App+Store" width="135px" align="left" href="https://templatehedgehog.com" target="_blank"
+          alt="" /> </mj-column>
+      <mj-column css-class="ios-fix">
+        <mj-image src="https://placehold.co/135x40/png?text=Google+Play" width="135px" align="right" href="https://templatehedgehog.com" target="_blank"
+          alt="" /> </mj-column>
+    </mj-group>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# app download superlight -->
+
+<!-- #-START-# footer onboarding-->
+    <mj-wrapper mj-class="whitebg">
+      <mj-section padding-top="25px">
+        <mj-group>
+          <mj-column width="30%" padding="0 0 0 15px">
+            <mj-image src="https://placehold.co/240x80/png?text=TemplateHedgehog+Logo" width="55px" height="21px" alt="" align="left" href="https://templatehedgehog.com"
+              target="_blank" /> </mj-column>
+          <mj-column width="70%" padding="0 15px 0 0">
+            <mj-text mj-class="small light" align="right" padding-top="3px"><a href="https://templatehedgehog.com" style="color:#999999; text-decoration: underline;">Privacy policy</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="https://templatehedgehog.com" style="color:#999999; text-decoration: underline;">Manage preferences</a></mj-text>
+          </mj-column>
+        </mj-group>
+      </mj-section>
+      <mj-section padding-top="3px">
+        <mj-column>
+          <mj-divider /> </mj-column>
+      </mj-section>
+      <mj-section padding-top="0" padding-bottom="40px">
+        <mj-column>
+          <mj-text mj-class="small light"> Add your sender address to the safe-sender list so future updates arrive cleanly. You're receiving this email because you activated your product's guarantee. If you'd prefer not to receive product
+            support emails, please click <a style="color:#666666; text-decoration:underline;" target="_blank" href="https://templatehedgehog.com/preferences">here</a> to manage your preferences.</mj-text>
+          <mj-text mj-class="small light">Use your own legal and compliance copy before production send.</mj-text>
+          <mj-text mj-class="small light">TemplateHedgehog Ltd. Example House, London, WC2N 5DU.</mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <!--  #-END-# footer onboarding -->
+  </mj-body>
+</mjml>

@@ -1,0 +1,22 @@
+<!-- #-START-# Dual Text -->
+<mj-wrapper mj-class="whitebg">
+  <mj-section>
+    <mj-column width="500px">
+      <mj-text mj-class="h3 text-primary extrabold" align="center" padding-bottom="15px">Coordinate campaign and operations in one email</mj-text>
+      <mj-text mj-class="body text-muted" align="center" padding-bottom="20px">
+        This two-column text pattern keeps marketing context and operational detail side by side for faster decision-making.
+      </mj-text>
+    </mj-column>
+  </mj-section>
+  <mj-section padding-top="0" padding-bottom="30px">
+    <mj-column width="50%" padding="0 10px 25px 10px">
+      <mj-text mj-class="h5 text-primary extrabold" align="left" padding-bottom="10px">Campaign message</mj-text>
+      <mj-text mj-class="body text-muted" align="left" padding-bottom="0">Confirm launch timeline, headline direction, and the primary CTA destination before final sign-off.</mj-text>
+    </mj-column>
+    <mj-column width="50%" padding="0 10px">
+      <mj-text mj-class="h5 text-primary extrabold" align="left" padding-bottom="10px">Operational detail</mj-text>
+      <mj-text mj-class="body text-muted" align="left" padding-bottom="0">Include QA status, delivery windows, and support ownership so the send can go live without back-and-forth.</mj-text>
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# Dual Text -->

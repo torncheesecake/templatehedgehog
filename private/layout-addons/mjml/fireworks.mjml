@@ -1,0 +1,38 @@
+<mjml>
+  <mj-head>
+    <mj-include path="../styles.mjml" />
+    <mj-title>Why have your business fire just burn and die out this November, when you can let Your Brand turn it into a raging inferno&hellip;</mj-title>
+    <mj-preview>Give your business that spark it needs this fireworks night. &nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp; </mj-preview>
+  </mj-head>
+  <mj-body mj-class="whitebg">
+    <mj-include path="../header.mjml" />
+    <mj-wrapper mj-class="whitebg">
+      <mj-section padding="0">
+        <mj-column padding="0">
+          <mj-image css-class="center" width="640px" fluid-on-mobile="true" src="https://example.com" padding="0px">
+          </mj-image>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    </mj-wrapper>
+    <mj-wrapper mj-class="whitebg">
+      <mj-section mj-class="superlightbg">
+        <mj-column>
+          <mj-text mj-class="h2 body bold" padding-bottom="20px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
+          <mj-text mj-class="body dark" align="left" padding-bottom="10px">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</mj-text>
+          <mj-text mj-class="body dark" align="left" padding-bottom="10px">Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</mj-text>
+          <mj-text mj-class="body dark" align="left" padding-bottom="10px">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</mj-text>
+          <mj-text mj-class="body dark" align="left" padding-bottom="10px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <mj-wrapper>
+      <mj-section mj-class="superlightbg" padding-top="0">
+        <mj-column>
+          <mj-button mj-class="oxfordbluebg white body" href="https://example.com">Call to action</mj-button>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <mj-include path="../footer.mjml" />
+  </mj-body>
+</mjml>

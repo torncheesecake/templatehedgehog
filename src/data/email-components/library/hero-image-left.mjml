@@ -1,0 +1,26 @@
+<!-- #-START-# Split Hero Image Left -->
+<mj-wrapper mj-class="whitebg">
+  <mj-section padding="0">
+    <mj-column padding="0" width="50%" vertical-align="middle">
+      <mj-image
+        src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=640&h=780&fit=crop&q=85"
+        alt="Product release planning board"
+        padding="0"
+        fluid-on-mobile="true"
+      />
+    </mj-column>
+    <mj-column width="50%" vertical-align="middle" padding="34px 28px">
+      <mj-text mj-class="label text-muted" align="left" padding-bottom="12px">Campaign brief</mj-text>
+      <mj-text mj-class="h3 text-primary extrabold" align="left" padding-bottom="10px">
+        Turn launch notes into a clean send structure
+      </mj-text>
+      <mj-text mj-class="body text-muted" align="left" padding-bottom="18px">
+        Use this split hero when product context needs room, but you still want one concise CTA and a clear visual anchor.
+      </mj-text>
+      <mj-button background-color="#2f67ef" color="#ffffff" align="left" border-radius="999px" inner-padding="14px 28px" href="https://templatehedgehog.com">
+        Read launch brief
+      </mj-button>
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# Split Hero Image Left -->

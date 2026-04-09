@@ -1,0 +1,25 @@
+<!-- #-START-# Lifecycle Usage Summary -->
+<mj-wrapper mj-class="whitebg">
+  <mj-section padding-bottom="18px">
+    <mj-column width="520px">
+      <mj-text mj-class="label thblue" align="center" padding-bottom="10px">Usage summary</mj-text>
+      <mj-text mj-class="h4 text-primary extrabold" align="center" padding-bottom="10px">Lifecycle activity this week</mj-text>
+      <mj-text mj-class="body text-muted" align="center">A simple snapshot for activation, retention, and billing automation performance.</mj-text>
+    </mj-column>
+  </mj-section>
+  <mj-section padding-top="0">
+    <mj-column width="33.33%" padding="0 8px">
+      <mj-text mj-class="h5 thblue extrabold" align="center" padding-bottom="4px">18</mj-text>
+      <mj-text mj-class="small text-muted" align="center">Journeys live</mj-text>
+    </mj-column>
+    <mj-column width="33.33%" padding="0 8px">
+      <mj-text mj-class="h5 thblue extrabold" align="center" padding-bottom="4px">42k</mj-text>
+      <mj-text mj-class="small text-muted" align="center">Emails sent</mj-text>
+    </mj-column>
+    <mj-column width="33.33%" padding="0 8px">
+      <mj-text mj-class="h5 thblue extrabold" align="center" padding-bottom="4px">97.8%</mj-text>
+      <mj-text mj-class="small text-muted" align="center">Inbox placement</mj-text>
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# Lifecycle Usage Summary -->

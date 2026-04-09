@@ -1,0 +1,51 @@
+<mjml>
+  <mj-head>
+    <mj-include path="../styles.mjml" />
+    <mj-title>Treat or Treat? 🎃</mj-title>
+    <mj-preview>The Halloween season is among us with Your Product. &nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp; </mj-preview>
+  </mj-head>
+  <mj-body mj-class="whitebg">
+    <mj-include path="../header-black-e3.mjml" />
+    <mj-wrapper mj-class="blackbg">
+      <mj-section padding="0">
+        <mj-column padding="0">
+          <mj-image css-class="center" width="640px" fluid-on-mobile="true" src="https://example.com 0000 000000a765c5aca7~mv2.jpg" padding="0px">
+          </mj-image>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    </mj-wrapper>
+    <mj-wrapper mj-class="purplebg">
+      <mj-section>
+        <mj-column>
+          <mj-text mj-class="body superlight" align="left" padding-bottom="10px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
+          <mj-text mj-class="body superlight" align="left" padding-bottom="10px">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <mj-wrapper mj-class="purplebg">
+      <mj-section padding-top="0">
+        <mj-column>
+          <mj-text mj-class="body superlight">Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</mj-text>
+          <mj-text mj-class="body superlight">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <mj-wrapper mj-class="purplebg">
+      <mj-section padding-top="0">
+        <mj-column>
+          <mj-button mj-class="pumpkinbg white body" href="https://example.com">Call to action</mj-button>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <mj-wrapper mj-class="blackbg">
+      <mj-section padding="0">
+        <mj-column padding="0">
+          <mj-image css-class="center" width="640px" fluid-on-mobile="true" src="https://example.com" padding="0">
+          </mj-image>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <mj-include path="../footer.mjml" />
+  </mj-body>
+</mjml>

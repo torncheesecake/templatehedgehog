@@ -1,0 +1,12 @@
+<!-- #-START-# Lifecycle Trial Expiry Alert -->
+<mj-wrapper mj-class="whitebg">
+  <mj-section background-color="#eef4ff" border-left="4px solid #2f67ef" padding="25px 35px">
+    <mj-column width="100%">
+      <mj-text mj-class="label thblue" align="left" padding-bottom="8px">Trial update</mj-text>
+      <mj-text mj-class="h5 text-primary extrabold" align="left" padding-bottom="8px">Your trial is ending soon</mj-text>
+      <mj-text mj-class="small text-muted" align="left" padding-bottom="16px">Your trial ends in 3 days. Choose a plan now to keep projects, automations, and team access active.</mj-text>
+      <mj-button mj-class="thbluebg white body bold" align="left" border-radius="999px" inner-padding="14px 28px" href="https://templatehedgehog.com">Choose plan</mj-button>
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# Lifecycle Trial Expiry Alert -->

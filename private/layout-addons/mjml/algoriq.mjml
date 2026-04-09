@@ -1,0 +1,45 @@
+<mjml>
+  <mj-head>
+    <mj-include path="../styles.mjml" />
+    <mj-title>Subject line?</mj-title>
+    <mj-preview>Something here?&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp; </mj-preview>
+  </mj-head>
+  <mj-body mj-class="superlightbg">
+    <mj-include path="../header.mjml" />
+    <mj-wrapper>
+      <mj-section padding="0">
+        <mj-column padding="0">
+          <mj-image src="https://example.com" padding="0px">
+          </mj-image>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    </mj-wrapper>
+    <mj-wrapper>
+      <mj-section mj-class="whitebg">
+        <mj-column>
+          <mj-text mj-class="h2 dark" padding-bottom="10px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
+          <mj-text mj-class="body dark">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</mj-text>
+<mj-text mj-class="body dark">Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <mj-wrapper>
+      <mj-section mj-class="purplebg">
+        <mj-column>
+          <mj-text mj-class="h4 white" align="center" padding-bottom="10px">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <mj-wrapper>
+      <mj-section mj-class="whitebg">
+        <mj-column>
+          <mj-text mj-class="h2 dark" padding-bottom="10px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
+          <mj-text mj-class="body dark">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</mj-text>
+          <mj-button mj-class="grapebg white body" padding="10px 25px" href="https://example.com Brand-machine-learning-and-ai-to-your-Your Product-accounts-receivables">Call to action</mj-button>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <mj-include path="../footer.mjml" />
+  </mj-body>
+</mjml>

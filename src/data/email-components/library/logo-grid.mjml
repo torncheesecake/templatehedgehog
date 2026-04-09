@@ -1,0 +1,21 @@
+<!-- #-START-# Logo Trust Strip -->
+<mj-wrapper mj-class="whitebg">
+  <mj-section padding-bottom="18px">
+    <mj-column>
+      <mj-text mj-class="h5 text-primary extrabold" align="center" padding-bottom="8px">
+        Trusted by delivery and operations teams
+      </mj-text>
+      <mj-text mj-class="small text-muted" align="center" padding-bottom="0">
+        Replace these placeholders with customer logos or partner integrations relevant to your send.
+      </mj-text>
+    </mj-column>
+  </mj-section>
+
+  <mj-section padding-top="0" padding-bottom="8px">
+    <mj-column width="25%" padding="8px"><mj-image src="https://dummyimage.com/180x64/f3f4f6/6b7280&text=Northline" alt="Northline logo" width="130px" /></mj-column>
+    <mj-column width="25%" padding="8px"><mj-image src="https://dummyimage.com/180x64/f3f4f6/6b7280&text=KeplerPay" alt="KeplerPay logo" width="130px" /></mj-column>
+    <mj-column width="25%" padding="8px"><mj-image src="https://dummyimage.com/180x64/f3f4f6/6b7280&text=Harbour+OS" alt="Harbour OS logo" width="130px" /></mj-column>
+    <mj-column width="25%" padding="8px"><mj-image src="https://dummyimage.com/180x64/f3f4f6/6b7280&text=Aster+Cloud" alt="Aster Cloud logo" width="130px" /></mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# Logo Trust Strip -->

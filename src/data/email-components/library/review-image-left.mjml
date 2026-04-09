@@ -1,0 +1,15 @@
+<!-- #-START-# Review Image Left -->
+<mj-wrapper mj-class="whitebg">
+  <mj-section padding="0 24px">
+    <mj-column width="50%" direction="ltr" padding="0 8px 20px 8px" vertical-align="top">
+      <mj-image src="https://placehold.co/640x360/png?text=TemplateHedgehog+Visual" fluid-on-mobile="true" padding="0" alt="Customer feedback invitation" />
+    </mj-column>
+    <mj-column width="50%" padding="24px 8px 20px 8px" vertical-align="top">
+      <mj-image src="https://placehold.co/208x30/png?text=5-star+rating" width="208px" height="30px" align="center" padding="0 0 20px 0" alt="Five star rating" />
+      <mj-text mj-class="h1 dark" align="center" padding="0 0 10px 0">How is your rollout experience?</mj-text>
+      <mj-text mj-class="body dark" align="center" padding="0 0 20px 0">Use this split review block to collect practical feedback after onboarding, launch, or support handoff milestones.</mj-text>
+      <mj-button align="center" padding="0" border-radius="0" mj-class="body white darkbg" inner-padding="13px 22px" href="https://templatehedgehog.com" target="_blank">Leave feedback</mj-button>
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# Review Image Left -->

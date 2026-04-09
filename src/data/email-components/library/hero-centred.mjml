@@ -1,0 +1,30 @@
+<!-- #-START-# Hero Centred -->
+<mj-wrapper mj-class="whitebg">
+  <mj-section padding="50px 40px 30px 40px">
+    <mj-column width="550px">
+      <mj-text mj-class="label text-muted" align="center" padding-bottom="15px">Release bulletin</mj-text>
+      <mj-text mj-class="h1 text-primary extrabold" align="center" padding-bottom="18px">
+        Launch email updates with <span style="color: #2f67ef;">cleaner source</span>
+      </mj-text>
+      <mj-text mj-class="body text-muted" align="center" padding-bottom="0">
+        Build campaign and lifecycle sends from reusable MJML blocks, then compile once for QA and ESP handoff.
+      </mj-text>
+    </mj-column>
+  </mj-section>
+  <mj-section padding="0">
+    <mj-column padding="0">
+      <mj-image src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1280&h=640&fit=crop&q=85" padding="0" fluid-on-mobile="true" alt="Campaign dashboard with delivery and conversion metrics" />
+    </mj-column>
+  </mj-section>
+  <mj-section padding="30px 40px 40px 40px">
+    <mj-column width="500px">
+      <mj-text mj-class="body text-muted" align="center" padding-bottom="25px">
+        Keep changes in MJML while teams iterate, then ship compiled HTML that survives real client rendering.
+      </mj-text>
+      <mj-button background-color="#2f67ef" color="#ffffff" align="center" border-radius="50px" inner-padding="18px 45px" href="https://templatehedgehog.com" target="_blank">
+        Explore components
+      </mj-button>
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# Hero Centred -->

@@ -1,0 +1,15 @@
+<!-- #-START-# Abandoned Cart Reminder -->
+<mj-wrapper mj-class="whitebg">
+  <mj-section padding="0">
+    <mj-column padding="0" vertical-align="middle" width="45%">
+      <mj-image src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=620&h=760&fit=crop&q=85" padding="0" fluid-on-mobile="true" alt="Cart reminder" />
+    </mj-column>
+    <mj-column vertical-align="middle" width="55%" padding="36px 30px">
+      <mj-text mj-class="label thblue" align="left" padding-bottom="10px">Cart reminder</mj-text>
+      <mj-text mj-class="h4 text-primary extrabold" align="left" padding-bottom="10px">You left something behind</mj-text>
+      <mj-text mj-class="body text-muted" align="left" padding-bottom="18px">Your selected items are still in your basket and ready to check out when you are.</mj-text>
+      <mj-button mj-class="thbluebg white body bold" align="left" border-radius="999px" inner-padding="14px 28px" href="https://templatehedgehog.com">Return to cart</mj-button>
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# Abandoned Cart Reminder -->

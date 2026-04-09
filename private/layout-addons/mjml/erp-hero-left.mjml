@@ -1,0 +1,23 @@
+<mjml>
+  <mj-head>
+    <mj-include path="../styles.mjml" />
+    <mj-title>Title</mj-title>
+    <mj-preview>Pre-header&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp; </mj-preview>
+  </mj-head>
+  <mj-body background-color="#e9e9e9">
+    <mj-wrapper background-url="https://example.com Product.com/core/media/media.nl?id=1222101&c=1018014&h=d0B3Vgdzjn6ge9a-bFTib6OyvibbJ6_SJzeSoFNUg17OfRZb" background-size="700px" background-repeat="no-repeat">
+      <mj-section>
+        <mj-column vertical-align="middle">
+          <mj-image src="https://placehold.co/1200x600/png?text=Template+Image" width="206px" align="left" />
+        </mj-column>
+        </mj-column>
+      </mj-section>
+      <mj-section>
+        <mj-column>
+          <mj-spacer height="100px" />
+          <mj-text mj-class="h1" align="center" padding-top="60px" padding-bottom="0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+  </mj-body>
+</mjml>

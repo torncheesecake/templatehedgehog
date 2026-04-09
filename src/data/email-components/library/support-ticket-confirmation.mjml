@@ -1,0 +1,21 @@
+<!-- #-START-# Support Ticket Confirmation -->
+<mj-wrapper mj-class="whitebg">
+  <mj-section padding-bottom="18px">
+    <mj-column width="520px">
+      <mj-text mj-class="label thblue" align="left" padding-bottom="10px">Support</mj-text>
+      <mj-text mj-class="h4 text-primary extrabold" align="left" padding-bottom="10px">Your support ticket has been received</mj-text>
+      <mj-text mj-class="body text-muted" align="left">Our delivery team has queued your request and will reply with a reproducible fix path based on your client screenshots and send logs.</mj-text>
+    </mj-column>
+  </mj-section>
+  <mj-section padding-top="0">
+    <mj-column width="50%">
+      <mj-text mj-class="small text-primary bold" align="left" padding-bottom="4px">Ticket ID</mj-text>
+      <mj-text mj-class="small text-muted" align="left" padding-bottom="0">TH-18402</mj-text>
+    </mj-column>
+    <mj-column width="50%">
+      <mj-text mj-class="small text-primary bold" align="left" padding-bottom="4px">Response target</mj-text>
+      <mj-text mj-class="small text-muted" align="left" padding-bottom="0">Within 1 business day</mj-text>
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# Support Ticket Confirmation -->

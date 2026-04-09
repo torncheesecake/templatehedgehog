@@ -1,0 +1,23 @@
+<!-- #-START-#  telephone support dark -->
+<mj-wrapper mj-class="darkbg">
+  <mj-section>
+    <mj-column padding-bottom="0">
+      <mj-text mj-class="h2 white" padding-bottom="5px">Here to help</mj-text>
+    </mj-column>
+  </mj-section>
+  <mj-section padding-top="0">
+    <mj-column padding-top="5px" padding-bottom="10px">
+      <mj-text mj-class="body white">If you need support or expert advice, talking to us is easy.</mj-text>
+    </mj-column>
+    <mj-group>
+      <mj-column>
+        <mj-social icon-size="48px" mode="horizontal" align="left" padding="0 0 10px 0">
+          <mj-social-element src="https://placehold.co/96x96/2f67ef/ffffff/png?text=TH" name="telephone-number" mj-class="h2" color="white" padding="0 10px 0 0" href="tel:+44 0000 000 000">
+            +44 0000 000 000
+          </mj-social-element>
+        </mj-social>
+      </mj-column>
+    </mj-group>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-#  telephone support dark -->

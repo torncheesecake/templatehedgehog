@@ -1,0 +1,12 @@
+<!-- #-START-# Onboarding Step Card -->
+<mj-wrapper mj-class="whitebg">
+  <mj-section>
+    <mj-column width="520px">
+      <mj-text mj-class="label thblue" align="left" padding-bottom="8px">Onboarding step 2 of 4</mj-text>
+      <mj-text mj-class="h4 text-primary extrabold" align="left" padding-bottom="10px">Connect your workspace</mj-text>
+      <mj-text mj-class="body text-muted" align="left" padding-bottom="18px">Connect your workspace to unlock real campaign data, shared templates, and approval routing.</mj-text>
+      <mj-button mj-class="thbluebg white body bold" align="left" border-radius="999px" inner-padding="14px 28px" href="https://templatehedgehog.com">Connect now</mj-button>
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# Onboarding Step Card -->

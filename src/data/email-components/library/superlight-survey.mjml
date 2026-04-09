@@ -1,0 +1,39 @@
+<!-- #-START-# survey superlight -->
+<mj-wrapper mj-class="superlightbg" full-width="full-width">
+      <mj-section>
+        <mj-column>
+          <mj-spacer height="20px" />
+          <mj-text mj-class="small dark" align="center">QUESTION 1 OF 5</mj-text>
+          <mj-text mj-class="body dark" align="center">To what extent do you agree or disagree with the following statement?</mj-text>
+          <mj-text mj-class="h2 dark" align="center">This product saves our team time on repetitive email work.</mj-text>
+          <mj-spacer height="20px" />
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <mj-wrapper mj-class="superlightbg" full-width="full-width">
+      <mj-section css-class="surveywrap">
+          <mj-column css-class="survey">
+            <mj-button mj-class="body whitebg dark button" border="1px solid #dcdcdc" height="59px" width="110px" padding="0" inner-padding="0 20px" align="left">Strongly agree</mj-button>
+          </mj-column>
+          <mj-column css-class="survey">
+            <mj-button mj-class="body whitebg dark button" border="1px solid #dcdcdc" height="59px" width="110px" padding="0" inner-padding="0 20px" align="left">Agree</mj-button>
+         </mj-column>
+          <mj-column css-class="survey">
+            <mj-button mj-class="body whitebg dark button" border="1px solid #dcdcdc" height="59px" width="110px" padding="0" inner-padding="0 20px" align="left">Unsure</mj-button>
+         </mj-column>
+          <mj-column css-class="survey">
+            <mj-button mj-class="body whitebg dark button" border="1px solid #dcdcdc" height="59px" width="110px" padding="0" inner-padding="0 20px" align="left">Disagree</mj-button>
+         </mj-column>
+          <mj-column css-class="survey">
+            <mj-button mj-class="body whitebg dark button" border="1px solid #dcdcdc" height="59px" width="110px" padding="0" inner-padding="0 20px" align="left">Strongly disagree</mj-button>
+          </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <mj-wrapper mj-class="superlightbg" full-width="full-width">
+      <mj-section>
+        <mj-column>
+          <mj-spacer height="30px" />
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+<!-- #-END-# survey superlight -->

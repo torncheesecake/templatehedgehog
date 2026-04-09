@@ -1,0 +1,31 @@
+<!-- #-START-# footer -->
+<mj-wrapper mj-class="whitebg">
+  <mj-section padding-top="30px">
+    <mj-column vertical-align="middle">
+      <mj-image src="/brand/hedgehog-mark-email.png" width="44px" alt="TemplateHedgehog icon" href="https://templatehedgehog.com" padding="0" />
+      <mj-text align="center" padding="8px 0 6px 0" font-family="'Manrope', 'Inter', Arial, sans-serif" font-size="16px" font-weight="700" color="#1a1a1a">
+        <a href="https://templatehedgehog.com" style="color:#1a1a1a; text-decoration:none;">TemplateHedgehog</a>
+      </mj-text>
+      <mj-text mj-class="body dark" align="center">Find out what makes us tick</mj-text>
+      <mj-social align="center" font-size="15px" icon-size="30px" mode="horizontal">
+        <mj-social-element name="facebook" color="white" href="https://templatehedgehog.com"> </mj-social-element>
+        <mj-social-element name="twitter" href="https://templatehedgehog.com" color="white"> </mj-social-element>
+        <mj-social-element name="linkedin" href="https://templatehedgehog.com" color="white"> </mj-social-element>
+      </mj-social>
+    </mj-column>
+  </mj-section>
+  <mj-section>
+    <mj-column>
+      <mj-text mj-class="body dark" align="center">Copyright &copy; 2026 TemplateHedgehog. All rights reserved.</mj-text>
+    </mj-column>
+  </mj-section>
+  <mj-section padding-top="0px">
+    <mj-column>
+      <mj-text mj-class="body dark" align="center">Our office:<br /> Example House, River Street,<br /> London, WC2N 5DU</mj-text>
+      <mj-text mj-class="body dark" align="center" padding-top="0px">Support: <a href="mailto:support@templatehedgehog.com" target="_blank">support@templatehedgehog.com</a></mj-text>
+      <mj-text mj-class="body dark" align="center" padding-top="0px">Contact: <a href="mailto:hello@templatehedgehog.com" target="_blank">hello@templatehedgehog.com</a></mj-text>
+      <mj-text mj-class="body dark" align="center" padding-top="0px">Call: +44 0000 000 000</mj-text>
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!--  #-END-# footer -->

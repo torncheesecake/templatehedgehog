@@ -1,0 +1,12 @@
+<!-- #-START-# Invoice Due Reminder -->
+<mj-wrapper mj-class="whitebg">
+  <mj-section background-color="#fff7e8" border-left="4px solid #c58d2c" padding="28px 35px">
+    <mj-column width="500px">
+      <mj-text mj-class="label text-primary" align="left" padding-bottom="8px">Reminder</mj-text>
+      <mj-text mj-class="h5 text-primary extrabold" align="left" padding-bottom="10px">Invoice due soon</mj-text>
+      <mj-text mj-class="body text-muted" align="left" padding-bottom="16px">A payment of GBP 420.00 is due in five days. Review the invoice and settle before the due date.</mj-text>
+      <mj-button mj-class="thbluebg white body bold" align="left" border-radius="999px" inner-padding="14px 28px" href="https://templatehedgehog.com">View invoice</mj-button>
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# Invoice Due Reminder -->

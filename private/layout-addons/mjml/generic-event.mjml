@@ -1,0 +1,35 @@
+<mjml>
+  <mj-head>
+    <mj-include path="../styles.mjml" />
+    <mj-title>Invitatio ad Eventum</mj-title>
+    <mj-preview>Join us for an exclusive event - Lorem ipsum dolor sit amet.</mj-preview>
+  </mj-head>
+  <mj-body>
+    <mj-include path="../header.mjml" />
+    <mj-section background-url="https://example.com" background-size="cover" background-repeat="no-repeat">
+      <mj-column width="600px">
+        <mj-text mj-class="h1-display white" padding-top="100px" padding-bottom="100px" align="center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section mj-class="whitebg">
+      <mj-column>
+        <mj-text mj-class="h2 e3blue" align="center">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</mj-text>
+        <mj-text mj-class="body medium" align="center">Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</mj-text>
+        <mj-button mj-class="navybg white" align="center" href="https://example.com">Call to action</mj-button>
+      </mj-column>
+    </mj-section>
+    <mj-section mj-class="superlightbg">
+      <mj-column>
+        <mj-text mj-class="h3 e3blue" align="center">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</mj-text>
+        <mj-text mj-class="body medium" align="center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section mj-class="whitebg">
+      <mj-column>
+        <mj-text mj-class="body medium" align="center">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</mj-text>
+        <mj-button mj-class="navybg white" align="center" href="https://example.com">Call to action</mj-button>
+      </mj-column>
+    </mj-section>
+    <mj-include path="../footer.mjml" />
+  </mj-body>
+</mjml>

@@ -1,0 +1,21 @@
+<!-- #-START-# Upgrade Confirmation Card -->
+<mj-wrapper mj-class="whitebg">
+  <mj-section padding-bottom="18px">
+    <mj-column width="520px">
+      <mj-text mj-class="label thblue" align="center" padding-bottom="10px">Upgrade complete</mj-text>
+      <mj-text mj-class="h4 text-primary extrabold" align="center" padding-bottom="10px">Your workspace is now on Growth Annual</mj-text>
+      <mj-text mj-class="body text-muted" align="center" padding-bottom="18px">Billing and usage limits have been updated. New plan benefits are active immediately.</mj-text>
+    </mj-column>
+  </mj-section>
+  <mj-section padding-top="0">
+    <mj-column width="50%">
+      <mj-text mj-class="small text-primary bold" align="center" padding-bottom="4px">New plan</mj-text>
+      <mj-text mj-class="small text-muted" align="center">Growth Annual</mj-text>
+    </mj-column>
+    <mj-column width="50%">
+      <mj-text mj-class="small text-primary bold" align="center" padding-bottom="4px">Active from</mj-text>
+      <mj-text mj-class="small text-muted" align="center">17 March 2026</mj-text>
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# Upgrade Confirmation Card -->

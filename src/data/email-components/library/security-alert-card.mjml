@@ -1,0 +1,14 @@
+<!-- #-START-# Security Alert Card -->
+<mj-wrapper mj-class="whitebg">
+  <mj-section background-color="#eef4ff" border-left="4px solid #2f67ef" padding="28px 35px">
+    <mj-column width="500px">
+      <mj-text mj-class="label thblue" align="left" padding-bottom="8px">Security alert</mj-text>
+      <mj-text mj-class="h5 text-primary extrabold" align="left" padding-bottom="10px">A new sign-in was detected</mj-text>
+      <mj-text mj-class="small text-muted" align="left" padding-bottom="6px">Date: 16 March 2026</mj-text>
+      <mj-text mj-class="small text-muted" align="left" padding-bottom="6px">Location: London, United Kingdom</mj-text>
+      <mj-text mj-class="small text-muted" align="left" padding-bottom="18px">Device: Browser on macOS</mj-text>
+      <mj-button mj-class="thbluebg white body bold" align="left" border-radius="999px" inner-padding="14px 28px" href="https://templatehedgehog.com">Review activity</mj-button>
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# Security Alert Card -->

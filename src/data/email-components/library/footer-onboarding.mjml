@@ -1,0 +1,29 @@
+<!-- #-START-# footer onboarding -->
+<mj-wrapper mj-class="whitebg">
+  <mj-section padding-top="25px">
+    <mj-group>
+      <mj-column width="30%" padding="0 0 0 15px">
+        <mj-image src="/brand/hedgehog-mark-email.png" width="28px" alt="TemplateHedgehog icon" align="left" href="https://templatehedgehog.com" target="_blank" padding="0" />
+        <mj-text align="left" padding="6px 0 0 0" font-family="'Manrope', 'Inter', Arial, sans-serif" font-size="12px" font-weight="700" color="#1a1a1a">
+          <a href="https://templatehedgehog.com" style="color:#1a1a1a; text-decoration:none;">TemplateHedgehog</a>
+        </mj-text>
+      </mj-column>
+      <mj-column width="70%" padding="0 15px 0 0">
+        <mj-text mj-class="small light" align="right" padding-top="3px"><a href="https://templatehedgehog.com" style="color:#999999; text-decoration: underline;">Privacy policy</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="https://templatehedgehog.com" style="color:#999999; text-decoration: underline;">Manage preferences</a></mj-text>
+      </mj-column>
+    </mj-group>
+  </mj-section>
+  <mj-section padding-top="3px">
+    <mj-column>
+      <mj-divider />
+    </mj-column>
+  </mj-section>
+  <mj-section padding-top="0" padding-bottom="40px">
+    <mj-column>
+      <mj-text mj-class="small light">Add our sender address to your safe-sender list so onboarding updates continue to arrive reliably.</mj-text>
+      <mj-text mj-class="small light">You are receiving this email because your workspace notifications are enabled. Update your preferences anytime at <a style="color:#666666; text-decoration:underline;" target="_blank" href="https://templatehedgehog.com/preferences">templatehedgehog.com/preferences</a>.</mj-text>
+      <mj-text mj-class="small light">TemplateHedgehog Ltd. Example House, London, WC2N 5DU.</mj-text>
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# footer onboarding -->

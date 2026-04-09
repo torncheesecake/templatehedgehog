@@ -1,0 +1,28 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="th_bg" x1="18" y1="18" x2="238" y2="238" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#17384F"/>
+      <stop offset="1" stop-color="#0A1C2B"/>
+    </linearGradient>
+    <linearGradient id="th_hog" x1="62" y1="88" x2="184" y2="190" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#A2EDFF"/>
+      <stop offset="1" stop-color="#54C8EE"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="16" y="16" width="224" height="224" rx="54" fill="url(#th_bg)"/>
+  <rect x="16" y="16" width="224" height="224" rx="54" stroke="#3A7498" stroke-width="2.5"/>
+
+  <path d="M66 122L82 88L98 122" fill="#83E0FF"/>
+  <path d="M88 112L106 76L124 114" fill="#99E8FF"/>
+  <path d="M114 108L132 72L150 110" fill="#A9EEFF"/>
+  <path d="M140 112L158 78L176 114" fill="#90E5FF"/>
+  <path d="M164 122L180 92L194 122" fill="#78D9FF"/>
+
+  <ellipse cx="124" cy="146" rx="64" ry="48" fill="url(#th_hog)"/>
+  <ellipse cx="175" cy="154" rx="19" ry="14" fill="url(#th_hog)"/>
+
+  <circle cx="180" cy="150" r="3.8" fill="#0D2E43"/>
+  <circle cx="191" cy="156" r="4.6" fill="#0D2E43"/>
+  <path d="M114 176C124 184 138 184 149 176" stroke="#0D2E43" stroke-width="6" stroke-linecap="round"/>
+</svg>

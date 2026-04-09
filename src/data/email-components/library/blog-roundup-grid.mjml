@@ -1,0 +1,27 @@
+<!-- #-START-# Blog Roundup Grid -->
+<mj-wrapper mj-class="whitebg">
+  <mj-section padding-bottom="18px">
+    <mj-column width="520px">
+      <mj-text mj-class="label thblue" align="center" padding-bottom="10px">Blog roundup</mj-text>
+      <mj-text mj-class="h4 text-primary extrabold" align="center" padding-bottom="10px">Three reads for this week</mj-text>
+    </mj-column>
+  </mj-section>
+  <mj-section padding="0 24px">
+    <mj-column width="33.33%" vertical-align="top" padding="0 8px 18px 8px">
+      <mj-image src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=320&h=240&fit=crop&q=85" fluid-on-mobile="true" alt="Article one" border-radius="8px" padding="0 0 10px 0" />
+      <mj-text mj-class="small text-primary bold" align="left" padding="0 0 4px 0">Article one</mj-text>
+      <mj-text mj-class="small text-muted" align="left" padding="0">Short summary</mj-text>
+    </mj-column>
+    <mj-column width="33.33%" vertical-align="top" padding="0 8px 18px 8px">
+      <mj-image src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=320&h=240&fit=crop&q=85" fluid-on-mobile="true" alt="Article two" border-radius="8px" padding="0 0 10px 0" />
+      <mj-text mj-class="small text-primary bold" align="left" padding="0 0 4px 0">Article two</mj-text>
+      <mj-text mj-class="small text-muted" align="left" padding="0">Short summary</mj-text>
+    </mj-column>
+    <mj-column width="33.33%" vertical-align="top" padding="0 8px 18px 8px">
+      <mj-image src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=320&h=240&fit=crop&q=85" fluid-on-mobile="true" alt="Article three" border-radius="8px" padding="0 0 10px 0" />
+      <mj-text mj-class="small text-primary bold" align="left" padding="0 0 4px 0">Article three</mj-text>
+      <mj-text mj-class="small text-muted" align="left" padding="0">Short summary</mj-text>
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# Blog Roundup Grid -->

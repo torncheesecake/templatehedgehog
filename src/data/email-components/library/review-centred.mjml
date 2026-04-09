@@ -1,0 +1,21 @@
+<!-- #-START-# review centred -->
+<mj-wrapper mj-class="whitebg">
+  <mj-section>
+    <mj-column>
+      <mj-image src="https://placehold.co/208x30/png?text=5-star+rating" width="200px" align="center" padding="20px 0" />
+      <mj-text mj-class="h2 dark" align="center">"A clean review block that feels easy to trust."</mj-text>
+      <mj-text mj-class="body medium" align="center">Verified customer</mj-text>
+      <mj-text mj-class="small light" align="center">
+        5-star rating summary &#160;&#160; | &#160;&#160; Ready for testimonials, product reviews, or proof points
+      </mj-text>
+      <!-- #-START-# Centred CTA -->
+      <mj-social font-size="14px" icon-size="30px" mode="horizontal" align="center">
+        <mj-social-element src="https://placehold.co/640x360/png?text=TemplateHedgehog+Visual" name="cta" href="https://templatehedgehog.com" target="_blank" mj-class="dark">
+          Write a review
+        </mj-social-element>
+      </mj-social>
+      <!-- #-END-# Centred CTA -->
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# review centred -->

@@ -1,0 +1,11 @@
+<!-- #-START-# Newsletter Editor Note -->
+<mj-wrapper mj-class="whitebg">
+  <mj-section padding-bottom="18px">
+    <mj-column width="520px">
+      <mj-text mj-class="label thblue" align="left" padding-bottom="10px">Editor's note</mj-text>
+      <mj-text mj-class="h4 text-primary extrabold" align="left" padding-bottom="10px">A short note from the product team</mj-text>
+      <mj-text mj-class="body text-muted" align="left">This week we focused on making component reuse easier for mixed teams. You will see clearer compatibility notes, tighter CTA defaults, and cleaner lifecycle examples across the library.</mj-text>
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# Newsletter Editor Note -->

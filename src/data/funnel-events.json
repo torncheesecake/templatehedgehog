@@ -1,0 +1,27 @@
+[
+  {
+    "event": "view_component_detail",
+    "createdAt": "2026-03-18T11:53:31.098Z",
+    "path": "/components/header-centred-brand"
+  },
+  {
+    "event": "view_component_detail",
+    "createdAt": "2026-03-18T11:55:07.215Z",
+    "path": "/components/header-light-utility"
+  },
+  {
+    "event": "view_component_detail",
+    "createdAt": "2026-03-18T11:55:07.223Z",
+    "path": "/components/footer-app-legal"
+  },
+  {
+    "event": "view_component_detail",
+    "createdAt": "2026-03-18T11:59:51.034Z",
+    "path": "/components/header-centred-brand"
+  },
+  {
+    "event": "view_component_detail",
+    "createdAt": "2026-03-18T12:00:58.683Z",
+    "path": "/components/header-centred-brand"
+  }
+]

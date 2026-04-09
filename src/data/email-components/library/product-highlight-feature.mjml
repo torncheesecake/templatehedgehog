@@ -1,0 +1,15 @@
+<!-- #-START-# Product Highlight Feature -->
+<mj-wrapper mj-class="whitebg">
+  <mj-section padding="0">
+    <mj-column vertical-align="middle" width="50%" padding="36px 30px">
+      <mj-text mj-class="label thblue" align="left" padding-bottom="10px">Product highlight</mj-text>
+      <mj-text mj-class="h4 text-primary extrabold" align="left" padding-bottom="10px">Spotlight one featured item</mj-text>
+      <mj-text mj-class="body text-muted" align="left" padding-bottom="18px">Highlight one top product with a clear value statement, hero image, and direct purchase action.</mj-text>
+      <mj-button mj-class="thbluebg white body bold" align="left" border-radius="999px" inner-padding="14px 28px" href="https://templatehedgehog.com">View product</mj-button>
+    </mj-column>
+    <mj-column padding="0" vertical-align="middle" width="50%">
+      <mj-image src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=640&h=800&fit=crop&q=85" padding="0" fluid-on-mobile="true" alt="Product highlight" />
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# Product Highlight Feature -->

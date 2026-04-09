@@ -1,0 +1,9 @@
+<!-- #-START-# Owner Exclusive Badge black -->
+<mj-wrapper mj-class="blackbg">
+  <mj-section>
+    <mj-column width="420px">
+      <mj-button align="center" border-radius="0" mj-class="badge white transbg" inner-padding="5px 10px" padding="0px 0px 20px 0px" href="https://templatehedgehog.com" text-transform="uppercase" border="1px solid #ffffff">Owner Exclusive</mj-button>
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# Owner Exclusive Badge black -->

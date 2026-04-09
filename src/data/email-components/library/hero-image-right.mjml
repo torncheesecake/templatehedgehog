@@ -1,0 +1,23 @@
+<!-- #-START-# Hero Image Right -->
+<mj-wrapper mj-class="whitebg">
+  <mj-section padding="0">
+    <mj-column vertical-align="middle" width="50%" padding="40px 30px">
+      <mj-text mj-class="label thblue" align="center" padding-bottom="15px">Product brief</mj-text>
+      <mj-text mj-class="h2 text-primary extrabold" align="center" padding-bottom="12px">Show your newest release clearly</mj-text>
+      <mj-text mj-class="h4 text-primary extrabold" align="center" padding-bottom="15px">Without overloading the copy</mj-text>
+      <mj-text mj-class="body text-muted" align="center" padding-bottom="20px">Ideal for launch and lifecycle sends where image support matters, but the CTA should remain obvious and easy to act on.</mj-text>
+      <mj-button mj-class="thbluebg white body bold" align="center" border-radius="50px" inner-padding="16px 40px" href="https://templatehedgehog.com" target="_blank">
+        <span style="display: inline-flex; align-items: center; gap: 10px;">
+          Open release notes
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display: inline-block;">
+            <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+          </svg>
+        </span>
+      </mj-button>
+    </mj-column>
+    <mj-column padding="0" vertical-align="middle" width="50%">
+      <mj-image src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=640&h=800&fit=crop&q=85" padding="0" fluid-on-mobile="true" alt="Team reviewing product rollout" />
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# Hero Image Right -->

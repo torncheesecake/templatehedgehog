@@ -1,0 +1,12 @@
+<!-- #-START-# Discount Promotion Banner -->
+<mj-wrapper mj-class="whitebg">
+  <mj-section background-color="#102447" padding="36px 35px">
+    <mj-column width="520px">
+      <mj-text mj-class="label white" align="center" padding-bottom="10px">Limited offer</mj-text>
+      <mj-text mj-class="h3 white extrabold" align="center" padding-bottom="10px">Save on your next purchase</mj-text>
+      <mj-text mj-class="body white" align="center" padding-bottom="18px">Use code SPRING20 at checkout to apply your campaign discount before midnight.</mj-text>
+      <mj-button background-color="#2f67ef" color="#ffffff" align="center" border-radius="999px" inner-padding="16px 34px" href="https://templatehedgehog.com">Shop offer</mj-button>
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# Discount Promotion Banner -->

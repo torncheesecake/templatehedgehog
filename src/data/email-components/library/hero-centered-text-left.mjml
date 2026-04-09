@@ -1,0 +1,26 @@
+<!-- #-START-# Hero Centered with Text Left -->
+<mj-wrapper mj-class="whitebg">
+  <mj-section padding="0">
+    <mj-column padding="0">
+      <mj-image src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1280&h=600&fit=crop&q=85" padding="0" fluid-on-mobile="true" alt="Hero image" />
+    </mj-column>
+  </mj-section>
+  <mj-section>
+    <mj-column width="500px">
+      <mj-text mj-class="label thblue" align="center" padding-bottom="15px">Launch update</mj-text>
+      <mj-text mj-class="h2 text-primary extrabold" align="center" padding-bottom="12px">Hero headline with clear supporting copy</mj-text>
+      <mj-text mj-class="body text-muted" align="left" padding-bottom="20px">
+        Ship release notes with clear context, one decisive action, and an image treatment that still reads cleanly on mobile.
+      </mj-text>
+      <mj-button mj-class="thbluebg white body bold" align="center" border-radius="50px" inner-padding="18px 45px" href="https://templatehedgehog.com">
+        <span style="display: inline-flex; align-items: center; gap: 10px;">
+          View update
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display: inline-block;">
+            <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+          </svg>
+        </span>
+      </mj-button>
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# Hero Centered with Text Left -->
