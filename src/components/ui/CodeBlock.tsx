@@ -210,7 +210,7 @@ export function CodeBlock({
       <article
         className={`dune-strip overflow-hidden ${className}`}
       >
-        <div className="flex flex-wrap items-start justify-between gap-3 border-b border-[rgba(222, 210, 204,0.2)] px-5 py-4 sm:px-6">
+        <div className="flex flex-wrap items-start justify-between gap-3 border-b border-(--surface-line) px-5 py-4 sm:px-6">
           <div>
             <h2 className="text-[1.1rem] font-semibold text-(--foreground)">
               {label}
@@ -246,7 +246,7 @@ export function CodeBlock({
         <div
           tabIndex={0}
           aria-label={`${label} code block`}
-          className="th-code-scroll max-h-[620px] overflow-auto rounded-b-[1rem] border-t border-[hsl(var(--th-accent)/0.18)] bg-[#0b1324] focus:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-inset"
+          className="th-code-scroll max-h-[620px] overflow-auto rounded-b-[1rem] border-t border-(--surface-line) bg-(--surface-strong) focus:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-inset"
         >
           <div
             className="th-code-surface p-5 sm:p-6"

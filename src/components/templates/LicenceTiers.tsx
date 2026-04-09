@@ -39,7 +39,7 @@ export function LicenceTiers() {
             }`}
           >
             <p className="text-sm text-(--dune-muted)">{tier.name}</p>
-            <p className="mt-2 text-4xl font-bold text-(--surface-strong)">{tier.price}</p>
+            <p className="mt-2 text-4xl font-bold text-(--text-primary-dark)">{tier.price}</p>
             <p className="mt-2 text-sm text-(--dune-muted)">{tier.note}</p>
 
             <ul className="mt-4 space-y-2">

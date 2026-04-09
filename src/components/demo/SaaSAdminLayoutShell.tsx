@@ -45,7 +45,7 @@ export function SaaSAdminLayoutShell({ children }: { children: React.ReactNode }
   const pathname = usePathname();
 
   return (
-    <div className="min-h-screen bg-(--hedgehog-core-navy) text-(--surface-strong)">
+    <div className="min-h-screen bg-(--hedgehog-core-navy) text-(--text-primary-dark)">
       <div className="mx-auto grid min-h-screen max-w-[1520px] grid-cols-1 lg:grid-cols-[270px_1fr]">
         <aside className="border-b border-(--hedgehog-core-blue-deep) bg-(--hedgehog-core-navy) p-5 lg:border-b-0 lg:border-r">
           <Link href="/templates/saas-admin-pro" className="inline-flex items-center gap-3 text-lg font-semibold text-(--accent-primary)">
@@ -123,7 +123,7 @@ export function SaaSAdminLayoutShell({ children }: { children: React.ReactNode }
           <section className="mt-4 rounded-xl border border-(--hedgehog-core-blue-deep) bg-(--hedgehog-core-navy) p-4">
             <p className="text-xs uppercase tracking-[0.08em] text-(--accent-primary)">Buyer actions</p>
             <div className="mt-3 grid gap-2">
-              <Link href="/templates/saas-admin-pro#buy" className="rounded-lg bg-(--accent-primary) px-3 py-2 text-sm font-semibold text-(--surface-strong)">
+              <Link href="/templates/saas-admin-pro#buy" className="rounded-lg bg-(--accent-primary) px-3 py-2 text-sm font-semibold text-(--text-primary-dark)">
                 Buy template
               </Link>
               <Link

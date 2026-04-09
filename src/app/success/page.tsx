@@ -258,7 +258,7 @@ export default async function SuccessPage({ searchParams }: SuccessPageProps) {
             <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">
               Library version
             </p>
-            <p className="mt-1 text-[0.98rem] font-semibold text-(--hedgehog-core-navy)">
+            <p className="mt-1 text-[0.98rem] font-semibold text-(--text-primary-dark)">
               v{PACK_VERSION}
             </p>
             <p className="mt-1 text-[0.9rem] text-(--th-body-copy)">
@@ -273,21 +273,21 @@ export default async function SuccessPage({ searchParams }: SuccessPageProps) {
             <dl className="mt-2 grid gap-2 text-[0.92rem] text-(--th-body-copy)">
               <div className="flex items-center justify-between gap-4">
                 <dt>Components</dt>
-                <dd className="font-semibold text-(--hedgehog-core-navy)">{COMPONENT_COUNT}</dd>
+                <dd className="font-semibold text-(--text-primary-dark)">{COMPONENT_COUNT}</dd>
               </div>
               <div className="flex items-center justify-between gap-4">
                 <dt>Layouts included</dt>
-                <dd className="font-semibold text-(--hedgehog-core-navy)">{LAYOUT_COUNT}</dd>
+                <dd className="font-semibold text-(--text-primary-dark)">{LAYOUT_COUNT}</dd>
               </div>
               <div className="flex items-center justify-between gap-4">
                 <dt>Archive size</dt>
-                <dd className="font-semibold text-(--hedgehog-core-navy)">{packSizeInfo.formatted}</dd>
+                <dd className="font-semibold text-(--text-primary-dark)">{packSizeInfo.formatted}</dd>
               </div>
             </dl>
           </div>
 
           {!isStaticExport && !stripeConfigured ? (
-            <div className="mt-4 rounded-xl border border-[#f2d199] bg-[#fff6e8] px-4 py-3 text-[0.92rem] text-[#80541d]">
+            <div className="mt-4 rounded-xl border border-[rgba(234,88,12,0.35)] bg-[rgba(234,88,12,0.14)] px-4 py-3 text-[0.92rem] text-(--text-primary-dark)">
               Stripe keys are not configured in this environment, so live checkout details are unavailable.
             </div>
           ) : null}
@@ -300,29 +300,29 @@ export default async function SuccessPage({ searchParams }: SuccessPageProps) {
               <div className="mt-3 grid gap-3 sm:grid-cols-2">
                 <div>
                   <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">Session</p>
-                  <p className="mt-1 break-all text-[0.9rem] text-(--hedgehog-core-navy)">{summary?.sessionId ?? sessionId ?? "Unavailable"}</p>
+                  <p className="mt-1 break-all text-[0.9rem] text-(--text-primary-dark)">{summary?.sessionId ?? sessionId ?? "Unavailable"}</p>
                 </div>
                 <div>
                   <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">Amount</p>
-                  <p className="mt-1 text-[1rem] font-semibold text-(--hedgehog-core-navy)">
+                  <p className="mt-1 text-[1rem] font-semibold text-(--text-primary-dark)">
                     {formatTotal(summary?.amountTotal ?? null, summary?.currency ?? null)}
                   </p>
                 </div>
                 <div>
                   <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">Product</p>
-                  <p className="mt-1 text-[0.96rem] text-(--hedgehog-core-navy)">{summary?.packName ?? MJML_PACK_NAME}</p>
+                  <p className="mt-1 text-[0.96rem] text-(--text-primary-dark)">{summary?.packName ?? MJML_PACK_NAME}</p>
                 </div>
                 <div>
                   <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">Payment status</p>
-                  <p className="mt-1 text-[0.96rem] capitalize text-(--hedgehog-core-navy)">{summary?.paymentStatus ?? "Unavailable"}</p>
+                  <p className="mt-1 text-[0.96rem] capitalize text-(--text-primary-dark)">{summary?.paymentStatus ?? "Unavailable"}</p>
                 </div>
                 <div>
                   <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">Billing cycle</p>
-                  <p className="mt-1 text-[0.96rem] capitalize text-(--hedgehog-core-navy)">{summary?.billingCycle?.replace("_", " ") ?? "Unavailable"}</p>
+                  <p className="mt-1 text-[0.96rem] capitalize text-(--text-primary-dark)">{summary?.billingCycle?.replace("_", " ") ?? "Unavailable"}</p>
                 </div>
                 <div>
                   <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">Email</p>
-                  <p className="mt-1 text-[0.96rem] text-(--hedgehog-core-navy)">{summary?.customerEmail ?? "Unavailable"}</p>
+                  <p className="mt-1 text-[0.96rem] text-(--text-primary-dark)">{summary?.customerEmail ?? "Unavailable"}</p>
                 </div>
               </div>
             </details>
@@ -330,14 +330,14 @@ export default async function SuccessPage({ searchParams }: SuccessPageProps) {
 
           {successState === "valid_session" ? (
             <>
-              <div className="mt-6 rounded-xl border border-(--dune-muted) bg-[#FDFDFD] p-4">
+              <div className="mt-6 rounded-xl border border-(--surface-line) bg-(--surface-soft) p-4">
                 <p className="text-[0.95rem] leading-7 text-(--th-body-copy)">
                   Download link:
                 </p>
                 {downloadStatus.available && downloadLink ? (
                   <a
                     href={downloadLink}
-                    className="mt-3 inline-flex h-11 items-center rounded-full bg-(--accent-primary) px-5 text-[0.93rem] font-semibold text-(--surface-strong) transition hover:bg-(--accent-secondary) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent-primary) focus-visible:ring-offset-2"
+                    className="mt-3 inline-flex h-11 items-center rounded-full bg-(--accent-primary) px-5 text-[0.93rem] font-semibold text-(--text-primary-dark) transition hover:bg-(--accent-secondary) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent-primary) focus-visible:ring-offset-2"
                   >
                     Download pack
                   </a>
@@ -345,7 +345,7 @@ export default async function SuccessPage({ searchParams }: SuccessPageProps) {
               </div>
 
               <article className={cn(VS.cards.lightSoft, "mt-6 rounded-xl p-4")}>
-                <h2 className="text-[1rem] font-semibold text-(--hedgehog-core-navy)">
+                <h2 className="text-[1rem] font-semibold text-(--text-primary-dark)">
                   Next steps
                 </h2>
                 <ul className="mt-2 space-y-1 text-[0.92rem] leading-7 text-(--th-body-copy)">
@@ -355,7 +355,7 @@ export default async function SuccessPage({ searchParams }: SuccessPageProps) {
                 </ul>
                 <Link
                   href="/pack"
-                  className="mt-3 inline-flex rounded-full border border-(--dune-muted) bg-white px-4 py-2 text-[0.88rem] font-semibold text-(--hedgehog-core-navy) transition hover:border-(--dune-muted) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent-primary) focus-visible:ring-offset-2"
+                  className="mt-3 inline-flex rounded-full border border-(--surface-line) bg-(--surface-soft) px-4 py-2 text-[0.88rem] font-semibold text-(--text-primary-dark) transition hover:border-(--accent-support) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent-primary) focus-visible:ring-offset-2"
                 >
                   What&apos;s included
                 </Link>
@@ -367,13 +367,13 @@ export default async function SuccessPage({ searchParams }: SuccessPageProps) {
             <div className="mt-6 flex flex-wrap gap-3">
               <Link
                 href="/pricing"
-                className="rounded-full bg-(--accent-primary) px-4 py-2 text-[0.9rem] font-semibold text-(--surface-strong) transition hover:bg-(--accent-secondary) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent-primary) focus-visible:ring-offset-2"
+                className="rounded-full bg-(--accent-primary) px-4 py-2 text-[0.9rem] font-semibold text-(--text-primary-dark) transition hover:bg-(--accent-secondary) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent-primary) focus-visible:ring-offset-2"
               >
                 Go to pricing
               </Link>
               <Link
                 href="/docs"
-                className="rounded-full border border-(--dune-muted) bg-white px-4 py-2 text-[0.9rem] font-semibold text-(--hedgehog-core-navy) transition hover:border-(--dune-muted) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent-primary) focus-visible:ring-offset-2"
+                className="rounded-full border border-(--surface-line) bg-(--surface-soft) px-4 py-2 text-[0.9rem] font-semibold text-(--text-primary-dark) transition hover:border-(--accent-support) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent-primary) focus-visible:ring-offset-2"
               >
                 Open docs
               </Link>
@@ -384,13 +384,13 @@ export default async function SuccessPage({ searchParams }: SuccessPageProps) {
             <div className="mt-6 flex flex-wrap gap-3">
               <Link
                 href="/pricing"
-                className="rounded-full bg-(--accent-primary) px-4 py-2 text-[0.9rem] font-semibold text-(--surface-strong) transition hover:bg-(--accent-secondary) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent-primary) focus-visible:ring-offset-2"
+                className="rounded-full bg-(--accent-primary) px-4 py-2 text-[0.9rem] font-semibold text-(--text-primary-dark) transition hover:bg-(--accent-secondary) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent-primary) focus-visible:ring-offset-2"
               >
                 View pricing
               </Link>
               <Link
                 href="/workflows"
-                className="rounded-full border border-(--dune-muted) bg-white px-4 py-2 text-[0.9rem] font-semibold text-(--hedgehog-core-navy) transition hover:border-(--dune-muted) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent-primary) focus-visible:ring-offset-2"
+                className="rounded-full border border-(--surface-line) bg-(--surface-soft) px-4 py-2 text-[0.9rem] font-semibold text-(--text-primary-dark) transition hover:border-(--accent-support) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent-primary) focus-visible:ring-offset-2"
               >
                 Explore workflows
               </Link>
@@ -398,7 +398,7 @@ export default async function SuccessPage({ searchParams }: SuccessPageProps) {
           ) : null}
 
           {successState === "download_unavailable" ? (
-            <div className="mt-6 rounded-xl border border-[#e2b3a8] bg-[#fff3ef] px-4 py-3 text-[0.92rem] leading-7 text-[#7a2f20]">
+            <div className="mt-6 rounded-xl border border-[rgba(220,38,38,0.42)] bg-[rgba(220,38,38,0.14)] px-4 py-3 text-[0.92rem] leading-7 text-(--text-primary-dark)">
               Download currently unavailable. Please try again or contact support.
             </div>
           ) : null}
@@ -406,19 +406,19 @@ export default async function SuccessPage({ searchParams }: SuccessPageProps) {
           <div className="mt-6 flex flex-wrap gap-3">
             <Link
               href="/pack"
-              className="rounded-full border border-(--dune-muted) bg-white px-4 py-2 text-[0.9rem] font-semibold text-(--hedgehog-core-navy) transition hover:border-(--dune-muted) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent-primary) focus-visible:ring-offset-2"
+              className="rounded-full border border-(--surface-line) bg-(--surface-soft) px-4 py-2 text-[0.9rem] font-semibold text-(--text-primary-dark) transition hover:border-(--accent-support) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent-primary) focus-visible:ring-offset-2"
             >
               What&apos;s included
             </Link>
             <Link
               href="/docs"
-              className="rounded-full border border-(--dune-muted) bg-white px-4 py-2 text-[0.9rem] font-semibold text-(--hedgehog-core-navy) transition hover:border-(--dune-muted) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent-primary) focus-visible:ring-offset-2"
+              className="rounded-full border border-(--surface-line) bg-(--surface-soft) px-4 py-2 text-[0.9rem] font-semibold text-(--text-primary-dark) transition hover:border-(--accent-support) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent-primary) focus-visible:ring-offset-2"
             >
               Open docs
             </Link>
             <Link
               href="/pricing"
-              className="rounded-full border border-(--dune-muted) bg-white px-4 py-2 text-[0.9rem] font-semibold text-(--hedgehog-core-navy) transition hover:border-(--dune-muted) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent-primary) focus-visible:ring-offset-2"
+              className="rounded-full border border-(--surface-line) bg-(--surface-soft) px-4 py-2 text-[0.9rem] font-semibold text-(--text-primary-dark) transition hover:border-(--accent-support) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent-primary) focus-visible:ring-offset-2"
             >
               Back to pricing
             </Link>

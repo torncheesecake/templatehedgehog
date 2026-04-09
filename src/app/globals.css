@@ -4,51 +4,67 @@
 @source "../lib";
 
 :root {
-  /* Four base brand colours */
-  --th-core: #14132b;
-  --th-surface: #fbf3f0;
-  --th-white: #ffffff;
-  --th-accent: 354 62% 53%;
-  --th-accent-hover: 354 62% 45%;
+  /* Brand system */
+  --brand-primary: #dc2626;
+  --brand-primary-hover: #b91c1c;
+  --brand-accent: #f97316;
 
-  /* Derived semantic tones */
-  --th-core-soft: color-mix(in srgb, var(--th-core) 82%, var(--th-white));
-  --th-surface-soft: color-mix(in srgb, var(--th-surface) 86%, var(--th-white));
-  --th-line: color-mix(in srgb, var(--th-core) 18%, var(--th-surface));
-  --th-body: color-mix(in srgb, var(--th-core) 62%, var(--th-surface));
-  --th-accent-strong: hsl(var(--th-accent-hover));
+  /* Foundation palette */
+  --bg-canvas: #0b0f0e;
+  --bg-surface: #121917;
+  --bg-surface-elevated: #17201d;
+  --bg-soft: #f4fbf8;
+  --bg-soft-elevated: #ffffff;
+
+  /* Text */
+  --text-primary-dark: #e8e8e8;
+  --text-secondary-dark: #b8c0bc;
+  --text-primary-light: #0f172a;
+  --text-secondary-light: #334155;
+
+  /* Borders and status */
+  --border-dark: #24312c;
+  --border-light: #d7e3dd;
+  --success: #16a34a;
+  --warning: #ea580c;
+
+  /* Compatibility HSL channels */
+  --th-accent: 0 72% 51%;
+  --th-accent-hover: 0 69% 42%;
+  --th-accent-support: 24 95% 53%;
 
   /* App semantic tokens */
-  --background: var(--th-core);
-  --foreground: var(--th-white);
-  --panel: var(--th-surface);
-  --panel-soft: var(--th-surface-soft);
-  --line: color-mix(in srgb, var(--th-line) 24%, transparent);
-  --brand: var(--th-core);
-  --dune-muted: var(--th-line);
-  --th-body-copy: var(--th-body);
-  --th-body-copy-dark: var(--th-line);
-  --dune-focus: hsl(var(--th-accent));
-  --accent-primary: hsl(var(--th-accent));
-  --accent-secondary: var(--th-accent-strong);
-  --dune-accent: var(--th-core-soft);
-  --dune-shadow: 0 12px 28px rgba(20, 19, 43, 0.3);
+  --background: var(--bg-canvas);
+  --foreground: var(--text-primary-dark);
+  --panel: var(--bg-surface);
+  --panel-soft: var(--bg-surface-elevated);
+  --line: var(--border-dark);
+  --brand: var(--brand-primary);
+  --dune-muted: var(--text-secondary-dark);
+  --th-body-copy: var(--text-secondary-dark);
+  --th-body-copy-dark: var(--text-secondary-light);
+  --dune-focus: color-mix(in srgb, var(--brand-primary) 74%, white);
+  --accent-primary: var(--brand-primary);
+  --accent-secondary: var(--brand-primary-hover);
+  --accent-support: var(--brand-accent);
+  --dune-accent: var(--brand-accent);
+  --dune-shadow: 0 16px 34px rgba(0, 0, 0, 0.42);
   --dune-elevation: linear-gradient(
-    160deg,
-    color-mix(in srgb, var(--th-surface) 98%, var(--th-white)),
-    color-mix(in srgb, var(--th-surface-soft) 95%, var(--th-white))
+    180deg,
+    color-mix(in srgb, var(--bg-surface-elevated) 98%, black),
+    color-mix(in srgb, var(--bg-surface) 98%, black)
   );
-  --dune-deep: var(--th-core-soft);
-  --surface-strong: var(--th-surface);
-  --surface-soft: var(--th-surface-soft);
-  --surface-muted: color-mix(in srgb, var(--th-surface-soft) 72%, transparent);
-  --surface-line: color-mix(in srgb, var(--th-line) 42%, transparent);
-  --surface-shadow: 0 12px 28px rgba(20, 19, 43, 0.24);
+  --dune-deep: var(--bg-surface-elevated);
+  --surface-strong: var(--bg-canvas);
+  --surface-soft: var(--bg-surface);
+  --surface-muted: color-mix(in srgb, var(--bg-surface-elevated) 82%, transparent);
+  --surface-line: color-mix(in srgb, var(--border-dark) 84%, transparent);
+  --surface-shadow: 0 18px 36px rgba(0, 0, 0, 0.38);
 
   /* Compatibility aliases for existing utility classes */
-  --hedgehog-core-blue: var(--th-core);
-  --hedgehog-core-navy: var(--th-core);
-  --hedgehog-core-blue-deep: var(--th-core-soft);
+  --hedgehog-core-blue: var(--bg-canvas);
+  --hedgehog-core-navy: var(--bg-surface);
+  --hedgehog-core-blue-deep: var(--bg-surface-elevated);
 }
 
 html {
@@ -71,16 +87,21 @@ body {
   margin: 0;
   background:
     radial-gradient(
-      circle at 84% 8%,
-      hsl(var(--th-accent) / 0.14) 0%,
-      transparent 34%
+      circle at 82% 8%,
+      hsl(var(--th-accent) / 0.18) 0%,
+      transparent 38%
     ),
     radial-gradient(
-      circle at 14% 22%,
-      color-mix(in srgb, var(--th-core-soft) 6%, transparent) 0%,
-      transparent 42%
+      circle at 14% 16%,
+      hsl(var(--th-accent-support) / 0.1) 0%,
+      transparent 36%
     ),
-    linear-gradient(180deg, var(--th-surface) 0%, var(--th-surface-soft) 48%, var(--th-surface) 100%);
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--bg-canvas) 98%, black) 0%,
+      var(--bg-surface) 50%,
+      var(--bg-canvas) 100%
+    );
   color: var(--th-body-copy);
   font-family: Arial, sans-serif;
   text-rendering: optimizeLegibility;
@@ -100,19 +121,19 @@ h3 {
 }
 
 .cta-blue {
-  color: var(--hedgehog-core-navy) !important;
+  color: var(--text-primary-dark) !important;
   text-shadow: none;
 }
 
 .cta-blue:link,
 .cta-blue:visited {
-  color: var(--hedgehog-core-navy) !important;
+  color: var(--text-primary-dark) !important;
 }
 
 .cta-blue:hover,
 .cta-blue:active,
 .cta-blue:focus-visible {
-  color: var(--hedgehog-core-navy) !important;
+  color: var(--text-primary-dark) !important;
 }
 
 @keyframes floatPulse {
@@ -185,7 +206,7 @@ h3 {
   border: 1px solid var(--line);
   background: var(--dune-elevation);
   border-radius: 1.25rem;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 20px 38px rgba(0, 0, 0, 0.34);
   backdrop-filter: blur(8px);
 }
 
@@ -196,10 +217,10 @@ h3 {
   border-radius: inherit;
   pointer-events: none;
   background:
-    linear-gradient(104deg, rgba(255, 255, 255, 0.34), transparent 45%),
+    linear-gradient(104deg, rgba(255, 255, 255, 0.06), transparent 42%),
     radial-gradient(
       circle at 84% 16%,
-      color-mix(in srgb, var(--accent-secondary) 15%, transparent),
+      color-mix(in srgb, var(--accent-support) 16%, transparent),
       transparent 45%
     );
 }
@@ -211,14 +232,14 @@ h3 {
   right: 0;
   top: 0;
   bottom: 0;
-  border: 1px solid rgba(255, 255, 255, 0.34);
+  border: 1px solid color-mix(in srgb, var(--border-dark) 72%, transparent);
   border-radius: inherit;
   pointer-events: none;
 }
 
 .dune-rule {
   border: 0;
-  border-top: 1px solid rgba(222, 210, 204, 0.36);
+  border-top: 1px solid color-mix(in srgb, var(--border-dark) 76%, transparent);
 }
 
 .dune-pill {
@@ -236,7 +257,7 @@ h3 {
   border-radius: 0.7rem;
   border: 1px solid var(--accent-primary);
   background: var(--accent-primary);
-  color: var(--surface-strong);
+  color: var(--text-primary-dark);
   box-shadow: none;
 }
 
@@ -246,19 +267,19 @@ h3 {
 
 .dune-button-outline {
   border-radius: 0.7rem;
-  border: 1px solid rgba(222, 210, 204, 0.38);
-  background: rgba(20, 19, 43, 0.88);
-  color: var(--surface-strong);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  border: 1px solid color-mix(in srgb, var(--border-dark) 86%, transparent);
+  background: color-mix(in srgb, var(--bg-surface) 94%, transparent);
+  color: var(--text-primary-dark);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
 .dune-button-outline:hover {
-  border-color: var(--accent-secondary);
+  border-color: color-mix(in srgb, var(--accent-support) 42%, var(--border-dark));
 }
 
 .dune-strip {
-  border: 1px solid rgba(222, 210, 204, 0.3);
-  background: rgba(20, 19, 43, 0.86);
+  border: 1px solid color-mix(in srgb, var(--border-dark) 84%, transparent);
+  background: color-mix(in srgb, var(--bg-surface) 94%, transparent);
   border-radius: 1rem;
 }
 
@@ -287,27 +308,28 @@ h3 {
 
 .th-code-scroll {
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    inset 0 0 0 1px rgba(222, 210, 204, 0.3);
+    inset 0 1px 0 rgba(255, 255, 255, 0.03),
+    inset 0 0 0 1px color-mix(in srgb, var(--border-dark) 84%, transparent);
 }
 
 .surface-card {
   border: 1px solid var(--surface-line);
-  background: var(--surface-strong);
+  background: var(--surface-soft);
   border-radius: 1.05rem;
-  box-shadow: 0 12px 22px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(9px);
 }
 
 .surface-card-soft {
-  border: 1px solid rgba(222, 210, 204, 0.3);
+  border: 1px solid color-mix(in srgb, var(--border-dark) 84%, transparent);
   background: var(--surface-soft);
   border-radius: 1rem;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.24);
   backdrop-filter: blur(8px);
 }
 
 .surface-card-muted {
-  border: 1px solid rgba(222, 210, 204, 0.28);
+  border: 1px solid color-mix(in srgb, var(--border-dark) 72%, transparent);
   background: var(--surface-muted);
   border-radius: 0.96rem;
   backdrop-filter: blur(8px);
@@ -321,8 +343,8 @@ h3 {
   border-radius: 0.82rem;
   border: 1px solid var(--accent-primary);
   background: var(--accent-primary);
-  color: var(--surface-strong);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  color: var(--text-primary-dark);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.28);
 }
 
 .button-refined-primary:hover {
@@ -331,23 +353,23 @@ h3 {
 
 .button-refined-secondary {
   border-radius: 0.82rem;
-  border: 1px solid var(--accent-primary);
-  background: var(--accent-primary);
-  color: var(--surface-strong);
+  border: 1px solid color-mix(in srgb, var(--border-dark) 86%, transparent);
+  background: color-mix(in srgb, var(--bg-surface) 96%, transparent);
+  color: var(--text-primary-dark);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .button-refined-secondary:hover {
-  border-color: var(--accent-secondary);
-  background: var(--accent-secondary);
-  color: var(--surface-strong);
+  border-color: color-mix(in srgb, var(--accent-support) 42%, var(--border-dark));
+  background: color-mix(in srgb, var(--bg-surface-elevated) 96%, transparent);
+  color: var(--text-primary-dark);
 }
 
 .th-toggle-shell {
   display: inline-flex;
   border-radius: 0.88rem;
-  border: 1px solid rgba(222, 210, 204, 0.34);
-  background: rgba(20, 19, 43, 0.82);
+  border: 1px solid color-mix(in srgb, var(--border-dark) 84%, transparent);
+  background: color-mix(in srgb, var(--bg-surface) 96%, transparent);
   padding: 0.35rem;
   box-shadow: none;
 }
@@ -365,18 +387,18 @@ h3 {
 }
 
 .th-toggle-button:hover {
-  background: hsl(var(--th-accent) / 0.16);
-  color: #ffffff;
+  background: hsl(var(--th-accent-support) / 0.12);
+  color: var(--text-primary-dark);
 }
 
 .th-toggle-button[data-active="true"] {
   background: var(--accent-primary);
-  color: var(--surface-strong);
+  color: var(--text-primary-dark);
   box-shadow: none;
 }
 
 .th-dot-accent {
-  background: var(--accent-secondary);
+  background: var(--accent-support);
 }
 
 @media (max-width: 1023px) {

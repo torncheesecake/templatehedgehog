@@ -11,7 +11,7 @@ export function UpcomingTasks() {
       <div className="mt-4 space-y-2.5">
         {tasks.map((task) => (
           <div key={task.title} className="rounded-lg border border-(--hedgehog-core-blue-deep) bg-(--hedgehog-core-navy) px-3 py-2.5">
-            <p className="font-medium text-(--surface-strong)">{task.title}</p>
+            <p className="font-medium text-(--text-primary-dark)">{task.title}</p>
             <p className="text-sm text-(--dune-muted)">{task.due}</p>
           </div>
         ))}

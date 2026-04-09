@@ -87,14 +87,14 @@ export default async function ComponentDetailPage({ params }: Props) {
         payload={{ componentSlug: component.slug }}
       />
 
-      <section className="mx-auto w-full max-w-[1840px] rounded-[1.3rem] border border-[rgba(222, 210, 204,0.34)] bg-(--surface-strong) px-5 pb-20 pt-8 shadow-[0_18px_36px_rgba(20, 19, 43,0.18)] sm:px-8 lg:px-14 lg:pb-24 lg:pt-10">
-        <div className="rounded-[1.45rem] border border-[rgba(222, 210, 204,0.52)] bg-[#f7e9e3] px-5 py-7 sm:px-8 sm:py-9 lg:px-10 lg:py-10">
+      <section className="mx-auto w-full max-w-[1840px] rounded-[1.3rem] border border-(--surface-line) bg-(--surface-strong) px-5 pb-20 pt-8 shadow-[0_18px_36px_rgba(0,0,0,0.38)] sm:px-8 lg:px-14 lg:pb-24 lg:pt-10">
+        <div className="rounded-[1.45rem] border border-(--surface-line) bg-(--surface-soft) px-5 py-7 sm:px-8 sm:py-9 lg:px-10 lg:py-10">
           <article className="grid gap-8 lg:grid-cols-[minmax(0,0.94fr)_minmax(0,1.06fr)] lg:items-center">
             <div>
               <p className="text-[1rem] font-semibold uppercase tracking-[0.1em] text-(--th-body-copy)">
                 Developer reference
               </p>
-              <h1 className="mt-4 text-[2.35rem] font-semibold leading-[1.02] text-(--hedgehog-core-navy) sm:text-[3.1rem]">
+              <h1 className="mt-4 text-[2.35rem] font-semibold leading-[1.02] text-(--text-primary-dark) sm:text-[3.1rem]">
                 {component.title}
               </h1>
               <p className="mt-4 max-w-[66ch] text-[1.14rem] leading-8 text-(--th-body-copy)">
@@ -103,19 +103,19 @@ export default async function ComponentDetailPage({ params }: Props) {
 
               <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-[1.01rem] text-(--th-body-copy)">
                 <span className="inline-flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-(--accent-primary)" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-(--accent-support)" />
                   {component.category} block
                 </span>
                 <span className="inline-flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-(--accent-primary)" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-(--accent-support)" />
                   Registry-driven component page
                 </span>
                 <span className="inline-flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-(--accent-primary)" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-(--accent-support)" />
                   Source file: {component.sourceFile}
                 </span>
                 <span className="inline-flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-(--accent-primary)" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-(--accent-support)" />
                   Copyable MJML and compiled HTML
                 </span>
               </div>
@@ -123,19 +123,19 @@ export default async function ComponentDetailPage({ params }: Props) {
               <div className="mt-7 flex flex-wrap gap-3">
                 <Link
                   href="/components"
-                  className="inline-flex h-11 items-center rounded-[0.8rem] border border-[rgba(222, 210, 204,0.72)] bg-transparent px-4 text-[1rem] font-semibold text-(--th-body-copy) transition duration-200 hover:border-(--hedgehog-core-navy) hover:text-(--hedgehog-core-navy) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2 focus-visible:ring-offset-[#f7e9e3]"
+                  className="inline-flex h-11 items-center rounded-[0.8rem] border border-(--surface-line) bg-(--surface-strong) px-4 text-[1rem] font-semibold text-(--th-body-copy) transition duration-200 hover:border-(--accent-support) hover:text-(--text-primary-dark) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2 focus-visible:ring-offset-(--surface-soft)"
                 >
                   All components
                 </Link>
                 <Link
                   href="/layouts"
-                  className="inline-flex h-11 items-center rounded-[0.8rem] border border-[rgba(222, 210, 204,0.72)] bg-transparent px-4 text-[1rem] font-semibold text-(--th-body-copy) transition duration-200 hover:border-(--hedgehog-core-navy) hover:text-(--hedgehog-core-navy) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2 focus-visible:ring-offset-[#f7e9e3]"
+                  className="inline-flex h-11 items-center rounded-[0.8rem] border border-(--surface-line) bg-(--surface-strong) px-4 text-[1rem] font-semibold text-(--th-body-copy) transition duration-200 hover:border-(--accent-support) hover:text-(--text-primary-dark) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2 focus-visible:ring-offset-(--surface-soft)"
                 >
                   See layouts
                 </Link>
                 <Link
                   href="/pricing"
-                  className="inline-flex h-11 items-center gap-2 rounded-[0.8rem] border border-(--accent-primary) bg-(--accent-primary) px-5 text-[1rem] font-semibold tracking-[0.01em] !text-(--surface-strong) transition duration-200 hover:bg-(--accent-secondary) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2 focus-visible:ring-offset-[#f7e9e3]"
+                  className="inline-flex h-11 items-center gap-2 rounded-[0.8rem] border border-(--accent-primary) bg-(--accent-primary) px-5 text-[1rem] font-semibold tracking-[0.01em] !text-(--text-primary-dark) transition duration-200 hover:bg-(--accent-secondary) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2 focus-visible:ring-offset-(--surface-soft)"
                 >
                   {`View ${MJML_PACK_NAME}`}
                   <ArrowRight className="h-4 w-4" />
@@ -147,11 +147,11 @@ export default async function ComponentDetailPage({ params }: Props) {
               </p>
             </div>
 
-            <div className="rounded-[1.15rem] border border-[rgba(222, 210, 204,0.62)] bg-(--surface-strong) p-4 sm:p-5">
+            <div className="rounded-[1.15rem] border border-(--surface-line) bg-(--surface-strong) p-4 sm:p-5">
               <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">
                 Rendering screenshot
               </p>
-              <div className="relative mt-2 aspect-[15/11] overflow-hidden rounded-[0.9rem] border border-[rgba(222, 210, 204,0.56)] bg-[#ded2cc]">
+              <div className="relative mt-2 aspect-[15/11] overflow-hidden rounded-[0.9rem] border border-(--surface-line) bg-(--bg-soft)">
                 <Image
                   src={component.previewImageUrl}
                   alt={`${component.title} rendering screenshot`}
@@ -169,12 +169,12 @@ export default async function ComponentDetailPage({ params }: Props) {
         </div>
 
         <section className="section-breath grid gap-7 xl:grid-cols-[minmax(0,1.1fr)_minmax(320px,0.9fr)]">
-          <article className="overflow-hidden rounded-[1rem] border border-[rgba(222, 210, 204,0.2)] bg-[#FDFDFD] p-5 sm:p-6">
+          <article className="overflow-hidden rounded-[1rem] border border-(--surface-line) bg-(--surface-soft) p-5 sm:p-6">
             <div>
               <p className="text-[1rem] font-semibold uppercase tracking-[0.09em] text-(--th-body-copy)">
                 Live preview
               </p>
-              <h2 className="mt-2 text-[1.54rem] font-semibold text-(--hedgehog-core-navy)">Rendered component preview</h2>
+              <h2 className="mt-2 text-[1.54rem] font-semibold text-(--text-primary-dark)">Rendered component preview</h2>
               <p className="mt-3 max-w-[64ch] text-[1.08rem] leading-8 text-(--th-body-copy)">
                 This preview is rendered from compiled HTML output so you can inspect the actual email structure, not
                 a static mock-up.
@@ -190,63 +190,63 @@ export default async function ComponentDetailPage({ params }: Props) {
                 />
               </div>
             ) : (
-              <div className="mt-5 rounded-[0.9rem] border border-[#d7c297] bg-[#fff5de] px-4 py-4 text-[1rem] leading-7 text-[#6b4a1b]">
+              <div className="mt-5 rounded-[0.9rem] border border-[rgba(234,88,12,0.35)] bg-[rgba(234,88,12,0.14)] px-4 py-4 text-[1rem] leading-7 text-(--text-primary-dark)">
                 Compiled HTML is currently unavailable for this component. The screenshot above is still available as a
                 visual reference while the build output is refreshed.
               </div>
             )}
           </article>
 
-          <aside className="overflow-hidden rounded-[1rem] border border-[rgba(222, 210, 204,0.18)] bg-[#FDFDFD] p-4 sm:p-5">
+          <aside className="overflow-hidden rounded-[1rem] border border-(--surface-line) bg-(--surface-soft) p-4 sm:p-5">
             <section>
               <p className="text-[1rem] font-semibold uppercase tracking-[0.09em] text-(--th-body-copy)">
                 Usage guidance
               </p>
-              <h2 className="mt-2 text-[1.35rem] font-semibold text-(--hedgehog-core-navy)">When to use this block</h2>
+              <h2 className="mt-2 text-[1.35rem] font-semibold text-(--text-primary-dark)">When to use this block</h2>
               <ul className="mt-3 space-y-2.5 text-[0.98rem] leading-7 text-(--th-body-copy)">
                 {component.usageGuidance.map((guidance) => (
                   <li key={guidance} className="flex items-start gap-3">
-                    <CheckCircle2 className="mt-1 h-4.5 w-4.5 shrink-0 text-(--accent-primary)" />
+                    <CheckCircle2 className="mt-1 h-4.5 w-4.5 shrink-0 text-(--accent-support)" />
                     <span>{guidance}</span>
                   </li>
                 ))}
               </ul>
             </section>
 
-            <section className="mt-5 border-t border-[rgba(222, 210, 204,0.18)] pt-5">
+            <section className="mt-5 border-t border-(--surface-line) pt-5">
               <p className="text-[1rem] font-semibold uppercase tracking-[0.09em] text-(--th-body-copy)">
                 Developer notes
               </p>
-              <h2 className="mt-2 text-[1.35rem] font-semibold text-(--hedgehog-core-navy)">Edit MJML, ship HTML</h2>
+              <h2 className="mt-2 text-[1.35rem] font-semibold text-(--text-primary-dark)">Edit MJML, ship HTML</h2>
               <p className="mt-3 text-[0.98rem] leading-7 text-(--th-body-copy)">
                 Use MJML as the editable source of truth. The compiled HTML panel is included for ESP handoff, QA,
                 or integration points that only accept raw HTML.
               </p>
               <ul className="mt-3 space-y-2.5 text-[0.96rem] leading-7 text-(--th-body-copy)">
                 <li className="flex items-start gap-3">
-                  <CheckCircle2 className="mt-1 h-4.5 w-4.5 shrink-0 text-(--accent-primary)" />
+                  <CheckCircle2 className="mt-1 h-4.5 w-4.5 shrink-0 text-(--accent-support)" />
                   <span>{`Also included in ${MJML_PACK_NAME} for teams that want the full component archive offline.`}</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle2 className="mt-1 h-4.5 w-4.5 shrink-0 text-(--accent-primary)" />
+                  <CheckCircle2 className="mt-1 h-4.5 w-4.5 shrink-0 text-(--accent-support)" />
                   <span>Source file name: {component.sourceFile}</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle2 className="mt-1 h-4.5 w-4.5 shrink-0 text-(--accent-primary)" />
+                  <CheckCircle2 className="mt-1 h-4.5 w-4.5 shrink-0 text-(--accent-support)" />
                   <span>{compatibility.length} client notes currently documented for this block.</span>
                 </li>
               </ul>
             </section>
 
-            <section className="mt-5 border-t border-[rgba(222, 210, 204,0.18)] pt-5">
+            <section className="mt-5 border-t border-(--surface-line) pt-5">
               <p className="text-[1rem] font-semibold uppercase tracking-[0.09em] text-(--th-body-copy)">
                 Accessibility
               </p>
-              <h2 className="mt-2 text-[1.35rem] font-semibold text-(--hedgehog-core-navy)">Accessibility notes</h2>
+              <h2 className="mt-2 text-[1.35rem] font-semibold text-(--text-primary-dark)">Accessibility notes</h2>
               <ul className="mt-3 space-y-2.5 text-[0.98rem] leading-7 text-(--th-body-copy)">
                 {component.accessibilityNotes.map((note) => (
                   <li key={note} className="flex items-start gap-3">
-                    <CheckCircle2 className="mt-1 h-4.5 w-4.5 shrink-0 text-(--accent-primary)" />
+                    <CheckCircle2 className="mt-1 h-4.5 w-4.5 shrink-0 text-(--accent-support)" />
                     <span>{note}</span>
                   </li>
                 ))}
@@ -254,15 +254,15 @@ export default async function ComponentDetailPage({ params }: Props) {
             </section>
 
             {renderingNotes.length > 0 ? (
-              <section className="mt-5 border-t border-[rgba(222, 210, 204,0.18)] pt-5">
+              <section className="mt-5 border-t border-(--surface-line) pt-5">
                 <p className="text-[1rem] font-semibold uppercase tracking-[0.09em] text-(--th-body-copy)">
                   Rendering notes
                 </p>
-                <h2 className="mt-2 text-[1.35rem] font-semibold text-(--hedgehog-core-navy)">Client-specific guidance</h2>
+                <h2 className="mt-2 text-[1.35rem] font-semibold text-(--text-primary-dark)">Client-specific guidance</h2>
                 <ul className="mt-3 space-y-2.5 text-[0.98rem] leading-7 text-(--th-body-copy)">
                   {renderingNotes.map((note) => (
                     <li key={note} className="flex items-start gap-3">
-                      <CheckCircle2 className="mt-1 h-4.5 w-4.5 shrink-0 text-(--accent-primary)" />
+                      <CheckCircle2 className="mt-1 h-4.5 w-4.5 shrink-0 text-(--accent-support)" />
                       <span>{note}</span>
                     </li>
                   ))}
@@ -272,15 +272,15 @@ export default async function ComponentDetailPage({ params }: Props) {
           </aside>
         </section>
 
-        <section className="section-breath border-t border-[rgba(222, 210, 204,0.16)] pt-8">
+        <section className="section-breath border-t border-(--surface-line) pt-8">
           <div className="flex items-start justify-between gap-3">
             <div>
               <p className="text-[1rem] font-semibold uppercase tracking-[0.09em] text-(--th-body-copy)">
                 Client support
               </p>
-              <h2 className="mt-2 text-[1.54rem] font-semibold text-(--hedgehog-core-navy)">Compatibility</h2>
+              <h2 className="mt-2 text-[1.54rem] font-semibold text-(--text-primary-dark)">Compatibility</h2>
             </div>
-            <span className="inline-flex items-center gap-1 rounded-full bg-[rgba(222, 210, 204,0.12)] px-2.5 py-1 text-[0.86rem] font-semibold text-(--accent-primary)">
+            <span className="inline-flex items-center gap-1 rounded-full bg-[hsl(var(--th-accent-support)/0.14)] px-2.5 py-1 text-[0.86rem] font-semibold text-(--accent-support)">
               <ShieldCheck className="h-4 w-4" />
               {compatibility.length > 0 ? `${compatibility.length} clients` : "Pending"}
             </span>
@@ -289,7 +289,7 @@ export default async function ComponentDetailPage({ params }: Props) {
             Rendering support notes across major email clients.
           </p>
           {compatibility.length > 0 ? (
-            <div className="mt-4 overflow-x-auto rounded-[0.95rem] border border-[rgba(222, 210, 204,0.16)] bg-[#FDFDFD] p-4 sm:p-5">
+            <div className="mt-4 overflow-x-auto rounded-[0.95rem] border border-(--surface-line) bg-(--surface-soft) p-4 sm:p-5">
               <CompatibilityTable
                 compatibility={compatibility}
                 caption={`${component.title} compatibility matrix`}
@@ -303,9 +303,9 @@ export default async function ComponentDetailPage({ params }: Props) {
         </section>
 
         {linkedWorkflows.length > 0 ? (
-          <section className="section-breath border-t border-[rgba(222, 210, 204,0.16)] pt-8">
+          <section className="section-breath border-t border-(--surface-line) pt-8">
             <p className="text-[1rem] font-semibold uppercase tracking-[0.09em] text-(--th-body-copy)">Used in workflows</p>
-            <h2 className="mt-2 text-[1.54rem] font-semibold text-(--hedgehog-core-navy)">
+            <h2 className="mt-2 text-[1.54rem] font-semibold text-(--text-primary-dark)">
               Where this block appears in production workflow stacks
             </h2>
             <p className="mt-3 max-w-[72ch] text-[1.04rem] leading-8 text-(--th-body-copy)">
@@ -322,12 +322,12 @@ export default async function ComponentDetailPage({ params }: Props) {
                   <li key={workflow.slug}>
                     <Link
                       href={`/workflows/${workflow.slug}`}
-                      className="block rounded-[0.9rem] border border-[rgba(222, 210, 204,0.2)] bg-[#FDFDFD] p-4 transition duration-200 hover:border-(--hedgehog-core-blue-deep) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2"
+                      className="block rounded-[0.9rem] border border-(--surface-line) bg-(--surface-soft) p-4 transition duration-200 hover:border-(--accent-support) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2"
                     >
                       <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">
                         {metaLabel}
                       </p>
-                      <h3 className="mt-2 text-[1.05rem] font-semibold text-(--hedgehog-core-navy)">
+                      <h3 className="mt-2 text-[1.05rem] font-semibold text-(--text-primary-dark)">
                         {workflow.title}
                       </h3>
                       <p className="mt-2 text-[0.94rem] leading-7 text-(--th-body-copy)">{workflow.summary}</p>
@@ -340,11 +340,11 @@ export default async function ComponentDetailPage({ params }: Props) {
         ) : null}
 
         {relatedComponents.length > 0 ? (
-          <section className="section-breath border-t border-[rgba(222, 210, 204,0.16)] pt-8">
+          <section className="section-breath border-t border-(--surface-line) pt-8">
             <p className="text-[1rem] font-semibold uppercase tracking-[0.09em] text-(--th-body-copy)">
               Related blocks
             </p>
-            <h2 className="mt-2 text-[1.54rem] font-semibold text-(--hedgehog-core-navy)">Continue building</h2>
+            <h2 className="mt-2 text-[1.54rem] font-semibold text-(--text-primary-dark)">Continue building</h2>
             <p className="mt-3 max-w-[72ch] text-[1.04rem] leading-8 text-(--th-body-copy)">
               These components are closely related by category or usage pattern and are useful when assembling a full email flow.
             </p>
@@ -354,12 +354,12 @@ export default async function ComponentDetailPage({ params }: Props) {
                 <Link
                   key={relatedComponent.slug}
                   href={`/components/${relatedComponent.slug}`}
-                  className="rounded-[0.9rem] border border-[rgba(222, 210, 204,0.2)] bg-[#FDFDFD] p-4 transition duration-200 hover:border-(--hedgehog-core-blue-deep) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2"
+                  className="rounded-[0.9rem] border border-(--surface-line) bg-(--surface-soft) p-4 transition duration-200 hover:border-(--accent-support) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2"
                 >
                   <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">
                     {relatedComponent.category}
                   </p>
-                  <h3 className="mt-2 text-[1.05rem] font-semibold text-(--hedgehog-core-navy)">{relatedComponent.title}</h3>
+                  <h3 className="mt-2 text-[1.05rem] font-semibold text-(--text-primary-dark)">{relatedComponent.title}</h3>
                   <p className="mt-2 text-[0.94rem] leading-7 text-(--th-body-copy)">{relatedComponent.description}</p>
                 </Link>
               ))}
@@ -367,12 +367,12 @@ export default async function ComponentDetailPage({ params }: Props) {
           </section>
         ) : null}
 
-        <section className="section-breath border-t border-[rgba(222, 210, 204,0.16)] pt-8">
+        <section className="section-breath border-t border-(--surface-line) pt-8">
           <div className="mb-4">
             <p className="text-[1rem] font-semibold uppercase tracking-[0.09em] text-(--th-body-copy)">
               Source code
             </p>
-            <h2 className="mt-2 text-[1.54rem] font-semibold text-(--hedgehog-core-navy)">Copy the code you need</h2>
+            <h2 className="mt-2 text-[1.54rem] font-semibold text-(--text-primary-dark)">Copy the code you need</h2>
             <p className="mt-3 max-w-[72ch] text-[1.04rem] leading-8 text-(--th-body-copy)">
               The source and compiled HTML shown below map directly to the rendered preview above.
               This keeps preview, MJML, and HTML handoff output aligned.
@@ -394,8 +394,8 @@ export default async function ComponentDetailPage({ params }: Props) {
               />
             ) : (
               <article className="dune-strip overflow-hidden">
-                <div className="border-b border-[rgba(222, 210, 204,0.2)] px-5 py-4 sm:px-6">
-                  <h3 className="text-[1.1rem] font-semibold text-(--hedgehog-core-navy)">Compiled HTML</h3>
+                <div className="border-b border-(--surface-line) px-5 py-4 sm:px-6">
+                  <h3 className="text-[1.1rem] font-semibold text-(--text-primary-dark)">Compiled HTML</h3>
                   <p className="mt-1 text-[0.9rem] text-(--dune-muted)">
                     Final output for ESP handoff, QA review, or HTML-only integrations.
                   </p>
@@ -415,10 +415,10 @@ export default async function ComponentDetailPage({ params }: Props) {
           <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.82fr)] lg:items-center">
             <div>
               <p className="text-[1rem] font-semibold uppercase tracking-[0.1em] text-(--dune-muted)">Full library</p>
-              <h2 className="mt-3 text-[1.7rem] font-semibold leading-[1.08] text-[#FDFDFD] sm:text-[2.05rem]">
+              <h2 className="mt-3 text-[1.7rem] font-semibold leading-[1.08] text-(--text-primary-dark) sm:text-[2.05rem]">
                 Need the entire system available offline
               </h2>
-              <p className="mt-4 max-w-[58ch] text-[1.06rem] leading-8 text-(--surface-strong)">
+              <p className="mt-4 max-w-[58ch] text-[1.06rem] leading-8 text-(--text-primary-dark)">
                 Public component pages are there for reference and one-off use. {MJML_PACK_NAME} is for teams that want the
                 full archive, local source files, compiled HTML, and a quicker implementation handoff.
               </p>
@@ -426,27 +426,27 @@ export default async function ComponentDetailPage({ params }: Props) {
               <div className="mt-6 flex flex-wrap gap-3">
                 <Link
                   href="/pricing"
-                  className="inline-flex h-11 items-center gap-2 rounded-[0.8rem] border border-(--accent-primary) bg-(--accent-primary) px-5 text-[1rem] font-semibold tracking-[0.01em] !text-(--surface-strong) transition duration-200 hover:bg-(--accent-secondary) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2 focus-visible:ring-offset-(--hedgehog-core-navy)"
+                  className="inline-flex h-11 items-center gap-2 rounded-[0.8rem] border border-(--accent-primary) bg-(--accent-primary) px-5 text-[1rem] font-semibold tracking-[0.01em] !text-(--text-primary-dark) transition duration-200 hover:bg-(--accent-secondary) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2 focus-visible:ring-offset-(--hedgehog-core-navy)"
                 >
                   {`View ${MJML_PACK_NAME}`}
                   <ArrowRight className="h-4 w-4" />
                 </Link>
                 <Link
                   href="/docs"
-                  className="inline-flex h-11 items-center rounded-[0.8rem] border border-[rgba(222, 210, 204,0.5)] bg-transparent px-5 text-[1rem] font-semibold tracking-[0.01em] !text-(--surface-strong) transition duration-200 hover:border-[#fbf3f0] hover:!text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2 focus-visible:ring-offset-(--hedgehog-core-navy)"
+                  className="inline-flex h-11 items-center rounded-[0.8rem] border border-(--surface-line) bg-(--surface-soft) px-5 text-[1rem] font-semibold tracking-[0.01em] !text-(--text-primary-dark) transition duration-200 hover:border-(--accent-support) hover:!text-(--text-primary-dark) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2 focus-visible:ring-offset-(--hedgehog-core-navy)"
                 >
                   Read docs
                 </Link>
               </div>
             </div>
 
-            <div className="rounded-[0.96rem] border border-[hsl(var(--th-accent)/0.3)] bg-(--hedgehog-core-blue-deep) p-5">
+            <div className="rounded-[0.96rem] border border-(--surface-line) bg-(--dune-deep) p-5">
               <p className="text-[1rem] font-semibold uppercase tracking-[0.1em] text-(--dune-muted)">
                 Why teams upgrade
               </p>
-              <ul className="mt-4 space-y-3 text-[1rem] leading-8 text-(--surface-strong)">
-                <li className="border-b border-[rgba(222,210,204,0.22)] pb-2">Stop collecting blocks one page at a time</li>
-                <li className="border-b border-[rgba(222,210,204,0.22)] pb-2">Keep the full MJML and compiled HTML archive locally</li>
+              <ul className="mt-4 space-y-3 text-[1rem] leading-8 text-(--text-primary-dark)">
+                <li className="border-b border-(--surface-line) pb-2">Stop collecting blocks one page at a time</li>
+                <li className="border-b border-(--surface-line) pb-2">Keep the full MJML and compiled HTML archive locally</li>
                 <li>Speed up implementation, review, and delivery across projects</li>
               </ul>
             </div>

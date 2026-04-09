@@ -61,13 +61,13 @@ export default async function ExampleDetailRedirectPage({ params }: Props) {
           <div className="mt-6 flex flex-wrap gap-3">
             <Link
               href={`/workflows/${workflow.slug}`}
-              className="inline-flex h-11 items-center rounded-[0.82rem] border border-(--accent-primary) bg-(--accent-primary) px-4 text-[0.92rem] font-semibold !text-(--surface-strong) transition duration-200 hover:bg-(--accent-secondary) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent-primary) focus-visible:ring-offset-2"
+              className="inline-flex h-11 items-center rounded-[0.82rem] border border-(--accent-primary) bg-(--accent-primary) px-4 text-[0.92rem] font-semibold !text-(--text-primary-dark) transition duration-200 hover:bg-(--accent-secondary) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent-primary) focus-visible:ring-offset-2"
             >
               Open workflow
             </Link>
             <Link
               href="/workflows"
-              className="inline-flex h-11 items-center rounded-[0.82rem] border border-(--dune-muted) bg-[#FDFDFD] px-4 text-[0.92rem] font-semibold text-(--hedgehog-core-navy) transition duration-200 hover:border-(--hedgehog-core-blue-deep) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent-primary) focus-visible:ring-offset-2"
+              className="inline-flex h-11 items-center rounded-[0.82rem] border border-(--dune-muted) bg-[#FDFDFD] px-4 text-[0.92rem] font-semibold text-(--text-primary-dark) transition duration-200 hover:border-(--hedgehog-core-blue-deep) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent-primary) focus-visible:ring-offset-2"
             >
               All workflows
             </Link>

@@ -129,7 +129,7 @@ export default function Home() {
             </p>
             <h1
               className={cn(
-                "mt-4 max-w-[16ch] text-[2.95rem] font-semibold leading-[0.92] text-(--hedgehog-core-navy) sm:text-[4rem] lg:text-[4.45rem]",
+                "mt-4 max-w-[16ch] text-[2.95rem] font-semibold leading-[0.92] text-(--text-primary-dark) sm:text-[4rem] lg:text-[4.45rem]",
                 displaySerif.className,
               )}
             >
@@ -152,19 +152,19 @@ export default function Home() {
 
             <ul className="mt-8 grid gap-2.5 text-[0.98rem] leading-7 text-(--th-body-copy) sm:grid-cols-2">
               <li className="flex items-start gap-3">
-                <CheckCircle2 className="mt-1 h-4.5 w-4.5 shrink-0 text-(--accent-primary)" />
+                <CheckCircle2 className="mt-1 h-4.5 w-4.5 shrink-0 text-(--accent-support)" />
                 Workflow-first implementation paths
               </li>
               <li className="flex items-start gap-3">
-                <CheckCircle2 className="mt-1 h-4.5 w-4.5 shrink-0 text-(--accent-primary)" />
+                <CheckCircle2 className="mt-1 h-4.5 w-4.5 shrink-0 text-(--accent-support)" />
                 MJML source paired with compiled HTML
               </li>
               <li className="flex items-start gap-3">
-                <CheckCircle2 className="mt-1 h-4.5 w-4.5 shrink-0 text-(--accent-primary)" />
+                <CheckCircle2 className="mt-1 h-4.5 w-4.5 shrink-0 text-(--accent-support)" />
                 Reduced QA rework across clients
               </li>
               <li className="flex items-start gap-3">
-                <CheckCircle2 className="mt-1 h-4.5 w-4.5 shrink-0 text-(--accent-primary)" />
+                <CheckCircle2 className="mt-1 h-4.5 w-4.5 shrink-0 text-(--accent-support)" />
                 Cleaner handoff to ESP delivery
               </li>
             </ul>
@@ -172,20 +172,20 @@ export default function Home() {
 
           <aside className="surface-card-soft p-5 sm:p-6">
             <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">Why teams buy Core</p>
-            <h2 className="mt-2 text-[1.45rem] font-semibold text-(--hedgehog-core-navy)">
+            <h2 className="mt-2 text-[1.45rem] font-semibold text-(--text-primary-dark)">
               Reuse a working system, not one-off snippets
             </h2>
             <ul className="mt-4 space-y-3 text-[0.98rem] leading-7 text-(--th-body-copy)">
               <li className="flex items-start gap-3">
-                <span className="mt-[0.62rem] h-1.5 w-1.5 shrink-0 rounded-full bg-(--accent-primary)" />
+                <span className="mt-[0.62rem] h-1.5 w-1.5 shrink-0 rounded-full bg-(--accent-support)" />
                 Build from tested workflow structure instead of blank files.
               </li>
               <li className="flex items-start gap-3">
-                <span className="mt-[0.62rem] h-1.5 w-1.5 shrink-0 rounded-full bg-(--accent-primary)" />
+                <span className="mt-[0.62rem] h-1.5 w-1.5 shrink-0 rounded-full bg-(--accent-support)" />
                 Keep delivery-safe HTML beside editable MJML for every handoff.
               </li>
               <li className="flex items-start gap-3">
-                <span className="mt-[0.62rem] h-1.5 w-1.5 shrink-0 rounded-full bg-(--accent-primary)" />
+                <span className="mt-[0.62rem] h-1.5 w-1.5 shrink-0 rounded-full bg-(--accent-support)" />
                 Maintain consistency across campaigns, lifecycle sends, and transactional messages.
               </li>
             </ul>
@@ -193,12 +193,12 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-y border-[rgba(222,210,204,0.34)] bg-(--surface-strong) py-16 sm:py-18 lg:py-20">
+      <section className="border-y border-(--surface-line) bg-(--surface-strong) py-16 sm:py-18 lg:py-20">
         <div className={VS.widths.page}>
-          <p className="text-[1rem] font-semibold tracking-[0.01em] text-(--accent-primary)">Primary feature</p>
+          <p className="text-[1rem] font-semibold tracking-[0.01em] text-(--accent-support)">Primary feature</p>
           <h2
             className={cn(
-              "mt-3 max-w-[20ch] text-[2rem] font-semibold leading-[0.96] text-(--hedgehog-core-navy) sm:text-[2.5rem]",
+              "mt-3 max-w-[20ch] text-[2rem] font-semibold leading-[0.96] text-(--text-primary-dark) sm:text-[2.5rem]",
               displaySerif.className,
             )}
           >
@@ -211,18 +211,18 @@ export default function Home() {
           <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-5">
             {workflowShowcase.map((workflow) => (
               <article key={workflow.slug} className="surface-card-soft p-4">
-                <h3 className="text-[1.08rem] font-semibold leading-7 text-(--hedgehog-core-navy)">
+                <h3 className="text-[1.08rem] font-semibold leading-7 text-(--text-primary-dark)">
                   {workflow.title}
                 </h3>
                 <p className="mt-2 text-[0.94rem] leading-7 text-(--th-body-copy)">
                   {workflow.goal}
                 </p>
-                <p className="mt-2 text-[0.82rem] font-semibold uppercase tracking-[0.08em] text-(--hedgehog-core-blue-deep)">
+                <p className="mt-2 text-[0.82rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">
                   {workflow.linkedLayoutTitle}
                 </p>
                 <Link
                   href={`/workflows/${workflow.slug}`}
-                  className="mt-3 inline-flex items-center gap-1.5 text-[0.84rem] font-semibold text-(--hedgehog-core-blue-deep) transition hover:text-(--hedgehog-core-navy) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2"
+                  className="mt-3 inline-flex items-center gap-1.5 text-[0.84rem] font-semibold text-(--th-body-copy) transition hover:text-(--text-primary-dark) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2"
                 >
                   View workflow
                   <ArrowRight className="h-4 w-4" />
@@ -242,28 +242,28 @@ export default function Home() {
 
       <section className="py-16 sm:py-18 lg:py-20">
         <div className={VS.widths.page}>
-          <p className="text-[1rem] font-semibold tracking-[0.01em] text-(--accent-primary)">Common objection</p>
+          <p className="text-[1rem] font-semibold tracking-[0.01em] text-(--accent-support)">Common objection</p>
           <h2
             className={cn(
-              "mt-3 max-w-[18ch] text-[2rem] font-semibold leading-[0.96] text-(--hedgehog-core-navy) sm:text-[2.5rem]",
+              "mt-3 max-w-[18ch] text-[2rem] font-semibold leading-[0.96] text-(--text-primary-dark) sm:text-[2.5rem]",
               displaySerif.className,
             )}
           >
             Why not build it yourself?
           </h2>
 
-          <div className="mt-7 overflow-hidden rounded-[1rem] border border-[rgba(222,210,204,0.34)] bg-[#FDFDFD]">
-            <div className="grid grid-cols-[minmax(120px,0.28fr)_1fr_1fr] border-b border-[rgba(222,210,204,0.3)] bg-[rgba(251,243,240,0.88)]">
-              <p className="px-4 py-3 text-[0.84rem] font-semibold uppercase tracking-[0.08em] text-(--hedgehog-core-blue-deep)">Area</p>
-              <p className="px-4 py-3 text-[0.84rem] font-semibold uppercase tracking-[0.08em] text-(--hedgehog-core-blue-deep)">Building from scratch</p>
-              <p className="px-4 py-3 text-[0.84rem] font-semibold uppercase tracking-[0.08em] text-(--hedgehog-core-blue-deep)">Using Hedgehog</p>
+          <div className="mt-7 overflow-hidden rounded-[1rem] border border-(--surface-line) bg-(--surface-soft)">
+            <div className="grid grid-cols-[minmax(120px,0.28fr)_1fr_1fr] border-b border-(--surface-line) bg-(--dune-deep)">
+              <p className="px-4 py-3 text-[0.84rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">Area</p>
+              <p className="px-4 py-3 text-[0.84rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">Building from scratch</p>
+              <p className="px-4 py-3 text-[0.84rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">Using Hedgehog</p>
             </div>
             {comparisonRows.map((row) => (
               <div
                 key={row.label}
-                className="grid grid-cols-[minmax(120px,0.28fr)_1fr_1fr] border-b border-[rgba(222,210,204,0.2)] last:border-b-0"
+                className="grid grid-cols-[minmax(120px,0.28fr)_1fr_1fr] border-b border-(--surface-line) last:border-b-0"
               >
-                <p className="px-4 py-3 text-[0.95rem] font-semibold text-(--hedgehog-core-navy)">{row.label}</p>
+                <p className="px-4 py-3 text-[0.95rem] font-semibold text-(--text-primary-dark)">{row.label}</p>
                 <p className="px-4 py-3 text-[0.92rem] leading-7 text-(--th-body-copy)">{row.fromScratch}</p>
                 <p className="px-4 py-3 text-[0.92rem] leading-7 text-(--th-body-copy)">{row.withHedgehog}</p>
               </div>
@@ -272,12 +272,12 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-y border-[rgba(222,210,204,0.2)] bg-(--hedgehog-core-navy) py-16 sm:py-18 lg:py-20">
+      <section className="border-y border-(--surface-line) bg-(--hedgehog-core-navy) py-16 sm:py-18 lg:py-20">
         <div className={VS.widths.page}>
-          <p className="text-[1rem] font-semibold tracking-[0.01em] text-(--accent-primary)">Product proof</p>
+          <p className="text-[1rem] font-semibold tracking-[0.01em] text-(--accent-support)">Product proof</p>
           <h2
             className={cn(
-              "mt-3 max-w-[18ch] text-[2rem] font-semibold leading-[0.96] text-[#ffffff] sm:text-[2.5rem]",
+              "mt-3 max-w-[18ch] text-[2rem] font-semibold leading-[0.96] text-(--text-primary-dark) sm:text-[2.5rem]",
               displaySerif.className,
             )}
           >
@@ -285,9 +285,9 @@ export default function Home() {
           </h2>
 
           <div className="mt-8 grid gap-5 lg:grid-cols-3">
-            <article className="rounded-[1rem] border border-[rgba(222,210,204,0.24)] bg-[rgba(20,19,43,0.48)] p-4">
+            <article className="rounded-[1rem] border border-(--surface-line) bg-(--dune-deep) p-4">
               <p className="text-[0.84rem] font-semibold uppercase tracking-[0.08em] text-(--dune-muted)">Pack file structure</p>
-              <pre className="mt-3 overflow-x-auto rounded-[0.75rem] border border-[rgba(222,210,204,0.2)] bg-[rgba(20,19,43,0.72)] p-3 text-[0.78rem] leading-6 text-(--surface-strong)">
+              <pre className="mt-3 overflow-x-auto rounded-[0.75rem] border border-(--surface-line) bg-(--surface-strong) p-3 text-[0.78rem] leading-6 text-(--text-primary-dark)">
 {MJML_PACK_PROJECT_STRUCTURE.join("\n")}
 {"\n"}compiled/
 {"\n"}workflows/onboarding/
@@ -295,26 +295,26 @@ export default function Home() {
               </pre>
             </article>
 
-            <article className="rounded-[1rem] border border-[rgba(222,210,204,0.24)] bg-[rgba(20,19,43,0.48)] p-4">
+            <article className="rounded-[1rem] border border-(--surface-line) bg-(--dune-deep) p-4">
               <p className="text-[0.84rem] font-semibold uppercase tracking-[0.08em] text-(--dune-muted)">MJML to compiled HTML</p>
               <div className="mt-3 space-y-3">
-                <pre className="overflow-x-auto rounded-[0.75rem] border border-[rgba(222,210,204,0.2)] bg-[rgba(20,19,43,0.72)] p-3 text-[0.74rem] leading-6 text-(--surface-strong)">
+                <pre className="overflow-x-auto rounded-[0.75rem] border border-(--surface-line) bg-(--surface-strong) p-3 text-[0.74rem] leading-6 text-(--text-primary-dark)">
 {mjmlSnippet}
                 </pre>
-                <pre className="overflow-x-auto rounded-[0.75rem] border border-[rgba(222,210,204,0.2)] bg-[rgba(20,19,43,0.72)] p-3 text-[0.74rem] leading-6 text-(--surface-strong)">
+                <pre className="overflow-x-auto rounded-[0.75rem] border border-(--surface-line) bg-(--surface-strong) p-3 text-[0.74rem] leading-6 text-(--text-primary-dark)">
 {htmlSnippet}
                 </pre>
               </div>
             </article>
 
-            <article className="rounded-[1rem] border border-[rgba(222,210,204,0.24)] bg-[rgba(20,19,43,0.48)] p-4">
+            <article className="rounded-[1rem] border border-(--surface-line) bg-(--dune-deep) p-4">
               <p className="text-[0.84rem] font-semibold uppercase tracking-[0.08em] text-(--dune-muted)">Workflow mapping</p>
-              <p className="mt-2 text-[0.9rem] leading-7 text-(--surface-strong)">
+              <p className="mt-2 text-[0.9rem] leading-7 text-(--text-primary-dark)">
                 {mappingWorkflow ? mappingWorkflow.title : "Workflow"} maps directly to layout and component stack.
               </p>
               <ol className="mt-3 space-y-2 text-[0.82rem] leading-6 text-(--dune-muted)">
                 {mappingSteps.map((step) => (
-                  <li key={step} className="rounded-[0.6rem] border border-[rgba(222,210,204,0.18)] bg-[rgba(20,19,43,0.72)] px-3 py-2">
+                  <li key={step} className="rounded-[0.6rem] border border-(--surface-line) bg-(--surface-strong) px-3 py-2">
                     {step}
                   </li>
                 ))}
@@ -326,10 +326,10 @@ export default function Home() {
 
       <section className="py-16 sm:py-18 lg:py-20">
         <div className={VS.widths.page}>
-          <p className="text-[1rem] font-semibold tracking-[0.01em] text-(--accent-primary)">Scope</p>
+          <p className="text-[1rem] font-semibold tracking-[0.01em] text-(--accent-support)">Scope</p>
           <h2
             className={cn(
-              "mt-3 max-w-[14ch] text-[2rem] font-semibold leading-[0.96] text-(--hedgehog-core-navy) sm:text-[2.5rem]",
+              "mt-3 max-w-[14ch] text-[2rem] font-semibold leading-[0.96] text-(--text-primary-dark) sm:text-[2.5rem]",
               displaySerif.className,
             )}
           >
@@ -339,7 +339,7 @@ export default function Home() {
           <div className="mt-7 grid gap-4 md:grid-cols-2 xl:grid-cols-5">
             {includedBreakdown.map((item) => (
               <article key={item.title} className="surface-card-soft p-4">
-                <h3 className="text-[1.06rem] font-semibold text-(--hedgehog-core-navy)">{item.title}</h3>
+                <h3 className="text-[1.06rem] font-semibold text-(--text-primary-dark)">{item.title}</h3>
                 <p className="mt-2 text-[0.92rem] leading-7 text-(--th-body-copy)">{item.detail}</p>
               </article>
             ))}
@@ -348,12 +348,12 @@ export default function Home() {
       </section>
 
       <section className={cn(VS.widths.page, "pb-20 sm:pb-22 lg:pb-24")}>
-        <div className="rounded-[1.3rem] bg-(--hedgehog-core-navy) px-6 py-9 sm:px-8 sm:py-10 lg:px-10 lg:py-11">
+        <div className="rounded-[1.3rem] border border-(--surface-line) bg-(--hedgehog-core-navy) px-6 py-9 sm:px-8 sm:py-10 lg:px-10 lg:py-11">
           <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
             <div>
               <h2
                 className={cn(
-                  "max-w-[17ch] text-[2rem] font-semibold leading-[0.96] text-[#ffffff] sm:text-[2.45rem]",
+                  "max-w-[17ch] text-[2rem] font-semibold leading-[0.96] text-(--text-primary-dark) sm:text-[2.45rem]",
                   displaySerif.className,
                 )}
               >
@@ -370,7 +370,7 @@ export default function Home() {
               </Link>
               <Link
                 href="/workflows"
-                className="inline-flex h-12 items-center rounded-[0.9rem] border border-(--dune-muted) px-6 text-[0.9rem] font-semibold text-(--surface-strong) transition duration-200 hover:border-[#ffffff] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2 focus-visible:ring-offset-(--hedgehog-core-navy)"
+                className="inline-flex h-12 items-center rounded-[0.9rem] border border-(--surface-line) px-6 text-[0.9rem] font-semibold text-(--text-primary-dark) transition duration-200 hover:border-(--accent-support) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2 focus-visible:ring-offset-(--hedgehog-core-navy)"
               >
                 Explore workflows
               </Link>

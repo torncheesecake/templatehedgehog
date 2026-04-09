@@ -50,7 +50,7 @@ export function LaunchChecklist({ initialItems }: LaunchChecklistProps) {
             aria-pressed={item.done}
           >
             <div>
-              <p className={`font-medium ${item.done ? "text-(--accent-primary) line-through" : "text-(--surface-strong)"}`}>{item.title}</p>
+              <p className={`font-medium ${item.done ? "text-(--accent-primary) line-through" : "text-(--text-primary-dark)"}`}>{item.title}</p>
               <p className="text-sm text-(--dune-muted)">Owner: {item.owner}</p>
             </div>
             <span

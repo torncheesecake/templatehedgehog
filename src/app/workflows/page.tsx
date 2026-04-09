@@ -34,7 +34,7 @@ export default function WorkflowsPage() {
         <div className={VS.templates.library.heroGrid}>
           <header className={VS.templates.library.heroLead}>
             <p className={VS.eyebrow.light}>Workflow systems</p>
-            <h1 className="mt-4 text-[2.2rem] font-semibold leading-[1.03] text-(--hedgehog-core-navy) sm:text-[2.95rem]">
+            <h1 className="mt-4 text-[2.2rem] font-semibold leading-[1.03] text-(--text-primary-dark) sm:text-[2.95rem]">
               Start from a workflow, not a blank email
             </h1>
             <p className="mt-4 max-w-[78ch] text-[1.04rem] leading-8 text-(--th-body-copy)">
@@ -43,22 +43,22 @@ export default function WorkflowsPage() {
             </p>
             <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-[0.94rem] text-(--th-body-copy)">
               <span className="inline-flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-(--accent-primary)" />
+                <span className="h-1.5 w-1.5 rounded-full bg-(--accent-support)" />
                 {emailWorkflows.length} workflow references
               </span>
               <span className="inline-flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-(--accent-primary)" />
+                <span className="h-1.5 w-1.5 rounded-full bg-(--accent-support)" />
                 Trigger, goal, and data contract mapped
               </span>
               <span className="inline-flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-(--accent-primary)" />
+                <span className="h-1.5 w-1.5 rounded-full bg-(--accent-support)" />
                 Layout and component stack linked
               </span>
             </div>
           </header>
 
           <aside className={VS.templates.library.railCard}>
-            <p className="text-[1rem] font-semibold uppercase tracking-[0.09em] text-(--accent-primary)">
+            <p className="text-[1rem] font-semibold uppercase tracking-[0.09em] text-(--accent-support)">
               Why this matters
             </p>
             <ul className="mt-3 space-y-2.5 text-[0.95rem] leading-7 text-(--th-body-copy)">
@@ -73,7 +73,7 @@ export default function WorkflowsPage() {
               className={`
                 mt-4 inline-flex h-11 items-center rounded-[0.82rem] border border-(--accent-primary)
                 bg-(--accent-primary) px-4 text-[0.9rem] font-semibold tracking-[0.01em]
-                !text-(--surface-strong) transition duration-200 hover:bg-(--accent-secondary)
+                !text-(--text-primary-dark) transition duration-200 hover:bg-(--accent-secondary)
                 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2
               `}
             >
@@ -83,10 +83,10 @@ export default function WorkflowsPage() {
         </div>
 
         <section className={VS.templates.library.sectionSplit}>
-          <p className="text-[1rem] font-semibold uppercase tracking-[0.09em] text-(--accent-primary)">
+          <p className="text-[1rem] font-semibold uppercase tracking-[0.09em] text-(--accent-support)">
             Featured workflows
           </p>
-          <h2 className="mt-2 text-[1.64rem] font-semibold leading-[1.1] text-(--hedgehog-core-navy) sm:text-[1.95rem]">
+          <h2 className="mt-2 text-[1.64rem] font-semibold leading-[1.1] text-(--text-primary-dark) sm:text-[1.95rem]">
             Production flows teams ship repeatedly
           </h2>
           <p className="mt-3 max-w-[72ch] text-[1rem] leading-7 text-(--th-body-copy)">
@@ -98,9 +98,9 @@ export default function WorkflowsPage() {
             {featuredWorkflows.map((workflow) => (
               <article
                 key={workflow.slug}
-                className="overflow-hidden rounded-[1rem] border border-[rgba(222,210,204,0.28)] bg-[#FDFDFD] shadow-[0_14px_28px_rgba(20,19,43,0.08)]"
+                className="overflow-hidden rounded-[1rem] border border-(--surface-line) bg-(--surface-soft) shadow-[0_14px_28px_rgba(0,0,0,0.3)]"
               >
-                <div className="relative aspect-[16/10] overflow-hidden bg-[#f7e9e3]">
+                <div className="relative aspect-[16/10] overflow-hidden bg-(--bg-soft)">
                   <Image
                     src={workflow.previewImageUrl}
                     alt={`${workflow.title} layout preview`}
@@ -110,18 +110,18 @@ export default function WorkflowsPage() {
                   />
                 </div>
                 <div className="p-4">
-                  <h3 className="text-[1.2rem] font-semibold leading-7 text-(--hedgehog-core-navy)">
+                  <h3 className="text-[1.2rem] font-semibold leading-7 text-(--text-primary-dark)">
                     {workflow.title}
                   </h3>
                   <p className="mt-2 text-[0.95rem] leading-7 text-(--th-body-copy)">
                     {workflow.summary}
                   </p>
-                  <p className="mt-3 text-[0.84rem] font-semibold uppercase tracking-[0.08em] text-(--hedgehog-core-blue-deep)">
+                  <p className="mt-3 text-[0.84rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">
                     Linked layout: {workflow.linkedLayoutTitle}
                   </p>
                   <Link
                     href={`/workflows/${workflow.slug}`}
-                    className="mt-3 inline-flex items-center gap-1.5 text-[0.86rem] font-semibold text-(--hedgehog-core-blue-deep) transition hover:text-(--hedgehog-core-navy) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2"
+                    className="mt-3 inline-flex items-center gap-1.5 text-[0.86rem] font-semibold text-(--th-body-copy) transition hover:text-(--text-primary-dark) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2"
                   >
                     View workflow
                     <ArrowRight className="h-4 w-4" />
@@ -141,10 +141,10 @@ export default function WorkflowsPage() {
 
           return (
             <section key={system.slug} className={VS.templates.library.sectionSplit}>
-              <p className="text-[1rem] font-semibold uppercase tracking-[0.09em] text-(--accent-primary)">
+              <p className="text-[1rem] font-semibold uppercase tracking-[0.09em] text-(--accent-support)">
                 {system.title}
               </p>
-              <h2 className="mt-2 text-[1.64rem] font-semibold leading-[1.1] text-(--hedgehog-core-navy) sm:text-[1.95rem]">
+              <h2 className="mt-2 text-[1.64rem] font-semibold leading-[1.1] text-(--text-primary-dark) sm:text-[1.95rem]">
                 {system.title} workflows
               </h2>
               <p className="mt-3 max-w-[72ch] text-[1rem] leading-7 text-(--th-body-copy)">
@@ -156,25 +156,25 @@ export default function WorkflowsPage() {
                   <Link
                     key={workflow.slug}
                     href={`/workflows/${workflow.slug}`}
-                    className="group block rounded-[0.95rem] border border-[rgba(222,210,204,0.24)] bg-[#FDFDFD] p-4 transition duration-200 hover:border-(--hedgehog-core-blue-deep) hover:shadow-[0_16px_30px_rgba(20,19,43,0.09)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2"
+                    className="group block rounded-[0.95rem] border border-(--surface-line) bg-(--surface-soft) p-4 transition duration-200 hover:border-(--accent-support) hover:shadow-[0_16px_30px_rgba(0,0,0,0.32)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2"
                   >
                     <div className="flex items-start justify-between gap-4">
                       <div>
-                        <h3 className="text-[1.1rem] font-semibold text-(--hedgehog-core-navy)">
+                        <h3 className="text-[1.1rem] font-semibold text-(--text-primary-dark)">
                           {workflow.title}
                         </h3>
                         <p className="mt-2 text-[0.95rem] leading-7 text-(--th-body-copy)">
                           {workflow.summary}
                         </p>
                       </div>
-                      <span className="inline-flex rounded-full border border-[hsl(var(--th-accent)/0.26)] bg-[hsl(var(--th-accent)/0.1)] px-2.5 py-1 text-[0.72rem] font-semibold tracking-[0.03em] text-(--hedgehog-core-blue-deep)">
+                      <span className="inline-flex rounded-full border border-[hsl(var(--th-accent-support)/0.32)] bg-[hsl(var(--th-accent-support)/0.12)] px-2.5 py-1 text-[0.72rem] font-semibold tracking-[0.03em] text-(--accent-support)">
                         {workflow.componentStack.length} blocks
                       </span>
                     </div>
-                    <p className="mt-3 text-[0.84rem] font-semibold uppercase tracking-[0.08em] text-(--hedgehog-core-blue-deep)">
+                    <p className="mt-3 text-[0.84rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">
                       Linked layout: {workflow.linkedLayoutTitle}
                     </p>
-                    <span className="mt-3 inline-flex items-center gap-1.5 text-[0.84rem] font-semibold text-(--hedgehog-core-blue-deep)">
+                    <span className="mt-3 inline-flex items-center gap-1.5 text-[0.84rem] font-semibold text-(--th-body-copy)">
                       View workflow
                       <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
                     </span>

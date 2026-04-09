@@ -9,8 +9,8 @@ export const metadata: Metadata = {
 };
 
 const inlineCodeClass =
-  "rounded-[0.45rem] border border-[rgba(58,57,80,0.2)] bg-[#fdfdfd] px-1.5 py-0.5 text-[0.88em] font-medium text-(--hedgehog-core-navy)";
-const listClass = "list-disc space-y-2.5 pl-5 marker:text-(--hedgehog-core-blue-deep)";
+  "rounded-[0.45rem] border border-(--border-light) bg-(--bg-soft-elevated) px-1.5 py-0.5 text-[0.88em] font-medium text-(--text-primary-light)";
+const listClass = "list-disc space-y-2.5 pl-5 marker:text-(--accent-support)";
 
 const sections = [
   { id: "intro", label: "Intro" },
@@ -47,7 +47,7 @@ export default function DocsPage() {
         <p>
           A safe working pattern for most teams looks like this:
         </p>
-        <ol className="list-decimal space-y-2.5 pl-5 marker:font-semibold marker:text-(--hedgehog-core-blue-deep)">
+        <ol className="list-decimal space-y-2.5 pl-5 marker:font-semibold marker:text-(--accent-support)">
           <li>Pick the closest component or layout from the library.</li>
           <li>Edit the <span className={inlineCodeClass}>MJML</span> source rather than patching compiled HTML by hand.</li>
           <li>Compile to HTML and test the result in your delivery workflow.</li>

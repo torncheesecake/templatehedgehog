@@ -34,7 +34,7 @@ export function Logo({ variant = "wordmark", className }: LogoProps) {
         priority
       />
       <div className="leading-none">
-        <p className="text-[1.5rem] font-bold tracking-[0.01em] text-(--hedgehog-core-navy) sm:text-[1.7rem]">
+        <p className="text-[1.5rem] font-bold tracking-[0.01em] text-(--text-primary-dark) sm:text-[1.7rem]">
           {brandLineOne}
         </p>
         {brandLineTwo ? (

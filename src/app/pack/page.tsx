@@ -47,27 +47,27 @@ export default function PackPage() {
             <dl className="grid gap-2 text-[0.92rem] text-(--th-body-copy) sm:grid-cols-2 lg:grid-cols-3">
               <div className="flex items-center justify-between gap-4 rounded-md bg-[rgba(251,243,240,0.92)] px-3 py-2">
                 <dt>Components</dt>
-                <dd className="font-semibold text-(--hedgehog-core-navy)">{COMPONENT_COUNT}</dd>
+                <dd className="font-semibold text-(--text-primary-dark)">{COMPONENT_COUNT}</dd>
               </div>
               <div className="flex items-center justify-between gap-4 rounded-md bg-[rgba(251,243,240,0.92)] px-3 py-2">
                 <dt>Layouts</dt>
-                <dd className="font-semibold text-(--hedgehog-core-navy)">{LAYOUT_COUNT}</dd>
+                <dd className="font-semibold text-(--text-primary-dark)">{LAYOUT_COUNT}</dd>
               </div>
               <div className="flex items-center justify-between gap-4 rounded-md bg-[rgba(251,243,240,0.92)] px-3 py-2">
                 <dt>Workflows</dt>
-                <dd className="font-semibold text-(--hedgehog-core-navy)">{WORKFLOW_COUNT}</dd>
+                <dd className="font-semibold text-(--text-primary-dark)">{WORKFLOW_COUNT}</dd>
               </div>
               <div className="flex items-center justify-between gap-4 rounded-md bg-[rgba(251,243,240,0.92)] px-3 py-2">
                 <dt>Systems</dt>
-                <dd className="font-semibold text-(--hedgehog-core-navy)">{LAYOUT_SYSTEM_COUNT}</dd>
+                <dd className="font-semibold text-(--text-primary-dark)">{LAYOUT_SYSTEM_COUNT}</dd>
               </div>
               <div className="flex items-center justify-between gap-4 rounded-md bg-[rgba(251,243,240,0.92)] px-3 py-2">
                 <dt>Version</dt>
-                <dd className="font-semibold text-(--hedgehog-core-navy)">v{PACK_VERSION}</dd>
+                <dd className="font-semibold text-(--text-primary-dark)">v{PACK_VERSION}</dd>
               </div>
               <div className="flex items-center justify-between gap-4 rounded-md bg-[rgba(251,243,240,0.92)] px-3 py-2">
                 <dt>Last updated</dt>
-                <dd className="font-semibold text-(--hedgehog-core-navy)">{lastUpdatedLabel}</dd>
+                <dd className="font-semibold text-(--text-primary-dark)">{lastUpdatedLabel}</dd>
               </div>
             </dl>
 
@@ -84,7 +84,7 @@ export default function PackPage() {
               {MJML_PACK_PROJECT_STRUCTURE.map((entry) => (
                 <span
                   key={entry}
-                  className="rounded-full border border-[hsl(var(--th-accent)/0.24)] bg-white/92 px-3 py-1 text-[0.82rem] font-semibold text-(--hedgehog-core-navy)"
+                  className="rounded-full border border-[hsl(var(--th-accent)/0.24)] bg-white/92 px-3 py-1 text-[0.82rem] font-semibold text-(--text-primary-dark)"
                 >
                   {entry}
                 </span>
@@ -95,13 +95,13 @@ export default function PackPage() {
           <div className="section-breath grid gap-5 lg:grid-cols-3">
             <section className="surface-card-soft p-5 sm:p-6">
               <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-(--dune-muted)">Components</p>
-              <h2 className="mt-2 text-[1.2rem] font-semibold text-(--hedgehog-core-navy)">{COMPONENT_COUNT} reusable blocks</h2>
+              <h2 className="mt-2 text-[1.2rem] font-semibold text-(--text-primary-dark)">{COMPONENT_COUNT} reusable blocks</h2>
               <p className="mt-2 text-[0.95rem] leading-7 text-(--th-body-copy)">
                 Copy single blocks from the public library, then use the full local project when you need speed and consistency.
               </p>
               <Link
                 href="/components"
-                className="mt-3 inline-flex text-[0.92rem] font-semibold text-(--hedgehog-core-blue-deep) transition hover:text-(--hedgehog-core-navy) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2"
+                className="mt-3 inline-flex text-[0.92rem] font-semibold text-(--th-body-copy) transition hover:text-(--text-primary-dark) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2"
               >
                 Browse components
               </Link>
@@ -109,7 +109,7 @@ export default function PackPage() {
 
             <section className="surface-card-soft p-5 sm:p-6">
               <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-(--dune-muted)">Layout systems</p>
-              <h2 className="mt-2 text-[1.2rem] font-semibold text-(--hedgehog-core-navy)">{LAYOUT_COUNT} full layouts</h2>
+              <h2 className="mt-2 text-[1.2rem] font-semibold text-(--text-primary-dark)">{LAYOUT_COUNT} full layouts</h2>
               <ul className="mt-2 space-y-1 text-[0.92rem] leading-7 text-(--th-body-copy)">
                 {emailLayoutSystems.map((system) => (
                   <li key={system.slug}>{system.title}</li>
@@ -117,7 +117,7 @@ export default function PackPage() {
               </ul>
               <Link
                 href="/layouts"
-                className="mt-3 inline-flex text-[0.92rem] font-semibold text-(--hedgehog-core-blue-deep) transition hover:text-(--hedgehog-core-navy) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2"
+                className="mt-3 inline-flex text-[0.92rem] font-semibold text-(--th-body-copy) transition hover:text-(--text-primary-dark) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2"
               >
                 Browse layouts
               </Link>
@@ -125,13 +125,13 @@ export default function PackPage() {
 
             <section className="surface-card-soft p-5 sm:p-6">
               <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-(--dune-muted)">Workflow references</p>
-              <h2 className="mt-2 text-[1.2rem] font-semibold text-(--hedgehog-core-navy)">{WORKFLOW_COUNT} production workflows</h2>
+              <h2 className="mt-2 text-[1.2rem] font-semibold text-(--text-primary-dark)">{WORKFLOW_COUNT} production workflows</h2>
               <p className="mt-2 text-[0.95rem] leading-7 text-(--th-body-copy)">
                 Production workflow references are included so teams can start from trigger-based structures instead of blank files.
               </p>
               <Link
                 href="/workflows"
-                className="mt-3 inline-flex text-[0.92rem] font-semibold text-(--hedgehog-core-blue-deep) transition hover:text-(--hedgehog-core-navy) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2"
+                className="mt-3 inline-flex text-[0.92rem] font-semibold text-(--th-body-copy) transition hover:text-(--text-primary-dark) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2"
               >
                 Browse workflows
               </Link>
@@ -142,19 +142,19 @@ export default function PackPage() {
             <div className="flex flex-wrap gap-3">
               <Link
                 href="/pricing"
-                className="inline-flex h-11 items-center rounded-[0.82rem] border border-(--accent-primary) bg-(--accent-primary) px-4 text-[0.9rem] font-semibold tracking-[0.01em] !text-(--surface-strong) transition duration-200 hover:bg-(--accent-secondary) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2"
+                className="inline-flex h-11 items-center rounded-[0.82rem] border border-(--accent-primary) bg-(--accent-primary) px-4 text-[0.9rem] font-semibold tracking-[0.01em] !text-(--text-primary-dark) transition duration-200 hover:bg-(--accent-secondary) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2"
               >
                 View pricing
               </Link>
               <Link
                 href="/changelog"
-                className="inline-flex h-11 items-center rounded-[0.82rem] border border-(--hedgehog-core-blue-deep) bg-transparent px-4 text-[0.9rem] font-semibold text-(--hedgehog-core-blue-deep) transition duration-200 hover:border-(--hedgehog-core-navy) hover:text-(--hedgehog-core-navy) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2"
+                className="inline-flex h-11 items-center rounded-[0.82rem] border border-(--hedgehog-core-blue-deep) bg-transparent px-4 text-[0.9rem] font-semibold text-(--th-body-copy) transition duration-200 hover:border-(--hedgehog-core-navy) hover:text-(--text-primary-dark) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2"
               >
                 Read changelog
               </Link>
               <Link
                 href="/docs"
-                className="inline-flex h-11 items-center rounded-[0.82rem] border border-(--hedgehog-core-blue-deep) bg-transparent px-4 text-[0.9rem] font-semibold text-(--hedgehog-core-blue-deep) transition duration-200 hover:border-(--hedgehog-core-navy) hover:text-(--hedgehog-core-navy) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2"
+                className="inline-flex h-11 items-center rounded-[0.82rem] border border-(--hedgehog-core-blue-deep) bg-transparent px-4 text-[0.9rem] font-semibold text-(--th-body-copy) transition duration-200 hover:border-(--hedgehog-core-navy) hover:text-(--text-primary-dark) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2"
               >
                 Read docs
               </Link>

@@ -18,7 +18,7 @@ export function ReportHighlights({ rows }: ReportHighlightsProps) {
         {rows.map((row) => (
           <article key={row.label} className="rounded-xl border border-(--hedgehog-core-blue-deep) bg-(--hedgehog-core-navy) p-4">
             <p className="text-sm text-(--dune-muted)">{row.label}</p>
-            <p className="mt-1 text-2xl font-semibold text-(--surface-strong)">{row.value}</p>
+            <p className="mt-1 text-2xl font-semibold text-(--text-primary-dark)">{row.value}</p>
             <p className="mt-1 text-sm text-(--accent-primary)">{row.change} vs previous period</p>
           </article>
         ))}

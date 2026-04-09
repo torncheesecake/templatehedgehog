@@ -10,11 +10,13 @@ type VatMode = "ex_vat" | "inc_vat";
 
 interface PricingOfferCardProps {
   pricePence: number;
-  hasCoreAccess: boolean;
   stripeReady: boolean;
   productId: string;
-  productName: string;
   inclusionPoints: string[];
+  ctaLabel: string;
+  versionLabel: string;
+  lastUpdatedLabel: string;
+  isStaticPreview: boolean;
 }
 
 function formatHeadlinePriceFromPence(pence: number): string {
@@ -32,11 +34,13 @@ function formatHeadlinePriceFromPence(pence: number): string {
 
 export function PricingOfferCard({
   pricePence,
-  hasCoreAccess,
   stripeReady,
   productId,
-  productName,
   inclusionPoints,
+  ctaLabel,
+  versionLabel,
+  lastUpdatedLabel,
+  isStaticPreview,
 }: PricingOfferCardProps) {
   const [vatMode, setVatMode] = useState<VatMode>("ex_vat");
 
@@ -47,18 +51,17 @@ export function PricingOfferCard({
     return pricePence;
   }, [pricePence, vatMode]);
 
-  const ctaLabel = hasCoreAccess
-    ? `Buy another ${productName} licence`
-    : `Get ${productName}`;
-
   return (
-    <aside className="rounded-[1.4rem] bg-(--hedgehog-core-navy) p-6 shadow-[0_30px_56px_rgba(4,3,30,0.35)] sm:p-7">
-      <p className="text-[1rem] font-semibold uppercase tracking-[0.1em] text-(--dune-muted)">
-        One-time licence
+    <aside className="rounded-[1.4rem] border border-(--surface-line) bg-(--hedgehog-core-navy) p-6 shadow-[0_30px_56px_rgba(0,0,0,0.44)] sm:p-7">
+      <p className="text-[1rem] font-semibold uppercase tracking-[0.1em] text-(--accent-support)">
+        Hedgehog Core
+      </p>
+      <p className="mt-1 text-[0.9rem] leading-7 text-(--dune-muted)">
+        One-time purchase. No subscription.
       </p>
 
       <div
-        className="mt-4 inline-flex rounded-[0.8rem] bg-(--hedgehog-core-navy) p-1"
+        className="mt-4 inline-flex rounded-[0.8rem] border border-(--surface-line) bg-(--surface-soft) p-1"
         role="group"
         aria-label="VAT display mode"
       >
@@ -68,8 +71,8 @@ export function PricingOfferCard({
           aria-pressed={vatMode === "ex_vat"}
           className={`h-8 rounded-[0.58rem] px-3 text-[0.74rem] font-semibold tracking-[0.02em] transition ${
             vatMode === "ex_vat"
-              ? "bg-(--accent-primary) text-(--surface-strong)"
-              : "text-(--dune-muted) hover:text-[#ffffff]"
+              ? "bg-(--accent-primary) text-(--text-primary-dark)"
+              : "text-(--dune-muted) hover:text-(--text-primary-dark)"
           }`}
         >
           Ex VAT
@@ -80,8 +83,8 @@ export function PricingOfferCard({
           aria-pressed={vatMode === "inc_vat"}
           className={`h-8 rounded-[0.58rem] px-3 text-[0.74rem] font-semibold tracking-[0.02em] transition ${
             vatMode === "inc_vat"
-              ? "bg-(--accent-primary) text-(--surface-strong)"
-              : "text-(--dune-muted) hover:text-[#ffffff]"
+              ? "bg-(--accent-primary) text-(--text-primary-dark)"
+              : "text-(--dune-muted) hover:text-(--text-primary-dark)"
           }`}
         >
           Inc VAT
@@ -89,25 +92,47 @@ export function PricingOfferCard({
       </div>
 
       <div className="mt-6 flex items-end gap-2.5">
-        <p className="text-[3.9rem] font-semibold leading-[0.86] text-(--surface-strong) sm:text-[4.4rem]">
+        <p className="text-[3.9rem] font-semibold leading-[0.86] text-(--text-primary-dark) sm:text-[4.4rem]">
           {formatHeadlinePriceFromPence(displayedPrice)}
         </p>
-        <p className="pb-2 text-[1rem] font-semibold uppercase tracking-[0.08em] text-[#ada39f]">
+        <p className="pb-2 text-[1rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">
           {vatMode === "inc_vat" ? "inc VAT" : "ex VAT"}
         </p>
       </div>
 
-      <p className="mt-2 text-[0.9rem] leading-7 text-(--dune-muted)">
-        Pay once. Keep this version for ongoing commercial delivery.
-      </p>
+      <div className="mt-5 rounded-[0.9rem] border border-(--surface-line) bg-(--surface-soft) p-3.5 text-[0.84rem] text-(--th-body-copy)">
+        <div className="flex items-center justify-between gap-3">
+          <span>Version</span>
+          <span className="font-semibold text-(--text-primary-dark)">{versionLabel}</span>
+        </div>
+        <div className="mt-2 flex items-center justify-between gap-3 border-t border-(--surface-line) pt-2">
+          <span>Last updated</span>
+          <span className="font-semibold text-(--text-primary-dark)">{lastUpdatedLabel}</span>
+        </div>
+      </div>
 
-      <ul className="mt-6 space-y-2.5 text-[0.95rem] leading-7 text-[#f7e9e3]">
+      <ul className="mt-6 space-y-2.5 text-[0.95rem] leading-7 text-(--text-primary-dark)">
         {inclusionPoints.map((point) => (
           <li key={point} className="flex items-start gap-2.5">
-            <span className="mt-[0.62rem] h-1.5 w-1.5 shrink-0 rounded-full bg-(--accent-primary)" />
+            <span className="mt-[0.62rem] h-1.5 w-1.5 shrink-0 rounded-full bg-(--accent-support)" />
             <span>{point}</span>
           </li>
         ))}
+      </ul>
+
+      <ul className="mt-5 space-y-2 text-[0.88rem] leading-6 text-(--dune-muted)">
+        <li className="flex items-start gap-2.5">
+          <span className="mt-[0.58rem] h-1.5 w-1.5 shrink-0 rounded-full bg-(--accent-support)" />
+          Instant download after checkout
+        </li>
+        <li className="flex items-start gap-2.5">
+          <span className="mt-[0.58rem] h-1.5 w-1.5 shrink-0 rounded-full bg-(--accent-support)" />
+          Secure checkout powered by Stripe
+        </li>
+        <li className="flex items-start gap-2.5">
+          <span className="mt-[0.58rem] h-1.5 w-1.5 shrink-0 rounded-full bg-(--accent-support)" />
+          Commercial use across your own and client projects
+        </li>
       </ul>
 
       {stripeReady ? (
@@ -118,20 +143,31 @@ export function PricingOfferCard({
             label={ctaLabel}
             event="click_buy_now"
             payload={{ source: "pricing_page", packId: "pack-1", billingCycle: "one_off" }}
-            className="inline-flex h-12 w-full items-center justify-center rounded-[0.88rem] border border-(--accent-primary) bg-(--accent-primary) px-5 text-[0.94rem] font-semibold !text-(--surface-strong) transition hover:bg-(--accent-secondary) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent-primary) focus-visible:ring-offset-2 focus-visible:ring-offset-(--hedgehog-core-navy)"
+            className="inline-flex h-12 w-full items-center justify-center rounded-[0.88rem] border border-(--accent-primary) bg-(--accent-primary) px-5 text-[0.94rem] font-semibold !text-(--text-primary-dark) transition hover:bg-(--accent-secondary) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent-primary) focus-visible:ring-offset-2 focus-visible:ring-offset-(--hedgehog-core-navy)"
           />
         </form>
       ) : (
-        <p className="mt-7 rounded-[0.8rem] bg-[#460b03] px-4 py-3 text-[0.88rem] leading-6 text-[#ffe0e0]">
-          Checkout is not configured in this environment.
-        </p>
+        <div className="mt-7 space-y-2.5">
+          <button
+            type="button"
+            disabled
+            className="inline-flex h-12 w-full items-center justify-center rounded-[0.88rem] border border-(--accent-primary) bg-(--accent-primary) px-5 text-[0.94rem] font-semibold !text-(--text-primary-dark) opacity-80"
+          >
+            {ctaLabel}
+          </button>
+          <p className="rounded-[0.8rem] border border-[hsl(var(--th-accent-support)/0.44)] bg-[hsl(var(--th-accent-support)/0.16)] px-4 py-3 text-[0.84rem] leading-6 text-(--text-primary-dark)">
+            {isStaticPreview
+              ? "GitHub Pages preview only. Live checkout runs on the primary deployment."
+              : "Checkout is currently unavailable in this environment."}
+          </p>
+        </div>
       )}
 
       <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-[0.84rem] font-semibold text-(--dune-muted)">
-        <Link href="/components" className="underline-offset-2 hover:text-[#ffffff] hover:underline">
-          Browse library
+        <Link href="/workflows" className="underline-offset-2 hover:text-(--text-primary-dark) hover:underline">
+          Explore workflows
         </Link>
-        <Link href="/docs" className="underline-offset-2 hover:text-[#ffffff] hover:underline">
+        <Link href="/docs" className="underline-offset-2 hover:text-(--text-primary-dark) hover:underline">
           Read docs
         </Link>
       </div>

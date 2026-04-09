@@ -62,13 +62,13 @@ export default function SupportPage() {
               </Link>
               <Link
                 href="/changelog"
-                className={cn(VS.buttons.secondaryLight, "h-10 rounded-full bg-white px-4 py-2 text-(--hedgehog-core-navy)")}
+                className={cn(VS.buttons.secondaryLight, "h-10 rounded-full bg-(--surface-soft) px-4 py-2 text-(--text-primary-dark)")}
               >
                 View changelog
               </Link>
               <Link
                 href="/pricing"
-                className={cn(VS.buttons.secondaryLight, "h-10 rounded-full bg-white px-4 py-2 text-(--hedgehog-core-navy)")}
+                className={cn(VS.buttons.secondaryLight, "h-10 rounded-full bg-(--surface-soft) px-4 py-2 text-(--text-primary-dark)")}
               >
                 View pricing
               </Link>
@@ -79,11 +79,11 @@ export default function SupportPage() {
             <h2 className={cn("text-[1.3rem]", VS.headings.subsection)}>Frequently asked questions</h2>
             <div className="mt-4 space-y-3">
               {faqItems.map((item) => (
-                <details key={item.q} className="rounded-[0.82rem] border border-(--dune-muted) bg-[#FDFDFD]">
-                  <summary className="cursor-pointer list-none px-4 py-3 text-[0.95rem] font-semibold text-(--hedgehog-core-navy)">
+                <details key={item.q} className="rounded-[0.82rem] border border-(--surface-line) bg-(--surface-soft)">
+                  <summary className="cursor-pointer list-none px-4 py-3 text-[0.95rem] font-semibold text-(--text-primary-dark)">
                     {item.q}
                   </summary>
-                  <p className="border-t border-(--dune-muted) px-4 py-3 text-[0.93rem] leading-7 text-(--th-body-copy)">
+                  <p className="border-t border-(--surface-line) px-4 py-3 text-[0.93rem] leading-7 text-(--th-body-copy)">
                     {item.a}
                   </p>
                 </details>
@@ -94,7 +94,7 @@ export default function SupportPage() {
           <section className={VS.templates.content.sectionCard}>
             <h2 className={cn("text-[1.3rem]", VS.headings.subsection)}>Direct contact</h2>
             <p className="mt-3 text-[0.98rem] leading-7 text-(--th-body-copy)">
-              Email: <a className="font-semibold text-(--hedgehog-core-navy)" href={`mailto:${TEMPLATE_CONFIG.supportEmail}`}>{TEMPLATE_CONFIG.supportEmail}</a>
+              Email: <a className="font-semibold text-(--text-primary-dark)" href={`mailto:${TEMPLATE_CONFIG.supportEmail}`}>{TEMPLATE_CONFIG.supportEmail}</a>
             </p>
           </section>
         </div>

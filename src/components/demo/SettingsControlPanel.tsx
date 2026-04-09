@@ -35,7 +35,7 @@ export function SettingsControlPanel() {
       <section className="rounded-2xl border border-(--hedgehog-core-blue-deep) bg-(--hedgehog-core-navy) p-5">
         <div className="flex items-center gap-2 text-(--accent-primary)">
           <Palette className="h-4 w-4" />
-          <h2 className="text-xl font-semibold text-(--surface-strong)">Workspace profile</h2>
+          <h2 className="text-xl font-semibold text-(--text-primary-dark)">Workspace profile</h2>
         </div>
 
         <div className="mt-5 grid gap-4 md:grid-cols-2">
@@ -44,7 +44,7 @@ export function SettingsControlPanel() {
             <input
               value={companyName}
               onChange={(e) => setCompanyName(e.target.value)}
-              className="w-full rounded-xl border border-(--hedgehog-core-blue-deep) bg-(--hedgehog-core-navy) px-3 py-2.5 text-base text-(--surface-strong) outline-none focus:border-(--accent-primary)"
+              className="w-full rounded-xl border border-(--hedgehog-core-blue-deep) bg-(--hedgehog-core-navy) px-3 py-2.5 text-base text-(--text-primary-dark) outline-none focus:border-(--accent-primary)"
             />
           </label>
 
@@ -53,7 +53,7 @@ export function SettingsControlPanel() {
             <select
               value={currency}
               onChange={(e) => setCurrency(e.target.value)}
-              className="w-full rounded-xl border border-(--hedgehog-core-blue-deep) bg-(--hedgehog-core-navy) px-3 py-2.5 text-base text-(--surface-strong) outline-none focus:border-(--accent-primary)"
+              className="w-full rounded-xl border border-(--hedgehog-core-blue-deep) bg-(--hedgehog-core-navy) px-3 py-2.5 text-base text-(--text-primary-dark) outline-none focus:border-(--accent-primary)"
             >
               {currencies.map((item) => (
                 <option key={item}>{item}</option>
@@ -73,7 +73,7 @@ export function SettingsControlPanel() {
               <input
                 value={accent}
                 onChange={(e) => setAccent(e.target.value)}
-                className="w-full rounded-xl border border-(--hedgehog-core-blue-deep) bg-(--hedgehog-core-navy) px-3 py-2.5 text-base text-(--surface-strong) outline-none focus:border-(--accent-primary)"
+                className="w-full rounded-xl border border-(--hedgehog-core-blue-deep) bg-(--hedgehog-core-navy) px-3 py-2.5 text-base text-(--text-primary-dark) outline-none focus:border-(--accent-primary)"
               />
             </div>
           </label>
@@ -83,7 +83,7 @@ export function SettingsControlPanel() {
             <input
               value={invoicePrefix}
               onChange={(e) => setInvoicePrefix(e.target.value.toUpperCase().slice(0, 4))}
-              className="w-full rounded-xl border border-(--hedgehog-core-blue-deep) bg-(--hedgehog-core-navy) px-3 py-2.5 text-base text-(--surface-strong) outline-none focus:border-(--accent-primary)"
+              className="w-full rounded-xl border border-(--hedgehog-core-blue-deep) bg-(--hedgehog-core-navy) px-3 py-2.5 text-base text-(--text-primary-dark) outline-none focus:border-(--accent-primary)"
             />
           </label>
         </div>
@@ -114,7 +114,7 @@ export function SettingsControlPanel() {
         <section className="rounded-2xl border border-(--hedgehog-core-blue-deep) bg-(--hedgehog-core-navy) p-5">
           <div className="flex items-center gap-2 text-(--accent-primary)">
             <Bell className="h-4 w-4" />
-            <h2 className="text-xl font-semibold text-(--surface-strong)">Notification rules</h2>
+            <h2 className="text-xl font-semibold text-(--text-primary-dark)">Notification rules</h2>
           </div>
           <div className="mt-4 space-y-2.5 text-sm">
             <Toggle checked={notifyPaid} onChange={() => setNotifyPaid((v) => !v)} label="Invoice paid alerts" />
@@ -124,7 +124,7 @@ export function SettingsControlPanel() {
         </section>
 
         <section className="rounded-2xl border border-(--hedgehog-core-blue-deep) p-5" style={{ background: previewGradient }}>
-          <h2 className="text-xl font-semibold text-(--surface-strong)">Brand preview</h2>
+          <h2 className="text-xl font-semibold text-(--text-primary-dark)">Brand preview</h2>
           <p className="mt-1 text-sm text-[#f7e9e3]">Live preview of cards and action colour</p>
           <div className="mt-4 rounded-xl border border-(--hedgehog-core-blue-deep) bg-(--hedgehog-core-navy)/80 p-4">
             <p className="text-xs uppercase tracking-[0.08em] text-(--dune-muted)">Action button</p>

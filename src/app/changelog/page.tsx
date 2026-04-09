@@ -55,13 +55,13 @@ export default function ChangelogPage() {
                   <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">
                     <time dateTime={entry.date}>{formatVersionDate(entry.date)}</time>
                   </p>
-                  <h2 className="mt-2 text-[1.35rem] font-semibold text-(--hedgehog-core-navy)">
+                  <h2 className="mt-2 text-[1.35rem] font-semibold text-(--text-primary-dark)">
                     {entry.title}
                   </h2>
                   <ul className="mt-4 space-y-2 text-[0.97rem] leading-7 text-(--th-body-copy)">
                     {entry.bulletPoints.map((point) => (
                       <li key={point} className="flex gap-2">
-                        <span className="mt-[0.65rem] h-1.5 w-1.5 shrink-0 rounded-full bg-(--accent-primary)" />
+                        <span className="mt-[0.65rem] h-1.5 w-1.5 shrink-0 rounded-full bg-(--accent-support)" />
                         <span>{point}</span>
                       </li>
                     ))}

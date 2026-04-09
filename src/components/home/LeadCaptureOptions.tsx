@@ -63,7 +63,7 @@ export function LeadCaptureOptions() {
               onClick={() => setSelectedTrackId(track.id)}
               className={`rounded-lg border px-3 py-2.5 text-left transition ${
                 active
-                  ? "border-(--accent-primary) bg-(--hedgehog-core-blue-deep) text-(--surface-strong)"
+                  ? "border-(--accent-primary) bg-(--hedgehog-core-blue-deep) text-(--text-primary-dark)"
                   : "border-(--hedgehog-core-blue-deep) bg-(--hedgehog-core-navy) text-(--dune-muted) hover:border-(--accent-primary)"
               }`}
             >

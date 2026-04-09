@@ -86,7 +86,7 @@ export function BuildDashboardPreview() {
                 onClick={() => toggleModule(module.id)}
                 className={`w-full rounded-xl border px-4 py-3 text-left transition ${
                   active
-                    ? "border-(--accent-primary) bg-(--hedgehog-core-blue-deep) text-(--surface-strong)"
+                    ? "border-(--accent-primary) bg-(--hedgehog-core-blue-deep) text-(--text-primary-dark)"
                     : "border-(--hedgehog-core-blue-deep) bg-(--hedgehog-core-navy) text-(--dune-muted) hover:border-(--accent-primary)"
                 }`}
               >
@@ -96,7 +96,7 @@ export function BuildDashboardPreview() {
                     <span className="mt-1 block text-[0.92rem] text-(--dune-muted)">{module.detail}</span>
                   </span>
                   {active ? (
-                    <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-(--accent-primary) text-(--surface-strong)">
+                    <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-(--accent-primary) text-(--text-primary-dark)">
                       <Check className="h-4 w-4" />
                     </span>
                   ) : null}
@@ -112,7 +112,7 @@ export function BuildDashboardPreview() {
               selectedModules.map((module) => (
                 <div key={module.id} className="rounded-lg bg-(--hedgehog-core-navy) px-3 py-2.5">
                   <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-(--accent-primary)">Active module</p>
-                  <p className="mt-1 text-[1rem] font-semibold text-(--surface-strong)">{module.label}</p>
+                  <p className="mt-1 text-[1rem] font-semibold text-(--text-primary-dark)">{module.label}</p>
                 </div>
               ))
             ) : (

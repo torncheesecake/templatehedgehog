@@ -24,14 +24,14 @@ export function Toast({ open, message, variant = "success" }: ToastProps) {
       <div
         className={`inline-flex items-center gap-2 rounded-lg border px-3 py-2 text-sm font-semibold shadow-lg ${
           isSuccess
-            ? "border-(--accent-primary) bg-[#eafbf2] text-[#14532d]"
-            : "border-[#f2c0c0] bg-[#fff1f1] text-[#7f1d1d]"
+            ? "border-(--surface-line) bg-(--surface-soft) text-(--text-primary-dark)"
+            : "border-(--accent-primary) bg-(--surface-soft) text-(--text-primary-dark)"
         }`}
       >
         {isSuccess ? (
-          <CheckCircle2 className="h-4 w-4" aria-hidden="true" />
+          <CheckCircle2 className="h-4 w-4 text-(--success)" aria-hidden="true" />
         ) : (
-          <AlertTriangle className="h-4 w-4" aria-hidden="true" />
+          <AlertTriangle className="h-4 w-4 text-(--accent-primary)" aria-hidden="true" />
         )}
         <span>{message}</span>
       </div>

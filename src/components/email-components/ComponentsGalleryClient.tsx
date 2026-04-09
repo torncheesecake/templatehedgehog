@@ -207,7 +207,7 @@ export function ComponentsGalleryClient({ components }: ComponentsGalleryClientP
         <aside className={VS.templates.library.railCard}>
           <label
             htmlFor="components-search"
-            className="block text-[1rem] font-semibold uppercase tracking-[0.09em] text-(--accent-primary)"
+            className="block text-[1rem] font-semibold uppercase tracking-[0.09em] text-(--accent-support)"
           >
             Search components
           </label>
@@ -217,7 +217,7 @@ export function ComponentsGalleryClient({ components }: ComponentsGalleryClientP
             value={searchInput}
             onChange={(event) => setSearchInput(event.target.value)}
             placeholder="Search title, description, tags, or slug"
-            className="mt-2 h-10 w-full rounded-[0.82rem] border border-[rgba(222, 210, 204,0.28)] bg-white px-3 text-[0.95rem] text-(--hedgehog-core-navy) placeholder:text-(--th-body-copy) focus:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2"
+            className="mt-2 h-10 w-full rounded-[0.82rem] border border-(--surface-line) bg-(--surface-soft) px-3 text-[0.95rem] text-(--text-primary-dark) placeholder:text-(--th-body-copy) focus:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2"
           />
 
           <div
@@ -236,8 +236,8 @@ export function ComponentsGalleryClient({ components }: ComponentsGalleryClientP
                   aria-pressed={isActive}
           className={`inline-flex h-8.5 items-center rounded-[0.7rem] border px-3 text-[0.76rem] font-semibold tracking-[0.02em] transition focus:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2 ${
                     isActive
-                      ? "border-(--accent-primary) bg-(--accent-primary) text-(--surface-strong)"
-                      : "border-[rgba(222, 210, 204,0.24)] bg-transparent text-(--accent-primary) hover:border-(--accent-primary) hover:text-(--accent-secondary)"
+                      ? "border-(--accent-primary) bg-(--accent-primary) text-(--text-primary-dark)"
+                      : "border-(--surface-line) bg-transparent text-(--th-body-copy) hover:border-(--accent-support) hover:text-(--text-primary-dark)"
                   }`}
                 >
                   {option.label}
@@ -246,7 +246,7 @@ export function ComponentsGalleryClient({ components }: ComponentsGalleryClientP
             })}
           </div>
 
-          <p className="mt-3 text-[0.88rem] text-(--hedgehog-core-blue-deep)">
+          <p className="mt-3 text-[0.88rem] text-(--th-body-copy)">
             Showing {filteredComponents.length} {filteredComponents.length === 1 ? "component" : "components"}.
           </p>
           <p aria-live="polite" className="sr-only">
@@ -267,7 +267,7 @@ export function ComponentsGalleryClient({ components }: ComponentsGalleryClientP
               href={`/components/${component.slug}`}
               className="group block focus:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2"
             >
-              <div className={`relative overflow-hidden rounded-[1rem] ring-1 ring-[rgba(222, 210, 204,0.34)] ${previewProfile.stageClass}`}>
+              <div className={`relative overflow-hidden rounded-[1rem] ring-1 ring-(--surface-line) ${previewProfile.stageClass}`}>
                 <Image
                   src={component.previewImageUrl}
                   alt={`${component.title} preview`}
@@ -284,10 +284,10 @@ export function ComponentsGalleryClient({ components }: ComponentsGalleryClientP
                 </p>
 
                 <div className="mt-1 flex items-start justify-between gap-3">
-                  <h2 className="text-[1.2rem] font-semibold leading-7 text-(--hedgehog-core-navy) group-hover:text-(--hedgehog-core-navy)">
+                  <h2 className="text-[1.2rem] font-semibold leading-7 text-(--text-primary-dark) group-hover:text-(--text-primary-dark)">
                     {component.title}
                   </h2>
-                  <ArrowUpRight className="mt-1 h-4.5 w-4.5 shrink-0 text-(--accent-primary) transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-(--accent-secondary)" />
+                  <ArrowUpRight className="mt-1 h-4.5 w-4.5 shrink-0 text-(--accent-support) transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-(--accent-primary)" />
                 </div>
 
                 <p className="mt-2 text-[0.98rem] leading-7 text-(--th-body-copy)">
@@ -295,7 +295,7 @@ export function ComponentsGalleryClient({ components }: ComponentsGalleryClientP
                 </p>
 
                 {tagLine ? (
-                  <p className="mt-3 text-[0.8rem] font-medium tracking-[0.03em] text-(--hedgehog-core-blue-deep)">
+                  <p className="mt-3 text-[0.8rem] font-medium tracking-[0.03em] text-(--th-body-copy)">
                     {tagLine}
                     {extraTags > 0 ? ` • +${extraTags}` : ""}
                   </p>

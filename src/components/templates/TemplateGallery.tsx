@@ -36,7 +36,7 @@ export function TemplateGallery({ items }: { items: GalleryItem[] }) {
             </div>
 
             <div className="p-4">
-              <p className="text-lg font-semibold text-(--surface-strong)">{item.name}</p>
+              <p className="text-lg font-semibold text-(--text-primary-dark)">{item.name}</p>
               <p className="mt-1 text-sm text-(--dune-muted)">{item.caption}</p>
             </div>
           </Link>

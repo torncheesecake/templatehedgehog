@@ -54,13 +54,13 @@ export default function AboutPage() {
               {TEMPLATE_CONFIG.brandName} is for teams that need dependable MJML structure, predictable rendering, and a workflow that holds up under delivery pressure.
             </p>
             <div className="mt-6 grid gap-3 sm:grid-cols-2">
-              <div className="rounded-[0.9rem] border border-(--dune-muted) bg-[#FDFDFD] px-4 py-3">
+              <div className="rounded-[0.9rem] border border-(--surface-line) bg-(--surface-soft) px-4 py-3">
                 <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">Components</p>
-                <p className="mt-1 text-[0.95rem] font-semibold text-(--hedgehog-core-navy)">Single reusable blocks</p>
+                <p className="mt-1 text-[0.95rem] font-semibold text-(--text-primary-dark)">Single reusable blocks</p>
               </div>
-              <div className="rounded-[0.9rem] border border-(--dune-muted) bg-[#FDFDFD] px-4 py-3">
+              <div className="rounded-[0.9rem] border border-(--surface-line) bg-(--surface-soft) px-4 py-3">
                 <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">Layouts</p>
-                <p className="mt-1 text-[0.95rem] font-semibold text-(--hedgehog-core-navy)">Full recipes from stacked components</p>
+                <p className="mt-1 text-[0.95rem] font-semibold text-(--text-primary-dark)">Full recipes from stacked components</p>
               </div>
             </div>
           </article>
@@ -69,8 +69,8 @@ export default function AboutPage() {
             <h2 className={cn("text-[1.32rem]", VS.headings.subsection)}>What we optimise for</h2>
             <div className="mt-4 grid gap-3 md:grid-cols-2">
               {principles.map((principle) => (
-                <article key={principle.title} className="rounded-[0.9rem] border border-(--dune-muted) bg-[#FDFDFD] px-4 py-3">
-                  <h3 className="text-[1rem] font-semibold text-(--hedgehog-core-navy)">{principle.title}</h3>
+                <article key={principle.title} className="rounded-[0.9rem] border border-(--surface-line) bg-(--surface-soft) px-4 py-3">
+                  <h3 className="text-[1rem] font-semibold text-(--text-primary-dark)">{principle.title}</h3>
                   <p className="mt-1 text-[0.95rem] leading-7 text-(--th-body-copy)">{principle.description}</p>
                 </article>
               ))}
@@ -91,13 +91,13 @@ export default function AboutPage() {
               </Link>
               <Link
                 href="/layouts"
-                className={cn(VS.buttons.secondaryLight, "h-10 bg-white px-4 text-(--hedgehog-core-navy)")}
+                className={cn(VS.buttons.secondaryLight, "h-10 bg-(--surface-soft) px-4 text-(--text-primary-dark)")}
               >
                 View layouts
               </Link>
               <Link
                 href="/pricing"
-                className={cn(VS.buttons.secondaryLight, "h-10 bg-white px-4 text-(--hedgehog-core-navy)")}
+                className={cn(VS.buttons.secondaryLight, "h-10 bg-(--surface-soft) px-4 text-(--text-primary-dark)")}
               >
                 Pricing
               </Link>
