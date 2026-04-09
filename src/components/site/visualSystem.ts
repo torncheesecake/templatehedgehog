@@ -79,6 +79,38 @@ export const visualSystem = {
     light: "bg-(--bg-soft)",
     lightAlt: "bg-(--bg-soft-elevated)",
   },
+  sections: {
+    types: {
+      hero: "pb-24 pt-14 sm:pt-16 lg:pb-28 lg:pt-20",
+      feature: "py-20 sm:py-24 lg:py-24",
+      proof: "py-20 sm:py-24 lg:py-24",
+      comparison: "py-20 sm:py-24 lg:py-24",
+      grid: "py-20 sm:py-24 lg:py-24",
+      cta: "pb-24 sm:pb-28 lg:pb-28",
+    },
+    surfaces: {
+      dark: "bg-(--surface-strong)",
+      mid: "bg-(--surface-soft)",
+      light: "bg-(--bg-soft)",
+    },
+    intros: {
+      centered: "mx-auto max-w-[78ch] text-center",
+      wideSplit:
+        "grid gap-10 lg:grid-cols-[minmax(0,1.12fr)_minmax(320px,0.88fr)] lg:items-end",
+      fullWidth: "max-w-[84ch]",
+      headingGap: "mt-3",
+      bodyGap: "mt-4",
+      contentGap: "mt-9",
+    },
+    layouts: {
+      split: "grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.94fr)] lg:items-start",
+      splitTight: "grid gap-10 lg:grid-cols-[minmax(0,1.16fr)_minmax(320px,0.84fr)] lg:items-start",
+      proofCombo: "grid gap-6 lg:grid-cols-[minmax(0,1.26fr)_minmax(0,0.74fr)]",
+      cards3: "grid gap-6 md:grid-cols-2 xl:grid-cols-3",
+      cards5: "grid gap-6 md:grid-cols-2 xl:grid-cols-5",
+      pair: "grid gap-6 lg:grid-cols-2",
+    },
+  },
   ctaPattern: {
     band:
       "rounded-[1.4rem] border border-(--surface-line) bg-(--surface-soft) px-7 py-9 shadow-[0_20px_38px_rgba(0,0,0,0.42)] sm:px-9 sm:py-10",

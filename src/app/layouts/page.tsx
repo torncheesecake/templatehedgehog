@@ -17,7 +17,7 @@ export default function LayoutsGalleryPage() {
 
   return (
     <main className={VS.templates.library.main}>
-      <SiteTopBar theme="hero" />
+      <SiteTopBar theme="hero" ctaHref="/pricing" ctaLabel="Get Hedgehog Core - £79" />
       <LayoutsGallery layouts={emailLayouts} systems={emailLayoutSystems} />
 
       <SiteFooter />

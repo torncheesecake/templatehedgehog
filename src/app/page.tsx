@@ -1,9 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Roboto_Serif } from "next/font/google";
-import { ArrowRight, CheckCircle2, FileCode2, Layers3, Zap } from "lucide-react";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ComparisonSection } from "@/components/site/ComparisonSection";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { SiteTopBar } from "@/components/site/SiteTopBar";
+import {
+  MjmlHtmlSplitView,
+  PackFileTreePreview,
+  WorkflowFlowDiagram,
+  WorkflowStackVisual,
+} from "@/components/site/ProductVisuals";
 import {
   getEmailWorkflowBySlug,
   getFeaturedEmailWorkflows,
@@ -148,12 +155,23 @@ export default function Home() {
       ]
     : [];
 
+  const leftEffortItems = comparisonRows.map((row, index) => ({
+    label: row.label,
+    note: row.fromScratch,
+    value: fromScratchEffort[index] ?? 80,
+  }));
+  const rightEffortItems = comparisonRows.map((row, index) => ({
+    label: row.label,
+    note: row.withHedgehog,
+    value: withHedgehogEffort[index] ?? 32,
+  }));
+
   return (
     <main className="min-h-screen bg-(--surface-strong) text-(--th-body-copy) [font-family:Arial,sans-serif]">
       <SiteTopBar theme="hero" ctaHref="/pricing" ctaLabel="Get Hedgehog Core - £79" />
 
-      <section className={cn(VS.widths.page, "pb-24 pt-14 sm:pt-16 lg:pb-28 lg:pt-20")}>
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.94fr)] lg:items-start">
+      <section className={cn(VS.widths.page, VS.sections.types.hero)}>
+        <div className={VS.sections.intros.wideSplit}>
           <div className="max-w-[760px]">
             <p className="text-[1rem] font-semibold tracking-[0.01em] text-(--th-body-copy)">
               Production-ready MJML system
@@ -200,54 +218,33 @@ export default function Home() {
             </ul>
           </div>
 
-          <aside className="surface-card-soft p-6 sm:p-7">
-            <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">Workflow pipeline</p>
-            <h2 className="mt-2 text-[1.56rem] font-semibold leading-[1.08] text-(--text-primary-dark)">
-              Trigger to output in one mapped chain
-            </h2>
-            <ol className="mt-5 space-y-2">
-              {pipelineSteps.map((step, index) => (
-                <li key={step.stage}>
-                  <article className="rounded-[0.86rem] border border-(--surface-line) bg-(--surface-strong) px-3.5 py-3.5">
-                    <div className="flex items-start gap-3">
-                      <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-(--dune-deep) text-[0.76rem] font-semibold text-(--text-primary-dark)">
-                        {index + 1}
-                      </span>
-                      <div>
-                        <p className="text-[0.76rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">{step.stage}</p>
-                        <p className="mt-1 text-[0.9rem] leading-6 text-(--text-primary-dark)">{step.detail}</p>
-                      </div>
-                    </div>
-                  </article>
-                  {index < pipelineSteps.length - 1 ? (
-                    <div className="ml-3 mt-1.5 h-3 border-l border-(--surface-line)" aria-hidden="true" />
-                  ) : null}
-                </li>
-              ))}
-            </ol>
-            <p className="mt-4 text-[0.88rem] leading-6 text-(--th-body-copy)">
-              The same chain powers public reference pages and the full downloadable pack.
-            </p>
-          </aside>
+          <WorkflowFlowDiagram
+            title="Workflow pipeline"
+            subtitle="Trigger to output in one mapped chain"
+            steps={pipelineSteps.map((item) => ({ label: item.stage, detail: item.detail }))}
+            className="shadow-[0_18px_34px_rgba(0,0,0,0.24)]"
+          />
         </div>
       </section>
 
-      <section className="border-y border-(--border-light) bg-(--bg-soft) py-20 sm:py-24 lg:py-24">
+      <section className={cn("border-y border-(--border-light) bg-(--bg-soft)", VS.sections.types.grid)}>
         <div className={VS.widths.page}>
-          <p className="text-[1rem] font-semibold tracking-[0.01em] text-(--text-secondary-light)">Primary feature</p>
-          <h2
-            className={cn(
-              "mt-3 max-w-[20ch] text-[2.12rem] font-semibold leading-[0.94] text-(--text-primary-light) sm:text-[2.72rem]",
-              displaySerif.className,
-            )}
-          >
-            Start from a workflow, not a blank email
-          </h2>
-          <p className="mt-4 max-w-[72ch] text-[1rem] leading-8 text-(--text-secondary-light)">
-            Each flow links trigger, layout, component stack, and output so implementation starts from structure instead of guesswork.
-          </p>
+          <div className={VS.sections.intros.fullWidth}>
+            <p className="text-[1rem] font-semibold tracking-[0.01em] text-(--text-secondary-light)">Primary feature</p>
+            <h2
+              className={cn(
+                "mt-3 max-w-[20ch] text-[2.12rem] font-semibold leading-[0.94] text-(--text-primary-light) sm:text-[2.72rem]",
+                displaySerif.className,
+              )}
+            >
+              Start from a workflow, not a blank email
+            </h2>
+            <p className="mt-4 max-w-[72ch] text-[1rem] leading-8 text-(--text-secondary-light)">
+              Each flow links trigger, layout, component stack, and output so implementation starts from structure instead of guesswork.
+            </p>
+          </div>
 
-          <div className="mt-9 grid gap-5 md:grid-cols-2 xl:grid-cols-5">
+          <div className={cn(VS.sections.intros.contentGap, VS.sections.layouts.cards5)}>
             {workflowShowcase.map((workflow) => (
               <article
                 key={workflow.slug}
@@ -291,172 +288,84 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-b border-(--surface-line) bg-(--surface-soft) py-20 sm:py-24 lg:py-24">
+      <ComparisonSection
+        sectionClassName="border-b border-(--surface-line) bg-(--surface-soft)"
+        eyebrow="Common objection"
+        title="Build it yourself vs Hedgehog"
+        description="Same requirement, two very different levels of effort."
+        leftTitle="Build from scratch"
+        rightTitle="Using Hedgehog"
+        leftItems={leftEffortItems}
+        rightItems={rightEffortItems}
+      />
+
+      <section className={cn("border-y border-(--border-light) bg-(--bg-soft)", VS.sections.types.proof)}>
         <div className={VS.widths.page}>
-          <p className="text-[1rem] font-semibold tracking-[0.01em] text-(--accent-support)">Common objection</p>
-          <h2
-            className={cn(
-              "mt-3 max-w-[18ch] text-[2rem] font-semibold leading-[0.96] text-(--text-primary-dark) sm:text-[2.5rem]",
-              displaySerif.className,
-            )}
-          >
-            Build it yourself vs Hedgehog
-          </h2>
-          <p className="mt-4 max-w-[70ch] text-[1rem] leading-8 text-(--th-body-copy)">
-            Same requirement, two very different levels of effort.
-          </p>
-
-          <div className="mt-8 grid gap-6 lg:grid-cols-2">
-            <article className="surface-card-soft p-6 sm:p-7">
-              <div className="flex items-center gap-2.5">
-                <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-(--surface-strong)">
-                  <FileCode2 className="h-4 w-4 text-(--text-primary-dark)" />
-                </span>
-                <p className="text-[0.9rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">Build from scratch</p>
-              </div>
-              <ul className="mt-5 space-y-4">
-                {comparisonRows.map((row, index) => (
-                  <li key={`scratch-${row.label}`}>
-                    <div className="flex items-center justify-between gap-3">
-                      <p className="text-[0.9rem] font-semibold text-(--text-primary-dark)">{row.label}</p>
-                      <p className="text-[0.78rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">High effort</p>
-                    </div>
-                    <p className="mt-1 text-[0.88rem] leading-6 text-(--th-body-copy)">{row.fromScratch}</p>
-                    <div className="mt-2 h-1.5 rounded-full bg-(--surface-line)">
-                      <span
-                        className="block h-full rounded-full bg-[hsl(var(--th-accent-support)/0.55)]"
-                        style={{ width: `${fromScratchEffort[index]}%` }}
-                      />
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </article>
-
-            <article className="rounded-[1rem] border border-(--surface-line) bg-(--hedgehog-core-navy) p-6 shadow-[0_20px_38px_rgba(0,0,0,0.3)] sm:p-7">
-              <div className="flex items-center gap-2.5">
-                <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-(--surface-soft)">
-                  <Zap className="h-4 w-4 text-(--text-primary-dark)" />
-                </span>
-                <p className="text-[0.9rem] font-semibold uppercase tracking-[0.08em] text-(--dune-muted)">Using Hedgehog</p>
-              </div>
-              <ul className="mt-5 space-y-4">
-                {comparisonRows.map((row, index) => (
-                  <li key={`hedgehog-${row.label}`}>
-                    <div className="flex items-center justify-between gap-3">
-                      <p className="text-[0.9rem] font-semibold text-(--text-primary-dark)">{row.label}</p>
-                      <p className="text-[0.78rem] font-semibold uppercase tracking-[0.08em] text-(--dune-muted)">Lower effort</p>
-                    </div>
-                    <p className="mt-1 text-[0.88rem] leading-6 text-(--dune-muted)">{row.withHedgehog}</p>
-                    <div className="mt-2 h-1.5 rounded-full bg-(--surface-line)">
-                      <span
-                        className="block h-full rounded-full bg-(--text-primary-dark)"
-                        style={{ width: `${withHedgehogEffort[index]}%` }}
-                      />
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </article>
+          <div className={VS.sections.intros.fullWidth}>
+            <p className="text-[1rem] font-semibold tracking-[0.01em] text-(--text-secondary-light)">Product proof</p>
+            <h2
+              className={cn(
+                "mt-3 max-w-[18ch] text-[2.12rem] font-semibold leading-[0.94] text-(--text-primary-light) sm:text-[2.72rem]",
+                displaySerif.className,
+              )}
+            >
+              Technical proof, not mock-up claims
+            </h2>
+            <p className="mt-4 max-w-[70ch] text-[1rem] leading-8 text-(--text-secondary-light)">
+              Source, output, and mapping shown exactly as the pack is structured.
+            </p>
           </div>
-        </div>
-      </section>
 
-      <section className="border-y border-(--border-light) bg-(--bg-soft) py-20 sm:py-24 lg:py-24">
-        <div className={VS.widths.page}>
-          <p className="text-[1rem] font-semibold tracking-[0.01em] text-(--text-secondary-light)">Product proof</p>
-          <h2
-            className={cn(
-              "mt-3 max-w-[18ch] text-[2.12rem] font-semibold leading-[0.94] text-(--text-primary-light) sm:text-[2.72rem]",
-              displaySerif.className,
-            )}
-          >
-            Technical proof, not mock-up claims
-          </h2>
-          <p className="mt-4 max-w-[70ch] text-[1rem] leading-8 text-(--text-secondary-light)">
-            Source, output, and mapping shown exactly as the pack is structured.
-          </p>
-
-          <div className="mt-9 grid gap-6 lg:grid-cols-[minmax(0,1.26fr)_minmax(0,0.74fr)]">
-            <article className="rounded-[1rem] border border-(--border-light) bg-(--bg-soft-elevated) p-6 shadow-[0_18px_32px_rgba(15,23,42,0.08)]">
-              <p className="text-[0.84rem] font-semibold uppercase tracking-[0.08em] text-(--text-secondary-light)">MJML to compiled HTML</p>
-              <div className="mt-4 grid gap-4 md:grid-cols-2">
-                <div>
-                  <p className="text-[0.72rem] font-semibold uppercase tracking-[0.09em] text-(--text-secondary-light)">MJML source</p>
-                  <pre className="mt-2 overflow-x-auto rounded-[0.75rem] border border-(--border-dark) bg-(--bg-canvas) p-4 text-[0.74rem] leading-6 text-(--text-primary-dark)">
-{mjmlSnippet}
-                  </pre>
-                </div>
-                <div>
-                  <p className="text-[0.72rem] font-semibold uppercase tracking-[0.09em] text-(--text-secondary-light)">Compiled HTML</p>
-                  <pre className="mt-2 overflow-x-auto rounded-[0.75rem] border border-(--border-dark) bg-(--bg-canvas) p-4 text-[0.74rem] leading-6 text-(--text-primary-dark)">
-{htmlSnippet}
-                  </pre>
-                </div>
-              </div>
-            </article>
+          <div className={cn(VS.sections.intros.contentGap, VS.sections.layouts.proofCombo)}>
+            <MjmlHtmlSplitView
+              title="MJML to compiled HTML"
+              mjml={mjmlSnippet}
+              html={htmlSnippet}
+              className="border-(--border-light) bg-(--bg-soft-elevated) shadow-[0_18px_32px_rgba(15,23,42,0.08)]"
+            />
 
             <div className="grid gap-5">
-              <article className="rounded-[1rem] border border-(--border-light) bg-(--bg-soft-elevated) p-6 shadow-[0_18px_32px_rgba(15,23,42,0.08)]">
-                <p className="text-[0.84rem] font-semibold uppercase tracking-[0.08em] text-(--text-secondary-light)">Pack file structure</p>
-                <pre className="mt-4 overflow-x-auto rounded-[0.75rem] border border-(--border-dark) bg-(--bg-canvas) p-4 text-[0.78rem] leading-6 text-(--text-primary-dark)">
-{MJML_PACK_PROJECT_STRUCTURE.join("\n")}
-{"\n"}compiled/
-{"\n"}workflows/onboarding/
-{"\n"}workflows/password-reset/
-                </pre>
-              </article>
-
-              <article className="rounded-[1rem] border border-(--border-light) bg-(--bg-soft-elevated) p-6 shadow-[0_18px_32px_rgba(15,23,42,0.08)]">
-                <p className="text-[0.84rem] font-semibold uppercase tracking-[0.08em] text-(--text-secondary-light)">Workflow stack breakdown</p>
-                <div className="mt-3 flex items-start gap-3">
-                  <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-(--bg-soft) text-(--text-primary-light)">
-                    <Layers3 className="h-4 w-4" />
-                  </span>
-                  <p className="text-[0.9rem] leading-7 text-(--text-secondary-light)">
-                    {mappingWorkflow ? mappingWorkflow.title : "Workflow"} links directly to layout and ordered component stack.
-                  </p>
-                </div>
-                {mappingWorkflow ? (
-                  <div className="relative mt-4 aspect-[16/8] overflow-hidden rounded-[0.78rem] border border-(--border-light) bg-(--bg-soft)">
-                    <Image
-                      src={mappingWorkflow.previewImageUrl}
-                      alt={`${mappingWorkflow.title} mapping preview`}
-                      fill
-                      sizes="(max-width: 1280px) 90vw, 32vw"
-                      className="object-cover object-top"
-                    />
-                  </div>
-                ) : null}
-                <ol className="mt-4 space-y-2.5 text-[0.82rem] leading-6 text-(--text-secondary-light)">
-                  {mappingSteps.map((step) => (
-                    <li key={step} className="rounded-[0.6rem] border border-(--border-light) bg-(--bg-soft) px-3.5 py-2.5">
-                      {step}
-                    </li>
-                  ))}
-                </ol>
-              </article>
+              <PackFileTreePreview
+                title="Pack file structure"
+                lines={[
+                  ...MJML_PACK_PROJECT_STRUCTURE,
+                  "compiled/",
+                  "workflows/onboarding/",
+                  "workflows/password-reset/",
+                ]}
+                className="border-(--border-light) bg-(--bg-soft-elevated) shadow-[0_18px_32px_rgba(15,23,42,0.08)]"
+              />
+              <WorkflowStackVisual
+                title="Workflow stack breakdown"
+                description={`${mappingWorkflow ? mappingWorkflow.title : "Workflow"} links directly to layout and ordered component stack.`}
+                steps={mappingSteps}
+                imageUrl={mappingWorkflow?.previewImageUrl}
+                imageAlt={`${mappingWorkflow?.title ?? "Workflow"} mapping preview`}
+                className="border-(--border-light) bg-(--bg-soft-elevated) shadow-[0_18px_32px_rgba(15,23,42,0.08)]"
+              />
             </div>
           </div>
         </div>
       </section>
 
-      <section className="border-b border-(--surface-line) bg-(--surface-soft) py-20 sm:py-24 lg:py-24">
+      <section className={cn("border-b border-(--surface-line) bg-(--surface-soft)", VS.sections.types.grid)}>
         <div className={VS.widths.page}>
-          <p className="text-[1rem] font-semibold tracking-[0.01em] text-(--th-body-copy)">What is included</p>
-          <h2
-            className={cn(
-              "mt-3 max-w-[14ch] text-[2rem] font-semibold leading-[0.96] text-(--text-primary-dark) sm:text-[2.5rem]",
-              displaySerif.className,
-            )}
-          >
-            What you get
-          </h2>
-          <p className="mt-4 max-w-[70ch] text-[1rem] leading-8 text-(--th-body-copy)">
-            Everything needed to move from editable MJML to deployment-ready output without rebuilding standard flows.
-          </p>
+          <div className={VS.sections.intros.fullWidth}>
+            <p className="text-[1rem] font-semibold tracking-[0.01em] text-(--th-body-copy)">What is included</p>
+            <h2
+              className={cn(
+                "mt-3 max-w-[14ch] text-[2rem] font-semibold leading-[0.96] text-(--text-primary-dark) sm:text-[2.5rem]",
+                displaySerif.className,
+              )}
+            >
+              What you get
+            </h2>
+            <p className="mt-4 max-w-[70ch] text-[1rem] leading-8 text-(--th-body-copy)">
+              Everything needed to move from editable MJML to deployment-ready output without rebuilding standard flows.
+            </p>
+          </div>
 
-          <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(320px,0.72fr)] lg:items-start">
+          <div className={cn("grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(320px,0.72fr)] lg:items-start", VS.sections.intros.contentGap)}>
             <dl className="divide-y divide-(--surface-line)">
               {includedBreakdown.map((item) => (
                 <div key={item.title} className="grid gap-2 py-4 first:pt-0 last:pb-0 sm:grid-cols-[minmax(230px,0.36fr)_1fr] sm:gap-5">

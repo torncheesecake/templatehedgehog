@@ -18,7 +18,7 @@ export default function ComponentsGalleryPage() {
 
   return (
     <main className={VS.templates.library.main}>
-      <SiteTopBar theme="hero" />
+      <SiteTopBar theme="hero" ctaHref="/pricing" ctaLabel="Get Hedgehog Core - £79" />
       {/* Required because the client gallery uses useSearchParams for URL-synchronised filters. */}
       <Suspense fallback={null}>
         <ComponentsGalleryClient components={galleryComponents} />

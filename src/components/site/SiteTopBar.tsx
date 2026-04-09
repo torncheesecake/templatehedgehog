@@ -18,7 +18,7 @@ const primaryLinks = [
 
 export function SiteTopBar({
   ctaHref = "/pricing",
-  ctaLabel = "View pricing",
+  ctaLabel = "Get Hedgehog Core - £79",
   theme = "default",
 }: SiteTopBarProps) {
   const isHero = theme === "hero";
