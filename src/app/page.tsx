@@ -1,6 +1,7 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Roboto_Serif } from "next/font/google";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight, CheckCircle2, FileCode2, Layers3, Zap } from "lucide-react";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { SiteTopBar } from "@/components/site/SiteTopBar";
 import {
@@ -68,6 +69,36 @@ const htmlSnippet = `<table role="presentation" width="100%">
   </tr>
 </table>`;
 
+const workflowOutcomeBySlug: Record<string, string> = {
+  onboarding: "Drive first-session activation without rebuilding a welcome flow.",
+  "password-reset": "Recover account access with security-safe structure and copy.",
+  billing: "Confirm charges clearly and reduce billing support tickets.",
+  reporting: "Send recurring KPI summaries in a repeatable digest format.",
+  notifications: "Ship urgent account alerts with clear next-step actions.",
+};
+
+const pipelineSteps = [
+  {
+    stage: "Trigger",
+    detail: "Account event or lifecycle condition starts the send.",
+  },
+  {
+    stage: "Layout",
+    detail: "Workflow links to a layout recipe with the right structure.",
+  },
+  {
+    stage: "Components",
+    detail: "Ordered reusable blocks define message hierarchy.",
+  },
+  {
+    stage: "Output",
+    detail: "Compiled HTML is ready for QA and ESP import.",
+  },
+] as const;
+
+const fromScratchEffort = [92, 86, 82, 84] as const;
+const withHedgehogEffort = [34, 38, 30, 32] as const;
+
 const includedBreakdown = [
   {
     title: `${COMPONENT_COUNT} components`,
@@ -119,10 +150,10 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-(--surface-strong) text-(--th-body-copy) [font-family:Arial,sans-serif]">
-      <SiteTopBar theme="hero" ctaHref="/pricing" ctaLabel="Get Hedgehog Core" />
+      <SiteTopBar theme="hero" ctaHref="/pricing" ctaLabel="Get Hedgehog Core - £79" />
 
       <section className={cn(VS.widths.page, "pb-24 pt-14 sm:pt-16 lg:pb-28 lg:pt-20")}>
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)] lg:items-start">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.94fr)] lg:items-start">
           <div className="max-w-[760px]">
             <p className="text-[1rem] font-semibold tracking-[0.01em] text-(--th-body-copy)">
               Production-ready MJML system
@@ -135,14 +166,13 @@ export default function Home() {
             >
               Stop rebuilding the same emails every project
             </h1>
-            <p className="mt-6 max-w-[62ch] text-[1.08rem] leading-8 text-(--th-body-copy)">
-              A production-ready MJML system with workflows, components, and layouts that help you ship faster and
-              reduce QA headaches.
+            <p className="mt-6 max-w-[60ch] text-[1.08rem] leading-8 text-(--th-body-copy)">
+              Production workflows, reusable layouts, and delivery-safe output in one system so teams ship faster with less QA churn.
             </p>
 
             <div className="mt-10 flex flex-wrap items-center gap-3.5">
               <Link href="/pricing" className={cn(VS.buttons.primaryLarge, "gap-2 shadow-[0_20px_38px_rgba(0,0,0,0.32)]")}>
-                Get Hedgehog Core
+                Get Hedgehog Core - £79
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <Link href="/workflows" className={cn(VS.buttons.secondaryLight, "h-10 border-(--surface-line) bg-(--surface-soft) px-4 text-[0.84rem]")}>
@@ -171,24 +201,33 @@ export default function Home() {
           </div>
 
           <aside className="surface-card-soft p-6 sm:p-7">
-            <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">Why teams buy Core</p>
+            <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">Workflow pipeline</p>
             <h2 className="mt-2 text-[1.56rem] font-semibold leading-[1.08] text-(--text-primary-dark)">
-              Reuse a working system, not one-off snippets
+              Trigger to output in one mapped chain
             </h2>
-            <ul className="mt-5 space-y-3.5 text-[0.98rem] leading-7 text-(--th-body-copy)">
-              <li className="flex items-start gap-3">
-                <span className="mt-[0.62rem] h-1.5 w-1.5 shrink-0 rounded-full bg-(--accent-support)" />
-                Build from tested workflow structure instead of blank files.
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="mt-[0.62rem] h-1.5 w-1.5 shrink-0 rounded-full bg-(--accent-support)" />
-                Keep delivery-safe HTML beside editable MJML for every handoff.
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="mt-[0.62rem] h-1.5 w-1.5 shrink-0 rounded-full bg-(--accent-support)" />
-                Maintain consistency across campaigns, lifecycle sends, and transactional messages.
-              </li>
-            </ul>
+            <ol className="mt-5 space-y-2">
+              {pipelineSteps.map((step, index) => (
+                <li key={step.stage}>
+                  <article className="rounded-[0.86rem] border border-(--surface-line) bg-(--surface-strong) px-3.5 py-3.5">
+                    <div className="flex items-start gap-3">
+                      <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-(--dune-deep) text-[0.76rem] font-semibold text-(--text-primary-dark)">
+                        {index + 1}
+                      </span>
+                      <div>
+                        <p className="text-[0.76rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">{step.stage}</p>
+                        <p className="mt-1 text-[0.9rem] leading-6 text-(--text-primary-dark)">{step.detail}</p>
+                      </div>
+                    </div>
+                  </article>
+                  {index < pipelineSteps.length - 1 ? (
+                    <div className="ml-3 mt-1.5 h-3 border-l border-(--surface-line)" aria-hidden="true" />
+                  ) : null}
+                </li>
+              ))}
+            </ol>
+            <p className="mt-4 text-[0.88rem] leading-6 text-(--th-body-copy)">
+              The same chain powers public reference pages and the full downloadable pack.
+            </p>
           </aside>
         </div>
       </section>
@@ -205,7 +244,7 @@ export default function Home() {
             Start from a workflow, not a blank email
           </h2>
           <p className="mt-4 max-w-[72ch] text-[1rem] leading-8 text-(--text-secondary-light)">
-            Each workflow includes layout, component stack, MJML source, and compiled HTML.
+            Each flow links trigger, layout, component stack, and output so implementation starts from structure instead of guesswork.
           </p>
 
           <div className="mt-9 grid gap-5 md:grid-cols-2 xl:grid-cols-5">
@@ -214,11 +253,20 @@ export default function Home() {
                 key={workflow.slug}
                 className="rounded-[1rem] border border-(--border-light) bg-(--bg-soft-elevated) p-6 shadow-[0_18px_32px_rgba(15,23,42,0.08)]"
               >
+                <div className="relative -mx-1 mb-4 aspect-[16/10] overflow-hidden rounded-[0.8rem] border border-(--border-light) bg-(--bg-soft)">
+                  <Image
+                    src={workflow.previewImageUrl}
+                    alt={`${workflow.title} workflow preview`}
+                    fill
+                    sizes="(max-width: 1280px) 45vw, 19vw"
+                    className="object-cover object-top"
+                  />
+                </div>
                 <h3 className="text-[1.08rem] font-semibold leading-7 text-(--text-primary-light)">
                   {workflow.title}
                 </h3>
                 <p className="mt-2 text-[0.94rem] leading-7 text-(--text-secondary-light)">
-                  {workflow.goal}
+                  {workflowOutcomeBySlug[workflow.slug] ?? workflow.goal}
                 </p>
                 <p className="mt-2 text-[0.82rem] font-semibold uppercase tracking-[0.08em] text-(--text-secondary-light)">
                   {workflow.linkedLayoutTitle}
@@ -236,7 +284,7 @@ export default function Home() {
 
           <div className="mt-9">
             <Link href="/workflows" className={cn(VS.buttons.primaryLarge, "gap-2 shadow-[0_16px_30px_rgba(0,0,0,0.16)]")}>
-              Explore workflows
+              View all workflows
               <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
@@ -252,25 +300,64 @@ export default function Home() {
               displaySerif.className,
             )}
           >
-            Why not build it yourself?
+            Build it yourself vs Hedgehog
           </h2>
+          <p className="mt-4 max-w-[70ch] text-[1rem] leading-8 text-(--th-body-copy)">
+            Same requirement, two very different levels of effort.
+          </p>
 
-          <div className="mt-8 overflow-hidden rounded-[1rem] border border-(--surface-line) bg-(--surface-soft)">
-            <div className="grid grid-cols-[minmax(120px,0.28fr)_1fr_1fr] border-b border-(--surface-line) bg-(--dune-deep)">
-              <p className="px-5 py-3.5 text-[0.84rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">Area</p>
-              <p className="px-5 py-3.5 text-[0.84rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">Building from scratch</p>
-              <p className="px-5 py-3.5 text-[0.84rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">Using Hedgehog</p>
-            </div>
-            {comparisonRows.map((row) => (
-              <div
-                key={row.label}
-                className="grid grid-cols-[minmax(120px,0.28fr)_1fr_1fr] border-b border-(--surface-line) last:border-b-0"
-              >
-                <p className="px-5 py-3.5 text-[0.95rem] font-semibold text-(--text-primary-dark)">{row.label}</p>
-                <p className="px-5 py-3.5 text-[0.92rem] leading-7 text-(--th-body-copy)">{row.fromScratch}</p>
-                <p className="px-5 py-3.5 text-[0.92rem] leading-7 text-(--th-body-copy)">{row.withHedgehog}</p>
+          <div className="mt-8 grid gap-6 lg:grid-cols-2">
+            <article className="surface-card-soft p-6 sm:p-7">
+              <div className="flex items-center gap-2.5">
+                <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-(--surface-strong)">
+                  <FileCode2 className="h-4 w-4 text-(--text-primary-dark)" />
+                </span>
+                <p className="text-[0.9rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">Build from scratch</p>
               </div>
-            ))}
+              <ul className="mt-5 space-y-4">
+                {comparisonRows.map((row, index) => (
+                  <li key={`scratch-${row.label}`}>
+                    <div className="flex items-center justify-between gap-3">
+                      <p className="text-[0.9rem] font-semibold text-(--text-primary-dark)">{row.label}</p>
+                      <p className="text-[0.78rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">High effort</p>
+                    </div>
+                    <p className="mt-1 text-[0.88rem] leading-6 text-(--th-body-copy)">{row.fromScratch}</p>
+                    <div className="mt-2 h-1.5 rounded-full bg-(--surface-line)">
+                      <span
+                        className="block h-full rounded-full bg-[hsl(var(--th-accent-support)/0.55)]"
+                        style={{ width: `${fromScratchEffort[index]}%` }}
+                      />
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </article>
+
+            <article className="rounded-[1rem] border border-(--surface-line) bg-(--hedgehog-core-navy) p-6 shadow-[0_20px_38px_rgba(0,0,0,0.3)] sm:p-7">
+              <div className="flex items-center gap-2.5">
+                <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-(--surface-soft)">
+                  <Zap className="h-4 w-4 text-(--text-primary-dark)" />
+                </span>
+                <p className="text-[0.9rem] font-semibold uppercase tracking-[0.08em] text-(--dune-muted)">Using Hedgehog</p>
+              </div>
+              <ul className="mt-5 space-y-4">
+                {comparisonRows.map((row, index) => (
+                  <li key={`hedgehog-${row.label}`}>
+                    <div className="flex items-center justify-between gap-3">
+                      <p className="text-[0.9rem] font-semibold text-(--text-primary-dark)">{row.label}</p>
+                      <p className="text-[0.78rem] font-semibold uppercase tracking-[0.08em] text-(--dune-muted)">Lower effort</p>
+                    </div>
+                    <p className="mt-1 text-[0.88rem] leading-6 text-(--dune-muted)">{row.withHedgehog}</p>
+                    <div className="mt-2 h-1.5 rounded-full bg-(--surface-line)">
+                      <span
+                        className="block h-full rounded-full bg-(--text-primary-dark)"
+                        style={{ width: `${withHedgehogEffort[index]}%` }}
+                      />
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </article>
           </div>
         </div>
       </section>
@@ -286,50 +373,77 @@ export default function Home() {
           >
             Technical proof, not mock-up claims
           </h2>
+          <p className="mt-4 max-w-[70ch] text-[1rem] leading-8 text-(--text-secondary-light)">
+            Source, output, and mapping shown exactly as the pack is structured.
+          </p>
 
-          <div className="mt-9 grid gap-5 lg:grid-cols-3">
+          <div className="mt-9 grid gap-6 lg:grid-cols-[minmax(0,1.26fr)_minmax(0,0.74fr)]">
             <article className="rounded-[1rem] border border-(--border-light) bg-(--bg-soft-elevated) p-6 shadow-[0_18px_32px_rgba(15,23,42,0.08)]">
-              <p className="text-[0.84rem] font-semibold uppercase tracking-[0.08em] text-(--text-secondary-light)">Pack file structure</p>
-              <pre className="mt-4 overflow-x-auto rounded-[0.75rem] border border-(--border-dark) bg-(--bg-canvas) p-4 text-[0.78rem] leading-6 text-(--text-primary-dark)">
+              <p className="text-[0.84rem] font-semibold uppercase tracking-[0.08em] text-(--text-secondary-light)">MJML to compiled HTML</p>
+              <div className="mt-4 grid gap-4 md:grid-cols-2">
+                <div>
+                  <p className="text-[0.72rem] font-semibold uppercase tracking-[0.09em] text-(--text-secondary-light)">MJML source</p>
+                  <pre className="mt-2 overflow-x-auto rounded-[0.75rem] border border-(--border-dark) bg-(--bg-canvas) p-4 text-[0.74rem] leading-6 text-(--text-primary-dark)">
+{mjmlSnippet}
+                  </pre>
+                </div>
+                <div>
+                  <p className="text-[0.72rem] font-semibold uppercase tracking-[0.09em] text-(--text-secondary-light)">Compiled HTML</p>
+                  <pre className="mt-2 overflow-x-auto rounded-[0.75rem] border border-(--border-dark) bg-(--bg-canvas) p-4 text-[0.74rem] leading-6 text-(--text-primary-dark)">
+{htmlSnippet}
+                  </pre>
+                </div>
+              </div>
+            </article>
+
+            <div className="grid gap-5">
+              <article className="rounded-[1rem] border border-(--border-light) bg-(--bg-soft-elevated) p-6 shadow-[0_18px_32px_rgba(15,23,42,0.08)]">
+                <p className="text-[0.84rem] font-semibold uppercase tracking-[0.08em] text-(--text-secondary-light)">Pack file structure</p>
+                <pre className="mt-4 overflow-x-auto rounded-[0.75rem] border border-(--border-dark) bg-(--bg-canvas) p-4 text-[0.78rem] leading-6 text-(--text-primary-dark)">
 {MJML_PACK_PROJECT_STRUCTURE.join("\n")}
 {"\n"}compiled/
 {"\n"}workflows/onboarding/
 {"\n"}workflows/password-reset/
-              </pre>
-            </article>
-
-            <article className="rounded-[1rem] border border-(--border-light) bg-(--bg-soft-elevated) p-6 shadow-[0_18px_32px_rgba(15,23,42,0.08)]">
-              <p className="text-[0.84rem] font-semibold uppercase tracking-[0.08em] text-(--text-secondary-light)">MJML to compiled HTML</p>
-              <div className="mt-4 space-y-3.5">
-                <pre className="overflow-x-auto rounded-[0.75rem] border border-(--border-dark) bg-(--bg-canvas) p-4 text-[0.74rem] leading-6 text-(--text-primary-dark)">
-{mjmlSnippet}
                 </pre>
-                <pre className="overflow-x-auto rounded-[0.75rem] border border-(--border-dark) bg-(--bg-canvas) p-4 text-[0.74rem] leading-6 text-(--text-primary-dark)">
-{htmlSnippet}
-                </pre>
-              </div>
-            </article>
+              </article>
 
-            <article className="rounded-[1rem] border border-(--border-light) bg-(--bg-soft-elevated) p-6 shadow-[0_18px_32px_rgba(15,23,42,0.08)]">
-              <p className="text-[0.84rem] font-semibold uppercase tracking-[0.08em] text-(--text-secondary-light)">Workflow mapping</p>
-              <p className="mt-2 text-[0.9rem] leading-7 text-(--text-primary-light)">
-                {mappingWorkflow ? mappingWorkflow.title : "Workflow"} maps directly to layout and component stack.
-              </p>
-              <ol className="mt-4 space-y-2.5 text-[0.82rem] leading-6 text-(--text-secondary-light)">
-                {mappingSteps.map((step) => (
-                  <li key={step} className="rounded-[0.6rem] border border-(--border-light) bg-(--bg-soft) px-3.5 py-2.5">
-                    {step}
-                  </li>
-                ))}
-              </ol>
-            </article>
+              <article className="rounded-[1rem] border border-(--border-light) bg-(--bg-soft-elevated) p-6 shadow-[0_18px_32px_rgba(15,23,42,0.08)]">
+                <p className="text-[0.84rem] font-semibold uppercase tracking-[0.08em] text-(--text-secondary-light)">Workflow stack breakdown</p>
+                <div className="mt-3 flex items-start gap-3">
+                  <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-(--bg-soft) text-(--text-primary-light)">
+                    <Layers3 className="h-4 w-4" />
+                  </span>
+                  <p className="text-[0.9rem] leading-7 text-(--text-secondary-light)">
+                    {mappingWorkflow ? mappingWorkflow.title : "Workflow"} links directly to layout and ordered component stack.
+                  </p>
+                </div>
+                {mappingWorkflow ? (
+                  <div className="relative mt-4 aspect-[16/8] overflow-hidden rounded-[0.78rem] border border-(--border-light) bg-(--bg-soft)">
+                    <Image
+                      src={mappingWorkflow.previewImageUrl}
+                      alt={`${mappingWorkflow.title} mapping preview`}
+                      fill
+                      sizes="(max-width: 1280px) 90vw, 32vw"
+                      className="object-cover object-top"
+                    />
+                  </div>
+                ) : null}
+                <ol className="mt-4 space-y-2.5 text-[0.82rem] leading-6 text-(--text-secondary-light)">
+                  {mappingSteps.map((step) => (
+                    <li key={step} className="rounded-[0.6rem] border border-(--border-light) bg-(--bg-soft) px-3.5 py-2.5">
+                      {step}
+                    </li>
+                  ))}
+                </ol>
+              </article>
+            </div>
           </div>
         </div>
       </section>
 
       <section className="border-b border-(--surface-line) bg-(--surface-soft) py-20 sm:py-24 lg:py-24">
         <div className={VS.widths.page}>
-          <p className="text-[1rem] font-semibold tracking-[0.01em] text-(--th-body-copy)">Scope</p>
+          <p className="text-[1rem] font-semibold tracking-[0.01em] text-(--th-body-copy)">What is included</p>
           <h2
             className={cn(
               "mt-3 max-w-[14ch] text-[2rem] font-semibold leading-[0.96] text-(--text-primary-dark) sm:text-[2.5rem]",
@@ -338,14 +452,39 @@ export default function Home() {
           >
             What you get
           </h2>
+          <p className="mt-4 max-w-[70ch] text-[1rem] leading-8 text-(--th-body-copy)">
+            Everything needed to move from editable MJML to deployment-ready output without rebuilding standard flows.
+          </p>
 
-          <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-5">
-            {includedBreakdown.map((item) => (
-              <article key={item.title} className="surface-card-soft p-5">
-                <h3 className="text-[1.06rem] font-semibold text-(--text-primary-dark)">{item.title}</h3>
-                <p className="mt-2 text-[0.92rem] leading-7 text-(--th-body-copy)">{item.detail}</p>
-              </article>
-            ))}
+          <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(320px,0.72fr)] lg:items-start">
+            <dl className="divide-y divide-(--surface-line)">
+              {includedBreakdown.map((item) => (
+                <div key={item.title} className="grid gap-2 py-4 first:pt-0 last:pb-0 sm:grid-cols-[minmax(230px,0.36fr)_1fr] sm:gap-5">
+                  <dt className={cn("text-[1.08rem] font-semibold text-(--text-primary-dark)", displaySerif.className)}>
+                    {item.title}
+                  </dt>
+                  <dd className="text-[0.95rem] leading-7 text-(--th-body-copy)">{item.detail}</dd>
+                </div>
+              ))}
+            </dl>
+
+            <article className="surface-card-soft p-6 sm:p-7">
+              <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">Core delivery</p>
+              <ul className="mt-4 space-y-3.5 text-[0.95rem] leading-7 text-(--th-body-copy)">
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 className="mt-1 h-4.5 w-4.5 shrink-0 text-(--accent-support)" />
+                  Versioned updates with changelog context for safe adoption.
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 className="mt-1 h-4.5 w-4.5 shrink-0 text-(--accent-support)" />
+                  Workflow, layout, and component mapping kept in one registry-driven system.
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 className="mt-1 h-4.5 w-4.5 shrink-0 text-(--accent-support)" />
+                  Built for developer, QA, and ESP handoff without duplicate work.
+                </li>
+              </ul>
+            </article>
           </div>
         </div>
       </section>
