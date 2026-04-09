@@ -129,6 +129,12 @@ const includedBreakdown = [
   },
 ] as const;
 
+const coreDeliveryHighlights = [
+  "Versioned updates with changelog context for safe adoption.",
+  "Workflow, layout, and component mapping kept in one registry-driven system.",
+  "Built for developer, QA, and ESP handoff without duplicate work.",
+] as const;
+
 function buildWorkflowShowcase() {
   const featuredBySlug = new Map(
     getFeaturedEmailWorkflows(10).map((workflow) => [workflow.slug, workflow]),
@@ -170,7 +176,7 @@ export default function Home() {
     <main className="min-h-screen bg-(--surface-strong) text-(--th-body-copy) [font-family:Arial,sans-serif]">
       <SiteTopBar theme="hero" ctaHref="/pricing" ctaLabel="Get Hedgehog Core - £79" />
 
-      <section className={cn(VS.widths.page, VS.sections.types.hero)}>
+      <section className={cn(VS.widths.content, VS.sections.types.hero)}>
         <div className={VS.sections.intros.wideSplit}>
           <div className="max-w-[760px]">
             <p className="text-[1rem] font-semibold tracking-[0.01em] text-(--th-body-copy)">
@@ -228,7 +234,7 @@ export default function Home() {
       </section>
 
       <section className={cn("border-y border-(--border-light) bg-(--bg-soft)", VS.sections.types.grid)}>
-        <div className={VS.widths.page}>
+        <div className={VS.widths.content}>
           <div className={VS.sections.intros.fullWidth}>
             <p className="text-[1rem] font-semibold tracking-[0.01em] text-(--text-secondary-light)">Primary feature</p>
             <h2
@@ -244,7 +250,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className={cn(VS.sections.intros.contentGap, VS.sections.layouts.cards5)}>
+          <div className={cn(VS.sections.intros.contentGap, VS.sections.layouts.cards3)}>
             {workflowShowcase.map((workflow) => (
               <article
                 key={workflow.slug}
@@ -300,31 +306,31 @@ export default function Home() {
       />
 
       <section className={cn("border-y border-(--border-light) bg-(--bg-soft)", VS.sections.types.proof)}>
-        <div className={VS.widths.page}>
-          <div className={VS.sections.intros.fullWidth}>
-            <p className="text-[1rem] font-semibold tracking-[0.01em] text-(--text-secondary-light)">Product proof</p>
-            <h2
-              className={cn(
-                "mt-3 max-w-[18ch] text-[2.12rem] font-semibold leading-[0.94] text-(--text-primary-light) sm:text-[2.72rem]",
-                displaySerif.className,
-              )}
-            >
-              Technical proof, not mock-up claims
-            </h2>
-            <p className="mt-4 max-w-[70ch] text-[1rem] leading-8 text-(--text-secondary-light)">
-              Source, output, and mapping shown exactly as the pack is structured.
-            </p>
-          </div>
+        <div className={VS.widths.content}>
+          <div className={VS.sections.intros.wideSplit}>
+            <div>
+              <p className="text-[1rem] font-semibold tracking-[0.01em] text-(--text-secondary-light)">Product proof</p>
+              <h2
+                className={cn(
+                  "mt-3 max-w-[18ch] text-[2.12rem] font-semibold leading-[0.94] text-(--text-primary-light) sm:text-[2.72rem]",
+                  displaySerif.className,
+                )}
+              >
+                Technical proof, not mock-up claims
+              </h2>
+              <p className="mt-4 max-w-[62ch] text-[1rem] leading-8 text-(--text-secondary-light)">
+                Source, output, and mapping shown exactly as the pack is structured.
+              </p>
 
-          <div className={cn(VS.sections.intros.contentGap, VS.sections.layouts.proofCombo)}>
-            <MjmlHtmlSplitView
-              title="MJML to compiled HTML"
-              mjml={mjmlSnippet}
-              html={htmlSnippet}
-              className="border-(--border-light) bg-(--bg-soft-elevated) shadow-[0_18px_32px_rgba(15,23,42,0.08)]"
-            />
+              <MjmlHtmlSplitView
+                title="MJML to compiled HTML"
+                mjml={mjmlSnippet}
+                html={htmlSnippet}
+                className="mt-8 border-(--border-light) bg-(--bg-soft-elevated) shadow-[0_18px_32px_rgba(15,23,42,0.08)]"
+              />
+            </div>
 
-            <div className="grid gap-5">
+            <div className="grid gap-6">
               <PackFileTreePreview
                 title="Pack file structure"
                 lines={[
@@ -349,7 +355,7 @@ export default function Home() {
       </section>
 
       <section className={cn("border-b border-(--surface-line) bg-(--surface-soft)", VS.sections.types.grid)}>
-        <div className={VS.widths.page}>
+        <div className={VS.widths.content}>
           <div className={VS.sections.intros.fullWidth}>
             <p className="text-[1rem] font-semibold tracking-[0.01em] text-(--th-body-copy)">What is included</p>
             <h2
@@ -365,67 +371,57 @@ export default function Home() {
             </p>
           </div>
 
-          <div className={cn("grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(320px,0.72fr)] lg:items-start", VS.sections.intros.contentGap)}>
-            <dl className="divide-y divide-(--surface-line)">
-              {includedBreakdown.map((item) => (
-                <div key={item.title} className="grid gap-2 py-4 first:pt-0 last:pb-0 sm:grid-cols-[minmax(230px,0.36fr)_1fr] sm:gap-5">
-                  <dt className={cn("text-[1.08rem] font-semibold text-(--text-primary-dark)", displaySerif.className)}>
-                    {item.title}
-                  </dt>
-                  <dd className="text-[0.95rem] leading-7 text-(--th-body-copy)">{item.detail}</dd>
-                </div>
-              ))}
-            </dl>
+          <div className={cn("grid gap-6 md:grid-cols-2 xl:grid-cols-3", VS.sections.intros.contentGap)}>
+            {includedBreakdown.map((item) => (
+              <article key={item.title} className="surface-card-soft h-full p-6 sm:p-7">
+                <h3 className={cn("text-[1.12rem] font-semibold text-(--text-primary-dark)", displaySerif.className)}>
+                  {item.title}
+                </h3>
+                <p className="mt-3 text-[0.95rem] leading-7 text-(--th-body-copy)">{item.detail}</p>
+              </article>
+            ))}
 
-            <article className="surface-card-soft p-6 sm:p-7">
+            <article className="surface-card-soft h-full p-6 sm:p-7">
               <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">Core delivery</p>
               <ul className="mt-4 space-y-3.5 text-[0.95rem] leading-7 text-(--th-body-copy)">
-                <li className="flex items-start gap-3">
-                  <CheckCircle2 className="mt-1 h-4.5 w-4.5 shrink-0 text-(--accent-support)" />
-                  Versioned updates with changelog context for safe adoption.
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle2 className="mt-1 h-4.5 w-4.5 shrink-0 text-(--accent-support)" />
-                  Workflow, layout, and component mapping kept in one registry-driven system.
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle2 className="mt-1 h-4.5 w-4.5 shrink-0 text-(--accent-support)" />
-                  Built for developer, QA, and ESP handoff without duplicate work.
-                </li>
+                {coreDeliveryHighlights.map((point) => (
+                  <li key={point} className="flex items-start gap-3">
+                    <CheckCircle2 className="mt-1 h-4.5 w-4.5 shrink-0 text-(--accent-support)" />
+                    {point}
+                  </li>
+                ))}
               </ul>
             </article>
           </div>
         </div>
       </section>
 
-      <section className={cn(VS.widths.page, "pb-24 sm:pb-28 lg:pb-28")}>
-        <div className="rounded-[1.3rem] border border-(--surface-line) bg-(--hedgehog-core-navy) px-7 py-10 sm:px-9 sm:py-12 lg:px-11 lg:py-14">
-          <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
-            <div>
-              <h2
-                className={cn(
-                  "max-w-[17ch] text-[2rem] font-semibold leading-[0.96] text-(--text-primary-dark) sm:text-[2.45rem]",
-                  displaySerif.className,
-                )}
-              >
-                Get Hedgehog Core - £79
-              </h2>
-              <p className="mt-4 text-[1rem] leading-8 text-(--dune-muted)">
-                Less than one avoidable rebuild session
-              </p>
-            </div>
-            <div className="flex flex-wrap gap-3.5 lg:justify-end">
-              <Link href="/pricing" className={cn(VS.buttons.primaryLarge, "gap-2 shadow-[0_18px_36px_rgba(0,0,0,0.34)]")}>
-                Get Hedgehog Core
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-              <Link
-                href="/workflows"
-                className="inline-flex h-11 items-center rounded-[0.9rem] border border-(--surface-line) bg-(--surface-soft) px-5 text-[0.86rem] font-semibold text-(--text-primary-dark) transition duration-200 hover:border-(--accent-support) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2 focus-visible:ring-offset-(--hedgehog-core-navy)"
-              >
-                Explore workflows
-              </Link>
-            </div>
+      <section className={cn(VS.widths.content, "pb-24 sm:pb-28 lg:pb-28")}>
+        <div className="rounded-[1.3rem] border border-(--surface-line) bg-(--hedgehog-core-navy) px-7 py-10 text-center sm:px-9 sm:py-12 lg:px-11 lg:py-14">
+          <div className="mx-auto max-w-[40rem]">
+            <h2
+              className={cn(
+                "text-[2rem] font-semibold leading-[0.96] text-(--text-primary-dark) sm:text-[2.45rem]",
+                displaySerif.className,
+              )}
+            >
+              Get Hedgehog Core - £79
+            </h2>
+            <p className="mt-4 text-[1rem] leading-8 text-(--dune-muted)">
+              Less than one avoidable rebuild session
+            </p>
+          </div>
+          <div className="mt-8 flex flex-wrap justify-center gap-3.5">
+            <Link href="/pricing" className={cn(VS.buttons.primaryLarge, "gap-2 shadow-[0_18px_36px_rgba(0,0,0,0.34)]")}>
+              Get Hedgehog Core
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+            <Link
+              href="/workflows"
+              className="inline-flex h-11 items-center rounded-[0.9rem] border border-(--surface-line) bg-(--surface-soft) px-5 text-[0.86rem] font-semibold text-(--text-primary-dark) transition duration-200 hover:border-(--accent-support) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2 focus-visible:ring-offset-(--hedgehog-core-navy)"
+            >
+              Explore workflows
+            </Link>
           </div>
         </div>
       </section>

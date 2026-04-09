@@ -18,6 +18,7 @@ interface ComparisonSectionProps {
   leftItems: EffortItem[];
   rightItems: EffortItem[];
   sectionClassName?: string;
+  containerClassName?: string;
 }
 
 export function ComparisonSection({
@@ -29,12 +30,13 @@ export function ComparisonSection({
   leftItems,
   rightItems,
   sectionClassName,
+  containerClassName,
 }: ComparisonSectionProps) {
   const VS = visualSystem;
 
   return (
     <section className={cn(VS.sections.types.comparison, sectionClassName)}>
-      <div className={VS.widths.page}>
+      <div className={cn(VS.widths.content, containerClassName)}>
         <div className={VS.sections.intros.fullWidth}>
           <p className="text-[1rem] font-semibold tracking-[0.01em] text-(--accent-support)">{eyebrow}</p>
           <h2
