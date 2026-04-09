@@ -12,7 +12,7 @@
   /* Foundation palette */
   --bg-canvas: #0b0f0e;
   --bg-surface: #121917;
-  --bg-surface-elevated: #17201d;
+  --bg-surface-elevated: #16221d;
   --bg-soft: #f4fbf8;
   --bg-soft-elevated: #ffffff;
 
@@ -313,24 +313,26 @@ h3 {
 }
 
 .surface-card {
-  border: 1px solid var(--surface-line);
-  background: var(--surface-soft);
+  border: 1px solid color-mix(in srgb, var(--border-dark) 72%, transparent);
+  background: var(--bg-surface-elevated);
   border-radius: 1.05rem;
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.24);
   backdrop-filter: blur(9px);
+  transition: box-shadow 180ms ease, border-color 180ms ease;
 }
 
 .surface-card-soft {
-  border: 1px solid color-mix(in srgb, var(--border-dark) 84%, transparent);
-  background: var(--surface-soft);
+  border: 1px solid color-mix(in srgb, var(--border-dark) 72%, transparent);
+  background: color-mix(in srgb, var(--bg-surface-elevated) 96%, black);
   border-radius: 1rem;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(8px);
+  transition: box-shadow 180ms ease, border-color 180ms ease;
 }
 
 .surface-card-muted {
-  border: 1px solid color-mix(in srgb, var(--border-dark) 72%, transparent);
-  background: var(--surface-muted);
+  border: 1px solid color-mix(in srgb, var(--border-dark) 66%, transparent);
+  background: color-mix(in srgb, var(--bg-surface-elevated) 84%, transparent);
   border-radius: 0.96rem;
   backdrop-filter: blur(8px);
 }

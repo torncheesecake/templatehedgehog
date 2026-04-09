@@ -132,21 +132,21 @@ export default function PricingPage() {
       <SiteTopBar theme="hero" ctaHref="#buy-core" ctaLabel={PAID_CTA_LABEL} />
 
       <section>
-        <div className={cn(visualSystem.widths.page, "pb-20 pt-12 sm:pt-14 lg:pb-24 lg:pt-16")}>
-          <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(360px,0.9fr)] lg:items-start">
+        <div className={cn(visualSystem.widths.page, "pb-24 pt-14 sm:pt-16 lg:pb-28 lg:pt-20")}>
+          <div className="grid gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(370px,0.9fr)] lg:items-start">
             <div className="max-w-[780px]">
               <p className="text-[1rem] font-semibold uppercase tracking-[0.1em] text-(--accent-support)">
                 Workflow-first MJML system
               </p>
-              <h1 className={cn("mt-4 max-w-[15ch] text-[2.9rem] font-semibold leading-[0.9] text-(--text-primary-dark) sm:text-[4rem] lg:text-[4.5rem]", displaySerif.className)}>
+              <h1 className={cn("mt-4 max-w-[14ch] text-[3rem] font-semibold leading-[0.88] text-(--text-primary-dark) sm:text-[4.15rem] lg:text-[4.75rem]", displaySerif.className)}>
                 Stop rebuilding the same emails every project
               </h1>
-              <p className="mt-5 max-w-[58ch] text-[1.08rem] leading-8 text-(--th-body-copy)">
+              <p className="mt-6 max-w-[59ch] text-[1.08rem] leading-8 text-(--th-body-copy)">
                 Hedgehog Core gives your team production-ready workflows, layouts, and components in one download so you
                 can ship faster with fewer regressions.
               </p>
 
-              <ul className="mt-8 max-w-[66ch] space-y-3 text-[1rem] leading-7 text-(--text-primary-dark)">
+              <ul className="mt-9 max-w-[66ch] space-y-3.5 text-[1rem] leading-7 text-(--th-body-copy)">
                 {heroBullets.map((point) => (
                   <li key={point} className="flex items-start gap-3">
                     <span className="mt-[0.62rem] h-1.5 w-1.5 shrink-0 rounded-full bg-(--accent-support)" />
@@ -181,32 +181,35 @@ export default function PricingPage() {
         </div>
       </section>
 
-      <section className="border-y border-(--surface-line) py-16 sm:py-18 lg:py-20">
+      <section className="border-y border-(--border-light) bg-(--bg-soft) py-20 sm:py-24 lg:py-24">
         <div className={visualSystem.widths.page}>
           <p className="text-[1rem] font-semibold uppercase tracking-[0.1em] text-(--accent-support)">
             Core value driver
           </p>
-          <h2 className={cn("mt-3 max-w-[18ch] text-[2rem] font-semibold leading-[0.95] text-(--text-primary-dark) sm:text-[2.45rem]", displaySerif.className)}>
+          <h2 className={cn("mt-3 max-w-[18ch] text-[2.12rem] font-semibold leading-[0.93] text-(--text-primary-light) sm:text-[2.72rem]", displaySerif.className)}>
             Start from a workflow, not a blank email
           </h2>
-          <p className="mt-4 max-w-[74ch] text-[1rem] leading-8 text-(--th-body-copy)">
+          <p className="mt-4 max-w-[74ch] text-[1rem] leading-8 text-(--text-secondary-light)">
             {WORKFLOW_COUNT} production workflows mapped to {COMPONENT_COUNT} components and {LAYOUT_COUNT} layouts.
             Real onboarding, billing, reporting, password reset, and notification flows are included.
           </p>
 
-          <div className="mt-7 grid gap-4 md:grid-cols-2 xl:grid-cols-5">
+          <div className="mt-9 grid gap-5 md:grid-cols-2 xl:grid-cols-5">
             {featuredWorkflows.map((workflow) => (
-              <article key={workflow.slug} className="surface-card-soft p-4">
-                <h3 className="text-[1.05rem] font-semibold leading-7 text-(--text-primary-dark)">
+              <article
+                key={workflow.slug}
+                className="rounded-[1rem] border border-(--border-light) bg-(--bg-soft-elevated) p-6 shadow-[0_18px_32px_rgba(15,23,42,0.08)]"
+              >
+                <h3 className="text-[1.05rem] font-semibold leading-7 text-(--text-primary-light)">
                   {workflow.title}
                 </h3>
-                <p className="mt-2 text-[0.9rem] leading-7 text-(--th-body-copy)">{workflow.goal}</p>
-                <p className="mt-3 text-[0.82rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">
+                <p className="mt-2 text-[0.9rem] leading-7 text-(--text-secondary-light)">{workflow.goal}</p>
+                <p className="mt-3 text-[0.82rem] font-semibold uppercase tracking-[0.08em] text-(--text-secondary-light)">
                   {workflow.linkedLayoutTitle}
                 </p>
                 <Link
                   href={`/workflows/${workflow.slug}`}
-                  className="mt-3 inline-flex items-center gap-1.5 text-[0.84rem] font-semibold text-(--th-body-copy) transition hover:text-(--text-primary-dark)"
+                  className="mt-3 inline-flex items-center gap-1.5 text-[0.84rem] font-semibold text-(--text-primary-light) transition hover:text-(--accent-primary)"
                 >
                   View workflow
                   <ArrowRight className="h-4 w-4" />
@@ -217,22 +220,22 @@ export default function PricingPage() {
         </div>
       </section>
 
-      <section className="py-16 sm:py-18 lg:py-20">
+      <section className="border-b border-(--surface-line) bg-(--surface-soft) py-20 sm:py-24 lg:py-24">
         <div className={visualSystem.widths.page}>
           <p className="text-[1rem] font-semibold uppercase tracking-[0.1em] text-(--accent-support)">
             Technical proof
           </p>
-          <h2 className={cn("mt-3 max-w-[16ch] text-[2rem] font-semibold leading-[0.95] text-(--text-primary-dark) sm:text-[2.45rem]", displaySerif.className)}>
+          <h2 className={cn("mt-3 max-w-[16ch] text-[2.12rem] font-semibold leading-[0.93] text-(--text-primary-dark) sm:text-[2.72rem]", displaySerif.className)}>
             What you actually get in the pack
           </h2>
           <p className="mt-4 max-w-[74ch] text-[1rem] leading-8 text-(--th-body-copy)">
             Real source structure, real output pairing, and a traceable workflow mapping from trigger to delivery.
           </p>
 
-          <div className="mt-8 grid gap-5 lg:grid-cols-3">
-            <article className="rounded-[1rem] border border-(--surface-line) bg-(--dune-deep) p-4">
+          <div className="mt-9 grid gap-5 lg:grid-cols-3">
+            <article className="rounded-[1rem] border border-(--surface-line) bg-(--dune-deep) p-6">
               <p className="text-[0.84rem] font-semibold uppercase tracking-[0.08em] text-(--dune-muted)">File tree excerpt</p>
-              <pre className="mt-3 overflow-x-auto rounded-[0.75rem] border border-(--surface-line) bg-(--surface-strong) p-3 text-[0.78rem] leading-6 text-(--text-primary-dark)">
+              <pre className="mt-4 overflow-x-auto rounded-[0.75rem] border border-(--surface-line) bg-(--surface-strong) p-4 text-[0.78rem] leading-6 text-(--text-primary-dark)">
 {MJML_PACK_PROJECT_STRUCTURE.join("\n")}
 {"\n"}compiled/
 {"\n"}workflows/onboarding/
@@ -240,26 +243,26 @@ export default function PricingPage() {
               </pre>
             </article>
 
-            <article className="rounded-[1rem] border border-(--surface-line) bg-(--dune-deep) p-4">
+            <article className="rounded-[1rem] border border-(--surface-line) bg-(--dune-deep) p-6">
               <p className="text-[0.84rem] font-semibold uppercase tracking-[0.08em] text-(--dune-muted)">MJML to compiled HTML</p>
-              <div className="mt-3 space-y-3">
-                <pre className="overflow-x-auto rounded-[0.75rem] border border-(--surface-line) bg-(--surface-strong) p-3 text-[0.74rem] leading-6 text-(--text-primary-dark)">
+              <div className="mt-4 space-y-3.5">
+                <pre className="overflow-x-auto rounded-[0.75rem] border border-(--surface-line) bg-(--surface-strong) p-4 text-[0.74rem] leading-6 text-(--text-primary-dark)">
 {mjmlSnippet}
                 </pre>
-                <pre className="overflow-x-auto rounded-[0.75rem] border border-(--surface-line) bg-(--surface-strong) p-3 text-[0.74rem] leading-6 text-(--text-primary-dark)">
+                <pre className="overflow-x-auto rounded-[0.75rem] border border-(--surface-line) bg-(--surface-strong) p-4 text-[0.74rem] leading-6 text-(--text-primary-dark)">
 {htmlSnippet}
                 </pre>
               </div>
             </article>
 
-            <article className="rounded-[1rem] border border-(--surface-line) bg-(--dune-deep) p-4">
+            <article className="rounded-[1rem] border border-(--surface-line) bg-(--dune-deep) p-6">
               <p className="text-[0.84rem] font-semibold uppercase tracking-[0.08em] text-(--dune-muted)">Workflow mapping</p>
               <p className="mt-2 text-[0.9rem] leading-7 text-(--text-primary-dark)">
                 {proofWorkflow ? proofWorkflow.title : "Workflow"} maps directly to layout and component stack.
               </p>
-              <ol className="mt-3 space-y-2 text-[0.82rem] leading-6 text-(--dune-muted)">
+              <ol className="mt-4 space-y-2.5 text-[0.82rem] leading-6 text-(--dune-muted)">
                 {mappingSteps.map((step) => (
-                  <li key={step} className="rounded-[0.6rem] border border-(--surface-line) bg-(--surface-strong) px-3 py-2">
+                  <li key={step} className="rounded-[0.6rem] border border-(--surface-line) bg-(--surface-strong) px-3.5 py-2.5">
                     {step}
                   </li>
                 ))}
@@ -269,7 +272,7 @@ export default function PricingPage() {
         </div>
       </section>
 
-      <section className="border-y border-(--surface-line) py-16 sm:py-18 lg:py-20">
+      <section className="border-y border-(--surface-line) bg-(--surface-strong) py-20 sm:py-24 lg:py-24">
         <div className={visualSystem.widths.page}>
           <p className="text-[1rem] font-semibold uppercase tracking-[0.1em] text-(--accent-support)">
             Objection handling
@@ -281,53 +284,53 @@ export default function PricingPage() {
             If you build this yourself, you pay with repeated build hours and QA churn. Hedgehog Core removes that repetition.
           </p>
 
-          <div className="mt-7 overflow-hidden rounded-[1rem] border border-(--surface-line) bg-(--surface-soft)">
+          <div className="mt-8 overflow-hidden rounded-[1rem] border border-(--surface-line) bg-(--surface-soft)">
             <div className="grid grid-cols-[minmax(120px,0.3fr)_1fr_1fr] border-b border-(--surface-line) bg-(--dune-deep)">
-              <p className="px-4 py-3 text-[0.84rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">Area</p>
-              <p className="px-4 py-3 text-[0.84rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">Build it yourself</p>
-              <p className="px-4 py-3 text-[0.84rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">Hedgehog Core</p>
+              <p className="px-5 py-3.5 text-[0.84rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">Area</p>
+              <p className="px-5 py-3.5 text-[0.84rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">Build it yourself</p>
+              <p className="px-5 py-3.5 text-[0.84rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">Hedgehog Core</p>
             </div>
             {comparisonRows.map((row) => (
               <div
                 key={row.label}
                 className="grid grid-cols-[minmax(120px,0.3fr)_1fr_1fr] border-b border-(--surface-line) last:border-b-0"
               >
-                <p className="px-4 py-3 text-[0.95rem] font-semibold text-(--text-primary-dark)">{row.label}</p>
-                <p className="px-4 py-3 text-[0.92rem] leading-7 text-(--th-body-copy)">{row.fromScratch}</p>
-                <p className="px-4 py-3 text-[0.92rem] leading-7 text-(--th-body-copy)">{row.withHedgehog}</p>
+                <p className="px-5 py-3.5 text-[0.95rem] font-semibold text-(--text-primary-dark)">{row.label}</p>
+                <p className="px-5 py-3.5 text-[0.92rem] leading-7 text-(--th-body-copy)">{row.fromScratch}</p>
+                <p className="px-5 py-3.5 text-[0.92rem] leading-7 text-(--th-body-copy)">{row.withHedgehog}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-16 sm:py-18 lg:py-20">
+      <section className="border-b border-(--border-light) bg-(--bg-soft) py-20 sm:py-24 lg:py-24">
         <div className={visualSystem.widths.page}>
           <div className="grid gap-8 lg:grid-cols-[minmax(0,0.34fr)_minmax(0,1fr)] lg:gap-12">
             <div>
               <p className="text-[1rem] font-semibold uppercase tracking-[0.1em] text-(--accent-support)">
                 Included
               </p>
-              <h2 className={cn("mt-3 max-w-[12ch] text-[2rem] font-semibold leading-[0.95] text-(--text-primary-dark) sm:text-[2.45rem]", displaySerif.className)}>
+              <h2 className={cn("mt-3 max-w-[12ch] text-[2rem] font-semibold leading-[0.95] text-(--text-primary-light) sm:text-[2.45rem]", displaySerif.className)}>
                 What you get
               </h2>
             </div>
 
             <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.86fr)]">
-              <dl className="divide-y divide-(--surface-line)">
+              <dl className="divide-y divide-(--border-light)">
                 {includedAssets.map((asset) => (
                   <div key={asset.title} className="grid gap-2 py-4 first:pt-0 last:pb-0 sm:grid-cols-[minmax(180px,0.34fr)_1fr] sm:gap-5">
-                    <dt className={cn("text-[1.06rem] font-semibold text-(--text-primary-dark)", displaySerif.className)}>{asset.title}</dt>
-                    <dd className="text-[0.98rem] leading-7 text-(--th-body-copy)">{asset.detail}</dd>
+                    <dt className={cn("text-[1.06rem] font-semibold text-(--text-primary-light)", displaySerif.className)}>{asset.title}</dt>
+                    <dd className="text-[0.98rem] leading-7 text-(--text-secondary-light)">{asset.detail}</dd>
                   </div>
                 ))}
               </dl>
 
-              <aside className="rounded-[1.05rem] border border-(--surface-line) bg-(--dune-deep) p-6 sm:p-7">
-                <h3 className={cn("text-[1.22rem] font-semibold text-(--text-primary-dark)", displaySerif.className)}>
+              <aside className="rounded-[1.05rem] border border-(--border-light) bg-(--bg-soft-elevated) p-6 sm:p-7 shadow-[0_14px_28px_rgba(15,23,42,0.08)]">
+                <h3 className={cn("text-[1.22rem] font-semibold text-(--text-primary-light)", displaySerif.className)}>
                   Licence clarity
                 </h3>
-                <ul className="mt-4 space-y-2.5 text-[0.95rem] leading-7 text-(--th-body-copy)">
+                <ul className="mt-4 space-y-2.5 text-[0.95rem] leading-7 text-(--text-secondary-light)">
                   {MJML_PACK_LICENSE_POINTS.map((item) => (
                     <li key={item} className="flex items-start gap-2.5">
                       <span className="mt-[0.62rem] h-1.5 w-1.5 shrink-0 rounded-full bg-(--accent-support)" />
@@ -341,19 +344,19 @@ export default function PricingPage() {
         </div>
       </section>
 
-      <section id="buy-core" className={cn(visualSystem.widths.page, "pb-20 sm:pb-22 lg:pb-24")}>
-        <div className="rounded-[1.45rem] border border-(--surface-line) bg-(--hedgehog-core-navy) px-6 py-9 sm:px-8 sm:py-10 lg:px-10 lg:py-11">
+      <section id="buy-core" className={cn(visualSystem.widths.page, "pb-24 sm:pb-28 lg:pb-28")}>
+        <div className="rounded-[1.45rem] border border-(--surface-line) bg-(--hedgehog-core-navy) px-7 py-10 sm:px-9 sm:py-12 lg:px-11 lg:py-14">
           <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
             <div>
               <h2 className={cn("max-w-[18ch] text-[2.05rem] font-semibold leading-[0.95] text-(--text-primary-dark) sm:text-[2.45rem]", displaySerif.className)}>
                 Buy once. Ship faster on every campaign.
               </h2>
-              <p className="mt-3 max-w-[56ch] text-[1rem] leading-8 text-(--dune-muted)">
+              <p className="mt-4 max-w-[56ch] text-[1rem] leading-8 text-(--dune-muted)">
                 Less than one avoidable rebuild and QA pass.
               </p>
             </div>
 
-            <div className="flex flex-wrap gap-3 lg:justify-end">
+            <div className="flex flex-wrap gap-3.5 lg:justify-end">
               {stripeReady ? (
                 <form action="/api/checkout" method="post">
                   <input type="hidden" name="productId" value={corePack.productId} />
@@ -362,14 +365,14 @@ export default function PricingPage() {
                     label={PAID_CTA_LABEL}
                     event="click_buy_now"
                     payload={{ source: "pricing_final_cta", packId: "pack-1", billingCycle: "one_off" }}
-                    className="inline-flex h-12 items-center rounded-[0.9rem] border border-(--accent-primary) bg-(--accent-primary) px-6 text-[0.92rem] font-semibold !text-(--text-primary-dark) transition hover:bg-(--accent-secondary) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent-primary) focus-visible:ring-offset-2 focus-visible:ring-offset-(--hedgehog-core-navy)"
+                    className="inline-flex h-12 items-center rounded-[0.9rem] border border-(--accent-primary) bg-(--accent-primary) px-6 text-[0.92rem] font-semibold !text-(--text-primary-dark) shadow-[0_18px_36px_rgba(0,0,0,0.34)] transition hover:bg-(--accent-secondary) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent-primary) focus-visible:ring-offset-2 focus-visible:ring-offset-(--hedgehog-core-navy)"
                   />
                 </form>
               ) : (
                 <button
                   type="button"
                   disabled
-                  className="inline-flex h-12 items-center rounded-[0.9rem] border border-(--accent-primary) bg-(--accent-primary) px-6 text-[0.92rem] font-semibold !text-(--text-primary-dark) opacity-80"
+                  className="inline-flex h-12 items-center rounded-[0.9rem] border border-(--accent-primary) bg-(--accent-primary) px-6 text-[0.92rem] font-semibold !text-(--text-primary-dark) shadow-[0_18px_36px_rgba(0,0,0,0.34)] opacity-80"
                 >
                   {PAID_CTA_LABEL}
                 </button>
@@ -377,7 +380,7 @@ export default function PricingPage() {
 
               <Link
                 href="/components"
-                className="inline-flex h-12 items-center rounded-[0.9rem] border border-(--surface-line) px-6 text-[0.92rem] font-semibold text-(--text-primary-dark) transition hover:border-(--accent-support) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent-primary) focus-visible:ring-offset-2 focus-visible:ring-offset-(--hedgehog-core-navy)"
+                className="inline-flex h-11 items-center rounded-[0.9rem] border border-(--surface-line) bg-(--surface-soft) px-5 text-[0.86rem] font-semibold text-(--text-primary-dark) transition hover:border-(--accent-support) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent-primary) focus-visible:ring-offset-2 focus-visible:ring-offset-(--hedgehog-core-navy)"
               >
                 Browse free library
               </Link>

@@ -52,16 +52,16 @@ export function PricingOfferCard({
   }, [pricePence, vatMode]);
 
   return (
-    <aside className="rounded-[1.4rem] border border-(--surface-line) bg-(--hedgehog-core-navy) p-6 shadow-[0_30px_56px_rgba(0,0,0,0.44)] sm:p-7">
-      <p className="text-[1rem] font-semibold uppercase tracking-[0.1em] text-(--accent-support)">
+    <aside className="rounded-[1.4rem] border border-(--surface-line) bg-(--bg-surface-elevated) p-7 shadow-[0_34px_64px_rgba(0,0,0,0.42)] sm:p-8">
+      <p className="text-[1rem] font-semibold uppercase tracking-[0.1em] text-(--th-body-copy)">
         Hedgehog Core
       </p>
-      <p className="mt-1 text-[0.9rem] leading-7 text-(--dune-muted)">
+      <p className="mt-2 text-[0.9rem] leading-7 text-(--dune-muted)">
         One-time purchase. No subscription.
       </p>
 
       <div
-        className="mt-4 inline-flex rounded-[0.8rem] border border-(--surface-line) bg-(--surface-soft) p-1"
+        className="mt-4 inline-flex rounded-[0.8rem] border border-(--surface-line) bg-(--surface-strong) p-1"
         role="group"
         aria-label="VAT display mode"
       >
@@ -91,7 +91,7 @@ export function PricingOfferCard({
         </button>
       </div>
 
-      <div className="mt-6 flex items-end gap-2.5">
+      <div className="mt-7 flex items-end gap-2.5">
         <p className="text-[3.9rem] font-semibold leading-[0.86] text-(--text-primary-dark) sm:text-[4.4rem]">
           {formatHeadlinePriceFromPence(displayedPrice)}
         </p>
@@ -100,7 +100,7 @@ export function PricingOfferCard({
         </p>
       </div>
 
-      <div className="mt-5 rounded-[0.9rem] border border-(--surface-line) bg-(--surface-soft) p-3.5 text-[0.84rem] text-(--th-body-copy)">
+      <div className="mt-6 rounded-[0.9rem] border border-(--surface-line) bg-(--surface-strong) p-4 text-[0.84rem] text-(--th-body-copy)">
         <div className="flex items-center justify-between gap-3">
           <span>Version</span>
           <span className="font-semibold text-(--text-primary-dark)">{versionLabel}</span>
@@ -111,7 +111,7 @@ export function PricingOfferCard({
         </div>
       </div>
 
-      <ul className="mt-6 space-y-2.5 text-[0.95rem] leading-7 text-(--text-primary-dark)">
+      <ul className="mt-7 space-y-2.5 text-[0.95rem] leading-7 text-(--text-primary-dark)">
         {inclusionPoints.map((point) => (
           <li key={point} className="flex items-start gap-2.5">
             <span className="mt-[0.62rem] h-1.5 w-1.5 shrink-0 rounded-full bg-(--accent-support)" />
@@ -120,7 +120,7 @@ export function PricingOfferCard({
         ))}
       </ul>
 
-      <ul className="mt-5 space-y-2 text-[0.88rem] leading-6 text-(--dune-muted)">
+      <ul className="mt-6 space-y-2.5 text-[0.88rem] leading-6 text-(--dune-muted)">
         <li className="flex items-start gap-2.5">
           <span className="mt-[0.58rem] h-1.5 w-1.5 shrink-0 rounded-full bg-(--accent-support)" />
           Instant download after checkout
@@ -136,26 +136,26 @@ export function PricingOfferCard({
       </ul>
 
       {stripeReady ? (
-        <form action="/api/checkout" method="post" className="mt-7">
+        <form action="/api/checkout" method="post" className="mt-8">
           <input type="hidden" name="productId" value={productId} />
           <input type="hidden" name="billingCycle" value="one_off" />
           <TrackableSubmitButton
             label={ctaLabel}
             event="click_buy_now"
             payload={{ source: "pricing_page", packId: "pack-1", billingCycle: "one_off" }}
-            className="inline-flex h-12 w-full items-center justify-center rounded-[0.88rem] border border-(--accent-primary) bg-(--accent-primary) px-5 text-[0.94rem] font-semibold !text-(--text-primary-dark) transition hover:bg-(--accent-secondary) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent-primary) focus-visible:ring-offset-2 focus-visible:ring-offset-(--hedgehog-core-navy)"
+            className="inline-flex h-12 w-full items-center justify-center rounded-[0.9rem] border border-(--accent-primary) bg-(--accent-primary) px-5 text-[0.94rem] font-semibold !text-(--text-primary-dark) shadow-[0_18px_34px_rgba(0,0,0,0.3)] transition hover:bg-(--accent-secondary) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent-primary) focus-visible:ring-offset-2 focus-visible:ring-offset-(--hedgehog-core-navy)"
           />
         </form>
       ) : (
-        <div className="mt-7 space-y-2.5">
+        <div className="mt-8 space-y-2.5">
           <button
             type="button"
             disabled
-            className="inline-flex h-12 w-full items-center justify-center rounded-[0.88rem] border border-(--accent-primary) bg-(--accent-primary) px-5 text-[0.94rem] font-semibold !text-(--text-primary-dark) opacity-80"
+            className="inline-flex h-12 w-full items-center justify-center rounded-[0.9rem] border border-(--accent-primary) bg-(--accent-primary) px-5 text-[0.94rem] font-semibold !text-(--text-primary-dark) shadow-[0_18px_34px_rgba(0,0,0,0.3)] opacity-80"
           >
             {ctaLabel}
           </button>
-          <p className="rounded-[0.8rem] border border-[hsl(var(--th-accent-support)/0.44)] bg-[hsl(var(--th-accent-support)/0.16)] px-4 py-3 text-[0.84rem] leading-6 text-(--text-primary-dark)">
+          <p className="rounded-[0.8rem] border border-(--surface-line) bg-(--surface-soft) px-4 py-3 text-[0.84rem] leading-6 text-(--th-body-copy)">
             {isStaticPreview
               ? "GitHub Pages preview only. Live checkout runs on the primary deployment."
               : "Checkout is currently unavailable in this environment."}
@@ -163,7 +163,7 @@ export function PricingOfferCard({
         </div>
       )}
 
-      <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-[0.84rem] font-semibold text-(--dune-muted)">
+      <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-[0.84rem] font-semibold text-(--dune-muted)">
         <Link href="/workflows" className="underline-offset-2 hover:text-(--text-primary-dark) hover:underline">
           Explore workflows
         </Link>
