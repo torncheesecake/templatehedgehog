@@ -158,7 +158,7 @@ export default function Home() {
       <SiteTopBar theme="hero" ctaHref="/pricing" ctaLabel="Get Hedgehog Core - £79" />
 
       <section className="relative overflow-hidden border-b border-(--surface-line) bg-(--surface-strong) py-20 sm:py-24 lg:py-28">
-        <div className={VS.widths.content}>
+        <div className={VS.widths.page}>
           <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-center">
             <div className="max-w-[38rem]">
               <p className="text-[1rem] font-semibold tracking-[0.012em] text-(--th-body-copy)">
@@ -271,7 +271,7 @@ export default function Home() {
       </section>
 
       <section className="border-y border-(--border-light) bg-(--bg-soft) py-24 sm:py-28 lg:py-30">
-        <div className={VS.widths.content}>
+        <div className={VS.widths.page}>
           <div className="max-w-[74ch]">
             <p className="text-[1rem] font-semibold tracking-[0.012em] text-(--text-secondary-light)">
               Workflow entry
@@ -385,7 +385,7 @@ export default function Home() {
       </section>
 
       <section className="border-y border-(--surface-line) bg-(--surface-soft) py-24 sm:py-28 lg:py-30">
-        <div className={VS.widths.content}>
+        <div className={VS.widths.page}>
           <div className="max-w-[74ch]">
             <p className="text-[1rem] font-semibold tracking-[0.012em] text-(--th-body-copy)">
               Core selling section
@@ -472,7 +472,7 @@ export default function Home() {
       </section>
 
       <section className="border-b border-(--surface-line) bg-(--surface-strong) py-24 sm:py-28 lg:py-30">
-        <div className={VS.widths.content}>
+        <div className={VS.widths.page}>
           <div className="max-w-[74ch]">
             <p className="text-[1rem] font-semibold tracking-[0.012em] text-(--th-body-copy)">
               Technical proof
@@ -555,7 +555,7 @@ mjml.config`}
       </section>
 
       <section className="border-y border-(--border-light) bg-(--bg-soft) py-24 sm:py-28 lg:py-30">
-        <div className={VS.widths.content}>
+        <div className={VS.widths.page}>
           <div className="max-w-[74ch]">
             <p className="text-[1rem] font-semibold tracking-[0.012em] text-(--text-secondary-light)">
               Pack value
@@ -629,7 +629,7 @@ mjml.config`}
       </section>
 
       <section className="relative overflow-hidden border-t border-(--surface-line) bg-(--surface-strong) py-24 sm:py-28 lg:py-30">
-        <div className={VS.widths.content}>
+        <div className={VS.widths.page}>
           <div className="relative mx-auto max-w-[50rem] overflow-hidden rounded-[1.58rem] border border-(--surface-line) bg-(--hedgehog-core-navy) px-8 py-12 text-center shadow-[0_28px_56px_rgba(0,0,0,0.38)] sm:px-12 sm:py-14">
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,hsl(var(--th-accent-support)/0.2),transparent_60%)]" />
             <div className="relative">
