@@ -5,7 +5,7 @@ import { DocsLayout, DocsSection } from "@/components/docs/DocsLayout";
 export const metadata: Metadata = {
   title: createPageTitle("Docs"),
   description:
-    `Implementation guides for ${TEMPLATE_CONFIG.brandName} MJML components, layouts, compiled HTML workflows, and email client caveats.`,
+    `Implementation guides for ${TEMPLATE_CONFIG.brandName} workflows, layouts, MJML source, compiled HTML, and email client caveats.`,
 };
 
 const inlineCodeClass =
@@ -32,9 +32,9 @@ export default function DocsPage() {
     >
       <DocsSection id="intro" title="Intro">
         <p>
-          {TEMPLATE_CONFIG.brandName} is a public MJML component library backed by a downloadable offline archive. Component pages are
-          designed to help you inspect a single block in isolation. Layout pages show how those blocks stack into a full
-          email.
+          {TEMPLATE_CONFIG.brandName} is a public MJML reference system backed by a downloadable offline archive.
+          Workflow pages show practical production paths, layout pages show message structure, and component pages let
+          you inspect single blocks when needed.
         </p>
         <p>
           The intended editing model is straightforward: treat MJML as the source of truth, compile to HTML when your ESP
@@ -48,7 +48,7 @@ export default function DocsPage() {
           A safe working pattern for most teams looks like this:
         </p>
         <ol className="list-decimal space-y-2.5 pl-5 marker:font-semibold marker:text-(--accent-support)">
-          <li>Pick the closest component or layout from the library.</li>
+          <li>Start from the closest workflow, then move to layout or component detail when needed.</li>
           <li>Edit the <span className={inlineCodeClass}>MJML</span> source rather than patching compiled HTML by hand.</li>
           <li>Compile to HTML and test the result in your delivery workflow.</li>
           <li>Run quick visual checks in Gmail, Outlook, and Apple Mail before final send.</li>
@@ -141,7 +141,7 @@ export default function DocsPage() {
           <li>Edited compiled HTML drifting away from the MJML source, making the next revision harder than it should be.</li>
         </ul>
         <p>
-          If you hit one of these issues often, favour the simpler variant in the library. Reliability is usually worth more
+          If you hit one of these issues often, favour the simpler variant in the workflow or layout reference. Reliability is usually worth more
           than a slightly more decorative layout treatment.
         </p>
       </DocsSection>

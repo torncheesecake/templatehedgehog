@@ -76,8 +76,8 @@ export const visualSystem = {
     page: "bg-(--surface-strong)",
     dark: "bg-(--surface-soft)",
     darkDeep: "bg-(--dune-deep)",
-    light: "bg-(--bg-soft)",
-    lightAlt: "bg-(--bg-soft-elevated)",
+    light: "bg-(--surface-muted)",
+    lightAlt: "bg-(--bg-surface-elevated)",
   },
   sections: {
     types: {
@@ -91,7 +91,7 @@ export const visualSystem = {
     surfaces: {
       dark: "bg-(--surface-strong)",
       mid: "bg-(--surface-soft)",
-      light: "bg-(--bg-soft)",
+      light: "bg-(--surface-muted)",
     },
     intros: {
       centered: "mx-auto max-w-[78ch] text-center",

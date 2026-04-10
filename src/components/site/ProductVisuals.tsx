@@ -235,7 +235,7 @@ export function EffortComparisonVisual({
               </div>
               <p className="mt-1 text-[0.88rem] leading-6 text-(--dune-muted)">{item.note}</p>
               <div className="mt-2 h-1.5 rounded-full bg-(--surface-line)">
-                <span className="block h-full rounded-full bg-(--accent-primary)" style={{ width: `${item.value}%` }} />
+                <span className="block h-full rounded-full bg-(--accent-support)" style={{ width: `${item.value}%` }} />
               </div>
             </li>
           ))}

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { JetBrains_Mono, Manrope, Roboto_Serif, Space_Mono } from "next/font/google";
 import { TEMPLATE_CONFIG } from "@/config/template";
+import { withBasePath } from "@/lib/asset-path";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -27,13 +28,13 @@ const jetBrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(TEMPLATE_CONFIG.siteUrl),
-  title: `${TEMPLATE_CONFIG.brandName} | Premium MJML Components for Developers`,
+  title: `${TEMPLATE_CONFIG.brandName} | Workflow-first MJML system for developers`,
   description:
-    "A premium MJML component library for developers who need reliable email building blocks, rendered previews, and cleaner handoff.",
+    "A workflow-first MJML system for developers who need production-ready email builds, cleaner QA handoff, and reusable implementation structure.",
   icons: {
-    icon: "/icon-uxwing.svg",
-    shortcut: "/icon-uxwing.svg",
-    apple: "/icon-uxwing.svg",
+    icon: withBasePath("/icon-uxwing.svg"),
+    shortcut: withBasePath("/icon-uxwing.svg"),
+    apple: withBasePath("/icon-uxwing.svg"),
   },
 };
 

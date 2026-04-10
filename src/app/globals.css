@@ -4,38 +4,58 @@
 @source "../lib";
 
 :root {
-  /* Brand system */
-  --brand-primary: #dc2626;
-  --brand-primary-hover: #b91c1c;
-  --brand-accent: #f97316;
+  /* === CANVAS (page background) === */
+  --bg-canvas: #0d1412;
 
-  /* Foundation palette */
-  --bg-canvas: #0b0f0e;
-  --bg-surface: #121917;
-  --bg-surface-elevated: #16221d;
-  --bg-soft: #f4fbf8;
-  --bg-soft-elevated: #ffffff;
+  /* === SURFACES === */
+  --bg-surface: #131c19;
+  --bg-elevated: #182420;
+  --bg-muted: #1f2d28;
+  --bg-surface-elevated: var(--bg-elevated);
+  --bg-soft: var(--bg-muted);
+  --bg-soft-elevated: color-mix(in srgb, var(--bg-muted) 82%, var(--bg-elevated));
 
-  /* Text */
-  --text-primary-dark: #e8e8e8;
-  --text-secondary-dark: #b8c0bc;
-  --text-primary-light: #0f172a;
-  --text-secondary-light: #334155;
+  /* === TEXT === */
+  --text-primary: #e6f1ed;
+  --text-secondary: #a7b8b2;
+  --text-primary-dark: var(--text-primary);
+  --text-secondary-dark: var(--text-secondary);
+  --text-primary-light: var(--text-primary);
+  --text-secondary-light: var(--text-secondary);
 
-  /* Borders and status */
-  --border-dark: #24312c;
-  --border-light: #d7e3dd;
-  --success: #16a34a;
-  --warning: #ea580c;
+  /* === BORDERS === */
+  --border-subtle: rgba(167, 184, 178, 0.12);
+  --border-dark: color-mix(in srgb, var(--text-secondary) 22%, var(--bg-canvas));
+  --border-light: color-mix(in srgb, var(--text-secondary) 32%, var(--bg-surface));
+
+  /* === ACCENT (SAGE SYSTEM) === */
+  --accent-sage: #2f6f5e;
+  --accent-sage-soft: rgba(47, 111, 94, 0.18);
+
+  /* === PRIMARY ACTION (DO NOT CHANGE) === */
+  --cta-primary: #d13d4c;
+  --cta-primary-hover: #b93340;
+
+  /* === CTA TEXT === */
+  --cta-text: #ffffff;
+
+  /* Brand compatibility */
+  --brand-primary: var(--cta-primary);
+  --brand-primary-hover: var(--cta-primary-hover);
+  --brand-accent: var(--accent-sage);
+
+  /* Status */
+  --success: var(--accent-sage);
+  --warning: var(--cta-primary);
 
   /* Compatibility HSL channels */
-  --th-accent: 0 72% 51%;
-  --th-accent-hover: 0 69% 42%;
-  --th-accent-support: 24 95% 53%;
+  --th-accent: 165 40% 31%;
+  --th-accent-hover: 165 42% 26%;
+  --th-accent-support: 165 40% 31%;
 
   /* App semantic tokens */
   --background: var(--bg-canvas);
-  --foreground: var(--text-primary-dark);
+  --foreground: var(--text-primary);
   --panel: var(--bg-surface);
   --panel-soft: var(--bg-surface-elevated);
   --line: var(--border-dark);
@@ -43,11 +63,11 @@
   --dune-muted: var(--text-secondary-dark);
   --th-body-copy: var(--text-secondary-dark);
   --th-body-copy-dark: var(--text-secondary-light);
-  --dune-focus: color-mix(in srgb, var(--brand-primary) 74%, white);
-  --accent-primary: var(--brand-primary);
-  --accent-secondary: var(--brand-primary-hover);
-  --accent-support: var(--brand-accent);
-  --dune-accent: var(--brand-accent);
+  --dune-focus: color-mix(in srgb, var(--cta-primary) 74%, white);
+  --accent-primary: var(--cta-primary);
+  --accent-secondary: var(--cta-primary-hover);
+  --accent-support: var(--accent-sage);
+  --dune-accent: var(--accent-sage);
   --dune-shadow: 0 16px 34px rgba(0, 0, 0, 0.42);
   --dune-elevation: linear-gradient(
     180deg,
@@ -57,8 +77,8 @@
   --dune-deep: var(--bg-surface-elevated);
   --surface-strong: var(--bg-canvas);
   --surface-soft: var(--bg-surface);
-  --surface-muted: color-mix(in srgb, var(--bg-surface-elevated) 82%, transparent);
-  --surface-line: color-mix(in srgb, var(--border-dark) 84%, transparent);
+  --surface-muted: var(--bg-muted);
+  --surface-line: var(--border-subtle);
   --surface-shadow: 0 18px 36px rgba(0, 0, 0, 0.38);
 
   /* Compatibility aliases for existing utility classes */
@@ -88,12 +108,12 @@ body {
   background:
     radial-gradient(
       circle at 82% 8%,
-      hsl(var(--th-accent) / 0.18) 0%,
+      hsl(var(--th-accent) / 0.14) 0%,
       transparent 38%
     ),
     radial-gradient(
       circle at 14% 16%,
-      hsl(var(--th-accent-support) / 0.1) 0%,
+      var(--accent-sage-soft) 0%,
       transparent 36%
     ),
     linear-gradient(
@@ -121,19 +141,31 @@ h3 {
 }
 
 .cta-blue {
-  color: var(--text-primary-dark) !important;
+  color: var(--cta-text) !important;
   text-shadow: none;
 }
 
 .cta-blue:link,
 .cta-blue:visited {
-  color: var(--text-primary-dark) !important;
+  color: var(--cta-text) !important;
 }
 
 .cta-blue:hover,
 .cta-blue:active,
 .cta-blue:focus-visible {
-  color: var(--text-primary-dark) !important;
+  color: var(--cta-text) !important;
+}
+
+:where(a, button, summary)[class*="bg-(--accent-primary)"],
+:where(a, button, summary)[class*="bg-(--accent-secondary)"] {
+  color: var(--cta-text) !important;
+}
+
+:where(a, button, summary)[class*="bg-(--accent-primary)"]:hover,
+:where(a, button, summary)[class*="bg-(--accent-secondary)"]:hover,
+:where(a, button, summary)[class*="bg-(--accent-primary)"]:focus-visible,
+:where(a, button, summary)[class*="bg-(--accent-secondary)"]:focus-visible {
+  color: var(--cta-text) !important;
 }
 
 @keyframes floatPulse {

@@ -1,5 +1,6 @@
 import { getEmailComponentBySlug } from "@/data/email-components";
 import { buildMjmlFromLibraryFiles } from "@/data/mjml-library";
+import { withBasePath } from "@/lib/asset-path";
 
 export type LayoutComponentBlock = {
   componentSlug: string;
@@ -79,7 +80,7 @@ function createLayout(definition: LayoutDefinition): EmailLayoutRecipe {
 }
 
 function getEmailLayoutPreviewImageUrl(slug: string): string {
-  return `/email-shots-v3/layouts/${slug}.png`;
+  return withBasePath(`/email-shots-v3/layouts/${slug}.png`);
 }
 
 export const emailLayouts: EmailLayoutRecipe[] = [

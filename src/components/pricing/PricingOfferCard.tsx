@@ -72,7 +72,7 @@ export function PricingOfferCard({
           aria-pressed={vatMode === "ex_vat"}
           className={`h-8 rounded-[0.58rem] px-3 text-[0.74rem] font-semibold tracking-[0.02em] transition ${
             vatMode === "ex_vat"
-              ? "bg-(--accent-primary) text-(--text-primary-dark)"
+              ? "bg-(--accent-support) text-(--text-primary-dark)"
               : "text-(--dune-muted) hover:text-(--text-primary-dark)"
           }`}
         >
@@ -84,7 +84,7 @@ export function PricingOfferCard({
           aria-pressed={vatMode === "inc_vat"}
           className={`h-8 rounded-[0.58rem] px-3 text-[0.74rem] font-semibold tracking-[0.02em] transition ${
             vatMode === "inc_vat"
-              ? "bg-(--accent-primary) text-(--text-primary-dark)"
+              ? "bg-(--accent-support) text-(--text-primary-dark)"
               : "text-(--dune-muted) hover:text-(--text-primary-dark)"
           }`}
         >
@@ -169,7 +169,7 @@ export function PricingOfferCard({
           Explore workflows
         </Link>
         <Link href="/components" className="underline-offset-2 hover:text-(--text-primary-dark) hover:underline">
-          Browse free library
+          Browse free reference
         </Link>
       </div>
     </aside>

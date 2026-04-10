@@ -157,7 +157,7 @@ export default function Home() {
     <main className="min-h-screen bg-(--surface-strong) text-(--th-body-copy) [font-family:Arial,sans-serif]">
       <SiteTopBar theme="hero" ctaHref="/pricing" ctaLabel="Get Hedgehog Core - £79" />
 
-      <section className="relative overflow-hidden border-b border-(--surface-line) bg-(--surface-strong) py-20 sm:py-24 lg:py-28">
+      <section className="relative overflow-hidden border-b border-(--surface-line) bg-(--bg-elevated) py-20 sm:py-24 lg:py-28">
         <div className={VS.widths.page}>
           <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-center">
             <div className="max-w-[38rem]">
@@ -328,7 +328,7 @@ export default function Home() {
                     </div>
                     <Link
                       href={`/workflows/${primaryWorkflow.slug}`}
-                      className="mt-6 inline-flex items-center gap-1.5 text-[0.88rem] font-semibold text-(--text-primary-light) transition hover:text-(--accent-primary)"
+                      className="mt-6 inline-flex items-center gap-1.5 text-[0.88rem] font-semibold text-(--text-primary-light) transition hover:text-(--accent-support)"
                     >
                       View workflow
                       <ArrowRight className="h-4 w-4" />
@@ -364,7 +364,7 @@ export default function Home() {
                     </p>
                     <Link
                       href={`/workflows/${workflow.slug}`}
-                      className="mt-4 inline-flex items-center gap-1.5 text-[0.84rem] font-semibold text-(--text-primary-light) transition hover:text-(--accent-primary)"
+                      className="mt-4 inline-flex items-center gap-1.5 text-[0.84rem] font-semibold text-(--text-primary-light) transition hover:text-(--accent-support)"
                     >
                       View workflow
                       <ArrowRight className="h-4 w-4" />

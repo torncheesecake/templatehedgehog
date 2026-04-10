@@ -6,6 +6,7 @@ import { expandedEmailComponents } from "@/data/email-components/expanded";
 import { minedEmailComponents } from "@/data/email-components/mined";
 import { waveTwoEmailComponents } from "@/data/email-components/wave-two";
 import { loadMjmlLibraryFragment, wrapMjmlFragment } from "@/data/mjml-library";
+import { withBasePath } from "@/lib/asset-path";
 
 export type EmailCompatibilityStatus = "tested" | "partial" | "unknown";
 
@@ -446,7 +447,7 @@ const coreEmailComponents: EmailComponent[] = [
 ];
 
 function getEmailComponentPreviewImageUrl(slug: string): string {
-  return `/email-shots-v3/${slug}.png`;
+  return withBasePath(`/email-shots-v3/${slug}.png`);
 }
 
 export const emailComponents: EmailComponent[] = [

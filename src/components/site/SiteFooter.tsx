@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { TEMPLATE_CONFIG } from "@/config/template";
+import { withBasePath } from "@/lib/asset-path";
 
 const footerNavigation = [
   { href: "/components", label: "Components" },
@@ -28,6 +29,7 @@ interface SiteFooterProps {
 
 export function SiteFooter({ flush = false }: SiteFooterProps) {
   const currentYear = new Date().getFullYear();
+  const hogMarkUrl = withBasePath("/brand/hedgehog-mark-core-blue.svg");
   const footerLinkClass =
     "text-[1rem] font-semibold text-(--text-primary-dark) transition hover:text-(--accent-support) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2";
 
@@ -131,8 +133,8 @@ export function SiteFooter({ flush = false }: SiteFooterProps) {
                 aria-hidden="true"
                 className="h-5 w-5 shrink-0 bg-(--accent-support)"
                 style={{
-                  WebkitMaskImage: "url('/brand/hedgehog-mark-core-blue.svg')",
-                  maskImage: "url('/brand/hedgehog-mark-core-blue.svg')",
+                  WebkitMaskImage: `url('${hogMarkUrl}')`,
+                  maskImage: `url('${hogMarkUrl}')`,
                   WebkitMaskRepeat: "no-repeat",
                   maskRepeat: "no-repeat",
                   WebkitMaskSize: "contain",

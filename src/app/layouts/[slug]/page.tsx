@@ -111,7 +111,7 @@ export default async function LayoutDetailPage({ params }: Props) {
               </span>
               <span className="inline-flex items-center gap-2">
                 <span className="h-1.5 w-1.5 rounded-full bg-(--accent-support)" />
-                Built from the public component library
+                Built from the public workflow reference system
               </span>
             </div>
 
@@ -275,7 +275,7 @@ export default async function LayoutDetailPage({ params }: Props) {
               </h2>
               <p className="mt-4 max-w-[58ch] text-[1.06rem] leading-8 text-(--text-primary-dark)">
                 These public layout pages exist to show message order, block stacking, and the relationship between a full
-                email and the underlying component library. {MJML_PACK_NAME} is there when your team wants the complete archive
+                email and the underlying workflow system. {MJML_PACK_NAME} is there when your team wants the complete archive
                 locally for faster assembly and handoff.
               </p>
 

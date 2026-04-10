@@ -97,7 +97,7 @@ export default function PackPage() {
               <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-(--dune-muted)">Components</p>
               <h2 className="mt-2 text-[1.2rem] font-semibold text-(--text-primary-dark)">{COMPONENT_COUNT} reusable blocks</h2>
               <p className="mt-2 text-[0.95rem] leading-7 text-(--th-body-copy)">
-                Copy single blocks from the public library, then use the full local project when you need speed and consistency.
+                Copy single blocks from the public reference, then use the full local project when you need speed and consistency.
               </p>
               <Link
                 href="/components"

@@ -232,7 +232,7 @@ export default function PricingPage() {
                 <p className="mt-2 text-[0.88rem] leading-6 text-(--text-secondary-light)">{workflow.goal}</p>
                 <Link
                   href={`/workflows/${workflow.slug}`}
-                  className="mt-3 inline-flex items-center gap-1.5 text-[0.8rem] font-semibold text-(--text-primary-light) transition hover:text-(--accent-primary)"
+                  className="mt-3 inline-flex items-center gap-1.5 text-[0.8rem] font-semibold text-(--text-primary-light) transition hover:text-(--accent-support)"
                 >
                   View workflow
                   <ArrowRight className="h-4 w-4" />

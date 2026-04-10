@@ -276,7 +276,7 @@ export function ComponentsGalleryClient({ components }: ComponentsGalleryClientP
                       aria-pressed={isActive}
                       className={`inline-flex h-8.5 items-center rounded-[0.7rem] border px-3 text-[0.74rem] font-semibold tracking-[0.02em] transition focus:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2 ${
                         isActive
-                          ? "border-(--accent-primary) bg-(--accent-primary) text-(--text-primary-dark)"
+                          ? "border-(--accent-support) bg-[hsl(var(--th-accent-support)/0.16)] text-(--text-primary-dark)"
                           : "border-(--surface-line) bg-transparent text-(--th-body-copy) hover:border-(--accent-support) hover:text-(--text-primary-dark)"
                       }`}
                     >
@@ -369,7 +369,7 @@ export function ComponentsGalleryClient({ components }: ComponentsGalleryClientP
                     <h2 className="text-[1.16rem] font-semibold leading-7 text-(--text-primary-dark)">
                       {component.title}
                     </h2>
-                    <ArrowUpRight className="mt-1 h-4.5 w-4.5 shrink-0 text-(--accent-support) transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-(--accent-primary)" />
+                    <ArrowUpRight className="mt-1 h-4.5 w-4.5 shrink-0 text-(--accent-support) transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </div>
 
                   <p className="mt-2 text-[0.94rem] leading-7 text-(--th-body-copy)">
@@ -400,11 +400,11 @@ export function ComponentsGalleryClient({ components }: ComponentsGalleryClientP
               <div>
                 <p className="text-[1rem] font-semibold tracking-[0.012em] text-(--th-body-copy)">Next step</p>
                 <h2 className="mt-3 max-w-[18ch] text-[1.9rem] font-semibold leading-[0.96] text-(--text-primary-dark)">
-                  Need the full library offline for your team
+                  Need the full workflow system offline for your team
                 </h2>
                 <p className="mt-4 max-w-[60ch] text-[0.98rem] leading-7 text-(--th-body-copy)">
-                  The public library is for discovery and one-off use. {TEMPLATE_CONFIG.productName} is for teams who
-                  want the entire archive, compiled HTML, and faster implementation workflow.
+                  The public reference is for discovery and one-off use. {TEMPLATE_CONFIG.productName} is for teams who
+                  want the full archive, compiled HTML, and faster implementation workflow.
                 </p>
               </div>
               <div className="flex flex-wrap gap-3 lg:justify-end">

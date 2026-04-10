@@ -18,7 +18,7 @@ type IntroTone = "dark" | "light";
 const toneClasses: Record<SectionTone, string> = {
   canvas: "bg-(--surface-strong)",
   surface: "bg-(--surface-soft)",
-  soft: "bg-(--bg-soft)",
+  soft: "bg-(--surface-muted)",
 };
 
 const borderClasses = {
@@ -26,9 +26,9 @@ const borderClasses = {
   top: "border-t border-(--surface-line)",
   bottom: "border-b border-(--surface-line)",
   both: "border-y border-(--surface-line)",
-  softTop: "border-t border-(--border-light)",
-  softBottom: "border-b border-(--border-light)",
-  softBoth: "border-y border-(--border-light)",
+  softTop: "border-t border-(--surface-line)",
+  softBottom: "border-b border-(--surface-line)",
+  softBoth: "border-y border-(--surface-line)",
 } as const;
 
 interface SectionShellProps {
@@ -148,7 +148,7 @@ export function VisualPanel({ children, className, tone = "dark" }: VisualPanelP
         "relative overflow-hidden rounded-[1.08rem] border p-6 sm:p-7 lg:p-8",
         tone === "dark"
           ? "border-(--surface-line) bg-(--surface-soft) shadow-[0_22px_42px_rgba(0,0,0,0.34)]"
-          : "border-(--border-light) bg-(--bg-soft-elevated) shadow-[0_18px_32px_rgba(15,23,42,0.09)]",
+          : "border-(--surface-line) bg-(--bg-surface-elevated) shadow-[0_18px_34px_rgba(0,0,0,0.32)]",
         className,
       )}
     >

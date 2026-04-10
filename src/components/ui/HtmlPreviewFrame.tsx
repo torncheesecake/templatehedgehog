@@ -8,6 +8,7 @@ import {
   useState,
   type SyntheticEvent,
 } from "react";
+import { rewriteHtmlAssetPaths } from "@/lib/asset-path";
 
 interface HtmlPreviewFrameProps {
   html: string;
@@ -58,6 +59,8 @@ export function HtmlPreviewFrame({
     };
   }, [variant]);
 
+  const resolvedHtml = useMemo(() => rewriteHtmlAssetPaths(html), [html]);
+
   const applyMeasuredHeight = useCallback(
     (frame: HTMLIFrameElement) => {
       const doc = frame.contentDocument;
@@ -106,7 +109,7 @@ export function HtmlPreviewFrame({
       window.clearTimeout(mediumDelay);
       window.clearTimeout(longDelay);
     };
-  }, [applyMeasuredHeight, html]);
+  }, [applyMeasuredHeight, resolvedHtml]);
 
   return (
     <div className={`mx-auto w-full max-w-[1200px] ${className}`}>
@@ -119,7 +122,7 @@ export function HtmlPreviewFrame({
             ref={iframeRef}
             title={title}
             sandbox="allow-same-origin"
-            srcDoc={html}
+            srcDoc={resolvedHtml}
             className={settings.wrapperClass}
             style={{
               height: `${resolvedHeight ?? settings.fallback}px`,

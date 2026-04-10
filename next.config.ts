@@ -52,6 +52,9 @@ const nextConfig: NextConfig = {
   assetPrefix: basePath ? `${basePath}/` : undefined,
   trailingSlash: isStaticExport,
   skipTrailingSlashRedirect: isStaticExport,
+  env: {
+    NEXT_PUBLIC_BASE_PATH: basePath,
+  },
   images: {
     unoptimized: isStaticExport,
   },

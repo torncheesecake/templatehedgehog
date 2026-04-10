@@ -155,7 +155,7 @@ export default function WorkflowsPage() {
                   <div className="mt-5 flex flex-wrap gap-3">
                     <Link
                       href={`/workflows/${leadWorkflow.slug}`}
-                      className="inline-flex h-10 items-center rounded-[0.74rem] border border-(--surface-line) bg-(--surface-strong) px-4 text-[0.8rem] font-semibold text-(--text-primary-light) transition hover:border-(--accent-primary)"
+                      className="inline-flex h-10 items-center rounded-[0.74rem] border border-(--surface-line) bg-(--surface-strong) px-4 text-[0.8rem] font-semibold text-(--text-primary-light) transition hover:border-(--accent-support)"
                     >
                       View workflow
                     </Link>
@@ -195,7 +195,7 @@ export default function WorkflowsPage() {
                   <p className="mt-2 text-[0.88rem] leading-6 text-(--text-secondary-light)">{workflow.goal}</p>
                   <Link
                     href={`/workflows/${workflow.slug}`}
-                    className="mt-3 inline-flex items-center gap-1.5 text-[0.8rem] font-semibold text-(--text-primary-light) transition hover:text-(--accent-primary)"
+                    className="mt-3 inline-flex items-center gap-1.5 text-[0.8rem] font-semibold text-(--text-primary-light) transition hover:text-(--accent-support)"
                   >
                     View workflow
                     <ArrowRight className="h-4 w-4" />

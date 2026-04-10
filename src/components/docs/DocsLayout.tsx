@@ -26,7 +26,7 @@ export function DocsLayout({ title, summary, children, navItems = [] }: DocsLayo
 
   return (
     <main className={VS.templates.content.main}>
-      <SiteTopBar theme="hero" ctaHref="/components" ctaLabel="Browse components" />
+      <SiteTopBar theme="hero" ctaHref="/pricing" ctaLabel="Get Hedgehog Core - £79" />
       <section className={cn(VS.templates.content.frame, "pb-24")}>
         <div className={VS.widths.docs}>
           <header className={cn(VS.templates.content.heroCard, "max-w-[84rem]")}>
