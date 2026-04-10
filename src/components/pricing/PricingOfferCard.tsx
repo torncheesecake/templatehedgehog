@@ -52,7 +52,8 @@ export function PricingOfferCard({
   }, [pricePence, vatMode]);
 
   return (
-    <aside className="rounded-[1.4rem] border border-(--surface-line) bg-(--bg-surface-elevated) p-7 shadow-[0_34px_64px_rgba(0,0,0,0.42)] sm:p-8">
+    <aside className="relative overflow-hidden rounded-[1.4rem] border border-(--surface-line) bg-(--bg-surface-elevated) p-7 shadow-[0_34px_64px_rgba(0,0,0,0.42)] sm:p-8">
+      <span className="pointer-events-none absolute inset-x-8 top-0 h-px bg-[linear-gradient(90deg,transparent,hsl(var(--th-accent-support)/0.52),transparent)]" />
       <p className="text-[1rem] font-semibold uppercase tracking-[0.1em] text-(--th-body-copy)">
         Hedgehog Core
       </p>
@@ -167,8 +168,8 @@ export function PricingOfferCard({
         <Link href="/workflows" className="underline-offset-2 hover:text-(--text-primary-dark) hover:underline">
           Explore workflows
         </Link>
-        <Link href="/docs" className="underline-offset-2 hover:text-(--text-primary-dark) hover:underline">
-          Read docs
+        <Link href="/components" className="underline-offset-2 hover:text-(--text-primary-dark) hover:underline">
+          Browse free library
         </Link>
       </div>
     </aside>

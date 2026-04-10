@@ -7,11 +7,11 @@ export const visualSystem = {
     bodyWide: "max-w-[76ch]",
   },
   spacing: {
-    hero: "pb-24 pt-12 sm:pt-14 lg:pb-28 lg:pt-16",
-    heroCompact: "pb-20 pt-10 sm:pt-12 lg:pb-24 lg:pt-14",
-    section: "py-16 sm:py-20",
-    sectionTop: "pt-16 sm:pt-18 lg:pt-20",
-    sectionBottom: "pb-16 sm:pb-20 lg:pb-24",
+    hero: "pb-26 pt-14 sm:pt-16 lg:pb-30 lg:pt-18",
+    heroCompact: "pb-22 pt-12 sm:pt-14 lg:pb-26 lg:pt-16",
+    section: "py-20 sm:py-24 lg:py-28",
+    sectionTop: "pt-20 sm:pt-24 lg:pt-28",
+    sectionBottom: "pb-20 sm:pb-24 lg:pb-28",
     sectionCompact: "pt-8 pb-18 sm:pt-9 lg:pb-22",
   },
   radius: {
@@ -81,12 +81,12 @@ export const visualSystem = {
   },
   sections: {
     types: {
-      hero: "pb-24 pt-14 sm:pt-16 lg:pb-28 lg:pt-20",
-      feature: "py-20 sm:py-24 lg:py-24",
-      proof: "py-20 sm:py-24 lg:py-24",
-      comparison: "py-20 sm:py-24 lg:py-24",
-      grid: "py-20 sm:py-24 lg:py-24",
-      cta: "pb-24 sm:pb-28 lg:pb-28",
+      hero: "pb-24 pt-16 sm:pt-18 lg:pb-30 lg:pt-24",
+      feature: "py-24 sm:py-28 lg:py-28",
+      proof: "py-24 sm:py-28 lg:py-28",
+      comparison: "py-24 sm:py-28 lg:py-28",
+      grid: "py-24 sm:py-28 lg:py-28",
+      cta: "py-24 sm:py-28 lg:py-28",
     },
     surfaces: {
       dark: "bg-(--surface-strong)",
@@ -100,7 +100,7 @@ export const visualSystem = {
       fullWidth: "max-w-[84ch]",
       headingGap: "mt-3",
       bodyGap: "mt-4",
-      contentGap: "mt-9",
+      contentGap: "mt-12",
     },
     layouts: {
       split: "grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.94fr)] lg:items-start",

@@ -11,14 +11,18 @@ import {
 } from "@/data/workflows";
 import { TrackEventOnMount } from "@/components/analytics/TrackEventOnMount";
 import { TrackableLink } from "@/components/analytics/TrackableLink";
-import { SiteFooter } from "@/components/site/SiteFooter";
 import {
+  SectionIntro,
+  SectionShell,
+  VisualPanel,
+} from "@/components/site/SectionPrimitives";
+import {
+  SystemArchitectureVisual,
   WorkflowFlowDiagram,
-  WorkflowStackVisual,
 } from "@/components/site/ProductVisuals";
+import { SiteFooter } from "@/components/site/SiteFooter";
 import { SiteTopBar } from "@/components/site/SiteTopBar";
 import { visualSystem } from "@/components/site/visualSystem";
-import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: createPageTitle("Workflows"),
@@ -48,46 +52,34 @@ const workflowPipelineSteps = [
 export default function WorkflowsPage() {
   const VS = visualSystem;
   const featuredWorkflows = getFeaturedEmailWorkflows(5);
-  const mappingWorkflow = featuredWorkflows[0];
-
-  const mappingSteps = mappingWorkflow
-    ? [
-        `workflow/${mappingWorkflow.slug}`,
-        `layout/${mappingWorkflow.linkedLayoutSlug}`,
-        ...mappingWorkflow.componentStack
-          .slice(0, 3)
-          .map((item) => `component/${item.componentSlug}`),
-      ]
-    : [];
+  const leadWorkflow = featuredWorkflows[0];
+  const secondaryWorkflows = featuredWorkflows.slice(1);
 
   return (
     <main className={VS.templates.library.main}>
       <SiteTopBar theme="hero" ctaHref="/pricing" ctaLabel="Get Hedgehog Core - £79" />
       <TrackEventOnMount event="view_workflow_index" payload={{ source: "workflow_index" }} />
 
-      <section className={cn(VS.widths.page, VS.sections.types.hero)}>
-        <div className={VS.sections.intros.wideSplit}>
-          <header className={VS.sections.intros.fullWidth}>
-            <p className={VS.eyebrow.light}>Workflow systems</p>
-            <h1 className="mt-4 text-[2.45rem] font-semibold leading-[1.01] text-(--text-primary-dark) sm:text-[3.35rem]">
+      <SectionShell spacing="hero" tone="canvas" width="content">
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,1.04fr)_minmax(0,0.96fr)] lg:items-center">
+          <div>
+            <p className="text-[1rem] font-semibold tracking-[0.012em] text-(--th-body-copy)">Workflow systems</p>
+            <h1 className="mt-4 max-w-[15ch] text-[2.9rem] font-semibold leading-[0.9] text-(--text-primary-dark) sm:text-[4rem] lg:text-[4.45rem]">
               Start from a workflow, not a blank email
             </h1>
-            <p className="mt-5 max-w-[78ch] text-[1.05rem] leading-8 text-(--th-body-copy)">
-              Build from production use cases that already define trigger, structure, merge variables, and handoff notes.
-              This saves build time, reduces repeated QA effort, and keeps implementation decisions consistent across teams.
+            <p className="mt-6 max-w-[62ch] text-[1.06rem] leading-8 text-(--th-body-copy)">
+              Build from practical production flows that already map trigger, structure, merge variables, and handoff
+              notes. This removes repeated build work and keeps implementation decisions consistent.
             </p>
-            <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-[0.94rem] text-(--th-body-copy)">
+
+            <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 text-[0.94rem] text-(--th-body-copy)">
               <span className="inline-flex items-center gap-2">
                 <span className="h-1.5 w-1.5 rounded-full bg-(--accent-support)" />
                 {emailWorkflows.length} workflow references
               </span>
               <span className="inline-flex items-center gap-2">
                 <span className="h-1.5 w-1.5 rounded-full bg-(--accent-support)" />
-                Trigger, goal, and data contract mapped
-              </span>
-              <span className="inline-flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-(--accent-support)" />
-                Layout and component stack linked
+                Trigger, data contract, and QA notes included
               </span>
             </div>
 
@@ -96,7 +88,7 @@ export default function WorkflowsPage() {
                 href="/pricing?source=workflow_index"
                 event="workflow_to_pricing"
                 payload={{ source: "workflow_index", target: "pricing" }}
-                className={cn(VS.buttons.primaryLarge, "shadow-[0_18px_34px_rgba(0,0,0,0.28)]")}
+                className="inline-flex h-12 items-center rounded-[0.9rem] border border-(--accent-primary) bg-(--accent-primary) px-6 text-[0.92rem] font-semibold !text-(--text-primary-dark) shadow-[0_18px_36px_rgba(0,0,0,0.34)] transition hover:bg-(--accent-secondary)"
               >
                 Get Hedgehog Core - £79
               </TrackableLink>
@@ -104,7 +96,7 @@ export default function WorkflowsPage() {
                 Read workflow docs
               </Link>
             </div>
-          </header>
+          </div>
 
           <div className="grid gap-5">
             <WorkflowFlowDiagram
@@ -114,110 +106,108 @@ export default function WorkflowsPage() {
                 label: item.label,
                 detail: item.detail,
               }))}
-              className="shadow-[0_18px_34px_rgba(0,0,0,0.28)]"
             />
 
-            <aside className="surface-card-soft p-6 sm:p-7">
-              <p className="text-[1rem] font-semibold uppercase tracking-[0.09em] text-(--accent-support)">
-                Why this matters
-              </p>
-              <ul className="mt-4 space-y-3 text-[0.95rem] leading-7 text-(--th-body-copy)">
-                <li>Use a proven flow for onboarding, billing, security, and reporting sends.</li>
-                <li>Review implementation risks before your team edits production copy.</li>
-                <li>Move from free reference pages to full downloadable workflow files in Hedgehog Core.</li>
-              </ul>
-            </aside>
+            <SystemArchitectureVisual
+              title="System mapping"
+              subtitle="How workflows connect to the product"
+              workflowLabel={leadWorkflow?.slug ?? "onboarding"}
+              layoutLabel={leadWorkflow?.linkedLayoutSlug ?? "onboarding-step-system"}
+              componentLabels={leadWorkflow?.componentStack.slice(0, 4).map((item) => item.componentSlug) ?? []}
+              imageUrl={leadWorkflow?.previewImageUrl}
+              imageAlt={`${leadWorkflow?.title ?? "Workflow"} preview`}
+            />
           </div>
         </div>
-      </section>
+      </SectionShell>
 
-      <section className={cn("border-y border-(--border-light) bg-(--bg-soft)", VS.sections.types.grid)}>
-        <div className={VS.widths.page}>
-          <div className={VS.sections.intros.fullWidth}>
-            <p className="text-[1rem] font-semibold tracking-[0.01em] text-(--text-secondary-light)">Featured workflows</p>
-            <h2 className="mt-3 max-w-[20ch] text-[2rem] font-semibold leading-[0.95] text-(--text-primary-light) sm:text-[2.45rem]">
-              Production flows teams run repeatedly
-            </h2>
-            <p className="mt-4 max-w-[74ch] text-[1rem] leading-8 text-(--text-secondary-light)">
-              Each workflow links directly to layout and component stack so developers can adapt quickly without rebuilding
-              familiar sends.
-            </p>
-          </div>
+      <SectionShell spacing="grid" tone="soft" border="softBoth" width="content">
+        <SectionIntro
+          pattern="full"
+          tone="light"
+          eyebrow="Featured workflows"
+          title="Production flows teams run repeatedly"
+          description="Use these as the default starting points, then adapt for your delivery rules and ESP setup."
+        />
 
-          <div className={cn(VS.sections.intros.contentGap, VS.sections.layouts.cards3)}>
-            {featuredWorkflows.map((workflow) => (
-              <article
-                key={workflow.slug}
-                className="overflow-hidden rounded-[1rem] border border-(--border-light) bg-(--bg-soft-elevated) shadow-[0_14px_28px_rgba(15,23,42,0.08)]"
-              >
-                <div className="relative aspect-[16/10] overflow-hidden bg-(--bg-soft)">
+        {leadWorkflow ? (
+          <div className="mt-10 grid gap-6 xl:grid-cols-[minmax(0,1.12fr)_minmax(0,0.88fr)]">
+            <article className="relative overflow-hidden rounded-[1.15rem] border border-(--border-light) bg-(--bg-soft-elevated) p-6 shadow-[0_22px_40px_rgba(15,23,42,0.12)] sm:p-7">
+              <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-start">
+                <div>
+                  <p className="text-[0.74rem] font-semibold uppercase tracking-[0.09em] text-(--text-secondary-light)">
+                    Lead workflow
+                  </p>
+                  <h2 className="mt-2 text-[1.5rem] font-semibold leading-[1.02] text-(--text-primary-light)">
+                    {leadWorkflow.title}
+                  </h2>
+                  <p className="mt-3 text-[0.94rem] leading-7 text-(--text-secondary-light)">
+                    {leadWorkflow.summary}
+                  </p>
+                  <ul className="mt-4 space-y-2.5 text-[0.84rem] leading-6 text-(--text-secondary-light)">
+                    {leadWorkflow.componentStack.slice(0, 3).map((item) => (
+                      <li key={`${leadWorkflow.slug}-${item.componentSlug}`} className="rounded-[0.66rem] border border-(--border-light) bg-(--bg-soft) px-3 py-2">
+                        {item.componentTitle}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div className="mt-5 flex flex-wrap gap-3">
+                    <Link
+                      href={`/workflows/${leadWorkflow.slug}`}
+                      className="inline-flex h-10 items-center rounded-[0.74rem] border border-(--surface-line) bg-(--surface-strong) px-4 text-[0.8rem] font-semibold text-(--text-primary-light) transition hover:border-(--accent-primary)"
+                    >
+                      View workflow
+                    </Link>
+                    <Link
+                      href={`/layouts/${leadWorkflow.linkedLayoutSlug}`}
+                      className="inline-flex h-10 items-center rounded-[0.74rem] border border-(--border-light) bg-(--bg-soft) px-4 text-[0.8rem] font-semibold text-(--text-secondary-light) transition hover:border-(--accent-support)"
+                    >
+                      View linked layout
+                    </Link>
+                  </div>
+                </div>
+
+                <div className="relative aspect-[16/10] overflow-hidden rounded-[0.92rem] border border-(--border-light) bg-(--bg-soft)">
                   <Image
-                    src={workflow.previewImageUrl}
-                    alt={`${workflow.title} layout preview`}
+                    src={leadWorkflow.previewImageUrl}
+                    alt={`${leadWorkflow.title} preview`}
                     fill
-                    sizes="(max-width: 1024px) 90vw, 30vw"
+                    sizes="(max-width: 1280px) 90vw, 36vw"
                     className="object-cover object-top"
                   />
                 </div>
-                <div className="p-6">
-                  <h3 className="text-[1.2rem] font-semibold leading-7 text-(--text-primary-light)">
+              </div>
+            </article>
+
+            <div className="grid gap-4 sm:grid-cols-2">
+              {secondaryWorkflows.map((workflow) => (
+                <article
+                  key={workflow.slug}
+                  className="rounded-[0.96rem] border border-(--border-light) bg-(--bg-soft-elevated) p-4 shadow-[0_12px_24px_rgba(15,23,42,0.08)]"
+                >
+                  <p className="text-[0.72rem] font-semibold uppercase tracking-[0.09em] text-(--text-secondary-light)">
+                    {workflow.linkedLayoutTitle}
+                  </p>
+                  <h3 className="mt-2 text-[1.04rem] font-semibold leading-7 text-(--text-primary-light)">
                     {workflow.title}
                   </h3>
-                  <p className="mt-2 text-[0.95rem] leading-7 text-(--text-secondary-light)">
-                    {workflow.summary}
-                  </p>
-                  <p className="mt-3 text-[0.84rem] font-semibold uppercase tracking-[0.08em] text-(--text-secondary-light)">
-                    Linked layout: {workflow.linkedLayoutTitle}
-                  </p>
+                  <p className="mt-2 text-[0.88rem] leading-6 text-(--text-secondary-light)">{workflow.goal}</p>
                   <Link
                     href={`/workflows/${workflow.slug}`}
-                    className="mt-3 inline-flex items-center gap-1.5 text-[0.86rem] font-semibold text-(--text-primary-light) transition hover:text-(--accent-primary) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2 focus-visible:ring-offset-(--bg-soft-elevated)"
+                    className="mt-3 inline-flex items-center gap-1.5 text-[0.8rem] font-semibold text-(--text-primary-light) transition hover:text-(--accent-primary)"
                   >
                     View workflow
                     <ArrowRight className="h-4 w-4" />
                   </Link>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className={cn("border-b border-(--surface-line) bg-(--surface-soft)", VS.sections.types.feature)}>
-        <div className={VS.widths.page}>
-          <div className={VS.sections.intros.wideSplit}>
-            <div>
-              <p className="text-[1rem] font-semibold tracking-[0.01em] text-(--accent-support)">System mapping</p>
-              <h2 className="mt-3 max-w-[18ch] text-[1.96rem] font-semibold leading-[0.97] text-(--text-primary-dark) sm:text-[2.36rem]">
-                Workflow, layout, and components stay connected
-              </h2>
-              <p className="mt-4 max-w-[66ch] text-[1rem] leading-8 text-(--th-body-copy)">
-                The workflow layer anchors implementation decisions so teams avoid drifting structures between lifecycle,
-                campaign, and transactional sends.
-              </p>
-              <div className="mt-6 flex flex-wrap gap-3">
-                <Link href="/layouts" className={VS.buttons.secondaryDark}>
-                  Browse layouts
-                </Link>
-                <Link href="/components" className={VS.buttons.secondaryDark}>
-                  Browse components
-                </Link>
-              </div>
+                </article>
+              ))}
             </div>
-
-            <WorkflowStackVisual
-              title="Workflow stack breakdown"
-              description={`${mappingWorkflow?.title ?? "Workflow"} maps directly to layout and ordered component stack.`}
-              steps={mappingSteps}
-              imageUrl={mappingWorkflow?.previewImageUrl}
-              imageAlt={`${mappingWorkflow?.title ?? "Workflow"} preview`}
-              className="shadow-[0_18px_34px_rgba(0,0,0,0.3)]"
-            />
           </div>
-        </div>
-      </section>
+        ) : null}
+      </SectionShell>
 
-      <section className={cn(VS.widths.page, VS.sections.types.grid)}>
+      <SectionShell spacing="feature" tone="canvas" border="bottom" width="content">
         {emailLayoutSystems.map((system, index) => {
           const workflows = getEmailWorkflowsBySystem(system.slug);
 
@@ -226,55 +216,39 @@ export default function WorkflowsPage() {
           }
 
           return (
-            <section
-              key={system.slug}
-              className={cn(index === 0 ? "" : "mt-12 border-t border-(--surface-line) pt-12")}
-            >
-              <div className={VS.sections.intros.fullWidth}>
-                <p className="text-[1rem] font-semibold uppercase tracking-[0.09em] text-(--accent-support)">
-                  {system.title}
-                </p>
-                <h2 className="mt-2 text-[1.78rem] font-semibold leading-[1.04] text-(--text-primary-dark) sm:text-[2.06rem]">
-                  {system.title} workflows
-                </h2>
-                <p className="mt-3 max-w-[72ch] text-[1rem] leading-7 text-(--th-body-copy)">
-                  {system.description}
-                </p>
-              </div>
+            <section key={system.slug} className={index === 0 ? "" : "section-breath border-t border-(--surface-line) pt-10"}>
+              <SectionIntro
+                pattern="full"
+                eyebrow={system.title}
+                title={`${system.title} workflows`}
+                description={system.description}
+                titleClassName="text-[1.72rem] sm:text-[2.02rem]"
+              />
 
-              <div className={cn(VS.sections.intros.contentGap, VS.sections.layouts.pair)}>
+              <div className="mt-8 grid gap-5 lg:grid-cols-2">
                 {workflows.map((workflow) => (
                   <Link
                     key={workflow.slug}
                     href={`/workflows/${workflow.slug}`}
-                    className="group block overflow-hidden rounded-[1rem] border border-(--surface-line) bg-(--surface-soft) transition duration-200 hover:border-(--accent-support) hover:shadow-[0_18px_32px_rgba(0,0,0,0.3)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2"
+                    className="group block rounded-[1rem] border border-(--surface-line) bg-(--surface-soft) p-5 shadow-[0_16px_30px_rgba(0,0,0,0.3)] transition duration-200 hover:border-(--accent-support) hover:shadow-[0_20px_34px_rgba(0,0,0,0.36)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2"
                   >
-                    <div className="relative aspect-[16/8] overflow-hidden border-b border-(--surface-line) bg-(--surface-strong)">
+                    <div className="relative aspect-[16/8] overflow-hidden rounded-[0.82rem] border border-(--surface-line) bg-(--surface-strong)">
                       <Image
                         src={workflow.previewImageUrl}
                         alt={`${workflow.title} preview`}
                         fill
-                        sizes="(max-width: 1280px) 90vw, 42vw"
+                        sizes="(max-width: 1280px) 90vw, 44vw"
                         className="object-cover object-top transition duration-500 group-hover:scale-[1.01]"
                       />
                     </div>
-                    <div className="p-5">
-                      <div className="flex items-start justify-between gap-4">
-                        <div>
-                          <h3 className="text-[1.12rem] font-semibold text-(--text-primary-dark)">
-                            {workflow.title}
-                          </h3>
-                          <p className="mt-2 text-[0.95rem] leading-7 text-(--th-body-copy)">
-                            {workflow.summary}
-                          </p>
-                        </div>
-                        <span className="inline-flex rounded-full border border-[hsl(var(--th-accent-support)/0.32)] bg-[hsl(var(--th-accent-support)/0.12)] px-2.5 py-1 text-[0.72rem] font-semibold tracking-[0.03em] text-(--accent-support)">
-                          {workflow.componentStack.length} blocks
-                        </span>
-                      </div>
-                      <p className="mt-3 text-[0.84rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">
-                        Linked layout: {workflow.linkedLayoutTitle}
+                    <div className="mt-4">
+                      <p className="text-[0.72rem] font-semibold uppercase tracking-[0.09em] text-(--th-body-copy)">
+                        {workflow.linkedLayoutTitle}
                       </p>
+                      <h3 className="mt-2 text-[1.16rem] font-semibold leading-7 text-(--text-primary-dark)">
+                        {workflow.title}
+                      </h3>
+                      <p className="mt-2 text-[0.93rem] leading-7 text-(--th-body-copy)">{workflow.summary}</p>
                       <span className="mt-3 inline-flex items-center gap-1.5 text-[0.84rem] font-semibold text-(--th-body-copy)">
                         View workflow
                         <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
@@ -286,7 +260,32 @@ export default function WorkflowsPage() {
             </section>
           );
         })}
-      </section>
+
+        <div className="section-breath border-t border-(--surface-line) pt-10">
+          <VisualPanel>
+            <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
+              <div>
+                <p className="text-[1rem] font-semibold tracking-[0.012em] text-(--th-body-copy)">Next step</p>
+                <h2 className="mt-3 max-w-[18ch] text-[1.92rem] font-semibold leading-[0.96] text-(--text-primary-dark)">
+                  Need the full workflow system available offline
+                </h2>
+                <p className="mt-4 max-w-[60ch] text-[0.98rem] leading-7 text-(--th-body-copy)">
+                  Use the free reference pages for discovery. Use Hedgehog Core when your team needs full source files,
+                  compiled HTML, and versioned workflow packs in one download.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-3 lg:justify-end">
+                <Link href="/pricing" className={VS.buttons.primaryLarge}>
+                  Get Hedgehog Core - £79
+                </Link>
+                <Link href="/components" className={VS.buttons.secondaryDark}>
+                  Browse components
+                </Link>
+              </div>
+            </div>
+          </VisualPanel>
+        </div>
+      </SectionShell>
 
       <SiteFooter />
     </main>

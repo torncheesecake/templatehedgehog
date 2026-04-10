@@ -29,7 +29,7 @@ interface SiteFooterProps {
 export function SiteFooter({ flush = false }: SiteFooterProps) {
   const currentYear = new Date().getFullYear();
   const footerLinkClass =
-    "text-[1rem] font-semibold text-(--th-body-copy) transition hover:text-(--text-primary-dark) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2";
+    "text-[1rem] font-semibold text-(--text-primary-dark) transition hover:text-(--accent-support) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2";
 
   return (
     <section
@@ -52,22 +52,22 @@ export function SiteFooter({ flush = false }: SiteFooterProps) {
                 </span>
               </Link>
               <p className="mt-3 max-w-[52ch] text-[1.02rem] leading-8 text-(--th-body-copy)">
-                A premium MJML component library for teams that want reliable email, cleaner handoff, and less brittle markup.
+                A production-ready MJML workflow system for teams who want faster builds, cleaner handoff, and fewer regressions.
               </p>
             </div>
 
             <div className="flex flex-wrap gap-3 lg:justify-end">
               <Link
-                href="/components"
+                href="/pricing"
                 className="inline-flex h-11 items-center rounded-[0.82rem] border border-(--accent-primary) bg-(--accent-primary) px-5 text-[0.95rem] font-semibold !text-(--text-primary-dark) tracking-[0.01em] transition duration-200 hover:bg-(--accent-secondary) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2"
               >
-                Browse components
+                Get Hedgehog Core - £79
               </Link>
               <Link
-                href="/docs"
+                href="/workflows"
                 className="inline-flex h-11 items-center rounded-[0.82rem] border border-(--surface-line) bg-transparent px-5 text-[0.95rem] font-semibold !text-(--text-primary-dark) tracking-[0.01em] transition duration-200 hover:border-(--accent-support) hover:!text-(--text-primary-dark) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2"
               >
-                Read docs
+                Explore workflows
               </Link>
             </div>
           </div>

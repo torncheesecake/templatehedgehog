@@ -10,11 +10,16 @@ import { PricingOfferCard } from "@/components/pricing/PricingOfferCard";
 import {
   MjmlHtmlSplitView,
   PackFileTreePreview,
+  SystemArchitectureVisual,
   WorkflowStackVisual,
 } from "@/components/site/ProductVisuals";
+import {
+  SectionIntro,
+  SectionShell,
+  VisualPanel,
+} from "@/components/site/SectionPrimitives";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { SiteTopBar } from "@/components/site/SiteTopBar";
-import { visualSystem } from "@/components/site/visualSystem";
 import {
   COMPONENT_COUNT,
   LAYOUT_COUNT,
@@ -45,7 +50,7 @@ const heroBullets = [
   "Start from production workflows instead of rebuilding from a blank file.",
   "Ship faster with layout and component mapping already done.",
   "Cut avoidable QA and debug loops before handoff to ESP delivery.",
-  "Keep a reusable system your team can run across projects.",
+  "Use across projects under one straightforward licence.",
 ] as const;
 
 const comparisonRows = [
@@ -113,7 +118,6 @@ const htmlSnippet = `<table role="presentation" width="100%">
 </table>`;
 
 export default function PricingPage() {
-  const VS = visualSystem;
   const isStaticExport = process.env.STATIC_EXPORT === "true";
   const stripeReady = !isStaticExport && isStripeConfigured();
   const corePack = getPackById("pack-1");
@@ -121,15 +125,6 @@ export default function PricingPage() {
   const lastUpdatedLabel = formatVersionDate(PACK_LAST_UPDATED);
 
   const proofWorkflow = featuredWorkflows[0];
-  const mappingSteps = proofWorkflow
-    ? [
-        `workflow/${proofWorkflow.slug}`,
-        `layout/${proofWorkflow.linkedLayoutSlug}`,
-        ...proofWorkflow.componentStack
-          .slice(0, 3)
-          .map((item) => `component/${item.componentSlug}`),
-      ]
-    : [];
 
   const previewNotice = isStaticExport
     ? "GitHub Pages preview: checkout is disabled here. Live purchase and instant download run on the primary deployment."
@@ -153,21 +148,21 @@ export default function PricingPage() {
     <main className="min-h-screen bg-(--surface-strong) text-(--th-body-copy) [font-family:Arial,sans-serif]">
       <SiteTopBar theme="hero" ctaHref="#buy-core" ctaLabel={PAID_CTA_LABEL} />
 
-      <section className={cn(VS.widths.page, VS.sections.types.hero)}>
-        <div className={VS.sections.intros.wideSplit}>
-          <div className="max-w-[780px]">
-            <p className="text-[1rem] font-semibold uppercase tracking-[0.1em] text-(--accent-support)">
+      <SectionShell spacing="hero" tone="canvas" width="content">
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,1.06fr)_minmax(360px,0.94fr)] lg:items-start">
+          <div>
+            <p className="text-[1rem] font-semibold tracking-[0.012em] text-(--th-body-copy)">
               Workflow-first MJML system
             </p>
-            <h1 className={cn("mt-4 max-w-[14ch] text-[3rem] font-semibold leading-[0.88] text-(--text-primary-dark) sm:text-[4.15rem] lg:text-[4.75rem]", displaySerif.className)}>
+            <h1 className={cn("mt-4 max-w-[14ch] text-[3rem] font-semibold leading-[0.88] text-(--text-primary-dark) sm:text-[4.2rem] lg:text-[4.85rem]", displaySerif.className)}>
               Stop rebuilding the same emails every project
             </h1>
-            <p className="mt-6 max-w-[59ch] text-[1.08rem] leading-8 text-(--th-body-copy)">
+            <p className="mt-6 max-w-[62ch] text-[1.08rem] leading-8 text-(--th-body-copy)">
               Hedgehog Core gives your team production-ready workflows, layouts, and components in one download so you
               can ship faster with fewer regressions.
             </p>
 
-            <ul className="mt-9 max-w-[66ch] space-y-3.5 text-[1rem] leading-7 text-(--th-body-copy)">
+            <ul className="mt-8 max-w-[66ch] space-y-3.5 text-[1rem] leading-7 text-(--th-body-copy)">
               {heroBullets.map((point) => (
                 <li key={point} className="flex items-start gap-3">
                   <span className="mt-[0.62rem] h-1.5 w-1.5 shrink-0 rounded-full bg-(--accent-support)" />
@@ -177,7 +172,7 @@ export default function PricingPage() {
             </ul>
 
             {previewNotice ? (
-              <p className="mt-6 max-w-[64ch] rounded-[0.88rem] border border-[hsl(var(--th-accent-support)/0.42)] bg-[hsl(var(--th-accent-support)/0.16)] px-4 py-3 text-[0.9rem] leading-6 text-(--text-primary-dark)">
+              <p className="mt-6 max-w-[66ch] rounded-[0.82rem] border border-[hsl(var(--th-accent-support)/0.34)] bg-[hsl(var(--th-accent-support)/0.14)] px-4 py-3 text-[0.86rem] leading-6 text-(--text-primary-dark)">
                 {previewNotice}
               </p>
             ) : null}
@@ -199,39 +194,45 @@ export default function PricingPage() {
             isStaticPreview={isStaticExport}
           />
         </div>
-      </section>
+      </SectionShell>
 
-      <section className={cn("border-y border-(--border-light) bg-(--bg-soft)", VS.sections.types.grid)}>
-        <div className={VS.widths.page}>
-          <div className={VS.sections.intros.fullWidth}>
-            <p className="text-[1rem] font-semibold tracking-[0.01em] text-(--text-secondary-light)">
-              Core value driver
-            </p>
-            <h2 className={cn("mt-3 max-w-[18ch] text-[2.12rem] font-semibold leading-[0.93] text-(--text-primary-light) sm:text-[2.72rem]", displaySerif.className)}>
-              Start from a workflow, not a blank email
-            </h2>
-            <p className="mt-4 max-w-[74ch] text-[1rem] leading-8 text-(--text-secondary-light)">
-              {WORKFLOW_COUNT} production workflows mapped to {COMPONENT_COUNT} components and {LAYOUT_COUNT} layouts.
-              Real onboarding, billing, reporting, password reset, and notification flows are included.
-            </p>
-          </div>
+      <SectionShell spacing="grid" tone="soft" border="softBoth" width="content">
+        <SectionIntro
+          pattern="full"
+          tone="light"
+          eyebrow="Core value driver"
+          title="Start from a workflow, not a blank email"
+          description={`${WORKFLOW_COUNT} production workflows mapped to ${COMPONENT_COUNT} components and ${LAYOUT_COUNT} layouts, covering onboarding, billing, reporting, password reset, and notification flows.`}
+        />
 
-          <div className={cn(VS.sections.intros.contentGap, VS.sections.layouts.cards5)}>
+        <div className="mt-10 grid gap-6 xl:grid-cols-[minmax(0,1.06fr)_minmax(0,0.94fr)]">
+          <SystemArchitectureVisual
+            tone="soft"
+            title="Workflow chain"
+            subtitle="Mapped implementation path"
+            workflowLabel={proofWorkflow?.slug ?? "onboarding"}
+            layoutLabel={proofWorkflow?.linkedLayoutSlug ?? "onboarding-step-system"}
+            componentLabels={proofWorkflow?.componentStack.slice(0, 4).map((item) => item.componentSlug) ?? []}
+            imageUrl={proofWorkflow?.previewImageUrl}
+            imageAlt={`${proofWorkflow?.title ?? "Workflow"} preview`}
+          />
+
+          <div className="grid gap-4 sm:grid-cols-2">
             {featuredWorkflows.map((workflow) => (
               <article
                 key={workflow.slug}
-                className="rounded-[1rem] border border-(--border-light) bg-(--bg-soft-elevated) p-6 shadow-[0_18px_32px_rgba(15,23,42,0.08)]"
+                className="rounded-[0.96rem] border border-(--border-light) bg-(--bg-soft-elevated) p-4 shadow-[0_12px_24px_rgba(15,23,42,0.08)]"
               >
-                <h3 className="text-[1.05rem] font-semibold leading-7 text-(--text-primary-light)">
-                  {workflow.title}
-                </h3>
-                <p className="mt-2 text-[0.9rem] leading-7 text-(--text-secondary-light)">{workflow.goal}</p>
-                <p className="mt-3 text-[0.82rem] font-semibold uppercase tracking-[0.08em] text-(--text-secondary-light)">
+                <p className="text-[0.72rem] font-semibold uppercase tracking-[0.09em] text-(--text-secondary-light)">
                   {workflow.linkedLayoutTitle}
                 </p>
+                <h3 className="mt-2 text-[1.04rem] font-semibold leading-7 text-(--text-primary-light)">
+                  {workflow.title}
+                </h3>
+                <p className="mt-2 text-[0.88rem] leading-6 text-(--text-secondary-light)">{workflow.goal}</p>
                 <Link
                   href={`/workflows/${workflow.slug}`}
-                  className="mt-3 inline-flex items-center gap-1.5 text-[0.84rem] font-semibold text-(--text-primary-light) transition hover:text-(--accent-primary)"
+                  className="mt-3 inline-flex items-center gap-1.5 text-[0.8rem] font-semibold text-(--text-primary-light) transition hover:text-(--accent-primary)"
                 >
                   View workflow
                   <ArrowRight className="h-4 w-4" />
@@ -240,53 +241,10 @@ export default function PricingPage() {
             ))}
           </div>
         </div>
-      </section>
-
-      <section className={cn("border-b border-(--surface-line) bg-(--surface-soft)", VS.sections.types.proof)}>
-        <div className={VS.widths.page}>
-          <div className={VS.sections.intros.fullWidth}>
-            <p className="text-[1rem] font-semibold tracking-[0.01em] text-(--th-body-copy)">Technical proof</p>
-            <h2 className={cn("mt-3 max-w-[16ch] text-[2.12rem] font-semibold leading-[0.93] text-(--text-primary-dark) sm:text-[2.72rem]", displaySerif.className)}>
-              What you actually get in the pack
-            </h2>
-            <p className="mt-4 max-w-[74ch] text-[1rem] leading-8 text-(--th-body-copy)">
-              Real source structure, real output pairing, and a traceable workflow mapping from trigger to delivery.
-            </p>
-          </div>
-
-          <div className={cn(VS.sections.intros.contentGap, VS.sections.layouts.proofCombo)}>
-            <MjmlHtmlSplitView
-              title="MJML to compiled HTML"
-              mjml={mjmlSnippet}
-              html={htmlSnippet}
-              className="shadow-[0_18px_34px_rgba(0,0,0,0.3)]"
-            />
-            <div className="grid gap-5">
-              <PackFileTreePreview
-                title="Pack file tree excerpt"
-                lines={[
-                  ...MJML_PACK_PROJECT_STRUCTURE,
-                  "compiled/",
-                  "workflows/onboarding/",
-                  "workflows/password-reset/",
-                ]}
-                className="shadow-[0_18px_34px_rgba(0,0,0,0.3)]"
-              />
-              <WorkflowStackVisual
-                title="Workflow mapping"
-                description={`${proofWorkflow ? proofWorkflow.title : "Workflow"} maps directly to layout and component stack.`}
-                steps={mappingSteps}
-                imageUrl={proofWorkflow?.previewImageUrl}
-                imageAlt={`${proofWorkflow?.title ?? "Workflow"} mapping preview`}
-                className="shadow-[0_18px_34px_rgba(0,0,0,0.3)]"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+      </SectionShell>
 
       <ComparisonSection
-        sectionClassName="border-y border-(--surface-line) bg-(--surface-strong)"
+        sectionClassName="border-y border-(--surface-line) bg-(--surface-soft)"
         eyebrow="Objection handling"
         title="Why it is worth £79"
         description="Building this yourself costs repeated build hours and QA churn. Hedgehog Core removes that repetition."
@@ -296,46 +254,94 @@ export default function PricingPage() {
         rightItems={rightEffortItems}
       />
 
-      <section className={cn("border-b border-(--border-light) bg-(--bg-soft)", VS.sections.types.feature)}>
-        <div className={VS.widths.page}>
-          <div className={VS.sections.intros.fullWidth}>
-            <p className="text-[1rem] font-semibold uppercase tracking-[0.1em] text-(--accent-support)">
-              Included
-            </p>
-            <h2 className={cn("mt-3 max-w-[12ch] text-[2rem] font-semibold leading-[0.95] text-(--text-primary-light) sm:text-[2.45rem]", displaySerif.className)}>
-              What you get
-            </h2>
-          </div>
+      <SectionShell spacing="proof" tone="canvas" border="both" width="content">
+        <SectionIntro
+          pattern="split"
+          tone="dark"
+          eyebrow="Technical proof"
+          title="What you actually get in the pack"
+          description="Real source structure, output pairing, and traceable mapping from workflow trigger to delivery HTML."
+          aside={
+            <div className="rounded-[0.9rem] border border-(--surface-line) bg-(--surface-soft) p-4 text-[0.9rem] leading-7 text-(--th-body-copy)">
+              This is the same structure your team downloads after checkout, not a marketing mock-up.
+            </div>
+          }
+        />
 
-          <div className={cn("grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.86fr)]", VS.sections.intros.contentGap)}>
-            <dl className="divide-y divide-(--border-light)">
-              {includedAssets.map((asset) => (
-                <div key={asset.title} className="grid gap-2 py-4 first:pt-0 last:pb-0 sm:grid-cols-[minmax(180px,0.34fr)_1fr] sm:gap-5">
-                  <dt className={cn("text-[1.06rem] font-semibold text-(--text-primary-light)", displaySerif.className)}>{asset.title}</dt>
-                  <dd className="text-[0.98rem] leading-7 text-(--text-secondary-light)">{asset.detail}</dd>
-                </div>
-              ))}
-            </dl>
+        <div className="mt-10 grid gap-6 lg:grid-cols-[minmax(0,1.24fr)_minmax(0,0.76fr)]">
+          <MjmlHtmlSplitView title="MJML to compiled HTML" mjml={mjmlSnippet} html={htmlSnippet} />
 
-            <aside className="rounded-[1.05rem] border border-(--border-light) bg-(--bg-soft-elevated) p-6 sm:p-7 shadow-[0_14px_28px_rgba(15,23,42,0.08)]">
-              <h3 className={cn("text-[1.22rem] font-semibold text-(--text-primary-light)", displaySerif.className)}>
-                Licence clarity
-              </h3>
-              <ul className="mt-4 space-y-2.5 text-[0.95rem] leading-7 text-(--text-secondary-light)">
-                {MJML_PACK_LICENSE_POINTS.map((item) => (
-                  <li key={item} className="flex items-start gap-2.5">
-                    <span className="mt-[0.62rem] h-1.5 w-1.5 shrink-0 rounded-full bg-(--accent-support)" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </aside>
+          <div className="grid gap-6">
+            <PackFileTreePreview
+              title="Pack file tree excerpt"
+              lines={[
+                ...MJML_PACK_PROJECT_STRUCTURE,
+                "compiled/",
+                "workflows/onboarding/",
+                "workflows/password-reset/",
+              ]}
+            />
+            <WorkflowStackVisual
+              title="Workflow mapping"
+              description={`${proofWorkflow ? proofWorkflow.title : "Workflow"} maps directly to layout and component stack.`}
+              steps={
+                proofWorkflow
+                  ? [
+                      `workflow/${proofWorkflow.slug}`,
+                      `layout/${proofWorkflow.linkedLayoutSlug}`,
+                      ...proofWorkflow.componentStack
+                        .slice(0, 3)
+                        .map((item) => `component/${item.componentSlug}`),
+                    ]
+                  : []
+              }
+              imageUrl={proofWorkflow?.previewImageUrl}
+              imageAlt={`${proofWorkflow?.title ?? "Workflow"} mapping preview`}
+            />
           </div>
         </div>
-      </section>
+      </SectionShell>
 
-      <section id="buy-core" className={cn(VS.widths.page, VS.sections.types.cta)}>
-        <div className="rounded-[1.45rem] border border-(--surface-line) bg-(--hedgehog-core-navy) px-7 py-10 sm:px-9 sm:py-12 lg:px-11 lg:py-14">
+      <SectionShell spacing="feature" tone="soft" border="softBottom" width="content">
+        <SectionIntro
+          pattern="full"
+          tone="light"
+          eyebrow="Included"
+          title="What you get"
+          description="A complete system you can reuse across projects with clear licensing and release metadata."
+        />
+
+        <div className="mt-10 grid gap-8 lg:grid-cols-[minmax(0,1.06fr)_minmax(0,0.94fr)]">
+          <dl className="space-y-4">
+            {includedAssets.map((asset) => (
+              <div
+                key={asset.title}
+                className="rounded-[0.92rem] border border-(--border-light) bg-(--bg-soft-elevated) px-5 py-4 shadow-[0_10px_22px_rgba(15,23,42,0.06)]"
+              >
+                <dt className={cn("text-[1.08rem] font-semibold text-(--text-primary-light)", displaySerif.className)}>{asset.title}</dt>
+                <dd className="mt-1 text-[0.94rem] leading-7 text-(--text-secondary-light)">{asset.detail}</dd>
+              </div>
+            ))}
+          </dl>
+
+          <VisualPanel tone="soft">
+            <p className="text-[0.8rem] font-semibold uppercase tracking-[0.09em] text-(--text-secondary-light)">
+              Licence clarity
+            </p>
+            <ul className="mt-4 space-y-2.5 text-[0.94rem] leading-7 text-(--text-secondary-light)">
+              {MJML_PACK_LICENSE_POINTS.map((item) => (
+                <li key={item} className="flex items-start gap-2.5">
+                  <span className="mt-[0.62rem] h-1.5 w-1.5 shrink-0 rounded-full bg-(--accent-support)" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </VisualPanel>
+        </div>
+      </SectionShell>
+
+      <SectionShell spacing="cta" tone="canvas" width="content" className="scroll-mt-24 th-cta-zone">
+        <div id="buy-core" className="th-cta-island rounded-[1.45rem] border border-(--surface-line) bg-(--hedgehog-core-navy) px-8 py-12 sm:px-11 sm:py-14 lg:px-12 lg:py-16">
           <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
             <div>
               <h2 className={cn("max-w-[18ch] text-[2.05rem] font-semibold leading-[0.95] text-(--text-primary-dark) sm:text-[2.45rem]", displaySerif.className)}>
@@ -369,15 +375,15 @@ export default function PricingPage() {
               )}
 
               <Link
-                href="/components"
+                href="/workflows"
                 className="inline-flex h-11 items-center rounded-[0.9rem] border border-(--surface-line) bg-(--surface-soft) px-5 text-[0.86rem] font-semibold text-(--text-primary-dark) transition hover:border-(--accent-support) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent-primary) focus-visible:ring-offset-2 focus-visible:ring-offset-(--hedgehog-core-navy)"
               >
-                Browse free library
+                Explore workflows
               </Link>
             </div>
           </div>
         </div>
-      </section>
+      </SectionShell>
 
       <SiteFooter />
     </main>

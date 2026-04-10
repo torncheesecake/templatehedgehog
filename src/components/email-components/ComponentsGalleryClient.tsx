@@ -13,8 +13,15 @@ import {
   type EmailComponentCategoryFilter,
 } from "@/data/email-components/categories";
 import { TEMPLATE_CONFIG } from "@/config/template";
-import { cn } from "@/lib/utils";
-import { WorkflowFlowDiagram } from "@/components/site/ProductVisuals";
+import {
+  SectionIntro,
+  SectionShell,
+  VisualPanel,
+} from "@/components/site/SectionPrimitives";
+import {
+  SystemArchitectureVisual,
+  WorkflowFlowDiagram,
+} from "@/components/site/ProductVisuals";
 import { visualSystem } from "@/components/site/visualSystem";
 
 type GalleryComponent = {
@@ -208,122 +215,129 @@ export function ComponentsGalleryClient({ components }: ComponentsGalleryClientP
     return `${count} ${noun} shown in ${categoryLabel}${queryPart}.`;
   }, [activeCategory, debouncedQuery, filteredComponents.length]);
 
+  const leadComponent = filteredComponents[0];
+
   return (
     <>
-      <section className={cn(VS.widths.page, VS.sections.types.hero)}>
-        <div className={VS.sections.intros.wideSplit}>
-          <header className={VS.sections.intros.fullWidth}>
-            <p className={VS.eyebrow.light}>Components catalogue</p>
-            <h1 className={cn("mt-4", VS.headings.page)}>
-              Production-safe MJML components for real workflows
+      <SectionShell spacing="hero" tone="canvas" width="content">
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,1.04fr)_minmax(0,0.96fr)] lg:items-start">
+          <div>
+            <p className="text-[1rem] font-semibold tracking-[0.012em] text-(--th-body-copy)">Components reference</p>
+            <h1 className="mt-4 max-w-[14ch] text-[2.85rem] font-semibold leading-[0.9] text-(--text-primary-dark) sm:text-[4rem] lg:text-[4.5rem]">
+              Production-safe blocks for workflow-driven email builds
             </h1>
-            <p className={cn("mt-4", VS.widths.bodyWide, VS.body.compact)}>
-              Find the exact block you need, copy clean source, and move from preview to delivery without rebuilding
-              fragile email HTML from scratch.
+            <p className="mt-6 max-w-[62ch] text-[1.04rem] leading-8 text-(--th-body-copy)">
+              Use this layer when you need targeted block edits. Start from workflows first, then refine individual
+              components without breaking message hierarchy.
             </p>
-            <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-[0.92rem] text-(--th-body-copy)">
+
+            <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 text-[0.92rem] text-(--th-body-copy)">
               <span className="inline-flex items-center gap-2">
                 <span className="h-1.5 w-1.5 rounded-full bg-(--accent-support)" />
                 {components.length} components in registry
               </span>
               <span className="inline-flex items-center gap-2">
                 <span className="h-1.5 w-1.5 rounded-full bg-(--accent-support)" />
-                Filter by category, tag, and search
+                Filter by category, tags, and search
               </span>
             </div>
-          </header>
+          </div>
 
-          <aside className={VS.templates.library.railCard}>
-            <label
-              htmlFor="components-search"
-              className="block text-[1rem] font-semibold uppercase tracking-[0.09em] text-(--accent-support)"
-            >
-              Search components
-            </label>
-            <input
-              id="components-search"
-              type="search"
-              value={searchInput}
-              onChange={(event) => setSearchInput(event.target.value)}
-              placeholder="Search title, description, tags, or slug"
-              className="mt-2 h-10 w-full rounded-[0.82rem] border border-(--surface-line) bg-(--surface-soft) px-3 text-[0.95rem] text-(--text-primary-dark) placeholder:text-(--th-body-copy) focus:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2"
-            />
+          <div className="grid gap-5">
+            <VisualPanel>
+              <label
+                htmlFor="components-search"
+                className="block text-[0.8rem] font-semibold uppercase tracking-[0.09em] text-(--th-body-copy)"
+              >
+                Search and filter
+              </label>
+              <input
+                id="components-search"
+                type="search"
+                value={searchInput}
+                onChange={(event) => setSearchInput(event.target.value)}
+                placeholder="Search title, description, tags, or slug"
+                className="mt-3 h-11 w-full rounded-[0.82rem] border border-(--surface-line) bg-(--surface-strong) px-3 text-[0.94rem] text-(--text-primary-dark) placeholder:text-(--th-body-copy) focus:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2"
+              />
 
-            <div
-              className="mt-3.5 flex flex-wrap gap-2"
-              role="group"
-              aria-label="Filter by category"
-            >
-              {visibleCategoryOptions.map((option) => {
-                const isActive = activeCategory === option.id;
+              <div
+                className="mt-3.5 flex flex-wrap gap-2"
+                role="group"
+                aria-label="Filter by category"
+              >
+                {visibleCategoryOptions.map((option) => {
+                  const isActive = activeCategory === option.id;
 
-                return (
-                  <button
-                    key={option.id}
-                    type="button"
-                    onClick={() => setActiveCategory(option.id)}
-                    aria-pressed={isActive}
-                    className={`inline-flex h-8.5 items-center rounded-[0.7rem] border px-3 text-[0.76rem] font-semibold tracking-[0.02em] transition focus:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2 ${
-                      isActive
-                        ? "border-(--accent-primary) bg-(--accent-primary) text-(--text-primary-dark)"
-                        : "border-(--surface-line) bg-transparent text-(--th-body-copy) hover:border-(--accent-support) hover:text-(--text-primary-dark)"
-                    }`}
-                  >
-                    {option.label}
-                  </button>
-                );
-              })}
-            </div>
-
-            <p className="mt-3 text-[0.88rem] text-(--th-body-copy)">
-              Showing {filteredComponents.length} {filteredComponents.length === 1 ? "component" : "components"}.
-            </p>
-            <p aria-live="polite" className="sr-only">
-              {resultsAnnouncement}
-            </p>
-          </aside>
-        </div>
-      </section>
-
-      <section className={cn("border-y border-(--border-light) bg-(--bg-soft)", VS.sections.types.feature)}>
-        <div className={VS.widths.page}>
-          <div className={VS.sections.intros.wideSplit}>
-            <div>
-              <p className="text-[1rem] font-semibold tracking-[0.01em] text-(--text-secondary-light)">
-                Component context
-              </p>
-              <h2 className="mt-3 max-w-[18ch] text-[1.95rem] font-semibold leading-[0.97] text-(--text-primary-light) sm:text-[2.3rem]">
-                Components are one layer of the full workflow system
-              </h2>
-              <p className="mt-4 max-w-[68ch] text-[1rem] leading-8 text-(--text-secondary-light)">
-                Use this catalogue to edit individual blocks, then move back to workflow and layout references to keep
-                structure, QA behaviour, and handoff decisions aligned.
-              </p>
-              <div className="mt-6 flex flex-wrap gap-3">
-                <Link href="/workflows" className={VS.buttons.secondaryLight}>
-                  Browse workflows
-                </Link>
-                <Link href="/layouts" className={VS.buttons.secondaryLight}>
-                  Browse layouts
-                </Link>
+                  return (
+                    <button
+                      key={option.id}
+                      type="button"
+                      onClick={() => setActiveCategory(option.id)}
+                      aria-pressed={isActive}
+                      className={`inline-flex h-8.5 items-center rounded-[0.7rem] border px-3 text-[0.74rem] font-semibold tracking-[0.02em] transition focus:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2 ${
+                        isActive
+                          ? "border-(--accent-primary) bg-(--accent-primary) text-(--text-primary-dark)"
+                          : "border-(--surface-line) bg-transparent text-(--th-body-copy) hover:border-(--accent-support) hover:text-(--text-primary-dark)"
+                      }`}
+                    >
+                      {option.label}
+                    </button>
+                  );
+                })}
               </div>
-            </div>
 
-            <WorkflowFlowDiagram
-              title="How components fit"
+              <p className="mt-3 text-[0.84rem] text-(--th-body-copy)">
+                Showing {filteredComponents.length} {filteredComponents.length === 1 ? "component" : "components"}.
+              </p>
+              <p aria-live="polite" className="sr-only">
+                {resultsAnnouncement}
+              </p>
+            </VisualPanel>
+
+            <SystemArchitectureVisual
+              title="Where components fit"
               subtitle="Workflow to layout to output"
+              workflowLabel="onboarding"
+              layoutLabel="onboarding-step-system"
+              componentLabels={leadComponent ? [leadComponent.slug] : []}
+              imageUrl={leadComponent?.previewImageUrl}
+              imageAlt={`${leadComponent?.title ?? "Component"} preview`}
+            />
+          </div>
+        </div>
+      </SectionShell>
+
+      <SectionShell spacing="feature" tone="soft" border="softBoth" width="content">
+        <SectionIntro
+          pattern="split"
+          tone="light"
+          eyebrow="Component context"
+          title="Components are one layer of the full workflow system"
+          description="Use this catalogue for precise block updates, then return to workflows and layouts to preserve full message structure."
+          aside={
+            <WorkflowFlowDiagram
+              title="Implementation flow"
+              subtitle="How teams use this page"
               steps={workflowComponentSteps.map((item) => ({
                 label: item.label,
                 detail: item.detail,
               }))}
-              className="border-(--border-light) bg-(--bg-soft-elevated) shadow-[0_18px_32px_rgba(15,23,42,0.08)]"
+              tone="soft"
             />
-          </div>
-        </div>
-      </section>
+          }
+        />
+      </SectionShell>
 
-      <section className={cn(VS.widths.page, VS.sections.types.grid)}>
-        <div className={VS.sections.layouts.cards3}>
+      <SectionShell spacing="grid" tone="canvas" width="content">
+        <SectionIntro
+          pattern="full"
+          eyebrow="Browse components"
+          title="Find the right block quickly"
+          titleClassName="text-[1.78rem] sm:text-[2.08rem]"
+          description="Cards are organised for rapid scanning and direct handoff to component detail pages."
+        />
+
+        <div className="mt-9 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {filteredComponents.map((component) => {
             const previewProfile = getPreviewProfile(component.category);
             const tagLine = component.tags.slice(0, 2).join(" • ");
@@ -333,44 +347,42 @@ export function ComponentsGalleryClient({ components }: ComponentsGalleryClientP
               <Link
                 key={component.slug}
                 href={`/components/${component.slug}`}
-                className="group block focus:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2"
+                className="group block rounded-[1rem] border border-(--surface-line) bg-(--surface-soft) p-5 shadow-[0_16px_30px_rgba(0,0,0,0.28)] transition duration-200 hover:border-(--accent-support) hover:shadow-[0_22px_36px_rgba(0,0,0,0.34)] focus:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2"
               >
-                <article className="rounded-[1rem] border border-(--surface-line) bg-(--surface-soft) p-5 shadow-[0_16px_30px_rgba(0,0,0,0.26)] transition duration-200 hover:-translate-y-[1px] hover:border-(--accent-support) hover:shadow-[0_20px_34px_rgba(0,0,0,0.34)]">
-                  <div className={`relative overflow-hidden rounded-[0.9rem] ring-1 ring-(--surface-line) ${previewProfile.stageClass}`}>
-                    <Image
-                      src={component.previewImageUrl}
-                      alt={`${component.title} preview`}
-                      fill
-                      sizes="(min-width: 1280px) 28vw, (min-width: 640px) 44vw, 92vw"
-                      unoptimized
-                      className={`transition duration-500 group-hover:scale-[1.01] ${previewProfile.imageClass}`}
-                    />
+                <div className={`relative overflow-hidden rounded-[0.88rem] border border-(--surface-line) ${previewProfile.stageClass}`}>
+                  <Image
+                    src={component.previewImageUrl}
+                    alt={`${component.title} preview`}
+                    fill
+                    sizes="(min-width: 1280px) 28vw, (min-width: 640px) 44vw, 92vw"
+                    unoptimized
+                    className={`transition duration-500 group-hover:scale-[1.01] ${previewProfile.imageClass}`}
+                  />
+                </div>
+
+                <div className="mt-4">
+                  <p className="text-[0.72rem] font-semibold uppercase tracking-[0.09em] text-(--th-body-copy)">
+                    {component.category}
+                  </p>
+
+                  <div className="mt-1 flex items-start justify-between gap-3">
+                    <h2 className="text-[1.16rem] font-semibold leading-7 text-(--text-primary-dark)">
+                      {component.title}
+                    </h2>
+                    <ArrowUpRight className="mt-1 h-4.5 w-4.5 shrink-0 text-(--accent-support) transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-(--accent-primary)" />
                   </div>
 
-                  <div className="mt-4">
-                    <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">
-                      {component.category}
+                  <p className="mt-2 text-[0.94rem] leading-7 text-(--th-body-copy)">
+                    {component.description}
+                  </p>
+
+                  {tagLine ? (
+                    <p className="mt-3 text-[0.78rem] font-medium tracking-[0.03em] text-(--th-body-copy)">
+                      {tagLine}
+                      {extraTags > 0 ? ` • +${extraTags}` : ""}
                     </p>
-
-                    <div className="mt-1 flex items-start justify-between gap-3">
-                      <h2 className="text-[1.2rem] font-semibold leading-7 text-(--text-primary-dark) group-hover:text-(--text-primary-dark)">
-                        {component.title}
-                      </h2>
-                      <ArrowUpRight className="mt-1 h-4.5 w-4.5 shrink-0 text-(--accent-support) transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-(--accent-primary)" />
-                    </div>
-
-                    <p className="mt-2 text-[0.98rem] leading-7 text-(--th-body-copy)">
-                      {component.description}
-                    </p>
-
-                    {tagLine ? (
-                      <p className="mt-3 text-[0.8rem] font-medium tracking-[0.03em] text-(--th-body-copy)">
-                        {tagLine}
-                        {extraTags > 0 ? ` • +${extraTags}` : ""}
-                      </p>
-                    ) : null}
-                  </div>
-                </article>
+                  ) : null}
+                </div>
               </Link>
             );
           })}
@@ -382,29 +394,31 @@ export function ComponentsGalleryClient({ components }: ComponentsGalleryClientP
           </div>
         ) : null}
 
-        <div className={cn("section-breath border-t pt-10", VS.dividers.strong)}>
-          <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
-            <div>
-              <p className={VS.eyebrow.light}>Next step</p>
-              <h2 className={cn("mt-3 text-[1.7rem] sm:text-[2.15rem]", VS.headings.subsection)}>
-                Need the full library offline for your team
-              </h2>
-              <p className={cn("mt-3", VS.widths.bodyNarrow, VS.body.compact)}>
-                The public library is there for discovery and one-off use. {TEMPLATE_CONFIG.productName} is for teams who
-                want the whole archive, local source files, compiled HTML, and a faster implementation workflow.
-              </p>
+        <div className="section-breath border-t border-(--surface-line) pt-10">
+          <VisualPanel>
+            <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
+              <div>
+                <p className="text-[1rem] font-semibold tracking-[0.012em] text-(--th-body-copy)">Next step</p>
+                <h2 className="mt-3 max-w-[18ch] text-[1.9rem] font-semibold leading-[0.96] text-(--text-primary-dark)">
+                  Need the full library offline for your team
+                </h2>
+                <p className="mt-4 max-w-[60ch] text-[0.98rem] leading-7 text-(--th-body-copy)">
+                  The public library is for discovery and one-off use. {TEMPLATE_CONFIG.productName} is for teams who
+                  want the entire archive, compiled HTML, and faster implementation workflow.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-3 lg:justify-end">
+                <Link href="/workflows" className={VS.buttons.secondaryDark}>
+                  Browse workflows
+                </Link>
+                <Link href="/pricing" className={VS.buttons.primaryLarge}>
+                  Get Hedgehog Core - £79
+                </Link>
+              </div>
             </div>
-            <div className="flex flex-wrap gap-3 lg:justify-end">
-              <Link href="/workflows" className={VS.buttons.secondaryDark}>
-                Browse workflows
-              </Link>
-              <Link href="/pricing" className={VS.buttons.primary}>
-                Get Hedgehog Core - £79
-              </Link>
-            </div>
-          </div>
+          </VisualPanel>
         </div>
-      </section>
+      </SectionShell>
     </>
   );
 }

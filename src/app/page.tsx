@@ -1,16 +1,20 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Roboto_Serif } from "next/font/google";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight, CheckCircle2, FileCode2, GitBranchPlus, Layers3 } from "lucide-react";
 import { ComparisonSection } from "@/components/site/ComparisonSection";
-import { SiteFooter } from "@/components/site/SiteFooter";
-import { SiteTopBar } from "@/components/site/SiteTopBar";
 import {
   MjmlHtmlSplitView,
   PackFileTreePreview,
-  WorkflowFlowDiagram,
   WorkflowStackVisual,
 } from "@/components/site/ProductVisuals";
+import {
+  SectionIntro,
+  SectionShell,
+  VisualPanel,
+} from "@/components/site/SectionPrimitives";
+import { SiteFooter } from "@/components/site/SiteFooter";
+import { SiteTopBar } from "@/components/site/SiteTopBar";
 import {
   getEmailWorkflowBySlug,
   getFeaturedEmailWorkflows,
@@ -77,31 +81,12 @@ const htmlSnippet = `<table role="presentation" width="100%">
 </table>`;
 
 const workflowOutcomeBySlug: Record<string, string> = {
-  onboarding: "Drive first-session activation without rebuilding a welcome flow.",
-  "password-reset": "Recover account access with security-safe structure and copy.",
-  billing: "Confirm charges clearly and reduce billing support tickets.",
-  reporting: "Send recurring KPI summaries in a repeatable digest format.",
-  notifications: "Ship urgent account alerts with clear next-step actions.",
+  onboarding: "Move new users to first-session activation with stable message sequencing.",
+  "password-reset": "Recover account access quickly with security-safe structure and copy.",
+  billing: "Confirm charges clearly and reduce finance and support back-and-forth.",
+  reporting: "Ship recurring KPI updates in a digest that stays consistent each week.",
+  notifications: "Deliver urgent account alerts with clear next-step actions.",
 };
-
-const pipelineSteps = [
-  {
-    stage: "Trigger",
-    detail: "Account event or lifecycle condition starts the send.",
-  },
-  {
-    stage: "Layout",
-    detail: "Workflow links to a layout recipe with the right structure.",
-  },
-  {
-    stage: "Components",
-    detail: "Ordered reusable blocks define message hierarchy.",
-  },
-  {
-    stage: "Output",
-    detail: "Compiled HTML is ready for QA and ESP import.",
-  },
-] as const;
 
 const fromScratchEffort = [92, 86, 82, 84] as const;
 const withHedgehogEffort = [34, 38, 30, 32] as const;
@@ -109,19 +94,19 @@ const withHedgehogEffort = [34, 38, 30, 32] as const;
 const includedBreakdown = [
   {
     title: `${COMPONENT_COUNT} components`,
-    detail: "Reusable MJML building blocks for campaign, lifecycle, and transactional sends.",
+    detail: "Reusable MJML blocks for campaign, lifecycle, and transactional email builds.",
   },
   {
     title: `${LAYOUT_COUNT} layouts`,
     detail: "Full structures grouped by system so teams stop rebuilding shell markup.",
   },
   {
-    title: `${WORKFLOW_COUNT} workflows (and growing)`,
-    detail: "Trigger-based implementations for onboarding, security, billing, reporting, and more.",
+    title: `${WORKFLOW_COUNT} workflows`,
+    detail: "Trigger-based implementations for onboarding, security, billing, reporting, and notifications.",
   },
   {
-    title: "Documentation",
-    detail: "Practical implementation notes, client behaviour guidance, and handoff context.",
+    title: "Technical documentation",
+    detail: "Implementation notes, client behaviour guidance, and safe handoff instructions.",
   },
   {
     title: "Compiled HTML outputs",
@@ -148,18 +133,10 @@ function buildWorkflowShowcase() {
 export default function Home() {
   const VS = visualSystem;
   const workflowShowcase = buildWorkflowShowcase();
-  const mappingWorkflow =
-    workflowShowcase[0] ?? getEmailWorkflowBySlug("onboarding");
+  const primaryWorkflow = workflowShowcase[0];
+  const supportingWorkflows = workflowShowcase.slice(1);
 
-  const mappingSteps = mappingWorkflow
-    ? [
-        `workflow/${mappingWorkflow.slug}`,
-        `layout/${mappingWorkflow.linkedLayoutSlug}`,
-        ...mappingWorkflow.componentStack
-          .slice(0, 3)
-          .map((item) => `component/${item.componentSlug}`),
-      ]
-    : [];
+  const mappingWorkflow = primaryWorkflow ?? getEmailWorkflowBySlug("onboarding");
 
   const leftEffortItems = comparisonRows.map((row, index) => ({
     label: row.label,
@@ -176,126 +153,209 @@ export default function Home() {
     <main className="min-h-screen bg-(--surface-strong) text-(--th-body-copy) [font-family:Arial,sans-serif]">
       <SiteTopBar theme="hero" ctaHref="/pricing" ctaLabel="Get Hedgehog Core - £79" />
 
-      <section className={cn(VS.widths.content, VS.sections.types.hero)}>
-        <div className={VS.sections.intros.wideSplit}>
-          <div className="max-w-[760px]">
-            <p className="text-[1rem] font-semibold tracking-[0.01em] text-(--th-body-copy)">
-              Production-ready MJML system
+      <SectionShell
+        spacing="hero"
+        tone="canvas"
+        width="content"
+        className="pb-24 pt-10 sm:pb-26 sm:pt-12 lg:pb-28 lg:pt-14"
+      >
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,0.94fr)_minmax(0,1.06fr)] lg:items-center">
+          <div>
+            <p className="text-[1rem] font-semibold tracking-[0.012em] text-(--th-body-copy)">
+              Hedgehog Core
             </p>
             <h1
               className={cn(
-                "mt-4 max-w-[15ch] text-[3rem] font-semibold leading-[0.9] text-(--text-primary-dark) sm:text-[4.15rem] lg:text-[4.65rem]",
+                "mt-4 max-w-[16ch] text-[3rem] font-semibold leading-[0.88] text-(--text-primary-dark) sm:text-[4.15rem] lg:text-[4.8rem]",
                 displaySerif.className,
               )}
             >
               Stop rebuilding the same emails every project
             </h1>
-            <p className="mt-6 max-w-[60ch] text-[1.08rem] leading-8 text-(--th-body-copy)">
-              Production workflows, reusable layouts, and delivery-safe output in one system so teams ship faster with less QA churn.
+            <p className="mt-6 max-w-[46ch] text-[1.12rem] leading-8 text-(--text-primary-dark)">
+              Start from workflows, not blank MJML files, with structure and output mapped before your team edits copy.
             </p>
 
-            <div className="mt-10 flex flex-wrap items-center gap-3.5">
-              <Link href="/pricing" className={cn(VS.buttons.primaryLarge, "gap-2 shadow-[0_20px_38px_rgba(0,0,0,0.32)]")}>
+            <div className="mt-8 flex flex-wrap items-center gap-2.5">
+              <Link href="/pricing" className={cn(VS.buttons.primaryLarge, "gap-2 shadow-[0_20px_38px_rgba(0,0,0,0.34)]")}>
                 Get Hedgehog Core - £79
                 <ArrowRight className="h-4 w-4" />
               </Link>
-              <Link href="/workflows" className={cn(VS.buttons.secondaryLight, "h-10 border-(--surface-line) bg-(--surface-soft) px-4 text-[0.84rem]")}>
+              <Link href="/workflows" className={cn(VS.buttons.secondaryLight, "h-11 border-(--surface-line) bg-(--surface-soft)")}>
                 Explore workflows
               </Link>
             </div>
 
-            <ul className="mt-9 grid gap-3 text-[0.98rem] leading-7 text-(--th-body-copy) sm:grid-cols-2">
-              <li className="flex items-start gap-3">
-                <CheckCircle2 className="mt-1 h-4.5 w-4.5 shrink-0 text-(--accent-support)" />
-                Workflow-first implementation paths
-              </li>
-              <li className="flex items-start gap-3">
-                <CheckCircle2 className="mt-1 h-4.5 w-4.5 shrink-0 text-(--accent-support)" />
-                MJML source paired with compiled HTML
-              </li>
-              <li className="flex items-start gap-3">
-                <CheckCircle2 className="mt-1 h-4.5 w-4.5 shrink-0 text-(--accent-support)" />
-                Reduced QA rework across clients
-              </li>
-              <li className="flex items-start gap-3">
-                <CheckCircle2 className="mt-1 h-4.5 w-4.5 shrink-0 text-(--accent-support)" />
-                Cleaner handoff to ESP delivery
-              </li>
-            </ul>
-          </div>
-
-          <WorkflowFlowDiagram
-            title="Workflow pipeline"
-            subtitle="Trigger to output in one mapped chain"
-            steps={pipelineSteps.map((item) => ({ label: item.stage, detail: item.detail }))}
-            className="shadow-[0_18px_34px_rgba(0,0,0,0.24)]"
-          />
-        </div>
-      </section>
-
-      <section className={cn("border-y border-(--border-light) bg-(--bg-soft)", VS.sections.types.grid)}>
-        <div className={VS.widths.content}>
-          <div className={VS.sections.intros.fullWidth}>
-            <p className="text-[1rem] font-semibold tracking-[0.01em] text-(--text-secondary-light)">Primary feature</p>
-            <h2
-              className={cn(
-                "mt-3 max-w-[20ch] text-[2.12rem] font-semibold leading-[0.94] text-(--text-primary-light) sm:text-[2.72rem]",
-                displaySerif.className,
-              )}
-            >
-              Start from a workflow, not a blank email
-            </h2>
-            <p className="mt-4 max-w-[72ch] text-[1rem] leading-8 text-(--text-secondary-light)">
-              Each flow links trigger, layout, component stack, and output so implementation starts from structure instead of guesswork.
+            <p className="mt-6 max-w-[56ch] text-[0.95rem] leading-7 text-(--th-body-copy)">
+              Workflow, layout, component stack, and compiled HTML stay connected so development, QA, and ESP handoff move in one direction.
             </p>
           </div>
 
-          <div className={cn(VS.sections.intros.contentGap, VS.sections.layouts.cards3)}>
-            {workflowShowcase.map((workflow) => (
-              <article
-                key={workflow.slug}
-                className="rounded-[1rem] border border-(--border-light) bg-(--bg-soft-elevated) p-6 shadow-[0_18px_32px_rgba(15,23,42,0.08)]"
-              >
-                <div className="relative -mx-1 mb-4 aspect-[16/10] overflow-hidden rounded-[0.8rem] border border-(--border-light) bg-(--bg-soft)">
+          <article className="relative overflow-hidden rounded-[1.35rem] border border-[color-mix(in_srgb,var(--surface-line)_72%,transparent)] bg-[color-mix(in_srgb,var(--surface-soft)_86%,transparent)] p-6 shadow-[0_24px_48px_rgba(0,0,0,0.32)] backdrop-blur-[2px] sm:p-8 lg:-mr-2 lg:p-9">
+            <span className="pointer-events-none absolute inset-x-7 top-0 h-px bg-[linear-gradient(90deg,transparent,hsl(var(--th-accent-support)/0.52),transparent)]" />
+
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <p className="text-[0.78rem] font-semibold uppercase tracking-[0.09em] text-(--th-body-copy)">
+                  Product system
+                </p>
+                <h2 className={cn("mt-1 text-[1.26rem] font-semibold leading-7 text-(--text-primary-dark)", displaySerif.className)}>
+                  Workflow to layout to components to output
+                </h2>
+              </div>
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-(--surface-line) bg-(--surface-strong) px-2.5 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.09em] text-(--th-body-copy)">
+                <FileCode2 className="h-3.5 w-3.5" />
+                MJML + HTML
+              </span>
+            </div>
+
+            <ol className="mt-5 grid gap-3 sm:grid-cols-4">
+              <li className="rounded-[0.82rem] border border-[color-mix(in_srgb,var(--surface-line)_74%,transparent)] bg-[color-mix(in_srgb,var(--surface-strong)_82%,transparent)] px-3 py-3">
+                <GitBranchPlus className="h-4 w-4 text-(--accent-support)" />
+                <p className="mt-2 text-[0.72rem] font-semibold uppercase tracking-[0.09em] text-(--th-body-copy)">Workflow</p>
+                <p className="mt-1 text-[0.82rem] leading-6 text-(--text-primary-dark)">{mappingWorkflow?.slug ?? "onboarding"}</p>
+              </li>
+              <li className="rounded-[0.82rem] border border-[color-mix(in_srgb,var(--surface-line)_74%,transparent)] bg-[color-mix(in_srgb,var(--surface-strong)_82%,transparent)] px-3 py-3">
+                <Layers3 className="h-4 w-4 text-(--accent-support)" />
+                <p className="mt-2 text-[0.72rem] font-semibold uppercase tracking-[0.09em] text-(--th-body-copy)">Layout</p>
+                <p className="mt-1 text-[0.82rem] leading-6 text-(--text-primary-dark)">{mappingWorkflow?.linkedLayoutSlug ?? "onboarding-step-system"}</p>
+              </li>
+              <li className="rounded-[0.82rem] border border-[color-mix(in_srgb,var(--surface-line)_74%,transparent)] bg-[color-mix(in_srgb,var(--surface-strong)_82%,transparent)] px-3 py-3">
+                <Layers3 className="h-4 w-4 text-(--accent-support)" />
+                <p className="mt-2 text-[0.72rem] font-semibold uppercase tracking-[0.09em] text-(--th-body-copy)">Components</p>
+                <p className="mt-1 text-[0.82rem] leading-6 text-(--text-primary-dark)">
+                  {mappingWorkflow?.componentStack.length ?? 0} mapped blocks
+                </p>
+              </li>
+              <li className="rounded-[0.82rem] border border-[color-mix(in_srgb,var(--surface-line)_80%,transparent)] bg-[hsl(var(--th-accent-support)/0.14)] px-3 py-3">
+                <FileCode2 className="h-4 w-4 text-(--accent-support)" />
+                <p className="mt-2 text-[0.72rem] font-semibold uppercase tracking-[0.09em] text-(--th-body-copy)">Output</p>
+                <p className="mt-1 text-[0.82rem] leading-6 text-(--text-primary-dark)">compiled/html</p>
+              </li>
+            </ol>
+
+            <div className="mt-5 grid gap-4 md:grid-cols-2">
+              <div>
+                <p className="text-[0.72rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">MJML source</p>
+                <pre className="mt-2 overflow-x-auto rounded-[0.74rem] border border-[color-mix(in_srgb,var(--surface-line)_74%,transparent)] bg-[color-mix(in_srgb,var(--surface-strong)_82%,transparent)] p-3 text-[0.72rem] leading-6 text-(--text-primary-dark)">{`<mj-text>{{user.first_name}}</mj-text>
+<mj-button href="{{action.url}}">
+  Continue
+</mj-button>`}</pre>
+              </div>
+              <div>
+                <p className="text-[0.72rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">Compiled HTML</p>
+                <pre className="mt-2 overflow-x-auto rounded-[0.74rem] border border-[color-mix(in_srgb,var(--surface-line)_74%,transparent)] bg-[color-mix(in_srgb,var(--surface-strong)_82%,transparent)] p-3 text-[0.72rem] leading-6 text-(--text-primary-dark)">{`<td style="padding:24px;">
+  <a href="{{action.url}}">
+    Continue
+  </a>
+</td>`}</pre>
+              </div>
+            </div>
+
+            <div className="mt-5 rounded-[0.82rem] border border-[color-mix(in_srgb,var(--surface-line)_74%,transparent)] bg-[color-mix(in_srgb,var(--surface-strong)_82%,transparent)] px-4 py-3">
+              <p className="text-[0.72rem] font-semibold uppercase tracking-[0.09em] text-(--th-body-copy)">Mapped delivery path</p>
+              <p className="mt-1 text-[0.84rem] leading-6 text-(--text-primary-dark)">
+                workflow/{mappingWorkflow?.slug ?? "onboarding"} / layout/{mappingWorkflow?.linkedLayoutSlug ?? "onboarding-step-system"} / component/{mappingWorkflow?.componentStack[0]?.componentSlug ?? "hero-overlay-modern"} / compiled/{mappingWorkflow?.slug ?? "onboarding"}.html
+              </p>
+            </div>
+          </article>
+        </div>
+      </SectionShell>
+
+      <SectionShell spacing="grid" tone="soft" border="softBoth" width="content">
+        <SectionIntro
+          pattern="full"
+          tone="light"
+          eyebrow="Primary feature"
+          title="Start from a workflow, not a blank email"
+          description="Each workflow combines trigger, structure, component order, and output so implementation starts from proven architecture, not guesswork."
+        />
+
+        {primaryWorkflow ? (
+          <div className="mt-10 grid gap-6 xl:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
+            <article className="relative overflow-hidden rounded-[1.18rem] border border-(--border-light) bg-(--bg-soft-elevated) p-6 shadow-[0_24px_42px_rgba(15,23,42,0.12)] sm:p-7">
+              <span className="absolute right-4 top-4 rounded-full border border-(--border-light) bg-(--bg-soft) px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.09em] text-(--text-secondary-light)">
+                Featured workflow
+              </span>
+              <div className="grid gap-6 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:items-start">
+                <div>
+                  <p className="text-[0.78rem] font-semibold uppercase tracking-[0.09em] text-(--text-secondary-light)">
+                    {primaryWorkflow.linkedLayoutTitle}
+                  </p>
+                  <h3 className={cn("mt-2 text-[1.52rem] leading-[1.04] text-(--text-primary-light)", displaySerif.className)}>
+                    {primaryWorkflow.title}
+                  </h3>
+                  <p className="mt-3 text-[0.96rem] leading-7 text-(--text-secondary-light)">
+                    {workflowOutcomeBySlug[primaryWorkflow.slug] ?? primaryWorkflow.goal}
+                  </p>
+
+                  <ul className="mt-4 space-y-2.5 text-[0.84rem] leading-6 text-(--text-secondary-light)">
+                    {primaryWorkflow.componentStack.slice(0, 3).map((item) => (
+                      <li key={`${primaryWorkflow.slug}-${item.componentSlug}`} className="rounded-[0.68rem] border border-(--border-light) bg-(--bg-soft) px-3 py-2">
+                        {item.componentTitle}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <Link
+                    href={`/workflows/${primaryWorkflow.slug}`}
+                    className="mt-5 inline-flex items-center gap-1.5 text-[0.86rem] font-semibold text-(--text-primary-light) transition hover:text-(--accent-primary)"
+                  >
+                    View workflow
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </div>
+
+                <div className="relative aspect-[16/10] overflow-hidden rounded-[0.96rem] border border-(--border-light) bg-(--bg-soft)">
                   <Image
-                    src={workflow.previewImageUrl}
-                    alt={`${workflow.title} workflow preview`}
+                    src={primaryWorkflow.previewImageUrl}
+                    alt={`${primaryWorkflow.title} workflow preview`}
                     fill
-                    sizes="(max-width: 1280px) 45vw, 19vw"
+                    sizes="(max-width: 1280px) 90vw, 38vw"
                     className="object-cover object-top"
                   />
                 </div>
-                <h3 className="text-[1.08rem] font-semibold leading-7 text-(--text-primary-light)">
-                  {workflow.title}
-                </h3>
-                <p className="mt-2 text-[0.94rem] leading-7 text-(--text-secondary-light)">
-                  {workflowOutcomeBySlug[workflow.slug] ?? workflow.goal}
-                </p>
-                <p className="mt-2 text-[0.82rem] font-semibold uppercase tracking-[0.08em] text-(--text-secondary-light)">
-                  {workflow.linkedLayoutTitle}
-                </p>
-                <Link
-                  href={`/workflows/${workflow.slug}`}
-                  className="mt-3 inline-flex items-center gap-1.5 text-[0.84rem] font-semibold text-(--text-primary-light) transition hover:text-(--accent-primary) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2 focus-visible:ring-offset-(--bg-soft-elevated)"
-                >
-                  View workflow
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-              </article>
-            ))}
-          </div>
+              </div>
+            </article>
 
-          <div className="mt-9">
-            <Link href="/workflows" className={cn(VS.buttons.primaryLarge, "gap-2 shadow-[0_16px_30px_rgba(0,0,0,0.16)]")}>
-              View all workflows
-              <ArrowRight className="h-4 w-4" />
-            </Link>
+            <div className="grid gap-6 sm:grid-cols-2">
+              {supportingWorkflows.map((workflow) => (
+                <article
+                  key={workflow.slug}
+                  className="rounded-[1rem] border border-(--border-light) bg-(--bg-soft-elevated) p-5 shadow-[0_16px_30px_rgba(15,23,42,0.08)]"
+                >
+                  <p className="text-[0.74rem] font-semibold uppercase tracking-[0.09em] text-(--text-secondary-light)">
+                    {workflow.linkedLayoutTitle}
+                  </p>
+                  <h3 className="mt-2 text-[1.06rem] font-semibold leading-7 text-(--text-primary-light)">
+                    {workflow.title}
+                  </h3>
+                  <p className="mt-2 text-[0.9rem] leading-7 text-(--text-secondary-light)">
+                    {workflowOutcomeBySlug[workflow.slug] ?? workflow.goal}
+                  </p>
+                  <Link
+                    href={`/workflows/${workflow.slug}`}
+                    className="mt-4 inline-flex items-center gap-1.5 text-[0.82rem] font-semibold text-(--text-primary-light) transition hover:text-(--accent-primary)"
+                  >
+                    View workflow
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </article>
+              ))}
+            </div>
           </div>
+        ) : null}
+
+        <div className="mt-9">
+          <Link href="/workflows" className={cn(VS.buttons.primaryLarge, "gap-2")}> 
+            View all workflows
+            <ArrowRight className="h-4 w-4" />
+          </Link>
         </div>
-      </section>
+      </SectionShell>
 
       <ComparisonSection
-        sectionClassName="border-b border-(--surface-line) bg-(--surface-soft)"
+        sectionClassName="border-y border-(--surface-line) bg-(--surface-soft)"
         eyebrow="Common objection"
         title="Build it yourself vs Hedgehog"
         description="Same requirement, two very different levels of effort."
@@ -305,115 +365,120 @@ export default function Home() {
         rightItems={rightEffortItems}
       />
 
-      <section className={cn("border-y border-(--border-light) bg-(--bg-soft)", VS.sections.types.proof)}>
-        <div className={VS.widths.content}>
-          <div className={VS.sections.intros.wideSplit}>
-            <div>
-              <p className="text-[1rem] font-semibold tracking-[0.01em] text-(--text-secondary-light)">Product proof</p>
-              <h2
-                className={cn(
-                  "mt-3 max-w-[18ch] text-[2.12rem] font-semibold leading-[0.94] text-(--text-primary-light) sm:text-[2.72rem]",
-                  displaySerif.className,
-                )}
-              >
-                Technical proof, not mock-up claims
-              </h2>
-              <p className="mt-4 max-w-[62ch] text-[1rem] leading-8 text-(--text-secondary-light)">
-                Source, output, and mapping shown exactly as the pack is structured.
-              </p>
-
-              <MjmlHtmlSplitView
-                title="MJML to compiled HTML"
-                mjml={mjmlSnippet}
-                html={htmlSnippet}
-                className="mt-8 border-(--border-light) bg-(--bg-soft-elevated) shadow-[0_18px_32px_rgba(15,23,42,0.08)]"
-              />
+      <SectionShell spacing="proof" tone="canvas" border="both" width="content">
+        <SectionIntro
+          pattern="split"
+          tone="dark"
+          eyebrow="Technical proof"
+          title="Real implementation proof, not brochure claims"
+          description="Inspect source, output, and mapping exactly as the pack is delivered."
+          aside={
+            <div className="rounded-[0.92rem] border border-(--surface-line) bg-(--surface-soft) p-4 text-[0.9rem] leading-7 text-(--th-body-copy)">
+              Workflow to layout to components is mapped in the same registry used by the public reference and paid pack.
             </div>
+          }
+        />
 
-            <div className="grid gap-6">
-              <PackFileTreePreview
-                title="Pack file structure"
-                lines={[
-                  ...MJML_PACK_PROJECT_STRUCTURE,
-                  "compiled/",
-                  "workflows/onboarding/",
-                  "workflows/password-reset/",
-                ]}
-                className="border-(--border-light) bg-(--bg-soft-elevated) shadow-[0_18px_32px_rgba(15,23,42,0.08)]"
-              />
-              <WorkflowStackVisual
-                title="Workflow stack breakdown"
-                description={`${mappingWorkflow ? mappingWorkflow.title : "Workflow"} links directly to layout and ordered component stack.`}
-                steps={mappingSteps}
-                imageUrl={mappingWorkflow?.previewImageUrl}
-                imageAlt={`${mappingWorkflow?.title ?? "Workflow"} mapping preview`}
-                className="border-(--border-light) bg-(--bg-soft-elevated) shadow-[0_18px_32px_rgba(15,23,42,0.08)]"
-              />
-            </div>
+        <div className="mt-10 grid gap-6 lg:grid-cols-[minmax(0,1.24fr)_minmax(0,0.76fr)]">
+          <MjmlHtmlSplitView
+            title="MJML to compiled HTML"
+            mjml={mjmlSnippet}
+            html={htmlSnippet}
+          />
+
+          <div className="grid gap-6">
+            <PackFileTreePreview
+              title="Pack file structure"
+              lines={[
+                ...MJML_PACK_PROJECT_STRUCTURE,
+                "compiled/",
+                "workflows/onboarding/",
+                "workflows/password-reset/",
+              ]}
+            />
+            <WorkflowStackVisual
+              title="Workflow mapping"
+              description={`${mappingWorkflow?.title ?? "Workflow"} links directly to layout and ordered component stack.`}
+              steps={
+                mappingWorkflow
+                  ? [
+                      `workflow/${mappingWorkflow.slug}`,
+                      `layout/${mappingWorkflow.linkedLayoutSlug}`,
+                      ...mappingWorkflow.componentStack
+                        .slice(0, 3)
+                        .map((item) => `component/${item.componentSlug}`),
+                    ]
+                  : []
+              }
+              imageUrl={mappingWorkflow?.previewImageUrl}
+              imageAlt={`${mappingWorkflow?.title ?? "Workflow"} mapping preview`}
+            />
           </div>
         </div>
-      </section>
+      </SectionShell>
 
-      <section className={cn("border-b border-(--surface-line) bg-(--surface-soft)", VS.sections.types.grid)}>
-        <div className={VS.widths.content}>
-          <div className={VS.sections.intros.fullWidth}>
-            <p className="text-[1rem] font-semibold tracking-[0.01em] text-(--th-body-copy)">What is included</p>
-            <h2
-              className={cn(
-                "mt-3 max-w-[14ch] text-[2rem] font-semibold leading-[0.96] text-(--text-primary-dark) sm:text-[2.5rem]",
-                displaySerif.className,
-              )}
-            >
-              What you get
-            </h2>
-            <p className="mt-4 max-w-[70ch] text-[1rem] leading-8 text-(--th-body-copy)">
-              Everything needed to move from editable MJML to deployment-ready output without rebuilding standard flows.
-            </p>
-          </div>
+      <SectionShell spacing="grid" tone="soft" border="softBottom" width="content">
+        <SectionIntro
+          pattern="full"
+          tone="light"
+          eyebrow="Pack contents"
+          title="What you get in Hedgehog Core"
+          description="Everything needed to move from editable MJML to deployment-ready output without rebuilding standard flows."
+        />
 
-          <div className={cn("grid gap-6 md:grid-cols-2 xl:grid-cols-3", VS.sections.intros.contentGap)}>
+        <div className="mt-10 grid gap-8 lg:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)]">
+          <dl className="space-y-4">
             {includedBreakdown.map((item) => (
-              <article key={item.title} className="surface-card-soft h-full p-6 sm:p-7">
-                <h3 className={cn("text-[1.12rem] font-semibold text-(--text-primary-dark)", displaySerif.className)}>
+              <div
+                key={item.title}
+                className="rounded-[0.92rem] border border-(--border-light) bg-(--bg-soft-elevated) px-5 py-4 shadow-[0_10px_22px_rgba(15,23,42,0.06)]"
+              >
+                <dt className={cn("text-[1.08rem] font-semibold text-(--text-primary-light)", displaySerif.className)}>
                   {item.title}
-                </h3>
-                <p className="mt-3 text-[0.95rem] leading-7 text-(--th-body-copy)">{item.detail}</p>
-              </article>
+                </dt>
+                <dd className="mt-1 text-[0.94rem] leading-7 text-(--text-secondary-light)">{item.detail}</dd>
+              </div>
             ))}
+          </dl>
 
-            <article className="surface-card-soft h-full p-6 sm:p-7">
-              <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">Core delivery</p>
-              <ul className="mt-4 space-y-3.5 text-[0.95rem] leading-7 text-(--th-body-copy)">
-                {coreDeliveryHighlights.map((point) => (
-                  <li key={point} className="flex items-start gap-3">
-                    <CheckCircle2 className="mt-1 h-4.5 w-4.5 shrink-0 text-(--accent-support)" />
-                    {point}
-                  </li>
-                ))}
-              </ul>
-            </article>
-          </div>
+          <VisualPanel tone="soft" className="h-full">
+            <p className="text-[0.8rem] font-semibold uppercase tracking-[0.09em] text-(--text-secondary-light)">
+              Why teams use it
+            </p>
+            <ul className="mt-4 space-y-3.5 text-[0.95rem] leading-7 text-(--text-secondary-light)">
+              {coreDeliveryHighlights.map((point) => (
+                <li key={point} className="flex items-start gap-3">
+                  <CheckCircle2 className="mt-1 h-4.5 w-4.5 shrink-0 text-(--accent-support)" />
+                  {point}
+                </li>
+              ))}
+            </ul>
+
+            <div className="mt-6 rounded-[0.78rem] border border-(--border-light) bg-(--bg-soft) px-4 py-3 text-[0.86rem] leading-6 text-(--text-secondary-light)">
+              Less than one avoidable rebuild session.
+            </div>
+          </VisualPanel>
         </div>
-      </section>
+      </SectionShell>
 
-      <section className={cn(VS.widths.content, "pb-24 sm:pb-28 lg:pb-28")}>
-        <div className="rounded-[1.3rem] border border-(--surface-line) bg-(--hedgehog-core-navy) px-7 py-10 text-center sm:px-9 sm:py-12 lg:px-11 lg:py-14">
-          <div className="mx-auto max-w-[40rem]">
+      <SectionShell spacing="cta" tone="canvas" width="content" className="th-cta-zone">
+        <div className="th-cta-island rounded-[1.42rem] border border-(--surface-line) bg-(--hedgehog-core-navy) px-8 py-12 text-center sm:px-11 sm:py-14 lg:px-12 lg:py-16">
+          <div className="mx-auto max-w-[42rem]">
             <h2
               className={cn(
-                "text-[2rem] font-semibold leading-[0.96] text-(--text-primary-dark) sm:text-[2.45rem]",
+                "text-[2.02rem] font-semibold leading-[0.95] text-(--text-primary-dark) sm:text-[2.52rem]",
                 displaySerif.className,
               )}
             >
               Get Hedgehog Core - £79
             </h2>
             <p className="mt-4 text-[1rem] leading-8 text-(--dune-muted)">
-              Less than one avoidable rebuild session
+              Less than one avoidable rebuild session.
             </p>
           </div>
           <div className="mt-8 flex flex-wrap justify-center gap-3.5">
-            <Link href="/pricing" className={cn(VS.buttons.primaryLarge, "gap-2 shadow-[0_18px_36px_rgba(0,0,0,0.34)]")}>
-              Get Hedgehog Core
+            <Link href="/pricing" className={cn(VS.buttons.primaryLarge, "gap-2 shadow-[0_18px_34px_rgba(0,0,0,0.34)]")}>
+              Get Hedgehog Core - £79
               <ArrowRight className="h-4 w-4" />
             </Link>
             <Link
@@ -424,7 +489,7 @@ export default function Home() {
             </Link>
           </div>
         </div>
-      </section>
+      </SectionShell>
 
       <SiteFooter />
     </main>

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
@@ -13,9 +12,15 @@ import { TrackableLink } from "@/components/analytics/TrackableLink";
 import { TrackableSubmitButton } from "@/components/analytics/TrackableSubmitButton";
 import {
   MjmlHtmlSplitView,
+  SystemArchitectureVisual,
   WorkflowFlowDiagram,
   WorkflowStackVisual,
 } from "@/components/site/ProductVisuals";
+import {
+  SectionIntro,
+  SectionShell,
+  VisualPanel,
+} from "@/components/site/SectionPrimitives";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { SiteTopBar } from "@/components/site/SiteTopBar";
 import { visualSystem } from "@/components/site/visualSystem";
@@ -124,27 +129,20 @@ export default async function WorkflowDetailPage({ params }: Props) {
   ];
 
   return (
-    <main className="min-h-screen bg-(--surface-strong) text-(--th-body-copy)">
+    <main className="min-h-screen bg-(--surface-strong) text-(--th-body-copy) [font-family:Arial,sans-serif]">
       <SiteTopBar theme="hero" ctaHref="/pricing" ctaLabel="Get Hedgehog Core - £79" />
-      <TrackEventOnMount
-        event="view_workflow_detail"
-        payload={{ workflowSlug: workflow.slug }}
-      />
+      <TrackEventOnMount event="view_workflow_detail" payload={{ workflowSlug: workflow.slug }} />
 
-      <section className={cn(VS.widths.page, VS.sections.types.hero)}>
-        <article className={VS.sections.intros.wideSplit}>
-          <div className={VS.sections.intros.fullWidth}>
-            <p className="text-[1rem] font-semibold uppercase tracking-[0.1em] text-(--accent-support)">
-              Workflow reference
-            </p>
-            <h1 className="mt-4 text-[2.5rem] font-semibold leading-[0.98] text-(--text-primary-dark) sm:text-[3.4rem]">
+      <SectionShell spacing="hero" tone="canvas" width="content">
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,1.02fr)_minmax(0,0.98fr)] lg:items-start">
+          <div>
+            <p className="text-[1rem] font-semibold tracking-[0.012em] text-(--th-body-copy)">Workflow reference</p>
+            <h1 className="mt-4 max-w-[16ch] text-[2.8rem] font-semibold leading-[0.9] text-(--text-primary-dark) sm:text-[3.95rem]">
               {workflow.title}
             </h1>
-            <p className="mt-5 max-w-[64ch] text-[1.08rem] leading-8 text-(--th-body-copy)">
-              {workflow.summary}
-            </p>
+            <p className="mt-5 max-w-[64ch] text-[1.05rem] leading-8 text-(--th-body-copy)">{workflow.summary}</p>
 
-            <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-[0.95rem] text-(--th-body-copy)">
+            <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-[0.92rem] text-(--th-body-copy)">
               <span className="inline-flex items-center gap-2">
                 <span className="h-1.5 w-1.5 rounded-full bg-(--accent-support)" />
                 Linked layout: {workflow.linkedLayoutTitle}
@@ -160,279 +158,265 @@ export default async function WorkflowDetailPage({ params }: Props) {
             </div>
 
             <div className="mt-8 flex flex-wrap items-center gap-3.5">
-              <Link href="/workflows" className={VS.buttons.secondaryDark}>
-                All workflows
-              </Link>
-              <Link href={`/layouts/${workflow.linkedLayoutSlug}`} className={VS.buttons.secondaryDark}>
-                View layout
-              </Link>
               <TrackableLink
                 href={`/pricing?source=workflow_detail&workflow=${workflow.slug}`}
                 event="workflow_to_pricing"
                 payload={{ source: "workflow_detail", workflowSlug: workflow.slug }}
-                className={cn(VS.buttons.primaryLarge, "gap-2 shadow-[0_18px_34px_rgba(0,0,0,0.28)]")}
+                className={cn(VS.buttons.primaryLarge, "gap-2 shadow-[0_18px_34px_rgba(0,0,0,0.3)]")}
               >
                 Get Hedgehog Core - £79
                 <ArrowRight className="h-4 w-4" />
               </TrackableLink>
+              <Link href="/workflows" className={VS.buttons.secondaryDark}>
+                All workflows
+              </Link>
+              <Link href={`/layouts/${workflow.linkedLayoutSlug}`} className={VS.buttons.secondaryDark}>
+                View linked layout
+              </Link>
             </div>
           </div>
 
           <div className="grid gap-5">
-            <aside className="rounded-[1rem] border border-(--surface-line) bg-(--surface-soft) p-5 sm:p-6">
-              <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">
-                Linked layout preview
-              </p>
-              <div className="relative mt-3 aspect-[16/10] overflow-hidden rounded-[0.9rem] border border-(--surface-line) bg-(--bg-soft)">
-                <Image
-                  src={workflow.previewImageUrl}
-                  alt={`${workflow.linkedLayoutTitle} preview`}
-                  fill
-                  sizes="(max-width: 1024px) 94vw, 42vw"
-                  className="object-cover object-top"
-                />
-              </div>
-              <p className="mt-4 text-[0.95rem] leading-7 text-(--th-body-copy)">
-                This workflow is built on the {workflow.linkedLayoutTitle} layout and expands through the same reusable
-                component registry.
-              </p>
-            </aside>
-
+            <SystemArchitectureVisual
+              title="Workflow architecture"
+              subtitle="Trigger to output mapping"
+              workflowLabel={workflow.slug}
+              layoutLabel={workflow.linkedLayoutSlug}
+              componentLabels={workflow.componentStack.slice(0, 4).map((item) => item.componentSlug)}
+              imageUrl={workflow.previewImageUrl}
+              imageAlt={`${workflow.title} preview`}
+            />
             <WorkflowFlowDiagram
               title="Workflow at a glance"
-              subtitle="Trigger, intent, and delivery path"
+              subtitle="Trigger, goal, and delivery path"
               steps={workflowFlowSteps.slice(0, 4)}
-              className="shadow-[0_18px_34px_rgba(0,0,0,0.26)]"
-            />
-          </div>
-        </article>
-      </section>
-
-      <section className={cn("border-y border-(--border-light) bg-(--bg-soft)", VS.sections.types.proof)}>
-        <div className={VS.widths.page}>
-          <div className={VS.sections.intros.fullWidth}>
-            <p className="text-[1rem] font-semibold tracking-[0.01em] text-(--text-secondary-light)">Technical proof</p>
-            <h2 className="mt-3 max-w-[18ch] text-[2rem] font-semibold leading-[0.95] text-(--text-primary-light) sm:text-[2.46rem]">
-              Source and output shown in one place
-            </h2>
-            <p className="mt-4 max-w-[72ch] text-[1rem] leading-8 text-(--text-secondary-light)">
-              Verify the workflow structure, inspect source patterns, and confirm how it maps to compiled output before you
-              start implementation.
-            </p>
-          </div>
-
-          <div className={cn(VS.sections.intros.contentGap, VS.sections.layouts.proofCombo)}>
-            <MjmlHtmlSplitView
-              title="MJML to compiled HTML"
-              mjml={mjmlSnippet}
-              html={htmlSnippet}
-              className="border-(--border-light) bg-(--bg-soft-elevated) shadow-[0_18px_32px_rgba(15,23,42,0.08)]"
-            />
-            <WorkflowStackVisual
-              title="Workflow to component mapping"
-              description={`${workflow.title} maps directly to layout and ordered component sequence.`}
-              steps={mappingSteps}
-              imageUrl={workflow.previewImageUrl}
-              imageAlt={`${workflow.title} mapping preview`}
-              className="border-(--border-light) bg-(--bg-soft-elevated) shadow-[0_18px_32px_rgba(15,23,42,0.08)]"
             />
           </div>
         </div>
-      </section>
+      </SectionShell>
 
-      <section className={cn("border-b border-(--surface-line) bg-(--surface-soft)", VS.sections.types.feature)}>
-        <div className={VS.widths.page}>
-          <section className={VS.sections.layouts.pair}>
-            <article className="surface-card-soft p-6 sm:p-7">
-              <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">Overview</p>
-              <h2 className="mt-2 text-[1.56rem] font-semibold text-(--text-primary-dark)">Trigger</h2>
-              <p className="mt-4 text-[1rem] leading-8 text-(--th-body-copy)">
-                {workflow.trigger}
-              </p>
-            </article>
-            <article className="surface-card-soft p-6 sm:p-7">
-              <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">Overview</p>
-              <h2 className="mt-2 text-[1.56rem] font-semibold text-(--text-primary-dark)">Goal</h2>
-              <p className="mt-4 text-[1rem] leading-8 text-(--th-body-copy)">
-                {workflow.goal}
-              </p>
-            </article>
-          </section>
+      <SectionShell spacing="proof" tone="soft" border="softBoth" width="content">
+        <SectionIntro
+          pattern="full"
+          tone="light"
+          eyebrow="Technical proof"
+          title="Source and output shown in one place"
+          description="Review source structure and output expectations before implementation starts."
+        />
 
-          <section className="section-breath border-t border-(--surface-line) pt-10">
-            <div className={VS.sections.intros.fullWidth}>
-              <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">Structure</p>
-              <h2 className="mt-2 text-[1.62rem] font-semibold text-(--text-primary-dark)">Layout and component stack</h2>
-              <p className="mt-4 max-w-[72ch] text-[1rem] leading-8 text-(--th-body-copy)">
-                This workflow uses the <strong>{workflow.linkedLayoutTitle}</strong> layout. Keep this order unless a
-                variant needs a clear structural change.
-              </p>
-            </div>
+        <div className="mt-10 grid gap-6 lg:grid-cols-[minmax(0,1.24fr)_minmax(0,0.76fr)]">
+          <MjmlHtmlSplitView title="MJML to compiled HTML" mjml={mjmlSnippet} html={htmlSnippet} tone="soft" />
+          <WorkflowStackVisual
+            title="Workflow to component mapping"
+            description={`${workflow.title} maps directly to layout and ordered component sequence.`}
+            steps={mappingSteps}
+            imageUrl={workflow.previewImageUrl}
+            imageAlt={`${workflow.title} mapping preview`}
+            tone="soft"
+          />
+        </div>
+      </SectionShell>
 
-            <ol className="mt-6 grid gap-4 md:grid-cols-2">
-              {workflow.componentStack.map((item) => (
-                <li key={`${workflow.slug}-${item.componentSlug}`} className="surface-card-soft p-5">
-                  <div className="flex items-start gap-3">
-                    <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-(--hedgehog-core-blue-deep) text-[0.82rem] font-bold text-(--text-primary-dark)">
-                      {item.order}
-                    </span>
-                    <div>
-                      <Link
-                        href={`/components/${item.componentSlug}`}
-                        className="text-[1rem] font-semibold text-(--text-primary-dark) underline-offset-2 transition hover:text-(--accent-support) hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2"
-                      >
-                        {item.componentTitle}
-                      </Link>
-                      <p className="mt-1 text-[0.95rem] leading-7 text-(--th-body-copy)">
-                        {item.notes}
-                      </p>
-                    </div>
+      <SectionShell spacing="feature" tone="canvas" border="bottom" width="content">
+        <SectionIntro
+          pattern="split"
+          eyebrow="Overview"
+          title="Trigger and goal"
+          description="Each workflow defines both initiating event and expected outcome so teams can align copy, logic, and QA." 
+          aside={
+            <VisualPanel>
+              <p className="text-[0.78rem] font-semibold uppercase tracking-[0.09em] text-(--th-body-copy)">Handoff anchor</p>
+              <p className="mt-2 text-[0.92rem] leading-7 text-(--th-body-copy)">
+                Keep layout order intact where possible, then tailor component content for your exact event and audience.
+              </p>
+            </VisualPanel>
+          }
+        />
+
+        <div className="mt-8 grid gap-6 lg:grid-cols-2">
+          <VisualPanel>
+            <p className="text-[0.8rem] font-semibold uppercase tracking-[0.09em] text-(--th-body-copy)">Trigger</p>
+            <p className="mt-3 text-[0.98rem] leading-8 text-(--th-body-copy)">{workflow.trigger}</p>
+          </VisualPanel>
+          <VisualPanel>
+            <p className="text-[0.8rem] font-semibold uppercase tracking-[0.09em] text-(--th-body-copy)">Goal</p>
+            <p className="mt-3 text-[0.98rem] leading-8 text-(--th-body-copy)">{workflow.goal}</p>
+          </VisualPanel>
+        </div>
+
+        <section className="section-breath border-t border-(--surface-line) pt-10">
+          <SectionIntro
+            pattern="full"
+            eyebrow="Structure"
+            title="Layout and component stack"
+            titleClassName="text-[1.74rem] sm:text-[2.02rem]"
+            description={`This workflow uses ${workflow.linkedLayoutTitle}. Keep this sequence stable unless a variant requires a clear structural change.`}
+          />
+
+          <ol className="mt-6 grid gap-4 md:grid-cols-2">
+            {workflow.componentStack.map((item) => (
+              <li key={`${workflow.slug}-${item.componentSlug}`} className="rounded-[0.94rem] border border-(--surface-line) bg-(--surface-soft) p-5 shadow-[0_12px_24px_rgba(0,0,0,0.24)]">
+                <div className="flex items-start gap-3">
+                  <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-(--hedgehog-core-blue-deep) text-[0.82rem] font-bold text-(--text-primary-dark)">
+                    {item.order}
+                  </span>
+                  <div>
+                    <Link
+                      href={`/components/${item.componentSlug}`}
+                      className="text-[1rem] font-semibold text-(--text-primary-dark) underline-offset-2 transition hover:text-(--accent-support) hover:underline"
+                    >
+                      {item.componentTitle}
+                    </Link>
+                    <p className="mt-1 text-[0.94rem] leading-7 text-(--th-body-copy)">{item.notes}</p>
                   </div>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </section>
+      </SectionShell>
+
+      <SectionShell spacing="feature" tone="soft" border="softBoth" width="content">
+        <SectionIntro
+          pattern="full"
+          tone="light"
+          eyebrow="Data contract"
+          title="Required merge variables"
+          titleClassName="text-[1.74rem] sm:text-[2.02rem]"
+        />
+
+        <div className="mt-5 overflow-x-auto rounded-[0.95rem] border border-(--border-light) bg-(--bg-soft-elevated) p-5 shadow-[0_12px_24px_rgba(15,23,42,0.08)]">
+          <table className="min-w-full text-left text-[0.94rem]">
+            <thead>
+              <tr className="border-b border-(--border-light) text-(--text-primary-light)">
+                <th scope="col" className="pb-2 pr-4 font-semibold">Field</th>
+                <th scope="col" className="pb-2 pr-4 font-semibold">Purpose</th>
+                <th scope="col" className="pb-2 font-semibold">Example</th>
+              </tr>
+            </thead>
+            <tbody>
+              {workflow.requiredFields.map((field) => (
+                <tr key={`${workflow.slug}-${field.field}`} className="border-b border-(--border-light) last:border-b-0">
+                  <td className="py-2 pr-4 font-semibold text-(--text-primary-light)">{field.field}</td>
+                  <td className="py-2 pr-4 text-(--text-secondary-light)">{field.description}</td>
+                  <td className="py-2 text-(--text-secondary-light)">{field.example}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <div className="section-breath grid gap-6 lg:grid-cols-2">
+          <VisualPanel tone="soft">
+            <p className="text-[0.8rem] font-semibold uppercase tracking-[0.09em] text-(--text-secondary-light)">Variants</p>
+            <h2 className="mt-2 text-[1.42rem] font-semibold text-(--text-primary-light)">Alternative states</h2>
+            <ul className="mt-5 space-y-3.5">
+              {workflow.variants.map((variant) => (
+                <li key={`${workflow.slug}-${variant.title}`} className="flex items-start gap-3">
+                  <CheckCircle2 className="mt-1 h-4.5 w-4.5 shrink-0 text-(--accent-support)" />
+                  <span className="text-[0.95rem] leading-7 text-(--text-secondary-light)">
+                    <strong className="text-(--text-primary-light)">{variant.title}.</strong> {variant.description}
+                  </span>
                 </li>
               ))}
-            </ol>
-          </section>
-        </div>
-      </section>
+            </ul>
+          </VisualPanel>
 
-      <section className={cn("border-y border-(--border-light) bg-(--bg-soft)", VS.sections.types.feature)}>
-        <div className={VS.widths.page}>
-          <section>
-            <div className={VS.sections.intros.fullWidth}>
-              <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-(--text-secondary-light)">Data contract</p>
-              <h2 className="mt-2 text-[1.62rem] font-semibold text-(--text-primary-light)">Required merge variables</h2>
-            </div>
-            <div className="mt-5 overflow-x-auto rounded-[0.95rem] border border-(--border-light) bg-(--bg-soft-elevated) p-5 shadow-[0_12px_24px_rgba(15,23,42,0.08)]">
-              <table className="min-w-full text-left text-[0.94rem]">
-                <thead>
-                  <tr className="border-b border-(--border-light) text-(--text-primary-light)">
-                    <th scope="col" className="pb-2 pr-4 font-semibold">Field</th>
-                    <th scope="col" className="pb-2 pr-4 font-semibold">Purpose</th>
-                    <th scope="col" className="pb-2 font-semibold">Example</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {workflow.requiredFields.map((field) => (
-                    <tr key={`${workflow.slug}-${field.field}`} className="border-b border-(--border-light) last:border-b-0">
-                      <td className="py-2 pr-4 font-semibold text-(--text-primary-light)">{field.field}</td>
-                      <td className="py-2 pr-4 text-(--text-secondary-light)">{field.description}</td>
-                      <td className="py-2 text-(--text-secondary-light)">{field.example}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </section>
-
-          <section className="section-breath grid gap-6 lg:grid-cols-2">
-            <article className="rounded-[1rem] border border-(--border-light) bg-(--bg-soft-elevated) p-6 shadow-[0_12px_24px_rgba(15,23,42,0.08)] sm:p-7">
-              <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-(--text-secondary-light)">Variants</p>
-              <h2 className="mt-2 text-[1.48rem] font-semibold text-(--text-primary-light)">Alternative states</h2>
-              <ul className="mt-5 space-y-3.5">
-                {workflow.variants.map((variant) => (
-                  <li key={`${workflow.slug}-${variant.title}`} className="flex items-start gap-3">
-                    <CheckCircle2 className="mt-1 h-4.5 w-4.5 shrink-0 text-(--accent-support)" />
-                    <span className="text-[0.96rem] leading-7 text-(--text-secondary-light)">
-                      <strong className="text-(--text-primary-light)">{variant.title}.</strong>{" "}
-                      {variant.description}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </article>
-
-            <article className="rounded-[1rem] border border-(--border-light) bg-(--bg-soft-elevated) p-6 shadow-[0_12px_24px_rgba(15,23,42,0.08)] sm:p-7">
-              <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-(--text-secondary-light)">QA risks</p>
-              <h2 className="mt-2 text-[1.48rem] font-semibold text-(--text-primary-light)">Known fragile areas</h2>
-              <ul className="mt-5 space-y-3.5">
-                {workflow.qaRisks.map((risk) => (
-                  <li key={`${workflow.slug}-${risk}`} className="flex items-start gap-3">
-                    <CheckCircle2 className="mt-1 h-4.5 w-4.5 shrink-0 text-(--accent-support)" />
-                    <span className="text-[0.96rem] leading-7 text-(--text-secondary-light)">{risk}</span>
-                  </li>
-                ))}
-              </ul>
-            </article>
-          </section>
-
-          <section className="section-breath border-t border-(--border-light) pt-10">
-            <div className={VS.sections.intros.fullWidth}>
-              <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-(--text-secondary-light)">Handoff steps</p>
-              <h2 className="mt-2 text-[1.62rem] font-semibold text-(--text-primary-light)">MJML edit to ESP import</h2>
-            </div>
-            <ol className="mt-5 grid gap-4 md:grid-cols-2 text-[0.98rem] leading-7 text-(--text-secondary-light)">
-              {workflow.handoffSteps.map((step, index) => (
-                <li key={`${workflow.slug}-handoff-${step}`} className="rounded-[0.88rem] border border-(--border-light) bg-(--bg-soft-elevated) p-4">
-                  <div className="flex items-start gap-3">
-                    <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-(--border-light) text-[0.82rem] font-semibold text-(--text-primary-light)">
-                      {index + 1}
-                    </span>
-                    <span>{step}</span>
-                  </div>
+          <VisualPanel tone="soft">
+            <p className="text-[0.8rem] font-semibold uppercase tracking-[0.09em] text-(--text-secondary-light)">QA risks</p>
+            <h2 className="mt-2 text-[1.42rem] font-semibold text-(--text-primary-light)">Known fragile areas</h2>
+            <ul className="mt-5 space-y-3.5">
+              {workflow.qaRisks.map((risk) => (
+                <li key={`${workflow.slug}-${risk}`} className="flex items-start gap-3">
+                  <CheckCircle2 className="mt-1 h-4.5 w-4.5 shrink-0 text-(--accent-support)" />
+                  <span className="text-[0.95rem] leading-7 text-(--text-secondary-light)">{risk}</span>
                 </li>
               ))}
-            </ol>
-          </section>
+            </ul>
+          </VisualPanel>
         </div>
-      </section>
 
-      <section className={cn("border-b border-(--surface-line) bg-(--surface-soft)", VS.sections.types.feature)}>
-        <div className={VS.widths.page}>
-          <div className={VS.sections.intros.fullWidth}>
-            <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">Free vs paid</p>
-            <h2 className="mt-2 text-[1.62rem] font-semibold text-(--text-primary-dark)">Preview free, ship with Core</h2>
-          </div>
-          <div className="mt-6 grid gap-6 lg:grid-cols-2">
-            <article className="surface-card-soft p-6 sm:p-7">
-              <h3 className="text-[1.2rem] font-semibold text-(--text-primary-dark)">Free reference</h3>
-              <ul className="mt-4 space-y-2.5 text-[0.96rem] leading-7 text-(--th-body-copy)">
-                {workflow.freeAccess.map((item) => (
-                  <li key={`${workflow.slug}-free-${item}`} className="flex items-start gap-3">
-                    <span className="mt-[0.62rem] h-1.5 w-1.5 shrink-0 rounded-full bg-(--accent-support)" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </article>
+        <section className="section-breath border-t border-(--border-light) pt-10">
+          <SectionIntro
+            pattern="full"
+            tone="light"
+            eyebrow="Handoff steps"
+            title="MJML edit to ESP import"
+            titleClassName="text-[1.74rem] sm:text-[2.02rem]"
+          />
+          <ol className="mt-5 grid gap-4 md:grid-cols-2 text-[0.98rem] leading-7 text-(--text-secondary-light)">
+            {workflow.handoffSteps.map((step, index) => (
+              <li key={`${workflow.slug}-handoff-${step}`} className="rounded-[0.88rem] border border-(--border-light) bg-(--bg-soft-elevated) p-4">
+                <div className="flex items-start gap-3">
+                  <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-(--border-light) text-[0.82rem] font-semibold text-(--text-primary-light)">
+                    {index + 1}
+                  </span>
+                  <span>{step}</span>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </section>
+      </SectionShell>
 
-            <article className="rounded-[1rem] border border-(--surface-line) bg-(--hedgehog-core-navy) p-6 shadow-[0_20px_38px_rgba(0,0,0,0.3)] sm:p-7">
-              <h3 className="text-[1.2rem] font-semibold text-(--text-primary-dark)">{MJML_PACK_NAME}</h3>
-              <ul className="mt-4 space-y-2.5 text-[0.96rem] leading-7 text-(--dune-muted)">
-                {workflow.coreAccess.map((item) => (
-                  <li key={`${workflow.slug}-core-${item}`} className="flex items-start gap-3">
-                    <span className="mt-[0.62rem] h-1.5 w-1.5 shrink-0 rounded-full bg-(--accent-support)" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
+      <SectionShell spacing="feature" tone="surface" border="bottom" width="content">
+        <SectionIntro
+          pattern="full"
+          eyebrow="Free vs paid"
+          title="Preview free, ship with Core"
+          titleClassName="text-[1.74rem] sm:text-[2.02rem]"
+        />
+        <div className="mt-6 grid gap-6 lg:grid-cols-2">
+          <VisualPanel>
+            <h3 className="text-[1.2rem] font-semibold text-(--text-primary-dark)">Free reference</h3>
+            <ul className="mt-4 space-y-2.5 text-[0.96rem] leading-7 text-(--th-body-copy)">
+              {workflow.freeAccess.map((item) => (
+                <li key={`${workflow.slug}-free-${item}`} className="flex items-start gap-3">
+                  <span className="mt-[0.62rem] h-1.5 w-1.5 shrink-0 rounded-full bg-(--accent-support)" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </VisualPanel>
 
-              <div className="mt-6 flex flex-wrap items-center gap-3.5">
-                <TrackableLink
-                  href={`/pricing?source=workflow_detail&workflow=${workflow.slug}`}
-                  event="workflow_to_pricing"
-                  payload={{ source: "workflow_detail", workflowSlug: workflow.slug, target: "pricing" }}
-                  className={cn(VS.buttons.primaryLarge, "shadow-[0_18px_34px_rgba(0,0,0,0.3)]")}
-                >
-                  Get Hedgehog Core - £79
-                </TrackableLink>
+          <article className="relative overflow-hidden rounded-[1.08rem] border border-(--surface-line) bg-(--hedgehog-core-navy) p-6 shadow-[0_20px_38px_rgba(0,0,0,0.34)] sm:p-7">
+            <span className="pointer-events-none absolute inset-x-6 top-0 h-px bg-[linear-gradient(90deg,transparent,hsl(var(--th-accent-support)/0.52),transparent)]" />
+            <h3 className="text-[1.2rem] font-semibold text-(--text-primary-dark)">{MJML_PACK_NAME}</h3>
+            <ul className="mt-4 space-y-2.5 text-[0.96rem] leading-7 text-(--dune-muted)">
+              {workflow.coreAccess.map((item) => (
+                <li key={`${workflow.slug}-core-${item}`} className="flex items-start gap-3">
+                  <span className="mt-[0.62rem] h-1.5 w-1.5 shrink-0 rounded-full bg-(--accent-support)" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
 
-                {stripeReady ? (
-                  <form action="/api/checkout" method="post">
-                    <input type="hidden" name="productId" value={corePack.productId} />
-                    <input type="hidden" name="billingCycle" value="one_off" />
-                    <TrackableSubmitButton
-                      label={`Buy ${MJML_PACK_NAME}`}
-                      event="buy_from_workflow"
-                      payload={{ source: "workflow_detail", workflowSlug: workflow.slug, packId: corePack.id }}
-                      className={VS.buttons.secondaryDark}
-                    />
-                  </form>
-                ) : null}
-              </div>
-            </article>
-          </div>
+            <div className="mt-6 flex flex-wrap items-center gap-3.5">
+              <TrackableLink
+                href={`/pricing?source=workflow_detail&workflow=${workflow.slug}`}
+                event="workflow_to_pricing"
+                payload={{ source: "workflow_detail", workflowSlug: workflow.slug, target: "pricing" }}
+                className={cn(VS.buttons.primaryLarge, "shadow-[0_18px_34px_rgba(0,0,0,0.3)]")}
+              >
+                Get Hedgehog Core - £79
+              </TrackableLink>
+
+              {stripeReady ? (
+                <form action="/api/checkout" method="post">
+                  <input type="hidden" name="productId" value={corePack.productId} />
+                  <input type="hidden" name="billingCycle" value="one_off" />
+                  <TrackableSubmitButton
+                    label={`Buy ${MJML_PACK_NAME}`}
+                    event="buy_from_workflow"
+                    payload={{ source: "workflow_detail", workflowSlug: workflow.slug, packId: corePack.id }}
+                    className={VS.buttons.secondaryDark}
+                  />
+                </form>
+              ) : null}
+            </div>
+          </article>
         </div>
-      </section>
+      </SectionShell>
 
       <SiteFooter />
     </main>

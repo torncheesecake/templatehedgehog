@@ -341,6 +341,57 @@ h3 {
   margin-top: 3.5rem;
 }
 
+.th-section-transition {
+  position: relative;
+  isolation: isolate;
+}
+
+.th-section-transition::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  background: color-mix(in srgb, var(--line) 66%, transparent);
+  pointer-events: none;
+}
+
+.th-section-transition::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 56px;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    color-mix(in srgb, var(--bg-surface-elevated) 18%, transparent) 100%
+  );
+  pointer-events: none;
+}
+
+.th-cta-zone {
+  position: relative;
+  isolation: isolate;
+}
+
+.th-cta-zone::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 14% 18%, hsl(var(--th-accent-support) / 0.16), transparent 34%),
+    radial-gradient(circle at 86% 84%, hsl(var(--th-accent) / 0.12), transparent 38%);
+  pointer-events: none;
+}
+
+.th-cta-island {
+  position: relative;
+  overflow: hidden;
+}
+
 .button-refined-primary {
   border-radius: 0.82rem;
   border: 1px solid var(--accent-primary);

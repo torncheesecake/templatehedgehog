@@ -2,6 +2,7 @@ import { Roboto_Serif } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { EffortComparisonVisual, type EffortItem } from "@/components/site/ProductVisuals";
 import { visualSystem } from "@/components/site/visualSystem";
+import { SectionIntro } from "@/components/site/SectionPrimitives";
 
 const displaySerif = Roboto_Serif({
   subsets: ["latin"],
@@ -37,26 +38,24 @@ export function ComparisonSection({
   return (
     <section className={cn(VS.sections.types.comparison, sectionClassName)}>
       <div className={cn(VS.widths.content, containerClassName)}>
-        <div className={VS.sections.intros.fullWidth}>
-          <p className="text-[1rem] font-semibold tracking-[0.01em] text-(--accent-support)">{eyebrow}</p>
-          <h2
-            className={cn(
-              "mt-3 max-w-[18ch] text-[2rem] font-semibold leading-[0.96] text-(--text-primary-dark) sm:text-[2.5rem]",
-              displaySerif.className,
-            )}
-          >
-            {title}
-          </h2>
-          <p className="mt-4 max-w-[72ch] text-[1rem] leading-8 text-(--th-body-copy)">{description}</p>
-        </div>
-
-        <EffortComparisonVisual
-          className={VS.sections.intros.contentGap}
-          leftTitle={leftTitle}
-          rightTitle={rightTitle}
-          leftItems={leftItems}
-          rightItems={rightItems}
+        <SectionIntro
+          pattern="full"
+          eyebrow={eyebrow}
+          title={title}
+          description={description}
+          className="pt-2 sm:pt-3"
+          titleClassName={cn("max-w-[24ch]", displaySerif.className)}
         />
+
+        <div className="mt-12 rounded-[1.2rem] border border-(--surface-line) bg-(--surface-strong) p-4 sm:p-5 lg:p-6">
+          <EffortComparisonVisual
+            className="mt-2"
+            leftTitle={leftTitle}
+            rightTitle={rightTitle}
+            leftItems={leftItems}
+            rightItems={rightItems}
+          />
+        </div>
       </div>
     </section>
   );
