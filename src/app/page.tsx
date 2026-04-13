@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Roboto_Serif } from "next/font/google";
 import {
   ArrowRight,
   CheckCircle2,
@@ -20,13 +19,6 @@ import {
   WORKFLOW_COUNT,
 } from "@/lib/pack";
 import { cn } from "@/lib/utils";
-import { visualSystem } from "@/components/site/visualSystem";
-
-const displaySerif = Roboto_Serif({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-  display: "swap",
-});
 
 const primaryWorkflowSlugs = [
   "onboarding",
@@ -36,26 +28,26 @@ const primaryWorkflowSlugs = [
   "notifications",
 ] as const;
 
-const comparisonRows = [
+const comparisonPoints = [
   {
     label: "Build time",
-    fromScratch: "4 to 8 hours to assemble, test, and stabilise one production workflow.",
-    withHedgehog: "Start from a ready workflow and adapt in under an hour.",
+    fromScratch: "Assemble and stabilise each flow manually, often over several hours.",
+    withHedgehog: "Start from a mapped workflow and adapt quickly.",
   },
   {
-    label: "QA passes needed",
-    fromScratch: "Multiple rounds to catch client breakage and layout drift.",
-    withHedgehog: "Fewer rounds because structure and output are already production-oriented.",
+    label: "QA passes",
+    fromScratch: "More re-check cycles to catch client and layout regressions.",
+    withHedgehog: "Fewer rounds because source and output are already aligned.",
   },
   {
     label: "System consistency",
-    fromScratch: "Campaign and lifecycle patterns drift apart across projects.",
-    withHedgehog: "One shared workflow, layout, and component model across all sends.",
+    fromScratch: "Patterns drift across campaigns, lifecycle, and transactional sends.",
+    withHedgehog: "Shared workflow and layout structure across projects.",
   },
   {
-    label: "Dev to QA to ESP handoff",
-    fromScratch: "Manual interpretation and rework between development, QA, and ESP delivery.",
-    withHedgehog: "MJML source and compiled HTML stay aligned in one mapped system.",
+    label: "Handoff",
+    fromScratch: "More manual interpretation between development, QA, and ESP teams.",
+    withHedgehog: "Clear path from workflow to layout to compiled output.",
   },
 ] as const;
 
@@ -86,9 +78,6 @@ const workflowOutcomeBySlug: Record<string, string> = {
   notifications: "Deliver urgent account alerts with clear next-step actions.",
 };
 
-const fromScratchEffort = [92, 86, 82, 84] as const;
-const withHedgehogEffort = [34, 38, 30, 32] as const;
-
 const coreDeliveryHighlights = [
   "Versioned updates with changelog context for safe adoption.",
   "Workflow, layout, and component mapping kept in one registry-driven system.",
@@ -106,17 +95,15 @@ function buildWorkflowShowcase() {
 }
 
 export default function Home() {
-  const VS = visualSystem;
+  const pageWidth = "mx-auto w-full max-w-[1840px] px-5 sm:px-8 lg:px-14";
+  const primaryButton =
+    "inline-flex h-11 items-center rounded-[0.8rem] border border-[#d13d4c] bg-[#d13d4c] px-5 text-[0.86rem] font-semibold text-white transition hover:bg-[#b93340] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d13d4c] focus-visible:ring-offset-2";
+  const secondaryButton =
+    "inline-flex h-11 items-center rounded-[0.8rem] border border-black/10 bg-white px-5 text-[0.86rem] font-semibold text-black transition hover:border-black/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d13d4c] focus-visible:ring-offset-2";
   const workflowShowcase = buildWorkflowShowcase();
   const primaryWorkflow = workflowShowcase[0];
   const supportingWorkflows = workflowShowcase.slice(1, 5);
   const mappingWorkflow = primaryWorkflow ?? getEmailWorkflowBySlug("onboarding");
-
-  const comparisonItems = comparisonRows.map((row, index) => ({
-    ...row,
-    fromScratchScore: fromScratchEffort[index] ?? 82,
-    withHedgehogScore: withHedgehogEffort[index] ?? 34,
-  }));
 
   const buildLayers = [
     {
@@ -157,8 +144,8 @@ export default function Home() {
     <main className="min-h-screen bg-(--surface-strong) text-(--th-body-copy) [font-family:Arial,sans-serif]">
       <SiteTopBar theme="hero" ctaHref="/pricing" ctaLabel="Get Hedgehog Core - £79" />
 
-      <section className="relative overflow-hidden border-b border-(--surface-line) bg-(--bg-elevated) py-20 sm:py-24 lg:py-28">
-        <div className={VS.widths.page}>
+      <section className="relative overflow-hidden border-b border-(--surface-line) bg-(--bg-elevated) py-24">
+        <div className={pageWidth}>
           <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-center">
             <div className="max-w-[38rem]">
               <p className="text-[1rem] font-semibold tracking-[0.012em] text-(--th-body-copy)">
@@ -166,8 +153,7 @@ export default function Home() {
               </p>
               <h1
                 className={cn(
-                  "mt-4 max-w-[16ch] text-[3rem] font-semibold leading-[0.88] text-(--text-primary-dark) sm:text-[4.2rem] lg:text-[4.9rem]",
-                  displaySerif.className,
+                  "mt-5 max-w-[16ch] text-[3rem] font-semibold leading-[0.88] text-(--text-primary-dark) sm:text-[4.2rem] lg:text-[4.9rem]",
                 )}
               >
                 Stop rebuilding the same emails every project
@@ -177,23 +163,17 @@ export default function Home() {
                 output mapped before your team edits copy.
               </p>
 
-              <div className="mt-8 flex flex-wrap items-center gap-2.5">
+              <div className="mt-16 flex flex-wrap items-center gap-2.5">
                 <Link
                   href="/pricing"
-                  className={cn(
-                    VS.buttons.primaryLarge,
-                    "gap-2 shadow-[0_20px_38px_rgba(0,0,0,0.34)]",
-                  )}
+                  className={cn(primaryButton, "gap-2")}
                 >
                   Get Hedgehog Core - £79
                   <ArrowRight className="h-4 w-4" />
                 </Link>
                 <Link
                   href="/workflows"
-                  className={cn(
-                    VS.buttons.secondaryLight,
-                    "h-11 border-(--surface-line) bg-(--surface-soft)",
-                  )}
+                  className={secondaryButton}
                 >
                   Explore workflows
                 </Link>
@@ -270,21 +250,20 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-y border-(--border-light) bg-(--bg-soft) py-24 sm:py-28 lg:py-30">
-        <div className={VS.widths.page}>
+      <section className="border-y border-(--border-light) bg-(--bg-soft) py-24">
+        <div className={pageWidth}>
           <div className="max-w-[74ch]">
             <p className="text-[1rem] font-semibold tracking-[0.012em] text-(--text-secondary-light)">
               Workflow entry
             </p>
             <h2
               className={cn(
-                "mt-4 text-[2.14rem] font-semibold leading-[0.94] text-(--text-primary-light) sm:text-[2.82rem]",
-                displaySerif.className,
+                "mt-5 text-[2.14rem] font-semibold leading-[0.94] text-(--text-primary-light) sm:text-[2.82rem]",
               )}
             >
               Start from a workflow, not a blank email
             </h2>
-            <p className="mt-5 max-w-[68ch] text-[1rem] leading-8 text-(--text-secondary-light)">
+            <p className="mt-6 max-w-[68ch] text-[1rem] leading-8 text-(--text-secondary-light)">
               Each workflow carries trigger context, layout structure, component
               order, and output expectations so you spend time shipping, not
               rebuilding foundations.
@@ -292,7 +271,7 @@ export default function Home() {
           </div>
 
           {primaryWorkflow ? (
-            <div className="mt-12 grid gap-6">
+            <div className="mt-16 grid gap-6">
               <article className="relative overflow-hidden rounded-[1.25rem] border border-(--border-light) bg-(--bg-soft-elevated) p-6 shadow-[0_22px_40px_rgba(15,23,42,0.12)] sm:p-8">
                 <span className="absolute right-5 top-5 rounded-full border border-(--border-light) bg-(--bg-soft) px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.09em] text-(--text-secondary-light)">
                   Featured workflow
@@ -305,7 +284,6 @@ export default function Home() {
                     <h3
                       className={cn(
                         "mt-2 text-[1.62rem] leading-[1.02] text-(--text-primary-light)",
-                        displaySerif.className,
                       )}
                     >
                       {primaryWorkflow.title}
@@ -376,7 +354,7 @@ export default function Home() {
           ) : null}
 
           <div className="mt-10">
-            <Link href="/workflows" className={cn(VS.buttons.primaryLarge, "gap-2")}>
+            <Link href="/workflows" className={cn(primaryButton, "gap-2")}>
               View all workflows
               <ArrowRight className="h-4 w-4" />
             </Link>
@@ -384,116 +362,97 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-y border-(--surface-line) bg-(--surface-soft) py-24 sm:py-28 lg:py-32">
-        <div className={VS.widths.page}>
+      <section className="border-y border-(--surface-line) bg-(--surface-soft) py-24">
+        <div className={pageWidth}>
           <div className="max-w-[74ch]">
             <p className="text-[1rem] font-semibold tracking-[0.012em] text-(--th-body-copy)">
               Core selling section
             </p>
             <h2
               className={cn(
-                "mt-4 text-[2.08rem] font-semibold leading-[0.95] text-(--text-primary-dark) sm:text-[2.72rem]",
-                displaySerif.className,
+                "mt-5 text-[2.08rem] font-semibold leading-[0.95] text-(--text-primary-dark) sm:text-[2.72rem]",
               )}
             >
               Build it yourself vs Hedgehog
             </h2>
-            <p className="mt-5 max-w-[66ch] text-[1rem] leading-8 text-(--th-body-copy)">
+            <p className="mt-6 max-w-[66ch] text-[1rem] leading-8 text-(--th-body-copy)">
               Same output required. One path is manual and repetitive, the
               other starts from production-ready workflow structure.
             </p>
           </div>
 
-          <article className="mt-14 overflow-hidden rounded-[1.45rem] border border-(--surface-line) bg-[color-mix(in_srgb,var(--surface-strong)_88%,var(--surface-soft))]">
-            <header className="grid gap-3 border-b border-[color-mix(in_srgb,var(--surface-line)_56%,transparent)] px-5 py-5 sm:px-6 lg:grid-cols-[minmax(120px,0.42fr)_minmax(0,1fr)_minmax(0,1fr)] lg:items-end">
-              <p className="text-[0.75rem] font-semibold uppercase tracking-[0.09em] text-(--th-body-copy)">
-                Metric
+          <div className="mt-16 grid gap-6 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:items-start">
+            <article className="rounded-[1.15rem] border border-(--border-subtle) bg-(--bg-canvas) p-5 sm:p-6">
+              <p className="text-[0.78rem] font-semibold uppercase tracking-[0.09em] text-(--text-meta)">
+                Build from scratch
               </p>
-              <div>
-                <p className="text-[0.95rem] font-semibold text-(--th-body-copy)">
-                  Build from scratch
-                </p>
-                <p className="mt-1 text-[0.78rem] leading-6 text-(--th-body-copy)">
-                  You assemble, test, and debug each flow manually.
-                </p>
-              </div>
-              <div>
-                <p className="text-[0.95rem] font-semibold text-(--text-primary-dark)">
-                  Using Hedgehog
-                </p>
-                <p className="mt-1 text-[0.78rem] leading-6 text-(--th-body-copy)">
-                  Start from mapped workflows and ship faster.
-                </p>
-              </div>
-            </header>
-
-            <div className="divide-y divide-[color-mix(in_srgb,var(--surface-line)_52%,transparent)]">
-              {comparisonItems.map((item) => (
-                <article
-                  key={item.label}
-                  className="grid gap-4 px-5 py-5 sm:px-6 lg:grid-cols-[minmax(120px,0.42fr)_minmax(0,1fr)_minmax(0,1fr)]"
-                >
-                  <p className="text-[0.76rem] font-semibold uppercase tracking-[0.09em] text-(--th-body-copy) lg:pt-1">
-                    {item.label}
-                  </p>
-
-                  <div className="rounded-[0.95rem] border border-[color-mix(in_srgb,var(--surface-line)_58%,transparent)] bg-[color-mix(in_srgb,var(--surface-muted)_66%,var(--surface-soft))] p-4">
-                    <span className="inline-flex rounded-full border border-[color-mix(in_srgb,var(--surface-line)_72%,transparent)] bg-[color-mix(in_srgb,var(--surface-strong)_84%,transparent)] px-2.5 py-0.5 text-[0.66rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">
-                      Higher effort
-                    </span>
-                    <p className="mt-2 text-[0.9rem] leading-7 text-(--th-body-copy)">
+              <p className="mt-2 text-[0.9rem] leading-7 text-(--text-secondary)">
+                More manual effort before a workflow is stable in production.
+              </p>
+              <div className="mt-5 space-y-4">
+                {comparisonPoints.map((item) => (
+                  <div key={`from-${item.label}`} className="rounded-[0.8rem] border border-(--border-subtle) p-3.5">
+                    <p className="text-[0.78rem] font-semibold uppercase tracking-[0.08em] text-(--text-meta)">
+                      {item.label}
+                    </p>
+                    <p className="mt-1.5 text-[0.88rem] leading-6 text-(--text-secondary)">
                       {item.fromScratch}
                     </p>
-                    <div className="mt-3 h-1.5 rounded-full bg-[color-mix(in_srgb,var(--surface-line)_80%,transparent)]">
-                      <span
-                        className="block h-1.5 rounded-full bg-[rgba(210,225,218,0.78)]"
-                        style={{ width: `${item.fromScratchScore}%` }}
-                      />
-                    </div>
                   </div>
+                ))}
+              </div>
+            </article>
 
-                  <div className="rounded-[0.95rem] border border-[color-mix(in_srgb,var(--accent-support)_38%,var(--surface-line))] bg-[color-mix(in_srgb,var(--dune-deep)_90%,var(--surface-strong))] p-4">
-                    <span className="inline-flex rounded-full border border-[hsl(var(--th-accent-support)/0.32)] bg-[hsl(var(--th-accent-support)/0.14)] px-2.5 py-0.5 text-[0.66rem] font-semibold uppercase tracking-[0.08em] text-(--text-primary-dark)">
-                      Reduced effort
-                    </span>
-                    <p className="mt-2 text-[0.9rem] leading-7 text-(--text-primary-dark)">
+            <article className="rounded-[1.15rem] border border-(--border-strong) bg-(--bg-canvas) p-6 sm:p-7">
+              <p className="text-[0.78rem] font-semibold uppercase tracking-[0.09em] text-(--text-primary)">
+                Using Hedgehog
+              </p>
+              <h3 className="mt-2 text-[1.35rem] leading-tight text-(--text-primary)">
+                Resolve the workflow first
+              </h3>
+              <p className="mt-2 text-[0.94rem] leading-7 text-(--text-secondary)">
+                Start from structure, then adapt copy and data for delivery.
+              </p>
+              <div className="mt-6 space-y-4">
+                {comparisonPoints.map((item) => (
+                  <div key={`with-${item.label}`} className="rounded-[0.8rem] border border-(--border-strong) p-4">
+                    <p className="text-[0.78rem] font-semibold uppercase tracking-[0.08em] text-(--text-primary)">
+                      {item.label}
+                    </p>
+                    <p className="mt-1.5 text-[0.9rem] leading-6 text-(--text-secondary)">
                       {item.withHedgehog}
                     </p>
-                    <div className="mt-3 h-1.5 rounded-full bg-[color-mix(in_srgb,var(--surface-line)_80%,transparent)]">
-                      <span
-                        className="block h-1.5 rounded-full bg-(--accent-support)"
-                        style={{ width: `${item.withHedgehogScore}%` }}
-                      />
-                    </div>
                   </div>
-                </article>
-              ))}
-            </div>
-          </article>
+                ))}
+              </div>
+              <p className="mt-6 text-[0.9rem] font-medium leading-7 text-(--text-primary)">
+                Start from structure, not from scratch.
+              </p>
+            </article>
+          </div>
         </div>
       </section>
 
-      <section className="border-y border-(--surface-line) bg-(--surface-strong) py-24 sm:py-28 lg:py-32">
-        <div className={VS.widths.page}>
+      <section className="border-y border-(--surface-line) bg-(--surface-strong) py-24">
+        <div className={pageWidth}>
           <div className="max-w-[74ch]">
             <p className="text-[1rem] font-semibold tracking-[0.012em] text-(--th-body-copy)">
               Technical proof
             </p>
             <h2
               className={cn(
-                "mt-4 text-[2.08rem] font-semibold leading-[0.95] text-(--text-primary-dark) sm:text-[2.72rem]",
-                displaySerif.className,
+                "mt-5 text-[2.08rem] font-semibold leading-[0.95] text-(--text-primary-dark) sm:text-[2.72rem]",
               )}
             >
               Inspect the system before you buy
             </h2>
-            <p className="mt-5 max-w-[66ch] text-[1rem] leading-8 text-(--th-body-copy)">
+            <p className="mt-6 max-w-[66ch] text-[1rem] leading-8 text-(--th-body-copy)">
               Real source, compiled output, and workflow mapping from the same
               structure shipped in Hedgehog Core.
             </p>
           </div>
 
-          <article className="mt-14 overflow-hidden rounded-[1.5rem] border border-(--surface-line) bg-[color-mix(in_srgb,var(--surface-soft)_94%,transparent)]">
+          <article className="mt-16 overflow-hidden rounded-[1.5rem] border border-(--surface-line) bg-[color-mix(in_srgb,var(--surface-soft)_94%,transparent)]">
             <div className="grid lg:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)]">
               <div className="p-6 sm:p-8 lg:p-10">
                 <p className="text-[0.78rem] font-semibold uppercase tracking-[0.09em] text-(--th-body-copy)">
@@ -575,27 +534,26 @@ mjml.config`}
         </div>
       </section>
 
-      <section className="border-y border-(--border-light) bg-(--bg-soft) py-24 sm:py-28 lg:py-30">
-        <div className={VS.widths.page}>
+      <section className="border-y border-(--border-light) bg-(--bg-soft) py-24">
+        <div className={pageWidth}>
           <div className="max-w-[74ch]">
             <p className="text-[1rem] font-semibold tracking-[0.012em] text-(--text-secondary-light)">
               Pack value
             </p>
             <h2
               className={cn(
-                "mt-4 text-[2.08rem] font-semibold leading-[0.95] text-(--text-primary-light) sm:text-[2.72rem]",
-                displaySerif.className,
+                "mt-5 text-[2.08rem] font-semibold leading-[0.95] text-(--text-primary-light) sm:text-[2.72rem]",
               )}
             >
               What you get in Hedgehog Core
             </h2>
-            <p className="mt-5 max-w-[66ch] text-[1rem] leading-8 text-(--text-secondary-light)">
+            <p className="mt-6 max-w-[66ch] text-[1rem] leading-8 text-(--text-secondary-light)">
               A complete development system that covers build, proof, and
               handoff in one workflow-focused pack.
             </p>
           </div>
 
-          <div className="mt-12 grid gap-6 lg:grid-cols-[minmax(0,1.14fr)_minmax(0,0.86fr)]">
+          <div className="mt-16 grid gap-6 lg:grid-cols-[minmax(0,1.14fr)_minmax(0,0.86fr)]">
             <article className="rounded-[1.2rem] border border-(--border-light) bg-(--bg-soft-elevated) p-6 shadow-[0_20px_36px_rgba(15,23,42,0.08)] sm:p-7">
               <p className="text-[0.78rem] font-semibold uppercase tracking-[0.09em] text-(--text-secondary-light)">
                 Core build layers
@@ -606,7 +564,6 @@ mjml.config`}
                     <p
                       className={cn(
                         "text-[1.24rem] font-semibold leading-8 text-(--text-primary-light)",
-                        displaySerif.className,
                       )}
                     >
                       {item.title}
@@ -649,45 +606,31 @@ mjml.config`}
         </div>
       </section>
 
-      <section className="relative overflow-hidden border-t border-(--surface-line) bg-(--surface-strong) py-24 sm:py-28 lg:py-30">
-        <div className={VS.widths.page}>
-          <div className="relative mx-auto max-w-[50rem] overflow-hidden rounded-[1.58rem] border border-(--surface-line) bg-(--hedgehog-core-navy) px-8 py-12 text-center shadow-[0_28px_56px_rgba(0,0,0,0.38)] sm:px-12 sm:py-14">
-            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,hsl(var(--th-accent-support)/0.2),transparent_60%)]" />
-            <div className="relative">
-              <h2
-                className={cn(
-                  "text-[2.08rem] font-semibold leading-[0.95] text-(--text-primary-dark) sm:text-[2.68rem]",
-                  displaySerif.className,
-                )}
-              >
-                Get Hedgehog Core - £79
-              </h2>
-              <p className="mt-4 text-[1rem] leading-8 text-(--dune-muted)">
-                Less than one avoidable rebuild session.
-              </p>
-              <p className="mt-2 text-[0.9rem] leading-7 text-(--th-body-copy)">
-                One payment, commercial use, instant access on the primary
-                deployment.
-              </p>
+      <section className="border-t border-(--border-subtle) bg-(--bg-canvas) py-24">
+        <div className={pageWidth}>
+          <div className="mx-auto max-w-[45rem] text-center">
+            <h2
+              className={cn(
+                "text-[2.25rem] font-semibold leading-[0.96] text-(--text-primary) sm:text-[2.95rem]",
+              )}
+            >
+              Get Hedgehog Core - £79
+            </h2>
+            <p className="mt-6 mx-auto max-w-[50ch] text-[1rem] leading-8 text-(--text-secondary)">
+              One payment. Use it across every project and ship faster with less QA overhead.
+            </p>
 
-              <div className="mt-8 flex flex-wrap justify-center gap-2.5">
-                <Link
-                  href="/pricing"
-                  className={cn(
-                    VS.buttons.primaryLarge,
-                    "gap-2 shadow-[0_18px_34px_rgba(0,0,0,0.34)]",
-                  )}
-                >
-                  Get Hedgehog Core - £79
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-                <Link
-                  href="/workflows"
-                  className="inline-flex h-11 items-center rounded-[0.9rem] border border-(--surface-line) bg-(--surface-soft) px-5 text-[0.86rem] font-semibold text-(--text-primary-dark) transition duration-200 hover:border-(--accent-support) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2 focus-visible:ring-offset-(--hedgehog-core-navy)"
-                >
-                  Explore workflows
-                </Link>
-              </div>
+            <div className="mt-16 flex flex-wrap justify-center gap-2.5">
+              <Link href="/pricing" className={cn(primaryButton, "gap-2")}>
+                Get Hedgehog Core - £79
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+              <Link
+                href="/workflows"
+                className={secondaryButton}
+              >
+                Explore workflows
+              </Link>
             </div>
           </div>
         </div>

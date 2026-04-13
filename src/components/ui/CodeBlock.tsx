@@ -207,16 +207,14 @@ export function CodeBlock({
 
   return (
     <>
-      <article
-        className={`dune-strip overflow-hidden ${className}`}
-      >
-        <div className="flex flex-wrap items-start justify-between gap-3 border-b border-(--surface-line) px-5 py-4 sm:px-6">
+      <article className={`overflow-hidden rounded-[1rem] border border-black/10 bg-white ${className}`}>
+        <div className="flex flex-wrap items-start justify-between gap-3 border-b border-black/10 px-5 py-4 sm:px-6">
           <div>
-            <h2 className="text-[1.1rem] font-semibold text-(--foreground)">
+            <h2 className="text-[1.1rem] font-semibold text-black">
               {label}
             </h2>
             {description ? (
-              <p className="mt-1 text-[0.9rem] text-(--dune-muted)">
+              <p className="mt-1 text-[0.9rem] text-gray-600">
                 {description}
               </p>
             ) : null}
@@ -225,7 +223,7 @@ export function CodeBlock({
             type="button"
             onClick={handleCopy}
             disabled={isCopying || isPreparing}
-            className="dune-button-solid inline-flex h-10 items-center gap-2 px-4 text-[0.8rem] font-semibold uppercase tracking-[0.06em] transition disabled:cursor-not-allowed disabled:opacity-60 focus:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2"
+            className="inline-flex h-10 items-center gap-2 rounded-[0.8rem] border border-[#d13d4c] bg-[#d13d4c] px-4 text-[0.8rem] font-semibold uppercase tracking-[0.06em] text-white transition hover:bg-[#b93340] disabled:cursor-not-allowed disabled:opacity-60 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#d13d4c] focus-visible:ring-offset-2"
           >
             {isCopying || isPreparing ? (
               <>
@@ -246,10 +244,10 @@ export function CodeBlock({
         <div
           tabIndex={0}
           aria-label={`${label} code block`}
-          className="th-code-scroll max-h-[620px] overflow-auto rounded-b-[1rem] border-t border-(--surface-line) bg-(--surface-strong) focus:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-inset"
+          className="max-h-[620px] overflow-auto rounded-b-[1rem] border-t border-black/10 bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#d13d4c]"
         >
           <div
-            className="th-code-surface p-5 sm:p-6"
+            className="code-surface p-5 sm:p-6"
             data-wrap-lines={wrapLines ? "true" : "false"}
             dangerouslySetInnerHTML={{ __html: highlightedHtml }}
           />

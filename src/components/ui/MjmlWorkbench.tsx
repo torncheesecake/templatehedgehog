@@ -162,7 +162,7 @@ export function MjmlWorkbench({
               type="button"
               onClick={handleCompile}
               disabled={isCompiling || !canCompileInBrowser}
-              className="dune-button-solid inline-flex h-10 items-center px-4 text-[0.8rem] font-semibold uppercase tracking-[0.06em] transition disabled:cursor-not-allowed disabled:opacity-60 focus:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2"
+              className="inline-flex h-10 items-center rounded-[0.8rem] border border-[#d13d4c] bg-[#d13d4c] px-4 text-[0.8rem] font-semibold uppercase tracking-[0.06em] text-white transition hover:bg-[#b93340] disabled:cursor-not-allowed disabled:opacity-60 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#d13d4c] focus-visible:ring-offset-2"
             >
               {isCompiling
                 ? "Compiling..."
@@ -193,7 +193,7 @@ export function MjmlWorkbench({
             </p>
           ) : null}
 
-          <div className="dune-strip mt-4 p-3 sm:p-4">
+          <div className="mt-4 rounded-[1rem] border border-black/10 bg-white p-3 sm:p-4">
             {isPreviewVisible && renderedHtml ? (
               <HtmlPreviewFrame html={renderedHtml} />
             ) : isPreviewVisible ? (
@@ -227,7 +227,7 @@ export function MjmlWorkbench({
             <button
               type="button"
               onClick={handleCopyMjml}
-              className="dune-button-solid inline-flex h-10 items-center px-4 text-[0.8rem] font-semibold uppercase tracking-[0.06em] transition focus:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2"
+              className="inline-flex h-10 items-center rounded-[0.8rem] border border-[#d13d4c] bg-[#d13d4c] px-4 text-[0.8rem] font-semibold uppercase tracking-[0.06em] text-white transition hover:bg-[#b93340] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#d13d4c] focus-visible:ring-offset-2"
             >
               Copy MJML
             </button>
@@ -237,7 +237,7 @@ export function MjmlWorkbench({
             {liveMessage}
           </p>
 
-          <div className="dune-strip mt-4 overflow-hidden p-0">
+          <div className="mt-4 overflow-hidden rounded-[1rem] border border-black/10 bg-white p-0">
             <label htmlFor="mjml-editor" className="sr-only">
               MJML source editor
             </label>

@@ -43,7 +43,7 @@ export default function PackPage() {
             </p>
           </div>
 
-          <article className="surface-card-soft p-5 sm:p-6">
+          <article className="rounded-[1rem] border border-black/10 bg-white p-5 sm:p-6">
             <dl className="grid gap-2 text-[0.92rem] text-(--th-body-copy) sm:grid-cols-2 lg:grid-cols-3">
               <div className="flex items-center justify-between gap-4 rounded-md bg-[rgba(251,243,240,0.92)] px-3 py-2">
                 <dt>Components</dt>
@@ -92,8 +92,8 @@ export default function PackPage() {
             </div>
           </article>
 
-          <div className="section-breath grid gap-5 lg:grid-cols-3">
-            <section className="surface-card-soft p-5 sm:p-6">
+          <div className="mt-14 grid gap-5 lg:grid-cols-3">
+            <section className="rounded-[1rem] border border-black/10 bg-white p-5 sm:p-6">
               <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-(--dune-muted)">Components</p>
               <h2 className="mt-2 text-[1.2rem] font-semibold text-(--text-primary-dark)">{COMPONENT_COUNT} reusable blocks</h2>
               <p className="mt-2 text-[0.95rem] leading-7 text-(--th-body-copy)">
@@ -107,7 +107,7 @@ export default function PackPage() {
               </Link>
             </section>
 
-            <section className="surface-card-soft p-5 sm:p-6">
+            <section className="rounded-[1rem] border border-black/10 bg-white p-5 sm:p-6">
               <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-(--dune-muted)">Layout systems</p>
               <h2 className="mt-2 text-[1.2rem] font-semibold text-(--text-primary-dark)">{LAYOUT_COUNT} full layouts</h2>
               <ul className="mt-2 space-y-1 text-[0.92rem] leading-7 text-(--th-body-copy)">
@@ -123,7 +123,7 @@ export default function PackPage() {
               </Link>
             </section>
 
-            <section className="surface-card-soft p-5 sm:p-6">
+            <section className="rounded-[1rem] border border-black/10 bg-white p-5 sm:p-6">
               <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-(--dune-muted)">Workflow references</p>
               <h2 className="mt-2 text-[1.2rem] font-semibold text-(--text-primary-dark)">{WORKFLOW_COUNT} production workflows</h2>
               <p className="mt-2 text-[0.95rem] leading-7 text-(--th-body-copy)">
@@ -138,7 +138,7 @@ export default function PackPage() {
             </section>
           </div>
 
-          <section className="section-breath border-t border-[rgba(222, 210, 204,0.16)] pt-8">
+          <section className="mt-14 border-t border-black/10 pt-8">
             <div className="flex flex-wrap gap-3">
               <Link
                 href="/pricing"

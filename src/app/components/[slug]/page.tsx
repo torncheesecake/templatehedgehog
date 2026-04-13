@@ -393,8 +393,8 @@ export default async function ComponentDetailPage({ params }: Props) {
                 componentSlug={component.slug}
               />
             ) : (
-              <article className="dune-strip overflow-hidden">
-                <div className="border-b border-(--surface-line) px-5 py-4 sm:px-6">
+              <article className="overflow-hidden rounded-[1rem] border border-black/10 bg-white">
+                <div className="border-b border-black/10 px-5 py-4 sm:px-6">
                   <h3 className="text-[1.1rem] font-semibold text-(--text-primary-dark)">Compiled HTML</h3>
                   <p className="mt-1 text-[0.9rem] text-(--dune-muted)">
                     Final output for ESP handoff, QA review, or HTML-only integrations.

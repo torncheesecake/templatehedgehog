@@ -131,7 +131,7 @@ export default async function LayoutDetailPage({ params }: Props) {
           </div>
 
           <div className="space-y-5">
-            <article className="surface-card-soft relative overflow-hidden p-4 sm:p-5">
+            <article className="relative overflow-hidden rounded-[1rem] border border-black/10 bg-white p-4 sm:p-5">
               <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,hsl(var(--th-accent-support)/0.42),transparent)]" />
               <p className="text-[1rem] font-semibold uppercase tracking-[0.09em] text-(--th-body-copy)">
                 What this recipe covers
@@ -150,7 +150,7 @@ export default async function LayoutDetailPage({ params }: Props) {
               </ul>
             </article>
 
-            <article className="surface-card-soft relative overflow-hidden p-4 sm:p-5">
+            <article className="relative overflow-hidden rounded-[1rem] border border-black/10 bg-white p-4 sm:p-5">
               <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,hsl(var(--th-accent-support)/0.42),transparent)]" />
               <p className="text-[1rem] font-semibold uppercase tracking-[0.09em] text-(--th-body-copy)">
                 Implementation guidance
@@ -172,7 +172,7 @@ export default async function LayoutDetailPage({ params }: Props) {
               </ul>
             </article>
 
-            <article className="surface-card-soft relative overflow-hidden p-4 sm:p-5">
+            <article className="relative overflow-hidden rounded-[1rem] border border-black/10 bg-white p-4 sm:p-5">
               <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,hsl(var(--th-accent-support)/0.42),transparent)]" />
               <div className="flex items-start justify-between gap-3">
                 <div>
@@ -194,7 +194,7 @@ export default async function LayoutDetailPage({ params }: Props) {
                 {resolvedComponentBlocks.map((entry) => (
                   <li
                     key={`${layout.slug}-${entry.component.slug}`}
-                    className="surface-card-muted p-3"
+                    className="rounded-[1rem] border border-black/10 bg-gray-50 p-3"
                   >
                     <div className="flex items-start gap-3">
                       <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-(--hedgehog-core-blue-deep) text-[0.82rem] font-bold text-(--text-primary-dark)">
@@ -228,7 +228,7 @@ export default async function LayoutDetailPage({ params }: Props) {
 
         <div className="mt-8 border-t border-(--surface-line)" />
 
-        <section className="section-breath grid gap-7 xl:grid-cols-2">
+        <section className="mt-14 grid gap-7 xl:grid-cols-2">
           <MjmlSourcePanel
             source={layout.mjmlSource}
             title="Layout MJML"
@@ -249,14 +249,14 @@ export default async function LayoutDetailPage({ params }: Props) {
               analyticsPayload={{ layoutSlug: layout.slug, sourceType: "html" }}
             />
           ) : (
-            <article className="dune-strip overflow-hidden">
-              <div className="border-b border-(--surface-line) px-5 py-4 sm:px-6">
+            <article className="overflow-hidden rounded-[1rem] border border-black/10 bg-white">
+              <div className="border-b border-black/10 px-5 py-4 sm:px-6">
                 <h3 className="text-[1.1rem] font-semibold text-(--text-primary-dark)">Compiled HTML</h3>
-                <p className="mt-1 text-[0.9rem] text-(--dune-muted)">
+                <p className="mt-1 text-[0.9rem] text-gray-600">
                   Final output for ESP handoff, QA review, and HTML-only delivery workflows.
                 </p>
               </div>
-              <div className="px-5 py-5 text-[1rem] leading-7 text-(--dune-muted) sm:px-6">
+              <div className="px-5 py-5 text-[1rem] leading-7 text-gray-600 sm:px-6">
                 Compiled HTML is unavailable for this layout right now. Rebuild the compiled layout registry to repopulate this panel.
               </div>
             </article>
@@ -296,7 +296,7 @@ export default async function LayoutDetailPage({ params }: Props) {
               </div>
             </div>
 
-            <div className="surface-card-soft rounded-[0.96rem] bg-(--dune-deep) p-5">
+            <div className="rounded-[0.96rem] border border-black/10 bg-white p-5">
               <p className="text-[1rem] font-semibold uppercase tracking-[0.1em] text-(--dune-muted)">
                 This page helps you
               </p>
