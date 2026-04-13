@@ -179,7 +179,7 @@ export default function Home() {
                 </Link>
               </div>
 
-              <p className="mt-6 max-w-3xl text-[0.95rem] leading-7 text-slate-600">
+              <p className="mt-3 max-w-3xl text-[0.95rem] leading-7 text-slate-600">
                 Workflow, layout, component stack, and compiled HTML stay
                 connected so development, QA, and ESP handoff move in one
                 direction.
