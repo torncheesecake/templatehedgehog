@@ -78,54 +78,56 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-:where(a) {
-  color: inherit;
-}
+@layer base {
+  :where(a) {
+    color: inherit;
+  }
 
-h1,
-h2,
-h3 {
-  margin: 0;
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-weight: 620;
-  letter-spacing: 0.005em;
-  text-wrap: balance;
-  color: var(--text-primary);
-}
+  h1,
+  h2,
+  h3 {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-weight: 620;
+    letter-spacing: 0.005em;
+    text-wrap: balance;
+    color: var(--text-primary);
+  }
 
-h1 {
-  font-size: var(--text-h1);
-  line-height: 1.12;
-}
+  h1 {
+    font-size: var(--text-h1);
+    line-height: 1.12;
+  }
 
-h2 {
-  font-size: var(--text-h2);
-  line-height: 1.16;
-}
+  h2 {
+    font-size: var(--text-h2);
+    line-height: 1.16;
+  }
 
-h3 {
-  font-size: var(--text-h3);
-  line-height: 1.2;
-}
+  h3 {
+    font-size: var(--text-h3);
+    line-height: 1.2;
+  }
 
-p {
-  margin: 0;
-  max-inline-size: 65ch;
-  font-size: var(--text-body);
-  line-height: 1.67;
-  color: var(--text-secondary);
-}
+  p {
+    margin: 0;
+    max-inline-size: 65ch;
+    font-size: var(--text-body);
+    line-height: 1.67;
+    color: var(--text-secondary);
+  }
 
-small {
-  font-size: var(--text-small);
-  line-height: 1.45;
-  color: var(--text-meta);
-}
+  small {
+    font-size: var(--text-small);
+    line-height: 1.45;
+    color: var(--text-meta);
+  }
 
-button,
-label {
-  font-size: var(--text-small);
-  line-height: 1.4;
+  button,
+  label {
+    font-size: var(--text-small);
+    line-height: 1.4;
+  }
 }
 
 .eyebrow {
