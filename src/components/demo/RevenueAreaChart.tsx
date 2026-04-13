@@ -18,11 +18,11 @@ export function RevenueAreaChart({ values }: RevenueAreaChartProps) {
   const area = `${points} 100,92 0,92`;
 
   return (
-    <div className="rounded-xl border border-(--hedgehog-core-blue-deep) bg-(--hedgehog-core-navy) p-5">
+    <div className="rounded-xl border border-slate-200 bg-white p-5">
       <h2 className="text-xl font-semibold">Revenue trend</h2>
-      <p className="mt-1 text-sm text-(--dune-muted)">Last 12 months</p>
+      <p className="mt-1 text-sm text-slate-500">Last 12 months</p>
 
-      <div className="mt-5 h-60 rounded-lg border border-(--hedgehog-core-blue-deep) bg-(--hedgehog-core-navy) p-4">
+      <div className="mt-5 h-60 rounded-lg border border-slate-200 bg-white p-4">
         <svg viewBox="0 0 100 100" className="h-full w-full" preserveAspectRatio="none">
           <defs>
             <linearGradient id="areaFill" x1="0" y1="0" x2="0" y2="1">

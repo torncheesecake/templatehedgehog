@@ -30,22 +30,22 @@ export function DocsLayout({ title, summary, children, navItems = [] }: DocsLayo
       <section className={cn(VS.templates.content.frame, "pb-24")}>
         <div className={VS.widths.docs}>
           <header className={cn(VS.templates.content.heroCard, "max-w-[84rem]")}>
-            <p className="text-[1rem] font-semibold tracking-[0.01em] text-(--accent-support)">
+            <p className="text-[1rem] font-semibold tracking-[0.01em] text-slate-900">
               Documentation
             </p>
-            <h1 className={cn("mt-4 max-w-[22ch] text-[2.05rem] sm:text-[2.5rem]", VS.headings.page)}>
+            <h1 className={cn("mt-4 max-w-3xl text-[2.05rem] sm:text-[2.5rem]", VS.headings.page)}>
               {title}
             </h1>
-            <p className={cn("mt-3 max-w-[76ch] text-[1.02rem] leading-8 text-(--th-body-copy)")}>
+            <p className={cn("mt-3 max-w-3xl text-[1.02rem] leading-8 text-slate-600")}>
               {summary}
             </p>
           </header>
 
-          <div className="mt-8 rounded-[1.2rem] border border-(--surface-line) bg-(--surface-soft) p-4 sm:p-5 lg:p-6">
+          <div className="mt-8 rounded-[1.2rem] border border-slate-200 bg-slate-50 p-4 sm:p-5 lg:p-6">
             <div className="grid gap-7 lg:grid-cols-[220px_minmax(0,1fr)] lg:items-start">
               <aside className="lg:sticky lg:top-[6.4rem]">
-                <div className="hidden rounded-[0.9rem] border border-(--border-light) bg-(--bg-soft-elevated) p-4 lg:block">
-                  <p className="text-[0.74rem] font-semibold tracking-[0.01em] text-(--text-secondary-light)">
+                <div className="hidden rounded-[0.9rem] border border-slate-200 bg-slate-50 p-4 lg:block">
+                  <p className="text-[0.74rem] font-semibold tracking-[0.01em] text-slate-600">
                     Sections
                   </p>
                   <nav aria-label="Documentation sections" className="mt-3 space-y-1">
@@ -53,7 +53,7 @@ export function DocsLayout({ title, summary, children, navItems = [] }: DocsLayo
                       <Link
                         key={item.id}
                         href={`#${item.id}`}
-                        className="block rounded-[0.68rem] px-2.5 py-2 text-[0.92rem] font-medium text-(--text-secondary-light) transition hover:bg-[hsl(var(--th-accent-support)/0.14)] hover:text-(--text-primary-light) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2"
+                        className="block rounded-[0.68rem] px-2.5 py-2 text-[0.92rem] font-medium text-slate-600 transition hover:bg-[hsl(var(--th-accent-support)/0.14)] hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-600 focus-visible:ring-offset-2"
                       >
                         {item.label}
                       </Link>
@@ -63,19 +63,19 @@ export function DocsLayout({ title, summary, children, navItems = [] }: DocsLayo
               </aside>
 
               <div>
-                <div className="mb-4 flex flex-wrap gap-2 border-b border-(--border-light) pb-4 lg:hidden">
+                <div className="mb-4 flex flex-wrap gap-2 border-b border-slate-200 pb-4 lg:hidden">
                   {navItems.map((item) => (
                     <Link
                       key={`mobile-${item.id}`}
                       href={`#${item.id}`}
-                      className="inline-flex rounded-[0.7rem] border border-(--border-light) bg-(--bg-soft-elevated) px-3 py-1.5 text-[0.8rem] font-semibold text-(--text-primary-light) transition hover:border-(--accent-support) hover:text-(--text-primary-light) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2"
+                      className="inline-flex rounded-[0.7rem] border border-slate-200 bg-slate-50 px-3 py-1.5 text-[0.8rem] font-semibold text-slate-900 transition hover:border-slate-300 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-600 focus-visible:ring-offset-2"
                     >
                       {item.label}
                     </Link>
                   ))}
                 </div>
 
-                <div className="rounded-[0.95rem] border border-(--border-light) bg-(--bg-soft) px-5 py-5 sm:px-7 sm:py-7">
+                <div className="rounded-[0.95rem] border border-slate-200 bg-slate-50 px-5 py-5 sm:px-7 sm:py-7">
                   {children}
                 </div>
               </div>
@@ -92,10 +92,10 @@ export function DocsSection({ id, title, children }: DocsSectionProps) {
   return (
     <section
       id={id}
-      className="border-t border-(--border-light) py-10 first:border-t-0 first:pt-0"
+      className="border-t border-slate-200 py-10 first:border-t-0 first:pt-0"
     >
-      <h2 className="text-[1.5rem] font-semibold leading-[1.15] text-(--text-primary-light) sm:text-[1.68rem]">{title}</h2>
-      <div className="mt-4 max-w-[74ch] space-y-4 text-[1.01rem] leading-8 text-(--text-secondary-light) [&_li]:text-(--text-secondary-light) [&_ol]:mt-4 [&_ul]:mt-4">
+      <h2 className="text-[1.5rem] font-semibold leading-[1.15] text-slate-900 sm:text-[1.68rem]">{title}</h2>
+      <div className="mt-4 max-w-3xl space-y-4 text-[1.01rem] leading-8 text-slate-600 [&_li]:text-slate-600 [&_ol]:mt-4 [&_ul]:mt-4">
         {children}
       </div>
     </section>

@@ -9,16 +9,16 @@ interface GalleryItem {
 
 export function TemplateGallery({ items }: { items: GalleryItem[] }) {
   return (
-    <section className="mt-8 rounded-2xl border border-(--hedgehog-core-blue-deep) bg-(--hedgehog-core-navy) p-6">
+    <section className="mt-8 rounded-2xl border border-slate-200 bg-white p-6">
       <h2 className="text-2xl font-semibold">Page gallery</h2>
-      <p className="mt-1 text-sm text-(--dune-muted)">Preview the quality and depth buyers receive</p>
+      <p className="mt-1 text-sm text-slate-500">Preview the quality and depth buyers receive</p>
 
       <div className="mt-4 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
         {items.map((item) => (
           <Link
             key={item.name}
             href={item.href}
-            className="group overflow-hidden rounded-xl border border-(--hedgehog-core-blue-deep) bg-(--hedgehog-core-navy) transition hover:border-(--accent-secondary)"
+            className="group overflow-hidden rounded-xl border border-slate-200 bg-white transition hover:border-rose-700"
           >
             <div className={`h-44 w-full bg-gradient-to-br ${item.tone} p-3`}>
               <div className="h-full rounded-lg border border-white/20 bg-black/20 p-2">
@@ -36,8 +36,8 @@ export function TemplateGallery({ items }: { items: GalleryItem[] }) {
             </div>
 
             <div className="p-4">
-              <p className="text-lg font-semibold text-(--text-primary-dark)">{item.name}</p>
-              <p className="mt-1 text-sm text-(--dune-muted)">{item.caption}</p>
+              <p className="text-lg font-semibold text-slate-900">{item.name}</p>
+              <p className="mt-1 text-sm text-slate-500">{item.caption}</p>
             </div>
           </Link>
         ))}

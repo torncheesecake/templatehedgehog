@@ -31,29 +31,29 @@ export function SiteFooter({ flush = false }: SiteFooterProps) {
   const currentYear = new Date().getFullYear();
   const hogMarkUrl = withBasePath("/brand/hedgehog-mark-core-blue.svg");
   const footerLinkClass =
-    "text-[1rem] font-semibold text-(--text-primary-dark) transition hover:text-(--accent-support) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2";
+    "text-[1rem] font-semibold text-slate-900 transition hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-600 focus-visible:ring-offset-2";
 
   return (
     <section
-      className={`relative overflow-hidden bg-(--hedgehog-core-navy) ${
-        flush ? "border-t-0" : "border-t border-(--surface-line)"
+      className={`relative overflow-hidden bg-white ${
+        flush ? "border-t-0" : "border-t border-slate-200"
       } ${
         flush ? "mt-0" : "mt-16"
       }`}
     >
-      <div className="relative mx-auto w-full max-w-[1840px] px-5 pb-12 pt-10 sm:px-8 lg:px-14 lg:pb-14 lg:pt-11">
+      <div className="relative mx-auto w-full max-w-7xl px-5 pb-12 pt-10 sm:px-8 lg:px-12 lg:pb-14 lg:pt-11">
         <footer className="space-y-8">
-          <div className="grid gap-8 border-b border-(--surface-line) pb-8 lg:grid-cols-[minmax(0,1.16fr)_auto] lg:items-end">
+          <div className="grid gap-8 border-b border-slate-200 pb-8 lg:grid-cols-[minmax(0,1.16fr)_auto] lg:items-end">
             <div>
               <Link
                 href="/"
-                className="inline-flex items-center rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2"
+                className="inline-flex items-center rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-600 focus-visible:ring-offset-2"
               >
-                <span className="text-[1.32rem] font-semibold tracking-[0.01em] text-(--text-primary-dark)">
+                <span className="text-[1.32rem] font-semibold tracking-[0.01em] text-slate-900">
                   {TEMPLATE_CONFIG.brandName}
                 </span>
               </Link>
-              <p className="mt-3 max-w-[52ch] text-[1.02rem] leading-8 text-(--th-body-copy)">
+              <p className="mt-3 max-w-3xl text-[1.02rem] leading-8 text-slate-600">
                 A production-ready MJML workflow system for teams who want faster builds, cleaner handoff, and fewer regressions.
               </p>
             </div>
@@ -61,13 +61,13 @@ export function SiteFooter({ flush = false }: SiteFooterProps) {
             <div className="flex flex-wrap gap-3 lg:justify-end">
               <Link
                 href="/pricing"
-                className="inline-flex h-11 items-center rounded-[0.82rem] border border-(--accent-primary) bg-(--accent-primary) px-5 text-[0.95rem] font-semibold !text-(--text-primary-dark) tracking-[0.01em] transition duration-200 hover:bg-(--accent-secondary) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2"
+                className="inline-flex h-11 items-center rounded-[0.82rem] border border-rose-600 bg-rose-600 px-5 text-[0.95rem] font-semibold !text-slate-900 tracking-[0.01em] transition duration-200 hover:bg-rose-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-600 focus-visible:ring-offset-2"
               >
                 Get Hedgehog Core - £79
               </Link>
               <Link
                 href="/workflows"
-                className="inline-flex h-11 items-center rounded-[0.82rem] border border-(--surface-line) bg-transparent px-5 text-[0.95rem] font-semibold !text-(--text-primary-dark) tracking-[0.01em] transition duration-200 hover:border-(--accent-support) hover:!text-(--text-primary-dark) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2"
+                className="inline-flex h-11 items-center rounded-[0.82rem] border border-slate-200 bg-transparent px-5 text-[0.95rem] font-semibold !text-slate-900 tracking-[0.01em] transition duration-200 hover:border-slate-300 hover:!text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-600 focus-visible:ring-offset-2"
               >
                 Explore workflows
               </Link>
@@ -76,7 +76,7 @@ export function SiteFooter({ flush = false }: SiteFooterProps) {
 
           <div className="grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
             <nav aria-label="Footer primary">
-              <p className="text-[1rem] font-semibold uppercase tracking-[0.1em] text-(--text-primary-dark)">Navigate</p>
+              <p className="text-[1rem] font-semibold uppercase tracking-[0.1em] text-slate-900">Navigate</p>
               <ul className="mt-3.5 space-y-2.5">
                 {footerNavigation.map((item) => (
                   <li key={`footer-${item.href}`}>
@@ -92,7 +92,7 @@ export function SiteFooter({ flush = false }: SiteFooterProps) {
             </nav>
 
             <nav aria-label="Footer resources">
-              <p className="text-[1rem] font-semibold uppercase tracking-[0.1em] text-(--text-primary-dark)">Resources</p>
+              <p className="text-[1rem] font-semibold uppercase tracking-[0.1em] text-slate-900">Resources</p>
               <ul className="mt-3.5 space-y-2.5">
                 {footerResources.map((item) => (
                   <li key={`resources-${item.href}`}>
@@ -108,7 +108,7 @@ export function SiteFooter({ flush = false }: SiteFooterProps) {
             </nav>
 
             <nav aria-label="Footer company">
-              <p className="text-[1rem] font-semibold uppercase tracking-[0.1em] text-(--text-primary-dark)">Company</p>
+              <p className="text-[1rem] font-semibold uppercase tracking-[0.1em] text-slate-900">Company</p>
               <ul className="mt-3.5 space-y-2.5">
                 {footerCompany.map((item) => (
                   <li key={`company-${item.href}`}>
@@ -124,14 +124,14 @@ export function SiteFooter({ flush = false }: SiteFooterProps) {
             </nav>
           </div>
 
-          <div className="flex flex-wrap items-center justify-between gap-3 border-t border-(--surface-line) pt-5">
-            <p className="text-[0.9rem] text-(--dune-muted)">
+          <div className="flex flex-wrap items-center justify-between gap-3 border-t border-slate-200 pt-5">
+            <p className="text-[0.9rem] text-slate-500">
               Copyright {currentYear} {TEMPLATE_CONFIG.brandName}. All rights reserved.
             </p>
             <div className="flex items-center gap-2.5">
               <span
                 aria-hidden="true"
-                className="h-5 w-5 shrink-0 bg-(--accent-support)"
+                className="h-5 w-5 shrink-0 bg-slate-900"
                 style={{
                   WebkitMaskImage: `url('${hogMarkUrl}')`,
                   maskImage: `url('${hogMarkUrl}')`,
@@ -143,7 +143,7 @@ export function SiteFooter({ flush = false }: SiteFooterProps) {
                   maskPosition: "center",
                 }}
               />
-              <p className="text-[0.9rem] text-(--dune-muted)">Built for teams shipping production email.</p>
+              <p className="text-[0.9rem] text-slate-500">Built for teams shipping production email.</p>
             </div>
           </div>
         </footer>

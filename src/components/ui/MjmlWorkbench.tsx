@@ -138,10 +138,10 @@ export function MjmlWorkbench({
     <div className="grid gap-7">
       <div className="grid gap-8 xl:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)]">
         <article className="border-l-2 border-[rgba(111,71,37,0.46)] pl-4 sm:pl-5">
-          <h2 className="text-[1.24rem] font-semibold text-(--foreground)">
+          <h2 className="text-[1.24rem] font-semibold text-slate-900">
             Rendered preview
           </h2>
-          <p className="mt-2 text-[0.98rem] leading-7 text-(--dune-muted)">
+          <p className="mt-2 text-[0.98rem] leading-7 text-slate-500">
             {description}
           </p>
           <p className="mt-2 text-[0.9rem] text-[#7a5d3f]">
@@ -154,7 +154,7 @@ export function MjmlWorkbench({
             <button
               type="button"
               onClick={() => setIsPreviewVisible((previous) => !previous)}
-              className="inline-flex h-10 items-center px-2 text-[0.8rem] font-semibold uppercase tracking-[0.06em] text-[#5c3d20] transition hover:text-[#3f2716] focus:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2"
+              className="inline-flex h-10 items-center px-2 text-[0.8rem] font-semibold uppercase tracking-[0.06em] text-[#5c3d20] transition hover:text-[#3f2716] focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-600 focus-visible:ring-offset-2"
             >
               {isPreviewVisible ? "Hide preview" : "Show preview"}
             </button>
@@ -174,14 +174,14 @@ export function MjmlWorkbench({
               type="button"
               onClick={() => setShowCompiledHtml((previous) => !previous)}
               disabled={!renderedHtml}
-              className="inline-flex h-10 items-center px-2 text-[0.8rem] font-semibold uppercase tracking-[0.06em] text-[#5c3d20] transition hover:text-[#3f2716] disabled:cursor-not-allowed disabled:opacity-60 focus:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2"
+              className="inline-flex h-10 items-center px-2 text-[0.8rem] font-semibold uppercase tracking-[0.06em] text-[#5c3d20] transition hover:text-[#3f2716] disabled:cursor-not-allowed disabled:opacity-60 focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-600 focus-visible:ring-offset-2"
             >
               {showCompiledHtml ? "Hide compiled HTML" : "Show compiled HTML"}
             </button>
             <button
               type="button"
               onClick={handleReset}
-              className="inline-flex h-10 items-center px-2 text-[0.8rem] font-semibold uppercase tracking-[0.06em] text-[#5c3d20] transition hover:text-[#3f2716] focus:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2"
+              className="inline-flex h-10 items-center px-2 text-[0.8rem] font-semibold uppercase tracking-[0.06em] text-[#5c3d20] transition hover:text-[#3f2716] focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-600 focus-visible:ring-offset-2"
             >
               Reset source
             </button>
@@ -201,7 +201,7 @@ export function MjmlWorkbench({
                 HTML preview unavailable until compile succeeds.
               </div>
             ) : (
-              <div className="rounded-lg bg-[rgba(252,241,223,0.6)] px-4 py-3 text-[0.95rem] leading-7 text-(--dune-muted)">
+              <div className="rounded-lg bg-[rgba(252,241,223,0.6)] px-4 py-3 text-[0.95rem] leading-7 text-slate-500">
                 Preview is hidden to keep focus on editing. Show it when you need a visual QA pass.
               </div>
             )}
@@ -217,10 +217,10 @@ export function MjmlWorkbench({
         <article className="border-l-2 border-[rgba(111,71,37,0.46)] pl-4 sm:pl-5">
           <div className="flex flex-wrap items-start justify-between gap-3">
             <div>
-              <h2 className="text-[1.24rem] font-semibold text-(--foreground)">
+              <h2 className="text-[1.24rem] font-semibold text-slate-900">
                 {title}
               </h2>
-              <p className="mt-2 text-[0.98rem] leading-7 text-(--dune-muted)">
+              <p className="mt-2 text-[0.98rem] leading-7 text-slate-500">
                 Edit source first. Compile only when you need delivery HTML.
               </p>
             </div>

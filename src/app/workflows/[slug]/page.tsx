@@ -129,30 +129,30 @@ export default async function WorkflowDetailPage({ params }: Props) {
   ];
 
   return (
-    <main className="min-h-screen bg-(--surface-strong) text-(--th-body-copy) [font-family:Arial,sans-serif]">
+    <main className="min-h-screen bg-white text-slate-600 [font-family:Arial,sans-serif]">
       <SiteTopBar theme="hero" ctaHref="/pricing" ctaLabel="Get Hedgehog Core - £79" />
       <TrackEventOnMount event="view_workflow_detail" payload={{ workflowSlug: workflow.slug }} />
 
       <SectionShell spacing="hero" tone="canvas" width="content">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1.02fr)_minmax(0,0.98fr)] lg:items-start">
           <div>
-            <p className="text-[1rem] font-semibold tracking-[0.012em] text-(--th-body-copy)">Workflow reference</p>
-            <h1 className="mt-4 max-w-[16ch] text-[2.8rem] font-semibold leading-[0.9] text-(--text-primary-dark) sm:text-[3.95rem]">
+            <p className="text-[1rem] font-semibold tracking-[0.012em] text-slate-600">Workflow reference</p>
+            <h1 className="mt-4 max-w-3xl text-[2.8rem] font-semibold leading-[0.9] text-slate-900 sm:text-[3.95rem]">
               {workflow.title}
             </h1>
-            <p className="mt-5 max-w-[64ch] text-[1.05rem] leading-8 text-(--th-body-copy)">{workflow.summary}</p>
+            <p className="mt-5 max-w-3xl text-[1.05rem] leading-8 text-slate-600">{workflow.summary}</p>
 
-            <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-[0.92rem] text-(--th-body-copy)">
+            <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-[0.92rem] text-slate-600">
               <span className="inline-flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-(--accent-support)" />
+                <span className="h-1.5 w-1.5 rounded-full bg-slate-900" />
                 Linked layout: {workflow.linkedLayoutTitle}
               </span>
               <span className="inline-flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-(--accent-support)" />
+                <span className="h-1.5 w-1.5 rounded-full bg-slate-900" />
                 {workflow.componentStack.length} ordered components
               </span>
               <span className="inline-flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-(--accent-support)" />
+                <span className="h-1.5 w-1.5 rounded-full bg-slate-900" />
                 Source file: {workflow.sourceFile}
               </span>
             </div>
@@ -225,8 +225,8 @@ export default async function WorkflowDetailPage({ params }: Props) {
           description="Each workflow defines both initiating event and expected outcome so teams can align copy, logic, and QA." 
           aside={
             <VisualPanel>
-              <p className="text-[0.78rem] font-semibold uppercase tracking-[0.09em] text-(--th-body-copy)">Handoff anchor</p>
-              <p className="mt-2 text-[0.92rem] leading-7 text-(--th-body-copy)">
+              <p className="text-[0.78rem] font-semibold uppercase tracking-[0.09em] text-slate-600">Handoff anchor</p>
+              <p className="mt-2 text-[0.92rem] leading-7 text-slate-600">
                 Keep layout order intact where possible, then tailor component content for your exact event and audience.
               </p>
             </VisualPanel>
@@ -235,16 +235,16 @@ export default async function WorkflowDetailPage({ params }: Props) {
 
         <div className="mt-8 grid gap-6 lg:grid-cols-2">
           <VisualPanel>
-            <p className="text-[0.8rem] font-semibold uppercase tracking-[0.09em] text-(--th-body-copy)">Trigger</p>
-            <p className="mt-3 text-[0.98rem] leading-8 text-(--th-body-copy)">{workflow.trigger}</p>
+            <p className="text-[0.8rem] font-semibold uppercase tracking-[0.09em] text-slate-600">Trigger</p>
+            <p className="mt-3 text-[0.98rem] leading-8 text-slate-600">{workflow.trigger}</p>
           </VisualPanel>
           <VisualPanel>
-            <p className="text-[0.8rem] font-semibold uppercase tracking-[0.09em] text-(--th-body-copy)">Goal</p>
-            <p className="mt-3 text-[0.98rem] leading-8 text-(--th-body-copy)">{workflow.goal}</p>
+            <p className="text-[0.8rem] font-semibold uppercase tracking-[0.09em] text-slate-600">Goal</p>
+            <p className="mt-3 text-[0.98rem] leading-8 text-slate-600">{workflow.goal}</p>
           </VisualPanel>
         </div>
 
-        <section className="section-breath border-t border-(--surface-line) pt-10">
+        <section className="mt-14 border-t border-slate-200 pt-10">
           <SectionIntro
             pattern="full"
             eyebrow="Structure"
@@ -255,19 +255,19 @@ export default async function WorkflowDetailPage({ params }: Props) {
 
           <ol className="mt-6 grid gap-4 md:grid-cols-2">
             {workflow.componentStack.map((item) => (
-              <li key={`${workflow.slug}-${item.componentSlug}`} className="rounded-[0.94rem] border border-(--surface-line) bg-(--surface-soft) p-5 shadow-[0_12px_24px_rgba(0,0,0,0.24)]">
+              <li key={`${workflow.slug}-${item.componentSlug}`} className="rounded-[0.94rem] border border-slate-200 bg-slate-50 p-5 shadow-[0_12px_24px_rgba(0,0,0,0.24)]">
                 <div className="flex items-start gap-3">
-                  <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-(--hedgehog-core-blue-deep) text-[0.82rem] font-bold text-(--text-primary-dark)">
+                  <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-slate-100 text-[0.82rem] font-bold text-slate-900">
                     {item.order}
                   </span>
                   <div>
                     <Link
                       href={`/components/${item.componentSlug}`}
-                      className="text-[1rem] font-semibold text-(--text-primary-dark) underline-offset-2 transition hover:text-(--accent-support) hover:underline"
+                      className="text-[1rem] font-semibold text-slate-900 underline-offset-2 transition hover:text-slate-900 hover:underline"
                     >
                       {item.componentTitle}
                     </Link>
-                    <p className="mt-1 text-[0.94rem] leading-7 text-(--th-body-copy)">{item.notes}</p>
+                    <p className="mt-1 text-[0.94rem] leading-7 text-slate-600">{item.notes}</p>
                   </div>
                 </div>
               </li>
@@ -285,10 +285,10 @@ export default async function WorkflowDetailPage({ params }: Props) {
           titleClassName="text-[1.74rem] sm:text-[2.02rem]"
         />
 
-        <div className="mt-5 overflow-x-auto rounded-[0.95rem] border border-(--border-light) bg-(--bg-soft-elevated) p-5 shadow-[0_12px_24px_rgba(15,23,42,0.08)]">
+        <div className="mt-5 overflow-x-auto rounded-[0.95rem] border border-slate-200 bg-slate-50 p-5 shadow-[0_12px_24px_rgba(15,23,42,0.08)]">
           <table className="min-w-full text-left text-[0.94rem]">
             <thead>
-              <tr className="border-b border-(--border-light) text-(--text-primary-light)">
+              <tr className="border-b border-slate-200 text-slate-900">
                 <th scope="col" className="pb-2 pr-4 font-semibold">Field</th>
                 <th scope="col" className="pb-2 pr-4 font-semibold">Purpose</th>
                 <th scope="col" className="pb-2 font-semibold">Example</th>
@@ -296,26 +296,26 @@ export default async function WorkflowDetailPage({ params }: Props) {
             </thead>
             <tbody>
               {workflow.requiredFields.map((field) => (
-                <tr key={`${workflow.slug}-${field.field}`} className="border-b border-(--border-light) last:border-b-0">
-                  <td className="py-2 pr-4 font-semibold text-(--text-primary-light)">{field.field}</td>
-                  <td className="py-2 pr-4 text-(--text-secondary-light)">{field.description}</td>
-                  <td className="py-2 text-(--text-secondary-light)">{field.example}</td>
+                <tr key={`${workflow.slug}-${field.field}`} className="border-b border-slate-200 last:border-b-0">
+                  <td className="py-2 pr-4 font-semibold text-slate-900">{field.field}</td>
+                  <td className="py-2 pr-4 text-slate-600">{field.description}</td>
+                  <td className="py-2 text-slate-600">{field.example}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
 
-        <div className="section-breath grid gap-6 lg:grid-cols-2">
+        <div className="mt-14 grid gap-6 lg:grid-cols-2">
           <VisualPanel tone="soft">
-            <p className="text-[0.8rem] font-semibold uppercase tracking-[0.09em] text-(--text-secondary-light)">Variants</p>
-            <h2 className="mt-2 text-[1.42rem] font-semibold text-(--text-primary-light)">Alternative states</h2>
+            <p className="text-[0.8rem] font-semibold uppercase tracking-[0.09em] text-slate-600">Variants</p>
+            <h2 className="mt-2 text-[1.42rem] font-semibold text-slate-900">Alternative states</h2>
             <ul className="mt-5 space-y-3.5">
               {workflow.variants.map((variant) => (
                 <li key={`${workflow.slug}-${variant.title}`} className="flex items-start gap-3">
-                  <CheckCircle2 className="mt-1 h-4.5 w-4.5 shrink-0 text-(--accent-support)" />
-                  <span className="text-[0.95rem] leading-7 text-(--text-secondary-light)">
-                    <strong className="text-(--text-primary-light)">{variant.title}.</strong> {variant.description}
+                  <CheckCircle2 className="mt-1 h-4.5 w-4.5 shrink-0 text-slate-900" />
+                  <span className="text-[0.95rem] leading-7 text-slate-600">
+                    <strong className="text-slate-900">{variant.title}.</strong> {variant.description}
                   </span>
                 </li>
               ))}
@@ -323,20 +323,20 @@ export default async function WorkflowDetailPage({ params }: Props) {
           </VisualPanel>
 
           <VisualPanel tone="soft">
-            <p className="text-[0.8rem] font-semibold uppercase tracking-[0.09em] text-(--text-secondary-light)">QA risks</p>
-            <h2 className="mt-2 text-[1.42rem] font-semibold text-(--text-primary-light)">Known fragile areas</h2>
+            <p className="text-[0.8rem] font-semibold uppercase tracking-[0.09em] text-slate-600">QA risks</p>
+            <h2 className="mt-2 text-[1.42rem] font-semibold text-slate-900">Known fragile areas</h2>
             <ul className="mt-5 space-y-3.5">
               {workflow.qaRisks.map((risk) => (
                 <li key={`${workflow.slug}-${risk}`} className="flex items-start gap-3">
-                  <CheckCircle2 className="mt-1 h-4.5 w-4.5 shrink-0 text-(--accent-support)" />
-                  <span className="text-[0.95rem] leading-7 text-(--text-secondary-light)">{risk}</span>
+                  <CheckCircle2 className="mt-1 h-4.5 w-4.5 shrink-0 text-slate-900" />
+                  <span className="text-[0.95rem] leading-7 text-slate-600">{risk}</span>
                 </li>
               ))}
             </ul>
           </VisualPanel>
         </div>
 
-        <section className="section-breath border-t border-(--border-light) pt-10">
+        <section className="mt-14 border-t border-slate-200 pt-10">
           <SectionIntro
             pattern="full"
             tone="light"
@@ -344,11 +344,11 @@ export default async function WorkflowDetailPage({ params }: Props) {
             title="MJML edit to ESP import"
             titleClassName="text-[1.74rem] sm:text-[2.02rem]"
           />
-          <ol className="mt-5 grid gap-4 md:grid-cols-2 text-[0.98rem] leading-7 text-(--text-secondary-light)">
+          <ol className="mt-5 grid gap-4 md:grid-cols-2 text-[0.98rem] leading-7 text-slate-600">
             {workflow.handoffSteps.map((step, index) => (
-              <li key={`${workflow.slug}-handoff-${step}`} className="rounded-[0.88rem] border border-(--border-light) bg-(--bg-soft-elevated) p-4">
+              <li key={`${workflow.slug}-handoff-${step}`} className="rounded-[0.88rem] border border-slate-200 bg-slate-50 p-4">
                 <div className="flex items-start gap-3">
-                  <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-(--border-light) text-[0.82rem] font-semibold text-(--text-primary-light)">
+                  <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-slate-100 text-[0.82rem] font-semibold text-slate-900">
                     {index + 1}
                   </span>
                   <span>{step}</span>
@@ -368,24 +368,24 @@ export default async function WorkflowDetailPage({ params }: Props) {
         />
         <div className="mt-6 grid gap-6 lg:grid-cols-2">
           <VisualPanel>
-            <h3 className="text-[1.2rem] font-semibold text-(--text-primary-dark)">Free reference</h3>
-            <ul className="mt-4 space-y-2.5 text-[0.96rem] leading-7 text-(--th-body-copy)">
+            <h3 className="text-[1.2rem] font-semibold text-slate-900">Free reference</h3>
+            <ul className="mt-4 space-y-2.5 text-[0.96rem] leading-7 text-slate-600">
               {workflow.freeAccess.map((item) => (
                 <li key={`${workflow.slug}-free-${item}`} className="flex items-start gap-3">
-                  <span className="mt-[0.62rem] h-1.5 w-1.5 shrink-0 rounded-full bg-(--accent-support)" />
+                  <span className="mt-[0.62rem] h-1.5 w-1.5 shrink-0 rounded-full bg-slate-900" />
                   <span>{item}</span>
                 </li>
               ))}
             </ul>
           </VisualPanel>
 
-          <article className="relative overflow-hidden rounded-[1.08rem] border border-(--surface-line) bg-(--hedgehog-core-navy) p-6 shadow-[0_20px_38px_rgba(0,0,0,0.34)] sm:p-7">
+          <article className="relative overflow-hidden rounded-[1.08rem] border border-slate-200 bg-white p-6 shadow-[0_20px_38px_rgba(0,0,0,0.34)] sm:p-7">
             <span className="pointer-events-none absolute inset-x-6 top-0 h-px bg-[linear-gradient(90deg,transparent,hsl(var(--th-accent-support)/0.52),transparent)]" />
-            <h3 className="text-[1.2rem] font-semibold text-(--text-primary-dark)">{MJML_PACK_NAME}</h3>
-            <ul className="mt-4 space-y-2.5 text-[0.96rem] leading-7 text-(--dune-muted)">
+            <h3 className="text-[1.2rem] font-semibold text-slate-900">{MJML_PACK_NAME}</h3>
+            <ul className="mt-4 space-y-2.5 text-[0.96rem] leading-7 text-slate-500">
               {workflow.coreAccess.map((item) => (
                 <li key={`${workflow.slug}-core-${item}`} className="flex items-start gap-3">
-                  <span className="mt-[0.62rem] h-1.5 w-1.5 shrink-0 rounded-full bg-(--accent-support)" />
+                  <span className="mt-[0.62rem] h-1.5 w-1.5 shrink-0 rounded-full bg-slate-900" />
                   <span>{item}</span>
                 </li>
               ))}

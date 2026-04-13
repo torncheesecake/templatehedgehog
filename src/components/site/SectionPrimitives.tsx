@@ -1,13 +1,6 @@
 import { type ReactNode } from "react";
-import { Roboto_Serif } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { visualSystem } from "@/components/site/visualSystem";
-
-const displaySerif = Roboto_Serif({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-  display: "swap",
-});
 
 type SectionTone = "canvas" | "surface" | "soft";
 type SectionSpacing = keyof typeof visualSystem.sections.types;
@@ -16,19 +9,19 @@ type IntroPattern = "centred" | "full" | "split";
 type IntroTone = "dark" | "light";
 
 const toneClasses: Record<SectionTone, string> = {
-  canvas: "bg-(--surface-strong)",
-  surface: "bg-(--surface-soft)",
-  soft: "bg-(--surface-muted)",
+  canvas: "bg-white",
+  surface: "bg-slate-50",
+  soft: "bg-slate-50",
 };
 
 const borderClasses = {
   none: "",
-  top: "border-t border-(--surface-line)",
-  bottom: "border-b border-(--surface-line)",
-  both: "border-y border-(--surface-line)",
-  softTop: "border-t border-(--surface-line)",
-  softBottom: "border-b border-(--surface-line)",
-  softBoth: "border-y border-(--surface-line)",
+  top: "border-t border-slate-200",
+  bottom: "border-b border-slate-200",
+  both: "border-y border-slate-200",
+  softTop: "border-t border-slate-200",
+  softBottom: "border-b border-slate-200",
+  softBoth: "border-y border-slate-200",
 } as const;
 
 interface SectionShellProps {
@@ -59,7 +52,7 @@ export function SectionShell({
         VS.sections.types[spacing],
         toneClasses[tone],
         borderClasses[border],
-        needsImplicitSeparation ? "th-section-transition" : "",
+        needsImplicitSeparation ? "section-transition" : "",
         className,
       )}
     >
@@ -84,24 +77,24 @@ interface SectionIntroProps {
 }
 
 const introPatternClasses: Record<IntroPattern, string> = {
-  centred: "mx-auto max-w-[76ch] text-center",
-  full: "max-w-[86ch]",
+  centred: "mx-auto max-w-3xl text-center",
+  full: "max-w-3xl",
   split: "grid gap-10 lg:grid-cols-[minmax(0,1.02fr)_minmax(0,0.98fr)] lg:items-end",
 };
 
 const introEyebrowClasses: Record<IntroTone, string> = {
-  dark: "text-[1rem] font-semibold tracking-[0.012em] text-(--th-body-copy)",
-  light: "text-[1rem] font-semibold tracking-[0.012em] text-(--text-secondary-light)",
+  dark: "text-sm font-semibold uppercase tracking-[0.08em] text-slate-500",
+  light: "text-sm font-semibold uppercase tracking-[0.08em] text-slate-500",
 };
 
 const introTitleClasses: Record<IntroTone, string> = {
-  dark: "text-[2.05rem] font-semibold leading-[0.94] text-(--text-primary-dark) sm:text-[2.75rem]",
-  light: "text-[2.05rem] font-semibold leading-[0.94] text-(--text-primary-light) sm:text-[2.75rem]",
+  dark: "text-4xl font-semibold leading-[1.05] text-slate-900 sm:text-5xl",
+  light: "text-4xl font-semibold leading-[1.05] text-slate-900 sm:text-5xl",
 };
 
 const introBodyClasses: Record<IntroTone, string> = {
-  dark: "text-[1rem] leading-8 text-(--th-body-copy)",
-  light: "text-[1rem] leading-8 text-(--text-secondary-light)",
+  dark: "text-base leading-7 text-slate-600",
+  light: "text-base leading-7 text-slate-600",
 };
 
 export function SectionIntro({
@@ -120,11 +113,11 @@ export function SectionIntro({
     <div className={cn(introPatternClasses[pattern], className)}>
       <div>
         {eyebrow ? <p className={introEyebrowClasses[tone]}>{eyebrow}</p> : null}
-        <h2 className={cn("mt-4", introTitleClasses[tone], displaySerif.className, titleClassName)}>
+        <h2 className={cn("mt-5", introTitleClasses[tone], titleClassName)}>
           {title}
         </h2>
         {description ? (
-          <p className={cn("mt-5 max-w-[74ch]", introBodyClasses[tone], descriptionClassName)}>
+          <p className={cn("mt-6 max-w-3xl", introBodyClasses[tone], descriptionClassName)}>
             {description}
           </p>
         ) : null}
@@ -145,14 +138,13 @@ export function VisualPanel({ children, className, tone = "dark" }: VisualPanelP
   return (
     <article
       className={cn(
-        "relative overflow-hidden rounded-[1.08rem] border p-6 sm:p-7 lg:p-8",
+        "relative overflow-hidden rounded-xl border p-6 sm:p-7 lg:p-8",
         tone === "dark"
-          ? "border-(--surface-line) bg-(--surface-soft) shadow-[0_22px_42px_rgba(0,0,0,0.34)]"
-          : "border-(--surface-line) bg-(--bg-surface-elevated) shadow-[0_18px_34px_rgba(0,0,0,0.32)]",
+          ? "border-slate-200 bg-slate-50 shadow-sm"
+          : "border-slate-200 bg-slate-50 shadow-sm",
         className,
       )}
     >
-      <span className="pointer-events-none absolute inset-x-6 top-0 h-px bg-[linear-gradient(90deg,transparent,hsl(var(--th-accent-support)/0.42),transparent)]" />
       {children}
     </article>
   );

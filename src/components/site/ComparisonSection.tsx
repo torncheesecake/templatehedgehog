@@ -44,10 +44,10 @@ export function ComparisonSection({
           title={title}
           description={description}
           className="pt-2 sm:pt-3"
-          titleClassName={cn("max-w-[24ch]", displaySerif.className)}
+          titleClassName={cn("max-w-3xl", displaySerif.className)}
         />
 
-        <div className="mt-12 rounded-[1.2rem] border border-(--surface-line) bg-(--surface-strong) p-4 sm:p-5 lg:p-6">
+        <div className="mt-12 rounded-[1.2rem] border border-slate-200 bg-white p-4 sm:p-5 lg:p-6">
           <EffortComparisonVisual
             className="mt-2"
             leftTitle={leftTitle}

@@ -9,8 +9,8 @@ export const metadata: Metadata = {
 };
 
 const inlineCodeClass =
-  "rounded-[0.45rem] border border-(--border-light) bg-(--bg-soft-elevated) px-1.5 py-0.5 text-[0.88em] font-medium text-(--text-primary-light)";
-const listClass = "list-disc space-y-2.5 pl-5 marker:text-(--accent-support)";
+  "rounded-[0.45rem] border border-slate-200 bg-slate-50 px-1.5 py-0.5 text-[0.88em] font-medium text-slate-900";
+const listClass = "list-disc space-y-2.5 pl-5 marker:text-slate-900";
 
 const sections = [
   { id: "intro", label: "Intro" },
@@ -47,7 +47,7 @@ export default function DocsPage() {
         <p>
           A safe working pattern for most teams looks like this:
         </p>
-        <ol className="list-decimal space-y-2.5 pl-5 marker:font-semibold marker:text-(--accent-support)">
+        <ol className="list-decimal space-y-2.5 pl-5 marker:font-semibold marker:text-slate-900">
           <li>Start from the closest workflow, then move to layout or component detail when needed.</li>
           <li>Edit the <span className={inlineCodeClass}>MJML</span> source rather than patching compiled HTML by hand.</li>
           <li>Compile to HTML and test the result in your delivery workflow.</li>

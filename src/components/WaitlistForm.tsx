@@ -62,12 +62,12 @@ export function WaitlistForm({
         value={email}
         onChange={(event) => setEmail(event.target.value)}
         placeholder={placeholder}
-        className="h-12 flex-1 rounded-[0.72rem] border border-[hsl(var(--th-accent)/0.42)] bg-[rgba(8,16,32,0.62)] px-4 text-base text-(--text-primary-dark) placeholder:text-(--dune-muted) focus:border-(--accent-secondary) focus:outline-none"
+        className="h-12 flex-1 rounded-[0.72rem] border border-[hsl(var(--th-accent)/0.42)] bg-[rgba(8,16,32,0.62)] px-4 text-base text-slate-900 placeholder:text-slate-500 focus:border-rose-700 focus:outline-none"
       />
       <button
         type="submit"
         disabled={status === "loading"}
-        className="h-12 rounded-[0.72rem] border border-(--accent-primary) bg-[linear-gradient(145deg,var(--accent-primary),var(--accent-primary))] px-6 text-base font-semibold !text-(--text-primary-dark) shadow-[0_12px_24px_hsl(var(--th-accent)/0.38)] transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-70"
+        className="h-12 rounded-[0.72rem] border border-rose-600 bg-[linear-gradient(145deg,var(--accent-primary),var(--accent-primary))] px-6 text-base font-semibold !text-slate-900 shadow-[0_12px_24px_hsl(var(--th-accent)/0.38)] transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-70"
       >
         {status === "loading" ? "Joining..." : buttonLabel}
       </button>

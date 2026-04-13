@@ -47,10 +47,10 @@ export default function SupportPage() {
             <p className={VS.eyebrow.accent}>
               Support
             </p>
-            <h1 className={cn("mt-3 max-w-[22ch] text-[2.05rem] sm:text-[2.4rem]", VS.headings.page)}>
+            <h1 className={cn("mt-3 max-w-3xl text-[2.05rem] sm:text-[2.4rem]", VS.headings.page)}>
               Need a hand getting this shipped?
             </h1>
-            <p className={cn("mt-3 max-w-[70ch]", VS.body.onLight)}>
+            <p className={cn("mt-3 max-w-3xl", VS.body.onLight)}>
               Use the guides below for setup, licensing, and download issues. If you are still blocked, contact support directly.
             </p>
             <div className="mt-5 flex flex-wrap gap-2">
@@ -62,13 +62,13 @@ export default function SupportPage() {
               </Link>
               <Link
                 href="/changelog"
-                className={cn(VS.buttons.secondaryLight, "h-10 rounded-full bg-(--surface-soft) px-4 py-2 text-(--text-primary-dark)")}
+                className={cn(VS.buttons.secondaryLight, "h-10 rounded-full bg-slate-50 px-4 py-2 text-slate-900")}
               >
                 View changelog
               </Link>
               <Link
                 href="/pricing"
-                className={cn(VS.buttons.secondaryLight, "h-10 rounded-full bg-(--surface-soft) px-4 py-2 text-(--text-primary-dark)")}
+                className={cn(VS.buttons.secondaryLight, "h-10 rounded-full bg-slate-50 px-4 py-2 text-slate-900")}
               >
                 View pricing
               </Link>
@@ -79,11 +79,11 @@ export default function SupportPage() {
             <h2 className={cn("text-[1.3rem]", VS.headings.subsection)}>Frequently asked questions</h2>
             <div className="mt-4 space-y-3">
               {faqItems.map((item) => (
-                <details key={item.q} className="rounded-[0.82rem] border border-(--surface-line) bg-(--surface-soft)">
-                  <summary className="cursor-pointer list-none px-4 py-3 text-[0.95rem] font-semibold text-(--text-primary-dark)">
+                <details key={item.q} className="rounded-[0.82rem] border border-slate-200 bg-slate-50">
+                  <summary className="cursor-pointer list-none px-4 py-3 text-[0.95rem] font-semibold text-slate-900">
                     {item.q}
                   </summary>
-                  <p className="border-t border-(--surface-line) px-4 py-3 text-[0.93rem] leading-7 text-(--th-body-copy)">
+                  <p className="border-t border-slate-200 px-4 py-3 text-[0.93rem] leading-7 text-slate-600">
                     {item.a}
                   </p>
                 </details>
@@ -93,8 +93,8 @@ export default function SupportPage() {
 
           <section className={VS.templates.content.sectionCard}>
             <h2 className={cn("text-[1.3rem]", VS.headings.subsection)}>Direct contact</h2>
-            <p className="mt-3 text-[0.98rem] leading-7 text-(--th-body-copy)">
-              Email: <a className="font-semibold text-(--text-primary-dark)" href={`mailto:${TEMPLATE_CONFIG.supportEmail}`}>{TEMPLATE_CONFIG.supportEmail}</a>
+            <p className="mt-3 text-[0.98rem] leading-7 text-slate-600">
+              Email: <a className="font-semibold text-slate-900" href={`mailto:${TEMPLATE_CONFIG.supportEmail}`}>{TEMPLATE_CONFIG.supportEmail}</a>
             </p>
           </section>
         </div>

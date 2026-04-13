@@ -28,13 +28,13 @@ export function InvoiceWorkbench({ invoices }: InvoiceWorkbenchProps) {
 
   return (
     <div className="grid gap-5 xl:grid-cols-[1.25fr_0.75fr]">
-      <section className="rounded-xl border border-(--hedgehog-core-blue-deep) bg-(--hedgehog-core-navy) p-5">
+      <section className="rounded-xl border border-slate-200 bg-white p-5">
         <div className="mb-4 flex items-center justify-between">
           <h2 className="text-xl font-semibold">Invoice queue</h2>
           <select
             value={statusFilter}
             onChange={(event) => setStatusFilter(event.target.value as "All" | Invoice["status"])}
-            className="rounded-lg border border-(--hedgehog-core-blue-deep) bg-(--hedgehog-core-navy) px-3 py-2 text-sm"
+            className="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm"
           >
             <option>All</option>
             <option>Paid</option>
@@ -45,10 +45,10 @@ export function InvoiceWorkbench({ invoices }: InvoiceWorkbenchProps) {
 
         <div className="space-y-2">
           {visible.map((invoice) => (
-            <div key={invoice.id} className="flex items-center justify-between rounded-lg border border-(--hedgehog-core-blue-deep) bg-(--hedgehog-core-navy) px-4 py-3">
+            <div key={invoice.id} className="flex items-center justify-between rounded-lg border border-slate-200 bg-white px-4 py-3">
               <div>
                 <p className="font-medium">{invoice.id} · {invoice.company}</p>
-                <p className="text-sm text-(--dune-muted)">{invoice.date}</p>
+                <p className="text-sm text-slate-500">{invoice.date}</p>
               </div>
               <div className="text-right">
                 <p className="font-semibold">{formatCurrency(invoice.amount)}</p>
@@ -64,37 +64,37 @@ export function InvoiceWorkbench({ invoices }: InvoiceWorkbenchProps) {
         </div>
       </section>
 
-      <section className="rounded-xl border border-(--hedgehog-core-blue-deep) bg-(--hedgehog-core-navy) p-5">
+      <section className="rounded-xl border border-slate-200 bg-white p-5">
         <h2 className="text-xl font-semibold">Create draft invoice</h2>
         <div className="mt-4 space-y-3">
           <div>
-            <label className="mb-1 block text-sm text-(--dune-muted)">Company</label>
+            <label className="mb-1 block text-sm text-slate-500">Company</label>
             <input
               value={company}
               onChange={(event) => setCompany(event.target.value)}
-              className="w-full rounded-lg border border-(--hedgehog-core-blue-deep) bg-(--hedgehog-core-navy) px-3 py-2 text-base"
+              className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-base"
             />
           </div>
           <div>
-            <label className="mb-1 block text-sm text-(--dune-muted)">Amount (GBP)</label>
+            <label className="mb-1 block text-sm text-slate-500">Amount (GBP)</label>
             <input
               value={amount}
               onChange={(event) => setAmount(event.target.value)}
-              className="w-full rounded-lg border border-(--hedgehog-core-blue-deep) bg-(--hedgehog-core-navy) px-3 py-2 text-base"
+              className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-base"
             />
           </div>
         </div>
 
-        <div className="mt-5 rounded-lg border border-(--hedgehog-core-blue-deep) bg-(--hedgehog-core-navy) p-4">
-          <p className="text-sm text-(--dune-muted)">Draft preview</p>
+        <div className="mt-5 rounded-lg border border-slate-200 bg-white p-4">
+          <p className="text-sm text-slate-500">Draft preview</p>
           <p className="mt-1 text-lg font-semibold">{company || "New Account"}</p>
-          <p className="mt-1 text-2xl font-bold text-(--accent-primary)">{formatCurrency(parsedAmount)}</p>
-          <p className="mt-2 text-sm text-(--dune-muted)">Status: Pending</p>
+          <p className="mt-1 text-2xl font-bold text-rose-600">{formatCurrency(parsedAmount)}</p>
+          <p className="mt-2 text-sm text-slate-500">Status: Pending</p>
         </div>
 
         <button
           onClick={saveDraft}
-          className="mt-4 w-full rounded-lg bg-(--accent-primary) px-4 py-2.5 text-sm font-semibold text-(--text-primary-dark)"
+          className="mt-4 w-full rounded-lg bg-rose-600 px-4 py-2.5 text-sm font-semibold text-slate-900"
         >
           Save draft
         </button>

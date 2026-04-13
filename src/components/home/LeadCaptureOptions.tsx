@@ -51,8 +51,8 @@ export function LeadCaptureOptions() {
   );
 
   return (
-    <div className="rounded-2xl bg-(--hedgehog-core-navy) p-4 sm:p-5">
-      <p className="text-[1rem] font-semibold uppercase tracking-[0.09em] text-(--dune-muted)">Choose your buyer track</p>
+    <div className="rounded-2xl bg-white p-4 sm:p-5">
+      <p className="text-[1rem] font-semibold uppercase tracking-[0.09em] text-slate-500">Choose your buyer track</p>
       <div className="mt-3 grid gap-2 sm:grid-cols-2">
         {leadTracks.map((track) => {
           const active = track.id === selectedTrackId;
@@ -63,19 +63,19 @@ export function LeadCaptureOptions() {
               onClick={() => setSelectedTrackId(track.id)}
               className={`rounded-lg border px-3 py-2.5 text-left transition ${
                 active
-                  ? "border-(--accent-primary) bg-(--hedgehog-core-blue-deep) text-(--text-primary-dark)"
-                  : "border-(--hedgehog-core-blue-deep) bg-(--hedgehog-core-navy) text-(--dune-muted) hover:border-(--accent-primary)"
+                  ? "border-rose-600 bg-slate-100 text-slate-900"
+                  : "border-slate-200 bg-white text-slate-500 hover:border-rose-600"
               }`}
             >
               <p className="text-[0.96rem] font-semibold">{track.label}</p>
-              <p className="mt-1 text-[0.84rem] leading-6 text-(--dune-muted)">{track.hint}</p>
+              <p className="mt-1 text-[0.84rem] leading-6 text-slate-500">{track.hint}</p>
             </button>
           );
         })}
       </div>
 
       <p className="mt-4 text-[0.95rem] text-[#f7e9e3]">Selected: {selectedTrack.label}</p>
-      <p className="mt-1 text-[0.9rem] text-(--dune-muted)">{selectedTrack.hint}</p>
+      <p className="mt-1 text-[0.9rem] text-slate-500">{selectedTrack.hint}</p>
 
       <div className="mt-4">
         <WaitlistForm

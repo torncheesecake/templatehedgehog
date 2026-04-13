@@ -145,34 +145,34 @@ export default function PricingPage() {
   }));
 
   return (
-    <main className="min-h-screen bg-(--surface-strong) text-(--th-body-copy) [font-family:Arial,sans-serif]">
+    <main className="min-h-screen bg-white text-slate-600 [font-family:Arial,sans-serif]">
       <SiteTopBar theme="hero" ctaHref="#buy-core" ctaLabel={PAID_CTA_LABEL} />
 
       <SectionShell spacing="hero" tone="canvas" width="content">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1.06fr)_minmax(360px,0.94fr)] lg:items-start">
           <div>
-            <p className="text-[1rem] font-semibold tracking-[0.012em] text-(--th-body-copy)">
+            <p className="text-[1rem] font-semibold tracking-[0.012em] text-slate-600">
               Workflow-first MJML system
             </p>
-            <h1 className={cn("mt-4 max-w-[14ch] text-[3rem] font-semibold leading-[0.88] text-(--text-primary-dark) sm:text-[4.2rem] lg:text-[4.85rem]", displaySerif.className)}>
+            <h1 className={cn("mt-4 max-w-3xl text-[3rem] font-semibold leading-[0.88] text-slate-900 sm:text-[4.2rem] lg:text-[4.85rem]", displaySerif.className)}>
               Stop rebuilding the same emails every project
             </h1>
-            <p className="mt-6 max-w-[62ch] text-[1.08rem] leading-8 text-(--th-body-copy)">
+            <p className="mt-6 max-w-3xl text-[1.08rem] leading-8 text-slate-600">
               Hedgehog Core gives your team production-ready workflows, layouts, and components in one download so you
               can ship faster with fewer regressions.
             </p>
 
-            <ul className="mt-8 max-w-[66ch] space-y-3.5 text-[1rem] leading-7 text-(--th-body-copy)">
+            <ul className="mt-8 max-w-3xl space-y-3.5 text-[1rem] leading-7 text-slate-600">
               {heroBullets.map((point) => (
                 <li key={point} className="flex items-start gap-3">
-                  <span className="mt-[0.62rem] h-1.5 w-1.5 shrink-0 rounded-full bg-(--accent-support)" />
+                  <span className="mt-[0.62rem] h-1.5 w-1.5 shrink-0 rounded-full bg-slate-900" />
                   <span>{point}</span>
                 </li>
               ))}
             </ul>
 
             {previewNotice ? (
-              <p className="mt-6 max-w-[66ch] rounded-[0.82rem] border border-[hsl(var(--th-accent-support)/0.34)] bg-[hsl(var(--th-accent-support)/0.14)] px-4 py-3 text-[0.86rem] leading-6 text-(--text-primary-dark)">
+              <p className="mt-6 max-w-3xl rounded-[0.82rem] border border-[hsl(var(--th-accent-support)/0.34)] bg-[hsl(var(--th-accent-support)/0.14)] px-4 py-3 text-[0.86rem] leading-6 text-slate-900">
                 {previewNotice}
               </p>
             ) : null}
@@ -221,18 +221,18 @@ export default function PricingPage() {
             {featuredWorkflows.map((workflow) => (
               <article
                 key={workflow.slug}
-                className="rounded-[0.96rem] border border-(--border-light) bg-(--bg-soft-elevated) p-4 shadow-[0_12px_24px_rgba(15,23,42,0.08)]"
+                className="rounded-[0.96rem] border border-slate-200 bg-slate-50 p-4 shadow-[0_12px_24px_rgba(15,23,42,0.08)]"
               >
-                <p className="text-[0.72rem] font-semibold uppercase tracking-[0.09em] text-(--text-secondary-light)">
+                <p className="text-[0.72rem] font-semibold uppercase tracking-[0.09em] text-slate-600">
                   {workflow.linkedLayoutTitle}
                 </p>
-                <h3 className="mt-2 text-[1.04rem] font-semibold leading-7 text-(--text-primary-light)">
+                <h3 className="mt-2 text-[1.04rem] font-semibold leading-7 text-slate-900">
                   {workflow.title}
                 </h3>
-                <p className="mt-2 text-[0.88rem] leading-6 text-(--text-secondary-light)">{workflow.goal}</p>
+                <p className="mt-2 text-[0.88rem] leading-6 text-slate-600">{workflow.goal}</p>
                 <Link
                   href={`/workflows/${workflow.slug}`}
-                  className="mt-3 inline-flex items-center gap-1.5 text-[0.8rem] font-semibold text-(--text-primary-light) transition hover:text-(--accent-support)"
+                  className="mt-3 inline-flex items-center gap-1.5 text-[0.8rem] font-semibold text-slate-900 transition hover:text-slate-900"
                 >
                   View workflow
                   <ArrowRight className="h-4 w-4" />
@@ -244,7 +244,7 @@ export default function PricingPage() {
       </SectionShell>
 
       <ComparisonSection
-        sectionClassName="border-y border-(--surface-line) bg-(--surface-soft)"
+        sectionClassName="border-y border-slate-200 bg-slate-50"
         eyebrow="Objection handling"
         title="Why it is worth £79"
         description="Building this yourself costs repeated build hours and QA churn. Hedgehog Core removes that repetition."
@@ -262,7 +262,7 @@ export default function PricingPage() {
           title="What you actually get in the pack"
           description="Real source structure, output pairing, and traceable mapping from workflow trigger to delivery HTML."
           aside={
-            <div className="rounded-[0.9rem] border border-(--surface-line) bg-(--surface-soft) p-4 text-[0.9rem] leading-7 text-(--th-body-copy)">
+            <div className="rounded-[0.9rem] border border-slate-200 bg-slate-50 p-4 text-[0.9rem] leading-7 text-slate-600">
               This is the same structure your team downloads after checkout, not a marketing mock-up.
             </div>
           }
@@ -316,22 +316,22 @@ export default function PricingPage() {
             {includedAssets.map((asset) => (
               <div
                 key={asset.title}
-                className="rounded-[0.92rem] border border-(--border-light) bg-(--bg-soft-elevated) px-5 py-4 shadow-[0_10px_22px_rgba(15,23,42,0.06)]"
+                className="rounded-[0.92rem] border border-slate-200 bg-slate-50 px-5 py-4 shadow-[0_10px_22px_rgba(15,23,42,0.06)]"
               >
-                <dt className={cn("text-[1.08rem] font-semibold text-(--text-primary-light)", displaySerif.className)}>{asset.title}</dt>
-                <dd className="mt-1 text-[0.94rem] leading-7 text-(--text-secondary-light)">{asset.detail}</dd>
+                <dt className={cn("text-[1.08rem] font-semibold text-slate-900", displaySerif.className)}>{asset.title}</dt>
+                <dd className="mt-1 text-[0.94rem] leading-7 text-slate-600">{asset.detail}</dd>
               </div>
             ))}
           </dl>
 
           <VisualPanel tone="soft">
-            <p className="text-[0.8rem] font-semibold uppercase tracking-[0.09em] text-(--text-secondary-light)">
+            <p className="text-[0.8rem] font-semibold uppercase tracking-[0.09em] text-slate-600">
               Licence clarity
             </p>
-            <ul className="mt-4 space-y-2.5 text-[0.94rem] leading-7 text-(--text-secondary-light)">
+            <ul className="mt-4 space-y-2.5 text-[0.94rem] leading-7 text-slate-600">
               {MJML_PACK_LICENSE_POINTS.map((item) => (
                 <li key={item} className="flex items-start gap-2.5">
-                  <span className="mt-[0.62rem] h-1.5 w-1.5 shrink-0 rounded-full bg-(--accent-support)" />
+                  <span className="mt-[0.62rem] h-1.5 w-1.5 shrink-0 rounded-full bg-slate-900" />
                   <span>{item}</span>
                 </li>
               ))}
@@ -341,13 +341,13 @@ export default function PricingPage() {
       </SectionShell>
 
       <SectionShell spacing="cta" tone="canvas" width="content" className="scroll-mt-24 th-cta-zone">
-        <div id="buy-core" className="th-cta-island rounded-[1.45rem] border border-(--surface-line) bg-(--hedgehog-core-navy) px-8 py-12 sm:px-11 sm:py-14 lg:px-12 lg:py-16">
+        <div id="buy-core" className="th-cta-island rounded-[1.45rem] border border-slate-200 bg-white px-8 py-12 sm:px-11 sm:py-14 lg:px-12 lg:py-16">
           <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
             <div>
-              <h2 className={cn("max-w-[18ch] text-[2.05rem] font-semibold leading-[0.95] text-(--text-primary-dark) sm:text-[2.45rem]", displaySerif.className)}>
+              <h2 className={cn("max-w-3xl text-[2.05rem] font-semibold leading-[0.95] text-slate-900 sm:text-[2.45rem]", displaySerif.className)}>
                 Buy once. Ship faster on every campaign.
               </h2>
-              <p className="mt-4 max-w-[56ch] text-[1rem] leading-8 text-(--dune-muted)">
+              <p className="mt-4 max-w-3xl text-[1rem] leading-8 text-slate-500">
                 Less than one avoidable rebuild and QA pass.
               </p>
             </div>
@@ -361,14 +361,14 @@ export default function PricingPage() {
                     label={PAID_CTA_LABEL}
                     event="click_buy_now"
                     payload={{ source: "pricing_final_cta", packId: "pack-1", billingCycle: "one_off" }}
-                    className="inline-flex h-12 items-center rounded-[0.9rem] border border-(--accent-primary) bg-(--accent-primary) px-6 text-[0.92rem] font-semibold !text-(--text-primary-dark) shadow-[0_18px_36px_rgba(0,0,0,0.34)] transition hover:bg-(--accent-secondary) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent-primary) focus-visible:ring-offset-2 focus-visible:ring-offset-(--hedgehog-core-navy)"
+                    className="inline-flex h-12 items-center rounded-[0.9rem] border border-rose-600 bg-rose-600 px-6 text-[0.92rem] font-semibold !text-slate-900 shadow-[0_18px_36px_rgba(0,0,0,0.34)] transition hover:bg-rose-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-600 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                   />
                 </form>
               ) : (
                 <button
                   type="button"
                   disabled
-                  className="inline-flex h-12 items-center rounded-[0.9rem] border border-(--accent-primary) bg-(--accent-primary) px-6 text-[0.92rem] font-semibold !text-(--text-primary-dark) shadow-[0_18px_36px_rgba(0,0,0,0.34)] opacity-80"
+                  className="inline-flex h-12 items-center rounded-[0.9rem] border border-rose-600 bg-rose-600 px-6 text-[0.92rem] font-semibold !text-slate-900 shadow-[0_18px_36px_rgba(0,0,0,0.34)] opacity-80"
                 >
                   {PAID_CTA_LABEL}
                 </button>
@@ -376,7 +376,7 @@ export default function PricingPage() {
 
               <Link
                 href="/workflows"
-                className="inline-flex h-11 items-center rounded-[0.9rem] border border-(--surface-line) bg-(--surface-soft) px-5 text-[0.86rem] font-semibold text-(--text-primary-dark) transition hover:border-(--accent-support) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent-primary) focus-visible:ring-offset-2 focus-visible:ring-offset-(--hedgehog-core-navy)"
+                className="inline-flex h-11 items-center rounded-[0.9rem] border border-slate-200 bg-slate-50 px-5 text-[0.86rem] font-semibold text-slate-900 transition hover:border-slate-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-600 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
               >
                 Explore workflows
               </Link>

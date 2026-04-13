@@ -1,19 +1,19 @@
-const pageWidth = "mx-auto w-full max-w-[1840px] px-5 sm:px-8 lg:px-14";
+const pageWidth = "mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12";
 
 export const visualSystem = {
   widths: {
     page: pageWidth,
     content: pageWidth,
     docs: pageWidth,
-    bodyNarrow: "max-w-[60ch]",
-    bodyWide: "max-w-[76ch]",
+    bodyNarrow: "max-w-2xl",
+    bodyWide: "max-w-3xl",
   },
   spacing: {
     hero: "pb-26 pt-14 sm:pt-16 lg:pb-30 lg:pt-18",
     heroCompact: "pb-22 pt-12 sm:pt-14 lg:pb-26 lg:pt-16",
-    section: "py-20 sm:py-24 lg:py-28",
-    sectionTop: "pt-20 sm:pt-24 lg:pt-28",
-    sectionBottom: "pb-20 sm:pb-24 lg:pb-28",
+    section: "py-24",
+    sectionTop: "pt-24",
+    sectionBottom: "pb-24",
     sectionCompact: "pt-8 pb-18 sm:pt-9 lg:pb-22",
   },
   radius: {
@@ -29,80 +29,75 @@ export const visualSystem = {
     floating: "shadow-[0_34px_72px_rgba(0,0,0,0.48)]",
   },
   headings: {
-    display:
-      "text-[2.9rem] font-semibold leading-[0.9] text-(--text-primary-dark) sm:text-[4rem] lg:text-[4.5rem]",
-    page:
-      "text-[2.2rem] font-semibold leading-[1.04] text-(--text-primary-dark) sm:text-[2.85rem]",
-    section:
-      "text-[1.92rem] font-semibold leading-[1.05] text-(--text-primary-dark) sm:text-[2.45rem]",
-    subsection:
-      "text-[1.3rem] font-semibold leading-[1.1] text-(--text-primary-dark) sm:text-[1.5rem]",
+    display: "text-5xl font-semibold leading-[1.05] text-slate-900 sm:text-6xl",
+    page: "text-4xl font-semibold leading-[1.05] text-slate-900 sm:text-5xl",
+    section: "text-4xl font-semibold leading-[1.05] text-slate-900 sm:text-5xl",
+    subsection: "text-xl font-semibold leading-tight text-slate-900",
   },
   eyebrow: {
-    dark: "text-[1rem] font-semibold tracking-[0.01em] text-(--th-body-copy)",
-    light: "text-[1rem] font-semibold tracking-[0.01em] text-(--th-body-copy)",
-    accent:
-      "text-[1rem] font-semibold tracking-[0.01em] text-(--accent-support)",
+    dark: "text-sm font-semibold uppercase tracking-[0.08em] text-slate-500",
+    light: "text-sm font-semibold uppercase tracking-[0.08em] text-slate-500",
+    accent: "text-sm font-semibold uppercase tracking-[0.08em] text-slate-500",
   },
   body: {
-    onDark: "text-[1.02rem] leading-8 text-(--th-body-copy)",
-    onLight: "text-[1rem] leading-8 text-(--th-body-copy)",
-    compact: "text-[0.98rem] leading-7 text-(--th-body-copy)",
+    onDark: "text-base leading-7 text-slate-600",
+    onLight: "text-base leading-7 text-slate-600",
+    compact: "text-base leading-7 text-slate-600",
   },
   buttons: {
     primary:
-      "inline-flex h-11 items-center rounded-[0.82rem] border border-(--accent-primary) bg-(--accent-primary) px-5 text-[0.9rem] font-semibold tracking-[0.01em] !text-(--text-primary-dark) transition duration-200 hover:bg-(--accent-secondary) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2",
+      "inline-flex h-11 items-center rounded-xl border border-rose-600 bg-rose-600 px-5 text-sm font-semibold text-white transition hover:bg-rose-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-600 focus-visible:ring-offset-2",
     primaryLarge:
-      "inline-flex h-12 items-center rounded-[0.9rem] border border-(--accent-primary) bg-(--accent-primary) px-6 text-[0.9rem] font-semibold tracking-[0.01em] !text-(--text-primary-dark) transition duration-200 hover:bg-(--accent-secondary) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2",
+      "inline-flex h-12 items-center rounded-xl border border-rose-600 bg-rose-600 px-6 text-sm font-semibold text-white transition hover:bg-rose-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-600 focus-visible:ring-offset-2",
     secondaryLight:
-      "inline-flex h-11 items-center rounded-[0.82rem] border border-(--surface-line) bg-transparent px-4 text-[0.86rem] font-semibold text-(--th-body-copy) transition duration-200 hover:border-(--accent-support) hover:text-(--text-primary-dark) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2",
+      "inline-flex h-11 items-center rounded-xl border border-slate-200 bg-white px-4 text-sm font-semibold text-slate-600 transition hover:border-slate-300 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-600 focus-visible:ring-offset-2",
     secondaryDark:
-      "inline-flex h-11 items-center rounded-[0.82rem] border border-(--surface-line) bg-(--surface-soft) px-4 text-[0.86rem] font-semibold !text-(--text-primary-dark) transition duration-200 hover:border-(--accent-support) hover:bg-(--dune-deep) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2",
+      "inline-flex h-11 items-center rounded-xl border border-slate-200 bg-slate-50 px-4 text-sm font-semibold text-slate-900 transition hover:border-slate-300 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-600 focus-visible:ring-offset-2",
   },
   cards: {
     light:
-      "rounded-[1.2rem] border border-(--surface-line) bg-(--surface-soft) shadow-[0_22px_42px_rgba(0,0,0,0.34)]",
+      "rounded-2xl border border-slate-200 bg-slate-50 shadow-sm",
     lightSoft:
-      "rounded-[1rem] border border-(--surface-line) bg-(--surface-soft) shadow-[0_16px_34px_rgba(0,0,0,0.28)]",
+      "rounded-xl border border-slate-200 bg-slate-50 shadow-sm",
     dark:
-      "rounded-[1.2rem] border border-(--surface-line) bg-(--surface-soft) shadow-[0_20px_38px_rgba(0,0,0,0.4)]",
+      "rounded-2xl border border-slate-200 bg-slate-50 shadow-sm",
     darkDeep:
-      "rounded-[1.2rem] border border-(--surface-line) bg-(--dune-deep) shadow-[0_20px_38px_rgba(0,0,0,0.42)]",
+      "rounded-2xl border border-slate-200 bg-white shadow-sm",
   },
   dividers: {
-    soft: "border-(--surface-line)",
-    regular: "border-(--surface-line)",
-    strong: "border-(--surface-line)",
+    soft: "border-slate-200",
+    regular: "border-slate-200",
+    strong: "border-slate-200",
   },
   surfaces: {
-    page: "bg-(--surface-strong)",
-    dark: "bg-(--surface-soft)",
-    darkDeep: "bg-(--dune-deep)",
-    light: "bg-(--surface-muted)",
-    lightAlt: "bg-(--bg-surface-elevated)",
+    page: "bg-white",
+    dark: "bg-slate-50",
+    darkDeep: "bg-white",
+    light: "bg-slate-50",
+    lightAlt: "bg-slate-50",
   },
   sections: {
     types: {
       hero: "pb-24 pt-16 sm:pt-18 lg:pb-30 lg:pt-24",
-      feature: "py-24 sm:py-28 lg:py-28",
-      proof: "py-24 sm:py-28 lg:py-28",
-      comparison: "py-24 sm:py-28 lg:py-28",
-      grid: "py-24 sm:py-28 lg:py-28",
-      cta: "py-24 sm:py-28 lg:py-28",
+      feature: "py-24",
+      proof: "py-24",
+      comparison: "py-24",
+      grid: "py-24",
+      cta: "py-24",
     },
     surfaces: {
-      dark: "bg-(--surface-strong)",
-      mid: "bg-(--surface-soft)",
-      light: "bg-(--surface-muted)",
+      dark: "bg-white",
+      mid: "bg-slate-50",
+      light: "bg-slate-50",
     },
     intros: {
-      centered: "mx-auto max-w-[78ch] text-center",
+      centered: "mx-auto max-w-3xl text-center",
       wideSplit:
         "grid gap-10 lg:grid-cols-[minmax(0,1.12fr)_minmax(320px,0.88fr)] lg:items-end",
-      fullWidth: "max-w-[84ch]",
-      headingGap: "mt-3",
-      bodyGap: "mt-4",
-      contentGap: "mt-12",
+      fullWidth: "max-w-3xl",
+      headingGap: "mt-5",
+      bodyGap: "mt-6",
+      contentGap: "mt-16",
     },
     layouts: {
       split: "grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.94fr)] lg:items-start",
@@ -115,41 +110,40 @@ export const visualSystem = {
   },
   ctaPattern: {
     band:
-      "rounded-[1.4rem] border border-(--surface-line) bg-(--surface-soft) px-7 py-9 shadow-[0_20px_38px_rgba(0,0,0,0.42)] sm:px-9 sm:py-10",
+      "rounded-[1.4rem] border border-slate-200 bg-slate-50 px-7 py-9 shadow-[0_20px_38px_rgba(0,0,0,0.42)] sm:px-9 sm:py-10",
   },
   templates: {
     landing: {
-      main: "min-h-screen text-(--th-body-copy)",
+      main: "min-h-screen text-slate-600",
       heroShell:
-        "relative isolate overflow-hidden border-b border-(--surface-line) bg-(--surface-strong)",
+        "relative isolate overflow-hidden border-b border-slate-200 bg-white",
       heroGrid:
         "grid gap-12 lg:grid-cols-[minmax(0,1.14fr)_minmax(0,0.86fr)] lg:items-start",
       heroLead: "z-10 self-center",
       heroAside: "relative min-h-[16rem] sm:min-h-[24rem] lg:min-h-[32rem]",
       sectionDivider:
-        "border-y border-(--surface-line)",
+        "border-y border-slate-200",
     },
     library: {
-      main: "min-h-screen text-(--th-body-copy)",
+      main: "min-h-screen text-slate-600",
       frame:
-        "relative mx-auto w-full max-w-[1840px] rounded-[1.3rem] border border-(--surface-line) bg-(--surface-strong) px-5 pb-20 pt-8 shadow-[0_18px_36px_rgba(0,0,0,0.38)] sm:px-8 lg:px-14 lg:pb-24 lg:pt-9",
+        "relative mx-auto w-full max-w-7xl rounded-[1.3rem] border border-slate-200 bg-white px-5 pb-20 pt-8 shadow-[0_18px_36px_rgba(0,0,0,0.38)] sm:px-8 lg:px-12 lg:pb-24 lg:pt-9",
       heroGrid:
         "grid gap-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(320px,0.8fr)] lg:items-start",
-      heroLead: "max-w-[88ch]",
+      heroLead: "max-w-3xl",
       railCard:
-        "rounded-[1rem] border border-(--surface-line) bg-(--surface-soft) p-4 sm:p-5",
-      sectionSplit:
-        "section-breath border-t border-(--surface-line) pt-8",
+        "rounded-[1rem] border border-slate-200 bg-slate-50 p-4 sm:p-5",
+      sectionSplit: "mt-14 border-t border-slate-200 pt-8",
     },
     content: {
-      main: "min-h-screen text-(--th-body-copy)",
+      main: "min-h-screen text-slate-600",
       frame:
-        "mx-auto w-full max-w-[1840px] px-5 pb-16 pt-10 sm:px-8 lg:px-14 lg:pb-20 lg:pt-12",
+        "mx-auto w-full max-w-7xl px-5 pb-16 pt-10 sm:px-8 lg:px-12 lg:pb-20 lg:pt-12",
       body: pageWidth,
       heroCard:
-        "rounded-[1.2rem] border border-(--surface-line) bg-(--surface-soft) p-6 shadow-[0_22px_42px_rgba(0,0,0,0.34)] sm:p-7",
+        "rounded-[1.2rem] border border-slate-200 bg-slate-50 p-6 shadow-[0_22px_42px_rgba(0,0,0,0.34)] sm:p-7",
       sectionCard:
-        "mt-8 rounded-[1.12rem] border border-(--surface-line) bg-(--surface-soft) p-5 shadow-[0_16px_34px_rgba(0,0,0,0.3)] sm:p-6",
+        "mt-8 rounded-[1.12rem] border border-slate-200 bg-slate-50 p-5 shadow-[0_16px_34px_rgba(0,0,0,0.3)] sm:p-6",
     },
   },
 } as const;

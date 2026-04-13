@@ -59,22 +59,22 @@ export function LayoutsGallery({ layouts, systems }: LayoutsGalleryProps) {
       <SectionShell spacing="hero" tone="canvas" width="content">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1.04fr)_minmax(0,0.96fr)] lg:items-start">
           <div>
-            <p className="text-[1rem] font-semibold tracking-[0.012em] text-(--th-body-copy)">Layout systems</p>
-            <h1 className="mt-4 max-w-[14ch] text-[2.85rem] font-semibold leading-[0.9] text-(--text-primary-dark) sm:text-[4rem] lg:text-[4.5rem]">
+            <p className="text-[1rem] font-semibold tracking-[0.012em] text-slate-600">Layout systems</p>
+            <h1 className="mt-4 max-w-3xl text-[2.85rem] font-semibold leading-[0.9] text-slate-900 sm:text-[4rem] lg:text-[4.5rem]">
               Full email layouts you can use straight away
             </h1>
-            <p className="mt-6 max-w-[62ch] text-[1.04rem] leading-8 text-(--th-body-copy)">
+            <p className="mt-6 max-w-3xl text-[1.04rem] leading-8 text-slate-600">
               Start with complete structure, then adjust blocks where required. Each layout includes preview, section
               order, and source context tied back to workflows.
             </p>
 
-            <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 text-[0.92rem] text-(--th-body-copy)">
+            <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 text-[0.92rem] text-slate-600">
               <span className="inline-flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-(--accent-support)" />
+                <span className="h-1.5 w-1.5 rounded-full bg-slate-900" />
                 {layouts.length} layout recipes
               </span>
               <span className="inline-flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-(--accent-support)" />
+                <span className="h-1.5 w-1.5 rounded-full bg-slate-900" />
                 {systems.length} systems covered
               </span>
             </div>
@@ -82,7 +82,7 @@ export function LayoutsGallery({ layouts, systems }: LayoutsGalleryProps) {
 
           <div className="grid gap-5">
             <VisualPanel>
-              <p className="text-[0.8rem] font-semibold uppercase tracking-[0.09em] text-(--th-body-copy)">
+              <p className="text-[0.8rem] font-semibold uppercase tracking-[0.09em] text-slate-600">
                 System coverage
               </p>
               <ul className="mt-3 divide-y divide-(--surface-line)">
@@ -92,10 +92,10 @@ export function LayoutsGallery({ layouts, systems }: LayoutsGalleryProps) {
                   return (
                     <li key={system.slug} className="flex items-center justify-between gap-3 py-3">
                       <div>
-                        <p className="text-[0.9rem] font-semibold text-(--text-primary-dark)">{system.title}</p>
-                        <p className="text-[0.82rem] leading-6 text-(--th-body-copy)">{system.description}</p>
+                        <p className="text-[0.9rem] font-semibold text-slate-900">{system.title}</p>
+                        <p className="text-[0.82rem] leading-6 text-slate-600">{system.description}</p>
                       </div>
-                      <span className="inline-flex min-w-8 items-center justify-center rounded-full border border-[hsl(var(--th-accent-support)/0.34)] bg-[hsl(var(--th-accent-support)/0.14)] px-2.5 py-1 text-[0.78rem] font-semibold text-(--text-primary-dark)">
+                      <span className="inline-flex min-w-8 items-center justify-center rounded-full border border-[hsl(var(--th-accent-support)/0.34)] bg-[hsl(var(--th-accent-support)/0.14)] px-2.5 py-1 text-[0.78rem] font-semibold text-slate-900">
                         {count}
                       </span>
                     </li>
@@ -157,7 +157,7 @@ export function LayoutsGallery({ layouts, systems }: LayoutsGalleryProps) {
           }
 
           return (
-            <section key={system.slug} className={index === 0 ? "" : "section-breath border-t border-(--surface-line) pt-10"}>
+            <section key={system.slug} className={index === 0 ? "" : "mt-14 border-t border-slate-200 pt-10"}>
               <SectionIntro
                 pattern="full"
                 eyebrow={system.title}
@@ -171,7 +171,7 @@ export function LayoutsGallery({ layouts, systems }: LayoutsGalleryProps) {
                   <Link
                     key={layout.slug}
                     href={`/layouts/${layout.slug}`}
-                    className="group block rounded-[1rem] border border-(--surface-line) bg-(--surface-soft) p-5 shadow-[0_16px_30px_rgba(0,0,0,0.3)] transition duration-200 hover:border-(--accent-support) hover:shadow-[0_22px_36px_rgba(0,0,0,0.36)] focus:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2"
+                    className="group block rounded-[1rem] border border-slate-200 bg-slate-50 p-5 shadow-[0_16px_30px_rgba(0,0,0,0.3)] transition duration-200 hover:border-slate-300 hover:shadow-[0_22px_36px_rgba(0,0,0,0.36)] focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-600 focus-visible:ring-offset-2"
                   >
                     <LayoutPreviewStage
                       title={layout.title}
@@ -182,26 +182,26 @@ export function LayoutsGallery({ layouts, systems }: LayoutsGalleryProps) {
                     />
 
                     <div className="mt-5">
-                      <h3 className="text-[1.24rem] font-semibold leading-8 text-(--text-primary-dark)">
+                      <h3 className="text-[1.24rem] font-semibold leading-8 text-slate-900">
                         {layout.title}
                       </h3>
-                      <p className="mt-2 text-[0.96rem] leading-7 text-(--th-body-copy)">
+                      <p className="mt-2 text-[0.96rem] leading-7 text-slate-600">
                         {layout.description}
                       </p>
 
                       <div className="mt-3 flex flex-wrap gap-2">
-                        <span className="inline-flex rounded-full border border-[hsl(var(--th-accent-support)/0.34)] bg-[hsl(var(--th-accent-support)/0.14)] px-2.5 py-1 text-[0.72rem] font-semibold tracking-[0.03em] text-(--text-primary-dark)">
+                        <span className="inline-flex rounded-full border border-[hsl(var(--th-accent-support)/0.34)] bg-[hsl(var(--th-accent-support)/0.14)] px-2.5 py-1 text-[0.72rem] font-semibold tracking-[0.03em] text-slate-900">
                           {layout.componentBlocks.length} blocks
                         </span>
-                        <span className="inline-flex rounded-full border border-(--surface-line) bg-(--surface-strong) px-2.5 py-1 text-[0.72rem] font-semibold tracking-[0.03em] text-(--text-primary-dark)">
+                        <span className="inline-flex rounded-full border border-slate-200 bg-white px-2.5 py-1 text-[0.72rem] font-semibold tracking-[0.03em] text-slate-900">
                           {layout.layoutSections.length} sections
                         </span>
-                        <span className="inline-flex rounded-full border border-(--surface-line) bg-(--surface-strong) px-2.5 py-1 text-[0.72rem] font-semibold tracking-[0.03em] text-(--th-body-copy)">
+                        <span className="inline-flex rounded-full border border-slate-200 bg-white px-2.5 py-1 text-[0.72rem] font-semibold tracking-[0.03em] text-slate-600">
                           MJML + HTML
                         </span>
                       </div>
 
-                      <span className="mt-4 inline-flex items-center gap-1.5 text-[0.84rem] font-semibold text-(--th-body-copy)">
+                      <span className="mt-4 inline-flex items-center gap-1.5 text-[0.84rem] font-semibold text-slate-600">
                         Open layout
                         <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
                       </span>
@@ -213,15 +213,15 @@ export function LayoutsGallery({ layouts, systems }: LayoutsGalleryProps) {
           );
         })}
 
-        <div className="section-breath border-t border-(--surface-line) pt-10">
+        <div className="mt-14 border-t border-slate-200 pt-10">
           <VisualPanel>
             <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
               <div>
-                <p className="text-[1rem] font-semibold tracking-[0.012em] text-(--th-body-copy)">Next step</p>
-                <h2 className="mt-3 max-w-[18ch] text-[1.9rem] font-semibold leading-[0.96] text-(--text-primary-dark)">
+                <p className="text-[1rem] font-semibold tracking-[0.012em] text-slate-600">Next step</p>
+                <h2 className="mt-3 max-w-3xl text-[1.9rem] font-semibold leading-[0.96] text-slate-900">
                   Start from full structure, then tune blocks
                 </h2>
-                <p className="mt-4 max-w-[60ch] text-[0.98rem] leading-7 text-(--th-body-copy)">
+                <p className="mt-4 max-w-3xl text-[0.98rem] leading-7 text-slate-600">
                   Layout pages help you verify complete message composition first. Component pages handle precise block
                   edits. {TEMPLATE_CONFIG.productName} gives your team the whole system in one local archive.
                 </p>

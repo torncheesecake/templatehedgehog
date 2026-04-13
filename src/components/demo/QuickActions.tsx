@@ -10,16 +10,16 @@ const actions = [
 
 export function QuickActions() {
   return (
-    <section className="rounded-xl border border-(--hedgehog-core-blue-deep) bg-(--hedgehog-core-navy) p-5">
+    <section className="rounded-xl border border-slate-200 bg-white p-5">
       <h2 className="text-xl font-semibold">Common operational actions</h2>
-      <p className="mt-1 text-sm text-(--dune-muted)">Shows action-focused controls used in day-to-day SaaS operations.</p>
+      <p className="mt-1 text-sm text-slate-500">Shows action-focused controls used in day-to-day SaaS operations.</p>
       <div className="mt-4 grid gap-2">
         {actions.map((action) => (
           <button
             key={action.label}
-            className="flex items-center gap-2 rounded-lg border border-(--hedgehog-core-blue-deep) bg-(--hedgehog-core-navy) px-3 py-2 text-sm font-medium text-(--dune-muted) transition hover:-translate-y-[1px] hover:border-(--hedgehog-core-blue-deep)"
+            className="flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-500 transition hover:-translate-y-[1px] hover:border-slate-200"
           >
-            <action.icon className="h-4 w-4 text-(--accent-primary)" />
+            <action.icon className="h-4 w-4 text-rose-600" />
             {action.label}
           </button>
         ))}

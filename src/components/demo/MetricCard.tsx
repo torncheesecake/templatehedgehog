@@ -13,11 +13,11 @@ export function MetricCard({ label, value, change, trend }: MetricCardProps) {
     .join(" ");
 
   return (
-    <div className="animate-fade-rise rounded-xl border border-(--hedgehog-core-blue-deep) bg-(--hedgehog-core-navy) p-4 transition hover:-translate-y-[2px] hover:border-(--hedgehog-core-blue-deep)">
-      <p className="text-sm text-(--dune-muted)">{label}</p>
+    <div className="animate-fade-rise rounded-xl border border-slate-200 bg-white p-4 transition hover:-translate-y-[2px] hover:border-slate-200">
+      <p className="text-sm text-slate-500">{label}</p>
       <p className="mt-1 text-2xl font-semibold">{value}</p>
       <p className={`mt-1 text-sm ${up ? "text-[#7edb9f]" : "text-[#ffc0cb]"}`}>{change}</p>
-      <div className="mt-3 h-10 rounded-md bg-(--hedgehog-core-navy) p-1.5">
+      <div className="mt-3 h-10 rounded-md bg-white p-1.5">
         <svg viewBox="0 0 100 100" className="h-full w-full" preserveAspectRatio="none">
           <polyline
             fill="none"

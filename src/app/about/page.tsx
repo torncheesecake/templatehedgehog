@@ -47,20 +47,20 @@ export default function AboutPage() {
             <p className={VS.eyebrow.accent}>
               {`About ${TEMPLATE_CONFIG.brandName}`}
             </p>
-            <h1 className={cn("mt-3 max-w-[22ch] text-[2.1rem] sm:text-[2.55rem]", VS.headings.page)}>
+            <h1 className={cn("mt-3 max-w-3xl text-[2.1rem] sm:text-[2.55rem]", VS.headings.page)}>
               Built for teams that send real email.
             </h1>
-            <p className={cn("mt-4 max-w-[72ch] text-[1.02rem] leading-8", VS.body.onLight)}>
+            <p className={cn("mt-4 max-w-3xl text-[1.02rem] leading-8", VS.body.onLight)}>
               {TEMPLATE_CONFIG.brandName} is for teams that need dependable MJML structure, predictable rendering, and a workflow that holds up under delivery pressure.
             </p>
             <div className="mt-6 grid gap-3 sm:grid-cols-2">
-              <div className="rounded-[0.9rem] border border-(--surface-line) bg-(--surface-soft) px-4 py-3">
-                <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">Components</p>
-                <p className="mt-1 text-[0.95rem] font-semibold text-(--text-primary-dark)">Single reusable blocks</p>
+              <div className="rounded-[0.9rem] border border-slate-200 bg-slate-50 px-4 py-3">
+                <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-slate-600">Components</p>
+                <p className="mt-1 text-[0.95rem] font-semibold text-slate-900">Single reusable blocks</p>
               </div>
-              <div className="rounded-[0.9rem] border border-(--surface-line) bg-(--surface-soft) px-4 py-3">
-                <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">Layouts</p>
-                <p className="mt-1 text-[0.95rem] font-semibold text-(--text-primary-dark)">Full recipes from stacked components</p>
+              <div className="rounded-[0.9rem] border border-slate-200 bg-slate-50 px-4 py-3">
+                <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-slate-600">Layouts</p>
+                <p className="mt-1 text-[0.95rem] font-semibold text-slate-900">Full recipes from stacked components</p>
               </div>
             </div>
           </article>
@@ -69,9 +69,9 @@ export default function AboutPage() {
             <h2 className={cn("text-[1.32rem]", VS.headings.subsection)}>What we optimise for</h2>
             <div className="mt-4 grid gap-3 md:grid-cols-2">
               {principles.map((principle) => (
-                <article key={principle.title} className="rounded-[0.9rem] border border-(--surface-line) bg-(--surface-soft) px-4 py-3">
-                  <h3 className="text-[1rem] font-semibold text-(--text-primary-dark)">{principle.title}</h3>
-                  <p className="mt-1 text-[0.95rem] leading-7 text-(--th-body-copy)">{principle.description}</p>
+                <article key={principle.title} className="rounded-[0.9rem] border border-slate-200 bg-slate-50 px-4 py-3">
+                  <h3 className="text-[1rem] font-semibold text-slate-900">{principle.title}</h3>
+                  <p className="mt-1 text-[0.95rem] leading-7 text-slate-600">{principle.description}</p>
                 </article>
               ))}
             </div>
@@ -91,13 +91,13 @@ export default function AboutPage() {
               </Link>
               <Link
                 href="/layouts"
-                className={cn(VS.buttons.secondaryLight, "h-10 bg-(--surface-soft) px-4 text-(--text-primary-dark)")}
+                className={cn(VS.buttons.secondaryLight, "h-10 bg-slate-50 px-4 text-slate-900")}
               >
                 View layouts
               </Link>
               <Link
                 href="/pricing"
-                className={cn(VS.buttons.secondaryLight, "h-10 bg-(--surface-soft) px-4 text-(--text-primary-dark)")}
+                className={cn(VS.buttons.secondaryLight, "h-10 bg-slate-50 px-4 text-slate-900")}
               >
                 Pricing
               </Link>

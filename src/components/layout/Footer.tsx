@@ -24,7 +24,7 @@ export function Footer() {
     <footer className="border-t border-border bg-surface-secondary">
       {/* Trust Bar */}
       <div className="border-b border-border">
-        <div className="mx-auto flex max-w-[1400px] flex-wrap items-center justify-center gap-8 px-6 py-6 lg:px-8">
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-8 px-6 py-6 lg:px-8">
           <TrustItem icon="shield" text="Secure Checkout via Stripe" />
           <TrustItem icon="refresh" text="30-Day Money-Back Guarantee" />
           <TrustItem icon="download" text="6 Months of Bug Fixes" />
@@ -33,7 +33,7 @@ export function Footer() {
       </div>
 
       {/* Links */}
-      <div className="mx-auto max-w-[1400px] px-6 py-12 lg:px-8">
+      <div className="mx-auto max-w-7xl px-6 py-12 lg:px-8">
         <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">

@@ -14,7 +14,7 @@ export function Hero() {
         }}
       />
 
-      <div className="relative mx-auto max-w-[1400px] px-6 py-32 sm:py-40 lg:px-8 lg:py-48">
+      <div className="relative mx-auto max-w-7xl px-6 py-32 sm:py-40 lg:px-8 lg:py-48">
         <div className="mx-auto max-w-4xl text-center">
           {/* Eyebrow */}
           <p className="mb-8 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-2 text-sm font-medium text-indigo-200">

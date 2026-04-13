@@ -44,7 +44,7 @@ const props = [
 export function ValueProps() {
   return (
     <section className="bg-surface-secondary py-24 sm:py-32">
-      <div className="mx-auto max-w-[1400px] px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
         <div className="mx-auto max-w-2xl text-center">
           <p className="text-sm font-semibold tracking-wide text-primary uppercase">Why us</p>
           <h2 className="mt-2 text-3xl font-bold tracking-tight text-text-primary sm:text-4xl">

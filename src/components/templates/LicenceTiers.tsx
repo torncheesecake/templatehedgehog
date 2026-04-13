@@ -24,9 +24,9 @@ const tiers = [
 
 export function LicenceTiers() {
   return (
-    <section className="mt-8 rounded-2xl border border-(--hedgehog-core-blue-deep) bg-(--hedgehog-core-navy) p-6">
+    <section className="mt-8 rounded-2xl border border-slate-200 bg-white p-6">
       <h2 className="text-2xl font-semibold">Licensing and support</h2>
-      <p className="mt-1 text-sm text-(--dune-muted)">Clear commercial terms for freelancers, studios, and product teams</p>
+      <p className="mt-1 text-sm text-slate-500">Clear commercial terms for freelancers, studios, and product teams</p>
 
       <div className="mt-4 grid gap-4 lg:grid-cols-3">
         {tiers.map((tier) => (
@@ -34,18 +34,18 @@ export function LicenceTiers() {
             key={tier.name}
             className={`rounded-xl border p-5 ${
               tier.featured
-                ? "border-(--accent-primary) bg-[linear-gradient(160deg,#3a3950,var(--hedgehog-core-navy))]"
-                : "border-(--hedgehog-core-blue-deep) bg-(--hedgehog-core-navy)"
+                ? "border-rose-600 bg-[linear-gradient(160deg,#3a3950,var(--hedgehog-core-navy))]"
+                : "border-slate-200 bg-white"
             }`}
           >
-            <p className="text-sm text-(--dune-muted)">{tier.name}</p>
-            <p className="mt-2 text-4xl font-bold text-(--text-primary-dark)">{tier.price}</p>
-            <p className="mt-2 text-sm text-(--dune-muted)">{tier.note}</p>
+            <p className="text-sm text-slate-500">{tier.name}</p>
+            <p className="mt-2 text-4xl font-bold text-slate-900">{tier.price}</p>
+            <p className="mt-2 text-sm text-slate-500">{tier.note}</p>
 
             <ul className="mt-4 space-y-2">
               {tier.items.map((item) => (
                 <li key={item} className="flex items-start gap-2 text-sm text-[#f7e9e3]">
-                  <BadgeCheck className="mt-0.5 h-4 w-4 text-(--accent-primary)" />
+                  <BadgeCheck className="mt-0.5 h-4 w-4 text-rose-600" />
                   {item}
                 </li>
               ))}

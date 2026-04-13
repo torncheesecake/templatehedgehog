@@ -52,17 +52,17 @@ export function PricingOfferCard({
   }, [pricePence, vatMode]);
 
   return (
-    <aside className="relative overflow-hidden rounded-[1.4rem] border border-(--surface-line) bg-(--bg-surface-elevated) p-7 shadow-[0_34px_64px_rgba(0,0,0,0.42)] sm:p-8">
+    <aside className="relative overflow-hidden rounded-[1.4rem] border border-slate-200 bg-slate-50 p-7 shadow-[0_34px_64px_rgba(0,0,0,0.42)] sm:p-8">
       <span className="pointer-events-none absolute inset-x-8 top-0 h-px bg-[linear-gradient(90deg,transparent,hsl(var(--th-accent-support)/0.52),transparent)]" />
-      <p className="text-[1rem] font-semibold uppercase tracking-[0.1em] text-(--th-body-copy)">
+      <p className="text-[1rem] font-semibold uppercase tracking-[0.1em] text-slate-600">
         Hedgehog Core
       </p>
-      <p className="mt-2 text-[0.9rem] leading-7 text-(--dune-muted)">
+      <p className="mt-2 text-[0.9rem] leading-7 text-slate-500">
         One-time purchase. No subscription.
       </p>
 
       <div
-        className="mt-4 inline-flex rounded-[0.8rem] border border-(--surface-line) bg-(--surface-strong) p-1"
+        className="mt-4 inline-flex rounded-[0.8rem] border border-slate-200 bg-white p-1"
         role="group"
         aria-label="VAT display mode"
       >
@@ -72,8 +72,8 @@ export function PricingOfferCard({
           aria-pressed={vatMode === "ex_vat"}
           className={`h-8 rounded-[0.58rem] px-3 text-[0.74rem] font-semibold tracking-[0.02em] transition ${
             vatMode === "ex_vat"
-              ? "bg-(--accent-support) text-(--text-primary-dark)"
-              : "text-(--dune-muted) hover:text-(--text-primary-dark)"
+              ? "bg-slate-900 text-slate-900"
+              : "text-slate-500 hover:text-slate-900"
           }`}
         >
           Ex VAT
@@ -84,8 +84,8 @@ export function PricingOfferCard({
           aria-pressed={vatMode === "inc_vat"}
           className={`h-8 rounded-[0.58rem] px-3 text-[0.74rem] font-semibold tracking-[0.02em] transition ${
             vatMode === "inc_vat"
-              ? "bg-(--accent-support) text-(--text-primary-dark)"
-              : "text-(--dune-muted) hover:text-(--text-primary-dark)"
+              ? "bg-slate-900 text-slate-900"
+              : "text-slate-500 hover:text-slate-900"
           }`}
         >
           Inc VAT
@@ -93,45 +93,45 @@ export function PricingOfferCard({
       </div>
 
       <div className="mt-7 flex items-end gap-2.5">
-        <p className="text-[3.9rem] font-semibold leading-[0.86] text-(--text-primary-dark) sm:text-[4.4rem]">
+        <p className="text-[3.9rem] font-semibold leading-[0.86] text-slate-900 sm:text-[4.4rem]">
           {formatHeadlinePriceFromPence(displayedPrice)}
         </p>
-        <p className="pb-2 text-[1rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">
+        <p className="pb-2 text-[1rem] font-semibold uppercase tracking-[0.08em] text-slate-600">
           {vatMode === "inc_vat" ? "inc VAT" : "ex VAT"}
         </p>
       </div>
 
-      <div className="mt-6 rounded-[0.9rem] border border-(--surface-line) bg-(--surface-strong) p-4 text-[0.84rem] text-(--th-body-copy)">
+      <div className="mt-6 rounded-[0.9rem] border border-slate-200 bg-white p-4 text-[0.84rem] text-slate-600">
         <div className="flex items-center justify-between gap-3">
           <span>Version</span>
-          <span className="font-semibold text-(--text-primary-dark)">{versionLabel}</span>
+          <span className="font-semibold text-slate-900">{versionLabel}</span>
         </div>
-        <div className="mt-2 flex items-center justify-between gap-3 border-t border-(--surface-line) pt-2">
+        <div className="mt-2 flex items-center justify-between gap-3 border-t border-slate-200 pt-2">
           <span>Last updated</span>
-          <span className="font-semibold text-(--text-primary-dark)">{lastUpdatedLabel}</span>
+          <span className="font-semibold text-slate-900">{lastUpdatedLabel}</span>
         </div>
       </div>
 
-      <ul className="mt-7 space-y-2.5 text-[0.95rem] leading-7 text-(--text-primary-dark)">
+      <ul className="mt-7 space-y-2.5 text-[0.95rem] leading-7 text-slate-900">
         {inclusionPoints.map((point) => (
           <li key={point} className="flex items-start gap-2.5">
-            <span className="mt-[0.62rem] h-1.5 w-1.5 shrink-0 rounded-full bg-(--accent-support)" />
+            <span className="mt-[0.62rem] h-1.5 w-1.5 shrink-0 rounded-full bg-slate-900" />
             <span>{point}</span>
           </li>
         ))}
       </ul>
 
-      <ul className="mt-6 space-y-2.5 text-[0.88rem] leading-6 text-(--dune-muted)">
+      <ul className="mt-6 space-y-2.5 text-[0.88rem] leading-6 text-slate-500">
         <li className="flex items-start gap-2.5">
-          <span className="mt-[0.58rem] h-1.5 w-1.5 shrink-0 rounded-full bg-(--accent-support)" />
+          <span className="mt-[0.58rem] h-1.5 w-1.5 shrink-0 rounded-full bg-slate-900" />
           Instant download after checkout
         </li>
         <li className="flex items-start gap-2.5">
-          <span className="mt-[0.58rem] h-1.5 w-1.5 shrink-0 rounded-full bg-(--accent-support)" />
+          <span className="mt-[0.58rem] h-1.5 w-1.5 shrink-0 rounded-full bg-slate-900" />
           Secure checkout powered by Stripe
         </li>
         <li className="flex items-start gap-2.5">
-          <span className="mt-[0.58rem] h-1.5 w-1.5 shrink-0 rounded-full bg-(--accent-support)" />
+          <span className="mt-[0.58rem] h-1.5 w-1.5 shrink-0 rounded-full bg-slate-900" />
           Commercial use across your own and client projects
         </li>
       </ul>
@@ -144,7 +144,7 @@ export function PricingOfferCard({
             label={ctaLabel}
             event="click_buy_now"
             payload={{ source: "pricing_page", packId: "pack-1", billingCycle: "one_off" }}
-            className="inline-flex h-12 w-full items-center justify-center rounded-[0.9rem] border border-(--accent-primary) bg-(--accent-primary) px-5 text-[0.94rem] font-semibold !text-(--text-primary-dark) shadow-[0_18px_34px_rgba(0,0,0,0.3)] transition hover:bg-(--accent-secondary) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent-primary) focus-visible:ring-offset-2 focus-visible:ring-offset-(--hedgehog-core-navy)"
+            className="inline-flex h-12 w-full items-center justify-center rounded-[0.9rem] border border-rose-600 bg-rose-600 px-5 text-[0.94rem] font-semibold !text-slate-900 shadow-[0_18px_34px_rgba(0,0,0,0.3)] transition hover:bg-rose-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-600 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
           />
         </form>
       ) : (
@@ -152,11 +152,11 @@ export function PricingOfferCard({
           <button
             type="button"
             disabled
-            className="inline-flex h-12 w-full items-center justify-center rounded-[0.9rem] border border-(--accent-primary) bg-(--accent-primary) px-5 text-[0.94rem] font-semibold !text-(--text-primary-dark) shadow-[0_18px_34px_rgba(0,0,0,0.3)] opacity-80"
+            className="inline-flex h-12 w-full items-center justify-center rounded-[0.9rem] border border-rose-600 bg-rose-600 px-5 text-[0.94rem] font-semibold !text-slate-900 shadow-[0_18px_34px_rgba(0,0,0,0.3)] opacity-80"
           >
             {ctaLabel}
           </button>
-          <p className="rounded-[0.8rem] border border-(--surface-line) bg-(--surface-soft) px-4 py-3 text-[0.84rem] leading-6 text-(--th-body-copy)">
+          <p className="rounded-[0.8rem] border border-slate-200 bg-slate-50 px-4 py-3 text-[0.84rem] leading-6 text-slate-600">
             {isStaticPreview
               ? "GitHub Pages preview only. Live checkout runs on the primary deployment."
               : "Checkout is currently unavailable in this environment."}
@@ -164,11 +164,11 @@ export function PricingOfferCard({
         </div>
       )}
 
-      <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-[0.84rem] font-semibold text-(--dune-muted)">
-        <Link href="/workflows" className="underline-offset-2 hover:text-(--text-primary-dark) hover:underline">
+      <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-[0.84rem] font-semibold text-slate-500">
+        <Link href="/workflows" className="underline-offset-2 hover:text-slate-900 hover:underline">
           Explore workflows
         </Link>
-        <Link href="/components" className="underline-offset-2 hover:text-(--text-primary-dark) hover:underline">
+        <Link href="/components" className="underline-offset-2 hover:text-slate-900 hover:underline">
           Browse free reference
         </Link>
       </div>

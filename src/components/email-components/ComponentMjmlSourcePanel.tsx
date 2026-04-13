@@ -90,7 +90,7 @@ export function ComponentMjmlSourcePanel({
       ) : null}
 
       {activeMode === "snippet" ? (
-        <p className="rounded-[0.82rem] border border-[hsl(var(--th-accent-support)/0.34)] bg-[hsl(var(--th-accent-support)/0.14)] px-3.5 py-2.5 text-[0.88rem] leading-6 text-(--text-primary-dark)">
+        <p className="rounded-[0.82rem] border border-[hsl(var(--th-accent-support)/0.34)] bg-[hsl(var(--th-accent-support)/0.14)] px-3.5 py-2.5 text-[0.88rem] leading-6 text-slate-900">
           Snippet assembly: place this block inside the same <code className="font-semibold">&lt;mj-body&gt;</code> as your
           other snippets, then stack sections in send order.
         </p>

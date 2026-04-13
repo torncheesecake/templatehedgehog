@@ -45,7 +45,7 @@ export function CustomersTable({ rows }: CustomersTableProps) {
   }
 
   return (
-    <section className="rounded-xl border border-(--hedgehog-core-blue-deep) bg-(--hedgehog-core-navy) p-5">
+    <section className="rounded-xl border border-slate-200 bg-white p-5">
       <div className="mb-4 flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
         <h2 className="text-xl font-semibold">Customer accounts</h2>
         <div className="flex flex-col gap-2 sm:flex-row">
@@ -53,12 +53,12 @@ export function CustomersTable({ rows }: CustomersTableProps) {
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             placeholder="Search company"
-            className="rounded-lg border border-(--hedgehog-core-blue-deep) bg-(--hedgehog-core-navy) px-3 py-2 text-sm"
+            className="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm"
           />
           <select
             value={plan}
             onChange={(event) => setPlan(event.target.value as "All" | Customer["plan"])}
-            className="rounded-lg border border-(--hedgehog-core-blue-deep) bg-(--hedgehog-core-navy) px-3 py-2 text-sm"
+            className="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm"
           >
             <option>All</option>
             <option>Starter</option>
@@ -69,15 +69,15 @@ export function CustomersTable({ rows }: CustomersTableProps) {
       </div>
 
       {filtered.length === 0 ? (
-        <div className="rounded-xl border border-dashed border-(--hedgehog-core-blue-deep) bg-(--hedgehog-core-navy) p-8 text-center">
+        <div className="rounded-xl border border-dashed border-slate-200 bg-white p-8 text-center">
           <p className="text-lg font-semibold">No customer matches</p>
-          <p className="mt-1 text-sm text-(--dune-muted)">Try clearing filters or using a broader search term.</p>
+          <p className="mt-1 text-sm text-slate-500">Try clearing filters or using a broader search term.</p>
         </div>
       ) : (
         <div className="overflow-x-auto">
           <table className="w-full min-w-[760px] text-left text-sm">
             <thead>
-              <tr className="border-b border-(--hedgehog-core-blue-deep) text-(--dune-muted)">
+              <tr className="border-b border-slate-200 text-slate-500">
                 <th className="pb-3 pr-3">
                   <button onClick={() => toggleSort("company")} className="font-semibold">Company</button>
                 </th>
@@ -93,7 +93,7 @@ export function CustomersTable({ rows }: CustomersTableProps) {
             </thead>
             <tbody>
               {filtered.map((customer) => (
-                <tr key={customer.company} className="border-b border-(--hedgehog-core-navy) last:border-0">
+                <tr key={customer.company} className="border-b border-slate-300 last:border-0">
                   <td className="py-3 pr-3 font-medium">{customer.company}</td>
                   <td className="py-3 pr-3">{customer.plan}</td>
                   <td className="py-3 pr-3">{customer.seats}</td>

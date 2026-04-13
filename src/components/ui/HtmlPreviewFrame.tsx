@@ -33,7 +33,7 @@ export function HtmlPreviewFrame({
         max: 760,
         fallback: 520,
         wrapperClass:
-          "mx-auto block w-full rounded-[0.78rem] border border-(--surface-line) bg-(--bg-soft-elevated) shadow-[0_14px_30px_rgba(0,0,0,0.22)] md:w-[760px]",
+          "mx-auto block w-full rounded-[0.78rem] border border-slate-200 bg-slate-50 shadow-[0_14px_30px_rgba(0,0,0,0.22)] md:w-[760px]",
         frameClass: "max-h-[820px]",
       };
     }
@@ -44,7 +44,7 @@ export function HtmlPreviewFrame({
         max: 920,
         fallback: 460,
         wrapperClass:
-          "mx-auto block w-full rounded-[0.78rem] border border-(--surface-line) bg-(--bg-soft-elevated) shadow-[0_14px_30px_rgba(0,0,0,0.22)] md:w-[780px] lg:w-[840px] xl:w-[900px]",
+          "mx-auto block w-full rounded-[0.78rem] border border-slate-200 bg-slate-50 shadow-[0_14px_30px_rgba(0,0,0,0.22)] md:w-[780px] lg:w-[840px] xl:w-[900px]",
         frameClass: "max-h-[940px]",
       };
     }
@@ -54,7 +54,7 @@ export function HtmlPreviewFrame({
       max: 1240,
       fallback: 900,
       wrapperClass:
-        "mx-auto block w-full rounded-[0.78rem] border border-(--surface-line) bg-(--bg-soft-elevated) shadow-[0_14px_30px_rgba(0,0,0,0.22)] md:w-[860px] lg:w-[940px] xl:w-[1040px]",
+        "mx-auto block w-full rounded-[0.78rem] border border-slate-200 bg-slate-50 shadow-[0_14px_30px_rgba(0,0,0,0.22)] md:w-[860px] lg:w-[940px] xl:w-[1040px]",
       frameClass: "max-h-[1240px]",
     };
   }, [variant]);
@@ -112,9 +112,9 @@ export function HtmlPreviewFrame({
   }, [applyMeasuredHeight, resolvedHtml]);
 
   return (
-    <div className={`mx-auto w-full max-w-[1200px] ${className}`}>
-      <div className="overflow-hidden rounded-[1rem] border border-(--surface-line) bg-(--surface-soft) shadow-[0_18px_40px_rgba(0,0,0,0.34)]">
-        <div className="border-b border-(--surface-line) bg-(--surface-strong) px-4 py-2 text-[0.78rem] font-semibold tracking-[0.01em] text-(--th-body-copy)">
+    <div className={`mx-auto w-full max-w-7xl ${className}`}>
+      <div className="overflow-hidden rounded-[1rem] border border-slate-200 bg-slate-50 shadow-[0_18px_40px_rgba(0,0,0,0.34)]">
+        <div className="border-b border-slate-200 bg-white px-4 py-2 text-[0.78rem] font-semibold tracking-[0.01em] text-slate-600">
           Rendered email preview
         </div>
         <div className={`${settings.frameClass} overflow-auto p-3.5 sm:p-5`}>

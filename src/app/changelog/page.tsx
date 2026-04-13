@@ -40,7 +40,7 @@ export default function ChangelogPage() {
             <h1 className={cn("mt-3 text-[2.2rem] sm:text-[2.6rem]", VS.headings.page)}>
               Changelog.
             </h1>
-            <p className={cn("mt-3 max-w-[70ch]", VS.body.onLight)}>
+            <p className={cn("mt-3 max-w-3xl", VS.body.onLight)}>
               Release notes for the pack and delivery pipeline, with newest changes first.
             </p>
           </header>
@@ -52,16 +52,16 @@ export default function ChangelogPage() {
             {entries.map((entry) => (
               <li key={`${entry.date}-${entry.title}`}>
                 <article className={cn(VS.cards.light, "p-6 sm:p-7")}>
-                  <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">
+                  <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-slate-600">
                     <time dateTime={entry.date}>{formatVersionDate(entry.date)}</time>
                   </p>
-                  <h2 className="mt-2 text-[1.35rem] font-semibold text-(--text-primary-dark)">
+                  <h2 className="mt-2 text-[1.35rem] font-semibold text-slate-900">
                     {entry.title}
                   </h2>
-                  <ul className="mt-4 space-y-2 text-[0.97rem] leading-7 text-(--th-body-copy)">
+                  <ul className="mt-4 space-y-2 text-[0.97rem] leading-7 text-slate-600">
                     {entry.bulletPoints.map((point) => (
                       <li key={point} className="flex gap-2">
-                        <span className="mt-[0.65rem] h-1.5 w-1.5 shrink-0 rounded-full bg-(--accent-support)" />
+                        <span className="mt-[0.65rem] h-1.5 w-1.5 shrink-0 rounded-full bg-slate-900" />
                         <span>{point}</span>
                       </li>
                     ))}

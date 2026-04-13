@@ -222,22 +222,22 @@ export function ComponentsGalleryClient({ components }: ComponentsGalleryClientP
       <SectionShell spacing="hero" tone="canvas" width="content">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1.04fr)_minmax(0,0.96fr)] lg:items-start">
           <div>
-            <p className="text-[1rem] font-semibold tracking-[0.012em] text-(--th-body-copy)">Components reference</p>
-            <h1 className="mt-4 max-w-[14ch] text-[2.85rem] font-semibold leading-[0.9] text-(--text-primary-dark) sm:text-[4rem] lg:text-[4.5rem]">
+            <p className="text-[1rem] font-semibold tracking-[0.012em] text-slate-600">Components reference</p>
+            <h1 className="mt-4 max-w-3xl text-[2.85rem] font-semibold leading-[0.9] text-slate-900 sm:text-[4rem] lg:text-[4.5rem]">
               Production-safe blocks for workflow-driven email builds
             </h1>
-            <p className="mt-6 max-w-[62ch] text-[1.04rem] leading-8 text-(--th-body-copy)">
+            <p className="mt-6 max-w-3xl text-[1.04rem] leading-8 text-slate-600">
               Use this layer when you need targeted block edits. Start from workflows first, then refine individual
               components without breaking message hierarchy.
             </p>
 
-            <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 text-[0.92rem] text-(--th-body-copy)">
+            <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 text-[0.92rem] text-slate-600">
               <span className="inline-flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-(--accent-support)" />
+                <span className="h-1.5 w-1.5 rounded-full bg-slate-900" />
                 {components.length} components in registry
               </span>
               <span className="inline-flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-(--accent-support)" />
+                <span className="h-1.5 w-1.5 rounded-full bg-slate-900" />
                 Filter by category, tags, and search
               </span>
             </div>
@@ -247,7 +247,7 @@ export function ComponentsGalleryClient({ components }: ComponentsGalleryClientP
             <VisualPanel>
               <label
                 htmlFor="components-search"
-                className="block text-[0.8rem] font-semibold uppercase tracking-[0.09em] text-(--th-body-copy)"
+                className="block text-[0.8rem] font-semibold uppercase tracking-[0.09em] text-slate-600"
               >
                 Search and filter
               </label>
@@ -257,7 +257,7 @@ export function ComponentsGalleryClient({ components }: ComponentsGalleryClientP
                 value={searchInput}
                 onChange={(event) => setSearchInput(event.target.value)}
                 placeholder="Search title, description, tags, or slug"
-                className="mt-3 h-11 w-full rounded-[0.82rem] border border-(--surface-line) bg-(--surface-strong) px-3 text-[0.94rem] text-(--text-primary-dark) placeholder:text-(--th-body-copy) focus:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2"
+                className="mt-3 h-11 w-full rounded-[0.82rem] border border-slate-200 bg-white px-3 text-[0.94rem] text-slate-900 placeholder:text-slate-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-600 focus-visible:ring-offset-2"
               />
 
               <div
@@ -274,10 +274,10 @@ export function ComponentsGalleryClient({ components }: ComponentsGalleryClientP
                       type="button"
                       onClick={() => setActiveCategory(option.id)}
                       aria-pressed={isActive}
-                      className={`inline-flex h-8.5 items-center rounded-[0.7rem] border px-3 text-[0.74rem] font-semibold tracking-[0.02em] transition focus:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2 ${
+                      className={`inline-flex h-8.5 items-center rounded-[0.7rem] border px-3 text-[0.74rem] font-semibold tracking-[0.02em] transition focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-600 focus-visible:ring-offset-2 ${
                         isActive
-                          ? "border-(--accent-support) bg-[hsl(var(--th-accent-support)/0.16)] text-(--text-primary-dark)"
-                          : "border-(--surface-line) bg-transparent text-(--th-body-copy) hover:border-(--accent-support) hover:text-(--text-primary-dark)"
+                          ? "border-slate-300 bg-[hsl(var(--th-accent-support)/0.16)] text-slate-900"
+                          : "border-slate-200 bg-transparent text-slate-600 hover:border-slate-300 hover:text-slate-900"
                       }`}
                     >
                       {option.label}
@@ -286,7 +286,7 @@ export function ComponentsGalleryClient({ components }: ComponentsGalleryClientP
                 })}
               </div>
 
-              <p className="mt-3 text-[0.84rem] text-(--th-body-copy)">
+              <p className="mt-3 text-[0.84rem] text-slate-600">
                 Showing {filteredComponents.length} {filteredComponents.length === 1 ? "component" : "components"}.
               </p>
               <p aria-live="polite" className="sr-only">
@@ -347,9 +347,9 @@ export function ComponentsGalleryClient({ components }: ComponentsGalleryClientP
               <Link
                 key={component.slug}
                 href={`/components/${component.slug}`}
-                className="group block rounded-[1rem] border border-(--surface-line) bg-(--surface-soft) p-5 shadow-[0_16px_30px_rgba(0,0,0,0.28)] transition duration-200 hover:border-(--accent-support) hover:shadow-[0_22px_36px_rgba(0,0,0,0.34)] focus:outline-none focus-visible:ring-2 focus-visible:ring-(--dune-focus) focus-visible:ring-offset-2"
+                className="group block rounded-[1rem] border border-slate-200 bg-slate-50 p-5 shadow-[0_16px_30px_rgba(0,0,0,0.28)] transition duration-200 hover:border-slate-300 hover:shadow-[0_22px_36px_rgba(0,0,0,0.34)] focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-600 focus-visible:ring-offset-2"
               >
-                <div className={`relative overflow-hidden rounded-[0.88rem] border border-(--surface-line) ${previewProfile.stageClass}`}>
+                <div className={`relative overflow-hidden rounded-[0.88rem] border border-slate-200 ${previewProfile.stageClass}`}>
                   <Image
                     src={component.previewImageUrl}
                     alt={`${component.title} preview`}
@@ -361,23 +361,23 @@ export function ComponentsGalleryClient({ components }: ComponentsGalleryClientP
                 </div>
 
                 <div className="mt-4">
-                  <p className="text-[0.72rem] font-semibold uppercase tracking-[0.09em] text-(--th-body-copy)">
+                  <p className="text-[0.72rem] font-semibold uppercase tracking-[0.09em] text-slate-600">
                     {component.category}
                   </p>
 
                   <div className="mt-1 flex items-start justify-between gap-3">
-                    <h2 className="text-[1.16rem] font-semibold leading-7 text-(--text-primary-dark)">
+                    <h2 className="text-[1.16rem] font-semibold leading-7 text-slate-900">
                       {component.title}
                     </h2>
-                    <ArrowUpRight className="mt-1 h-4.5 w-4.5 shrink-0 text-(--accent-support) transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    <ArrowUpRight className="mt-1 h-4.5 w-4.5 shrink-0 text-slate-900 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </div>
 
-                  <p className="mt-2 text-[0.94rem] leading-7 text-(--th-body-copy)">
+                  <p className="mt-2 text-[0.94rem] leading-7 text-slate-600">
                     {component.description}
                   </p>
 
                   {tagLine ? (
-                    <p className="mt-3 text-[0.78rem] font-medium tracking-[0.03em] text-(--th-body-copy)">
+                    <p className="mt-3 text-[0.78rem] font-medium tracking-[0.03em] text-slate-600">
                       {tagLine}
                       {extraTags > 0 ? ` • +${extraTags}` : ""}
                     </p>
@@ -389,20 +389,20 @@ export function ComponentsGalleryClient({ components }: ComponentsGalleryClientP
         </div>
 
         {filteredComponents.length === 0 ? (
-          <div className="mt-10 text-center text-[1rem] text-(--th-body-copy)">
+          <div className="mt-10 text-center text-[1rem] text-slate-600">
             <p>No components match your search and category filters.</p>
           </div>
         ) : null}
 
-        <div className="section-breath border-t border-(--surface-line) pt-10">
+        <div className="mt-14 border-t border-slate-200 pt-10">
           <VisualPanel>
             <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
               <div>
-                <p className="text-[1rem] font-semibold tracking-[0.012em] text-(--th-body-copy)">Next step</p>
-                <h2 className="mt-3 max-w-[18ch] text-[1.9rem] font-semibold leading-[0.96] text-(--text-primary-dark)">
+                <p className="text-[1rem] font-semibold tracking-[0.012em] text-slate-600">Next step</p>
+                <h2 className="mt-3 max-w-3xl text-[1.9rem] font-semibold leading-[0.96] text-slate-900">
                   Need the full workflow system offline for your team
                 </h2>
-                <p className="mt-4 max-w-[60ch] text-[0.98rem] leading-7 text-(--th-body-copy)">
+                <p className="mt-4 max-w-3xl text-[0.98rem] leading-7 text-slate-600">
                   The public reference is for discovery and one-off use. {TEMPLATE_CONFIG.productName} is for teams who
                   want the full archive, compiled HTML, and faster implementation workflow.
                 </p>

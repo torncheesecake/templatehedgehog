@@ -212,7 +212,7 @@ export default async function SuccessPage({ searchParams }: SuccessPageProps) {
               <h1 className={cn("text-[2rem] sm:text-[2.25rem]", VS.headings.page)}>
                 Payment successful
               </h1>
-              <p className="mt-2 text-[1rem] leading-8 text-(--th-body-copy)">
+              <p className="mt-2 text-[1rem] leading-8 text-slate-600">
                 Thank you for purchasing {summary?.packName ?? MJML_PACK_NAME}. You purchased v{PACK_VERSION}.
               </p>
             </>
@@ -223,7 +223,7 @@ export default async function SuccessPage({ searchParams }: SuccessPageProps) {
               <h1 className={cn("text-[2rem] sm:text-[2.25rem]", VS.headings.page)}>
                 Checkout confirmation is disabled on this preview
               </h1>
-              <p className="mt-2 text-[1rem] leading-8 text-(--th-body-copy)">
+              <p className="mt-2 text-[1rem] leading-8 text-slate-600">
                 This GitHub Pages deployment is static, so live Stripe session
                 validation and secure downloads are not available here.
               </p>
@@ -235,7 +235,7 @@ export default async function SuccessPage({ searchParams }: SuccessPageProps) {
               <h1 className={cn("text-[2rem] sm:text-[2.25rem]", VS.headings.page)}>
                 Purchase session not found
               </h1>
-              <p className="mt-2 text-[1rem] leading-8 text-(--th-body-copy)">
+              <p className="mt-2 text-[1rem] leading-8 text-slate-600">
                 We could not verify this checkout session. Please start checkout
                 again from the pricing page.
               </p>
@@ -247,7 +247,7 @@ export default async function SuccessPage({ searchParams }: SuccessPageProps) {
               <h1 className={cn("text-[2rem] sm:text-[2.25rem]", VS.headings.page)}>
                 Download currently unavailable
               </h1>
-              <p className="mt-2 text-[1rem] leading-8 text-(--th-body-copy)">
+              <p className="mt-2 text-[1rem] leading-8 text-slate-600">
                 Your purchase appears valid, but the download cannot be served at
                 the moment. Please try again or contact support.
               </p>
@@ -255,74 +255,74 @@ export default async function SuccessPage({ searchParams }: SuccessPageProps) {
           ) : null}
 
           <div className={cn(VS.cards.lightSoft, "mt-4 rounded-xl px-4 py-3")}>
-            <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">
+            <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-slate-600">
               Library version
             </p>
-            <p className="mt-1 text-[0.98rem] font-semibold text-(--text-primary-dark)">
+            <p className="mt-1 text-[0.98rem] font-semibold text-slate-900">
               v{PACK_VERSION}
             </p>
-            <p className="mt-1 text-[0.9rem] text-(--th-body-copy)">
+            <p className="mt-1 text-[0.9rem] text-slate-600">
               Last updated: {lastUpdatedLabel}
             </p>
           </div>
 
           <div className={cn(VS.cards.lightSoft, "mt-4 rounded-xl px-4 py-3")}>
-            <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">
+            <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-slate-600">
               Archive details
             </p>
-            <dl className="mt-2 grid gap-2 text-[0.92rem] text-(--th-body-copy)">
+            <dl className="mt-2 grid gap-2 text-[0.92rem] text-slate-600">
               <div className="flex items-center justify-between gap-4">
                 <dt>Components</dt>
-                <dd className="font-semibold text-(--text-primary-dark)">{COMPONENT_COUNT}</dd>
+                <dd className="font-semibold text-slate-900">{COMPONENT_COUNT}</dd>
               </div>
               <div className="flex items-center justify-between gap-4">
                 <dt>Layouts included</dt>
-                <dd className="font-semibold text-(--text-primary-dark)">{LAYOUT_COUNT}</dd>
+                <dd className="font-semibold text-slate-900">{LAYOUT_COUNT}</dd>
               </div>
               <div className="flex items-center justify-between gap-4">
                 <dt>Archive size</dt>
-                <dd className="font-semibold text-(--text-primary-dark)">{packSizeInfo.formatted}</dd>
+                <dd className="font-semibold text-slate-900">{packSizeInfo.formatted}</dd>
               </div>
             </dl>
           </div>
 
           {!isStaticExport && !stripeConfigured ? (
-            <div className="mt-4 rounded-xl border border-[rgba(234,88,12,0.35)] bg-[rgba(234,88,12,0.14)] px-4 py-3 text-[0.92rem] text-(--text-primary-dark)">
+            <div className="mt-4 rounded-xl border border-[rgba(234,88,12,0.35)] bg-[rgba(234,88,12,0.14)] px-4 py-3 text-[0.92rem] text-slate-900">
               Stripe keys are not configured in this environment, so live checkout details are unavailable.
             </div>
           ) : null}
 
           {!isStaticExport ? (
             <details className={cn(VS.cards.lightSoft, "mt-6 rounded-xl p-4")}>
-              <summary className="cursor-pointer text-[1rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">
+              <summary className="cursor-pointer text-[1rem] font-semibold uppercase tracking-[0.08em] text-slate-600">
                 Checkout summary
               </summary>
               <div className="mt-3 grid gap-3 sm:grid-cols-2">
                 <div>
-                  <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">Session</p>
-                  <p className="mt-1 break-all text-[0.9rem] text-(--text-primary-dark)">{summary?.sessionId ?? sessionId ?? "Unavailable"}</p>
+                  <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-slate-600">Session</p>
+                  <p className="mt-1 break-all text-[0.9rem] text-slate-900">{summary?.sessionId ?? sessionId ?? "Unavailable"}</p>
                 </div>
                 <div>
-                  <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">Amount</p>
-                  <p className="mt-1 text-[1rem] font-semibold text-(--text-primary-dark)">
+                  <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-slate-600">Amount</p>
+                  <p className="mt-1 text-[1rem] font-semibold text-slate-900">
                     {formatTotal(summary?.amountTotal ?? null, summary?.currency ?? null)}
                   </p>
                 </div>
                 <div>
-                  <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">Product</p>
-                  <p className="mt-1 text-[0.96rem] text-(--text-primary-dark)">{summary?.packName ?? MJML_PACK_NAME}</p>
+                  <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-slate-600">Product</p>
+                  <p className="mt-1 text-[0.96rem] text-slate-900">{summary?.packName ?? MJML_PACK_NAME}</p>
                 </div>
                 <div>
-                  <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">Payment status</p>
-                  <p className="mt-1 text-[0.96rem] capitalize text-(--text-primary-dark)">{summary?.paymentStatus ?? "Unavailable"}</p>
+                  <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-slate-600">Payment status</p>
+                  <p className="mt-1 text-[0.96rem] capitalize text-slate-900">{summary?.paymentStatus ?? "Unavailable"}</p>
                 </div>
                 <div>
-                  <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">Billing cycle</p>
-                  <p className="mt-1 text-[0.96rem] capitalize text-(--text-primary-dark)">{summary?.billingCycle?.replace("_", " ") ?? "Unavailable"}</p>
+                  <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-slate-600">Billing cycle</p>
+                  <p className="mt-1 text-[0.96rem] capitalize text-slate-900">{summary?.billingCycle?.replace("_", " ") ?? "Unavailable"}</p>
                 </div>
                 <div>
-                  <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">Email</p>
-                  <p className="mt-1 text-[0.96rem] text-(--text-primary-dark)">{summary?.customerEmail ?? "Unavailable"}</p>
+                  <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-slate-600">Email</p>
+                  <p className="mt-1 text-[0.96rem] text-slate-900">{summary?.customerEmail ?? "Unavailable"}</p>
                 </div>
               </div>
             </details>
@@ -330,14 +330,14 @@ export default async function SuccessPage({ searchParams }: SuccessPageProps) {
 
           {successState === "valid_session" ? (
             <>
-              <div className="mt-6 rounded-xl border border-(--surface-line) bg-(--surface-soft) p-4">
-                <p className="text-[0.95rem] leading-7 text-(--th-body-copy)">
+              <div className="mt-6 rounded-xl border border-slate-200 bg-slate-50 p-4">
+                <p className="text-[0.95rem] leading-7 text-slate-600">
                   Download link:
                 </p>
                 {downloadStatus.available && downloadLink ? (
                   <a
                     href={downloadLink}
-                    className="mt-3 inline-flex h-11 items-center rounded-full bg-(--accent-primary) px-5 text-[0.93rem] font-semibold text-(--text-primary-dark) transition hover:bg-(--accent-secondary) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent-primary) focus-visible:ring-offset-2"
+                    className="mt-3 inline-flex h-11 items-center rounded-full bg-rose-600 px-5 text-[0.93rem] font-semibold text-slate-900 transition hover:bg-rose-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-600 focus-visible:ring-offset-2"
                   >
                     Download pack
                   </a>
@@ -345,17 +345,17 @@ export default async function SuccessPage({ searchParams }: SuccessPageProps) {
               </div>
 
               <article className={cn(VS.cards.lightSoft, "mt-6 rounded-xl p-4")}>
-                <h2 className="text-[1rem] font-semibold text-(--text-primary-dark)">
+                <h2 className="text-[1rem] font-semibold text-slate-900">
                   Next steps
                 </h2>
-                <ul className="mt-2 space-y-1 text-[0.92rem] leading-7 text-(--th-body-copy)">
+                <ul className="mt-2 space-y-1 text-[0.92rem] leading-7 text-slate-600">
                   <li>1. Open the downloaded pack archive.</li>
                   <li>2. Customise included components for your campaign workflows.</li>
                   <li>3. Read integration docs before production send.</li>
                 </ul>
                 <Link
                   href="/pack"
-                  className="mt-3 inline-flex rounded-full border border-(--surface-line) bg-(--surface-soft) px-4 py-2 text-[0.88rem] font-semibold text-(--text-primary-dark) transition hover:border-(--accent-support) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent-primary) focus-visible:ring-offset-2"
+                  className="mt-3 inline-flex rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-[0.88rem] font-semibold text-slate-900 transition hover:border-slate-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-600 focus-visible:ring-offset-2"
                 >
                   What&apos;s included
                 </Link>
@@ -367,13 +367,13 @@ export default async function SuccessPage({ searchParams }: SuccessPageProps) {
             <div className="mt-6 flex flex-wrap gap-3">
               <Link
                 href="/pricing"
-                className="rounded-full bg-(--accent-primary) px-4 py-2 text-[0.9rem] font-semibold text-(--text-primary-dark) transition hover:bg-(--accent-secondary) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent-primary) focus-visible:ring-offset-2"
+                className="rounded-full bg-rose-600 px-4 py-2 text-[0.9rem] font-semibold text-slate-900 transition hover:bg-rose-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-600 focus-visible:ring-offset-2"
               >
                 Go to pricing
               </Link>
               <Link
                 href="/docs"
-                className="rounded-full border border-(--surface-line) bg-(--surface-soft) px-4 py-2 text-[0.9rem] font-semibold text-(--text-primary-dark) transition hover:border-(--accent-support) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent-primary) focus-visible:ring-offset-2"
+                className="rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-[0.9rem] font-semibold text-slate-900 transition hover:border-slate-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-600 focus-visible:ring-offset-2"
               >
                 Open docs
               </Link>
@@ -384,13 +384,13 @@ export default async function SuccessPage({ searchParams }: SuccessPageProps) {
             <div className="mt-6 flex flex-wrap gap-3">
               <Link
                 href="/pricing"
-                className="rounded-full bg-(--accent-primary) px-4 py-2 text-[0.9rem] font-semibold text-(--text-primary-dark) transition hover:bg-(--accent-secondary) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent-primary) focus-visible:ring-offset-2"
+                className="rounded-full bg-rose-600 px-4 py-2 text-[0.9rem] font-semibold text-slate-900 transition hover:bg-rose-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-600 focus-visible:ring-offset-2"
               >
                 View pricing
               </Link>
               <Link
                 href="/workflows"
-                className="rounded-full border border-(--surface-line) bg-(--surface-soft) px-4 py-2 text-[0.9rem] font-semibold text-(--text-primary-dark) transition hover:border-(--accent-support) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent-primary) focus-visible:ring-offset-2"
+                className="rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-[0.9rem] font-semibold text-slate-900 transition hover:border-slate-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-600 focus-visible:ring-offset-2"
               >
                 Explore workflows
               </Link>
@@ -398,7 +398,7 @@ export default async function SuccessPage({ searchParams }: SuccessPageProps) {
           ) : null}
 
           {successState === "download_unavailable" ? (
-            <div className="mt-6 rounded-xl border border-[rgba(220,38,38,0.42)] bg-[rgba(220,38,38,0.14)] px-4 py-3 text-[0.92rem] leading-7 text-(--text-primary-dark)">
+            <div className="mt-6 rounded-xl border border-[rgba(220,38,38,0.42)] bg-[rgba(220,38,38,0.14)] px-4 py-3 text-[0.92rem] leading-7 text-slate-900">
               Download currently unavailable. Please try again or contact support.
             </div>
           ) : null}
@@ -406,19 +406,19 @@ export default async function SuccessPage({ searchParams }: SuccessPageProps) {
           <div className="mt-6 flex flex-wrap gap-3">
             <Link
               href="/pack"
-              className="rounded-full border border-(--surface-line) bg-(--surface-soft) px-4 py-2 text-[0.9rem] font-semibold text-(--text-primary-dark) transition hover:border-(--accent-support) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent-primary) focus-visible:ring-offset-2"
+              className="rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-[0.9rem] font-semibold text-slate-900 transition hover:border-slate-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-600 focus-visible:ring-offset-2"
             >
               What&apos;s included
             </Link>
             <Link
               href="/docs"
-              className="rounded-full border border-(--surface-line) bg-(--surface-soft) px-4 py-2 text-[0.9rem] font-semibold text-(--text-primary-dark) transition hover:border-(--accent-support) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent-primary) focus-visible:ring-offset-2"
+              className="rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-[0.9rem] font-semibold text-slate-900 transition hover:border-slate-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-600 focus-visible:ring-offset-2"
             >
               Open docs
             </Link>
             <Link
               href="/pricing"
-              className="rounded-full border border-(--surface-line) bg-(--surface-soft) px-4 py-2 text-[0.9rem] font-semibold text-(--text-primary-dark) transition hover:border-(--accent-support) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent-primary) focus-visible:ring-offset-2"
+              className="rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-[0.9rem] font-semibold text-slate-900 transition hover:border-slate-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-600 focus-visible:ring-offset-2"
             >
               Back to pricing
             </Link>

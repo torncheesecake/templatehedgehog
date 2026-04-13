@@ -10,20 +10,20 @@ function getStatusStyles(status: EmailCompatibility["status"]) {
   if (status === "tested") {
     return {
       label: "Tested",
-      className: "border-(--surface-line) bg-[rgba(22,163,74,0.18)] text-(--text-primary-dark)",
+      className: "border-slate-200 bg-[rgba(22,163,74,0.18)] text-slate-900",
     };
   }
 
   if (status === "partial") {
     return {
       label: "Partial",
-      className: "border-(--surface-line) bg-[rgba(249,115,22,0.2)] text-(--text-primary-dark)",
+      className: "border-slate-200 bg-[rgba(249,115,22,0.2)] text-slate-900",
     };
   }
 
   return {
     label: "Unknown",
-    className: "border-(--surface-line) bg-(--surface-strong) text-(--th-body-copy)",
+    className: "border-slate-200 bg-white text-slate-600",
   };
 }
 
@@ -37,7 +37,7 @@ export function CompatibilityTable({
       <table className="w-full min-w-[420px] border-collapse text-left">
         <caption className="sr-only">{caption}</caption>
         <thead>
-          <tr className="border-b border-(--surface-line) text-[0.84rem] uppercase tracking-[0.08em] text-(--th-body-copy)">
+          <tr className="border-b border-slate-200 text-[0.84rem] uppercase tracking-[0.08em] text-slate-600">
             <th scope="col" className="px-3 py-2.5 font-semibold">
               Client
             </th>
@@ -54,10 +54,10 @@ export function CompatibilityTable({
             const statusMeta = getStatusStyles(item.status);
 
             return (
-              <tr key={`${item.client}-${item.status}`} className="border-b border-(--surface-line) last:border-b-0">
+              <tr key={`${item.client}-${item.status}`} className="border-b border-slate-200 last:border-b-0">
                 <th
                   scope="row"
-                  className="px-3 py-3.5 text-[1rem] font-semibold text-(--foreground)"
+                  className="px-3 py-3.5 text-[1rem] font-semibold text-slate-900"
                 >
                   {item.client}
                 </th>
@@ -68,7 +68,7 @@ export function CompatibilityTable({
                     {statusMeta.label}
                   </span>
                 </td>
-                <td className="px-3 py-3.5 text-[0.95rem] leading-7 text-(--dune-muted)">
+                <td className="px-3 py-3.5 text-[0.95rem] leading-7 text-slate-500">
                   {item.notes ? item.notes : "No additional notes."}
                 </td>
               </tr>
