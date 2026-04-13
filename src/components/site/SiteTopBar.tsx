@@ -56,7 +56,7 @@ export function SiteTopBar({
               href={ctaHref}
               className={
                 isHero
-                  ? "inline-flex h-11 items-center rounded-[0.82rem] border border-rose-600 bg-rose-600 px-5 text-[0.95rem] font-semibold text-white tracking-[0.01em] transition duration-200 hover:bg-rose-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-600 focus-visible:ring-offset-2"
+                  ? "inline-flex h-11 items-center rounded-[0.82rem] border border-rose-600 bg-rose-600 px-5 text-[0.95rem] font-semibold !text-white tracking-[0.01em] transition duration-200 hover:bg-rose-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-600 focus-visible:ring-offset-2"
                   : "button-refined-primary inline-flex h-11 items-center px-5 text-[0.95rem] font-semibold text-white tracking-[0.01em] transition duration-200 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-600 focus-visible:ring-offset-2"
               }
             >

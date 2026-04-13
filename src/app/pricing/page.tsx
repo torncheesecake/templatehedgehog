@@ -353,14 +353,14 @@ export default function PricingPage() {
                     label={PAID_CTA_LABEL}
                     event="click_buy_now"
                     payload={{ source: "pricing_final_cta", packId: "pack-1", billingCycle: "one_off" }}
-                    className="inline-flex h-12 items-center rounded-[0.9rem] border border-rose-600 bg-rose-600 px-6 text-[0.92rem] font-semibold text-white shadow-[0_18px_36px_rgba(0,0,0,0.34)] transition hover:bg-rose-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-600 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                    className="inline-flex h-12 items-center rounded-[0.9rem] border border-rose-600 bg-rose-600 px-6 text-[0.92rem] font-semibold !text-white shadow-[0_18px_36px_rgba(0,0,0,0.34)] transition hover:bg-rose-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-600 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                   />
                 </form>
               ) : (
                 <button
                   type="button"
                   disabled
-                  className="inline-flex h-12 items-center rounded-[0.9rem] border border-rose-600 bg-rose-600 px-6 text-[0.92rem] font-semibold text-white shadow-[0_18px_36px_rgba(0,0,0,0.34)] opacity-80"
+                  className="inline-flex h-12 items-center rounded-[0.9rem] border border-rose-600 bg-rose-600 px-6 text-[0.92rem] font-semibold !text-white shadow-[0_18px_36px_rgba(0,0,0,0.34)] opacity-80"
                 >
                   {PAID_CTA_LABEL}
                 </button>

@@ -162,7 +162,7 @@ export function MjmlWorkbench({
               type="button"
               onClick={handleCompile}
               disabled={isCompiling || !canCompileInBrowser}
-              className="inline-flex h-10 items-center rounded-[0.8rem] border border-[#d13d4c] bg-[#d13d4c] px-4 text-[0.8rem] font-semibold uppercase tracking-[0.06em] text-white transition hover:bg-[#b93340] disabled:cursor-not-allowed disabled:opacity-60 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#d13d4c] focus-visible:ring-offset-2"
+              className="inline-flex h-10 items-center rounded-[0.8rem] border border-[#d13d4c] bg-[#d13d4c] px-4 text-[0.8rem] font-semibold uppercase tracking-[0.06em] !text-white transition hover:bg-[#b93340] disabled:cursor-not-allowed disabled:opacity-60 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#d13d4c] focus-visible:ring-offset-2"
             >
               {isCompiling
                 ? "Compiling..."
@@ -227,7 +227,7 @@ export function MjmlWorkbench({
             <button
               type="button"
               onClick={handleCopyMjml}
-              className="inline-flex h-10 items-center rounded-[0.8rem] border border-[#d13d4c] bg-[#d13d4c] px-4 text-[0.8rem] font-semibold uppercase tracking-[0.06em] text-white transition hover:bg-[#b93340] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#d13d4c] focus-visible:ring-offset-2"
+              className="inline-flex h-10 items-center rounded-[0.8rem] border border-[#d13d4c] bg-[#d13d4c] px-4 text-[0.8rem] font-semibold uppercase tracking-[0.06em] !text-white transition hover:bg-[#b93340] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#d13d4c] focus-visible:ring-offset-2"
             >
               Copy MJML
             </button>

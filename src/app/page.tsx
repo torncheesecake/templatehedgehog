@@ -97,7 +97,7 @@ function buildWorkflowShowcase() {
 export default function Home() {
   const pageWidth = "mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12";
   const primaryButton =
-    "inline-flex h-11 items-center rounded-[0.8rem] border border-[#d13d4c] bg-[#d13d4c] px-5 text-[0.86rem] font-semibold text-white transition hover:bg-[#b93340] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d13d4c] focus-visible:ring-offset-2";
+    "inline-flex h-11 items-center rounded-[0.8rem] border border-[#d13d4c] bg-[#d13d4c] px-5 text-[0.86rem] font-semibold !text-white transition hover:bg-[#b93340] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d13d4c] focus-visible:ring-offset-2";
   const secondaryButton =
     "inline-flex h-11 items-center rounded-[0.8rem] border border-black/10 bg-white px-5 text-[0.86rem] font-semibold text-black transition hover:border-black/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d13d4c] focus-visible:ring-offset-2";
   const workflowShowcase = buildWorkflowShowcase();

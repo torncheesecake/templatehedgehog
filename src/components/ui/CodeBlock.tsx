@@ -223,7 +223,7 @@ export function CodeBlock({
             type="button"
             onClick={handleCopy}
             disabled={isCopying || isPreparing}
-            className="inline-flex h-10 items-center gap-2 rounded-[0.8rem] border border-[#d13d4c] bg-[#d13d4c] px-4 text-[0.8rem] font-semibold uppercase tracking-[0.06em] text-white transition hover:bg-[#b93340] disabled:cursor-not-allowed disabled:opacity-60 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#d13d4c] focus-visible:ring-offset-2"
+            className="inline-flex h-10 items-center gap-2 rounded-[0.8rem] border border-[#d13d4c] bg-[#d13d4c] px-4 text-[0.8rem] font-semibold uppercase tracking-[0.06em] !text-white transition hover:bg-[#b93340] disabled:cursor-not-allowed disabled:opacity-60 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#d13d4c] focus-visible:ring-offset-2"
           >
             {isCopying || isPreparing ? (
               <>
