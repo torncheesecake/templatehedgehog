@@ -94,7 +94,7 @@ export function InvoiceWorkbench({ invoices }: InvoiceWorkbenchProps) {
 
         <button
           onClick={saveDraft}
-          className="mt-4 w-full rounded-lg bg-rose-600 px-4 py-2.5 text-sm font-semibold text-slate-900"
+          className="mt-4 w-full rounded-lg bg-rose-600 px-4 py-2.5 text-sm font-semibold text-white"
         >
           Save draft
         </button>

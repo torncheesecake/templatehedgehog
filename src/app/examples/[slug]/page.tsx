@@ -61,7 +61,7 @@ export default async function ExampleDetailRedirectPage({ params }: Props) {
           <div className="mt-6 flex flex-wrap gap-3">
             <Link
               href={`/workflows/${workflow.slug}`}
-              className="inline-flex h-11 items-center rounded-[0.82rem] border border-rose-600 bg-rose-600 px-4 text-[0.92rem] font-semibold !text-slate-900 transition duration-200 hover:bg-rose-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-600 focus-visible:ring-offset-2"
+              className="inline-flex h-11 items-center rounded-[0.82rem] border border-rose-600 bg-rose-600 px-4 text-[0.92rem] font-semibold text-white transition duration-200 hover:bg-rose-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-600 focus-visible:ring-offset-2"
             >
               Open workflow
             </Link>

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Roboto_Serif } from "next/font/google";
 import { ArrowRight } from "lucide-react";
 import { ComparisonSection } from "@/components/site/ComparisonSection";
 import { createPageTitle, TEMPLATE_CONFIG } from "@/config/template";
@@ -30,13 +29,6 @@ import {
 import { getPackById } from "@/lib/packCatalog";
 import { isStripeConfigured } from "@/lib/stripe-server";
 import { PACK_LAST_UPDATED, PACK_VERSION, formatVersionDate } from "@/lib/versioning";
-import { cn } from "@/lib/utils";
-
-const displaySerif = Roboto_Serif({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-  display: "swap",
-});
 
 const PAID_CTA_LABEL = "Get Hedgehog Core - £79";
 
@@ -154,7 +146,7 @@ export default function PricingPage() {
             <p className="text-[1rem] font-semibold tracking-[0.012em] text-slate-600">
               Workflow-first MJML system
             </p>
-            <h1 className={cn("mt-4 max-w-3xl text-[3rem] font-semibold leading-[0.88] text-slate-900 sm:text-[4.2rem] lg:text-[4.85rem]", displaySerif.className)}>
+            <h1 className="mt-4 max-w-3xl text-[3rem] font-semibold leading-[0.88] text-slate-900 sm:text-[4.2rem] lg:text-[4.85rem]">
               Stop rebuilding the same emails every project
             </h1>
             <p className="mt-6 max-w-3xl text-[1.08rem] leading-8 text-slate-600">
@@ -318,7 +310,7 @@ export default function PricingPage() {
                 key={asset.title}
                 className="rounded-[0.92rem] border border-slate-200 bg-slate-50 px-5 py-4 shadow-[0_10px_22px_rgba(15,23,42,0.06)]"
               >
-                <dt className={cn("text-[1.08rem] font-semibold text-slate-900", displaySerif.className)}>{asset.title}</dt>
+                <dt className="text-[1.08rem] font-semibold text-slate-900">{asset.title}</dt>
                 <dd className="mt-1 text-[0.94rem] leading-7 text-slate-600">{asset.detail}</dd>
               </div>
             ))}
@@ -344,7 +336,7 @@ export default function PricingPage() {
         <div id="buy-core" className="th-cta-island rounded-[1.45rem] border border-slate-200 bg-white px-8 py-12 sm:px-11 sm:py-14 lg:px-12 lg:py-16">
           <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
             <div>
-              <h2 className={cn("max-w-3xl text-[2.05rem] font-semibold leading-[0.95] text-slate-900 sm:text-[2.45rem]", displaySerif.className)}>
+              <h2 className="max-w-3xl text-[2.05rem] font-semibold leading-[0.95] text-slate-900 sm:text-[2.45rem]">
                 Buy once. Ship faster on every campaign.
               </h2>
               <p className="mt-4 max-w-3xl text-[1rem] leading-8 text-slate-500">
@@ -361,14 +353,14 @@ export default function PricingPage() {
                     label={PAID_CTA_LABEL}
                     event="click_buy_now"
                     payload={{ source: "pricing_final_cta", packId: "pack-1", billingCycle: "one_off" }}
-                    className="inline-flex h-12 items-center rounded-[0.9rem] border border-rose-600 bg-rose-600 px-6 text-[0.92rem] font-semibold !text-slate-900 shadow-[0_18px_36px_rgba(0,0,0,0.34)] transition hover:bg-rose-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-600 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                    className="inline-flex h-12 items-center rounded-[0.9rem] border border-rose-600 bg-rose-600 px-6 text-[0.92rem] font-semibold text-white shadow-[0_18px_36px_rgba(0,0,0,0.34)] transition hover:bg-rose-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-600 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                   />
                 </form>
               ) : (
                 <button
                   type="button"
                   disabled
-                  className="inline-flex h-12 items-center rounded-[0.9rem] border border-rose-600 bg-rose-600 px-6 text-[0.92rem] font-semibold !text-slate-900 shadow-[0_18px_36px_rgba(0,0,0,0.34)] opacity-80"
+                  className="inline-flex h-12 items-center rounded-[0.9rem] border border-rose-600 bg-rose-600 px-6 text-[0.92rem] font-semibold text-white shadow-[0_18px_36px_rgba(0,0,0,0.34)] opacity-80"
                 >
                   {PAID_CTA_LABEL}
                 </button>

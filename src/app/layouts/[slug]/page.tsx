@@ -282,14 +282,14 @@ export default async function LayoutDetailPage({ params }: Props) {
               <div className="mt-6 flex flex-wrap gap-3">
                 <Link
                   href="/pricing"
-                  className="inline-flex h-11 items-center gap-2 rounded-[0.8rem] border border-rose-600 bg-rose-600 px-5 text-[1rem] font-semibold tracking-[0.01em] !text-slate-900 transition duration-200 hover:-translate-y-0.5 hover:bg-rose-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-600 focus-visible:ring-offset-2"
+                  className="inline-flex h-11 items-center gap-2 rounded-[0.8rem] border border-rose-600 bg-rose-600 px-5 text-[1rem] font-semibold tracking-[0.01em] text-white transition duration-200 hover:-translate-y-0.5 hover:bg-rose-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-600 focus-visible:ring-offset-2"
                 >
                   {`View ${MJML_PACK_NAME}`}
                   <ArrowRight className="h-4 w-4" />
                 </Link>
                 <Link
                   href="/docs"
-                  className="inline-flex h-11 items-center rounded-[0.8rem] border border-slate-200 bg-slate-50 px-5 text-[1rem] font-semibold tracking-[0.01em] !text-slate-900 transition duration-200 hover:-translate-y-0.5 hover:border-slate-300 hover:!text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-600 focus-visible:ring-offset-2"
+                  className="inline-flex h-11 items-center rounded-[0.8rem] border border-slate-200 bg-slate-50 px-5 text-[1rem] font-semibold tracking-[0.01em] text-white transition duration-200 hover:-translate-y-0.5 hover:border-slate-300 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-600 focus-visible:ring-offset-2"
                 >
                   Read docs
                 </Link>

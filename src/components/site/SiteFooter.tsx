@@ -61,13 +61,13 @@ export function SiteFooter({ flush = false }: SiteFooterProps) {
             <div className="flex flex-wrap gap-3 lg:justify-end">
               <Link
                 href="/pricing"
-                className="inline-flex h-11 items-center rounded-[0.82rem] border border-rose-600 bg-rose-600 px-5 text-[0.95rem] font-semibold !text-slate-900 tracking-[0.01em] transition duration-200 hover:bg-rose-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-600 focus-visible:ring-offset-2"
+                className="inline-flex h-11 items-center rounded-[0.82rem] border border-rose-600 bg-rose-600 px-5 text-[0.95rem] font-semibold text-white tracking-[0.01em] transition duration-200 hover:bg-rose-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-600 focus-visible:ring-offset-2"
               >
                 Get Hedgehog Core - £79
               </Link>
               <Link
                 href="/workflows"
-                className="inline-flex h-11 items-center rounded-[0.82rem] border border-slate-200 bg-transparent px-5 text-[0.95rem] font-semibold !text-slate-900 tracking-[0.01em] transition duration-200 hover:border-slate-300 hover:!text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-600 focus-visible:ring-offset-2"
+                className="inline-flex h-11 items-center rounded-[0.82rem] border border-slate-200 bg-transparent px-5 text-[0.95rem] font-semibold text-white tracking-[0.01em] transition duration-200 hover:border-slate-300 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-600 focus-visible:ring-offset-2"
               >
                 Explore workflows
               </Link>

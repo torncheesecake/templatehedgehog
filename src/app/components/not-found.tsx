@@ -16,7 +16,7 @@ export default function ComponentsNotFoundPage() {
         <div className="mt-7 flex flex-wrap justify-center gap-3">
           <Link
             href="/components"
-            className="inline-flex h-11 items-center rounded-full bg-rose-600 px-5 text-[0.93rem] font-bold text-slate-900 transition hover:bg-rose-700"
+            className="inline-flex h-11 items-center rounded-full bg-rose-600 px-5 text-[0.93rem] font-bold text-white transition hover:bg-rose-700"
           >
             Back to gallery
           </Link>

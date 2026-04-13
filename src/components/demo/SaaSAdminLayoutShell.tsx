@@ -123,7 +123,7 @@ export function SaaSAdminLayoutShell({ children }: { children: React.ReactNode }
           <section className="mt-4 rounded-xl border border-slate-200 bg-white p-4">
             <p className="text-xs uppercase tracking-[0.08em] text-rose-600">Buyer actions</p>
             <div className="mt-3 grid gap-2">
-              <Link href="/templates/saas-admin-pro#buy" className="rounded-lg bg-rose-600 px-3 py-2 text-sm font-semibold text-slate-900">
+              <Link href="/templates/saas-admin-pro#buy" className="rounded-lg bg-rose-600 px-3 py-2 text-sm font-semibold text-white">
                 Buy template
               </Link>
               <Link

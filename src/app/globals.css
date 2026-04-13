@@ -63,7 +63,7 @@ html {
   --color-background: var(--bg-canvas);
   --color-foreground: var(--text-primary);
   --font-sans: Arial, sans-serif;
-  --font-mono: var(--font-space-mono);
+  --font-mono: "JetBrains Mono", Menlo, Monaco, ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
 }
 
 * {
@@ -86,7 +86,7 @@ h1,
 h2,
 h3 {
   margin: 0;
-  font-family: var(--font-roboto-serif), Georgia, serif;
+  font-family: Georgia, "Times New Roman", Times, serif;
   font-weight: 620;
   letter-spacing: 0.005em;
   text-wrap: balance;
@@ -146,7 +146,7 @@ label {
 
 .code-surface .shiki,
 .code-surface .shiki code {
-  font-family: var(--font-jetbrains-mono), "JetBrains Mono", Menlo, Monaco, monospace !important;
+  font-family: "JetBrains Mono", Menlo, Monaco, ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace !important;
   font-size: 0.9rem;
   line-height: 1.75;
   background: transparent !important;
