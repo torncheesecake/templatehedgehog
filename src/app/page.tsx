@@ -38,24 +38,24 @@ const primaryWorkflowSlugs = [
 
 const comparisonRows = [
   {
-    label: "Time",
-    fromScratch: "4 to 8 hours to assemble and stabilise a single production flow.",
-    withHedgehog: "Start from a mapped workflow and adapt in under an hour.",
+    label: "Build time",
+    fromScratch: "4 to 8 hours to assemble, test, and stabilise one production workflow.",
+    withHedgehog: "Start from a ready workflow and adapt in under an hour.",
   },
   {
-    label: "QA passes",
-    fromScratch: "Multiple rounds to catch layout drift and client breakage.",
-    withHedgehog: "Fewer passes because structure and output are production-oriented.",
+    label: "QA passes needed",
+    fromScratch: "Multiple rounds to catch client breakage and layout drift.",
+    withHedgehog: "Fewer rounds because structure and output are already production-oriented.",
   },
   {
-    label: "Consistency",
-    fromScratch: "Patterns diverge between campaigns and lifecycle sends over time.",
-    withHedgehog: "Shared workflow, layout, and component structure across every send.",
+    label: "System consistency",
+    fromScratch: "Campaign and lifecycle patterns drift apart across projects.",
+    withHedgehog: "One shared workflow, layout, and component model across all sends.",
   },
   {
-    label: "Handoff friction",
-    fromScratch: "Manual interpretation between development, QA, and ESP delivery.",
-    withHedgehog: "MJML source and compiled HTML aligned in one system.",
+    label: "Dev to QA to ESP handoff",
+    fromScratch: "Manual interpretation and rework between development, QA, and ESP delivery.",
+    withHedgehog: "MJML source and compiled HTML stay aligned in one mapped system.",
   },
 ] as const;
 
@@ -384,7 +384,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-y border-(--surface-line) bg-(--surface-soft) py-24 sm:py-28 lg:py-30">
+      <section className="border-y border-(--surface-line) bg-(--surface-soft) py-24 sm:py-28 lg:py-32">
         <div className={VS.widths.page}>
           <div className="max-w-[74ch]">
             <p className="text-[1rem] font-semibold tracking-[0.012em] text-(--th-body-copy)">
@@ -399,79 +399,81 @@ export default function Home() {
               Build it yourself vs Hedgehog
             </h2>
             <p className="mt-5 max-w-[66ch] text-[1rem] leading-8 text-(--th-body-copy)">
-              Same requirement, two very different levels of effort across
-              delivery.
+              Same output required. One path is manual and repetitive, the
+              other starts from production-ready workflow structure.
             </p>
           </div>
 
-          <div className="mt-12 rounded-[1.3rem] border border-(--surface-line) bg-(--surface-strong) p-6 sm:p-8 lg:p-9">
-            <div className="grid gap-6 lg:grid-cols-2">
-              <article className="rounded-[1rem] border border-[color-mix(in_srgb,var(--surface-line)_74%,transparent)] bg-[color-mix(in_srgb,var(--surface-soft)_88%,transparent)] p-5 sm:p-6">
-                <h3
-                  className={cn(
-                    "text-[1.3rem] font-semibold leading-8 text-(--text-primary-dark)",
-                    displaySerif.className,
-                  )}
-                >
+          <article className="mt-14 overflow-hidden rounded-[1.45rem] border border-(--surface-line) bg-[color-mix(in_srgb,var(--surface-strong)_88%,var(--surface-soft))]">
+            <header className="grid gap-3 border-b border-[color-mix(in_srgb,var(--surface-line)_56%,transparent)] px-5 py-5 sm:px-6 lg:grid-cols-[minmax(120px,0.42fr)_minmax(0,1fr)_minmax(0,1fr)] lg:items-end">
+              <p className="text-[0.75rem] font-semibold uppercase tracking-[0.09em] text-(--th-body-copy)">
+                Metric
+              </p>
+              <div>
+                <p className="text-[0.95rem] font-semibold text-(--th-body-copy)">
                   Build from scratch
-                </h3>
-                <ul className="mt-5 space-y-4">
-                  {comparisonItems.map((item) => (
-                    <li key={`scratch-${item.label}`}>
-                      <p className="text-[0.8rem] font-semibold uppercase tracking-[0.09em] text-(--th-body-copy)">
-                        {item.label}
-                      </p>
-                      <p className="mt-1 text-[0.9rem] leading-7 text-(--th-body-copy)">
-                        {item.fromScratch}
-                      </p>
-                      <div className="mt-2 h-1.5 rounded-full bg-[color-mix(in_srgb,var(--surface-line)_76%,transparent)]">
-                        <span
-                          className="block h-1.5 rounded-full bg-[color-mix(in_srgb,var(--th-accent)_70%,black)]"
-                          style={{ width: `${item.fromScratchScore}%` }}
-                        />
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              </article>
-
-              <article className="relative rounded-[1rem] border border-(--accent-support) bg-(--dune-deep) p-5 shadow-[0_18px_34px_rgba(0,0,0,0.34)] sm:p-6">
-                <span className="absolute right-4 top-4 rounded-full border border-[hsl(var(--th-accent-support)/0.35)] bg-[hsl(var(--th-accent-support)/0.12)] px-2.5 py-1 text-[0.66rem] font-semibold uppercase tracking-[0.09em] text-(--text-primary-dark)">
-                  Stronger path
-                </span>
-                <h3
-                  className={cn(
-                    "text-[1.3rem] font-semibold leading-8 text-(--text-primary-dark)",
-                    displaySerif.className,
-                  )}
-                >
+                </p>
+                <p className="mt-1 text-[0.78rem] leading-6 text-(--th-body-copy)">
+                  You assemble, test, and debug each flow manually.
+                </p>
+              </div>
+              <div>
+                <p className="text-[0.95rem] font-semibold text-(--text-primary-dark)">
                   Using Hedgehog
-                </h3>
-                <ul className="mt-5 space-y-4">
-                  {comparisonItems.map((item) => (
-                    <li key={`hedgehog-${item.label}`}>
-                      <p className="text-[0.8rem] font-semibold uppercase tracking-[0.09em] text-(--th-body-copy)">
-                        {item.label}
-                      </p>
-                      <p className="mt-1 text-[0.9rem] leading-7 text-(--text-primary-dark)">
-                        {item.withHedgehog}
-                      </p>
-                      <div className="mt-2 h-1.5 rounded-full bg-[color-mix(in_srgb,var(--surface-line)_80%,transparent)]">
-                        <span
-                          className="block h-1.5 rounded-full bg-(--accent-support)"
-                          style={{ width: `${item.withHedgehogScore}%` }}
-                        />
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              </article>
+                </p>
+                <p className="mt-1 text-[0.78rem] leading-6 text-(--th-body-copy)">
+                  Start from mapped workflows and ship faster.
+                </p>
+              </div>
+            </header>
+
+            <div className="divide-y divide-[color-mix(in_srgb,var(--surface-line)_52%,transparent)]">
+              {comparisonItems.map((item) => (
+                <article
+                  key={item.label}
+                  className="grid gap-4 px-5 py-5 sm:px-6 lg:grid-cols-[minmax(120px,0.42fr)_minmax(0,1fr)_minmax(0,1fr)]"
+                >
+                  <p className="text-[0.76rem] font-semibold uppercase tracking-[0.09em] text-(--th-body-copy) lg:pt-1">
+                    {item.label}
+                  </p>
+
+                  <div className="rounded-[0.95rem] border border-[color-mix(in_srgb,var(--surface-line)_58%,transparent)] bg-[color-mix(in_srgb,var(--surface-muted)_66%,var(--surface-soft))] p-4">
+                    <span className="inline-flex rounded-full border border-[color-mix(in_srgb,var(--surface-line)_72%,transparent)] bg-[color-mix(in_srgb,var(--surface-strong)_84%,transparent)] px-2.5 py-0.5 text-[0.66rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">
+                      Higher effort
+                    </span>
+                    <p className="mt-2 text-[0.9rem] leading-7 text-(--th-body-copy)">
+                      {item.fromScratch}
+                    </p>
+                    <div className="mt-3 h-1.5 rounded-full bg-[color-mix(in_srgb,var(--surface-line)_80%,transparent)]">
+                      <span
+                        className="block h-1.5 rounded-full bg-[rgba(210,225,218,0.78)]"
+                        style={{ width: `${item.fromScratchScore}%` }}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="rounded-[0.95rem] border border-[color-mix(in_srgb,var(--accent-support)_38%,var(--surface-line))] bg-[color-mix(in_srgb,var(--dune-deep)_90%,var(--surface-strong))] p-4">
+                    <span className="inline-flex rounded-full border border-[hsl(var(--th-accent-support)/0.32)] bg-[hsl(var(--th-accent-support)/0.14)] px-2.5 py-0.5 text-[0.66rem] font-semibold uppercase tracking-[0.08em] text-(--text-primary-dark)">
+                      Reduced effort
+                    </span>
+                    <p className="mt-2 text-[0.9rem] leading-7 text-(--text-primary-dark)">
+                      {item.withHedgehog}
+                    </p>
+                    <div className="mt-3 h-1.5 rounded-full bg-[color-mix(in_srgb,var(--surface-line)_80%,transparent)]">
+                      <span
+                        className="block h-1.5 rounded-full bg-(--accent-support)"
+                        style={{ width: `${item.withHedgehogScore}%` }}
+                      />
+                    </div>
+                  </div>
+                </article>
+              ))}
             </div>
-          </div>
+          </article>
         </div>
       </section>
 
-      <section className="border-b border-(--surface-line) bg-(--surface-strong) py-24 sm:py-28 lg:py-30">
+      <section className="border-y border-(--surface-line) bg-(--surface-strong) py-24 sm:py-28 lg:py-32">
         <div className={VS.widths.page}>
           <div className="max-w-[74ch]">
             <p className="text-[1rem] font-semibold tracking-[0.012em] text-(--th-body-copy)">
@@ -491,54 +493,73 @@ export default function Home() {
             </p>
           </div>
 
-          <article className="mt-12 overflow-hidden rounded-[1.35rem] border border-(--surface-line) bg-(--surface-soft)">
-            <div className="grid lg:grid-cols-[minmax(0,1.06fr)_minmax(0,0.94fr)]">
-              <div className="p-6 sm:p-8 lg:p-9">
+          <article className="mt-14 overflow-hidden rounded-[1.5rem] border border-(--surface-line) bg-[color-mix(in_srgb,var(--surface-soft)_94%,transparent)]">
+            <div className="grid lg:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)]">
+              <div className="p-6 sm:p-8 lg:p-10">
                 <p className="text-[0.78rem] font-semibold uppercase tracking-[0.09em] text-(--th-body-copy)">
                   MJML to compiled HTML
                 </p>
-                <div className="mt-5 grid gap-4 md:grid-cols-2">
-                  <div>
-                    <p className="text-[0.72rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">
-                      MJML
-                    </p>
-                    <pre className="mt-2 overflow-x-auto rounded-[0.82rem] border border-[color-mix(in_srgb,var(--surface-line)_76%,transparent)] bg-[color-mix(in_srgb,var(--surface-strong)_84%,transparent)] p-3 text-[0.72rem] leading-6 text-(--text-primary-dark)">
-                      {mjmlSnippet}
-                    </pre>
+                <div className="mt-5 rounded-[1.05rem] border border-[color-mix(in_srgb,var(--surface-line)_68%,transparent)] bg-[color-mix(in_srgb,var(--surface-strong)_86%,transparent)] p-4 sm:p-5">
+                  <div className="inline-flex flex-wrap items-center gap-2 text-[0.68rem] font-semibold uppercase tracking-[0.09em] text-(--th-body-copy)">
+                    <span>Source</span>
+                    <ArrowRight className="h-3.5 w-3.5 text-(--accent-support)" />
+                    <span>Compile</span>
+                    <ArrowRight className="h-3.5 w-3.5 text-(--accent-support)" />
+                    <span>Output</span>
                   </div>
-                  <div>
-                    <p className="text-[0.72rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">
-                      HTML
-                    </p>
-                    <pre className="mt-2 overflow-x-auto rounded-[0.82rem] border border-[color-mix(in_srgb,var(--surface-line)_76%,transparent)] bg-[color-mix(in_srgb,var(--surface-strong)_84%,transparent)] p-3 text-[0.72rem] leading-6 text-(--text-primary-dark)">
-                      {htmlSnippet}
-                    </pre>
+                  <div className="mt-4 grid gap-4 md:grid-cols-2">
+                    <div className="overflow-hidden rounded-[0.88rem] border border-[color-mix(in_srgb,var(--surface-line)_64%,transparent)]">
+                      <p className="border-b border-[color-mix(in_srgb,var(--surface-line)_58%,transparent)] bg-[color-mix(in_srgb,var(--surface-soft)_92%,transparent)] px-3 py-2 text-[0.72rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">
+                        MJML source
+                      </p>
+                      <pre className="overflow-x-auto bg-[color-mix(in_srgb,var(--surface-strong)_88%,transparent)] p-3 text-[0.72rem] leading-6 text-(--text-primary-dark)">
+                        {mjmlSnippet}
+                      </pre>
+                    </div>
+                    <div className="overflow-hidden rounded-[0.88rem] border border-[color-mix(in_srgb,var(--surface-line)_64%,transparent)]">
+                      <p className="border-b border-[color-mix(in_srgb,var(--surface-line)_58%,transparent)] bg-[color-mix(in_srgb,var(--surface-soft)_92%,transparent)] px-3 py-2 text-[0.72rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">
+                        Compiled HTML
+                      </p>
+                      <pre className="overflow-x-auto bg-[color-mix(in_srgb,var(--surface-strong)_88%,transparent)] p-3 text-[0.72rem] leading-6 text-(--text-primary-dark)">
+                        {htmlSnippet}
+                      </pre>
+                    </div>
                   </div>
                 </div>
               </div>
 
-              <div className="border-t border-(--surface-line) p-6 sm:p-8 lg:border-l lg:border-t-0 lg:p-9">
+              <div className="border-t border-(--surface-line) p-6 sm:p-8 lg:border-l lg:border-t-0 lg:p-10">
                 <p className="text-[0.78rem] font-semibold uppercase tracking-[0.09em] text-(--th-body-copy)">
-                  Pack structure and mapping
+                  Pack structure and workflow mapping
                 </p>
-                <pre className="mt-4 overflow-x-auto text-[0.76rem] leading-7 text-(--text-primary-dark)">
-{`src/workflows/
-src/layouts/
-src/components/
+
+                <p className="mt-4 text-[0.72rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">
+                  File tree excerpt
+                </p>
+                <pre className="mt-2 overflow-x-auto text-[0.76rem] leading-7 text-(--text-primary-dark)">
+{`workflows/
+layouts/
+components/
 compiled/*.html
 docs/
 mjml.config`}
                 </pre>
 
-                <p className="mt-5 text-[0.76rem] font-semibold uppercase tracking-[0.09em] text-(--th-body-copy)">
-                  Workflow mapping path
+                <p className="mt-5 text-[0.72rem] font-semibold uppercase tracking-[0.08em] text-(--th-body-copy)">
+                  Mapping path
                 </p>
-                <p className="mt-2 text-[0.86rem] leading-6 text-(--text-primary-dark)">
+                <ol className="mt-2 space-y-1.5 text-[0.86rem] leading-6 text-(--text-primary-dark)">
+                  <li>{`workflow/${mappingWorkflow?.slug ?? "onboarding"}`}</li>
+                  <li>{`layout/${mappingWorkflow?.linkedLayoutSlug ?? "saas-welcome-system"}`}</li>
+                  <li>{`component/${mappingWorkflow?.componentStack[0]?.componentSlug ?? "header-brand-row"}`}</li>
+                  <li>{`compiled/${mappingWorkflow?.slug ?? "onboarding"}.html`}</li>
+                </ol>
+                <p className="mt-3 text-[0.8rem] leading-6 text-(--th-body-copy)">
                   {mappingPath}
                 </p>
 
                 {mappingWorkflow ? (
-                  <div className="relative mt-6 aspect-[16/10] overflow-hidden rounded-[0.92rem] border border-[color-mix(in_srgb,var(--surface-line)_78%,transparent)]">
+                  <div className="relative mt-6 aspect-[16/10] overflow-hidden rounded-[0.95rem] border border-[color-mix(in_srgb,var(--surface-line)_68%,transparent)]">
                     <Image
                       src={mappingWorkflow.previewImageUrl}
                       alt={`${mappingWorkflow.title} technical preview`}

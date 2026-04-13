@@ -1,8 +1,10 @@
+const pageWidth = "mx-auto w-full max-w-[1840px] px-5 sm:px-8 lg:px-14";
+
 export const visualSystem = {
   widths: {
-    page: "mx-auto w-full max-w-[1840px] px-5 sm:px-8 lg:px-14",
-    content: "mx-auto w-full max-w-[1120px]",
-    docs: "mx-auto w-full max-w-[1500px]",
+    page: pageWidth,
+    content: pageWidth,
+    docs: pageWidth,
     bodyNarrow: "max-w-[60ch]",
     bodyWide: "max-w-[76ch]",
   },
@@ -143,7 +145,7 @@ export const visualSystem = {
       main: "min-h-screen text-(--th-body-copy)",
       frame:
         "mx-auto w-full max-w-[1840px] px-5 pb-16 pt-10 sm:px-8 lg:px-14 lg:pb-20 lg:pt-12",
-      body: "mx-auto w-full max-w-[1120px]",
+      body: pageWidth,
       heroCard:
         "rounded-[1.2rem] border border-(--surface-line) bg-(--surface-soft) p-6 shadow-[0_22px_42px_rgba(0,0,0,0.34)] sm:p-7",
       sectionCard:

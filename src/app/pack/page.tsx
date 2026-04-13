@@ -29,7 +29,7 @@ export default function PackPage() {
 
       <section className="relative isolate mx-auto w-full max-w-[1840px] overflow-hidden px-5 pb-24 pt-10 sm:px-8 lg:px-14 lg:pt-12">
         <div className="pointer-events-none absolute inset-x-0 top-0 -z-20 h-[20rem] bg-[radial-gradient(circle_at_18%_18%,hsl(var(--th-accent)/0.22),transparent_52%),radial-gradient(circle_at_76%_16%,rgba(222, 210, 204,0.16),transparent_46%)]" />
-        <div className="mx-auto w-full max-w-[1500px]">
+        <div className="mx-auto w-full">
           <div className="mb-8">
             <p className="text-[1rem] font-semibold uppercase tracking-[0.1em] text-(--dune-muted)">
               What&apos;s included
