@@ -89,8 +89,8 @@ const coreDeliveryHighlights = [
 ] as const;
 
 const heroTrustPoints = [
-  "One payment",
-  "Instant download",
+  "One payment - no subscription",
+  "Instant download - start using in minutes",
   `${COMPONENT_COUNT} components`,
   `${LAYOUT_COUNT} layouts`,
   `${WORKFLOW_COUNT} workflows`,
@@ -202,11 +202,11 @@ export default function Home() {
                   "mt-5 max-w-3xl text-[3rem] font-semibold leading-[0.88] text-white sm:text-[4.2rem] lg:text-[4.9rem]",
                 )}
               >
-                Stop rebuilding the same emails every project
+                Stop wasting hours rebuilding the same emails every project
               </h1>
               <p className="mt-3 max-w-3xl text-[1.1rem] leading-8 text-slate-300">
-                Start from workflows, not blank MJML files, with structure and
-                output mapped before your team edits copy.
+                Building from scratch creates inconsistency, extra QA loops, and slower delivery.
+                Start from mapped workflows so teams ship faster with fewer regressions.
               </p>
 
               <div className="mt-16 flex flex-wrap items-center gap-2.5">
@@ -239,8 +239,8 @@ export default function Home() {
 
               <p className="mt-3 max-w-3xl text-[0.95rem] leading-7 text-slate-400">
                 Workflow, layout, component stack, and compiled HTML stay
-                connected so development, QA, and ESP handoff move in one
-                direction.
+                connected so development, QA, and ESP handoff move in one direction.
+                See exactly what you get before you buy.
               </p>
 
               <div className="mt-5 flex flex-wrap gap-2.5">
@@ -394,6 +394,9 @@ export default function Home() {
               rebuilding foundations.
             </p>
             <p className="mt-3 max-w-3xl text-[0.92rem] leading-7 text-slate-400">
+              Start from real email use cases, not blank files.
+            </p>
+            <p className="mt-3 max-w-3xl text-[0.92rem] leading-7 text-slate-400">
               Workflow means a real send type such as onboarding or billing. Layout is the reusable email shell.
             </p>
           </div>
@@ -518,6 +521,15 @@ export default function Home() {
             </p>
           </div>
 
+          <div className="mt-8 rounded-[1rem] border border-slate-700 bg-slate-900 px-4 py-3">
+            <p className="text-[0.78rem] font-semibold uppercase tracking-[0.09em] text-slate-300">
+              Transformation
+            </p>
+            <p className="mt-2 text-[0.9rem] leading-7 text-slate-200">
+              Before: rebuilding emails, inconsistent output, slow delivery. After: structured workflows, consistent output, faster shipping.
+            </p>
+          </div>
+
           <div className="mt-16 grid gap-6 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:items-start">
             <article className="rounded-[1.15rem] border border-slate-800 bg-slate-900 p-5 sm:p-6">
               <p className="text-[0.78rem] font-semibold uppercase tracking-[0.09em] text-slate-400">
@@ -589,6 +601,7 @@ export default function Home() {
             </p>
             <p className="mt-3 max-w-3xl text-[0.92rem] leading-7 text-slate-400">
               Component means a reusable content block. Compiled HTML means output ready for QA and ESP import.
+              From workflow to production-ready HTML in seconds.
             </p>
           </div>
 
@@ -599,6 +612,9 @@ export default function Home() {
                   MJML to compiled HTML
                 </p>
                 <div className="mt-5 rounded-[1.05rem] border border-slate-700 bg-slate-900 p-4 sm:p-5">
+                  <p className="text-[0.86rem] font-semibold text-slate-100">
+                    From workflow to production-ready HTML in seconds.
+                  </p>
                   <div className="inline-flex flex-wrap items-center gap-2 text-[0.68rem] font-semibold uppercase tracking-[0.09em] text-slate-300">
                     <span>Source</span>
                     <ArrowRight className="h-3.5 w-3.5 text-slate-300" />
@@ -661,10 +677,10 @@ mjml.config`}
                   <p className="text-[0.74rem] font-semibold uppercase tracking-[0.08em] text-slate-300">
                     What changes after purchase
                   </p>
-                  <p className="mt-2 text-[0.9rem] leading-7 text-slate-200">
-                    Download the full pack, edit MJML locally, compile to HTML, and hand off with workflow context intact.
-                  </p>
-                </div>
+                <p className="mt-2 text-[0.9rem] leading-7 text-slate-200">
+                    Download the full pack, edit MJML locally, compile to HTML, and keep workflow-to-output mapping intact through QA and ESP handoff.
+                </p>
+              </div>
 
                 {mappingWorkflow ? (
                   <div className="relative mt-6 aspect-[16/10] overflow-hidden rounded-[0.95rem] border border-slate-700">
@@ -800,6 +816,9 @@ mjml.config`}
       <section id="pricing-cta" className="border-t border-slate-800 bg-[#0b1728] py-24">
         <div className={pageWidth}>
           <div className="mx-auto max-w-[45rem] text-center">
+            <p className="text-[1rem] font-semibold tracking-[0.012em] text-slate-300">
+              You do not need another template pack. You need a system that scales.
+            </p>
             <h2
               className={cn(
                 "text-[2.25rem] font-semibold leading-[0.96] text-white sm:text-[2.95rem]",
