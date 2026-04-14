@@ -351,7 +351,7 @@ export default function PricingPage() {
                   <input type="hidden" name="billingCycle" value="one_off" />
                   <TrackableSubmitButton
                     label={PAID_CTA_LABEL}
-                    event="click_buy_now"
+                    event="checkout_start"
                     payload={{ source: "pricing_final_cta", packId: "pack-1", billingCycle: "one_off" }}
                     className="inline-flex h-12 items-center rounded-[0.9rem] border border-[var(--action-primary)] bg-[var(--action-primary)] px-6 text-[0.92rem] font-semibold !text-[var(--action-text)] shadow-[0_18px_36px_rgba(0,0,0,0.34)] transition hover:bg-[var(--action-primary-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                   />

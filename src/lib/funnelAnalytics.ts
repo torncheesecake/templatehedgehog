@@ -30,6 +30,21 @@ const FUNNEL_EVENTS_PATH = path.join(process.cwd(), "src", "data", "funnel-event
 const FUNNEL_MAX_ENTRIES = 15_000;
 
 const ALLOWED_EVENTS: EventName[] = [
+  "homepage_view",
+  "hero_primary_cta_click",
+  "hero_secondary_cta_click",
+  "hero_tertiary_cta_click",
+  "workflows_section_view",
+  "workflow_card_click",
+  "technical_proof_view",
+  "pricing_section_view",
+  "docs_click",
+  "changelog_click",
+  "licence_click",
+  "faq_expand",
+  "final_cta_click",
+  "checkout_start",
+  "purchase_complete",
   "view_component_detail",
   "copy_mjml",
   "copy_html",
@@ -126,6 +141,21 @@ async function writeEvents(entries: FunnelEventEntry[]): Promise<void> {
 
 function emptyCounts(): Record<EventName, number> {
   return {
+    homepage_view: 0,
+    hero_primary_cta_click: 0,
+    hero_secondary_cta_click: 0,
+    hero_tertiary_cta_click: 0,
+    workflows_section_view: 0,
+    workflow_card_click: 0,
+    technical_proof_view: 0,
+    pricing_section_view: 0,
+    docs_click: 0,
+    changelog_click: 0,
+    licence_click: 0,
+    faq_expand: 0,
+    final_cta_click: 0,
+    checkout_start: 0,
+    purchase_complete: 0,
     view_component_detail: 0,
     copy_mjml: 0,
     copy_html: 0,
@@ -184,8 +214,12 @@ export async function getFunnelSummary(windowDays: number = 30): Promise<FunnelS
 
   const sourceCopies = counts.copy_mjml + counts.copy_html;
   const trackedViews =
-    counts.view_component_detail + counts.view_layout_detail + counts.view_workflow_detail;
-  const trackedBuyClicks = counts.click_buy_now + counts.buy_from_workflow;
+    counts.homepage_view
+    + counts.view_component_detail
+    + counts.view_layout_detail
+    + counts.view_workflow_detail;
+  const trackedBuyClicks = counts.checkout_start + counts.click_buy_now + counts.buy_from_workflow;
+  const trackedSuccessVisits = counts.visit_success + counts.purchase_complete;
 
   return {
     windowDays,
@@ -195,12 +229,12 @@ export async function getFunnelSummary(windowDays: number = 30): Promise<FunnelS
     totals: {
       componentViews: counts.view_component_detail,
       buyClicks: trackedBuyClicks,
-      successVisits: counts.visit_success,
+      successVisits: trackedSuccessVisits,
       sourceCopies,
     },
     conversion: {
       buyClickFromViewPct: toPercent(trackedBuyClicks, trackedViews),
-      successFromBuyClickPct: toPercent(counts.visit_success, trackedBuyClicks),
+      successFromBuyClickPct: toPercent(trackedSuccessVisits, trackedBuyClicks),
     },
   };
 }

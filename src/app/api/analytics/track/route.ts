@@ -14,6 +14,21 @@ const RATE_LIMIT_MAX_REQUESTS = 80;
 const rateLimitByIp = new Map<string, number[]>();
 
 const ALLOWED_EVENTS: EventName[] = [
+  "homepage_view",
+  "hero_primary_cta_click",
+  "hero_secondary_cta_click",
+  "hero_tertiary_cta_click",
+  "workflows_section_view",
+  "workflow_card_click",
+  "technical_proof_view",
+  "pricing_section_view",
+  "docs_click",
+  "changelog_click",
+  "licence_click",
+  "faq_expand",
+  "final_cta_click",
+  "checkout_start",
+  "purchase_complete",
   "view_component_detail",
   "copy_mjml",
   "copy_html",

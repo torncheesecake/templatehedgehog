@@ -205,6 +205,12 @@ export default async function SuccessPage({ searchParams }: SuccessPageProps) {
           downloadAvailable: downloadStatus.available,
         }}
       />
+      {successState === "valid_session" ? (
+        <TrackEventOnMount
+          event="purchase_complete"
+          payload={{ source: "success_page", hasSessionId: Boolean(sessionId) }}
+        />
+      ) : null}
       <section className={VS.templates.content.frame}>
         <div className={cn(VS.templates.content.body, VS.templates.content.heroCard)}>
           {successState === "valid_session" ? (

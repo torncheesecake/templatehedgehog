@@ -7,6 +7,10 @@ import {
   GitBranchPlus,
   Layers3,
 } from "lucide-react";
+import { TrackEventOnMount } from "@/components/analytics/TrackEventOnMount";
+import { TrackEventOnVisible } from "@/components/analytics/TrackEventOnVisible";
+import { TrackableLink } from "@/components/analytics/TrackableLink";
+import { HomeObjectionBlock } from "@/components/home/HomeObjectionBlock";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { SiteTopBar } from "@/components/site/SiteTopBar";
 import {
@@ -84,6 +88,32 @@ const coreDeliveryHighlights = [
   "Built for developer, QA, and ESP handoff without duplicate work.",
 ] as const;
 
+const heroTrustPoints = [
+  "One payment",
+  "Instant download",
+  `${COMPONENT_COUNT} components`,
+  `${LAYOUT_COUNT} layouts`,
+  `${WORKFLOW_COUNT} workflows`,
+  "MJML + compiled HTML",
+  "Docs included",
+  "Updated regularly",
+] as const;
+
+const coreIncludedSummary = [
+  `${COMPONENT_COUNT} components`,
+  `${LAYOUT_COUNT} layouts`,
+  `${WORKFLOW_COUNT} workflows`,
+  "MJML source + compiled HTML",
+  "Docs and changelog",
+] as const;
+
+const quickNavLinks = [
+  { href: "#workflows", label: "Workflows" },
+  { href: "#technical-proof", label: "Technical proof" },
+  { href: "#included", label: "What's included" },
+  { href: "#pricing-cta", label: "Pricing" },
+] as const;
+
 function buildWorkflowShowcase() {
   const featuredBySlug = new Map(
     getFeaturedEmailWorkflows(10).map((workflow) => [workflow.slug, workflow]),
@@ -143,6 +173,22 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-[#07111f] text-slate-300 [font-family:Arial,sans-serif]">
       <SiteTopBar theme="hero" heroTone="neutral" ctaHref="/pricing" ctaLabel="Get Hedgehog Core - £79" />
+      <TrackEventOnMount event="homepage_view" payload={{ source: "homepage" }} />
+      <TrackEventOnVisible
+        targetId="workflows"
+        event="workflows_section_view"
+        payload={{ source: "homepage" }}
+      />
+      <TrackEventOnVisible
+        targetId="technical-proof"
+        event="technical_proof_view"
+        payload={{ source: "homepage" }}
+      />
+      <TrackEventOnVisible
+        targetId="pricing-cta"
+        event="pricing_section_view"
+        payload={{ source: "homepage" }}
+      />
 
       <section className="relative overflow-hidden border-b border-slate-800/70 bg-[radial-gradient(circle_at_76%_18%,rgba(59,130,246,0.24),transparent_38%),radial-gradient(circle_at_18%_84%,rgba(30,64,175,0.14),transparent_34%),#07111f] py-24">
         <div className={pageWidth}>
@@ -164,16 +210,31 @@ export default function Home() {
               </p>
 
               <div className="mt-16 flex flex-wrap items-center gap-2.5">
-                <Link
+                <TrackableLink
                   href="/pricing"
+                  event="hero_primary_cta_click"
+                  payload={{ source: "hero" }}
                   className={cn(primaryButton, "gap-2")}
                 >
                   Get Hedgehog Core - £79
                   <ArrowRight className="h-4 w-4" />
-                </Link>
-                <Link href="/workflows" className="inline-flex h-11 items-center rounded-[0.8rem] border border-slate-700 bg-slate-900 px-5 text-[0.86rem] font-semibold text-slate-300 transition hover:border-slate-600 hover:bg-slate-800 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2">
+                </TrackableLink>
+                <TrackableLink
+                  href="/workflows"
+                  event="hero_secondary_cta_click"
+                  payload={{ source: "hero" }}
+                  className="inline-flex h-11 items-center rounded-[0.8rem] border border-slate-700 bg-slate-900 px-5 text-[0.86rem] font-semibold text-slate-300 transition hover:border-slate-600 hover:bg-slate-800 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2"
+                >
                   Explore workflows
-                </Link>
+                </TrackableLink>
+                <TrackableLink
+                  href="#technical-proof"
+                  event="hero_tertiary_cta_click"
+                  payload={{ source: "hero" }}
+                  className="inline-flex h-11 items-center rounded-[0.8rem] border border-slate-700 bg-[#07111f] px-5 text-[0.86rem] font-semibold text-slate-200 transition hover:border-slate-600 hover:bg-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2"
+                >
+                  Inspect the files
+                </TrackableLink>
               </div>
 
               <p className="mt-3 max-w-3xl text-[0.95rem] leading-7 text-slate-400">
@@ -181,6 +242,59 @@ export default function Home() {
                 connected so development, QA, and ESP handoff move in one
                 direction.
               </p>
+
+              <div className="mt-5 flex flex-wrap gap-2.5">
+                {heroTrustPoints.map((point) => (
+                  <span
+                    key={point}
+                    className="inline-flex rounded-full border border-slate-700 bg-slate-900 px-3 py-1 text-[0.76rem] font-semibold tracking-[0.03em] text-slate-200"
+                  >
+                    {point}
+                  </span>
+                ))}
+              </div>
+
+              <div className="mt-5 flex flex-wrap items-center gap-2.5 text-[0.84rem] font-semibold">
+                <TrackableLink
+                  href="/docs"
+                  event="docs_click"
+                  payload={{ source: "hero" }}
+                  className="inline-flex h-10 items-center rounded-[0.75rem] border border-slate-700 bg-slate-900 px-4 text-slate-100 transition hover:border-slate-600"
+                >
+                  Documentation
+                </TrackableLink>
+                <TrackableLink
+                  href="/changelog"
+                  event="changelog_click"
+                  payload={{ source: "hero" }}
+                  className="inline-flex h-10 items-center rounded-[0.75rem] border border-slate-700 bg-slate-900 px-4 text-slate-100 transition hover:border-slate-600"
+                >
+                  Changelog
+                </TrackableLink>
+                <TrackableLink
+                  href="/pricing"
+                  event="licence_click"
+                  payload={{ source: "hero" }}
+                  className="inline-flex h-10 items-center rounded-[0.75rem] border border-slate-700 bg-slate-900 px-4 text-slate-100 transition hover:border-slate-600"
+                >
+                  Licence and pricing
+                </TrackableLink>
+                <Link
+                  href="/support"
+                  className="inline-flex h-10 items-center rounded-[0.75rem] border border-slate-700 bg-slate-900 px-4 text-slate-100 transition hover:border-slate-600"
+                >
+                  Support
+                </Link>
+              </div>
+
+              <div className="mt-5 rounded-[0.9rem] border border-slate-700 bg-slate-900 px-4 py-3">
+                <p className="text-[0.76rem] font-semibold uppercase tracking-[0.09em] text-slate-300">
+                  Included in Hedgehog Core
+                </p>
+                <p className="mt-2 text-[0.9rem] leading-7 text-slate-200">
+                  {coreIncludedSummary.join(" • ")}
+                </p>
+              </div>
             </div>
 
             <div className="relative lg:pl-2">
@@ -243,10 +357,25 @@ export default function Home() {
               </div>
             </div>
           </div>
+
+          <nav
+            aria-label="Homepage quick navigation"
+            className="mt-12 flex flex-wrap items-center gap-2.5"
+          >
+            {quickNavLinks.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="inline-flex h-10 items-center rounded-[0.75rem] border border-slate-700 bg-slate-900 px-4 text-[0.82rem] font-semibold text-slate-100 transition hover:border-slate-600"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
         </div>
       </section>
 
-      <section className="border-y border-slate-800 bg-[#0b1728] py-24">
+      <section id="workflows" className="border-y border-slate-800 bg-[#0b1728] py-24">
         <div className={pageWidth}>
           <div className="max-w-3xl">
             <p className="text-[1rem] font-semibold tracking-[0.012em] text-slate-400">
@@ -263,6 +392,9 @@ export default function Home() {
               Each workflow carries trigger context, layout structure, component
               order, and output expectations so you spend time shipping, not
               rebuilding foundations.
+            </p>
+            <p className="mt-3 max-w-3xl text-[0.92rem] leading-7 text-slate-400">
+              Workflow means a real send type such as onboarding or billing. Layout is the reusable email shell.
             </p>
           </div>
 
@@ -300,13 +432,15 @@ export default function Home() {
                           </span>
                         ))}
                     </div>
-                    <Link
+                    <TrackableLink
                       href={`/workflows/${primaryWorkflow.slug}`}
+                      event="workflow_card_click"
+                      payload={{ source: "workflows_section", workflowSlug: primaryWorkflow.slug }}
                       className="mt-6 inline-flex items-center gap-1.5 text-[0.88rem] font-semibold text-slate-100 transition hover:text-white"
                     >
                       View workflow
                       <ArrowRight className="h-4 w-4" />
-                    </Link>
+                    </TrackableLink>
                   </div>
 
                   <div className="relative aspect-[16/10] overflow-hidden rounded-[1rem] border border-slate-700 bg-[#07111f]">
@@ -336,13 +470,15 @@ export default function Home() {
                     <p className="mt-2 text-[0.9rem] leading-7 text-slate-300">
                       {workflowOutcomeBySlug[workflow.slug] ?? workflow.goal}
                     </p>
-                    <Link
+                    <TrackableLink
                       href={`/workflows/${workflow.slug}`}
+                      event="workflow_card_click"
+                      payload={{ source: "workflows_section", workflowSlug: workflow.slug }}
                       className="mt-4 inline-flex items-center gap-1.5 text-[0.84rem] font-semibold text-slate-100 transition hover:text-white"
                     >
                       View workflow
                       <ArrowRight className="h-4 w-4" />
-                    </Link>
+                    </TrackableLink>
                   </article>
                 ))}
               </div>
@@ -350,10 +486,15 @@ export default function Home() {
           ) : null}
 
           <div className="mt-10">
-            <Link href="/workflows" className={cn(primaryButton, "gap-2")}>
+            <TrackableLink
+              href="/workflows"
+              event="hero_secondary_cta_click"
+              payload={{ source: "workflows_section" }}
+              className={cn(primaryButton, "gap-2")}
+            >
               View all workflows
               <ArrowRight className="h-4 w-4" />
-            </Link>
+            </TrackableLink>
           </div>
         </div>
       </section>
@@ -429,7 +570,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-y border-slate-800 bg-[#0b1728] py-24">
+      <section id="technical-proof" className="border-y border-slate-800 bg-[#0b1728] py-24">
         <div className={pageWidth}>
           <div className="max-w-3xl">
             <p className="text-[1rem] font-semibold tracking-[0.012em] text-slate-400">
@@ -445,6 +586,9 @@ export default function Home() {
             <p className="mt-3 max-w-3xl text-[1rem] leading-8 text-slate-300">
               Real source, compiled output, and workflow mapping from the same
               structure shipped in Hedgehog Core.
+            </p>
+            <p className="mt-3 max-w-3xl text-[0.92rem] leading-7 text-slate-400">
+              Component means a reusable content block. Compiled HTML means output ready for QA and ESP import.
             </p>
           </div>
 
@@ -513,6 +657,15 @@ mjml.config`}
                   {mappingPath}
                 </p>
 
+                <div className="mt-5 rounded-[0.9rem] border border-slate-700 bg-[#07111f] px-4 py-3">
+                  <p className="text-[0.74rem] font-semibold uppercase tracking-[0.08em] text-slate-300">
+                    What changes after purchase
+                  </p>
+                  <p className="mt-2 text-[0.9rem] leading-7 text-slate-200">
+                    Download the full pack, edit MJML locally, compile to HTML, and hand off with workflow context intact.
+                  </p>
+                </div>
+
                 {mappingWorkflow ? (
                   <div className="relative mt-6 aspect-[16/10] overflow-hidden rounded-[0.95rem] border border-slate-700">
                     <Image
@@ -527,10 +680,43 @@ mjml.config`}
               </div>
             </div>
           </article>
+
+          <div className="mt-8 flex flex-wrap gap-2.5 text-[0.84rem] font-semibold">
+            <TrackableLink
+              href="/docs"
+              event="docs_click"
+              payload={{ source: "technical_proof" }}
+              className="inline-flex h-10 items-center rounded-[0.75rem] border border-slate-700 bg-slate-900 px-4 text-slate-100 transition hover:border-slate-600"
+            >
+              Documentation
+            </TrackableLink>
+            <TrackableLink
+              href="/changelog"
+              event="changelog_click"
+              payload={{ source: "technical_proof" }}
+              className="inline-flex h-10 items-center rounded-[0.75rem] border border-slate-700 bg-slate-900 px-4 text-slate-100 transition hover:border-slate-600"
+            >
+              Changelog
+            </TrackableLink>
+            <TrackableLink
+              href="/pricing"
+              event="licence_click"
+              payload={{ source: "technical_proof" }}
+              className="inline-flex h-10 items-center rounded-[0.75rem] border border-slate-700 bg-slate-900 px-4 text-slate-100 transition hover:border-slate-600"
+            >
+              Licence and pricing
+            </TrackableLink>
+            <Link
+              href="/support"
+              className="inline-flex h-10 items-center rounded-[0.75rem] border border-slate-700 bg-slate-900 px-4 text-slate-100 transition hover:border-slate-600"
+            >
+              Support
+            </Link>
+          </div>
         </div>
       </section>
 
-      <section className="border-y border-slate-800 bg-[#07111f] py-24">
+      <section id="included" className="border-y border-slate-800 bg-[#07111f] py-24">
         <div className={pageWidth}>
           <div className="max-w-3xl">
             <p className="text-[1rem] font-semibold tracking-[0.012em] text-slate-400">
@@ -546,6 +732,9 @@ mjml.config`}
             <p className="mt-3 max-w-3xl text-[1rem] leading-8 text-slate-300">
               A complete development system that covers build, proof, and
               handoff in one workflow-focused pack.
+            </p>
+            <p className="mt-3 max-w-3xl text-[0.92rem] leading-7 text-slate-400">
+              What you get: reusable source, ready HTML output, and practical implementation guidance.
             </p>
           </div>
 
@@ -602,7 +791,13 @@ mjml.config`}
         </div>
       </section>
 
-      <section className="border-t border-slate-800 bg-[#0b1728] py-24">
+      <section className="border-y border-slate-800 bg-[#07111f] py-24">
+        <div className={pageWidth}>
+          <HomeObjectionBlock />
+        </div>
+      </section>
+
+      <section id="pricing-cta" className="border-t border-slate-800 bg-[#0b1728] py-24">
         <div className={pageWidth}>
           <div className="mx-auto max-w-[45rem] text-center">
             <h2
@@ -615,17 +810,60 @@ mjml.config`}
             <p className="mt-3 mx-auto max-w-3xl text-[1rem] leading-8 text-slate-300">
               One payment. Use it across every project and ship faster with less QA overhead.
             </p>
+            <p className="mt-3 mx-auto max-w-3xl text-[0.92rem] leading-7 text-slate-400">
+              Included in Hedgehog Core: {coreIncludedSummary.join(" • ")}
+            </p>
 
             <div className="mt-16 flex flex-wrap justify-center gap-2.5">
-              <Link href="/pricing" className={cn(primaryButton, "gap-2")}>
+              <TrackableLink
+                href="/pricing"
+                event="final_cta_click"
+                payload={{ source: "final_cta" }}
+                className={cn(primaryButton, "gap-2")}
+              >
                 Get Hedgehog Core - £79
                 <ArrowRight className="h-4 w-4" />
-              </Link>
-              <Link
+              </TrackableLink>
+              <TrackableLink
                 href="/workflows"
+                event="hero_secondary_cta_click"
+                payload={{ source: "final_cta" }}
                 className={secondaryButton}
               >
                 Explore workflows
+              </TrackableLink>
+            </div>
+
+            <div className="mt-5 flex flex-wrap justify-center gap-2.5 text-[0.84rem] font-semibold">
+              <TrackableLink
+                href="/docs"
+                event="docs_click"
+                payload={{ source: "final_cta" }}
+                className="inline-flex h-10 items-center rounded-[0.75rem] border border-slate-700 bg-slate-900 px-4 text-slate-100 transition hover:border-slate-600"
+              >
+                Documentation
+              </TrackableLink>
+              <TrackableLink
+                href="/changelog"
+                event="changelog_click"
+                payload={{ source: "final_cta" }}
+                className="inline-flex h-10 items-center rounded-[0.75rem] border border-slate-700 bg-slate-900 px-4 text-slate-100 transition hover:border-slate-600"
+              >
+                Changelog
+              </TrackableLink>
+              <TrackableLink
+                href="/pricing"
+                event="licence_click"
+                payload={{ source: "final_cta" }}
+                className="inline-flex h-10 items-center rounded-[0.75rem] border border-slate-700 bg-slate-900 px-4 text-slate-100 transition hover:border-slate-600"
+              >
+                Licence and pricing
+              </TrackableLink>
+              <Link
+                href="/support"
+                className="inline-flex h-10 items-center rounded-[0.75rem] border border-slate-700 bg-slate-900 px-4 text-slate-100 transition hover:border-slate-600"
+              >
+                Support
               </Link>
             </div>
           </div>
