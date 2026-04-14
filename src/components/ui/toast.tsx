@@ -29,7 +29,7 @@ export function Toast({ open, message, variant = "success" }: ToastProps) {
         }`}
       >
         {isSuccess ? (
-          <CheckCircle2 className="h-4 w-4 text-emerald-600" aria-hidden="true" />
+          <CheckCircle2 className="h-4 w-4 text-blue-600" aria-hidden="true" />
         ) : (
           <AlertTriangle className="h-4 w-4 text-rose-600" aria-hidden="true" />
         )}

@@ -14,9 +14,9 @@
   --border-subtle: rgba(11, 11, 12, 0.12);
   --border-strong: rgba(11, 11, 12, 0.2);
 
-  --action-primary: #d13d4c;
-  --action-primary-hover: #b93340;
-  --action-text: #ffffff;
+  --action-primary: #C9A74D;
+  --action-primary-hover: #B8933F;
+  --action-text: #0f1720;
 
   --text-hero: clamp(3.5rem, 4vw + 2.5rem, 4rem);
   --text-h1: clamp(2.5rem, 2.2vw + 1.9rem, 3rem);

@@ -97,9 +97,9 @@ function buildWorkflowShowcase() {
 export default function Home() {
   const pageWidth = "mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12";
   const primaryButton =
-    "inline-flex h-11 items-center rounded-[0.8rem] border border-[#d13d4c] bg-[#d13d4c] px-5 text-[0.86rem] font-semibold !text-white transition hover:bg-[#b93340] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d13d4c] focus-visible:ring-offset-2";
+    "inline-flex h-11 items-center rounded-[0.8rem] border border-[var(--action-primary)] bg-[var(--action-primary)] px-5 text-[0.86rem] font-semibold !text-[var(--action-text)] shadow-[0_12px_34px_rgba(201,167,77,0.3)] transition hover:-translate-y-0.5 hover:bg-[var(--action-primary-hover)] hover:shadow-[0_18px_44px_rgba(201,167,77,0.36)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2";
   const secondaryButton =
-    "inline-flex h-11 items-center rounded-[0.8rem] border border-black/10 bg-white px-5 text-[0.86rem] font-semibold text-black transition hover:border-black/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d13d4c] focus-visible:ring-offset-2";
+    "inline-flex h-11 items-center rounded-[0.8rem] border border-slate-700 bg-slate-900 px-5 text-[0.86rem] font-semibold text-slate-300 transition hover:border-slate-600 hover:bg-slate-800 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2";
   const workflowShowcase = buildWorkflowShowcase();
   const primaryWorkflow = workflowShowcase[0];
   const supportingWorkflows = workflowShowcase.slice(1, 5);
@@ -141,24 +141,24 @@ export default function Home() {
     : "workflow/onboarding -> layout/saas-welcome-system -> component/header-brand-row -> compiled/onboarding.html";
 
   return (
-    <main className="min-h-screen bg-white text-slate-600 [font-family:Arial,sans-serif]">
-      <SiteTopBar theme="hero" ctaHref="/pricing" ctaLabel="Get Hedgehog Core - £79" />
+    <main className="min-h-screen bg-[#07111f] text-slate-300 [font-family:Arial,sans-serif]">
+      <SiteTopBar theme="hero" heroTone="neutral" ctaHref="/pricing" ctaLabel="Get Hedgehog Core - £79" />
 
-      <section className="relative overflow-hidden border-b border-slate-200 bg-white py-24">
+      <section className="relative overflow-hidden border-b border-slate-800/70 bg-[radial-gradient(circle_at_76%_18%,rgba(59,130,246,0.24),transparent_38%),radial-gradient(circle_at_18%_84%,rgba(30,64,175,0.14),transparent_34%),#07111f] py-24">
         <div className={pageWidth}>
           <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-center">
             <div className="max-w-[38rem]">
-              <p className="text-[1rem] font-semibold tracking-[0.012em] text-slate-600">
+              <p className="text-[1rem] font-semibold tracking-[0.012em] text-slate-400">
                 Hedgehog Core
               </p>
               <h1
                 className={cn(
-                  "mt-5 max-w-3xl text-[3rem] font-semibold leading-[0.88] text-slate-900 sm:text-[4.2rem] lg:text-[4.9rem]",
+                  "mt-5 max-w-3xl text-[3rem] font-semibold leading-[0.88] text-white sm:text-[4.2rem] lg:text-[4.9rem]",
                 )}
               >
                 Stop rebuilding the same emails every project
               </h1>
-              <p className="mt-6 max-w-3xl text-[1.1rem] leading-8 text-slate-900">
+              <p className="mt-3 max-w-3xl text-[1.1rem] leading-8 text-slate-300">
                 Start from workflows, not blank MJML files, with structure and
                 output mapped before your team edits copy.
               </p>
@@ -171,15 +171,12 @@ export default function Home() {
                   Get Hedgehog Core - £79
                   <ArrowRight className="h-4 w-4" />
                 </Link>
-                <Link
-                  href="/workflows"
-                  className={secondaryButton}
-                >
+                <Link href="/workflows" className="inline-flex h-11 items-center rounded-[0.8rem] border border-slate-700 bg-slate-900 px-5 text-[0.86rem] font-semibold text-slate-300 transition hover:border-slate-600 hover:bg-slate-800 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2">
                   Explore workflows
                 </Link>
               </div>
 
-              <p className="mt-3 max-w-3xl text-[0.95rem] leading-7 text-slate-600">
+              <p className="mt-3 max-w-3xl text-[0.95rem] leading-7 text-slate-400">
                 Workflow, layout, component stack, and compiled HTML stay
                 connected so development, QA, and ESP handoff move in one
                 direction.
@@ -187,35 +184,34 @@ export default function Home() {
             </div>
 
             <div className="relative lg:pl-2">
-              <div className="pointer-events-none absolute -inset-4 rounded-[1.8rem] bg-[radial-gradient(circle_at_28%_18%,hsl(var(--th-accent-support)/0.2),transparent_58%)]" />
-              <div className="relative overflow-hidden rounded-[1.5rem] border border-[color-mix(in_srgb,var(--surface-line)_74%,transparent)] bg-[color-mix(in_srgb,var(--surface-soft)_88%,transparent)] p-6 sm:p-8">
+              <div className="relative overflow-hidden rounded-[1.5rem] border border-slate-600/80 bg-slate-900 p-6 shadow-[0_0_0_1px_rgba(148,163,184,0.08),0_34px_100px_rgba(37,99,235,0.24),0_28px_82px_rgba(0,0,0,0.58)] sm:p-8">
                 <div className="flex flex-wrap items-center justify-between gap-3">
-                  <p className="text-[0.78rem] font-semibold uppercase tracking-[0.09em] text-slate-600">
+                  <p className="text-[0.78rem] font-semibold uppercase tracking-[0.09em] text-slate-300">
                     Product system
                   </p>
-                  <span className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-2.5 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.09em] text-slate-600">
-                    <FileCode2 className="h-3.5 w-3.5" />
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-blue-500/30 bg-blue-500/10 px-2.5 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.09em] text-slate-300">
+                    <FileCode2 className="h-3.5 w-3.5 text-blue-400" />
                     MJML + HTML
                   </span>
                 </div>
 
-                <div className="mt-5 rounded-[0.9rem] border border-[color-mix(in_srgb,var(--surface-line)_72%,transparent)] bg-[color-mix(in_srgb,var(--surface-strong)_84%,transparent)] px-4 py-3">
-                  <div className="flex flex-wrap items-center gap-2 text-[0.76rem] font-semibold uppercase tracking-[0.09em] text-slate-600">
+                <div className="mt-5 rounded-[0.9rem] border border-slate-700 bg-slate-800 px-4 py-3">
+                  <div className="flex flex-wrap items-center gap-2 text-[0.76rem] font-semibold uppercase tracking-[0.09em] text-slate-300">
                     <span className="inline-flex items-center gap-1">
-                      <GitBranchPlus className="h-3.5 w-3.5 text-slate-900" />
+                      <GitBranchPlus className="h-3.5 w-3.5 text-blue-400" />
                       workflow
                     </span>
-                    <ArrowRight className="h-3.5 w-3.5 text-slate-900" />
+                    <ArrowRight className="h-3.5 w-3.5 text-blue-400" />
                     <span className="inline-flex items-center gap-1">
-                      <Layers3 className="h-3.5 w-3.5 text-slate-900" />
+                      <Layers3 className="h-3.5 w-3.5 text-blue-400" />
                       layout
                     </span>
-                    <ArrowRight className="h-3.5 w-3.5 text-slate-900" />
+                    <ArrowRight className="h-3.5 w-3.5 text-blue-400" />
                     <span>components</span>
-                    <ArrowRight className="h-3.5 w-3.5 text-slate-900" />
-                    <span>output</span>
+                    <ArrowRight className="h-3.5 w-3.5 text-blue-400" />
+                    <span className="text-slate-100">output</span>
                   </div>
-                  <p className="mt-2 text-[0.84rem] leading-6 text-slate-900">
+                  <p className="mt-2 text-[0.84rem] leading-6 text-slate-300">
                     {mappingWorkflow?.slug ?? "onboarding"} mapped to{" "}
                     {mappingWorkflow?.linkedLayoutSlug ?? "saas-welcome-system"} with{" "}
                     {mappingWorkflow?.componentStack.length ?? 0} ordered blocks.
@@ -224,24 +220,24 @@ export default function Home() {
 
                 <div className="mt-5 grid gap-4 md:grid-cols-2">
                   <div>
-                    <p className="text-[0.72rem] font-semibold uppercase tracking-[0.08em] text-slate-600">
+                    <p className="text-[0.72rem] font-semibold uppercase tracking-[0.08em] text-slate-300">
                       MJML source
                     </p>
-                    <pre className="mt-2 overflow-x-auto rounded-[0.8rem] border border-[color-mix(in_srgb,var(--surface-line)_74%,transparent)] bg-[color-mix(in_srgb,var(--surface-strong)_82%,transparent)] p-3 text-[0.72rem] leading-6 text-slate-900">
+                    <pre className="mt-2 overflow-x-auto rounded-[0.8rem] border border-slate-700 bg-slate-900 p-3 text-[0.72rem] leading-6 text-slate-300">
                       {mjmlSnippet}
                     </pre>
                   </div>
                   <div>
-                    <p className="text-[0.72rem] font-semibold uppercase tracking-[0.08em] text-slate-600">
+                    <p className="text-[0.72rem] font-semibold uppercase tracking-[0.08em] text-slate-300">
                       Compiled HTML
                     </p>
-                    <pre className="mt-2 overflow-x-auto rounded-[0.8rem] border border-[color-mix(in_srgb,var(--surface-line)_74%,transparent)] bg-[color-mix(in_srgb,var(--surface-strong)_82%,transparent)] p-3 text-[0.72rem] leading-6 text-slate-900">
+                    <pre className="mt-2 overflow-x-auto rounded-[0.8rem] border border-slate-700 bg-slate-900 p-3 text-[0.72rem] leading-6 text-slate-300">
                       {htmlSnippet}
                     </pre>
                   </div>
                 </div>
 
-                <p className="mt-5 text-[0.8rem] leading-6 text-slate-600">
+                <p className="mt-5 text-[0.8rem] leading-6 text-slate-400">
                   {mappingPath}
                 </p>
               </div>
@@ -250,20 +246,20 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-y border-slate-200 bg-slate-50 py-24">
+      <section className="border-y border-slate-800 bg-[#0b1728] py-24">
         <div className={pageWidth}>
           <div className="max-w-3xl">
-            <p className="text-[1rem] font-semibold tracking-[0.012em] text-slate-600">
+            <p className="text-[1rem] font-semibold tracking-[0.012em] text-slate-400">
               Workflow entry
             </p>
             <h2
               className={cn(
-                "mt-5 text-[2.14rem] font-semibold leading-[0.94] text-slate-900 sm:text-[2.82rem]",
+                "mt-5 text-[2.14rem] font-semibold leading-[0.94] text-white sm:text-[2.82rem]",
               )}
             >
               Start from a workflow, not a blank email
             </h2>
-            <p className="mt-6 max-w-3xl text-[1rem] leading-8 text-slate-600">
+            <p className="mt-3 max-w-3xl text-[1rem] leading-8 text-slate-300">
               Each workflow carries trigger context, layout structure, component
               order, and output expectations so you spend time shipping, not
               rebuilding foundations.
@@ -272,23 +268,23 @@ export default function Home() {
 
           {primaryWorkflow ? (
             <div className="mt-16 grid gap-6">
-              <article className="relative overflow-hidden rounded-[1.25rem] border border-slate-200 bg-slate-50 p-6 shadow-[0_22px_40px_rgba(15,23,42,0.12)] sm:p-8">
-                <span className="absolute right-5 top-5 rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.09em] text-slate-600">
+              <article className="relative overflow-hidden rounded-[1.25rem] border border-slate-600/80 bg-slate-900 p-6 shadow-[0_0_0_1px_rgba(148,163,184,0.07),0_28px_86px_rgba(37,99,235,0.18),0_24px_64px_rgba(0,0,0,0.5)] sm:p-8">
+                <span className="absolute right-5 top-5 rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.09em] text-slate-300">
                   Featured workflow
                 </span>
                 <div className="grid gap-8 lg:grid-cols-[minmax(0,0.94fr)_minmax(0,1.06fr)] lg:items-start">
                   <div>
-                    <p className="text-[0.78rem] font-semibold uppercase tracking-[0.09em] text-slate-600">
+                    <p className="text-[0.78rem] font-semibold uppercase tracking-[0.09em] text-slate-400">
                       {primaryWorkflow.linkedLayoutTitle}
                     </p>
                     <h3
                       className={cn(
-                        "mt-2 text-[1.62rem] leading-[1.02] text-slate-900",
+                        "mt-2 text-[1.62rem] leading-[1.02] text-white",
                       )}
                     >
                       {primaryWorkflow.title}
                     </h3>
-                    <p className="mt-3 text-[0.98rem] leading-7 text-slate-600">
+                    <p className="mt-3 text-[0.98rem] leading-7 text-slate-300">
                       {workflowOutcomeBySlug[primaryWorkflow.slug] ??
                         primaryWorkflow.goal}
                     </p>
@@ -298,7 +294,7 @@ export default function Home() {
                         .map((item) => (
                           <span
                             key={`${primaryWorkflow.slug}-${item.componentSlug}`}
-                            className="inline-flex rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-[0.78rem] font-medium text-slate-600"
+                            className="inline-flex rounded-full border border-slate-700 bg-[#07111f] px-3 py-1 text-[0.78rem] font-medium text-slate-300"
                           >
                             {item.componentTitle}
                           </span>
@@ -306,14 +302,14 @@ export default function Home() {
                     </div>
                     <Link
                       href={`/workflows/${primaryWorkflow.slug}`}
-                      className="mt-6 inline-flex items-center gap-1.5 text-[0.88rem] font-semibold text-slate-900 transition hover:text-slate-900"
+                      className="mt-6 inline-flex items-center gap-1.5 text-[0.88rem] font-semibold text-slate-100 transition hover:text-white"
                     >
                       View workflow
                       <ArrowRight className="h-4 w-4" />
                     </Link>
                   </div>
 
-                  <div className="relative aspect-[16/10] overflow-hidden rounded-[1rem] border border-slate-200 bg-slate-50">
+                  <div className="relative aspect-[16/10] overflow-hidden rounded-[1rem] border border-slate-700 bg-[#07111f]">
                     <Image
                       src={primaryWorkflow.previewImageUrl}
                       alt={`${primaryWorkflow.title} workflow preview`}
@@ -329,20 +325,20 @@ export default function Home() {
                 {supportingWorkflows.map((workflow) => (
                   <article
                     key={workflow.slug}
-                    className="rounded-[1.05rem] border border-slate-200 bg-slate-50 p-5 shadow-[0_14px_28px_rgba(15,23,42,0.08)]"
+                    className="rounded-[1.05rem] border border-slate-700 bg-slate-900 p-5"
                   >
-                    <p className="text-[0.74rem] font-semibold uppercase tracking-[0.09em] text-slate-600">
+                    <p className="text-[0.74rem] font-semibold uppercase tracking-[0.09em] text-slate-400">
                       {workflow.linkedLayoutTitle}
                     </p>
-                    <h3 className="mt-2 text-[1.08rem] font-semibold leading-7 text-slate-900">
+                    <h3 className="mt-2 text-[1.08rem] font-semibold leading-7 text-white">
                       {workflow.title}
                     </h3>
-                    <p className="mt-2 text-[0.9rem] leading-7 text-slate-600">
+                    <p className="mt-2 text-[0.9rem] leading-7 text-slate-300">
                       {workflowOutcomeBySlug[workflow.slug] ?? workflow.goal}
                     </p>
                     <Link
                       href={`/workflows/${workflow.slug}`}
-                      className="mt-4 inline-flex items-center gap-1.5 text-[0.84rem] font-semibold text-slate-900 transition hover:text-slate-900"
+                      className="mt-4 inline-flex items-center gap-1.5 text-[0.84rem] font-semibold text-slate-100 transition hover:text-white"
                     >
                       View workflow
                       <ArrowRight className="h-4 w-4" />
@@ -362,40 +358,40 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-y border-slate-200 bg-slate-50 py-24">
+      <section className="border-y border-slate-800 bg-[#07111f] py-24">
         <div className={pageWidth}>
           <div className="max-w-3xl">
-            <p className="text-[1rem] font-semibold tracking-[0.012em] text-slate-600">
+            <p className="text-[1rem] font-semibold tracking-[0.012em] text-slate-400">
               Core selling section
             </p>
             <h2
               className={cn(
-                "mt-5 text-[2.08rem] font-semibold leading-[0.95] text-slate-900 sm:text-[2.72rem]",
+                "mt-5 text-[2.08rem] font-semibold leading-[0.95] text-white sm:text-[2.72rem]",
               )}
             >
               Build it yourself vs Hedgehog
             </h2>
-            <p className="mt-6 max-w-3xl text-[1rem] leading-8 text-slate-600">
+            <p className="mt-3 max-w-3xl text-[1rem] leading-8 text-slate-300">
               Same output required. One path is manual and repetitive, the
               other starts from production-ready workflow structure.
             </p>
           </div>
 
           <div className="mt-16 grid gap-6 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:items-start">
-            <article className="rounded-[1.15rem] border border-slate-200 bg-white p-5 sm:p-6">
-              <p className="text-[0.78rem] font-semibold uppercase tracking-[0.09em] text-slate-500">
+            <article className="rounded-[1.15rem] border border-slate-800 bg-slate-900 p-5 sm:p-6">
+              <p className="text-[0.78rem] font-semibold uppercase tracking-[0.09em] text-slate-400">
                 Build from scratch
               </p>
-              <p className="mt-2 text-[0.9rem] leading-7 text-slate-600">
+              <p className="mt-2 text-[0.9rem] leading-7 text-slate-400">
                 More manual effort before a workflow is stable in production.
               </p>
               <div className="mt-5 space-y-4">
                 {comparisonPoints.map((item) => (
-                  <div key={`from-${item.label}`} className="rounded-[0.8rem] border border-slate-200 p-3.5">
-                    <p className="text-[0.78rem] font-semibold uppercase tracking-[0.08em] text-slate-500">
+                  <div key={`from-${item.label}`} className="rounded-[0.8rem] border border-slate-800 p-3.5">
+                    <p className="text-[0.78rem] font-semibold uppercase tracking-[0.08em] text-slate-400">
                       {item.label}
                     </p>
-                    <p className="mt-1.5 text-[0.88rem] leading-6 text-slate-600">
+                    <p className="mt-1.5 text-[0.88rem] leading-6 text-slate-400">
                       {item.fromScratch}
                     </p>
                   </div>
@@ -403,29 +399,29 @@ export default function Home() {
               </div>
             </article>
 
-            <article className="rounded-[1.15rem] border border-slate-300 bg-white p-6 sm:p-7">
-              <p className="text-[0.78rem] font-semibold uppercase tracking-[0.09em] text-slate-900">
+            <article className="rounded-[1.15rem] border border-slate-700 bg-slate-900 p-6 sm:p-7">
+              <p className="text-[0.78rem] font-semibold uppercase tracking-[0.09em] text-white">
                 Using Hedgehog
               </p>
-              <h3 className="mt-2 text-[1.35rem] leading-tight text-slate-900">
+              <h3 className="mt-2 text-[1.35rem] leading-tight text-white">
                 Resolve the workflow first
               </h3>
-              <p className="mt-2 text-[0.94rem] leading-7 text-slate-600">
+              <p className="mt-2 text-[0.94rem] leading-7 text-slate-300">
                 Start from structure, then adapt copy and data for delivery.
               </p>
               <div className="mt-6 space-y-4">
                 {comparisonPoints.map((item) => (
-                  <div key={`with-${item.label}`} className="rounded-[0.8rem] border border-slate-300 p-4">
-                    <p className="text-[0.78rem] font-semibold uppercase tracking-[0.08em] text-slate-900">
+                  <div key={`with-${item.label}`} className="rounded-[0.8rem] border border-slate-700 bg-slate-800 p-4">
+                    <p className="text-[0.78rem] font-semibold uppercase tracking-[0.08em] text-slate-100">
                       {item.label}
                     </p>
-                    <p className="mt-1.5 text-[0.9rem] leading-6 text-slate-600">
+                    <p className="mt-1.5 text-[0.9rem] leading-6 text-slate-300">
                       {item.withHedgehog}
                     </p>
                   </div>
                 ))}
               </div>
-              <p className="mt-6 text-[0.9rem] font-medium leading-7 text-slate-900">
+              <p className="mt-3 text-[0.9rem] font-medium leading-7 text-slate-100">
                 Start from structure, not from scratch.
               </p>
             </article>
@@ -433,53 +429,53 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-y border-slate-200 bg-white py-24">
+      <section className="border-y border-slate-800 bg-[#0b1728] py-24">
         <div className={pageWidth}>
           <div className="max-w-3xl">
-            <p className="text-[1rem] font-semibold tracking-[0.012em] text-slate-600">
+            <p className="text-[1rem] font-semibold tracking-[0.012em] text-slate-400">
               Technical proof
             </p>
             <h2
               className={cn(
-                "mt-5 text-[2.08rem] font-semibold leading-[0.95] text-slate-900 sm:text-[2.72rem]",
+                "mt-5 text-[2.08rem] font-semibold leading-[0.95] text-white sm:text-[2.72rem]",
               )}
             >
               Inspect the system before you buy
             </h2>
-            <p className="mt-6 max-w-3xl text-[1rem] leading-8 text-slate-600">
+            <p className="mt-3 max-w-3xl text-[1rem] leading-8 text-slate-300">
               Real source, compiled output, and workflow mapping from the same
               structure shipped in Hedgehog Core.
             </p>
           </div>
 
-          <article className="mt-16 overflow-hidden rounded-[1.5rem] border border-slate-200 bg-[color-mix(in_srgb,var(--surface-soft)_94%,transparent)]">
+          <article className="mt-16 overflow-hidden rounded-[1.5rem] border border-slate-700 bg-slate-900">
             <div className="grid lg:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)]">
               <div className="p-6 sm:p-8 lg:p-10">
-                <p className="text-[0.78rem] font-semibold uppercase tracking-[0.09em] text-slate-600">
+                <p className="text-[0.78rem] font-semibold uppercase tracking-[0.09em] text-slate-300">
                   MJML to compiled HTML
                 </p>
-                <div className="mt-5 rounded-[1.05rem] border border-[color-mix(in_srgb,var(--surface-line)_68%,transparent)] bg-[color-mix(in_srgb,var(--surface-strong)_86%,transparent)] p-4 sm:p-5">
-                  <div className="inline-flex flex-wrap items-center gap-2 text-[0.68rem] font-semibold uppercase tracking-[0.09em] text-slate-600">
+                <div className="mt-5 rounded-[1.05rem] border border-slate-700 bg-slate-900 p-4 sm:p-5">
+                  <div className="inline-flex flex-wrap items-center gap-2 text-[0.68rem] font-semibold uppercase tracking-[0.09em] text-slate-300">
                     <span>Source</span>
-                    <ArrowRight className="h-3.5 w-3.5 text-slate-900" />
+                    <ArrowRight className="h-3.5 w-3.5 text-slate-300" />
                     <span>Compile</span>
-                    <ArrowRight className="h-3.5 w-3.5 text-slate-900" />
+                    <ArrowRight className="h-3.5 w-3.5 text-slate-300" />
                     <span>Output</span>
                   </div>
                   <div className="mt-4 grid gap-4 md:grid-cols-2">
-                    <div className="overflow-hidden rounded-[0.88rem] border border-[color-mix(in_srgb,var(--surface-line)_64%,transparent)]">
-                      <p className="border-b border-[color-mix(in_srgb,var(--surface-line)_58%,transparent)] bg-[color-mix(in_srgb,var(--surface-soft)_92%,transparent)] px-3 py-2 text-[0.72rem] font-semibold uppercase tracking-[0.08em] text-slate-600">
+                    <div className="overflow-hidden rounded-[0.88rem] border border-slate-700">
+                      <p className="border-b border-slate-700 bg-slate-800 px-3 py-2 text-[0.72rem] font-semibold uppercase tracking-[0.08em] text-slate-300">
                         MJML source
                       </p>
-                      <pre className="overflow-x-auto bg-[color-mix(in_srgb,var(--surface-strong)_88%,transparent)] p-3 text-[0.72rem] leading-6 text-slate-900">
+                      <pre className="overflow-x-auto bg-slate-900 p-3 text-[0.72rem] leading-6 text-slate-100">
                         {mjmlSnippet}
                       </pre>
                     </div>
-                    <div className="overflow-hidden rounded-[0.88rem] border border-[color-mix(in_srgb,var(--surface-line)_64%,transparent)]">
-                      <p className="border-b border-[color-mix(in_srgb,var(--surface-line)_58%,transparent)] bg-[color-mix(in_srgb,var(--surface-soft)_92%,transparent)] px-3 py-2 text-[0.72rem] font-semibold uppercase tracking-[0.08em] text-slate-600">
+                    <div className="overflow-hidden rounded-[0.88rem] border border-slate-700">
+                      <p className="border-b border-slate-700 bg-slate-800 px-3 py-2 text-[0.72rem] font-semibold uppercase tracking-[0.08em] text-slate-300">
                         Compiled HTML
                       </p>
-                      <pre className="overflow-x-auto bg-[color-mix(in_srgb,var(--surface-strong)_88%,transparent)] p-3 text-[0.72rem] leading-6 text-slate-900">
+                      <pre className="overflow-x-auto bg-slate-900 p-3 text-[0.72rem] leading-6 text-slate-100">
                         {htmlSnippet}
                       </pre>
                     </div>
@@ -487,15 +483,15 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="border-t border-slate-200 p-6 sm:p-8 lg:border-l lg:border-t-0 lg:p-10">
-                <p className="text-[0.78rem] font-semibold uppercase tracking-[0.09em] text-slate-600">
+              <div className="border-t border-slate-700 p-6 sm:p-8 lg:border-l lg:border-t-0 lg:border-l-slate-700 lg:p-10">
+                <p className="text-[0.78rem] font-semibold uppercase tracking-[0.09em] text-slate-300">
                   Pack structure and workflow mapping
                 </p>
 
-                <p className="mt-4 text-[0.72rem] font-semibold uppercase tracking-[0.08em] text-slate-600">
+                <p className="mt-4 text-[0.72rem] font-semibold uppercase tracking-[0.08em] text-slate-400">
                   File tree excerpt
                 </p>
-                <pre className="mt-2 overflow-x-auto text-[0.76rem] leading-7 text-slate-900">
+                <pre className="mt-2 overflow-x-auto text-[0.76rem] leading-7 text-slate-100">
 {`workflows/
 layouts/
 components/
@@ -504,21 +500,21 @@ docs/
 mjml.config`}
                 </pre>
 
-                <p className="mt-5 text-[0.72rem] font-semibold uppercase tracking-[0.08em] text-slate-600">
+                <p className="mt-5 text-[0.72rem] font-semibold uppercase tracking-[0.08em] text-slate-400">
                   Mapping path
                 </p>
-                <ol className="mt-2 space-y-1.5 text-[0.86rem] leading-6 text-slate-900">
+                <ol className="mt-2 space-y-1.5 text-[0.86rem] leading-6 text-slate-100">
                   <li>{`workflow/${mappingWorkflow?.slug ?? "onboarding"}`}</li>
                   <li>{`layout/${mappingWorkflow?.linkedLayoutSlug ?? "saas-welcome-system"}`}</li>
                   <li>{`component/${mappingWorkflow?.componentStack[0]?.componentSlug ?? "header-brand-row"}`}</li>
                   <li>{`compiled/${mappingWorkflow?.slug ?? "onboarding"}.html`}</li>
                 </ol>
-                <p className="mt-3 text-[0.8rem] leading-6 text-slate-600">
+                <p className="mt-3 text-[0.8rem] leading-6 text-slate-400">
                   {mappingPath}
                 </p>
 
                 {mappingWorkflow ? (
-                  <div className="relative mt-6 aspect-[16/10] overflow-hidden rounded-[0.95rem] border border-[color-mix(in_srgb,var(--surface-line)_68%,transparent)]">
+                  <div className="relative mt-6 aspect-[16/10] overflow-hidden rounded-[0.95rem] border border-slate-700">
                     <Image
                       src={mappingWorkflow.previewImageUrl}
                       alt={`${mappingWorkflow.title} technical preview`}
@@ -534,41 +530,41 @@ mjml.config`}
         </div>
       </section>
 
-      <section className="border-y border-slate-200 bg-slate-50 py-24">
+      <section className="border-y border-slate-800 bg-[#07111f] py-24">
         <div className={pageWidth}>
           <div className="max-w-3xl">
-            <p className="text-[1rem] font-semibold tracking-[0.012em] text-slate-600">
+            <p className="text-[1rem] font-semibold tracking-[0.012em] text-slate-400">
               Pack value
             </p>
             <h2
               className={cn(
-                "mt-5 text-[2.08rem] font-semibold leading-[0.95] text-slate-900 sm:text-[2.72rem]",
+                "mt-5 text-[2.08rem] font-semibold leading-[0.95] text-white sm:text-[2.72rem]",
               )}
             >
               What you get in Hedgehog Core
             </h2>
-            <p className="mt-6 max-w-3xl text-[1rem] leading-8 text-slate-600">
+            <p className="mt-3 max-w-3xl text-[1rem] leading-8 text-slate-300">
               A complete development system that covers build, proof, and
               handoff in one workflow-focused pack.
             </p>
           </div>
 
           <div className="mt-16 grid gap-6 lg:grid-cols-[minmax(0,1.14fr)_minmax(0,0.86fr)]">
-            <article className="rounded-[1.2rem] border border-slate-200 bg-slate-50 p-6 shadow-[0_20px_36px_rgba(15,23,42,0.08)] sm:p-7">
-              <p className="text-[0.78rem] font-semibold uppercase tracking-[0.09em] text-slate-600">
+            <article className="rounded-[1.2rem] border border-slate-700 bg-slate-900 p-6 sm:p-7">
+              <p className="text-[0.78rem] font-semibold uppercase tracking-[0.09em] text-slate-400">
                 Core build layers
               </p>
-              <div className="mt-5 divide-y divide-(--border-light)">
+              <div className="mt-5 divide-y divide-slate-700">
                 {buildLayers.map((item) => (
                   <div key={item.title} className="py-4 first:pt-0 last:pb-0">
                     <p
                       className={cn(
-                        "text-[1.24rem] font-semibold leading-8 text-slate-900",
+                        "text-[1.24rem] font-semibold leading-8 text-white",
                       )}
                     >
                       {item.title}
                     </p>
-                    <p className="mt-1 text-[0.94rem] leading-7 text-slate-600">
+                    <p className="mt-1 text-[0.94rem] leading-7 text-slate-300">
                       {item.detail}
                     </p>
                   </div>
@@ -576,27 +572,27 @@ mjml.config`}
               </div>
             </article>
 
-            <article className="rounded-[1.2rem] border border-slate-200 bg-slate-50 p-6 shadow-[0_20px_36px_rgba(15,23,42,0.08)] sm:p-7">
-              <p className="text-[0.78rem] font-semibold uppercase tracking-[0.09em] text-slate-600">
+            <article className="rounded-[1.2rem] border border-slate-800 bg-transparent p-6 sm:p-7">
+              <p className="text-[0.78rem] font-semibold uppercase tracking-[0.09em] text-slate-400">
                 Delivery and handoff
               </p>
               <div className="mt-5 space-y-4">
                 {deliveryLayers.map((item) => (
                   <div key={item.title}>
-                    <p className="text-[1.04rem] font-semibold text-slate-900">
+                    <p className="text-[1.04rem] font-semibold text-white">
                       {item.title}
                     </p>
-                    <p className="mt-1 text-[0.9rem] leading-7 text-slate-600">
+                    <p className="mt-1 text-[0.9rem] leading-7 text-slate-300">
                       {item.detail}
                     </p>
                   </div>
                 ))}
               </div>
 
-              <ul className="mt-6 space-y-3.5 text-[0.92rem] leading-7 text-slate-600">
+              <ul className="mt-6 space-y-3.5 text-[0.92rem] leading-7 text-slate-300">
                 {coreDeliveryHighlights.map((point) => (
                   <li key={point} className="flex items-start gap-3">
-                    <CheckCircle2 className="mt-1 h-4.5 w-4.5 shrink-0 text-slate-900" />
+                    <CheckCircle2 className="mt-1 h-4.5 w-4.5 shrink-0 text-blue-400" />
                     {point}
                   </li>
                 ))}
@@ -606,17 +602,17 @@ mjml.config`}
         </div>
       </section>
 
-      <section className="border-t border-slate-200 bg-white py-24">
+      <section className="border-t border-slate-800 bg-[#0b1728] py-24">
         <div className={pageWidth}>
           <div className="mx-auto max-w-[45rem] text-center">
             <h2
               className={cn(
-                "text-[2.25rem] font-semibold leading-[0.96] text-slate-900 sm:text-[2.95rem]",
+                "text-[2.25rem] font-semibold leading-[0.96] text-white sm:text-[2.95rem]",
               )}
             >
               Get Hedgehog Core - £79
             </h2>
-            <p className="mt-6 mx-auto max-w-3xl text-[1rem] leading-8 text-slate-600">
+            <p className="mt-3 mx-auto max-w-3xl text-[1rem] leading-8 text-slate-300">
               One payment. Use it across every project and ship faster with less QA overhead.
             </p>
 
@@ -636,7 +632,7 @@ mjml.config`}
         </div>
       </section>
 
-      <SiteFooter />
+      <SiteFooter flush theme="dark" />
     </main>
   );
 }

@@ -142,7 +142,7 @@ export default function PackPage() {
             <div className="flex flex-wrap gap-3">
               <Link
                 href="/pricing"
-                className="inline-flex h-11 items-center rounded-[0.82rem] border border-rose-600 bg-rose-600 px-4 text-[0.9rem] font-semibold tracking-[0.01em] !text-white transition duration-200 hover:bg-rose-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-600 focus-visible:ring-offset-2"
+                className="inline-flex h-11 items-center rounded-[0.82rem] border border-[var(--action-primary)] bg-[var(--action-primary)] px-4 text-[0.9rem] font-semibold tracking-[0.01em] !text-[var(--action-text)] transition duration-200 hover:bg-[var(--action-primary-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2"
               >
                 View pricing
               </Link>

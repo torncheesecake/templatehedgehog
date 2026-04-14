@@ -46,9 +46,9 @@ export const visualSystem = {
   },
   buttons: {
     primary:
-      "inline-flex h-11 items-center rounded-xl border border-rose-600 bg-rose-600 px-5 text-sm font-semibold !text-white transition hover:bg-rose-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-600 focus-visible:ring-offset-2",
+      "inline-flex h-11 items-center rounded-xl border border-[var(--action-primary)] bg-[var(--action-primary)] px-5 text-sm font-semibold !text-[var(--action-text)] transition hover:bg-[var(--action-primary-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2",
     primaryLarge:
-      "inline-flex h-12 items-center rounded-xl border border-rose-600 bg-rose-600 px-6 text-sm font-semibold !text-white transition hover:bg-rose-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-600 focus-visible:ring-offset-2",
+      "inline-flex h-12 items-center rounded-xl border border-[var(--action-primary)] bg-[var(--action-primary)] px-6 text-sm font-semibold !text-[var(--action-text)] transition hover:bg-[var(--action-primary-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2",
     secondaryLight:
       "inline-flex h-11 items-center rounded-xl border border-slate-200 bg-white px-4 text-sm font-semibold text-slate-600 transition hover:border-slate-300 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-600 focus-visible:ring-offset-2",
     secondaryDark:

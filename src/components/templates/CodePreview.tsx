@@ -24,7 +24,7 @@ export function MetricCard({ title, value, change, format = "number" }: MetricCa
       <p className="text-sm font-medium text-muted-foreground">{title}</p>
       <p className="mt-2 text-3xl font-bold tracking-tight">{formatted}</p>
       <div className="mt-2 flex items-center gap-1">
-        <span className={change >= 0 ? "text-green-600" : "text-red-600"}>
+        <span className={change >= 0 ? "text-blue-600" : "text-red-600"}>
           {change >= 0 ? "+" : ""}{change}%
         </span>
         <span className="text-sm text-muted-foreground">vs last month</span>
@@ -41,7 +41,7 @@ export function CodePreview({ code = defaultCode }: CodePreviewProps) {
         <div className="flex gap-1.5">
           <div className="h-3 w-3 rounded-full bg-red-500/80" />
           <div className="h-3 w-3 rounded-full bg-yellow-500/80" />
-          <div className="h-3 w-3 rounded-full bg-green-500/80" />
+          <div className="h-3 w-3 rounded-full bg-blue-500/80" />
         </div>
         <span className="ml-2 text-xs text-white/50 font-mono">MetricCard.tsx</span>
       </div>

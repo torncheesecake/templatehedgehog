@@ -337,7 +337,7 @@ export default async function SuccessPage({ searchParams }: SuccessPageProps) {
                 {downloadStatus.available && downloadLink ? (
                   <a
                     href={downloadLink}
-                    className="mt-3 inline-flex h-11 items-center rounded-full bg-rose-600 px-5 text-[0.93rem] font-semibold !text-white transition hover:bg-rose-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-600 focus-visible:ring-offset-2"
+                    className="mt-3 inline-flex h-11 items-center rounded-full bg-[var(--action-primary)] px-5 text-[0.93rem] font-semibold !text-[var(--action-text)] transition hover:bg-[var(--action-primary-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2"
                   >
                     Download pack
                   </a>
@@ -367,7 +367,7 @@ export default async function SuccessPage({ searchParams }: SuccessPageProps) {
             <div className="mt-6 flex flex-wrap gap-3">
               <Link
                 href="/pricing"
-                className="rounded-full bg-rose-600 px-4 py-2 text-[0.9rem] font-semibold !text-white transition hover:bg-rose-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-600 focus-visible:ring-offset-2"
+                className="rounded-full bg-[var(--action-primary)] px-4 py-2 text-[0.9rem] font-semibold !text-[var(--action-text)] transition hover:bg-[var(--action-primary-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2"
               >
                 Go to pricing
               </Link>
@@ -384,7 +384,7 @@ export default async function SuccessPage({ searchParams }: SuccessPageProps) {
             <div className="mt-6 flex flex-wrap gap-3">
               <Link
                 href="/pricing"
-                className="rounded-full bg-rose-600 px-4 py-2 text-[0.9rem] font-semibold !text-white transition hover:bg-rose-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-600 focus-visible:ring-offset-2"
+                className="rounded-full bg-[var(--action-primary)] px-4 py-2 text-[0.9rem] font-semibold !text-[var(--action-text)] transition hover:bg-[var(--action-primary-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2"
               >
                 View pricing
               </Link>

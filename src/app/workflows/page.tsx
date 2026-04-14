@@ -88,7 +88,7 @@ export default function WorkflowsPage() {
                 href="/pricing?source=workflow_index"
                 event="workflow_to_pricing"
                 payload={{ source: "workflow_index", target: "pricing" }}
-                className="inline-flex h-12 items-center rounded-[0.9rem] border border-rose-600 bg-rose-600 px-6 text-[0.92rem] font-semibold !text-white shadow-[0_18px_36px_rgba(0,0,0,0.34)] transition hover:bg-rose-700"
+                className="inline-flex h-12 items-center rounded-[0.9rem] border border-[var(--action-primary)] bg-[var(--action-primary)] px-6 text-[0.92rem] font-semibold !text-[var(--action-text)] shadow-[0_18px_36px_rgba(0,0,0,0.34)] transition hover:bg-[var(--action-primary-hover)]"
               >
                 Get Hedgehog Core - £79
               </TrackableLink>
