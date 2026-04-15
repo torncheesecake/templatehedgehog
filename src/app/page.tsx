@@ -35,23 +35,23 @@ const primaryWorkflowSlugs = [
 const comparisonPoints = [
   {
     label: "Build time",
-    fromScratch: "Assemble and stabilise each flow manually, often over several hours.",
-    withHedgehog: "Start from a mapped workflow and adapt quickly.",
+    fromScratch: "Build and stabilise each flow manually.",
+    withHedgehog: "Start from a mapped workflow and ship faster.",
   },
   {
     label: "QA passes",
-    fromScratch: "More re-check cycles to catch client and layout regressions.",
-    withHedgehog: "Fewer rounds because source and output are already aligned.",
+    fromScratch: "More rounds to catch client and layout regressions.",
+    withHedgehog: "Fewer rounds with aligned source and output.",
   },
   {
     label: "System consistency",
-    fromScratch: "Patterns drift across campaigns, lifecycle, and transactional sends.",
+    fromScratch: "Patterns drift across campaign and lifecycle sends.",
     withHedgehog: "Shared workflow and layout structure across projects.",
   },
   {
     label: "Handoff",
-    fromScratch: "More manual interpretation between development, QA, and ESP teams.",
-    withHedgehog: "Clear path from workflow to layout to compiled output.",
+    fromScratch: "More manual interpretation across development, QA, and ESP.",
+    withHedgehog: "Clear path from workflow to compiled output.",
   },
 ] as const;
 
@@ -205,8 +205,7 @@ export default function Home() {
                 Stop wasting hours rebuilding the same emails every project
               </h1>
               <p className="mt-3 max-w-3xl text-[1.1rem] leading-8 text-slate-300">
-                Building from scratch creates inconsistency, extra QA loops, and slower delivery.
-                Start from mapped workflows so teams ship faster with fewer regressions.
+                Building from scratch creates inconsistency, extra QA loops, and slower delivery. Start from mapped workflows to ship faster with fewer regressions.
               </p>
 
               <div className="mt-16 flex flex-wrap items-center gap-2.5">
@@ -236,6 +235,9 @@ export default function Home() {
                   Inspect the files
                 </TrackableLink>
               </div>
+              <p className="mt-3 text-[0.86rem] font-semibold text-slate-300">
+                See exactly what ships before you buy.
+              </p>
 
               <div className="mt-5 flex flex-wrap gap-2.5">
                 {heroTrustPoints.map((point) => (
@@ -246,39 +248,6 @@ export default function Home() {
                     {point}
                   </span>
                 ))}
-              </div>
-
-              <div className="mt-5 flex flex-wrap items-center gap-2.5 text-[0.84rem] font-semibold">
-                <TrackableLink
-                  href="/docs"
-                  event="docs_click"
-                  payload={{ source: "hero" }}
-                  className="inline-flex h-10 items-center rounded-[0.75rem] border border-slate-700 bg-slate-900 px-4 text-slate-100 transition hover:border-slate-600"
-                >
-                  Documentation
-                </TrackableLink>
-                <TrackableLink
-                  href="/changelog"
-                  event="changelog_click"
-                  payload={{ source: "hero" }}
-                  className="inline-flex h-10 items-center rounded-[0.75rem] border border-slate-700 bg-slate-900 px-4 text-slate-100 transition hover:border-slate-600"
-                >
-                  Changelog
-                </TrackableLink>
-                <TrackableLink
-                  href="/pricing"
-                  event="licence_click"
-                  payload={{ source: "hero" }}
-                  className="inline-flex h-10 items-center rounded-[0.75rem] border border-slate-700 bg-slate-900 px-4 text-slate-100 transition hover:border-slate-600"
-                >
-                  Licence and pricing
-                </TrackableLink>
-                <Link
-                  href="/support"
-                  className="inline-flex h-10 items-center rounded-[0.75rem] border border-slate-700 bg-slate-900 px-4 text-slate-100 transition hover:border-slate-600"
-                >
-                  Support
-                </Link>
               </div>
 
               <div className="mt-5 rounded-[0.9rem] border border-slate-700 bg-slate-900 px-4 py-3">
@@ -380,15 +349,10 @@ export default function Home() {
               Start from a workflow, not a blank email
             </h2>
             <p className="mt-3 max-w-3xl text-[1rem] leading-8 text-slate-300">
-              Each workflow carries trigger context, layout structure, component
-              order, and output expectations so you spend time shipping, not
-              rebuilding foundations.
+              Real use cases with structure and output already mapped, so you spend time shipping instead of rebuilding foundations.
             </p>
             <p className="mt-3 max-w-3xl text-[0.92rem] leading-7 text-slate-400">
               Start from real email use cases, not blank files.
-            </p>
-            <p className="mt-3 max-w-3xl text-[0.92rem] leading-7 text-slate-400">
-              Workflow means a real send type such as onboarding or billing. Layout is the reusable email shell.
             </p>
           </div>
 
@@ -591,8 +555,7 @@ export default function Home() {
               structure shipped in Hedgehog Core.
             </p>
             <p className="mt-3 max-w-3xl text-[0.92rem] leading-7 text-slate-400">
-              Component means a reusable content block. Compiled HTML means output ready for QA and ESP import.
-              From workflow to production-ready HTML in seconds.
+              From workflow to production-ready HTML in seconds, with mapping ready for QA and ESP handoff.
             </p>
           </div>
 
@@ -688,38 +651,6 @@ mjml.config`}
             </div>
           </article>
 
-          <div className="mt-8 flex flex-wrap gap-2.5 text-[0.84rem] font-semibold">
-            <TrackableLink
-              href="/docs"
-              event="docs_click"
-              payload={{ source: "technical_proof" }}
-              className="inline-flex h-10 items-center rounded-[0.75rem] border border-slate-700 bg-slate-900 px-4 text-slate-100 transition hover:border-slate-600"
-            >
-              Documentation
-            </TrackableLink>
-            <TrackableLink
-              href="/changelog"
-              event="changelog_click"
-              payload={{ source: "technical_proof" }}
-              className="inline-flex h-10 items-center rounded-[0.75rem] border border-slate-700 bg-slate-900 px-4 text-slate-100 transition hover:border-slate-600"
-            >
-              Changelog
-            </TrackableLink>
-            <TrackableLink
-              href="/pricing"
-              event="licence_click"
-              payload={{ source: "technical_proof" }}
-              className="inline-flex h-10 items-center rounded-[0.75rem] border border-slate-700 bg-slate-900 px-4 text-slate-100 transition hover:border-slate-600"
-            >
-              Licence and pricing
-            </TrackableLink>
-            <Link
-              href="/support"
-              className="inline-flex h-10 items-center rounded-[0.75rem] border border-slate-700 bg-slate-900 px-4 text-slate-100 transition hover:border-slate-600"
-            >
-              Support
-            </Link>
-          </div>
         </div>
       </section>
 
@@ -818,10 +749,7 @@ mjml.config`}
               Get Hedgehog Core - £79
             </h2>
             <p className="mt-3 mx-auto max-w-3xl text-[1rem] leading-8 text-slate-300">
-              One payment. Use it across every project and ship faster with less QA overhead.
-            </p>
-            <p className="mt-3 mx-auto max-w-3xl text-[0.92rem] leading-7 text-slate-400">
-              Included in Hedgehog Core: {coreIncludedSummary.join(" • ")}
+              One payment. Use it across projects and ship faster with less QA overhead.
             </p>
 
             <div className="mt-16 flex flex-wrap justify-center gap-2.5">
