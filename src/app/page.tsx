@@ -237,12 +237,6 @@ export default function Home() {
                 </TrackableLink>
               </div>
 
-              <p className="mt-3 max-w-3xl text-[0.95rem] leading-7 text-slate-400">
-                Workflow, layout, component stack, and compiled HTML stay
-                connected so development, QA, and ESP handoff move in one direction.
-                See exactly what you get before you buy.
-              </p>
-
               <div className="mt-5 flex flex-wrap gap-2.5">
                 {heroTrustPoints.map((point) => (
                   <span
@@ -351,9 +345,6 @@ export default function Home() {
                   </div>
                 </div>
 
-                <p className="mt-5 text-[0.8rem] leading-6 text-slate-400">
-                  {mappingPath}
-                </p>
               </div>
             </div>
           </div>
