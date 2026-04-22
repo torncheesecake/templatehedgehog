@@ -41,9 +41,9 @@ const heroTrustPoints = [
 export default function Home() {
   const pageWidth = "mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12";
   const primaryButton =
-    "inline-flex h-12 items-center rounded-[0.95rem] border border-[var(--action-primary)] bg-[var(--action-primary)] px-6 text-[0.88rem] font-semibold !text-[var(--action-text)] shadow-[0_16px_40px_rgba(201,167,77,0.28),0_4px_14px_rgba(15,23,32,0.22)] transition hover:-translate-y-0.5 hover:bg-[var(--action-primary-hover)] hover:shadow-[0_22px_56px_rgba(201,167,77,0.34),0_8px_22px_rgba(15,23,32,0.24)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2";
+    "inline-flex h-12 items-center rounded-full border border-[var(--action-primary)] bg-[var(--action-primary)] px-6 text-[0.9rem] font-semibold tracking-[0.01em] !text-[var(--action-text)] shadow-[0_18px_44px_rgba(201,167,77,0.24),0_6px_18px_rgba(15,23,32,0.22)] transition duration-200 hover:-translate-y-0.5 hover:bg-[var(--action-primary-hover)] hover:shadow-[0_24px_58px_rgba(201,167,77,0.28),0_10px_24px_rgba(15,23,32,0.24)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2";
   const secondaryButton =
-    "inline-flex h-12 items-center rounded-[0.95rem] border border-slate-700 bg-slate-900/90 px-6 text-[0.88rem] font-semibold text-slate-300 transition hover:border-slate-600 hover:bg-slate-800 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2";
+    "inline-flex h-12 items-center rounded-full border border-slate-700/80 bg-slate-900/80 px-6 text-[0.9rem] font-semibold tracking-[0.01em] text-slate-300 backdrop-blur-sm transition duration-200 hover:border-slate-600 hover:bg-slate-800/90 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2";
   const mappingWorkflow =
     getEmailWorkflowBySlug("onboarding") ?? getFeaturedEmailWorkflows(1)[0];
 
@@ -52,7 +52,7 @@ export default function Home() {
     : "workflow/onboarding -> layout/saas-welcome-system -> component/header-brand-row -> compiled/onboarding.html";
 
   return (
-    <main className="min-h-screen bg-[#07111f] text-slate-300 [font-family:Arial,sans-serif]">
+    <main className="min-h-screen bg-[#07111f] text-slate-300">
       <SiteTopBar theme="hero" heroTone="neutral" ctaHref="/pricing" ctaLabel="Buy now - £79" />
       <TrackEventOnMount event="homepage_view" payload={{ source: "homepage" }} />
       <TrackEventOnVisible
@@ -71,27 +71,28 @@ export default function Home() {
         payload={{ source: "homepage" }}
       />
 
-      <section className="relative overflow-hidden border-b border-slate-800/70 bg-[radial-gradient(circle_at_82%_12%,rgba(59,130,246,0.18),transparent_42%),radial-gradient(circle_at_14%_82%,rgba(30,64,175,0.12),transparent_36%),linear-gradient(180deg,#091423_0%,#07111f_62%,#07111f_100%)] py-28">
-        <div className="pointer-events-none absolute inset-x-0 top-24 mx-auto h-px w-[34rem] max-w-[78vw] bg-gradient-to-r from-transparent via-white/12 to-transparent" />
-        <div className="pointer-events-none absolute right-[9%] top-20 h-72 w-72 rounded-full bg-blue-500/10 blur-3xl" />
+      <section className="relative overflow-hidden border-b border-slate-800/70 bg-[radial-gradient(circle_at_82%_12%,rgba(59,130,246,0.18),transparent_42%),radial-gradient(circle_at_14%_82%,rgba(30,64,175,0.12),transparent_36%),linear-gradient(180deg,#091423_0%,#07111f_58%,#06101b_100%)] py-32 sm:py-36">
+        <div className="pointer-events-none absolute inset-x-0 top-24 mx-auto h-px w-[38rem] max-w-[82vw] bg-gradient-to-r from-transparent via-white/12 to-transparent" />
+        <div className="pointer-events-none absolute left-[7%] top-28 h-52 w-52 rounded-full bg-blue-500/8 blur-3xl" />
+        <div className="pointer-events-none absolute right-[9%] top-20 h-80 w-80 rounded-full bg-blue-500/10 blur-3xl" />
         <div className={pageWidth}>
-          <div className="grid gap-20 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:items-center">
-            <div className="max-w-[42rem]">
+          <div className="grid gap-20 lg:grid-cols-[minmax(0,1.02fr)_minmax(0,0.98fr)] lg:items-center lg:gap-24">
+            <div className="max-w-[43rem]">
               <p className="text-[1rem] font-semibold tracking-[0.012em] text-slate-400">
                 Hedgehog Core
               </p>
               <h1
                 className={cn(
-                  "mt-6 max-w-3xl text-[3.1rem] font-semibold leading-[0.88] text-white sm:text-[4.45rem] lg:text-[5.15rem]",
+                  "mt-7 max-w-3xl font-serif text-[3.25rem] font-semibold leading-[0.86] tracking-[-0.03em] text-white sm:text-[4.7rem] lg:text-[5.45rem]",
                 )}
               >
                 Rebuilding email code is the bottleneck. Stop doing it.
               </h1>
-              <p className="mt-5 max-w-3xl text-[1.05rem] leading-8 text-slate-300">
+              <p className="mt-6 max-w-[35rem] text-[1.08rem] leading-8 text-slate-300">
                 Rebuild cycles create drift, repeated QA failures, and slow handoff. Hedgehog Core removes that reset and gives one production path from workflow to output.
               </p>
 
-              <div className="mt-14 flex flex-wrap items-center gap-3.5">
+              <div className="mt-14 flex flex-wrap items-center gap-4">
                 <TrackableLink
                   href="/pricing"
                   event="hero_primary_cta_click"
@@ -111,14 +112,14 @@ export default function Home() {
                 </TrackableLink>
               </div>
 
-              <p className="mt-8 text-[0.84rem] leading-7 text-slate-400">
+              <p className="mt-10 max-w-[34rem] text-[0.8rem] uppercase tracking-[0.12em] text-slate-500">
                 {heroTrustPoints.join(" • ")}
               </p>
             </div>
 
             <div className="relative">
-              <div className="pointer-events-none absolute inset-0 -z-10 translate-y-6 rounded-[2.25rem] bg-[radial-gradient(circle_at_55%_40%,rgba(59,130,246,0.18),transparent_54%)] blur-3xl" />
-              <article className="relative overflow-hidden rounded-[1.85rem] border border-slate-700/80 bg-slate-900/95 shadow-[0_34px_90px_rgba(2,6,23,0.62),0_18px_40px_rgba(59,130,246,0.14)] ring-1 ring-white/[0.035] backdrop-blur-sm">
+              <div className="pointer-events-none absolute inset-0 -z-10 translate-y-8 rounded-[2.6rem] bg-[radial-gradient(circle_at_50%_40%,rgba(59,130,246,0.22),transparent_56%)] blur-3xl" />
+              <article className="relative overflow-hidden rounded-[2.1rem] border border-slate-700/70 bg-slate-900/90 shadow-[0_38px_90px_rgba(2,6,23,0.62),0_18px_40px_rgba(59,130,246,0.14)] ring-1 ring-white/[0.045] backdrop-blur-sm">
               <div className="relative aspect-[5/4] overflow-hidden">
                 {mappingWorkflow ? (
                   <Image
@@ -130,14 +131,14 @@ export default function Home() {
                   />
                 ) : null}
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_74%_14%,rgba(59,130,246,0.18),transparent_42%),linear-gradient(180deg,rgba(7,17,31,0)_0%,rgba(7,17,31,0.06)_58%,rgba(7,17,31,0.24)_100%)]" />
-                <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-white/[0.045] to-transparent" />
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#07111f] via-[#07111f]/88 to-transparent px-6 pb-6 pt-14">
+                <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-white/[0.05] to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#07111f] via-[#07111f]/86 to-transparent px-7 pb-7 pt-16">
                   <p className="text-[0.76rem] font-semibold uppercase tracking-[0.08em] text-slate-300">
                     workflow → layout → components → compiled output
                   </p>
                 </div>
               </div>
-              <div className="flex items-center justify-between border-t border-white/10 px-6 py-4 text-[0.8rem] text-slate-300">
+              <div className="flex items-center justify-between border-t border-white/10 px-7 py-4 text-[0.82rem] text-slate-300">
                 <span className="inline-flex items-center gap-1.5">
                   <FileCode2 className="h-4 w-4 text-blue-400" />
                   MJML source + compiled HTML
@@ -150,7 +151,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-[radial-gradient(circle_at_50%_0%,rgba(59,130,246,0.08),transparent_52%),linear-gradient(180deg,#07111f_0%,#081320_100%)] py-32">
+      <section className="bg-[radial-gradient(circle_at_50%_0%,rgba(59,130,246,0.08),transparent_52%),linear-gradient(180deg,#07111f_0%,#081320_100%)] py-32 sm:py-36">
         <div className={pageWidth}>
           <div className="mx-auto max-w-[54rem]">
             <p className="text-[0.95rem] font-semibold tracking-[0.012em] text-slate-400">
@@ -158,7 +159,7 @@ export default function Home() {
             </p>
             <h2
               className={cn(
-                "mt-6 text-[2.55rem] font-semibold leading-[0.95] text-white sm:text-[3.7rem]",
+                "mt-6 font-serif text-[2.7rem] font-semibold leading-[0.92] tracking-[-0.03em] text-white sm:text-[3.95rem]",
               )}
             >
               Production email is slow because teams keep restarting structure.
@@ -172,16 +173,16 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="core-definition" className="border-y border-slate-800 bg-[linear-gradient(180deg,#0b1728_0%,#0a1524_100%)] py-28">
+      <section id="core-definition" className="border-y border-slate-800 bg-[linear-gradient(180deg,#0b1728_0%,#0a1524_100%)] py-30">
         <div className={pageWidth}>
-          <div className="grid gap-14 lg:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)] lg:items-start">
+          <div className="grid gap-16 lg:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)] lg:items-start">
             <div className="max-w-3xl">
               <p className="text-[1rem] font-semibold tracking-[0.012em] text-slate-400">
                 What Hedgehog Core is
               </p>
               <h2
                 className={cn(
-                  "mt-5 text-[2.2rem] font-semibold leading-[0.94] text-white sm:text-[3rem]",
+                  "mt-5 font-serif text-[2.35rem] font-semibold leading-[0.92] tracking-[-0.03em] text-white sm:text-[3.15rem]",
                 )}
               >
                 A production MJML system for teams that need repeatable output
@@ -237,7 +238,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="technical-proof" className="border-y border-slate-800 bg-[linear-gradient(180deg,#07111f_0%,#08111d_100%)] py-28">
+      <section id="technical-proof" className="border-y border-slate-800 bg-[linear-gradient(180deg,#07111f_0%,#08111d_100%)] py-30">
         <div className={pageWidth}>
           <div className="max-w-3xl">
             <p className="text-[1rem] font-semibold tracking-[0.012em] text-slate-400">
@@ -245,14 +246,14 @@ export default function Home() {
             </p>
             <h2
               className={cn(
-                "mt-5 text-[2.2rem] font-semibold leading-[0.94] text-white sm:text-[3rem]",
+                "mt-5 font-serif text-[2.35rem] font-semibold leading-[0.92] tracking-[-0.03em] text-white sm:text-[3.15rem]",
               )}
             >
               This is what you ship, not what you build
             </h2>
           </div>
 
-          <article className="mt-14 overflow-hidden rounded-[1.6rem] border border-slate-700/80 bg-slate-900/95 shadow-[0_28px_76px_rgba(2,6,23,0.4)] ring-1 ring-white/[0.03]">
+          <article className="mt-14 overflow-hidden rounded-[1.7rem] border border-slate-700/75 bg-slate-900/92 shadow-[0_28px_76px_rgba(2,6,23,0.4)] ring-1 ring-white/[0.03] backdrop-blur-sm">
             <div className="grid lg:grid-cols-[minmax(0,1.04fr)_minmax(0,0.96fr)]">
               <div className="p-6 sm:p-8">
                 <p className="text-[0.78rem] font-semibold uppercase tracking-[0.09em] text-slate-300">
@@ -299,12 +300,12 @@ mjml.config`}
         </div>
       </section>
 
-      <section id="pricing-cta" className="border-t border-slate-800 bg-[linear-gradient(180deg,#0b1728_0%,#09131f_100%)] py-28">
+      <section id="pricing-cta" className="border-t border-slate-800 bg-[linear-gradient(180deg,#0b1728_0%,#09131f_100%)] py-30">
         <div className={pageWidth}>
           <div className="mx-auto max-w-[44rem] text-center">
             <h2
               className={cn(
-                "text-[2.35rem] font-semibold leading-[0.95] text-white sm:text-[3.1rem]",
+                "font-serif text-[2.5rem] font-semibold leading-[0.92] tracking-[-0.03em] text-white sm:text-[3.25rem]",
               )}
             >
               Buy Hedgehog Core - £79
