@@ -42,7 +42,7 @@ jobs:
         run: npm run lint
 
       - name: Build static export
-        run: npm run build:pages
+        run: GITHUB_PAGES_CUSTOM_DOMAIN=true npm run build:pages
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

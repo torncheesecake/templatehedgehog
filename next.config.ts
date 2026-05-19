@@ -1,9 +1,10 @@
 import type { NextConfig } from "next";
 
 const isStaticExport = process.env.STATIC_EXPORT === "true";
+const isCustomDomainExport = process.env.GITHUB_PAGES_CUSTOM_DOMAIN === "true";
 const repositoryName = process.env.GITHUB_REPOSITORY?.split("/")[1] ?? "";
 const isUserOrOrgPagesRepo = repositoryName.toLowerCase().endsWith(".github.io");
-const basePath = isStaticExport && repositoryName && !isUserOrOrgPagesRepo
+const basePath = isStaticExport && !isCustomDomainExport && repositoryName && !isUserOrOrgPagesRepo
   ? `/${repositoryName}`
   : "";
 
