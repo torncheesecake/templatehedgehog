@@ -1,20 +1,30 @@
 import type { Metadata } from "next";
-import { createPageTitle, TEMPLATE_CONFIG } from "@/config/template";
+import { TEMPLATE_CONFIG } from "@/config/template";
 import { DocsLayout, DocsSection } from "@/components/docs/DocsLayout";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { buildBreadcrumbJsonLd, createSeoMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: createPageTitle("Docs"),
+export const metadata: Metadata = createSeoMetadata({
+  title: "Docs",
   description:
-    `Implementation guides for ${TEMPLATE_CONFIG.brandName} workflows, layouts, MJML source, compiled HTML, and email client caveats.`,
-};
+    `Implementation guides for ${TEMPLATE_CONFIG.brandName} layouts, MJML source, compiled HTML, and email client caveats.`,
+  path: "/docs",
+  keywords: [
+    "MJML implementation docs",
+    "compiled HTML email guidance",
+    "email client QA",
+    "production email documentation",
+  ],
+});
 
 const inlineCodeClass =
-  "rounded-[0.45rem] border border-slate-200 bg-slate-50 px-1.5 py-0.5 text-[0.88em] font-medium text-slate-900";
-const listClass = "list-disc space-y-2.5 pl-5 marker:text-slate-900";
+  "rounded-[0.45rem] border border-[var(--th-border-dark)] bg-slate-900/70 px-1.5 py-0.5 text-[0.88em] font-medium text-slate-100";
+const listClass = "list-disc space-y-2.5 pl-5 marker:text-slate-200";
 
 const sections = [
   { id: "intro", label: "Intro" },
   { id: "workflow", label: "Workflow" },
+  { id: "copy-modes", label: "Copy modes" },
   { id: "outlook", label: "Outlook caveats" },
   { id: "customisation", label: "Safe customisation" },
   { id: "images", label: "Image hosting" },
@@ -27,14 +37,20 @@ export default function DocsPage() {
   return (
     <DocsLayout
       title="Developer documentation."
-      summary="Clear implementation guidance for using MJML components, layouts, and compiled HTML in production email workflows."
+      summary="Implementation guidance for using MJML components, layouts, and compiled HTML in production email systems."
       navItems={sections}
     >
+      <JsonLd
+        id="docs-breadcrumb"
+        data={buildBreadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Docs", path: "/docs" },
+        ])}
+      />
       <DocsSection id="intro" title="Intro">
         <p>
-          {TEMPLATE_CONFIG.brandName} is a public MJML reference system backed by a downloadable offline archive.
-          Workflow pages show practical production paths, layout pages show message structure, and component pages let
-          you inspect single blocks when needed.
+          {TEMPLATE_CONFIG.brandName} is an {TEMPLATE_CONFIG.owner.name} implementation system for production email.
+          Layout pages show complete message structure, and component pages let you inspect single blocks when needed.
         </p>
         <p>
           The intended editing model is straightforward: treat MJML as the source of truth, compile to HTML when your ESP
@@ -47,8 +63,8 @@ export default function DocsPage() {
         <p>
           A safe working pattern for most teams looks like this:
         </p>
-        <ol className="list-decimal space-y-2.5 pl-5 marker:font-semibold marker:text-slate-900">
-          <li>Start from the closest workflow, then move to layout or component detail when needed.</li>
+        <ol className="list-decimal space-y-2.5 pl-5 marker:font-semibold marker:text-slate-200">
+          <li>Start from the closest layout, then move to component detail when needed.</li>
           <li>Edit the <span className={inlineCodeClass}>MJML</span> source rather than patching compiled HTML by hand.</li>
           <li>Compile to HTML and test the result in your delivery workflow.</li>
           <li>Run quick visual checks in Gmail, Outlook, and Apple Mail before final send.</li>
@@ -57,6 +73,21 @@ export default function DocsPage() {
           Use the compiled HTML panels when you need a delivery-ready snapshot for QA, approval, or an ESP that only
           accepts raw HTML. If you expect the block to be reused, keep your real changes in the MJML source instead.
         </p>
+      </DocsSection>
+
+      <DocsSection id="copy-modes" title="Snippet vs standalone">
+        <p>
+          Component pages expose two copy modes when the sources differ. Use the <span className={inlineCodeClass}>snippet</span>{" "}
+          mode when you are stacking multiple blocks inside one existing <span className={inlineCodeClass}>mj-body</span>.
+          Use the <span className={inlineCodeClass}>standalone</span> mode when you need a complete file that can compile on
+          its own.
+        </p>
+        <ul className={listClass}>
+          <li>MJML snippets are block-level source for composing several sections into the same email.</li>
+          <li>Standalone MJML includes the wrapper, shared classes, and document structure required for independent compilation.</li>
+          <li>HTML snippets are useful for inspection and controlled assembly, but most ESP handoff should use standalone compiled HTML.</li>
+          <li>Compiled standalone HTML is the delivery-ready output for QA, import, and final review.</li>
+        </ul>
       </DocsSection>
 
       <DocsSection id="outlook" title="Outlook rendering caveats">
@@ -141,7 +172,7 @@ export default function DocsPage() {
           <li>Edited compiled HTML drifting away from the MJML source, making the next revision harder than it should be.</li>
         </ul>
         <p>
-          If you hit one of these issues often, favour the simpler variant in the workflow or layout reference. Reliability is usually worth more
+          If you hit one of these issues often, favour the simpler variant in the layout reference. Reliability is usually worth more
           than a slightly more decorative layout treatment.
         </p>
       </DocsSection>

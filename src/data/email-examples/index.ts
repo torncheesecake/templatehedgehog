@@ -5,6 +5,7 @@ import {
   type EmailLayoutSystemSlug,
   getEmailLayoutBySlug,
 } from "@/data/email-layouts";
+import { applyTemplateTokens } from "@/lib/templateTokens";
 
 export type EmailExampleImplementation = {
   slug: string;
@@ -52,7 +53,7 @@ function loadExampleMjml(fileName: string): string {
     if (!content) {
       throw new Error("file is empty");
     }
-    return content;
+    return applyTemplateTokens(content);
   } catch (error) {
     const detail = error instanceof Error ? error.message : String(error);
     throw new Error(

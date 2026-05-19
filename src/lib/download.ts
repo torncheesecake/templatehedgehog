@@ -7,18 +7,17 @@ import {
   type S3ServiceException,
 } from "@aws-sdk/client-s3";
 import {
-  MJML_PACK_FILENAME,
-  MJML_PACK_PRODUCT_ID,
+  getMjmlPackFilename,
   getMjmlPackAbsolutePath,
-  getMjmlPackPricePence,
 } from "@/lib/pack";
+import { getPackByProductId, type PackId } from "@/lib/packCatalog";
 import { getStripeServerClient, isStripeConfigured } from "@/lib/stripe-server";
 
 export type DownloadStorageMode = "filesystem" | "provider";
 type DownloadRequestMethod = "GET" | "HEAD";
 
 export type DownloadValidationResult =
-  | { ok: true; sessionId: string }
+  | { ok: true; sessionId: string; packId?: PackId; productId?: string }
   | { ok: false; status: number; message: string };
 
 export type DownloadDeliveryResult =
@@ -73,7 +72,6 @@ type DownloadTestHooks = {
 };
 
 const STRIPE_SESSION_ID_PATTERN = /^cs_(live|test)_[A-Za-z0-9]+$/;
-const localPackPath = getMjmlPackAbsolutePath(process.cwd());
 const DOWNLOAD_DEFAULT_CONTENT_TYPE = "application/zip";
 let downloadTestHooks: DownloadTestHooks = {};
 
@@ -99,6 +97,10 @@ function getDownloadStorageMode(): DownloadStorageMode {
     return "provider";
   }
   return "filesystem";
+}
+
+function allowProductionFilesystemDownloads(): boolean {
+  return process.env.DOWNLOAD_FILESYSTEM_ENABLED === "true";
 }
 
 function isLikelyStripeSessionId(sessionId: string): boolean {
@@ -311,7 +313,11 @@ function resolveProviderFromEnv(filename: string): ProviderResolutionResult {
 
 async function resolveFilesystemDelivery(
   method: DownloadRequestMethod,
+  packId: PackId,
 ): Promise<DownloadDeliveryResult> {
+  const filename = getMjmlPackFilename(packId);
+  const localPackPath = getMjmlPackAbsolutePath(process.cwd(), packId);
+
   try {
     const stat = await fs.stat(localPackPath);
     if (!stat.isFile()) {
@@ -325,7 +331,7 @@ async function resolveFilesystemDelivery(
     if (method === "HEAD") {
       return {
         ok: true,
-        filename: MJML_PACK_FILENAME,
+        filename,
         contentType: DOWNLOAD_DEFAULT_CONTENT_TYPE,
         contentLength: stat.size,
       };
@@ -336,7 +342,7 @@ async function resolveFilesystemDelivery(
     ) as ReadableStream<Uint8Array>;
     return {
       ok: true,
-      filename: MJML_PACK_FILENAME,
+      filename,
       contentType: DOWNLOAD_DEFAULT_CONTENT_TYPE,
       contentLength: stat.size,
       stream,
@@ -352,8 +358,10 @@ async function resolveFilesystemDelivery(
 
 async function resolveProviderDelivery(
   method: DownloadRequestMethod,
+  packId: PackId,
 ): Promise<DownloadDeliveryResult> {
-  const providerResolution = resolveProviderFromEnv(MJML_PACK_FILENAME);
+  const filename = getMjmlPackFilename(packId);
+  const providerResolution = resolveProviderFromEnv(filename);
   if (!providerResolution.ok) {
     return providerResolution;
   }
@@ -365,7 +373,7 @@ async function resolveProviderDelivery(
       const metadata = await provider.headObject(objectKey);
       return {
         ok: true,
-        filename: MJML_PACK_FILENAME,
+        filename,
         contentType: metadata.contentType,
         contentLength: metadata.contentLength,
       };
@@ -374,7 +382,7 @@ async function resolveProviderDelivery(
     const object = await provider.getObject(objectKey);
     return {
       ok: true,
-      filename: MJML_PACK_FILENAME,
+      filename,
       contentType: object.contentType,
       contentLength: object.contentLength,
       stream: object.stream,
@@ -402,10 +410,15 @@ async function resolveProviderDelivery(
 
 export async function resolveDownloadDelivery(
   method: DownloadRequestMethod,
+  packId: PackId = "pro",
 ): Promise<DownloadDeliveryResult> {
   const mode = getDownloadStorageMode();
 
-  if (process.env.NODE_ENV === "production" && mode !== "provider") {
+  if (
+    process.env.NODE_ENV === "production"
+    && mode !== "provider"
+    && !allowProductionFilesystemDownloads()
+  ) {
     return {
       ok: false,
       status: 503,
@@ -415,10 +428,10 @@ export async function resolveDownloadDelivery(
   }
 
   if (mode === "provider") {
-    return resolveProviderDelivery(method);
+    return resolveProviderDelivery(method, packId);
   }
 
-  return resolveFilesystemDelivery(method);
+  return resolveFilesystemDelivery(method, packId);
 }
 
 export async function validateDownloadSession(
@@ -457,7 +470,8 @@ export async function validateDownloadSession(
 
   try {
     const session = await stripe.checkout.sessions.retrieve(sessionId);
-    const expectedAmount = getMjmlPackPricePence();
+    const productId = session.metadata?.productId ?? "";
+    const selectedPack = getPackByProductId(productId);
 
     if (session.mode !== "payment") {
       return { ok: false, status: 403, message: "Session is not a payment checkout." };
@@ -467,11 +481,11 @@ export async function validateDownloadSession(
       return { ok: false, status: 402, message: "Payment has not been completed." };
     }
 
-    if (session.metadata?.productId !== MJML_PACK_PRODUCT_ID) {
+    if (!selectedPack) {
       return { ok: false, status: 403, message: "Session is not valid for this product." };
     }
 
-    if (session.amount_total !== expectedAmount || session.currency !== "gbp") {
+    if (session.amount_total !== selectedPack.oneOffPricePence || session.currency !== "gbp") {
       return {
         ok: false,
         status: 403,
@@ -479,7 +493,12 @@ export async function validateDownloadSession(
       };
     }
 
-    return { ok: true, sessionId: session.id };
+    return {
+      ok: true,
+      sessionId: session.id,
+      packId: selectedPack.id,
+      productId: selectedPack.productId,
+    };
   } catch {
     return { ok: false, status: 404, message: "Checkout session was not found." };
   }

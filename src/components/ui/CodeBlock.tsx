@@ -207,14 +207,14 @@ export function CodeBlock({
 
   return (
     <>
-      <article className={`overflow-hidden rounded-[1rem] border border-black/10 bg-white ${className}`}>
-        <div className="flex flex-wrap items-start justify-between gap-3 border-b border-black/10 px-5 py-4 sm:px-6">
-          <div>
-            <h2 className="text-[1.1rem] font-semibold text-black">
+      <article className={`min-w-0 max-w-full overflow-hidden rounded-[1rem] border border-[var(--th-border-dark)] bg-[var(--bg-canvas)] ${className}`}>
+        <div className="flex min-w-0 flex-wrap items-start justify-between gap-3 border-b border-[var(--th-border-dark)] px-5 py-4 sm:px-6">
+          <div className="min-w-0 flex-1">
+            <h2 className="text-[1.1rem] font-semibold text-white">
               {label}
             </h2>
             {description ? (
-              <p className="mt-1 text-[0.9rem] text-gray-600">
+              <p className="mt-1 text-[0.9rem] leading-6 text-[var(--th-text-secondary)]">
                 {description}
               </p>
             ) : null}
@@ -223,7 +223,7 @@ export function CodeBlock({
             type="button"
             onClick={handleCopy}
             disabled={isCopying || isPreparing}
-            className="inline-flex h-10 items-center gap-2 rounded-[0.8rem] border border-[var(--action-primary)] bg-[var(--action-primary)] px-4 text-[0.8rem] font-semibold uppercase tracking-[0.06em] !text-[var(--action-text)] transition hover:bg-[var(--action-primary-hover)] disabled:cursor-not-allowed disabled:opacity-60 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2"
+            className="inline-flex h-10 shrink-0 items-center gap-2 rounded-[0.8rem] border border-[var(--action-primary)] bg-[var(--action-primary)] px-4 text-[0.8rem] font-semibold uppercase tracking-[0.06em] !text-[var(--action-text)] transition hover:bg-[var(--action-primary-hover)] disabled:cursor-not-allowed disabled:opacity-60 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2"
           >
             {isCopying || isPreparing ? (
               <>
@@ -244,10 +244,10 @@ export function CodeBlock({
         <div
           tabIndex={0}
           aria-label={`${label} code block`}
-          className="max-h-[620px] overflow-auto rounded-b-[1rem] border-t border-black/10 bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#d13d4c]"
+          className="max-h-[620px] w-full max-w-full overflow-auto rounded-b-[1rem] border-t border-[var(--th-border-dark)] bg-[var(--bg-canvas)] focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[var(--action-primary)]"
         >
           <div
-            className="code-surface p-5 sm:p-6"
+            className="code-surface min-w-full p-5 sm:p-6"
             data-wrap-lines={wrapLines ? "true" : "false"}
             dangerouslySetInnerHTML={{ __html: highlightedHtml }}
           />

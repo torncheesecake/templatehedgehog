@@ -1,7 +1,11 @@
 import assert from "node:assert/strict";
+import { mkdtemp, rm } from "node:fs/promises";
+import { tmpdir } from "node:os";
+import path from "node:path";
 import test from "node:test";
 import { NextRequest } from "next/server";
-import { POST, __resetWaitlistRouteStateForTests } from "./route";
+import { POST } from "./route";
+import { __resetWaitlistRateLimiterForTests } from "@/lib/rateLimit";
 import { __resetWaitlistStoreForTests } from "@/lib/waitlist/store";
 
 type EnvPatch = Record<string, string | undefined>;
@@ -55,7 +59,7 @@ test("POST /api/waitlist returns 201 for a valid submission", async () => {
     },
     async () => {
       __resetWaitlistStoreForTests();
-      __resetWaitlistRouteStateForTests();
+      __resetWaitlistRateLimiterForTests();
 
       const request = buildWaitlistRequest({
         email: "new.user@example.com",
@@ -75,7 +79,7 @@ test("POST /api/waitlist returns 200 for duplicate email", async () => {
     },
     async () => {
       __resetWaitlistStoreForTests();
-      __resetWaitlistRouteStateForTests();
+      __resetWaitlistRateLimiterForTests();
 
       const first = await POST(buildWaitlistRequest({ email: "repeat@example.com" }));
       assert.equal(first.status, 201);
@@ -93,7 +97,7 @@ test("POST /api/waitlist returns 400 for invalid email", async () => {
     },
     async () => {
       __resetWaitlistStoreForTests();
-      __resetWaitlistRouteStateForTests();
+      __resetWaitlistRateLimiterForTests();
 
       const response = await POST(buildWaitlistRequest({ email: "not-an-email" }));
       assert.equal(response.status, 400);
@@ -108,7 +112,7 @@ test("POST /api/waitlist rate limits repeated requests from the same IP", async 
     },
     async () => {
       __resetWaitlistStoreForTests();
-      __resetWaitlistRouteStateForTests();
+      __resetWaitlistRateLimiterForTests();
 
       for (let attempt = 0; attempt < 20; attempt += 1) {
         const response = await POST(
@@ -133,7 +137,7 @@ test("POST /api/waitlist returns 503 when redis mode is unconfigured", async () 
     },
     async () => {
       __resetWaitlistStoreForTests();
-      __resetWaitlistRouteStateForTests();
+      __resetWaitlistRateLimiterForTests();
 
       const response = await POST(
         buildWaitlistRequest({ email: "redis-mode@example.com" }),
@@ -143,22 +147,34 @@ test("POST /api/waitlist returns 503 when redis mode is unconfigured", async () 
   );
 });
 
-test("POST /api/waitlist enforces redis backing in production", async () => {
+test("POST /api/waitlist uses file storage in production when redis is absent", async () => {
+  const tempDir = await mkdtemp(path.join(tmpdir(), "templatehedgehog-waitlist-"));
+
   await withPatchedEnv(
     {
       NODE_ENV: "production",
-      WAITLIST_STORAGE_MODE: "memory",
-      RATE_LIMIT_STORE_MODE: "memory",
+      WAITLIST_STORAGE_MODE: undefined,
+      WAITLIST_FILE_PATH: path.join(tempDir, "waitlist.jsonl"),
+      RATE_LIMIT_STORE_MODE: undefined,
       REDIS_URL: undefined,
     },
     async () => {
-      __resetWaitlistStoreForTests();
-      __resetWaitlistRouteStateForTests();
+      try {
+        __resetWaitlistStoreForTests();
+        __resetWaitlistRateLimiterForTests();
 
-      const response = await POST(
-        buildWaitlistRequest({ email: "prod-check@example.com" }),
-      );
-      assert.equal(response.status, 503);
+        const first = await POST(
+          buildWaitlistRequest({ email: "prod-check@example.com" }),
+        );
+        assert.equal(first.status, 201);
+
+        const duplicate = await POST(
+          buildWaitlistRequest({ email: "prod-check@example.com" }),
+        );
+        assert.equal(duplicate.status, 200);
+      } finally {
+        await rm(tempDir, { recursive: true, force: true });
+      }
     },
   );
 });

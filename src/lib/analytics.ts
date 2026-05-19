@@ -3,8 +3,8 @@ export type EventName =
   | "hero_primary_cta_click"
   | "hero_secondary_cta_click"
   | "hero_tertiary_cta_click"
-  | "workflows_section_view"
-  | "workflow_card_click"
+  | "layouts_section_view"
+  | "layout_card_click"
   | "technical_proof_view"
   | "pricing_section_view"
   | "docs_click"
@@ -18,12 +18,13 @@ export type EventName =
   | "copy_mjml"
   | "copy_html"
   | "view_layout_detail"
-  | "view_workflow_index"
-  | "view_workflow_detail"
-  | "workflow_to_pricing"
-  | "buy_from_workflow"
+  | "view_layout_index"
+  | "view_layout_system_detail"
+  | "layout_to_pricing"
+  | "buy_from_layout"
   | "click_buy_now"
-  | "visit_success";
+  | "visit_success"
+  | "lead_capture_submit";
 
 export type AnalyticsPayload = Record<string, unknown>;
 

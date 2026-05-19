@@ -66,14 +66,15 @@ class RedisRateLimiter implements RateLimiter {
 }
 
 function getRateLimiterMode(): "memory" | "redis" {
-  if (process.env.NODE_ENV === "production") {
-    return "redis";
-  }
-
   const configured = process.env.RATE_LIMIT_STORE_MODE?.trim().toLowerCase();
   if (configured === "memory" || configured === "redis") {
     return configured;
   }
+
+  if (process.env.NODE_ENV === "production") {
+    return process.env.REDIS_URL ? "redis" : "memory";
+  }
+
   return "memory";
 }
 

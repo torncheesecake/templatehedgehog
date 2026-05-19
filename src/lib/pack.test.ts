@@ -8,6 +8,9 @@ import {
   LAYOUT_COUNT,
   MJML_PACK_ABSOLUTE_PATH,
   MJML_PACK_FILENAME,
+  STARTER_COMPONENT_COUNT,
+  STARTER_LAYOUT_COUNT,
+  STARTER_WORKFLOW_COUNT,
   WORKFLOW_COUNT,
 } from "./pack";
 import { getPackById } from "./packCatalog";
@@ -19,10 +22,18 @@ test("pack metadata counts match source registries", () => {
 });
 
 test("pack catalogue counts match live registries", () => {
-  const pack1 = getPackById("pack-1");
-  assert.equal(pack1.componentCount, COMPONENT_COUNT);
-  assert.equal(pack1.layoutCount, LAYOUT_COUNT);
-  assert.equal(pack1.workflowCount, WORKFLOW_COUNT);
+  const starterPack = getPackById("starter");
+  const proPack = getPackById("pro");
+  const enterprisePack = getPackById("enterprise");
+  assert.equal(starterPack.componentCount, STARTER_COMPONENT_COUNT);
+  assert.equal(starterPack.layoutCount, STARTER_LAYOUT_COUNT);
+  assert.equal(starterPack.workflowCount, STARTER_WORKFLOW_COUNT);
+  assert.equal(proPack.componentCount, COMPONENT_COUNT);
+  assert.equal(proPack.layoutCount, LAYOUT_COUNT);
+  assert.equal(proPack.workflowCount, WORKFLOW_COUNT);
+  assert.equal(enterprisePack.componentCount, COMPONENT_COUNT);
+  assert.equal(enterprisePack.layoutCount, LAYOUT_COUNT);
+  assert.equal(enterprisePack.workflowCount, WORKFLOW_COUNT);
 });
 
 test("pack absolute path resolves to the configured zip filename", () => {

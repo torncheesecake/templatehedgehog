@@ -26,6 +26,6 @@ if [ -d "$SUCCESS_DIR" ]; then
   mv "$SUCCESS_DIR" "$TEMP_SUCCESS_DIR"
 fi
 
-STATIC_EXPORT=true next build
+STATIC_EXPORT=true next build --webpack
 
 touch out/.nojekyll

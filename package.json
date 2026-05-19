@@ -12,10 +12,10 @@
     "prebuild": "npm run build:components && npm run build:layouts && npm run build:examples && npm run build:pack",
     "prestart": "npm run build:components && npm run build:layouts && npm run build:examples && npm run build:pack",
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build --webpack",
     "build:pages": "npm run prebuild && ./scripts/build-pages.sh",
     "start": "next start",
-    "test:unit": "tsx --test src/components/ui/CodeBlock.test.tsx src/components/ui/HtmlPreviewFrame.test.tsx src/data/layout-addons/layout-addons.test.ts src/lib/analytics.test.ts src/lib/clipboard.test.ts src/lib/download.test.ts src/lib/downloadToken.test.ts src/lib/html-snippets.test.ts src/lib/mjml/compile.test.ts src/lib/mjml/safety.test.ts src/lib/pack.test.ts src/lib/packSize.test.ts src/lib/versioning.test.ts src/app/api/download/route.integration.test.ts src/app/api/downloads/[token]/route.test.ts src/app/api/mjml/compile/route.test.ts src/app/api/waitlist/route.test.ts src/app/api/webhooks/stripe/route.test.ts",
+    "test:unit": "tsx --test src/components/ui/CodeBlock.test.tsx src/components/ui/HtmlPreviewFrame.test.tsx src/data/layout-addons/layout-addons.test.ts src/lib/analytics.test.ts src/lib/clipboard.test.ts src/lib/download.test.ts src/lib/downloadToken.test.ts src/lib/html-snippets.test.ts src/lib/mjml/compile.test.ts src/lib/mjml/safety.test.ts src/lib/pack.test.ts src/lib/packSize.test.ts src/lib/versioning.test.ts src/app/api/download/route.integration.test.ts src/app/api/downloads/[token]/route.test.ts src/app/api/mjml/compile/route.test.ts src/app/api/waitlist/route.test.ts src/app/api/subscribe/route.test.ts src/app/api/reviews/route.test.ts src/app/api/webhooks/stripe/route.test.ts",
     "lint": "eslint"
   },
   "dependencies": {
@@ -24,7 +24,7 @@
     "ioredis": "^5.10.1",
     "lucide-react": "^0.577.0",
     "mjml": "^5.0.0-beta.2",
-    "next": "^16.2.1",
+    "next": "16.2.6",
     "prettier": "^3.8.1",
     "prism-react-renderer": "^2.4.1",
     "react": "^19.2.4",
@@ -33,6 +33,7 @@
     "stripe": "^20.4.1"
   },
   "devDependencies": {
+    "@playwright/test": "^1.60.0",
     "@tailwindcss/postcss": "^4.2.2",
     "@types/archiver": "^7.0.0",
     "@types/node": "^20",

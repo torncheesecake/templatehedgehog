@@ -5,7 +5,7 @@
       <mj-text mj-class="label text-primary" align="left" padding-bottom="8px">Billing</mj-text>
       <mj-text mj-class="h5 text-primary extrabold" align="left" padding-bottom="10px">Payment could not be processed</mj-text>
       <mj-text mj-class="body text-muted" align="left" padding-bottom="18px">Your latest invoice failed. Update your billing method to avoid service interruption.</mj-text>
-      <mj-button mj-class="thbluebg white body bold" align="left" border-radius="999px" inner-padding="14px 28px" href="https://templatehedgehog.com">Update billing</mj-button>
+      <mj-button mj-class="thbluebg white body bold" align="left" border-radius="999px" inner-padding="14px 28px" href="https://templatehedgehog.co.uk">Update billing</mj-button>
     </mj-column>
   </mj-section>
 </mj-wrapper>

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { TrackableSubmitButton } from "@/components/analytics/TrackableSubmitButton";
+import { TEMPLATE_CONFIG } from "@/config/template";
 
 const VAT_RATE = 0.2;
 
@@ -52,17 +53,17 @@ export function PricingOfferCard({
   }, [pricePence, vatMode]);
 
   return (
-    <aside className="relative overflow-hidden rounded-[1.4rem] border border-slate-200 bg-slate-50 p-7 shadow-[0_34px_64px_rgba(0,0,0,0.42)] sm:p-8">
+    <aside className="relative overflow-hidden rounded-[1.2rem] border border-[var(--border-subtle)] bg-[var(--bg-surface)] p-5 sm:p-8">
       <span className="pointer-events-none absolute inset-x-8 top-0 h-px bg-[linear-gradient(90deg,transparent,hsl(var(--th-accent-support)/0.52),transparent)]" />
-      <p className="text-[1rem] font-semibold uppercase tracking-[0.1em] text-slate-600">
-        Hedgehog Core
+      <p className="text-[1rem] font-semibold uppercase tracking-[0.1em] text-[var(--text-meta)]">
+        {TEMPLATE_CONFIG.productName}
       </p>
-      <p className="mt-2 text-[0.9rem] leading-7 text-slate-500">
+      <p className="mt-2 text-[0.9rem] leading-7 text-[var(--text-secondary)]">
         One-time purchase. No subscription.
       </p>
 
       <div
-        className="mt-4 inline-flex rounded-[0.8rem] border border-slate-200 bg-white p-1"
+        className="mt-4 inline-flex items-center gap-2 rounded-[0.8rem] border border-[var(--border-subtle)] bg-[var(--bg-canvas)] p-1.5"
         role="group"
         aria-label="VAT display mode"
       >
@@ -70,10 +71,10 @@ export function PricingOfferCard({
           type="button"
           onClick={() => setVatMode("ex_vat")}
           aria-pressed={vatMode === "ex_vat"}
-          className={`h-8 rounded-[0.58rem] px-3 text-[0.74rem] font-semibold tracking-[0.02em] transition ${
+          className={`h-8 rounded-[0.58rem] px-3.5 text-[0.74rem] font-semibold tracking-[0.02em] transition ${
             vatMode === "ex_vat"
-              ? "bg-slate-900 text-slate-900"
-              : "text-slate-500 hover:text-slate-900"
+              ? "border border-[var(--border-strong)] bg-[var(--bg-accent-soft)] text-[var(--text-primary)]"
+              : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
           }`}
         >
           Ex VAT
@@ -82,10 +83,10 @@ export function PricingOfferCard({
           type="button"
           onClick={() => setVatMode("inc_vat")}
           aria-pressed={vatMode === "inc_vat"}
-          className={`h-8 rounded-[0.58rem] px-3 text-[0.74rem] font-semibold tracking-[0.02em] transition ${
+          className={`h-8 rounded-[0.58rem] px-3.5 text-[0.74rem] font-semibold tracking-[0.02em] transition ${
             vatMode === "inc_vat"
-              ? "bg-slate-900 text-slate-900"
-              : "text-slate-500 hover:text-slate-900"
+              ? "border border-[var(--border-strong)] bg-[var(--bg-accent-soft)] text-[var(--text-primary)]"
+              : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
           }`}
         >
           Inc VAT
@@ -93,46 +94,46 @@ export function PricingOfferCard({
       </div>
 
       <div className="mt-7 flex items-end gap-2.5">
-        <p className="text-[3.9rem] font-semibold leading-[0.86] text-slate-900 sm:text-[4.4rem]">
+        <p className="text-[3.4rem] font-semibold leading-[0.9] text-[var(--text-primary)] sm:text-[4.4rem]">
           {formatHeadlinePriceFromPence(displayedPrice)}
         </p>
-        <p className="pb-2 text-[1rem] font-semibold uppercase tracking-[0.08em] text-slate-600">
+        <p className="pb-2 text-[1rem] font-semibold uppercase tracking-[0.08em] text-[var(--text-meta)]">
           {vatMode === "inc_vat" ? "inc VAT" : "ex VAT"}
         </p>
       </div>
 
-      <div className="mt-6 rounded-[0.9rem] border border-slate-200 bg-white p-4 text-[0.84rem] text-slate-600">
+      <div className="mt-6 rounded-[0.9rem] border border-[var(--border-subtle)] bg-[var(--bg-canvas)] p-4 text-[0.84rem] text-[var(--text-secondary)]">
         <div className="flex items-center justify-between gap-3">
           <span>Version</span>
-          <span className="font-semibold text-slate-900">{versionLabel}</span>
+          <span className="font-semibold text-[var(--text-primary)]">{versionLabel}</span>
         </div>
-        <div className="mt-2 flex items-center justify-between gap-3 border-t border-slate-200 pt-2">
+        <div className="mt-2 flex items-center justify-between gap-3 border-t border-[var(--border-subtle)] pt-2">
           <span>Last updated</span>
-          <span className="font-semibold text-slate-900">{lastUpdatedLabel}</span>
+          <span className="font-semibold text-[var(--text-primary)]">{lastUpdatedLabel}</span>
         </div>
       </div>
 
-      <ul className="mt-7 space-y-2.5 text-[0.95rem] leading-7 text-slate-900">
+      <ul className="mt-7 space-y-2.5 text-[0.95rem] leading-7 text-[var(--text-primary)]">
         {inclusionPoints.map((point) => (
           <li key={point} className="flex items-start gap-2.5">
-            <span className="mt-[0.62rem] h-1.5 w-1.5 shrink-0 rounded-full bg-slate-900" />
+            <span className="mt-[0.62rem] h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--action-primary)]" />
             <span>{point}</span>
           </li>
         ))}
       </ul>
 
-      <ul className="mt-6 space-y-2.5 text-[0.88rem] leading-6 text-slate-500">
+      <ul className="mt-6 space-y-2.5 text-[0.88rem] leading-6 text-[var(--text-secondary)]">
         <li className="flex items-start gap-2.5">
-          <span className="mt-[0.58rem] h-1.5 w-1.5 shrink-0 rounded-full bg-slate-900" />
+          <span className="mt-[0.58rem] h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--action-primary)]" />
           Instant download after checkout
         </li>
         <li className="flex items-start gap-2.5">
-          <span className="mt-[0.58rem] h-1.5 w-1.5 shrink-0 rounded-full bg-slate-900" />
+          <span className="mt-[0.58rem] h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--action-primary)]" />
           Secure checkout powered by Stripe
         </li>
         <li className="flex items-start gap-2.5">
-          <span className="mt-[0.58rem] h-1.5 w-1.5 shrink-0 rounded-full bg-slate-900" />
-          Commercial use across your own and client projects
+          <span className="mt-[0.58rem] h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--action-primary)]" />
+          Pro production use. Enterprise covers commercial reuse and white-label deployment
         </li>
       </ul>
 
@@ -143,8 +144,8 @@ export function PricingOfferCard({
           <TrackableSubmitButton
             label={ctaLabel}
             event="checkout_start"
-            payload={{ source: "pricing_page", packId: "pack-1", billingCycle: "one_off" }}
-            className="inline-flex h-12 w-full items-center justify-center rounded-[0.9rem] border border-[var(--action-primary)] bg-[var(--action-primary)] px-5 text-[0.94rem] font-semibold !text-[var(--action-text)] shadow-[0_18px_34px_rgba(0,0,0,0.3)] transition hover:bg-[var(--action-primary-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+            payload={{ source: "pricing_page", productId, billingCycle: "one_off" }}
+            className="inline-flex h-12 w-full items-center justify-center rounded-[0.9rem] border border-[var(--action-primary)] bg-[var(--action-primary)] px-5 text-[0.94rem] font-semibold !text-[var(--action-text)] shadow-[0_18px_34px_rgba(0,0,0,0.3)] transition hover:bg-[var(--action-primary-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-canvas)]"
           />
         </form>
       ) : (
@@ -152,11 +153,11 @@ export function PricingOfferCard({
           <button
             type="button"
             disabled
-            className="inline-flex h-12 w-full items-center justify-center rounded-[0.9rem] border border-[var(--action-primary)] bg-[var(--action-primary)] px-5 text-[0.94rem] font-semibold !text-[var(--action-text)] shadow-[0_18px_34px_rgba(0,0,0,0.3)] opacity-80"
+            className="inline-flex h-12 w-full items-center justify-center rounded-[0.9rem] border border-[var(--action-primary)] bg-[var(--action-primary)] px-5 text-[0.94rem] font-semibold !text-[var(--action-text)] shadow-[0_18px_34px_rgba(0,0,0,0.3)]"
           >
             {ctaLabel}
           </button>
-          <p className="rounded-[0.8rem] border border-slate-200 bg-slate-50 px-4 py-3 text-[0.84rem] leading-6 text-slate-600">
+          <p className="rounded-[0.8rem] border border-[var(--border-subtle)] bg-[var(--bg-accent-soft)] px-4 py-3 text-[0.84rem] leading-6 text-[var(--text-secondary)]">
             {isStaticPreview
               ? "GitHub Pages preview only. Live checkout runs on the primary deployment."
               : "Checkout is currently unavailable in this environment."}
@@ -164,11 +165,11 @@ export function PricingOfferCard({
         </div>
       )}
 
-      <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-[0.84rem] font-semibold text-slate-500">
-        <Link href="/workflows" className="underline-offset-2 hover:text-slate-900 hover:underline">
-          Explore workflows
+      <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-[0.84rem] font-semibold text-[var(--text-secondary)]">
+        <Link href="/layouts" className="underline-offset-2 hover:text-[var(--text-primary)] hover:underline">
+          Explore layouts
         </Link>
-        <Link href="/components" className="underline-offset-2 hover:text-slate-900 hover:underline">
+        <Link href="/components" className="underline-offset-2 hover:text-[var(--text-primary)] hover:underline">
           Browse free reference
         </Link>
       </div>

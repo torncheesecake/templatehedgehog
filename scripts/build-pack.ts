@@ -12,13 +12,16 @@ import {
   emailLayouts,
   emailLayoutSystems,
 } from "../src/data/email-layouts";
+import { type EmailWorkflow, emailWorkflows } from "../src/data/workflows";
 import { compiledLayoutHtmlBySlug } from "../src/data/email-layouts/compiled";
 import {
   MJML_PACK_LICENSE_POINTS,
-  MJML_PACK_NAME,
   MJML_PACK_PRIVATE_DIR,
+  STARTER_LAYOUT_SLUGS,
+  type DownloadPackId,
   MJML_PACK_PROJECT_STRUCTURE,
   getMjmlPackAbsolutePath,
+  getMjmlPackFilename,
 } from "../src/lib/pack";
 import { CHANGELOG, PACK_LAST_UPDATED, PACK_VERSION } from "../src/lib/versioning";
 import { TEMPLATE_CONFIG } from "../src/config/template";
@@ -26,16 +29,71 @@ import { TEMPLATE_CONFIG } from "../src/config/template";
 type PackComponentMetadata = Omit<EmailComponent, "mjmlSource">;
 type PackLayoutMetadata = Omit<EmailLayoutRecipe, "mjmlSource">;
 type PackExampleMetadata = Omit<EmailExampleImplementation, "mjmlSource">;
+type PackWorkflowMetadata = EmailWorkflow;
+type PackContent = {
+  components: EmailComponent[];
+  layouts: EmailLayoutRecipe[];
+  systems: EmailLayoutSystem[];
+  examples: EmailExampleImplementation[];
+  workflows: EmailWorkflow[];
+};
 
 const PROJECT_ROOT = process.cwd();
 const PUBLIC_DIR = path.join(PROJECT_ROOT, "public");
-const outputPath = getMjmlPackAbsolutePath(PROJECT_ROOT);
+const PACK_IDS: readonly DownloadPackId[] = ["starter", "pro", "enterprise"];
+const STARTER_LAYOUT_SLUG_SET = new Set<string>(STARTER_LAYOUT_SLUGS);
 
 type VersionManifest = {
+  tier: DownloadPackId;
   version: string;
   buildTimestamp: string;
   lastUpdated: string;
 };
+
+function getPackTier(packId: DownloadPackId) {
+  const tier = TEMPLATE_CONFIG.pricing.tiers.find((entry) => entry.id === packId);
+  if (!tier) {
+    throw new Error(`[build-pack] Unknown pack tier: ${packId}`);
+  }
+  return tier;
+}
+
+function getPackDisplayName(packId: DownloadPackId): string {
+  return `${TEMPLATE_CONFIG.brandName} ${getPackTier(packId).name}`;
+}
+
+function resolvePackContent(packId: DownloadPackId): PackContent {
+  if (packId !== "starter") {
+    return {
+      components: emailComponents,
+      layouts: emailLayouts,
+      systems: emailLayoutSystems,
+      examples: emailExamples,
+      workflows: emailWorkflows,
+    };
+  }
+
+  const layouts = emailLayouts.filter((layout) => STARTER_LAYOUT_SLUG_SET.has(layout.slug));
+  if (layouts.length !== STARTER_LAYOUT_SLUGS.length) {
+    const found = new Set(layouts.map((layout) => layout.slug));
+    const missing = STARTER_LAYOUT_SLUGS.filter((slug) => !found.has(slug));
+    throw new Error(`[build-pack] Starter layout selection is missing: ${missing.join(", ")}`);
+  }
+
+  const componentSlugSet = new Set(
+    layouts.flatMap((layout) => layout.componentBlocks.map((block) => block.componentSlug)),
+  );
+  const systemSlugSet = new Set(layouts.map((layout) => layout.system));
+  const layoutSlugSet = new Set(layouts.map((layout) => layout.slug));
+
+  return {
+    components: emailComponents.filter((component) => componentSlugSet.has(component.slug)),
+    layouts,
+    systems: emailLayoutSystems.filter((system) => systemSlugSet.has(system.slug)),
+    examples: emailExamples.filter((example) => layoutSlugSet.has(example.layoutSlug)),
+    workflows: emailWorkflows.filter((workflow) => layoutSlugSet.has(workflow.linkedLayoutSlug)),
+  };
+}
 
 function toPackMetadata(component: EmailComponent): PackComponentMetadata {
   return {
@@ -77,18 +135,29 @@ function toExampleMetadata(example: EmailExampleImplementation): PackExampleMeta
   };
 }
 
+function toWorkflowMetadata(workflow: EmailWorkflow): PackWorkflowMetadata {
+  return workflow;
+}
+
 function buildReadme(
+  packId: DownloadPackId,
   componentCount: number,
   layoutCount: number,
   exampleCount: number,
   systemCount: number,
+  workflowCount: number,
   buildTimestamp: string,
 ): string {
+  const tier = getPackTier(packId);
+  const packDisplayName = getPackDisplayName(packId);
+
   return [
-    `# ${MJML_PACK_NAME}`,
+    `# ${packDisplayName}`,
     "",
-    `${MJML_PACK_NAME} is the downloadable MJML project that sits behind the ${TEMPLATE_CONFIG.brandName} public reference library.`,
+    `${packDisplayName} is the downloadable MJML project that sits behind the ${TEMPLATE_CONFIG.brandName} production email system.`,
     "",
+    `Tier: ${tier.name}`,
+    `Position: ${tier.position}`,
     `Pack version: ${PACK_VERSION}`,
     `Build timestamp (UTC): ${buildTimestamp}`,
     `Last updated: ${PACK_LAST_UPDATED}`,
@@ -98,6 +167,7 @@ function buildReadme(
     `- ${componentCount} reusable MJML components organised in a working project structure`,
     `- ${layoutCount} full layouts grouped into ${systemCount} practical email systems`,
     `- ${exampleCount} example emails you can compile, customise, or hand to a teammate as a starting point`,
+    `- ${workflowCount} workflow references that map triggers, data contracts, QA risks, and handoff steps`,
     "- Precompiled HTML beside the MJML so QA and ESP handoff stay simple",
     "- Docs and configuration for developers who need a clean starting point, not just a folder of loose files",
     "",
@@ -110,6 +180,7 @@ function buildReadme(
     "- `components/registry.json`, `components/mjml/`, `components/html/`, `components/previews/`",
     "- `layouts/registry.json`, `layouts/mjml/`, `layouts/html/`, `layouts/systems.json`",
     "- `examples/registry.json`, `examples/mjml/`, `examples/html/`",
+    "- `workflows/registry.json`",
     "- `docs/getting-started.md`, `docs/customisation.md`, `docs/esp-handoff.md`, `docs/layout-systems.md`",
     "",
     "## Quick start",
@@ -137,15 +208,39 @@ function buildReadme(
   ].join("\n");
 }
 
-function buildLicense(): string {
+function buildLicense(packId: DownloadPackId): string {
+  const tier = getPackTier(packId);
+  const tierSpecificPoints =
+    packId === "enterprise"
+      ? [
+          "Commercial reuse rights are included for client, internal, and white-label deployment.",
+          "The reusable generation framework can be adapted for operational delivery work.",
+          "Priority support and 12 months of updates are included with this tier.",
+        ]
+      : packId === "pro"
+        ? [
+            "Use the complete production email system for your own business projects.",
+            "Commercial reuse, white-label deployment, or client redistribution requires Enterprise.",
+            "6 months of updates are included with this tier.",
+          ]
+        : [
+            "Use the curated starter system for your own production email implementation.",
+            "Upgrade to Pro for the full component, layout, workflow, and guidance archive.",
+            "Commercial reuse, white-label deployment, or client redistribution requires Enterprise.",
+          ];
+
   return [
-    `${TEMPLATE_CONFIG.brandName} Pack Licence`,
+    `${TEMPLATE_CONFIG.brandName} ${tier.name} Licence`,
     "",
-    "This pack is licensed for paid commercial use under the purchase terms.",
+    `${tier.position}. This pack is licensed under the paid purchase terms for the selected tier.`,
+    "",
+    ...tierSpecificPoints.map((line) => `- ${line}`),
+    "",
+    "General terms:",
     "",
     ...MJML_PACK_LICENSE_POINTS.map((line) => `- ${line}`),
     "",
-    `All rights reserved by ${TEMPLATE_CONFIG.brandName}.`,
+    `All rights reserved by ${TEMPLATE_CONFIG.owner.name}. ${TEMPLATE_CONFIG.brandName} is a product of ${TEMPLATE_CONFIG.owner.name}.`,
     "",
   ].join("\n");
 }
@@ -163,11 +258,13 @@ function buildChangelogMarkdown(): string {
   ].join("\n");
 }
 
-function buildGettingStartedDoc(): string {
+function buildGettingStartedDoc(packId: DownloadPackId): string {
+  const packDisplayName = getPackDisplayName(packId);
+
   return [
     "# Getting Started",
     "",
-    `Use ${MJML_PACK_NAME} as a local MJML project rather than a loose archive of snippets.`,
+    `Use ${packDisplayName} as a local MJML project rather than a loose archive of snippets.`,
     "",
     "## Install MJML",
     "",
@@ -413,11 +510,13 @@ async function addExampleAssets(
   });
 }
 
-async function buildPack(): Promise<void> {
+async function buildPack(packId: DownloadPackId): Promise<void> {
   await fs.mkdir(path.join(PROJECT_ROOT, MJML_PACK_PRIVATE_DIR), {
     recursive: true,
   });
 
+  const outputPath = getMjmlPackAbsolutePath(PROJECT_ROOT, packId);
+  const packContent = resolvePackContent(packId);
   const output = createWriteStream(outputPath);
   const archive = archiver("zip", {
     zlib: { level: 9 },
@@ -439,11 +538,13 @@ async function buildPack(): Promise<void> {
   });
   const outputClosePromise = once(output, "close");
 
-  const componentsMetadata = emailComponents.map(toPackMetadata);
-  const layoutsMetadata = emailLayouts.map(toLayoutMetadata);
-  const examplesMetadata = emailExamples.map(toExampleMetadata);
+  const componentsMetadata = packContent.components.map(toPackMetadata);
+  const layoutsMetadata = packContent.layouts.map(toLayoutMetadata);
+  const examplesMetadata = packContent.examples.map(toExampleMetadata);
+  const workflowsMetadata = packContent.workflows.map(toWorkflowMetadata);
   const buildTimestamp = new Date().toISOString();
   const versionManifest: VersionManifest = {
+    tier: packId,
     version: PACK_VERSION,
     buildTimestamp,
     lastUpdated: PACK_LAST_UPDATED,
@@ -455,20 +556,23 @@ async function buildPack(): Promise<void> {
   archive.append(`${JSON.stringify(layoutsMetadata, null, 2)}\n`, {
     name: "layouts/registry.json",
   });
-  archive.append(`${JSON.stringify(emailLayoutSystems, null, 2)}\n`, {
+  archive.append(`${JSON.stringify(packContent.systems, null, 2)}\n`, {
     name: "layouts/systems.json",
   });
   archive.append(`${JSON.stringify(examplesMetadata, null, 2)}\n`, {
     name: "examples/registry.json",
   });
+  archive.append(`${JSON.stringify(workflowsMetadata, null, 2)}\n`, {
+    name: "workflows/registry.json",
+  });
 
-  for (const component of emailComponents) {
+  for (const component of packContent.components) {
     await addComponentAssets(archive, component);
   }
-  for (const layout of emailLayouts) {
+  for (const layout of packContent.layouts) {
     await addLayoutAssets(archive, layout);
   }
-  for (const example of emailExamples) {
+  for (const example of packContent.examples) {
     await addExampleAssets(archive, example);
   }
 
@@ -479,21 +583,23 @@ async function buildPack(): Promise<void> {
   archive.append(buildChangelogMarkdown(), { name: "CHANGELOG.md" });
   archive.append(
     buildReadme(
-      emailComponents.length,
-      emailLayouts.length,
-      emailExamples.length,
-      emailLayoutSystems.length,
+      packId,
+      packContent.components.length,
+      packContent.layouts.length,
+      packContent.examples.length,
+      packContent.systems.length,
+      packContent.workflows.length,
       buildTimestamp,
     ),
     { name: "README.md" },
   );
-  archive.append(buildLicense(), { name: "LICENSE.txt" });
+  archive.append(buildLicense(packId), { name: "LICENSE.txt" });
   archive.append(buildMjmlConfig(), { name: "mjml.config" });
-  archive.append(buildGettingStartedDoc(), { name: "docs/getting-started.md" });
+  archive.append(buildGettingStartedDoc(packId), { name: "docs/getting-started.md" });
   archive.append(buildCustomisationDoc(), { name: "docs/customisation.md" });
   archive.append(buildEspHandoffDoc(), { name: "docs/esp-handoff.md" });
   archive.append(
-    buildLayoutSystemsDoc(emailLayoutSystems, emailLayouts, emailExamples),
+    buildLayoutSystemsDoc(packContent.systems, packContent.layouts, packContent.examples),
     { name: "docs/layout-systems.md" },
   );
 
@@ -501,10 +607,18 @@ async function buildPack(): Promise<void> {
 
   await Promise.race([outputClosePromise, archiveErrorPromise, outputErrorPromise]);
 
-  process.stdout.write(`Built ${MJML_PACK_NAME} archive at ${outputPath}\n`);
+  process.stdout.write(
+    `Built ${getPackDisplayName(packId)} archive ${getMjmlPackFilename(packId)} at ${outputPath}\n`,
+  );
 }
 
-buildPack().catch((error) => {
+async function buildAllPacks(): Promise<void> {
+  for (const packId of PACK_IDS) {
+    await buildPack(packId);
+  }
+}
+
+buildAllPacks().catch((error) => {
   const message = error instanceof Error ? error.message : "Unknown build failure";
   process.stderr.write(`${message}\n`);
   process.exit(1);

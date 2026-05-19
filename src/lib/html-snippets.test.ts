@@ -1,6 +1,9 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { extractComponentHtmlSnippet } from "@/lib/html-snippets";
+import {
+  extractComponentHtmlSnippet,
+  extractComponentMjmlSnippet,
+} from "@/lib/html-snippets";
 
 test("extractComponentHtmlSnippet returns comment-wrapped component slice when markers exist", () => {
   const standalone = `
@@ -40,3 +43,23 @@ test("extractComponentHtmlSnippet falls back to body inner HTML when markers are
   assert.equal(snippet, "<section>body block</section>");
 });
 
+test("extractComponentMjmlSnippet returns mj-body inner source", () => {
+  const standalone = `
+<mjml>
+  <mj-head></mj-head>
+  <mj-body>
+    <!-- #-START-# Block -->
+    <mj-section><mj-column><mj-text>Block</mj-text></mj-column></mj-section>
+    <!-- #-END-# Block -->
+  </mj-body>
+</mjml>`;
+
+  const snippet = extractComponentMjmlSnippet(standalone);
+
+  assert.equal(
+    snippet,
+    `<!-- #-START-# Block -->
+    <mj-section><mj-column><mj-text>Block</mj-text></mj-column></mj-section>
+    <!-- #-END-# Block -->`,
+  );
+});

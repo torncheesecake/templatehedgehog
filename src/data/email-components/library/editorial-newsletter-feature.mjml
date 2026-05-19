@@ -8,7 +8,7 @@
       <mj-text mj-class="label thblue" align="left" padding-bottom="10px">Editorial feature</mj-text>
       <mj-text mj-class="h4 text-primary extrabold" align="left" padding-bottom="10px">Lead story for this edition</mj-text>
       <mj-text mj-class="body text-muted" align="left" padding-bottom="18px">This week we break down the design decisions behind high-performing lifecycle email systems.</mj-text>
-      <mj-button mj-class="thbluebg white body bold" align="left" border-radius="999px" inner-padding="14px 28px" href="https://templatehedgehog.com">Read story</mj-button>
+      <mj-button mj-class="thbluebg white body bold" align="left" border-radius="999px" inner-padding="14px 28px" href="https://templatehedgehog.co.uk">Read story</mj-button>
     </mj-column>
   </mj-section>
 </mj-wrapper>

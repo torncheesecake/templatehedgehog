@@ -63,10 +63,10 @@
   <mj-section padding-top="20px" padding-bottom="3px">
     <mj-group>
       <mj-column width="32%" padding="0 0 0 15px">
-        <mj-image src="https://placehold.co/240x80/png?text=TemplateHedgehog+Logo" width="70px" height="27px" alt="" align="left" href="https://templatehedgehog.com" target="_blank" />
+        <mj-image src="https://placehold.co/240x80/png?text=TemplateHedgehog+Logo" width="70px" height="27px" alt="" align="left" href="https://templatehedgehog.co.uk" target="_blank" />
       </mj-column>
       <mj-column width="68%" padding="0 15px 0 0">
-        <mj-text mj-class="small white" align="right" padding-top="9px">Not displaying correctly? <a href="https://templatehedgehog.com" style="color:#ffffff; text-decoration: underline;">View online</a>.</mj-text>
+        <mj-text mj-class="small white" align="right" padding-top="9px">Not displaying correctly? <a href="https://templatehedgehog.co.uk" style="color:#ffffff; text-decoration: underline;">View online</a>.</mj-text>
       </mj-column>
     </mj-group>
   </mj-section>
@@ -79,8 +79,8 @@
     <mj-column width="520px">
       <mj-text mj-class="label white" align="center" padding-bottom="10px">Limited offer</mj-text>
       <mj-text mj-class="h3 white extrabold" align="center" padding-bottom="10px">Save on your next purchase</mj-text>
-      <mj-text mj-class="body white" align="center" padding-bottom="18px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu tellus nibh.</mj-text>
-      <mj-button background-color="#2f67ef" color="#ffffff" align="center" border-radius="999px" inner-padding="16px 34px" href="https://templatehedgehog.com">TemplateHedgehog</mj-button>
+      <mj-text mj-class="body white" align="center" padding-bottom="18px">Use a short commercial message here, then send customers straight to the offer.</mj-text>
+      <mj-button background-color="#2f67ef" color="#ffffff" align="center" border-radius="999px" inner-padding="16px 34px" href="https://templatehedgehog.co.uk">TemplateHedgehog</mj-button>
     </mj-column>
   </mj-section>
 </mj-wrapper>
@@ -92,8 +92,8 @@
     <mj-column vertical-align="middle" width="50%" padding="36px 30px">
       <mj-text mj-class="label thblue" align="left" padding-bottom="10px">Product highlight</mj-text>
       <mj-text mj-class="h4 text-primary extrabold" align="left" padding-bottom="10px">Spotlight one featured item</mj-text>
-      <mj-text mj-class="body text-muted" align="left" padding-bottom="18px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu tellus nibh. Mauris pharetra magna luctus leo maximus.</mj-text>
-      <mj-button mj-class="thbluebg white body bold" align="left" border-radius="999px" inner-padding="14px 28px" href="https://templatehedgehog.com">TemplateHedgehog</mj-button>
+      <mj-text mj-class="body text-muted" align="left" padding-bottom="18px">Lead with the item, the reason to care, and any deadline or availability limit that makes the promotion useful.</mj-text>
+      <mj-button mj-class="thbluebg white body bold" align="left" border-radius="999px" inner-padding="14px 28px" href="https://templatehedgehog.co.uk">TemplateHedgehog</mj-button>
     </mj-column>
     <mj-column padding="0" vertical-align="middle" width="50%">
       <mj-image src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=640&h=800&fit=crop&q=85" padding="0" fluid-on-mobile="true" alt="Product highlight" />
@@ -135,10 +135,10 @@
   <mj-section padding-top="25px">
     <mj-group>
       <mj-column width="30%" padding="0 0 0 15px">
-        <mj-image src="https://placehold.co/240x80/png?text=TemplateHedgehog+Logo" width="55px" height="21px" alt="" align="left"  href="https://templatehedgehog.com" target="_blank" />
+        <mj-image src="https://placehold.co/240x80/png?text=TemplateHedgehog+Logo" width="55px" height="21px" alt="" align="left"  href="https://templatehedgehog.co.uk" target="_blank" />
       </mj-column>
       <mj-column width="70%" padding="0 15px 0 0">
-        <mj-text mj-class="small light" align="right" padding-top="3px"><a href="https://templatehedgehog.com" style="color:#999999; text-decoration: underline;">Privacy policy</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="https://templatehedgehog.com" style="color:#999999; text-decoration: underline;">Manage preferences</a></mj-text>
+        <mj-text mj-class="small light" align="right" padding-top="3px"><a href="https://templatehedgehog.co.uk" style="color:#999999; text-decoration: underline;">Privacy policy</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="https://templatehedgehog.co.uk" style="color:#999999; text-decoration: underline;">Manage preferences</a></mj-text>
       </mj-column>
     </mj-group>
   </mj-section>
@@ -149,7 +149,7 @@
   </mj-section>
   <mj-section padding-top="0" padding-bottom="40px">
     <mj-column>
-      <mj-text mj-class="small light">Add your sender address to the safe-sender list so future updates arrive cleanly. If you’d prefer not to receive emails from us, please <a style="color:#666666; text-decoration:underline;" target="_blank" href="https://templatehedgehog.com/preferences">click here</a> to manage your preferences.</mj-text>
+      <mj-text mj-class="small light">Add your sender address to the safe-sender list so future updates arrive cleanly. If you’d prefer not to receive emails from us, please <a style="color:#666666; text-decoration:underline;" target="_blank" href="https://templatehedgehog.co.uk/preferences">click here</a> to manage your preferences.</mj-text>
       <mj-text mj-class="small light">Use your own legal and compliance copy before production send.</mj-text>
       <mj-text mj-class="small light">TemplateHedgehog Ltd. Example House, London, WC2N 5DU.</mj-text>
     </mj-column>

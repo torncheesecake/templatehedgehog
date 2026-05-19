@@ -1,27 +1,371 @@
 [
   {
-    "event": "view_component_detail",
-    "createdAt": "2026-03-18T11:53:31.098Z",
-    "path": "/components/header-centred-brand"
+    "event": "homepage_view",
+    "createdAt": "2026-05-13T07:01:52.623Z",
+    "source": "homepage",
+    "path": "/"
+  },
+  {
+    "event": "homepage_view",
+    "createdAt": "2026-05-13T07:46:23.169Z",
+    "source": "homepage",
+    "path": "/"
+  },
+  {
+    "event": "homepage_view",
+    "createdAt": "2026-05-13T08:25:26.380Z",
+    "source": "homepage",
+    "path": "/"
+  },
+  {
+    "event": "homepage_view",
+    "createdAt": "2026-05-13T08:26:32.220Z",
+    "source": "homepage",
+    "path": "/"
+  },
+  {
+    "event": "homepage_view",
+    "createdAt": "2026-05-13T08:26:40.016Z",
+    "source": "homepage",
+    "path": "/"
+  },
+  {
+    "event": "homepage_view",
+    "createdAt": "2026-05-13T08:26:47.683Z",
+    "source": "homepage",
+    "path": "/"
+  },
+  {
+    "event": "homepage_view",
+    "createdAt": "2026-05-13T08:26:56.365Z",
+    "source": "homepage",
+    "path": "/"
+  },
+  {
+    "event": "homepage_view",
+    "createdAt": "2026-05-13T08:27:07.030Z",
+    "source": "homepage",
+    "path": "/"
+  },
+  {
+    "event": "homepage_view",
+    "createdAt": "2026-05-13T08:27:21.663Z",
+    "source": "homepage",
+    "path": "/"
+  },
+  {
+    "event": "homepage_view",
+    "createdAt": "2026-05-13T08:28:03.693Z",
+    "source": "homepage",
+    "path": "/"
+  },
+  {
+    "event": "homepage_view",
+    "createdAt": "2026-05-13T08:32:18.391Z",
+    "source": "homepage",
+    "path": "/"
+  },
+  {
+    "event": "homepage_view",
+    "createdAt": "2026-05-13T08:40:06.957Z",
+    "source": "homepage",
+    "path": "/"
+  },
+  {
+    "event": "view_layout_index",
+    "createdAt": "2026-05-13T08:40:13.336Z",
+    "source": "layout_index",
+    "path": "/layouts"
+  },
+  {
+    "event": "homepage_view",
+    "createdAt": "2026-05-13T08:50:28.351Z",
+    "source": "homepage",
+    "path": "/"
+  },
+  {
+    "event": "homepage_view",
+    "createdAt": "2026-05-13T08:51:38.617Z",
+    "source": "homepage",
+    "path": "/"
+  },
+  {
+    "event": "homepage_view",
+    "createdAt": "2026-05-13T08:52:27.482Z",
+    "source": "homepage",
+    "path": "/"
+  },
+  {
+    "event": "homepage_view",
+    "createdAt": "2026-05-13T09:01:58.083Z",
+    "source": "homepage",
+    "path": "/"
+  },
+  {
+    "event": "homepage_view",
+    "createdAt": "2026-05-13T09:02:39.259Z",
+    "source": "homepage",
+    "path": "/"
+  },
+  {
+    "event": "homepage_view",
+    "createdAt": "2026-05-13T09:02:50.218Z",
+    "source": "homepage",
+    "path": "/"
+  },
+  {
+    "event": "homepage_view",
+    "createdAt": "2026-05-13T09:03:01.384Z",
+    "source": "homepage",
+    "path": "/"
+  },
+  {
+    "event": "homepage_view",
+    "createdAt": "2026-05-13T09:03:14.029Z",
+    "source": "homepage",
+    "path": "/"
+  },
+  {
+    "event": "homepage_view",
+    "createdAt": "2026-05-13T09:03:24.840Z",
+    "source": "homepage",
+    "path": "/"
+  },
+  {
+    "event": "homepage_view",
+    "createdAt": "2026-05-13T09:03:38.581Z",
+    "source": "homepage",
+    "path": "/"
+  },
+  {
+    "event": "homepage_view",
+    "createdAt": "2026-05-13T09:03:50.355Z",
+    "source": "homepage",
+    "path": "/"
+  },
+  {
+    "event": "homepage_view",
+    "createdAt": "2026-05-13T09:04:04.084Z",
+    "source": "homepage",
+    "path": "/"
+  },
+  {
+    "event": "homepage_view",
+    "createdAt": "2026-05-13T09:06:28.906Z",
+    "source": "homepage",
+    "path": "/"
+  },
+  {
+    "event": "homepage_view",
+    "createdAt": "2026-05-13T09:08:00.618Z",
+    "source": "homepage",
+    "path": "/"
+  },
+  {
+    "event": "homepage_view",
+    "createdAt": "2026-05-13T09:08:14.794Z",
+    "source": "homepage",
+    "path": "/"
+  },
+  {
+    "event": "homepage_view",
+    "createdAt": "2026-05-13T09:08:42.918Z",
+    "source": "homepage",
+    "path": "/"
+  },
+  {
+    "event": "homepage_view",
+    "createdAt": "2026-05-13T09:09:12.816Z",
+    "source": "homepage",
+    "path": "/"
+  },
+  {
+    "event": "homepage_view",
+    "createdAt": "2026-05-13T09:15:34.140Z",
+    "source": "homepage",
+    "path": "/"
+  },
+  {
+    "event": "homepage_view",
+    "createdAt": "2026-05-13T09:21:33.592Z",
+    "source": "homepage",
+    "path": "/"
+  },
+  {
+    "event": "homepage_view",
+    "createdAt": "2026-05-13T09:21:51.269Z",
+    "source": "homepage",
+    "path": "/"
+  },
+  {
+    "event": "homepage_view",
+    "createdAt": "2026-05-13T09:24:58.284Z",
+    "source": "homepage",
+    "path": "/"
+  },
+  {
+    "event": "homepage_view",
+    "createdAt": "2026-05-13T09:39:22.319Z",
+    "source": "homepage",
+    "path": "/"
+  },
+  {
+    "event": "homepage_view",
+    "createdAt": "2026-05-13T09:46:58.080Z",
+    "source": "homepage",
+    "path": "/"
+  },
+  {
+    "event": "homepage_view",
+    "createdAt": "2026-05-13T13:28:40.869Z",
+    "source": "homepage",
+    "path": "/"
+  },
+  {
+    "event": "homepage_view",
+    "createdAt": "2026-05-13T13:30:20.129Z",
+    "source": "homepage",
+    "path": "/"
+  },
+  {
+    "event": "homepage_view",
+    "createdAt": "2026-05-13T13:32:54.094Z",
+    "source": "homepage",
+    "path": "/"
+  },
+  {
+    "event": "homepage_view",
+    "createdAt": "2026-05-13T13:33:40.858Z",
+    "source": "homepage",
+    "path": "/"
   },
   {
     "event": "view_component_detail",
-    "createdAt": "2026-03-18T11:55:07.215Z",
-    "path": "/components/header-light-utility"
+    "createdAt": "2026-05-13T13:33:40.874Z",
+    "path": "/components/hero-overlay-modern"
+  },
+  {
+    "event": "homepage_view",
+    "createdAt": "2026-05-13T13:34:43.355Z",
+    "source": "homepage",
+    "path": "/"
+  },
+  {
+    "event": "homepage_view",
+    "createdAt": "2026-05-13T13:34:53.373Z",
+    "source": "homepage",
+    "path": "/"
+  },
+  {
+    "event": "homepage_view",
+    "createdAt": "2026-05-13T13:36:03.910Z",
+    "source": "homepage",
+    "path": "/"
+  },
+  {
+    "event": "homepage_view",
+    "createdAt": "2026-05-13T13:36:40.362Z",
+    "source": "homepage",
+    "path": "/"
+  },
+  {
+    "event": "homepage_view",
+    "createdAt": "2026-05-19T13:49:42.681Z",
+    "source": "homepage",
+    "path": "/"
+  },
+  {
+    "event": "visit_success",
+    "createdAt": "2026-05-19T13:52:13.923Z",
+    "path": "/success"
+  },
+  {
+    "event": "visit_success",
+    "createdAt": "2026-05-19T13:52:45.414Z",
+    "path": "/success"
+  },
+  {
+    "event": "visit_success",
+    "createdAt": "2026-05-19T13:53:01.327Z",
+    "path": "/success"
+  },
+  {
+    "event": "homepage_view",
+    "createdAt": "2026-05-19T13:53:45.379Z",
+    "source": "homepage",
+    "path": "/"
+  },
+  {
+    "event": "homepage_view",
+    "createdAt": "2026-05-19T13:56:00.457Z",
+    "source": "homepage",
+    "path": "/"
   },
   {
     "event": "view_component_detail",
-    "createdAt": "2026-03-18T11:55:07.223Z",
-    "path": "/components/footer-app-legal"
+    "createdAt": "2026-05-19T13:56:08.415Z",
+    "path": "/components/dual-image-feature-grid"
+  },
+  {
+    "event": "view_layout_detail",
+    "createdAt": "2026-05-19T13:56:10.055Z",
+    "path": "/layouts/product-launch-campaign"
+  },
+  {
+    "event": "view_layout_detail",
+    "createdAt": "2026-05-19T13:57:40.962Z",
+    "path": "/layouts/product-launch-campaign"
+  },
+  {
+    "event": "view_layout_detail",
+    "createdAt": "2026-05-19T13:58:20.301Z",
+    "path": "/layouts/product-launch-campaign"
   },
   {
     "event": "view_component_detail",
-    "createdAt": "2026-03-18T11:59:51.034Z",
-    "path": "/components/header-centred-brand"
+    "createdAt": "2026-05-19T13:58:49.265Z",
+    "path": "/components/dual-image-feature-grid"
   },
   {
     "event": "view_component_detail",
-    "createdAt": "2026-03-18T12:00:58.683Z",
-    "path": "/components/header-centred-brand"
+    "createdAt": "2026-05-19T14:00:52.055Z",
+    "path": "/components/dual-image-feature-grid"
+  },
+  {
+    "event": "copy_mjml",
+    "createdAt": "2026-05-19T14:01:06.806Z",
+    "path": "/components/dual-image-feature-grid"
+  },
+  {
+    "event": "copy_html",
+    "createdAt": "2026-05-19T14:01:09.340Z",
+    "path": "/components/dual-image-feature-grid"
+  },
+  {
+    "event": "copy_mjml",
+    "createdAt": "2026-05-19T14:01:42.454Z",
+    "path": "/components/dual-image-feature-grid"
+  },
+  {
+    "event": "copy_html",
+    "createdAt": "2026-05-19T14:01:44.989Z",
+    "path": "/components/dual-image-feature-grid"
+  },
+  {
+    "event": "view_component_detail",
+    "createdAt": "2026-05-19T14:06:23.102Z",
+    "path": "/components/dual-image-feature-grid"
+  },
+  {
+    "event": "homepage_view",
+    "createdAt": "2026-05-19T18:37:18.145Z",
+    "source": "homepage",
+    "path": "/"
+  },
+  {
+    "event": "lead_capture_submit",
+    "createdAt": "2026-05-19T18:37:18.788Z",
+    "source": "homepage_checklist",
+    "path": "/"
   }
 ]

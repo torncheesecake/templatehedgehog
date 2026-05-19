@@ -6,7 +6,7 @@ function standardCompatibility(outlookNote: string, yahooNote?: string): EmailCo
     {
       client: "Gmail (Web + Mobile)",
       status: "tested",
-      notes: "Core spacing, stack order, and CTA rendering hold up in Gmail web and mobile views.",
+      notes: "Primary spacing, stack order, and CTA rendering hold up in Gmail web and mobile views.",
     },
     {
       client: "Outlook Desktop (Windows)",

@@ -2,7 +2,7 @@
 
 This file defines a repeatable conversion learning loop for the homepage.
 
-## Core Metrics
+## Product Metrics
 
 - Hero primary CTA CTR: `hero_primary_cta_click / homepage_view`
 - Hero tertiary proof CTR: `hero_tertiary_cta_click / homepage_view`

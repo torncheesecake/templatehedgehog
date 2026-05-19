@@ -1,16 +1,25 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { createPageTitle, TEMPLATE_CONFIG } from "@/config/template";
+import { TEMPLATE_CONFIG } from "@/config/template";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { SiteTopBar } from "@/components/site/SiteTopBar";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { cn } from "@/lib/utils";
 import { visualSystem } from "@/components/site/visualSystem";
+import { buildBreadcrumbJsonLd, createSeoMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: createPageTitle("About"),
+export const metadata: Metadata = createSeoMetadata({
+  title: "About",
   description:
-    `About ${TEMPLATE_CONFIG.brandName} and the product philosophy behind enterprise MJML components and layout recipes.`,
-};
+    `${TEMPLATE_CONFIG.brandName} is a product of ${TEMPLATE_CONFIG.owner.name}, built for production-ready MJML components, layouts, and email systems.`,
+  path: "/about",
+  keywords: [
+    "Template Hedgehog",
+    "Artifexa",
+    "production email systems",
+    "MJML product",
+  ],
+});
 
 const principles = [
   {
@@ -40,7 +49,14 @@ export default function AboutPage() {
 
   return (
     <main className={VS.templates.content.main}>
-      <SiteTopBar ctaHref="/components" ctaLabel="Browse components" />
+      <SiteTopBar />
+      <JsonLd
+        id="about-breadcrumb"
+        data={buildBreadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "About", path: "/about" },
+        ])}
+      />
       <section className={cn(VS.templates.content.frame, "pb-20")}>
         <div className={VS.templates.content.body}>
           <article className={VS.templates.content.heroCard}>
@@ -51,16 +67,16 @@ export default function AboutPage() {
               Built for teams that send real email.
             </h1>
             <p className={cn("mt-4 max-w-3xl text-[1.02rem] leading-8", VS.body.onLight)}>
-              {TEMPLATE_CONFIG.brandName} is for teams that need dependable MJML structure, predictable rendering, and a workflow that holds up under delivery pressure.
+              {TEMPLATE_CONFIG.brandName} is a product of {TEMPLATE_CONFIG.owner.name} for teams that need dependable MJML structure, predictable rendering, and a workflow that holds up under delivery pressure.
             </p>
             <div className="mt-6 grid gap-3 sm:grid-cols-2">
-              <div className="rounded-[0.9rem] border border-slate-200 bg-slate-50 px-4 py-3">
-                <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-slate-600">Components</p>
-                <p className="mt-1 text-[0.95rem] font-semibold text-slate-900">Single reusable blocks</p>
+              <div className="rounded-[0.9rem] border border-[var(--th-border-dark)] bg-[#111933] px-4 py-3">
+                <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-[var(--th-text-secondary)]">Components</p>
+                <p className="mt-1 text-[0.95rem] font-semibold text-white">Single reusable blocks</p>
               </div>
-              <div className="rounded-[0.9rem] border border-slate-200 bg-slate-50 px-4 py-3">
-                <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-slate-600">Layouts</p>
-                <p className="mt-1 text-[0.95rem] font-semibold text-slate-900">Full recipes from stacked components</p>
+              <div className="rounded-[0.9rem] border border-[var(--th-border-dark)] bg-[#111933] px-4 py-3">
+                <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-[var(--th-text-secondary)]">Layouts</p>
+                <p className="mt-1 text-[0.95rem] font-semibold text-white">Full recipes from stacked components</p>
               </div>
             </div>
           </article>
@@ -69,9 +85,9 @@ export default function AboutPage() {
             <h2 className={cn("text-[1.32rem]", VS.headings.subsection)}>What we optimise for</h2>
             <div className="mt-4 grid gap-3 md:grid-cols-2">
               {principles.map((principle) => (
-                <article key={principle.title} className="rounded-[0.9rem] border border-slate-200 bg-slate-50 px-4 py-3">
-                  <h3 className="text-[1rem] font-semibold text-slate-900">{principle.title}</h3>
-                  <p className="mt-1 text-[0.95rem] leading-7 text-slate-600">{principle.description}</p>
+                <article key={principle.title} className="rounded-[0.9rem] border border-[var(--th-border-dark)] bg-[#111933] px-4 py-3">
+                  <h3 className="text-[1rem] font-semibold text-white">{principle.title}</h3>
+                  <p className="mt-1 text-[0.95rem] leading-7 text-[var(--th-text-secondary)]">{principle.description}</p>
                 </article>
               ))}
             </div>
@@ -80,24 +96,24 @@ export default function AboutPage() {
           <section className={VS.templates.content.sectionCard}>
             <h2 className={cn("text-[1.32rem]", VS.headings.subsection)}>Get started</h2>
             <p className={cn("mt-3 text-[0.98rem] leading-7", VS.body.compact)}>
-              Start with components, move to layouts for full campaign structure, then upgrade when the full archive will save your team time.
+              Start with components, move to layouts for full campaign structure, then choose Pro when the full archive will save your team time.
             </p>
             <div className="mt-4 flex flex-wrap gap-2.5">
               <Link
                 href="/components"
-                className={cn(VS.buttons.primary, "h-10 px-4")}
+                className={cn(VS.buttons.secondaryDark, "h-10 px-4")}
               >
                 View components
               </Link>
               <Link
                 href="/layouts"
-                className={cn(VS.buttons.secondaryLight, "h-10 bg-slate-50 px-4 text-slate-900")}
+                className={cn(VS.buttons.secondaryDark, "h-10 px-4")}
               >
                 View layouts
               </Link>
               <Link
                 href="/pricing"
-                className={cn(VS.buttons.secondaryLight, "h-10 bg-slate-50 px-4 text-slate-900")}
+                className={cn(VS.buttons.primary, "h-10 px-4")}
               >
                 Pricing
               </Link>

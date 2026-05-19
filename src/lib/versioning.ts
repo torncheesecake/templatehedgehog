@@ -7,9 +7,18 @@ export type ChangelogEntry = {
 const SEMVER_PATTERN =
   /^\d+\.\d+\.\d+(?:-[0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*)?(?:\+[0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*)?$/;
 
-export const PACK_VERSION = "1.0.0";
+export const PACK_VERSION = "1.0.1";
 
 export const CHANGELOG: ChangelogEntry[] = [
+  {
+    date: "2026-05-19",
+    title: "Commercial launch finalisation",
+    bulletPoints: [
+      "Added canonical SEO metadata, social previews, structured data, and Artifexa ownership signals.",
+      "Aligned Starter, Pro, and Enterprise archive delivery with tier-specific checkout metadata.",
+      "Strengthened pricing, documentation, and success flows for production launch readiness.",
+    ],
+  },
   {
     date: "2026-03-09",
     title: "Versioning and gated delivery hardening",

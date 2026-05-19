@@ -34,8 +34,8 @@ const ALLOWED_EVENTS: EventName[] = [
   "hero_primary_cta_click",
   "hero_secondary_cta_click",
   "hero_tertiary_cta_click",
-  "workflows_section_view",
-  "workflow_card_click",
+  "layouts_section_view",
+  "layout_card_click",
   "technical_proof_view",
   "pricing_section_view",
   "docs_click",
@@ -49,12 +49,13 @@ const ALLOWED_EVENTS: EventName[] = [
   "copy_mjml",
   "copy_html",
   "view_layout_detail",
-  "view_workflow_index",
-  "view_workflow_detail",
-  "workflow_to_pricing",
-  "buy_from_workflow",
+  "view_layout_index",
+  "view_layout_system_detail",
+  "layout_to_pricing",
+  "buy_from_layout",
   "click_buy_now",
   "visit_success",
+  "lead_capture_submit",
 ];
 
 function isValidEvent(value: unknown): value is EventName {
@@ -145,8 +146,8 @@ function emptyCounts(): Record<EventName, number> {
     hero_primary_cta_click: 0,
     hero_secondary_cta_click: 0,
     hero_tertiary_cta_click: 0,
-    workflows_section_view: 0,
-    workflow_card_click: 0,
+    layouts_section_view: 0,
+    layout_card_click: 0,
     technical_proof_view: 0,
     pricing_section_view: 0,
     docs_click: 0,
@@ -160,12 +161,13 @@ function emptyCounts(): Record<EventName, number> {
     copy_mjml: 0,
     copy_html: 0,
     view_layout_detail: 0,
-    view_workflow_index: 0,
-    view_workflow_detail: 0,
-    workflow_to_pricing: 0,
-    buy_from_workflow: 0,
+    view_layout_index: 0,
+    view_layout_system_detail: 0,
+    layout_to_pricing: 0,
+    buy_from_layout: 0,
     click_buy_now: 0,
     visit_success: 0,
+    lead_capture_submit: 0,
   };
 }
 
@@ -217,8 +219,8 @@ export async function getFunnelSummary(windowDays: number = 30): Promise<FunnelS
     counts.homepage_view
     + counts.view_component_detail
     + counts.view_layout_detail
-    + counts.view_workflow_detail;
-  const trackedBuyClicks = counts.checkout_start + counts.click_buy_now + counts.buy_from_workflow;
+    + counts.view_layout_system_detail;
+  const trackedBuyClicks = counts.checkout_start + counts.click_buy_now + counts.buy_from_layout;
   const trackedSuccessVisits = counts.visit_success + counts.purchase_complete;
 
   return {

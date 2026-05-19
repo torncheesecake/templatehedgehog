@@ -20,7 +20,7 @@ export function MjmlSourcePanel({
   source,
   language = "mjml",
   title = "MJML source",
-  description = "Starter source for this component.",
+  description = "Editable source for this component.",
   wrapLines = false,
   copyButtonLabel = "Copy MJML",
   successMessage = "MJML copied to clipboard",

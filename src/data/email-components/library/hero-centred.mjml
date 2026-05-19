@@ -21,7 +21,7 @@
       <mj-text mj-class="body text-muted" align="center" padding-bottom="25px">
         Keep changes in MJML while teams iterate, then ship compiled HTML that survives real client rendering.
       </mj-text>
-      <mj-button background-color="#2f67ef" color="#ffffff" align="center" border-radius="50px" inner-padding="18px 45px" href="https://templatehedgehog.com" target="_blank">
+      <mj-button background-color="#2f67ef" color="#ffffff" align="center" border-radius="50px" inner-padding="18px 45px" href="https://templatehedgehog.co.uk" target="_blank">
         Explore components
       </mj-button>
     </mj-column>

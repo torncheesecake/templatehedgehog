@@ -4,7 +4,7 @@
 Define one clear homepage blueprint that drives users from first visit to paid intent.
 
 Primary conversion action:
-- `Get Hedgehog Core - £79`
+- `Get Pro - £179`
 
 Primary objection to answer:
 - `Why not build this myself?`
@@ -15,30 +15,30 @@ Primary objection to answer:
 - Skill level: intermediate to advanced.
 
 ## Positioning Guardrails
-- Workflow-first system, not a template gallery.
+- Production-ready email system, not a template catalogue.
 - Production-ready MJML delivery, not design-first marketing.
 - Focus on speed, reliability, consistency, and handoff clarity.
 - Use British English and direct practical language.
 
-## Core Message Stack
+## Product Message Stack
 1. Stop rebuilding the same emails every project.
-2. Start from workflows, not blank MJML files.
-3. Hedgehog Core reduces QA loops and delivery friction.
-4. £79 is cheaper than one avoidable rebuild cycle.
+2. Start from production systems, not blank MJML files.
+3. Template Hedgehog Pro reduces QA loops and delivery friction.
+4. Pro £179 is cheaper than one avoidable rebuild cycle for most active teams.
 
 ## Page Narrative
 Use this sequence on the homepage:
 
-1. Hero  
+1. Hero
 Explain the product in one screen and show a real system visual.
 
-2. Workflow-first section  
+2. Production-system section
 Show real workflow entry points and outcomes.
 
-3. Build from scratch vs Hedgehog  
+3. Build from scratch vs Hedgehog
 Handle the main objection with practical comparisons.
 
-4. Technical proof  
+4. Technical proof
 Show MJML source, compiled HTML, and pack structure.
 
 5. What you get  
@@ -54,11 +54,11 @@ Pattern:
 - Wide split layout (roughly 45/55 or 50/50).
 
 Left content:
-- Eyebrow: `Hedgehog Core`
+- Eyebrow: `Template Hedgehog Pro`
 - H1: `Stop rebuilding the same emails every project`
-- Support line: `Start from workflows, not blank MJML files, with structure and output mapped before your team edits copy.`
-- Primary CTA: `Get Hedgehog Core - £79`
-- Secondary CTA: `Explore workflows`
+- Support line: `Start from production systems, not blank MJML files, with structure and output mapped before your team edits copy.`
+- Primary CTA: `Get Pro - £179`
+- Secondary CTA: `Explore layouts`
 - One concise trust line under CTAs.
 
 Right content:
@@ -72,7 +72,7 @@ Acceptance checks:
 - Primary CTA is the strongest visual action.
 - Visual feels integrated, not a floating generic card.
 
-### 2. Workflow-first Section
+### 2. Production-System Section
 Pattern:
 - Full-width intro above content.
 
@@ -95,7 +95,7 @@ Content:
   - CTA `View workflow`
 
 Supporting CTA:
-- `View all workflows`
+- `View all layouts`
 
 Acceptance checks:
 - Workflows read as product entry points, not a catalogue list.
@@ -134,7 +134,7 @@ Right:
 - Workflow mapping path.
 
 Mandatory proof artefacts:
-- `src/workflows/*`
+- `src/data/workflows/*`
 - `src/layouts/*`
 - `src/components/*`
 - `compiled/*.html`
@@ -167,12 +167,12 @@ Pattern:
 - Centred close.
 
 Copy:
-- Headline: `Get Hedgehog Core - £79`
+- Headline: `Get Pro - £179`
 - Support line: `Less than one avoidable rebuild session.`
 
 Actions:
-- Primary CTA: `Get Hedgehog Core - £79`
-- Secondary CTA: `Explore workflows` or `Browse components` (choose one only).
+- Primary CTA: `Get Pro - £179`
+- Secondary CTA: `Explore layouts` or `Browse components` (choose one only).
 
 Acceptance checks:
 - One dominant buy action.
@@ -190,7 +190,7 @@ Acceptance checks:
 
 ## CTA Language Rules
 Use one paid CTA label everywhere:
-- `Get Hedgehog Core - £79`
+- `Get Pro - £179`
 
 Do not mix alternatives like:
 - `View pricing`
@@ -228,7 +228,7 @@ Do not:
 ## Definition of Done
 The homepage is done when:
 - value is obvious within 5 seconds
-- workflow-first model is clear above the fold
+- production-system model is clear above the fold
 - objection handling is explicit and practical
 - technical proof is visible and credible
 - CTA language is consistent across the page

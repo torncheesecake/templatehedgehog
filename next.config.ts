@@ -42,6 +42,21 @@ const redirectConfig = isStaticExport
           destination: "/pricing",
           permanent: true,
         },
+        {
+          source: "/examples",
+          destination: "/layouts",
+          permanent: true,
+        },
+        {
+          source: "/workflows",
+          destination: "/layouts",
+          permanent: true,
+        },
+        {
+          source: "/pack",
+          destination: "/pricing",
+          permanent: true,
+        },
       ];
     },
   } satisfies Pick<NextConfig, "redirects">;

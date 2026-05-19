@@ -6,7 +6,6 @@ import {
 import {
   getWaitlistRateLimiter,
   isWaitlistRateLimitStorageMisconfigured,
-  __resetWaitlistRateLimiterForTests,
   toWaitlistRateLimitKey,
 } from "@/lib/rateLimit";
 
@@ -45,10 +44,6 @@ function getRequestIp(request: NextRequest): string {
   if (realIp) return realIp.trim();
 
   return "unknown";
-}
-
-export function __resetWaitlistRouteStateForTests(): void {
-  __resetWaitlistRateLimiterForTests();
 }
 
 export async function POST(request: NextRequest) {

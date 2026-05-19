@@ -8,7 +8,7 @@
       <mj-text mj-class="small text-muted" align="center" padding-bottom="18px">
         Use this closeout block when the email needs one final clear action.
       </mj-text>
-      <mj-button background-color="#2f67ef" color="#ffffff" align="center" border-radius="999px" inner-padding="15px 32px" href="https://templatehedgehog.com">
+      <mj-button background-color="#2f67ef" color="#ffffff" align="center" border-radius="999px" inner-padding="15px 32px" href="https://templatehedgehog.co.uk">
         Start build
       </mj-button>
     </mj-column>

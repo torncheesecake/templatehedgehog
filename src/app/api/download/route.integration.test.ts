@@ -50,6 +50,7 @@ test("HEAD /api/download returns 200 when provider head succeeds", async () => {
       validateDownloadSession: async (sessionId) => ({
         ok: true,
         sessionId,
+        packId: "starter",
       }),
       createS3Client: () => ({
         send: async (command) => {
@@ -74,7 +75,7 @@ test("HEAD /api/download returns 200 when provider head succeeds", async () => {
       assert.equal(response.headers.get("Content-Type"), "application/zip");
       assert.match(
         response.headers.get("Content-Disposition") ?? "",
-        /attachment/i,
+        /template-hedgehog-starter-pack\.zip/i,
       );
     } finally {
       __resetDownloadTestHooks();

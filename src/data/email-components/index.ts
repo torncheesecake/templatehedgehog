@@ -32,6 +32,7 @@ export type EmailComponent = {
 
 const headerFragment = loadMjmlLibraryFragment("header.mjml");
 const heroCentredFragment = loadMjmlLibraryFragment("hero-centred.mjml");
+const heroOverlayFragment = loadMjmlLibraryFragment("hero-overlay-modern.mjml");
 const textLeftFragment = loadMjmlLibraryFragment("text-left.mjml");
 const dualImageFragment = loadMjmlLibraryFragment("dual-image.mjml");
 const textCentredFragment = loadMjmlLibraryFragment("text-centred.mjml");
@@ -84,12 +85,12 @@ const coreEmailComponents: EmailComponent[] = [
   },
   {
     slug: "hero-overlay-modern",
-    title: "Hero Centred",
+    title: "Hero Overlay Modern",
     category: "Heroes",
     description:
-      "Centred hero section with label, headline, support copy, image, and primary CTA.",
-    tags: ["hero", "centred", "cta", "marketing"],
-    sourceFile: "hero-centred.mjml",
+      "Image-backed launch hero with overlay copy, direct CTA, and production-safe fallback colour.",
+    tags: ["hero", "overlay", "cta", "launch"],
+    sourceFile: "hero-overlay-modern.mjml",
     previewImageUrl: "/email-shots-v3/hero-centred-component.png",
     compatibility: [
       {
@@ -120,6 +121,42 @@ const coreEmailComponents: EmailComponent[] = [
     accessibilityNotes: [
       "Use a descriptive heading hierarchy so the first headline still makes sense out of visual context.",
       "Make sure the hero image alt text adds meaning rather than repeating the headline.",
+    ],
+    mjmlSource: wrapMjmlFragment(heroOverlayFragment),
+  },
+  {
+    slug: "hero-centred-component",
+    title: "Hero Centred",
+    category: "Heroes",
+    description:
+      "Centred hero section with label, headline, support copy, image, and primary CTA.",
+    tags: ["hero", "centred", "cta", "marketing"],
+    sourceFile: "hero-centred.mjml",
+    previewImageUrl: "/email-shots-v3/hero-centred-component.png",
+    compatibility: [
+      {
+        client: "Gmail (Web + Mobile)",
+        status: "tested",
+        notes: "Hero text, CTA, and spacing render as expected.",
+      },
+      {
+        client: "Outlook Desktop (Windows)",
+        status: "partial",
+        notes: "Background treatment can flatten in legacy Word rendering.",
+      },
+      {
+        client: "Apple Mail",
+        status: "tested",
+      },
+    ],
+    usageGuidance: [
+      "Use for launches, lifecycle updates, and newsletters where the first message needs one clear action.",
+      "Replace the image with a product or workflow screenshot that supports the headline.",
+      "Keep headline copy short so the CTA remains visible on compact mobile screens.",
+    ],
+    accessibilityNotes: [
+      "Keep the CTA label specific enough to make sense outside the visual layout.",
+      "Use concise image alt text that reflects the image purpose, not decorative detail.",
     ],
     mjmlSource: wrapMjmlFragment(heroCentredFragment),
   },

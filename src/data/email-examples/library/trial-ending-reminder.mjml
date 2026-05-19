@@ -62,7 +62,7 @@
 <mj-wrapper mj-class="whitebg">
   <mj-section padding="25px 35px">
     <mj-column vertical-align="middle">
-      <mj-image src="https://placehold.co/240x80/png?text=TemplateHedgehog+Logo" width="240px" padding="0" align="left" href="https://templatehedgehog.com" alt="TemplateHedgehog" />
+      <mj-image src="https://placehold.co/240x80/png?text=TemplateHedgehog+Logo" width="240px" padding="0" align="left" href="https://templatehedgehog.co.uk" alt="TemplateHedgehog" />
     </mj-column>
   </mj-section>
 </mj-wrapper>
@@ -74,8 +74,8 @@
     <mj-column width="100%">
       <mj-text mj-class="label thblue" align="left" padding-bottom="8px">Trial update</mj-text>
       <mj-text mj-class="h5 text-primary extrabold" align="left" padding-bottom="8px">Your trial is ending soon</mj-text>
-      <mj-text mj-class="small text-muted" align="left" padding-bottom="16px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu tellus nibh.</mj-text>
-      <mj-button mj-class="thbluebg white body bold" align="left" border-radius="999px" inner-padding="14px 28px" href="https://templatehedgehog.com">TemplateHedgehog</mj-button>
+      <mj-text mj-class="small text-muted" align="left" padding-bottom="16px">Choose a plan before the trial ends to keep access uninterrupted.</mj-text>
+      <mj-button mj-class="thbluebg white body bold" align="left" border-radius="999px" inner-padding="14px 28px" href="https://templatehedgehog.co.uk">TemplateHedgehog</mj-button>
     </mj-column>
   </mj-section>
 </mj-wrapper>
@@ -87,21 +87,21 @@
     <mj-column width="520px">
       <mj-text mj-class="label thblue" align="center" padding-bottom="10px">Usage summary</mj-text>
       <mj-text mj-class="h4 text-primary extrabold" align="center" padding-bottom="10px">Key activity this week</mj-text>
-      <mj-text mj-class="body text-muted" align="center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu tellus nibh.</mj-text>
+      <mj-text mj-class="body text-muted" align="center">Highlight the customer's recent activity and make the renewal decision simple.</mj-text>
     </mj-column>
   </mj-section>
   <mj-section padding-top="0">
     <mj-column width="33.33%" padding="0 8px">
       <mj-text mj-class="h5 thblue extrabold" align="center" padding-bottom="4px">12</mj-text>
-      <mj-text mj-class="small text-muted" align="center">Lorem ipsum</mj-text>
+      <mj-text mj-class="small text-muted" align="center">Projects shipped</mj-text>
     </mj-column>
     <mj-column width="33.33%" padding="0 8px">
       <mj-text mj-class="h5 thblue extrabold" align="center" padding-bottom="4px">24</mj-text>
-      <mj-text mj-class="small text-muted" align="center">Dolor sit amet</mj-text>
+      <mj-text mj-class="small text-muted" align="center">Tasks completed</mj-text>
     </mj-column>
     <mj-column width="33.33%" padding="0 8px">
       <mj-text mj-class="h5 thblue extrabold" align="center" padding-bottom="4px">98%</mj-text>
-      <mj-text mj-class="small text-muted" align="center">Consectetur</mj-text>
+      <mj-text mj-class="small text-muted" align="center">Uptime</mj-text>
     </mj-column>
   </mj-section>
 </mj-wrapper>
@@ -117,7 +117,7 @@
       <mj-text mj-class="small text-muted" align="center" padding-bottom="18px">
         Use this CTA block as a clean close to your campaign.
       </mj-text>
-      <mj-button background-color="#2f67ef" color="#ffffff" align="center" border-radius="999px" inner-padding="15px 32px" href="https://templatehedgehog.com">
+      <mj-button background-color="#2f67ef" color="#ffffff" align="center" border-radius="999px" inner-padding="15px 32px" href="https://templatehedgehog.co.uk">
         TemplateHedgehog
       </mj-button>
     </mj-column>
@@ -130,10 +130,10 @@
       <mj-section padding-top="25px">
         <mj-group>
           <mj-column width="30%" padding="0 0 0 15px">
-            <mj-image src="https://placehold.co/240x80/png?text=TemplateHedgehog+Logo" width="55px" height="21px" alt="" align="left" href="https://templatehedgehog.com"
+            <mj-image src="https://placehold.co/240x80/png?text=TemplateHedgehog+Logo" width="55px" height="21px" alt="" align="left" href="https://templatehedgehog.co.uk"
               target="_blank" /> </mj-column>
           <mj-column width="70%" padding="0 15px 0 0">
-            <mj-text mj-class="small light" align="right" padding-top="3px"><a href="https://templatehedgehog.com" style="color:#999999; text-decoration: underline;">Privacy policy</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="https://templatehedgehog.com" style="color:#999999; text-decoration: underline;">Manage preferences</a></mj-text>
+            <mj-text mj-class="small light" align="right" padding-top="3px"><a href="https://templatehedgehog.co.uk" style="color:#999999; text-decoration: underline;">Privacy policy</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="https://templatehedgehog.co.uk" style="color:#999999; text-decoration: underline;">Manage preferences</a></mj-text>
           </mj-column>
         </mj-group>
       </mj-section>
@@ -144,7 +144,7 @@
       <mj-section padding-top="0" padding-bottom="40px">
         <mj-column>
           <mj-text mj-class="small light"> Add your sender address to the safe-sender list so future updates arrive cleanly. You're receiving this email because you activated your product's guarantee. If you'd prefer not to receive product
-            support emails, please click <a style="color:#666666; text-decoration:underline;" target="_blank" href="https://templatehedgehog.com/preferences">here</a> to manage your preferences.</mj-text>
+            support emails, please click <a style="color:#666666; text-decoration:underline;" target="_blank" href="https://templatehedgehog.co.uk/preferences">here</a> to manage your preferences.</mj-text>
           <mj-text mj-class="small light">Use your own legal and compliance copy before production send.</mj-text>
           <mj-text mj-class="small light">TemplateHedgehog Ltd. Example House, London, WC2N 5DU.</mj-text>
         </mj-column>

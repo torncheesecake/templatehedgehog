@@ -62,7 +62,7 @@
 <mj-wrapper mj-class="whitebg">
   <mj-section padding="25px 35px">
     <mj-column vertical-align="middle">
-      <mj-image src="https://placehold.co/240x80/png?text=TemplateHedgehog+Logo" width="240px" padding="0" align="left" href="https://templatehedgehog.com" alt="TemplateHedgehog" />
+      <mj-image src="https://placehold.co/240x80/png?text=TemplateHedgehog+Logo" width="240px" padding="0" align="left" href="https://templatehedgehog.co.uk" alt="TemplateHedgehog" />
     </mj-column>
   </mj-section>
 </mj-wrapper>
@@ -72,26 +72,26 @@
 <mj-wrapper mj-class="whitebg">
   <mj-section padding="50px 40px 30px 40px">
     <mj-column width="550px">
-      <mj-text mj-class="label text-muted" align="center" padding-bottom="15px">LOREM IPSUM</mj-text>
+      <mj-text mj-class="label text-muted" align="center" padding-bottom="15px">NEW RELEASE</mj-text>
       <mj-text mj-class="h1 text-primary extrabold" align="center" padding-bottom="18px">
-        Lorem ipsum dolor sit amet <span style="color: #2f67ef;">consectetur adipiscing</span>
+        Launch your next product with <span style="color: #2f67ef;">clear campaign momentum</span>
       </mj-text>
       <mj-text mj-class="body text-muted" align="center" padding-bottom="0">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu tellus nibh. Mauris pharetra magna luctus leo maximus, eu dapibus tellus nibh amet.
+        Announce what changed, show the main value, and move buyers towards the product page with a single focused action.
       </mj-text>
     </mj-column>
   </mj-section>
   <mj-section padding="0">
     <mj-column padding="0">
-      <mj-image src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1280&h=640&fit=crop&q=85" padding="0" fluid-on-mobile="true" alt="Lorem ipsum" />
+      <mj-image src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1280&h=640&fit=crop&q=85" padding="0" fluid-on-mobile="true" alt="Product launch dashboard" />
     </mj-column>
   </mj-section>
   <mj-section padding="30px 40px 40px 40px">
     <mj-column width="500px">
       <mj-text mj-class="body text-muted" align="center" padding-bottom="25px">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu tellus nibh. Mauris pharetra magna luctus leo maximus, eu dapibus tellus nibh amet.
+        Use this section for the proof point, launch date, or strongest customer outcome that supports the headline.
       </mj-text>
-      <mj-button background-color="#2f67ef" color="#ffffff" align="center" border-radius="50px" inner-padding="18px 45px" href="https://templatehedgehog.com" target="_blank">
+      <mj-button background-color="#2f67ef" color="#ffffff" align="center" border-radius="50px" inner-padding="18px 45px" href="https://templatehedgehog.co.uk" target="_blank">
         TemplateHedgehog
       </mj-button>
     </mj-column>
@@ -103,22 +103,22 @@
 <mj-wrapper mj-class="whitebg">
   <mj-section padding-bottom="20px">
     <mj-column width="500px">
-      <mj-text mj-class="h3 text-primary extrabold" align="center" padding-bottom="12px">Lorem ipsum dolor sit amet</mj-text>
+      <mj-text mj-class="h3 text-primary extrabold" align="center" padding-bottom="12px">Show the release from two angles</mj-text>
       <mj-text mj-class="body text-muted" align="center" padding-bottom="0">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu tellus nibh. Mauris pharetra magna luctus leo maximus, eu dapibus tellus nibh amet.
+        Pair a product view with a customer outcome so the announcement feels concrete instead of abstract.
       </mj-text>
     </mj-column>
   </mj-section>
   <mj-section padding-top="0">
     <mj-column width="50%" padding="0 12px 0 0">
-      <mj-image src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop&q=85" fluid-on-mobile="true" alt="Lorem ipsum" border-radius="8px" padding-bottom="15px" />
-      <mj-text mj-class="h5 text-primary extrabold" align="left" padding-bottom="8px">Lorem ipsum</mj-text>
-      <mj-text mj-class="body text-muted" align="left">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu tellus nibh.</mj-text>
+      <mj-image src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop&q=85" fluid-on-mobile="true" alt="Planning session" border-radius="8px" padding-bottom="15px" />
+      <mj-text mj-class="h5 text-primary extrabold" align="left" padding-bottom="8px">Built for teams</mj-text>
+      <mj-text mj-class="body text-muted" align="left">Give operators a quick view of what changed and where to go next.</mj-text>
     </mj-column>
     <mj-column width="50%" padding="0 0 0 12px">
-      <mj-image src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=600&h=400&fit=crop&q=85" fluid-on-mobile="true" alt="Lorem ipsum" border-radius="8px" padding-bottom="15px" />
-      <mj-text mj-class="h5 text-primary extrabold" align="left" padding-bottom="8px">Lorem ipsum</mj-text>
-      <mj-text mj-class="body text-muted" align="left">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu tellus nibh.</mj-text>
+      <mj-image src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=600&h=400&fit=crop&q=85" fluid-on-mobile="true" alt="Customer workflow" border-radius="8px" padding-bottom="15px" />
+      <mj-text mj-class="h5 text-primary extrabold" align="left" padding-bottom="8px">Ready to adopt</mj-text>
+      <mj-text mj-class="body text-muted" align="left">Use short, practical copy that helps customers decide without extra support.</mj-text>
     </mj-column>
   </mj-section>
 </mj-wrapper>
@@ -128,7 +128,7 @@
 <mj-wrapper mj-class="whitebg">
   <mj-section>
     <mj-column>
-      <mj-button background-color="#2f67ef" color="#ffffff" border-radius="50px" inner-padding="16px 40px" font-family="'Inter', Arial, sans-serif" font-size="18px" font-weight="700" href="https://templatehedgehog.com">TemplateHedgehog</mj-button>
+      <mj-button background-color="#2f67ef" color="#ffffff" border-radius="50px" inner-padding="16px 40px" font-family="'Inter', Arial, sans-serif" font-size="18px" font-weight="700" href="https://templatehedgehog.co.uk">TemplateHedgehog</mj-button>
     </mj-column>
   </mj-section>
 </mj-wrapper>
@@ -138,21 +138,21 @@
 <mj-wrapper mj-class="whitebg">
   <mj-section css-class="border-top-light">
     <mj-column>
-      <mj-text mj-class="h3 text-primary extrabold" align="center" padding-bottom="8px">Lorem ipsum dolor sit amet</mj-text>
-      <mj-text mj-class="body text-muted" align="center" padding-bottom="35px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu tellus nibh.</mj-text>
+      <mj-text mj-class="h3 text-primary extrabold" align="center" padding-bottom="8px">Keep launch support visible</mj-text>
+      <mj-text mj-class="body text-muted" align="center" padding-bottom="35px">Point customers to docs, support, or account resources before they need to ask.</mj-text>
     </mj-column>
   </mj-section>
 
   <mj-section>
     <mj-column width="50%" padding="0 20px 30px 20px">
       <mj-text mj-class="h6 text-primary bold" align="center" padding="0">
-        <a href="https://templatehedgehog.com" style="color: #1a1a1a; text-decoration: none;">TemplateHedgehog</a>
+        <a href="https://templatehedgehog.co.uk" style="color: #1a1a1a; text-decoration: none;">TemplateHedgehog</a>
       </mj-text>
     </mj-column>
 
     <mj-column width="50%" padding="0 20px 30px 20px">
       <mj-text mj-class="h6 text-primary bold" align="center" padding="0">
-        <a href="https://templatehedgehog.com" style="color: #1a1a1a; text-decoration: none;">TemplateHedgehog</a>
+        <a href="https://templatehedgehog.co.uk" style="color: #1a1a1a; text-decoration: none;">TemplateHedgehog</a>
       </mj-text>
     </mj-column>
   </mj-section>
@@ -162,7 +162,7 @@
   <mj-section css-class="border-top-light">
     <mj-column width="100%">
       <mj-text mj-class="body text-muted" align="center" padding="0 0 25px 0">
-        <a href="https://templatehedgehog.com" style="color:#4a5568;text-decoration:none;">TemplateHedgehog</a>
+        <a href="https://templatehedgehog.co.uk" style="color:#4a5568;text-decoration:none;">TemplateHedgehog</a>
       </mj-text>
     </mj-column>
   </mj-section>
@@ -171,8 +171,8 @@
 <mj-wrapper background-color="#102447">
   <mj-section padding="30px 35px 30px 35px">
     <mj-column>
-      <mj-text mj-class="small white" align="center" padding-bottom="12px">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</mj-text>
-      <mj-text mj-class="small white" align="center" padding="0">Lorem ipsum dolor sit amet.</mj-text>
+      <mj-text mj-class="small white" align="center" padding-bottom="12px">You are receiving this because you subscribed to product updates.</mj-text>
+      <mj-text mj-class="small white" align="center" padding="0">Update preferences or unsubscribe from future launch emails.</mj-text>
     </mj-column>
   </mj-section>
 </mj-wrapper>

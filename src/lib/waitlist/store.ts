@@ -1,4 +1,6 @@
 import { createHash } from "node:crypto";
+import { mkdir, readFile, appendFile } from "node:fs/promises";
+import path from "node:path";
 import {
   buildSharedKey,
   getRedisClient,
@@ -16,7 +18,7 @@ export interface WaitlistStore {
   insertIfAbsent(entry: WaitlistEntry): Promise<boolean>;
 }
 
-export type WaitlistStorageMode = "memory" | "redis";
+export type WaitlistStorageMode = "memory" | "redis" | "file";
 
 export class WaitlistStorageNotConfiguredError extends Error {
   constructor() {
@@ -92,20 +94,69 @@ class RedisWaitlistStore implements WaitlistStore {
   }
 }
 
+function getWaitlistFilePath(): string {
+  return process.env.WAITLIST_FILE_PATH
+    ?? path.join(process.cwd(), ".data", "waitlist.jsonl");
+}
+
+class FileWaitlistStore implements WaitlistStore {
+  private async readEntries(): Promise<WaitlistEntry[]> {
+    try {
+      const raw = await readFile(getWaitlistFilePath(), "utf8");
+      return raw
+        .split("\n")
+        .filter(Boolean)
+        .map((line) => JSON.parse(line) as WaitlistEntry)
+        .filter((entry) => (
+          typeof entry.email === "string"
+          && typeof entry.createdAt === "string"
+        ));
+    } catch (error) {
+      if (
+        error instanceof Error
+        && "code" in error
+        && error.code === "ENOENT"
+      ) {
+        return [];
+      }
+      throw error;
+    }
+  }
+
+  async getByEmail(email: string): Promise<WaitlistEntry | null> {
+    const entries = await this.readEntries();
+    return entries.find((entry) => entry.email === email) ?? null;
+  }
+
+  async insertIfAbsent(entry: WaitlistEntry): Promise<boolean> {
+    const existing = await this.getByEmail(entry.email);
+    if (existing) {
+      return false;
+    }
+
+    const filePath = getWaitlistFilePath();
+    await mkdir(path.dirname(filePath), { recursive: true });
+    await appendFile(filePath, `${JSON.stringify(entry)}\n`, "utf8");
+    return true;
+  }
+}
+
 const memoryStore = new InMemoryWaitlistStore();
 const redisStore = new RedisWaitlistStore();
+const fileStore = new FileWaitlistStore();
 
 let waitlistStoreOverride: WaitlistStore | null = null;
 
 function getStorageMode(): WaitlistStorageMode {
-  if (process.env.NODE_ENV === "production") {
-    return "redis";
-  }
-
   const raw = process.env.WAITLIST_STORAGE_MODE?.toLowerCase();
-  if (raw === "memory" || raw === "redis") {
+  if (raw === "memory" || raw === "redis" || raw === "file") {
     return raw;
   }
+
+  if (process.env.NODE_ENV === "production") {
+    return process.env.REDIS_URL ? "redis" : "file";
+  }
+
   return "memory";
 }
 
@@ -116,6 +167,10 @@ export function getWaitlistStore(): WaitlistStore {
 
   if (getStorageMode() === "memory") {
     return memoryStore;
+  }
+
+  if (getStorageMode() === "file") {
+    return fileStore;
   }
 
   try {

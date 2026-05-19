@@ -62,7 +62,7 @@
 <mj-wrapper mj-class="whitebg">
   <mj-section padding="25px 35px">
     <mj-column vertical-align="middle">
-      <mj-image src="https://placehold.co/240x80/png?text=TemplateHedgehog+Logo" width="240px" padding="0" align="left" href="https://templatehedgehog.com" alt="TemplateHedgehog" />
+      <mj-image src="https://placehold.co/240x80/png?text=TemplateHedgehog+Logo" width="240px" padding="0" align="left" href="https://templatehedgehog.co.uk" alt="TemplateHedgehog" />
     </mj-column>
   </mj-section>
 </mj-wrapper>
@@ -77,7 +77,7 @@
       <mj-text mj-class="small text-muted" align="left" padding-bottom="6px">Date: 16 March 2026</mj-text>
       <mj-text mj-class="small text-muted" align="left" padding-bottom="6px">Location: London, United Kingdom</mj-text>
       <mj-text mj-class="small text-muted" align="left" padding-bottom="18px">Device: Browser on macOS</mj-text>
-      <mj-button mj-class="thbluebg white body bold" align="left" border-radius="999px" inner-padding="14px 28px" href="https://templatehedgehog.com">TemplateHedgehog</mj-button>
+      <mj-button mj-class="thbluebg white body bold" align="left" border-radius="999px" inner-padding="14px 28px" href="https://templatehedgehog.co.uk">TemplateHedgehog</mj-button>
     </mj-column>
   </mj-section>
 </mj-wrapper>
@@ -89,7 +89,7 @@
     <mj-column width="520px">
       <mj-text mj-class="label thblue" align="left" padding-bottom="10px">Support</mj-text>
       <mj-text mj-class="h4 text-primary extrabold" align="left" padding-bottom="10px">Your support ticket has been received</mj-text>
-      <mj-text mj-class="body text-muted" align="left">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu tellus nibh. Mauris pharetra magna luctus leo maximus.</mj-text>
+      <mj-text mj-class="body text-muted" align="left">We logged the request and created a ticket so the support team can follow up without losing context.</mj-text>
     </mj-column>
   </mj-section>
   <mj-section padding-top="0">
@@ -110,10 +110,10 @@
   <mj-section padding-top="25px">
     <mj-group>
       <mj-column width="30%" padding="0 0 0 15px">
-        <mj-image src="https://placehold.co/240x80/png?text=TemplateHedgehog+Logo" width="55px" height="21px" alt="" align="left" href="https://templatehedgehog.com" target="_blank" />
+        <mj-image src="https://placehold.co/240x80/png?text=TemplateHedgehog+Logo" width="55px" height="21px" alt="" align="left" href="https://templatehedgehog.co.uk" target="_blank" />
       </mj-column>
       <mj-column width="70%" padding="0 15px 0 0">
-        <mj-text mj-class="small light" align="right" padding-top="3px"><a href="https://templatehedgehog.com" target="_blank" style="color:#999999; text-decoration: underline;">Privacy policy</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="https://templatehedgehog.com" target="_blank" style="color:#999999; text-decoration: underline;">Manage preferences</a></mj-text>
+        <mj-text mj-class="small light" align="right" padding-top="3px"><a href="https://templatehedgehog.co.uk" target="_blank" style="color:#999999; text-decoration: underline;">Privacy policy</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="https://templatehedgehog.co.uk" target="_blank" style="color:#999999; text-decoration: underline;">Manage preferences</a></mj-text>
       </mj-column>
     </mj-group>
   </mj-section>
@@ -124,8 +124,8 @@
   </mj-section>
   <mj-section padding-top="0" padding-bottom="40px">
     <mj-column>
-      <mj-text mj-class="small light">Add your sender address to the safe-sender list so future updates arrive cleanly. If you’d prefer not to receive emails from us, please <a style="color:#666666; text-decoration:underline;" target="_blank" href="https://templatehedgehog.com/preferences">click here</a> to manage your preferences.</mj-text>
-      <mj-text mj-class="small light">The TemplateHedgehog mobile app requires iOS 10 or Android 5.0 and above.</mj-text>
+      <mj-text mj-class="small light">Add your sender address to the safe-sender list so future updates arrive cleanly. If you’d prefer not to receive emails from us, please <a style="color:#666666; text-decoration:underline;" target="_blank" href="https://templatehedgehog.co.uk/preferences">click here</a> to manage your preferences.</mj-text>
+      <mj-text mj-class="small light">Replace app availability and platform eligibility copy with your own production policy.</mj-text>
       <mj-text mj-class="small light">Use your own legal and compliance copy before production send.</mj-text>
       <mj-text mj-class="small light">TemplateHedgehog Ltd. Example House, London, WC2N 5DU.</mj-text>
     </mj-column>

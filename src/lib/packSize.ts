@@ -1,5 +1,5 @@
 import { promises as fs } from "node:fs";
-import { MJML_PACK_ABSOLUTE_PATH } from "@/lib/pack";
+import { getMjmlPackAbsolutePath, type DownloadPackId } from "@/lib/pack";
 
 export type PackStorageMode = "filesystem" | "provider";
 
@@ -37,7 +37,7 @@ function formatBytes(bytes: number): string {
   return `${megaBytes.toFixed(2)} MB`;
 }
 
-export async function getPackSizeInfo(): Promise<PackSizeInfo> {
+export async function getPackSizeInfo(packId: DownloadPackId = "pro"): Promise<PackSizeInfo> {
   const storageMode = getPackStorageMode();
 
   if (storageMode !== "filesystem") {
@@ -51,7 +51,7 @@ export async function getPackSizeInfo(): Promise<PackSizeInfo> {
   }
 
   try {
-    const stat = await fs.stat(MJML_PACK_ABSOLUTE_PATH);
+    const stat = await fs.stat(getMjmlPackAbsolutePath(process.cwd(), packId));
     if (!stat.isFile()) {
       return {
         storageMode,

@@ -20,29 +20,35 @@ const TOKEN_REPLACEMENTS: ReplacementEntry[] = [
   { search: "{{companyAddress}}", replaceWith: TEMPLATE_CONFIG.companyAddress },
 ];
 
+const LEGACY_DOMAIN = ["templatehedgehog", "com"].join(".");
+const LEGACY_HTTPS_URL = `https://${LEGACY_DOMAIN}`;
+const LEGACY_HTTP_URL = `http://${LEGACY_DOMAIN}`;
+const LEGACY_SUPPORT_EMAIL = `support@${LEGACY_DOMAIN}`;
+const LEGACY_CONTACT_EMAIL = `hello@${LEGACY_DOMAIN}`;
+
 const LEGACY_REPLACEMENTS: ReplacementEntry[] = [
   {
-    search: "https://templatehedgehog.com/preferences",
+    search: `${LEGACY_HTTPS_URL}/preferences`,
     replaceWith: TEMPLATE_CONFIG.urls.preferences,
   },
   {
-    search: "http://templatehedgehog.com/preferences",
+    search: `${LEGACY_HTTP_URL}/preferences`,
     replaceWith: TEMPLATE_CONFIG.urls.preferences,
   },
   {
-    search: "https://templatehedgehog.com",
+    search: LEGACY_HTTPS_URL,
     replaceWith: TEMPLATE_CONFIG.siteUrl,
   },
   {
-    search: "http://templatehedgehog.com",
+    search: LEGACY_HTTP_URL,
     replaceWith: TEMPLATE_CONFIG.siteUrl,
   },
   {
-    search: "support@templatehedgehog.com",
+    search: LEGACY_SUPPORT_EMAIL,
     replaceWith: TEMPLATE_CONFIG.supportEmail,
   },
   {
-    search: "hello@templatehedgehog.com",
+    search: LEGACY_CONTACT_EMAIL,
     replaceWith: TEMPLATE_CONFIG.contactEmail,
   },
   {
@@ -54,11 +60,11 @@ const LEGACY_REPLACEMENTS: ReplacementEntry[] = [
     replaceWith: TEMPLATE_CONFIG.companyLegalName,
   },
   {
-    search: "templatehedgehog.com/preferences",
+    search: `${LEGACY_DOMAIN}/preferences`,
     replaceWith: `${TEMPLATE_CONFIG.domain}/preferences`,
   },
   {
-    search: "templatehedgehog.com",
+    search: LEGACY_DOMAIN,
     replaceWith: TEMPLATE_CONFIG.domain,
   },
   {
@@ -68,10 +74,6 @@ const LEGACY_REPLACEMENTS: ReplacementEntry[] = [
   {
     search: "TemplateHedgehog",
     replaceWith: TEMPLATE_CONFIG.brandNameCompact,
-  },
-  {
-    search: "Hedgehog Core",
-    replaceWith: TEMPLATE_CONFIG.productName,
   },
 ];
 

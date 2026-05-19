@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import {
-  MJML_PACK_PRODUCT_ID,
-} from "@/lib/pack";
-import {
+  getPackById,
   getPackByProductId,
   isPackPurchasable,
   parseBillingCycle,
@@ -140,7 +138,7 @@ async function handleCheckout(request: NextRequest): Promise<NextResponse> {
   }
 
   const payload = await parsePayload(request);
-  const productId = payload.productId ?? MJML_PACK_PRODUCT_ID;
+  const productId = payload.productId ?? getPackById("pro").productId;
   const selectedPack = getPackByProductId(productId);
   if (!selectedPack) {
     logCheckoutEvent("warn", "invalid_product_id", {
@@ -205,8 +203,8 @@ async function handleCheckout(request: NextRequest): Promise<NextResponse> {
               name: `${TEMPLATE_CONFIG.brandName} ${selectedPack.name}`,
               description:
                 billingCycle === "one_off"
-                  ? `One-time purchase for ${selectedPack.name}.`
-                  : `Subscription purchase for ${selectedPack.name}.`,
+                  ? `One-time purchase for ${TEMPLATE_CONFIG.brandName} ${selectedPack.name}, an ${TEMPLATE_CONFIG.owner.name} product.`
+                  : `Subscription purchase for ${TEMPLATE_CONFIG.brandName} ${selectedPack.name}, an ${TEMPLATE_CONFIG.owner.name} product.`,
             },
           },
         },
@@ -217,6 +215,8 @@ async function handleCheckout(request: NextRequest): Promise<NextResponse> {
       metadata: {
         productId,
         packId: selectedPack.id,
+        tierName: selectedPack.name,
+        amountGbp: String(unitAmount / 100),
         billingCycle,
       },
     });

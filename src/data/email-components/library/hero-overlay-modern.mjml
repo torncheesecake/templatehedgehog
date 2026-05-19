@@ -20,7 +20,7 @@
     Build a clean email in minutes with production-ready sections your team can reuse every week.
   </mj-text>
 
-  <mj-button background-color="#2f67ef" color="#ffffff" align="center" border-radius="999px" inner-padding="16px 34px" href="https://templatehedgehog.com">
+  <mj-button background-color="#2f67ef" color="#ffffff" align="center" border-radius="999px" inner-padding="16px 34px" href="https://templatehedgehog.co.uk">
     View update
   </mj-button>
 </mj-hero>

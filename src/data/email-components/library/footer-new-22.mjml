@@ -3,7 +3,7 @@
      <mj-column width="50%">
        <mj-image src="/brand/hedgehog-mark-email.png" width="44px" padding="0 0 8px 0" alt="TemplateHedgehog icon"></mj-image>
        <mj-text align="center" font-family="'Manrope', 'Inter', Arial, sans-serif" font-size="16px" font-weight="700" color="#ffffff" padding="0">
-         <a href="https://templatehedgehog.com" style="color:#ffffff; text-decoration:none;">TemplateHedgehog</a>
+         <a href="https://templatehedgehog.co.uk" style="color:#ffffff; text-decoration:none;">TemplateHedgehog</a>
        </mj-text>
      </mj-column>
      <mj-column width="50%">
@@ -16,7 +16,7 @@
    <mj-section mj-class="e3bluebg" padding-top="0">
      <mj-column>
        <mj-text mj-class="h3 white" align="center">Need a second pair of eyes before send? Reach the support team for implementation help and delivery guidance.</mj-text>
-       <mj-button align="center" background-color="#ffffff" color="#005296" inner-padding="15px 26px 15px 26px" text-decoration="none" text-transform="uppercase" target="_blank" href="https://templatehedgehog.com" font-size="12px" border-radius="3px" mj-class="bold">Contact support</mj-button>
+       <mj-button align="center" background-color="#ffffff" color="#005296" inner-padding="15px 26px 15px 26px" text-decoration="none" text-transform="uppercase" target="_blank" href="https://templatehedgehog.co.uk" font-size="12px" border-radius="3px" mj-class="bold">Contact support</mj-button>
      </mj-column>
    </mj-section>
    <mj-section background-color="#0c68b4">

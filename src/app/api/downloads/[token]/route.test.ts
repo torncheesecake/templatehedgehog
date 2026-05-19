@@ -38,6 +38,7 @@ test("GET /api/downloads/[token] redirects to /api/download for a valid token", 
   await withPatchedEnv(
     {
       DOWNLOAD_TOKEN_SECRET: "route-test-secret",
+      NEXT_PUBLIC_APP_URL: "https://templatehedgehog.test",
     },
     async () => {
       __resetDownloadTokenStateForTests();
@@ -49,7 +50,10 @@ test("GET /api/downloads/[token] redirects to /api/download for a valid token", 
       assert.equal(response.status, 303);
       const location = response.headers.get("location");
       assert.ok(location);
-      assert.match(location ?? "", /\/api\/download\?session_id=cs_test_routevalid123$/);
+      assert.equal(
+        location,
+        "https://templatehedgehog.test/api/download?session_id=cs_test_routevalid123",
+      );
     },
   );
 });
@@ -87,4 +91,3 @@ test("GET /api/downloads/[token] returns 400 for an empty token", async () => {
     },
   );
 });
-

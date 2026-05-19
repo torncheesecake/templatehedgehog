@@ -49,3 +49,16 @@ export function extractComponentHtmlSnippet(standaloneHtml: string): string {
   return normalised;
 }
 
+export function extractComponentMjmlSnippet(standaloneMjml: string): string {
+  const normalised = normalise(standaloneMjml);
+  if (!normalised) {
+    return "";
+  }
+
+  const bodyMatch = normalised.match(/<mj-body[^>]*>([\s\S]*?)<\/mj-body>/i);
+  if (!bodyMatch || typeof bodyMatch[1] !== "string") {
+    return normalised;
+  }
+
+  return bodyMatch[1].trim();
+}

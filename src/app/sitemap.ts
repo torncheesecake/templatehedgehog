@@ -2,7 +2,6 @@ import { MetadataRoute } from "next";
 import { TEMPLATE_CONFIG } from "@/config/template";
 import { emailComponents } from "@/data/email-components";
 import { emailLayouts } from "@/data/email-layouts";
-import { emailWorkflows } from "@/data/workflows";
 import { PACK_LAST_UPDATED } from "@/lib/versioning";
 
 export const dynamic = "force-static";
@@ -28,11 +27,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     buildEntry("/", 1, "weekly"),
     buildEntry("/components", 0.95, "weekly"),
     buildEntry("/layouts", 0.9, "weekly"),
-    buildEntry("/workflows", 0.88, "weekly"),
     buildEntry("/docs", 0.8, "monthly"),
     buildEntry("/pricing", 0.8, "weekly"),
-    buildEntry("/pack", 0.75, "weekly"),
     buildEntry("/changelog", 0.65, "monthly"),
+    buildEntry("/support", 0.55, "monthly"),
+    buildEntry("/about", 0.45, "monthly"),
   ];
 
   const componentPages: MetadataRoute.Sitemap = emailComponents.map((component) =>
@@ -43,9 +42,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     buildEntry(`/layouts/${layout.slug}`, 0.78, "weekly"),
   );
 
-  const workflowPages: MetadataRoute.Sitemap = emailWorkflows.map((workflow) =>
-    buildEntry(`/workflows/${workflow.slug}`, 0.8, "weekly"),
-  );
-
-  return [...staticPages, ...componentPages, ...layoutPages, ...workflowPages];
+  return [...staticPages, ...componentPages, ...layoutPages];
 }

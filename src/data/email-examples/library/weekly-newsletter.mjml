@@ -62,7 +62,7 @@
 <mj-wrapper mj-class="whitebg">
   <mj-section padding="20px">
     <mj-column>
-      <mj-image src="https://placehold.co/240x80/png?text=TemplateHedgehog+Logo" width="206px" padding="0" align="center" href="https://templatehedgehog.com" alt="TemplateHedgehog" />
+      <mj-image src="https://placehold.co/240x80/png?text=TemplateHedgehog+Logo" width="206px" padding="0" align="center" href="https://templatehedgehog.co.uk" alt="TemplateHedgehog" />
     </mj-column>
   </mj-section>
 </mj-wrapper>
@@ -78,12 +78,12 @@
   </mj-section>
   <mj-section padding-top="0">
     <mj-column>
-      <mj-text mj-class="body text-primary bold" align="left" padding-bottom="4px">Lorem ipsum dolor sit amet</mj-text>
-      <mj-text mj-class="small text-muted" align="left" padding-bottom="14px">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</mj-text>
-      <mj-text mj-class="body text-primary bold" align="left" padding-bottom="4px">Mauris pharetra magna luctus</mj-text>
-      <mj-text mj-class="small text-muted" align="left" padding-bottom="14px">Ut eu tellus nibh. Mauris pharetra magna luctus leo maximus.</mj-text>
-      <mj-text mj-class="body text-primary bold" align="left" padding-bottom="4px">Consectetur adipiscing elit</mj-text>
-      <mj-text mj-class="small text-muted" align="left" padding-bottom="0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</mj-text>
+      <mj-text mj-class="body text-primary bold" align="left" padding-bottom="4px">New customer workflow guide</mj-text>
+      <mj-text mj-class="small text-muted" align="left" padding-bottom="14px">A practical walkthrough for activating users after signup.</mj-text>
+      <mj-text mj-class="body text-primary bold" align="left" padding-bottom="4px">Operational email teardown</mj-text>
+      <mj-text mj-class="small text-muted" align="left" padding-bottom="14px">See how status messages reduce avoidable support tickets.</mj-text>
+      <mj-text mj-class="body text-primary bold" align="left" padding-bottom="4px">Deliverability checklist</mj-text>
+      <mj-text mj-class="small text-muted" align="left" padding-bottom="0">Run through the QA steps before your next lifecycle send.</mj-text>
     </mj-column>
   </mj-section>
 </mj-wrapper>
@@ -130,7 +130,7 @@
     <mj-column width="520px">
       <mj-text mj-class="label thblue" align="left" padding-bottom="10px">Editor's note</mj-text>
       <mj-text mj-class="h4 text-primary extrabold" align="left" padding-bottom="10px">A short note from the team</mj-text>
-      <mj-text mj-class="body text-muted" align="left">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu tellus nibh. Mauris pharetra magna luctus leo maximus, eu dapibus tellus nibh amet.</mj-text>
+      <mj-text mj-class="body text-muted" align="left">This edition focuses on keeping product emails useful after launch, with examples your team can adapt quickly.</mj-text>
     </mj-column>
   </mj-section>
 </mj-wrapper>
@@ -140,12 +140,12 @@
 <mj-wrapper mj-class="whitebg">
   <mj-section padding-top="30px">
     <mj-column vertical-align="middle">
-      <mj-image src="https://placehold.co/240x80/png?text=TemplateHedgehog+Logo" width="180px" alt="TemplateHedgehog logo" href="https://templatehedgehog.com" />
+      <mj-image src="https://placehold.co/240x80/png?text=TemplateHedgehog+Logo" width="180px" alt="TemplateHedgehog logo" href="https://templatehedgehog.co.uk" />
       <mj-text mj-class="body dark" align="center">Find out what makes us tick</mj-text>
       <mj-social align="center" font-size="15px" icon-size="30px" mode="horizontal">
-        <mj-social-element name="facebook" color="white" href="https://templatehedgehog.com"> </mj-social-element>
-        <mj-social-element name="twitter" href="https://templatehedgehog.com" color="white"> </mj-social-element>
-        <mj-social-element name="linkedin" href="https://templatehedgehog.com" color="white"> </mj-social-element>
+        <mj-social-element name="facebook" color="white" href="https://templatehedgehog.co.uk"> </mj-social-element>
+        <mj-social-element name="twitter" href="https://templatehedgehog.co.uk" color="white"> </mj-social-element>
+        <mj-social-element name="linkedin" href="https://templatehedgehog.co.uk" color="white"> </mj-social-element>
       </mj-social>
     </mj-column>
   </mj-section>
@@ -157,8 +157,8 @@
   <mj-section padding-top="0px">
     <mj-column>
       <mj-text mj-class="body dark" align="center">Our office:<br /> Example House, River Street,<br /> London, WC2N 5DU</mj-text>
-      <mj-text mj-class="body dark" align="center" padding-top="0px">Support: <a href="mailto:support@templatehedgehog.com" target="_blank">support@templatehedgehog.com</a></mj-text>
-      <mj-text mj-class="body dark" align="center" padding-top="0px">Contact: <a href="mailto:hello@templatehedgehog.com" target="_blank">hello@templatehedgehog.com</a></mj-text>
+      <mj-text mj-class="body dark" align="center" padding-top="0px">Support: <a href="mailto:support@templatehedgehog.co.uk" target="_blank">support@templatehedgehog.co.uk</a></mj-text>
+      <mj-text mj-class="body dark" align="center" padding-top="0px">Contact: <a href="mailto:hello@templatehedgehog.co.uk" target="_blank">hello@templatehedgehog.co.uk</a></mj-text>
       <mj-text mj-class="body dark" align="center" padding-top="0px">Call: +44 0000 000 000</mj-text>
     </mj-column>
   </mj-section>

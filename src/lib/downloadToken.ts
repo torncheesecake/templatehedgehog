@@ -132,11 +132,18 @@ const redisReplayStore = new RedisReplayStore();
 let replayStoreOverride: DownloadReplayStore | null = null;
 
 function getReplayStoreMode(): "memory" | "redis" {
+  const raw = process.env.DOWNLOAD_TOKEN_REPLAY_STORE?.trim().toLowerCase();
+
   if (process.env.NODE_ENV === "production") {
+    if (
+      raw === "memory"
+      && process.env.DOWNLOAD_TOKEN_MEMORY_REPLAY_ENABLED === "true"
+    ) {
+      return "memory";
+    }
     return "redis";
   }
 
-  const raw = process.env.DOWNLOAD_TOKEN_REPLAY_STORE?.trim().toLowerCase();
   if (raw === "memory" || raw === "redis") {
     return raw;
   }

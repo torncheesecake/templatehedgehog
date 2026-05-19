@@ -10,13 +10,13 @@
   <mj-section>
     <mj-column width="50%" padding="0 20px 30px 20px">
       <mj-text mj-class="h6 text-primary bold" align="center" padding="0">
-        <a href="https://templatehedgehog.com" style="color: #1a1a1a; text-decoration: none;">Support centre</a>
+        <a href="https://templatehedgehog.co.uk" style="color: #1a1a1a; text-decoration: none;">Support centre</a>
       </mj-text>
     </mj-column>
 
     <mj-column width="50%" padding="0 20px 30px 20px">
       <mj-text mj-class="h6 text-primary bold" align="center" padding="0">
-        <a href="https://templatehedgehog.com" style="color: #1a1a1a; text-decoration: none;">Documentation</a>
+        <a href="https://templatehedgehog.co.uk" style="color: #1a1a1a; text-decoration: none;">Documentation</a>
       </mj-text>
     </mj-column>
   </mj-section>
@@ -26,7 +26,7 @@
   <mj-section css-class="border-top-light">
     <mj-column width="100%">
       <mj-text mj-class="body text-muted" align="center" padding="0 0 25px 0">
-        <a href="https://templatehedgehog.com" style="color:#4a5568;text-decoration:none;">TemplateHedgehog</a>
+        <a href="https://templatehedgehog.co.uk" style="color:#4a5568;text-decoration:none;">TemplateHedgehog</a>
       </mj-text>
     </mj-column>
   </mj-section>
@@ -36,7 +36,7 @@
   <mj-section padding="30px 35px 30px 35px">
     <mj-column>
       <mj-text mj-class="small white" align="center" padding-bottom="12px">You are receiving this message because team email notifications are enabled.</mj-text>
-      <mj-text mj-class="small white" align="center" padding="0">Manage preferences at templatehedgehog.com/preferences.</mj-text>
+      <mj-text mj-class="small white" align="center" padding="0">Manage preferences at templatehedgehog.co.uk/preferences.</mj-text>
     </mj-column>
   </mj-section>
 </mj-wrapper>

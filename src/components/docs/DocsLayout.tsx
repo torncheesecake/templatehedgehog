@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { SiteTopBar } from "@/components/site/SiteTopBar";
+import { BrandSignature } from "@/components/site/BrandSignature";
 import { cn } from "@/lib/utils";
 import { visualSystem } from "@/components/site/visualSystem";
 
@@ -26,59 +27,39 @@ export function DocsLayout({ title, summary, children, navItems = [] }: DocsLayo
 
   return (
     <main className={VS.templates.content.main}>
-      <SiteTopBar theme="hero" ctaHref="/pricing" ctaLabel="Get Hedgehog Core - £79" />
-      <section className={cn(VS.templates.content.frame, "pb-24")}>
+      <SiteTopBar theme="hero" />
+      <section className={cn(VS.templates.content.frame, "pb-18") }>
         <div className={VS.widths.docs}>
-          <header className={cn(VS.templates.content.heroCard, "max-w-[84rem]")}>
-            <p className="text-[1rem] font-semibold tracking-[0.01em] text-slate-900">
-              Documentation
-            </p>
-            <h1 className={cn("mt-4 max-w-3xl text-[2.05rem] sm:text-[2.5rem]", VS.headings.page)}>
-              {title}
-            </h1>
-            <p className={cn("mt-3 max-w-3xl text-[1.02rem] leading-8 text-slate-600")}>
-              {summary}
-            </p>
+          <header className="max-w-4xl">
+            <BrandSignature index="06" label="Documentation" />
+            <h1 className="mt-3 text-[1.95rem] font-semibold leading-tight text-white sm:text-[2.2rem]">{title}</h1>
+            <p className="mt-3 text-[1rem] leading-7 text-[var(--th-text-secondary)]">{summary}</p>
           </header>
 
-          <div className="mt-8 rounded-[1.2rem] border border-slate-200 bg-slate-50 p-4 sm:p-5 lg:p-6">
-            <div className="grid gap-7 lg:grid-cols-[220px_minmax(0,1fr)] lg:items-start">
-              <aside className="lg:sticky lg:top-[6.4rem]">
-                <div className="hidden rounded-[0.9rem] border border-slate-200 bg-slate-50 p-4 lg:block">
-                  <p className="text-[0.74rem] font-semibold tracking-[0.01em] text-slate-600">
-                    Sections
-                  </p>
-                  <nav aria-label="Documentation sections" className="mt-3 space-y-1">
-                    {navItems.map((item) => (
-                      <Link
-                        key={item.id}
-                        href={`#${item.id}`}
-                        className="block rounded-[0.68rem] px-2.5 py-2 text-[0.92rem] font-medium text-slate-600 transition hover:bg-[hsl(var(--th-accent-support)/0.14)] hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-600 focus-visible:ring-offset-2"
-                      >
+          <div className="mt-8 grid gap-7 lg:grid-cols-[200px_minmax(0,1fr)] lg:items-start">
+            <aside className="lg:sticky lg:top-[6rem]">
+              <nav aria-label="Documentation sections" className="hidden lg:block">
+                <ul className="space-y-1.5">
+                  {navItems.map((item) => (
+                    <li key={item.id}>
+                      <Link href={`#${item.id}`} className="block rounded-[0.64rem] px-2.5 py-2 text-[0.9rem] text-[var(--th-text-secondary)] transition hover:bg-[var(--bg-surface)] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2">
                         {item.label}
                       </Link>
-                    ))}
-                  </nav>
-                </div>
-              </aside>
-
-              <div>
-                <div className="mb-4 flex flex-wrap gap-2 border-b border-slate-200 pb-4 lg:hidden">
-                  {navItems.map((item) => (
-                    <Link
-                      key={`mobile-${item.id}`}
-                      href={`#${item.id}`}
-                      className="inline-flex rounded-[0.7rem] border border-slate-200 bg-slate-50 px-3 py-1.5 text-[0.8rem] font-semibold text-slate-900 transition hover:border-slate-300 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-600 focus-visible:ring-offset-2"
-                    >
-                      {item.label}
-                    </Link>
+                    </li>
                   ))}
-                </div>
+                </ul>
+              </nav>
+            </aside>
 
-                <div className="rounded-[0.95rem] border border-slate-200 bg-slate-50 px-5 py-5 sm:px-7 sm:py-7">
-                  {children}
-                </div>
+            <div className="border-l border-[var(--th-border-dark)] pl-5 sm:pl-7">
+              <div className="mb-4 flex flex-wrap gap-2 border-b border-[var(--th-border-dark)] pb-4 lg:hidden">
+                {navItems.map((item) => (
+                  <Link key={`mobile-${item.id}`} href={`#${item.id}`} className="inline-flex rounded-[0.7rem] border border-[var(--th-border-dark)] bg-[var(--bg-surface)] px-3 py-1.5 text-[0.8rem] font-semibold text-white">
+                    {item.label}
+                  </Link>
+                ))}
               </div>
+              {children}
             </div>
           </div>
         </div>
@@ -90,12 +71,9 @@ export function DocsLayout({ title, summary, children, navItems = [] }: DocsLayo
 
 export function DocsSection({ id, title, children }: DocsSectionProps) {
   return (
-    <section
-      id={id}
-      className="border-t border-slate-200 py-10 first:border-t-0 first:pt-0"
-    >
-      <h2 className="text-[1.5rem] font-semibold leading-[1.15] text-slate-900 sm:text-[1.68rem]">{title}</h2>
-      <div className="mt-4 max-w-3xl space-y-4 text-[1.01rem] leading-8 text-slate-600 [&_li]:text-slate-600 [&_ol]:mt-4 [&_ul]:mt-4">
+    <section id={id} className="border-t border-[var(--th-border-dark)] py-9 first:border-t-0 first:pt-0">
+      <h2 className="text-[1.28rem] font-semibold leading-tight text-white sm:text-[1.4rem]">{title}</h2>
+      <div className="mt-4 max-w-3xl space-y-4 text-[1rem] leading-8 text-[var(--th-text-secondary)] [&_li]:text-[var(--th-text-secondary)] [&_ol]:mt-4 [&_ul]:mt-4">
         {children}
       </div>
     </section>

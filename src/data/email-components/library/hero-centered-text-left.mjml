@@ -12,7 +12,7 @@
       <mj-text mj-class="body text-muted" align="left" padding-bottom="20px">
         Ship release notes with clear context, one decisive action, and an image treatment that still reads cleanly on mobile.
       </mj-text>
-      <mj-button mj-class="thbluebg white body bold" align="center" border-radius="50px" inner-padding="18px 45px" href="https://templatehedgehog.com">
+      <mj-button mj-class="thbluebg white body bold" align="center" border-radius="50px" inner-padding="18px 45px" href="https://templatehedgehog.co.uk">
         <span style="display: inline-flex; align-items: center; gap: 10px;">
           View update
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display: inline-block;">

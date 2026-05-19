@@ -41,7 +41,7 @@ export type EmailWorkflow = {
   qaRisks: string[];
   handoffSteps: string[];
   freeAccess: string[];
-  coreAccess: string[];
+  proAccess: string[];
   legacyExampleSlug: string;
   featuredRank: number | null;
 };
@@ -57,7 +57,7 @@ type WorkflowDefinition = {
   qaRisks: string[];
   handoffSteps?: string[];
   freeAccess?: string[];
-  coreAccess?: string[];
+  proAccess?: string[];
   legacyExampleSlug: string;
   featuredRank?: number;
 };
@@ -74,11 +74,11 @@ const defaultFreeAccess = [
   "Data contract, variants, QA notes, and handoff checklist",
 ] as const;
 
-const defaultCoreAccess = [
+const defaultProAccess = [
   "Full MJML source for this workflow",
   "Compiled HTML output ready for ESP upload",
   "Variant-ready workflow pack files",
-  "Versioned workflow updates inside Hedgehog Core",
+  "Versioned workflow updates inside Template Hedgehog Pro",
 ] as const;
 
 const workflowDefinitions: WorkflowDefinition[] = [
@@ -182,7 +182,7 @@ const workflowDefinitions: WorkflowDefinition[] = [
       {
         field: "invoice.total_gbp",
         description: "Total amount charged.",
-        example: "£79.00",
+        example: "£179.00",
       },
       {
         field: "billing.download_url",
@@ -459,7 +459,7 @@ const workflowDefinitions: WorkflowDefinition[] = [
       {
         field: "feature.title",
         description: "Primary release heading.",
-        example: "Workflow templates in Hedgehog Core",
+        example: "Workflow templates in Template Hedgehog Pro",
       },
       {
         field: "feature.value_points",
@@ -658,7 +658,7 @@ function createWorkflow(definition: WorkflowDefinition): EmailWorkflow {
     qaRisks: definition.qaRisks,
     handoffSteps: definition.handoffSteps ?? [...defaultHandoffSteps],
     freeAccess: definition.freeAccess ?? [...defaultFreeAccess],
-    coreAccess: definition.coreAccess ?? [...defaultCoreAccess],
+    proAccess: definition.proAccess ?? [...defaultProAccess],
     legacyExampleSlug: definition.legacyExampleSlug,
     featuredRank: definition.featuredRank ?? null,
   };

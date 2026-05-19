@@ -17,7 +17,7 @@
       <mj-text mj-class="body text-muted" align="left" padding-bottom="18px">
         Use this split hero when product context needs room, but you still want one concise CTA and a clear visual anchor.
       </mj-text>
-      <mj-button background-color="#2f67ef" color="#ffffff" align="left" border-radius="999px" inner-padding="14px 28px" href="https://templatehedgehog.com">
+      <mj-button background-color="#2f67ef" color="#ffffff" align="left" border-radius="999px" inner-padding="14px 28px" href="https://templatehedgehog.co.uk">
         Read launch brief
       </mj-button>
     </mj-column>

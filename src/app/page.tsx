@@ -1,337 +1,318 @@
 import Image from "next/image";
-import {
-  ArrowRight,
-  FileCode2,
-} from "lucide-react";
+import type { Metadata } from "next";
+import { ArrowRight } from "lucide-react";
 import { TrackEventOnMount } from "@/components/analytics/TrackEventOnMount";
-import { TrackEventOnVisible } from "@/components/analytics/TrackEventOnVisible";
 import { TrackableLink } from "@/components/analytics/TrackableLink";
+import { LeadCaptureForm } from "@/components/conversion/LeadCaptureForm";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { SiteTopBar } from "@/components/site/SiteTopBar";
+import { getPricingTierById, TEMPLATE_CONFIG } from "@/config/template";
+import { emailLayouts } from "@/data/email-layouts";
 import { getEmailWorkflowBySlug, getFeaturedEmailWorkflows } from "@/data/workflows";
-import {
-  COMPONENT_COUNT,
-  LAYOUT_COUNT,
-  WORKFLOW_COUNT,
-} from "@/lib/pack";
-import { cn } from "@/lib/utils";
+import { createSeoMetadata, DEFAULT_SEO_DESCRIPTION } from "@/lib/seo";
 
-const mjmlSnippet = `<mj-section padding="24px">
-  <mj-column>
-    <mj-text>Reset your password</mj-text>
-    <mj-button href="{{auth.reset_url}}">Reset now</mj-button>
-  </mj-column>
-</mj-section>`;
+const pageWidth = "mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12";
 
-const htmlSnippet = `<table role="presentation" width="100%">
-  <tr>
-    <td style="padding:24px;">
-      <a href="{{auth.reset_url}}">Reset now</a>
-    </td>
-  </tr>
-</table>`;
+const homepageFaq = [
+  {
+    question: "Is Template Hedgehog a template marketplace?",
+    answer:
+      "No. Template Hedgehog is a production email system with MJML source, compiled HTML, layouts, lifecycle workflows, transactional patterns, and implementation guidance.",
+  },
+  {
+    question: "Who should buy Pro?",
+    answer:
+      "Pro is the primary path for teams that ship recurring lifecycle or transactional email and need the full component library, layouts, workflows, token examples, guidance, and six months of updates.",
+  },
+  {
+    question: "What happens after checkout?",
+    answer:
+      "Stripe returns the buyer to a gated success page that validates the session and shows the matching signed archive download with version and implementation details.",
+  },
+  {
+    question: "What does Enterprise add?",
+    answer:
+      "Enterprise adds commercial reuse rights, white-label or internal deployment rights, the reusable generation framework, priority support, and twelve months of updates.",
+  },
+];
 
-const heroTrustPoints = [
-  "One payment - no subscription",
-  "Instant download",
-  "MJML + compiled HTML",
-  "Use across client projects",
-] as const;
+export const metadata: Metadata = createSeoMetadata({
+  title: `${TEMPLATE_CONFIG.brandName} | Production-ready email systems`,
+  description: DEFAULT_SEO_DESCRIPTION,
+  path: "/",
+  keywords: [
+    "production-ready email systems",
+    "MJML source",
+    "compiled HTML email",
+    "lifecycle email workflows",
+    "transactional email templates",
+    "Artifexa",
+  ],
+});
 
 export default function Home() {
-  const pageWidth = "mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12";
-  const primaryButton =
-    "inline-flex h-12 items-center rounded-full border border-[var(--action-primary)] bg-[var(--action-primary)] px-6 text-[0.9rem] font-semibold tracking-[0.01em] !text-[var(--action-text)] shadow-[0_18px_44px_rgba(201,167,77,0.24),0_6px_18px_rgba(15,23,32,0.22)] transition duration-200 hover:-translate-y-0.5 hover:bg-[var(--action-primary-hover)] hover:shadow-[0_24px_58px_rgba(201,167,77,0.28),0_10px_24px_rgba(15,23,32,0.24)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2";
-  const secondaryButton =
-    "inline-flex h-12 items-center rounded-full border border-slate-700/80 bg-slate-900/80 px-6 text-[0.9rem] font-semibold tracking-[0.01em] text-slate-300 backdrop-blur-sm transition duration-200 hover:border-slate-600 hover:bg-slate-800/90 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2";
-  const mappingWorkflow =
-    getEmailWorkflowBySlug("onboarding") ?? getFeaturedEmailWorkflows(1)[0];
-
-  const mappingPath = mappingWorkflow
-    ? `workflow/${mappingWorkflow.slug} -> layout/${mappingWorkflow.linkedLayoutSlug} -> component/${mappingWorkflow.componentStack[0]?.componentSlug ?? "hero-overlay-modern"} -> compiled/${mappingWorkflow.slug}.html`
-    : "workflow/onboarding -> layout/saas-welcome-system -> component/header-brand-row -> compiled/onboarding.html";
+  const proTier = getPricingTierById("pro");
+  const starterTier = getPricingTierById("starter");
+  const enterpriseTier = getPricingTierById("enterprise");
+  const leadWorkflow =
+    getEmailWorkflowBySlug("reporting")
+    ?? getEmailWorkflowBySlug("campaign-launch")
+    ?? getFeaturedEmailWorkflows(1)[0];
+  const leadLayouts = emailLayouts.slice(0, 2);
 
   return (
-    <main className="min-h-screen bg-[#07111f] text-slate-300">
-      <SiteTopBar theme="hero" heroTone="neutral" ctaHref="/pricing" ctaLabel="Buy now - £79" />
+    <main className="min-h-screen bg-[var(--bg-canvas)] text-[var(--th-text-primary)]">
+      <SiteTopBar theme="hero" heroTone="neutral" />
       <TrackEventOnMount event="homepage_view" payload={{ source: "homepage" }} />
-      <TrackEventOnVisible
-        targetId="core-definition"
-        event="workflows_section_view"
-        payload={{ source: "homepage" }}
-      />
-      <TrackEventOnVisible
-        targetId="technical-proof"
-        event="technical_proof_view"
-        payload={{ source: "homepage" }}
-      />
-      <TrackEventOnVisible
-        targetId="pricing-cta"
-        event="pricing_section_view"
-        payload={{ source: "homepage" }}
-      />
 
-      <section className="relative overflow-hidden border-b border-slate-800/70 bg-[radial-gradient(circle_at_82%_12%,rgba(59,130,246,0.18),transparent_42%),radial-gradient(circle_at_14%_82%,rgba(30,64,175,0.12),transparent_36%),linear-gradient(180deg,#091423_0%,#07111f_58%,#06101b_100%)] py-32 sm:py-36">
-        <div className="pointer-events-none absolute inset-x-0 top-24 mx-auto h-px w-[38rem] max-w-[82vw] bg-gradient-to-r from-transparent via-white/12 to-transparent" />
-        <div className="pointer-events-none absolute left-[7%] top-28 h-52 w-52 rounded-full bg-blue-500/8 blur-3xl" />
-        <div className="pointer-events-none absolute right-[9%] top-20 h-80 w-80 rounded-full bg-blue-500/10 blur-3xl" />
+      <section className="border-b border-[var(--border-subtle)] py-10 sm:py-12">
         <div className={pageWidth}>
-          <div className="grid gap-20 lg:grid-cols-[minmax(0,1.02fr)_minmax(0,0.98fr)] lg:items-center lg:gap-24">
-            <div className="max-w-[43rem]">
-              <p className="text-[1rem] font-semibold tracking-[0.012em] text-slate-400">
-                Hedgehog Core
-              </p>
-              <h1
-                className={cn(
-                  "mt-7 max-w-3xl font-serif text-[3.25rem] font-semibold leading-[0.86] tracking-[-0.03em] text-white sm:text-[4.7rem] lg:text-[5.45rem]",
-                )}
-              >
-                Rebuilding email code is the bottleneck. Stop doing it.
+          <p className="text-[0.82rem] font-semibold uppercase tracking-[0.11em] text-[var(--action-primary)]">
+            Production Email System
+          </p>
+          <div className="mt-4 grid gap-10 lg:grid-cols-[minmax(0,0.96fr)_minmax(0,1.04fr)] lg:items-end">
+            <div>
+              <h1 className="max-w-[13ch] font-serif text-[3rem] font-semibold leading-[0.9] tracking-normal text-white sm:text-[3.75rem] lg:text-[3.9rem] 2xl:max-w-[14ch] 2xl:text-[4.6rem]">
+                Ship lifecycle and transactional email faster.
               </h1>
-              <p className="mt-6 max-w-[35rem] text-[1.08rem] leading-8 text-slate-300">
-                Rebuild cycles create drift, repeated QA failures, and slow handoff. Hedgehog Core removes that reset and gives one production path from workflow to output.
+              <p className="mt-5 max-w-[34rem] text-[1.03rem] leading-7 text-[var(--th-text-secondary)]">
+                {TEMPLATE_CONFIG.brandName} is an {TEMPLATE_CONFIG.owner.name} product for teams who need predictable source, cleaner handoff, and production-safe compiled HTML.
               </p>
-
-              <div className="mt-14 flex flex-wrap items-center gap-4">
+              <div className="mt-5 grid max-w-[38rem] gap-2 text-[0.86rem] font-semibold text-[var(--th-text-secondary)] sm:grid-cols-2">
+                <p className="border-l border-[var(--action-primary)] pl-3">MJML source and compiled HTML</p>
+                <p className="border-l border-[var(--action-primary)] pl-3">Lifecycle and transactional systems</p>
+                <p className="border-l border-[var(--action-primary)] pl-3">Secure Stripe checkout</p>
+                <p className="border-l border-[var(--action-primary)] pl-3">{TEMPLATE_CONFIG.owner.name} owned product</p>
+              </div>
+              <div className="mt-6 flex flex-wrap items-center gap-3">
                 <TrackableLink
                   href="/pricing"
                   event="hero_primary_cta_click"
                   payload={{ source: "hero" }}
-                  className={cn(primaryButton, "gap-2")}
+                  className="inline-flex h-12 items-center rounded-full bg-[var(--action-primary)] px-6 text-[0.94rem] font-semibold !text-[var(--action-text)]"
                 >
-                  Buy Hedgehog Core - £79 and ship today
-                  <ArrowRight className="h-4 w-4" />
+                  View pricing
+                  <ArrowRight className="ml-2 h-4 w-4" />
                 </TrackableLink>
                 <TrackableLink
-                  href="#technical-proof"
+                  href="/layouts"
                   event="hero_secondary_cta_click"
                   payload={{ source: "hero" }}
-                  className={secondaryButton}
+                  className="inline-flex h-12 items-center rounded-full border border-[var(--border-subtle)] px-6 text-[0.92rem] font-semibold text-white"
                 >
-                  Inspect the files
+                  View layouts
                 </TrackableLink>
               </div>
-
-              <p className="mt-10 max-w-[34rem] text-[0.8rem] uppercase tracking-[0.12em] text-slate-500">
-                {heroTrustPoints.join(" • ")}
-              </p>
             </div>
 
-            <div className="relative">
-              <div className="pointer-events-none absolute inset-0 -z-10 translate-y-8 rounded-[2.6rem] bg-[radial-gradient(circle_at_50%_40%,rgba(59,130,246,0.22),transparent_56%)] blur-3xl" />
-              <article className="relative overflow-hidden rounded-[2.1rem] border border-slate-700/70 bg-slate-900/90 shadow-[0_38px_90px_rgba(2,6,23,0.62),0_18px_40px_rgba(59,130,246,0.14)] ring-1 ring-white/[0.045] backdrop-blur-sm">
-              <div className="relative aspect-[5/4] overflow-hidden">
-                {mappingWorkflow ? (
+            <div className="space-y-4">
+              <div className="relative aspect-[16/10] overflow-hidden rounded-[1.1rem] border border-[var(--border-subtle)]">
+                {leadWorkflow ? (
                   <Image
-                    src={mappingWorkflow.previewImageUrl}
-                    alt={`${mappingWorkflow.title} production preview`}
+                    src={leadWorkflow.previewImageUrl}
+                    alt={`${leadWorkflow.title} preview`}
                     fill
-                    sizes="(max-width: 1280px) 90vw, 42vw"
-                    className="object-cover object-top"
+                    sizes="(max-width: 1280px) 90vw, 55vw"
+                    unoptimized
+                    priority
+                    className="bg-white object-cover object-top"
                   />
                 ) : null}
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_74%_14%,rgba(59,130,246,0.18),transparent_42%),linear-gradient(180deg,rgba(7,17,31,0)_0%,rgba(7,17,31,0.06)_58%,rgba(7,17,31,0.24)_100%)]" />
-                <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-white/[0.05] to-transparent" />
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#07111f] via-[#07111f]/86 to-transparent px-7 pb-7 pt-16">
-                  <p className="text-[0.76rem] font-semibold uppercase tracking-[0.08em] text-slate-300">
-                    workflow → layout → components → compiled output
-                  </p>
+              </div>
+              {leadWorkflow ? (
+                <div className="grid gap-3 sm:grid-cols-3 text-[0.82rem] text-[var(--th-text-secondary)]">
+                  <p><span className="block text-[var(--action-primary)]">Trigger</span>{leadWorkflow.trigger}</p>
+                  <p><span className="block text-[var(--action-primary)]">Output</span>{leadWorkflow.linkedLayoutTitle}</p>
+                  <p><span className="block text-[var(--action-primary)]">Handoff</span>MJML + compiled HTML</p>
                 </div>
-              </div>
-              <div className="flex items-center justify-between border-t border-white/10 px-7 py-4 text-[0.82rem] text-slate-300">
-                <span className="inline-flex items-center gap-1.5">
-                  <FileCode2 className="h-4 w-4 text-blue-400" />
-                  MJML source + compiled HTML
-                </span>
-                <span className="text-slate-400">{mappingWorkflow?.slug ?? "onboarding"}</span>
-              </div>
-            </article>
+              ) : null}
             </div>
           </div>
         </div>
       </section>
 
-      <section className="bg-[radial-gradient(circle_at_50%_0%,rgba(59,130,246,0.08),transparent_52%),linear-gradient(180deg,#07111f_0%,#081320_100%)] py-32 sm:py-36">
+      <section className="bg-[var(--bg-surface)] py-16 sm:py-18">
         <div className={pageWidth}>
-          <div className="mx-auto max-w-[54rem]">
-            <p className="text-[0.95rem] font-semibold tracking-[0.012em] text-slate-400">
-              Why teams move to a system
-            </p>
-            <h2
-              className={cn(
-                "mt-6 font-serif text-[2.7rem] font-semibold leading-[0.92] tracking-[-0.03em] text-white sm:text-[3.95rem]",
-              )}
-            >
-              Production email is slow because teams keep restarting structure.
-            </h2>
-            <ul className="mt-8 max-w-3xl space-y-2 text-[1rem] leading-8 text-slate-300">
-              <li>Same campaigns rebuilt again and again.</li>
-              <li>QA catches the same breakages every cycle.</li>
-              <li>Handoff slows down at the point you need to ship.</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section id="core-definition" className="border-y border-slate-800 bg-[linear-gradient(180deg,#0b1728_0%,#0a1524_100%)] py-30">
-        <div className={pageWidth}>
-          <div className="grid gap-16 lg:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)] lg:items-start">
-            <div className="max-w-3xl">
-              <p className="text-[1rem] font-semibold tracking-[0.012em] text-slate-400">
-                What Hedgehog Core is
-              </p>
-              <h2
-                className={cn(
-                  "mt-5 font-serif text-[2.35rem] font-semibold leading-[0.92] tracking-[-0.03em] text-white sm:text-[3.15rem]",
-                )}
-              >
-                A production MJML system for teams that need repeatable output
+          <div className="grid gap-9 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-start">
+            <div>
+              <h2 className="max-w-[18ch] font-serif text-[2.2rem] font-semibold leading-[0.95] text-white sm:text-[2.8rem]">
+                Fewer rebuilds. Faster QA. Cleaner release handoff.
               </h2>
-              <p className="mt-4 max-w-3xl text-[1rem] leading-8 text-slate-300">
-                One pack. One decision. No repeated setup across projects.
+              <p className="mt-4 max-w-[34rem] text-[1rem] leading-8 text-[var(--th-text-secondary)]">
+                The product is structured around operational workflows, not isolated template fragments. Start from real triggers, adapt safely, and ship with less production churn.
               </p>
-
-              <div className="mt-10 space-y-4 text-[0.98rem] leading-8 text-slate-300">
-                <p><span className="font-semibold text-white">{COMPONENT_COUNT} components, {LAYOUT_COUNT} layouts, {WORKFLOW_COUNT} workflows.</span></p>
-                <p><span className="font-semibold text-white">MJML source + compiled HTML</span> keeps QA and ESP handoff aligned.</p>
-              </div>
             </div>
-
-            <div className="lg:pt-1">
-              <p className="text-[0.78rem] font-semibold uppercase tracking-[0.08em] text-slate-400">
-                Included
-              </p>
-              <ul className="mt-5 space-y-3 text-[0.95rem] leading-7 text-slate-300">
-                <li>Versioned updates and changelog</li>
-                <li>Practical docs for client behaviour and handoff</li>
-                <li>Commercial licence for project delivery</li>
-              </ul>
-
-              <div className="mt-8 flex flex-wrap gap-2.5 text-[0.84rem] font-semibold">
-                <TrackableLink
-                  href="/docs"
-                  event="docs_click"
-                  payload={{ source: "core_definition" }}
-                  className="inline-flex h-10 items-center rounded-[0.75rem] border border-slate-700 bg-slate-900/90 px-4 text-slate-100 transition hover:border-slate-600"
-                >
-                  Documentation
-                </TrackableLink>
-                <TrackableLink
-                  href="/changelog"
-                  event="changelog_click"
-                  payload={{ source: "core_definition" }}
-                  className="inline-flex h-10 items-center rounded-[0.75rem] border border-slate-700 bg-slate-900/90 px-4 text-slate-100 transition hover:border-slate-600"
-                >
-                  Changelog
-                </TrackableLink>
-                <TrackableLink
-                  href="/pricing"
-                  event="licence_click"
-                  payload={{ source: "core_definition" }}
-                  className="inline-flex h-10 items-center rounded-[0.75rem] border border-slate-700 bg-slate-900/90 px-4 text-slate-100 transition hover:border-slate-600"
-                >
-                  Licence and pricing
-                </TrackableLink>
-              </div>
+            <div className="space-y-6">
+              <Metric title="Starter" body="Get production-ready quickly with curated onboarding and transactional essentials." />
+                <Metric title="Pro" body="Complete production email system for lifecycle and transactional coverage." highlight />
+              <Metric title="Enterprise" body="Deploy commercially with reuse rights, white-label operation, and priority support." />
             </div>
           </div>
         </div>
       </section>
 
-      <section id="technical-proof" className="border-y border-slate-800 bg-[linear-gradient(180deg,#07111f_0%,#08111d_100%)] py-30">
+      <section className="border-t border-[var(--border-subtle)] py-14 sm:py-16">
         <div className={pageWidth}>
-          <div className="max-w-3xl">
-            <p className="text-[1rem] font-semibold tracking-[0.012em] text-slate-400">
-              Technical proof
-            </p>
-            <h2
-              className={cn(
-                "mt-5 font-serif text-[2.35rem] font-semibold leading-[0.92] tracking-[-0.03em] text-white sm:text-[3.15rem]",
-              )}
-            >
-              This is what you ship, not what you build
+          <div className="grid gap-7 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-start">
+            <div>
+              <p className="text-[0.82rem] font-semibold uppercase tracking-[0.11em] text-[var(--action-primary)]">
+                Built for production use
+              </p>
+              <h2 className="mt-3 max-w-[20ch] font-serif text-[2rem] font-semibold leading-tight text-white sm:text-[2.45rem]">
+                A system purchase, not a template browse.
+              </h2>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-3">
+              <Metric title="Operations" body="Use layouts and workflows around real triggers, owner states, and handoff requirements." />
+              <Metric title="Implementation" body="Edit MJML, compile once, then move final HTML into your ESP or review process." />
+              <Metric title="Commerce" body="Pick Starter, Pro, or Enterprise with one clear checkout path and tier mapping." />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-t border-[var(--border-subtle)] py-14 sm:py-16">
+        <div className={pageWidth}>
+          <div className="grid gap-7 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-start">
+            <div>
+              <p className="text-[0.82rem] font-semibold uppercase tracking-[0.11em] text-[var(--action-primary)]">
+                Revenue path
+              </p>
+              <h2 className="mt-3 max-w-[20ch] font-serif text-[2rem] font-semibold leading-tight text-white sm:text-[2.45rem]">
+                Built to convert serious email implementation demand.
+              </h2>
+              <p className="mt-4 max-w-[35rem] text-[0.98rem] leading-8 text-[var(--th-text-secondary)]">
+                The page directs buyers to Pro, gives Starter a credible entry point, and positions Enterprise around reuse rights and deployment value. Visitors who are not ready to buy can still enter the product funnel.
+              </p>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-3">
+              <Metric title="56 Pro sales" body="At £179, fifty-six Pro purchases reaches roughly £10k gross monthly revenue." highlight />
+              <Metric title="29 Enterprise sales" body="Enterprise is the fastest revenue path when teams need commercial deployment rights." />
+              <Metric title="Lead capture" body="Non-buyers can request the QA checklist, preserving demand for product updates and launch offers." />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-y border-[var(--border-subtle)] py-16 sm:py-18">
+        <div className={pageWidth}>
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <h2 className="max-w-[22ch] font-serif text-[2rem] font-semibold leading-tight text-white sm:text-[2.45rem]">
+              Production artefacts your team can trust before purchase.
             </h2>
+            <TrackableLink
+              href="/layouts"
+              event="hero_tertiary_cta_click"
+              payload={{ source: "homepage_artefacts" }}
+              className="inline-flex h-11 items-center rounded-[0.85rem] border border-[var(--border-subtle)] px-5 text-[0.9rem] font-semibold text-white"
+            >
+              Open layout archive
+            </TrackableLink>
           </div>
 
-          <article className="mt-14 overflow-hidden rounded-[1.7rem] border border-slate-700/75 bg-slate-900/92 shadow-[0_28px_76px_rgba(2,6,23,0.4)] ring-1 ring-white/[0.03] backdrop-blur-sm">
-            <div className="grid lg:grid-cols-[minmax(0,1.04fr)_minmax(0,0.96fr)]">
-              <div className="p-6 sm:p-8">
-                <p className="text-[0.78rem] font-semibold uppercase tracking-[0.09em] text-slate-300">
-                  MJML to compiled HTML
-                </p>
-                <div className="mt-5 grid gap-4 md:grid-cols-2">
-                  <div>
-                    <p className="text-[0.72rem] font-semibold uppercase tracking-[0.08em] text-slate-300">
-                      MJML source
-                    </p>
-                    <pre className="mt-2 overflow-x-auto rounded-[1rem] bg-[#07111f] p-3 text-[0.72rem] leading-6 text-slate-300 ring-1 ring-white/[0.03]">
-                      {mjmlSnippet}
-                    </pre>
-                  </div>
-                  <div>
-                    <p className="text-[0.72rem] font-semibold uppercase tracking-[0.08em] text-slate-300">
-                      Compiled HTML
-                    </p>
-                    <pre className="mt-2 overflow-x-auto rounded-[1rem] bg-[#07111f] p-3 text-[0.72rem] leading-6 text-slate-300 ring-1 ring-white/[0.03]">
-                      {htmlSnippet}
-                    </pre>
-                  </div>
+          <div className="mt-7 grid gap-4 lg:grid-cols-2">
+            {leadLayouts.map((layout) => (
+              <article key={layout.slug} className="overflow-hidden rounded-[1rem] border border-[var(--border-subtle)]">
+                <div className="relative aspect-[16/10]">
+                  <Image
+                    src={layout.previewImageUrl}
+                    alt={`${layout.title} preview`}
+                    fill
+                    sizes="(max-width: 1280px) 90vw, 45vw"
+                    unoptimized
+                    className="bg-white object-cover object-top"
+                  />
                 </div>
-              </div>
-
-              <div className="border-t border-slate-700 p-6 sm:p-8 lg:border-l lg:border-t-0">
-                <p className="text-[0.78rem] font-semibold uppercase tracking-[0.09em] text-slate-300">
-                  Pack structure and mapping
-                </p>
-                <pre className="mt-4 overflow-x-auto text-[0.8rem] leading-7 text-slate-200">
-{`workflows/
-layouts/
-components/
-compiled/*.html
-docs/
-mjml.config`}
-                </pre>
-                <p className="mt-4 text-[0.86rem] leading-7 text-slate-300">
-                  {mappingPath}
-                </p>
-              </div>
-            </div>
-          </article>
+                <div className="px-4 py-4">
+                  <p className="text-[1rem] font-semibold text-white">{layout.title}</p>
+                  <p className="mt-2 text-[0.9rem] leading-7 text-[var(--th-text-secondary)]">{layout.description}</p>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section id="pricing-cta" className="border-t border-slate-800 bg-[linear-gradient(180deg,#0b1728_0%,#09131f_100%)] py-30">
+      <section className="py-16 sm:py-18">
         <div className={pageWidth}>
-          <div className="mx-auto max-w-[44rem] text-center">
-            <h2
-              className={cn(
-                "font-serif text-[2.5rem] font-semibold leading-[0.92] tracking-[-0.03em] text-white sm:text-[3.25rem]",
-              )}
+          <div className="grid gap-7 lg:grid-cols-[minmax(0,1.08fr)_auto] lg:items-center">
+            <div>
+              <h2 className="max-w-[22ch] font-serif text-[2rem] font-semibold leading-tight text-white sm:text-[2.45rem]">
+                {`Start at £${starterTier.priceGbp}. Standardise with Pro at £${proTier.priceGbp}. Scale with Enterprise at £${enterpriseTier.priceGbp}.`}
+              </h2>
+              <p className="mt-4 max-w-[34rem] text-[0.98rem] leading-8 text-[var(--th-text-secondary)]">
+                Choose the tier that matches your current operational maturity, then move up without changing your workflow model.
+              </p>
+            </div>
+            <TrackableLink
+              href="/pricing"
+              event="final_cta_click"
+              payload={{ source: "final_cta" }}
+              className="inline-flex h-12 items-center rounded-full bg-[var(--action-primary)] px-6 text-[0.94rem] font-semibold !text-[var(--action-text)]"
             >
-              Buy Hedgehog Core - £79
-            </h2>
-            <p className="mt-4 mx-auto max-w-3xl text-[1rem] leading-8 text-slate-300">
-              Stop rebuilding and start shipping today with structured workflows and compiled output.
-            </p>
+              {TEMPLATE_CONFIG.pricing.primaryCtaLabel}
+            </TrackableLink>
+          </div>
+        </div>
+      </section>
 
-            <div className="mt-12 flex flex-wrap justify-center gap-2.5">
-              <TrackableLink
-                href="/pricing"
-                event="final_cta_click"
-                payload={{ source: "final_cta" }}
-                className={cn(primaryButton, "gap-2")}
-              >
-                Buy now - £79 and start shipping
-                <ArrowRight className="h-4 w-4" />
-              </TrackableLink>
-              <TrackableLink
-                href="/workflows"
-                event="hero_tertiary_cta_click"
-                payload={{ source: "final_cta" }}
-                className={secondaryButton}
-              >
-                Browse workflows
-              </TrackableLink>
+      <section className="border-t border-[var(--border-subtle)] bg-[var(--bg-surface)] py-14 sm:py-16">
+        <div className={pageWidth}>
+          <div className="grid gap-7 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.92fr)] lg:items-start">
+            <div>
+              <h2 className="max-w-[22ch] font-serif text-[2rem] font-semibold leading-tight text-white sm:text-[2.45rem]">
+                What happens after checkout.
+              </h2>
+              <p className="mt-4 max-w-[34rem] text-[0.98rem] leading-8 text-[var(--th-text-secondary)]">
+                Payment returns you to a gated success page with the matching pack download, archive metadata, version details, and implementation docs.
+              </p>
+            </div>
+            <div className="space-y-4">
+              <Metric title="1. Download" body="The success page validates the Stripe session before showing the signed archive link." />
+              <Metric title="2. Inspect" body="Open source folders for components, layouts, workflows, docs, MJML, and compiled HTML." />
+              <Metric title="3. Ship" body="Customise source, compile, QA across clients, then hand off production-ready HTML." />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-t border-[var(--border-subtle)] py-14 sm:py-16">
+        <div className={pageWidth}>
+          <div className="grid gap-7 lg:grid-cols-[minmax(0,0.88fr)_minmax(0,1.12fr)] lg:items-start">
+            <div>
+              <p className="text-[0.82rem] font-semibold uppercase tracking-[0.11em] text-[var(--action-primary)]">
+                Implementation checklist
+              </p>
+              <h2 className="mt-3 max-w-[20ch] font-serif text-[2rem] font-semibold leading-tight text-white sm:text-[2.45rem]">
+                Capture teams before they are ready to purchase.
+              </h2>
+              <p className="mt-4 max-w-[34rem] text-[0.98rem] leading-8 text-[var(--th-text-secondary)]">
+                The checklist offer gives evaluators a concrete next step while keeping the commercial path focused on Pro checkout.
+              </p>
+            </div>
+            <LeadCaptureForm source="homepage_checklist" />
+          </div>
+        </div>
+      </section>
+
+      <section className="border-t border-[var(--border-subtle)] bg-[var(--bg-surface)] py-14 sm:py-16">
+        <div className={pageWidth}>
+          <div className="grid gap-7 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:items-start">
+            <div>
+              <p className="text-[0.82rem] font-semibold uppercase tracking-[0.11em] text-[var(--action-primary)]">
+                Buyer questions
+              </p>
+              <h2 className="mt-3 max-w-[18ch] font-serif text-[2rem] font-semibold leading-tight text-white sm:text-[2.45rem]">
+                Clear answers before checkout.
+              </h2>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {homepageFaq.map((item) => (
+                <article key={item.question} className="border-l border-[var(--border-subtle)] pl-4">
+                  <h3 className="text-[1rem] font-semibold text-white">{item.question}</h3>
+                  <p className="mt-2 text-[0.93rem] leading-7 text-[var(--th-text-secondary)]">{item.answer}</p>
+                </article>
+              ))}
             </div>
           </div>
         </div>
@@ -339,5 +320,24 @@ mjml.config`}
 
       <SiteFooter flush theme="dark" />
     </main>
+  );
+}
+
+function Metric({
+  title,
+  body,
+  highlight = false,
+}: {
+  title: string;
+  body: string;
+  highlight?: boolean;
+}) {
+  return (
+    <article className={`border-l pl-4 ${highlight ? "border-[var(--action-primary)]" : "border-[var(--border-subtle)]"}`}>
+      <p className={`text-[0.82rem] uppercase tracking-[0.1em] ${highlight ? "text-[var(--action-primary)]" : "text-[var(--th-text-muted)]"}`}>
+        {title}
+      </p>
+      <p className="mt-2 text-[0.96rem] leading-7 text-[var(--th-text-secondary)]">{body}</p>
+    </article>
   );
 }

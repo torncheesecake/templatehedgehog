@@ -61,19 +61,19 @@ export function ComponentMjmlSourcePanel({
   const selected = modeConfig[activeMode];
 
   return (
-    <div className="space-y-3">
+    <div className="min-w-0 space-y-3">
       {hasTwoModes ? (
         <div
           role="group"
           aria-label="MJML copy mode"
-          className="inline-flex rounded-[0.88rem] border border-black/10 bg-white p-[0.35rem]"
+          className="inline-flex rounded-[0.88rem] border border-[var(--th-border-dark)] bg-[var(--bg-canvas)] p-[0.35rem]"
         >
           <button
             type="button"
             onClick={() => setMode("snippet")}
             aria-pressed={activeMode === "snippet"}
             data-active={activeMode === "snippet"}
-            className="inline-flex h-10 items-center rounded-[0.62rem] px-4 text-[0.94rem] font-semibold text-gray-500 transition-colors hover:bg-gray-100 hover:text-black data-[active=true]:bg-[#d13d4c] data-[active=true]:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d13d4c] focus-visible:ring-offset-2"
+            className="inline-flex h-10 items-center rounded-[0.62rem] px-4 text-[0.94rem] font-semibold text-[var(--th-text-muted)] transition-colors hover:bg-[var(--bg-accent-soft)] hover:text-[var(--text-primary)] data-[active=true]:bg-[var(--action-primary)] data-[active=true]:!text-[var(--action-text)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2"
           >
             Snippet
           </button>
@@ -82,7 +82,7 @@ export function ComponentMjmlSourcePanel({
             onClick={() => setMode("standalone")}
             aria-pressed={activeMode === "standalone"}
             data-active={activeMode === "standalone"}
-            className="inline-flex h-10 items-center rounded-[0.62rem] px-4 text-[0.94rem] font-semibold text-gray-500 transition-colors hover:bg-gray-100 hover:text-black data-[active=true]:bg-[#d13d4c] data-[active=true]:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d13d4c] focus-visible:ring-offset-2"
+            className="inline-flex h-10 items-center rounded-[0.62rem] px-4 text-[0.94rem] font-semibold text-[var(--th-text-muted)] transition-colors hover:bg-[var(--bg-accent-soft)] hover:text-[var(--text-primary)] data-[active=true]:bg-[var(--action-primary)] data-[active=true]:!text-[var(--action-text)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2"
           >
             Standalone
           </button>
@@ -90,7 +90,7 @@ export function ComponentMjmlSourcePanel({
       ) : null}
 
       {activeMode === "snippet" ? (
-        <p className="rounded-[0.82rem] border border-[hsl(var(--th-accent-support)/0.34)] bg-[hsl(var(--th-accent-support)/0.14)] px-3.5 py-2.5 text-[0.88rem] leading-6 text-slate-900">
+        <p className="rounded-[0.82rem] border border-[var(--border-strong)] bg-[var(--bg-accent-soft)] px-3.5 py-2.5 text-[0.88rem] leading-6 text-[var(--text-primary)]">
           Snippet assembly: place this block inside the same <code className="font-semibold">&lt;mj-body&gt;</code> as your
           other snippets, then stack sections in send order.
         </p>

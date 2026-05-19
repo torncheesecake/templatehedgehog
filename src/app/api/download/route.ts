@@ -78,7 +78,7 @@ async function handleDownloadRequest(
       : jsonError(validation.message, validation.status);
   }
 
-  const delivery = await resolveDownloadDelivery(method);
+  const delivery = await resolveDownloadDelivery(method, validation.packId ?? "pro");
   if (!delivery.ok) {
     if (delivery.message.includes("Filesystem download delivery is disabled in production")) {
       logDownloadEvent("error", "download_blocked_bad_config", {

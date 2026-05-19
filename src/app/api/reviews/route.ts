@@ -1,8 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getReviewsByProductId } from "@/lib/mock-data";
 
-// GET /api/reviews?productId=xxx
-// Returns reviews for a product
+export const runtime = "nodejs";
+
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const productId = searchParams.get("productId");
@@ -14,12 +13,12 @@ export async function GET(request: NextRequest) {
     );
   }
 
-  const reviews = getReviewsByProductId(productId);
-  return NextResponse.json({ reviews });
+  return NextResponse.json({
+    reviews: [],
+    message: "Verified customer reviews are not published until moderated purchase verification is available.",
+  });
 }
 
-// POST /api/reviews
-// Submit a new review (requires authentication + verified purchase)
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
@@ -32,16 +31,12 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // TODO: Implement review submission
-    // 1. Verify user is authenticated
-    // 2. Verify user has purchased the product
-    // 3. Check user hasn't already reviewed this product
-    // 4. Create review record (approved: false for moderation)
-    // 5. Send notification email to admin
-
     return NextResponse.json(
-      { message: "Review submitted for moderation" },
-      { status: 201 }
+      {
+        error:
+          "Review submission is only available after verified purchase moderation is connected.",
+      },
+      { status: 403 }
     );
   } catch {
     return NextResponse.json(

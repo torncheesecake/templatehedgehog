@@ -5,7 +5,7 @@
       <mj-text mj-class="label thblue" align="center" padding-bottom="12px">Verification</mj-text>
       <mj-text mj-class="h3 text-primary extrabold" align="center" padding-bottom="12px">Verify your account</mj-text>
       <mj-text mj-class="body text-muted" align="center" padding-bottom="20px">Confirm your email address to activate sign-in, workspace access, and security notifications.</mj-text>
-      <mj-button mj-class="thbluebg white body bold" align="center" border-radius="999px" inner-padding="16px 34px" href="https://templatehedgehog.com">Verify account</mj-button>
+      <mj-button mj-class="thbluebg white body bold" align="center" border-radius="999px" inner-padding="16px 34px" href="https://templatehedgehog.co.uk">Verify account</mj-button>
     </mj-column>
   </mj-section>
 </mj-wrapper>

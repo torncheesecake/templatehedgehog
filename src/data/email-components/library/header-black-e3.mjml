@@ -1,9 +1,9 @@
  <mj-wrapper mj-class="blackbg">
    <mj-section>
      <mj-column>
-       <mj-image src="/brand/hedgehog-mark-email.png" width="44px" padding="0" align="left" href="https://templatehedgehog.com" alt="TemplateHedgehog icon" />
+       <mj-image src="/brand/hedgehog-mark-email.png" width="44px" padding="0" align="left" href="https://templatehedgehog.co.uk" alt="TemplateHedgehog icon" />
        <mj-text align="left" padding="8px 0 0 0" font-family="'Manrope', 'Inter', Arial, sans-serif" font-size="16px" font-weight="700" color="#ffffff">
-         <a href="https://templatehedgehog.com" style="color:#ffffff; text-decoration:none;">TemplateHedgehog</a>
+         <a href="https://templatehedgehog.co.uk" style="color:#ffffff; text-decoration:none;">TemplateHedgehog</a>
        </mj-text>
      </mj-column>
    </mj-section>

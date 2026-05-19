@@ -10,7 +10,7 @@
       </mj-text>
       <!-- #-START-# Centred CTA -->
       <mj-social font-size="14px" icon-size="30px" mode="horizontal" align="center">
-        <mj-social-element src="https://placehold.co/640x360/png?text=TemplateHedgehog+Visual" name="cta" href="https://templatehedgehog.com" target="_blank" mj-class="dark">
+        <mj-social-element src="https://placehold.co/640x360/png?text=TemplateHedgehog+Visual" name="cta" href="https://templatehedgehog.co.uk" target="_blank" mj-class="dark">
           Write a review
         </mj-social-element>
       </mj-social>

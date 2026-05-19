@@ -1,0 +1,28 @@
+Template Hedgehog Production Email QA Checklist
+
+Use this before importing compiled HTML into an ESP or sending a production lifecycle or transactional email.
+
+1. Source control
+- Keep MJML as the editable source of truth.
+- Store the compiled HTML as a delivery artefact, not the main editing surface.
+- Record the component or layout slug used for the build.
+
+2. Content and links
+- Confirm every CTA points to the correct production URL.
+- Check merge tags, unsubscribe links, preference links, and legal footer copy.
+- Keep critical message copy out of images.
+
+3. Rendering
+- Test Gmail, Apple Mail, and Outlook desktop before final send.
+- Check mobile width, button wrapping, dark mode, image blocking, and footer legibility.
+- Confirm background images are not essential to message comprehension.
+
+4. Delivery handoff
+- Import the final compiled HTML into the ESP or CRM.
+- Re-check tracking link rewrites after import.
+- Save a screenshot or preview URL for approval history.
+
+5. Reuse
+- If the block will be reused, make the change in MJML and recompile.
+- Avoid repeated manual edits to compiled HTML.
+- Move recurring variants into your internal component source.

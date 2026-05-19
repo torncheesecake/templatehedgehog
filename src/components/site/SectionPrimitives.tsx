@@ -9,19 +9,19 @@ type IntroPattern = "centred" | "full" | "split";
 type IntroTone = "dark" | "light";
 
 const toneClasses: Record<SectionTone, string> = {
-  canvas: "bg-white",
-  surface: "bg-slate-50",
-  soft: "bg-slate-50",
+  canvas: "bg-[var(--bg-canvas)]",
+  surface: "bg-[var(--bg-surface)]",
+  soft: "bg-[var(--bg-muted)]",
 };
 
 const borderClasses = {
   none: "",
-  top: "border-t border-slate-200",
-  bottom: "border-b border-slate-200",
-  both: "border-y border-slate-200",
-  softTop: "border-t border-slate-200",
-  softBottom: "border-b border-slate-200",
-  softBoth: "border-y border-slate-200",
+  top: "border-t border-[var(--border-subtle)]",
+  bottom: "border-b border-[var(--border-subtle)]",
+  both: "border-y border-[var(--border-subtle)]",
+  softTop: "border-t border-[var(--border-subtle)]",
+  softBottom: "border-b border-[var(--border-subtle)]",
+  softBoth: "border-y border-[var(--border-subtle)]",
 } as const;
 
 interface SectionShellProps {
@@ -83,18 +83,18 @@ const introPatternClasses: Record<IntroPattern, string> = {
 };
 
 const introEyebrowClasses: Record<IntroTone, string> = {
-  dark: "text-sm font-semibold uppercase tracking-[0.08em] text-slate-500",
-  light: "text-sm font-semibold uppercase tracking-[0.08em] text-slate-500",
+  dark: "text-[var(--text-small)] font-semibold tracking-[0.08em] uppercase text-[var(--text-meta)]",
+  light: "text-[var(--text-small)] font-semibold tracking-[0.08em] uppercase text-[var(--text-meta)]",
 };
 
 const introTitleClasses: Record<IntroTone, string> = {
-  dark: "text-4xl font-semibold leading-[1.05] text-slate-900 sm:text-5xl",
-  light: "text-4xl font-semibold leading-[1.05] text-slate-900 sm:text-5xl",
+  dark: "font-serif text-[var(--text-h2)] font-semibold leading-[1.08] tracking-normal text-[var(--text-primary)]",
+  light: "font-serif text-[var(--text-h2)] font-semibold leading-[1.08] tracking-normal text-[var(--text-primary)]",
 };
 
 const introBodyClasses: Record<IntroTone, string> = {
-  dark: "text-base leading-7 text-slate-600",
-  light: "text-base leading-7 text-slate-600",
+  dark: "text-[var(--text-body)] leading-8 text-[var(--text-secondary)]",
+  light: "text-[var(--text-body)] leading-8 text-[var(--text-secondary)]",
 };
 
 export function SectionIntro({
@@ -138,10 +138,10 @@ export function VisualPanel({ children, className, tone = "dark" }: VisualPanelP
   return (
     <article
       className={cn(
-        "relative overflow-hidden rounded-xl border p-6 sm:p-7 lg:p-8",
+        "relative overflow-hidden rounded-xl border p-5 sm:p-7 lg:p-8",
         tone === "dark"
-          ? "border-slate-200 bg-slate-50 shadow-sm"
-          : "border-slate-200 bg-slate-50 shadow-sm",
+          ? "border-[var(--border-subtle)] bg-[var(--bg-surface)]"
+          : "border-[var(--border-subtle)] bg-[var(--bg-muted)]",
         className,
       )}
     >

@@ -1,14 +1,15 @@
 import {
   COMPONENT_COUNT,
   LAYOUT_COUNT,
-  MJML_PACK_PRODUCT_ID,
+  STARTER_COMPONENT_COUNT,
+  STARTER_LAYOUT_COUNT,
+  STARTER_WORKFLOW_COUNT,
   WORKFLOW_COUNT,
   formatGbpFromPence,
-  getMjmlPackPricePence,
 } from "@/lib/pack";
-import { TEMPLATE_CONFIG } from "@/config/template";
+import { PRICING_TIERS, type PricingTierDefinition } from "@/config/template";
 
-export type PackId = "pack-1";
+export type PackId = "starter" | "pro" | "enterprise";
 export type BillingCycle = "one_off" | "monthly";
 export type PackStatus = "live";
 export type VatDisplayMode = "ex_vat" | "inc_vat";
@@ -28,21 +29,24 @@ export type PackDefinition = {
 
 export const UK_VAT_RATE = 0.2;
 
-export const PACK_CATALOG: readonly PackDefinition[] = [
-  {
-    id: "pack-1",
-    productId: MJML_PACK_PRODUCT_ID,
-    name: TEMPLATE_CONFIG.productName,
-    shortDescription:
-      "The complete downloadable MJML library for developers who want the whole system in one place.",
+function buildPackDefinition(tier: PricingTierDefinition): PackDefinition {
+  const isStarter = tier.id === "starter";
+
+  return {
+    id: tier.id,
+    productId: tier.stripeLookupKey,
+    name: tier.name,
+    shortDescription: tier.position,
     status: "live",
-    oneOffPricePence: getMjmlPackPricePence(),
+    oneOffPricePence: tier.priceGbp * 100,
     monthlyPricePence: null,
-    componentCount: COMPONENT_COUNT,
-    layoutCount: LAYOUT_COUNT,
-    workflowCount: WORKFLOW_COUNT,
-  },
-] as const;
+    componentCount: isStarter ? STARTER_COMPONENT_COUNT : COMPONENT_COUNT,
+    layoutCount: isStarter ? STARTER_LAYOUT_COUNT : LAYOUT_COUNT,
+    workflowCount: isStarter ? STARTER_WORKFLOW_COUNT : WORKFLOW_COUNT,
+  };
+}
+
+export const PACK_CATALOG: readonly PackDefinition[] = PRICING_TIERS.map(buildPackDefinition);
 
 export function getPackById(packId: PackId): PackDefinition {
   const pack = PACK_CATALOG.find((entry) => entry.id === packId);
@@ -96,7 +100,11 @@ export function parseVatDisplayMode(raw: string | null | undefined): VatDisplayM
 }
 
 export function parsePackId(raw: string | null | undefined): PackId {
-  return raw?.trim().toLowerCase() === "pack-1" ? "pack-1" : "pack-1";
+  const normalised = raw?.trim().toLowerCase();
+  if (normalised === "starter" || normalised === "pro" || normalised === "enterprise") {
+    return normalised;
+  }
+  return "pro";
 }
 
 export function parseOwnedPackIds(raw: string | null | undefined): PackId[] {
@@ -109,7 +117,11 @@ export function parseOwnedPackIds(raw: string | null | undefined): PackId[] {
     .map((value) => value.trim().toLowerCase())
     .filter(Boolean);
 
-  return parts.includes("pack-1") ? ["pack-1"] : [];
+  const ids: PackId[] = [];
+  if (parts.includes("starter")) ids.push("starter");
+  if (parts.includes("pro")) ids.push("pro");
+  if (parts.includes("enterprise")) ids.push("enterprise");
+  return ids;
 }
 
 function assertLivePackHasCheckoutTarget(catalogue: readonly PackDefinition[]): void {

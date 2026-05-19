@@ -1,383 +1,326 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-import { ComparisonSection } from "@/components/site/ComparisonSection";
-import { createPageTitle, TEMPLATE_CONFIG } from "@/config/template";
-import { getFeaturedEmailWorkflows } from "@/data/workflows";
+import {
+  getPricingTierById,
+  TEMPLATE_CONFIG,
+  type PricingTierDefinition,
+} from "@/config/template";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { TrackableLink } from "@/components/analytics/TrackableLink";
 import { TrackableSubmitButton } from "@/components/analytics/TrackableSubmitButton";
-import { PricingOfferCard } from "@/components/pricing/PricingOfferCard";
-import {
-  MjmlHtmlSplitView,
-  PackFileTreePreview,
-  SystemArchitectureVisual,
-  WorkflowStackVisual,
-} from "@/components/site/ProductVisuals";
-import {
-  SectionIntro,
-  SectionShell,
-  VisualPanel,
-} from "@/components/site/SectionPrimitives";
+import { LeadCaptureForm } from "@/components/conversion/LeadCaptureForm";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { SiteTopBar } from "@/components/site/SiteTopBar";
+import { getPackByProductId } from "@/lib/packCatalog";
 import {
-  COMPONENT_COUNT,
-  LAYOUT_COUNT,
-  MJML_PACK_LICENSE_POINTS,
-  MJML_PACK_PROJECT_STRUCTURE,
-  WORKFLOW_COUNT,
-} from "@/lib/pack";
-import { getPackById } from "@/lib/packCatalog";
+  buildBreadcrumbJsonLd,
+  buildProductJsonLd,
+  createSeoMetadata,
+} from "@/lib/seo";
 import { isStripeConfigured } from "@/lib/stripe-server";
-import { PACK_LAST_UPDATED, PACK_VERSION, formatVersionDate } from "@/lib/versioning";
 
-const PAID_CTA_LABEL = "Get Hedgehog Core - £79";
-
-export const metadata: Metadata = {
-  title: createPageTitle("Pricing"),
+export const metadata: Metadata = createSeoMetadata({
+  title: "Pricing",
   description:
-    `Pricing for ${TEMPLATE_CONFIG.productName}, the workflow-first MJML system behind ${TEMPLATE_CONFIG.brandName}.`,
-};
+    "Starter, Pro, and Enterprise pricing for Template Hedgehog production-ready email systems, owned by Artifexa.",
+  path: "/pricing",
+  keywords: [
+    "Template Hedgehog pricing",
+    "MJML email system pricing",
+    "production email system licence",
+    "commercial email template licence",
+  ],
+});
 
-const heroBullets = [
-  "Start from production workflows instead of rebuilding from a blank file.",
-  "Ship faster with layout and component mapping already done.",
-  "Cut avoidable QA and debug loops before handoff to ESP delivery.",
-  "Use across projects under one straightforward licence.",
-] as const;
+const starter = getPricingTierById("starter");
+const pro = getPricingTierById("pro");
+const enterprise = getPricingTierById("enterprise");
 
-const comparisonRows = [
+const pricingFaq = [
   {
-    label: "Time",
-    fromScratch: "4 to 8 hours to assemble and stabilise one production flow.",
-    withHedgehog: "Start from a mapped workflow and adapt in under an hour.",
+    question: "Which tier is the primary commercial path?",
+    answer:
+      "Pro is the primary commercial path. It includes the full component library, layouts and workflows, lifecycle and transactional systems, token examples, advanced implementation guidance, and six months of updates.",
   },
   {
-    label: "QA passes",
-    fromScratch: "Repeated rendering fixes across Outlook, Gmail, and mobile clients.",
-    withHedgehog: "Fewer QA passes because structure and compiled output are already production-ready.",
+    question: "Is Starter deliberately limited?",
+    answer:
+      "Starter is useful for teams that need production-ready onboarding and transactional essentials quickly. It includes a curated starter system, three layouts, MJML, compiled HTML, and setup docs.",
   },
   {
-    label: "Consistency",
-    fromScratch: "Patterns drift between campaigns and lifecycle sends over time.",
-    withHedgehog: "Workflow, layout, and component structure stays consistent across sends.",
+    question: "When should a team buy Enterprise?",
+    answer:
+      "Enterprise is for commercial reuse, white-label or internal deployment, reusable generation framework access, priority support, and twelve months of updates.",
   },
   {
-    label: "Handoff",
-    fromScratch: "Manual interpretation between developer, QA, and ESP teams.",
-    withHedgehog: "MJML source and compiled HTML shipped together with implementation context.",
+    question: "How does checkout map to downloads?",
+    answer:
+      "Each checkout uses the selected product ID, then the success route validates the Stripe session and shows the matching signed archive download.",
   },
-] as const;
+];
 
-const fromScratchEffort = [92, 84, 80, 86] as const;
-const withHedgehogEffort = [35, 36, 30, 34] as const;
-
-const includedAssets = [
-  {
-    title: `${COMPONENT_COUNT} components`,
-    detail: "Reusable MJML building blocks for campaign, lifecycle, and transactional sends.",
-  },
-  {
-    title: `${LAYOUT_COUNT} layouts`,
-    detail: "Complete structures grouped by system so teams stop rebuilding shell markup.",
-  },
-  {
-    title: `${WORKFLOW_COUNT} workflows`,
-    detail: "Production workflows for onboarding, password reset, billing, reporting, and notifications.",
-  },
-  {
-    title: "MJML + compiled HTML",
-    detail: "Editable source and handoff-ready output paired side by side.",
-  },
-  {
-    title: "Versioning + changelog",
-    detail: "Clear release metadata so teams can track updates safely.",
-  },
-] as const;
-
-const mjmlSnippet = `<mj-section padding="24px">
-  <mj-column>
-    <mj-text>Password reset requested</mj-text>
-    <mj-button href="{{auth.reset_url}}">Reset password</mj-button>
-  </mj-column>
-</mj-section>`;
-
-const htmlSnippet = `<table role="presentation" width="100%">
-  <tr>
-    <td style="padding:24px;">
-      <a href="{{auth.reset_url}}">Reset password</a>
-    </td>
-  </tr>
-</table>`;
-
-export default function PricingPage() {
+function CheckoutAction({
+  tier,
+  source,
+  className,
+}: {
+  tier: PricingTierDefinition;
+  source: string;
+  className: string;
+}) {
   const isStaticExport = process.env.STATIC_EXPORT === "true";
   const stripeReady = !isStaticExport && isStripeConfigured();
-  const corePack = getPackById("pack-1");
-  const featuredWorkflows = getFeaturedEmailWorkflows(5);
-  const lastUpdatedLabel = formatVersionDate(PACK_LAST_UPDATED);
+  const pack = getPackByProductId(tier.stripeLookupKey);
+  const label = tier.ctaLabel;
 
-  const proofWorkflow = featuredWorkflows[0];
-
-  const previewNotice = isStaticExport
-    ? "GitHub Pages preview: checkout is disabled here. Live purchase and instant download run on the primary deployment."
-    : !stripeReady
-      ? "Checkout is currently unavailable in this environment."
-      : null;
-
-  const leftEffortItems = comparisonRows.map((row, index) => ({
-    label: row.label,
-    note: row.fromScratch,
-    value: fromScratchEffort[index] ?? 88,
-  }));
-
-  const rightEffortItems = comparisonRows.map((row, index) => ({
-    label: row.label,
-    note: row.withHedgehog,
-    value: withHedgehogEffort[index] ?? 34,
-  }));
+  if (stripeReady && pack) {
+    return (
+      <form action="/api/checkout" method="post">
+        <input type="hidden" name="productId" value={pack.productId} style={{ caretColor: "transparent" }} />
+        <input type="hidden" name="billingCycle" value="one_off" style={{ caretColor: "transparent" }} />
+        <TrackableSubmitButton
+          label={label}
+          event="checkout_start"
+          payload={{ source, packId: pack.id, billingCycle: "one_off" }}
+          className={className}
+        />
+      </form>
+    );
+  }
 
   return (
-    <main className="min-h-screen bg-white text-slate-600 [font-family:Arial,sans-serif]">
-      <SiteTopBar theme="hero" ctaHref="#buy-core" ctaLabel={PAID_CTA_LABEL} />
+    <button type="button" disabled className={className}>
+      {label}
+    </button>
+  );
+}
 
-      <SectionShell spacing="hero" tone="canvas" width="content">
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,1.06fr)_minmax(360px,0.94fr)] lg:items-start">
-          <div>
-            <p className="text-[1rem] font-semibold tracking-[0.012em] text-slate-600">
-              Workflow-first MJML system
-            </p>
-            <h1 className="mt-4 max-w-3xl text-[3rem] font-semibold leading-[0.88] text-slate-900 sm:text-[4.2rem] lg:text-[4.85rem]">
-              Stop rebuilding the same emails every project
-            </h1>
-            <p className="mt-6 max-w-3xl text-[1.08rem] leading-8 text-slate-600">
-              Hedgehog Core gives your team production-ready workflows, layouts, and components in one download so you
-              can ship faster with fewer regressions.
-            </p>
-
-            <ul className="mt-8 max-w-3xl space-y-3.5 text-[1rem] leading-7 text-slate-600">
-              {heroBullets.map((point) => (
-                <li key={point} className="flex items-start gap-3">
-                  <span className="mt-[0.62rem] h-1.5 w-1.5 shrink-0 rounded-full bg-slate-900" />
-                  <span>{point}</span>
-                </li>
-              ))}
-            </ul>
-
-            {previewNotice ? (
-              <p className="mt-6 max-w-3xl rounded-[0.82rem] border border-[hsl(var(--th-accent-support)/0.34)] bg-[hsl(var(--th-accent-support)/0.14)] px-4 py-3 text-[0.86rem] leading-6 text-slate-900">
-                {previewNotice}
-              </p>
-            ) : null}
-          </div>
-
-          <PricingOfferCard
-            pricePence={corePack.oneOffPricePence}
-            stripeReady={stripeReady}
-            productId={corePack.productId}
-            inclusionPoints={[
-              `${COMPONENT_COUNT} production-safe components`,
-              `${LAYOUT_COUNT} complete layouts`,
-              `${WORKFLOW_COUNT} practical workflows`,
-              "MJML source plus compiled HTML output",
-            ]}
-            ctaLabel={PAID_CTA_LABEL}
-            versionLabel={`v${PACK_VERSION}`}
-            lastUpdatedLabel={lastUpdatedLabel}
-            isStaticPreview={isStaticExport}
-          />
-        </div>
-      </SectionShell>
-
-      <SectionShell spacing="grid" tone="soft" border="softBoth" width="content">
-        <SectionIntro
-          pattern="full"
-          tone="light"
-          eyebrow="Core value driver"
-          title="Start from a workflow, not a blank email"
-          description={`${WORKFLOW_COUNT} production workflows mapped to ${COMPONENT_COUNT} components and ${LAYOUT_COUNT} layouts, covering onboarding, billing, reporting, password reset, and notification flows.`}
-        />
-
-        <div className="mt-10 grid gap-6 xl:grid-cols-[minmax(0,1.06fr)_minmax(0,0.94fr)]">
-          <SystemArchitectureVisual
-            tone="soft"
-            title="Workflow chain"
-            subtitle="Mapped implementation path"
-            workflowLabel={proofWorkflow?.slug ?? "onboarding"}
-            layoutLabel={proofWorkflow?.linkedLayoutSlug ?? "onboarding-step-system"}
-            componentLabels={proofWorkflow?.componentStack.slice(0, 4).map((item) => item.componentSlug) ?? []}
-            imageUrl={proofWorkflow?.previewImageUrl}
-            imageAlt={`${proofWorkflow?.title ?? "Workflow"} preview`}
-          />
-
-          <div className="grid gap-4 sm:grid-cols-2">
-            {featuredWorkflows.map((workflow) => (
-              <article
-                key={workflow.slug}
-                className="rounded-[0.96rem] border border-slate-200 bg-slate-50 p-4 shadow-[0_12px_24px_rgba(15,23,42,0.08)]"
-              >
-                <p className="text-[0.72rem] font-semibold uppercase tracking-[0.09em] text-slate-600">
-                  {workflow.linkedLayoutTitle}
-                </p>
-                <h3 className="mt-2 text-[1.04rem] font-semibold leading-7 text-slate-900">
-                  {workflow.title}
-                </h3>
-                <p className="mt-2 text-[0.88rem] leading-6 text-slate-600">{workflow.goal}</p>
-                <Link
-                  href={`/workflows/${workflow.slug}`}
-                  className="mt-3 inline-flex items-center gap-1.5 text-[0.8rem] font-semibold text-slate-900 transition hover:text-slate-900"
-                >
-                  View workflow
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-              </article>
-            ))}
-          </div>
-        </div>
-      </SectionShell>
-
-      <ComparisonSection
-        sectionClassName="border-y border-slate-200 bg-slate-50"
-        eyebrow="Objection handling"
-        title="Why it is worth £79"
-        description="Building this yourself costs repeated build hours and QA churn. Hedgehog Core removes that repetition."
-        leftTitle="Build from scratch"
-        rightTitle="With Hedgehog Core"
-        leftItems={leftEffortItems}
-        rightItems={rightEffortItems}
+export default function PricingPage() {
+  return (
+    <main className="min-h-screen bg-[var(--bg-canvas)] text-[var(--th-text-primary)]">
+      <SiteTopBar theme="hero" ctaHref="" />
+      <JsonLd id="template-hedgehog-product" data={buildProductJsonLd()} />
+      <JsonLd
+        id="pricing-breadcrumb"
+        data={buildBreadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Pricing", path: "/pricing" },
+        ])}
       />
 
-      <SectionShell spacing="proof" tone="canvas" border="both" width="content">
-        <SectionIntro
-          pattern="split"
-          tone="dark"
-          eyebrow="Technical proof"
-          title="What you actually get in the pack"
-          description="Real source structure, output pairing, and traceable mapping from workflow trigger to delivery HTML."
-          aside={
-            <div className="rounded-[0.9rem] border border-slate-200 bg-slate-50 p-4 text-[0.9rem] leading-7 text-slate-600">
-              This is the same structure your team downloads after checkout, not a marketing mock-up.
-            </div>
-          }
-        />
-
-        <div className="mt-10 grid gap-6 lg:grid-cols-[minmax(0,1.24fr)_minmax(0,0.76fr)]">
-          <MjmlHtmlSplitView title="MJML to compiled HTML" mjml={mjmlSnippet} html={htmlSnippet} />
-
-          <div className="grid gap-6">
-            <PackFileTreePreview
-              title="Pack file tree excerpt"
-              lines={[
-                ...MJML_PACK_PROJECT_STRUCTURE,
-                "compiled/",
-                "workflows/onboarding/",
-                "workflows/password-reset/",
-              ]}
-            />
-            <WorkflowStackVisual
-              title="Workflow mapping"
-              description={`${proofWorkflow ? proofWorkflow.title : "Workflow"} maps directly to layout and component stack.`}
-              steps={
-                proofWorkflow
-                  ? [
-                      `workflow/${proofWorkflow.slug}`,
-                      `layout/${proofWorkflow.linkedLayoutSlug}`,
-                      ...proofWorkflow.componentStack
-                        .slice(0, 3)
-                        .map((item) => `component/${item.componentSlug}`),
-                    ]
-                  : []
-              }
-              imageUrl={proofWorkflow?.previewImageUrl}
-              imageAlt={`${proofWorkflow?.title ?? "Workflow"} mapping preview`}
-            />
+      <section className="border-b border-[var(--border-subtle)] py-18 sm:py-20">
+        <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12">
+          <p className="text-[0.82rem] font-semibold uppercase tracking-[0.11em] text-[var(--action-primary)]">
+            Pricing
+          </p>
+          <h1 className="mt-4 max-w-[16ch] font-serif text-[3rem] font-semibold leading-[0.9] tracking-normal text-white sm:text-[4.8rem]">
+            Buy the system that matches your shipping stage.
+          </h1>
+          <p className="mt-5 max-w-[34rem] text-[1.02rem] leading-8 text-[var(--th-text-secondary)]">
+            Serious teams buy this to remove rebuild cycles, standardise implementation handoff, and ship production-safe email faster.
+          </p>
+          <div className="mt-6 grid max-w-4xl gap-3 text-[0.88rem] font-semibold text-[var(--th-text-secondary)] sm:grid-cols-2 lg:grid-cols-4">
+            <p className="border-l border-[var(--action-primary)] pl-3">Owned by {TEMPLATE_CONFIG.owner.name}</p>
+            <p className="border-l border-[var(--action-primary)] pl-3">Secure Stripe checkout</p>
+            <p className="border-l border-[var(--action-primary)] pl-3">Signed download after payment</p>
+            <p className="border-l border-[var(--action-primary)] pl-3">MJML and compiled HTML</p>
           </div>
         </div>
-      </SectionShell>
+      </section>
 
-      <SectionShell spacing="feature" tone="soft" border="softBottom" width="content">
-        <SectionIntro
-          pattern="full"
-          tone="light"
-          eyebrow="Included"
-          title="What you get"
-          description="A complete system you can reuse across projects with clear licensing and release metadata."
-        />
-
-        <div className="mt-10 grid gap-8 lg:grid-cols-[minmax(0,1.06fr)_minmax(0,0.94fr)]">
-          <dl className="space-y-4">
-            {includedAssets.map((asset) => (
-              <div
-                key={asset.title}
-                className="rounded-[0.92rem] border border-slate-200 bg-slate-50 px-5 py-4 shadow-[0_10px_22px_rgba(15,23,42,0.06)]"
-              >
-                <dt className="text-[1.08rem] font-semibold text-slate-900">{asset.title}</dt>
-                <dd className="mt-1 text-[0.94rem] leading-7 text-slate-600">{asset.detail}</dd>
+      <section id="pro" className="py-14 sm:py-16">
+        <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12">
+          <div className="grid gap-6 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:items-start">
+            <article className="border-l border-[var(--border-subtle)] pl-4">
+              <p className="text-[0.82rem] uppercase tracking-[0.1em] text-[var(--action-primary)]">Primary recommendation</p>
+              <h2 className="mt-2 text-[2rem] font-semibold leading-tight text-white">Pro is the default production path.</h2>
+              <p className="mt-3 text-[0.98rem] leading-8 text-[var(--th-text-secondary)]">
+                If your team ships recurring lifecycle or transactional email, Pro is the complete production email system and the strongest commercial choice.
+              </p>
+              <div className="mt-6">
+                <CheckoutAction
+                  tier={pro}
+                  source="pricing_primary"
+                  className="inline-flex h-12 items-center rounded-full bg-[var(--action-primary)] px-6 text-[0.95rem] font-semibold !text-[var(--action-text)] transition hover:bg-[var(--action-primary-hover)]"
+                />
               </div>
-            ))}
-          </dl>
+            </article>
 
-          <VisualPanel tone="soft">
-            <p className="text-[0.8rem] font-semibold uppercase tracking-[0.09em] text-slate-600">
-              Licence clarity
-            </p>
-            <ul className="mt-4 space-y-2.5 text-[0.94rem] leading-7 text-slate-600">
-              {MJML_PACK_LICENSE_POINTS.map((item) => (
-                <li key={item} className="flex items-start gap-2.5">
-                  <span className="mt-[0.62rem] h-1.5 w-1.5 shrink-0 rounded-full bg-slate-900" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </VisualPanel>
+            <article className="rounded-[1rem] border border-[var(--border-subtle)] bg-[var(--bg-surface)] p-6 sm:p-7">
+              <p className="text-[0.8rem] uppercase tracking-[0.09em] text-[var(--action-primary)]">Most popular</p>
+              <h3 className="mt-2 text-[1.9rem] font-semibold text-white">Pro · £179</h3>
+              <p className="mt-3 text-[0.96rem] leading-8 text-[var(--th-text-secondary)]">{pro.description}</p>
+              <ul className="mt-5 space-y-2 text-[0.9rem] leading-7 text-[var(--th-text-secondary)]">
+                {pro.includes.map((item) => (
+                  <li key={item}>• {item}</li>
+                ))}
+              </ul>
+              <p className="mt-5 text-[0.84rem] text-[var(--th-text-muted)]">
+                One primary action on this page by design. If Pro is not the right fit, use the options below.
+              </p>
+            </article>
+          </div>
         </div>
-      </SectionShell>
+      </section>
 
-      <SectionShell spacing="cta" tone="canvas" width="content" className="scroll-mt-24 th-cta-zone">
-        <div id="buy-core" className="th-cta-island rounded-[1.45rem] border border-slate-200 bg-white px-8 py-12 sm:px-11 sm:py-14 lg:px-12 lg:py-16">
-          <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
+      <section className="border-y border-[var(--border-subtle)] bg-[var(--bg-surface)] py-12 sm:py-14">
+        <div className="mx-auto grid w-full max-w-7xl gap-5 px-5 sm:grid-cols-2 sm:px-8 lg:px-12">
+          <TierAside
+            tier={starter}
+            title="Starter"
+            subtitle={starter.position}
+            points={starter.includes}
+            action={{
+              kind: "checkout",
+              source: "pricing_starter",
+            }}
+          />
+          <TierAside
+            tier={enterprise}
+            title="Enterprise"
+            subtitle={enterprise.position}
+            points={enterprise.includes}
+            action={{
+              kind: "checkout",
+              source: "pricing_enterprise",
+            }}
+          />
+        </div>
+      </section>
+
+      <section className="border-t border-[var(--border-subtle)] py-14 sm:py-16">
+        <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12">
+          <div className="grid gap-7 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-start">
             <div>
-              <h2 className="max-w-3xl text-[2.05rem] font-semibold leading-[0.95] text-slate-900 sm:text-[2.45rem]">
-                Buy once. Ship faster on every campaign.
+              <p className="text-[0.82rem] font-semibold uppercase tracking-[0.11em] text-[var(--action-primary)]">
+                Delivery after purchase
+              </p>
+              <h2 className="mt-3 max-w-[20ch] font-serif text-[2rem] font-semibold leading-tight text-white sm:text-[2.45rem]">
+                The checkout flow maps directly to the archive you receive.
               </h2>
-              <p className="mt-4 max-w-3xl text-[1rem] leading-8 text-slate-500">
-                Less than one avoidable rebuild and QA pass.
+            </div>
+            <div className="grid gap-4 sm:grid-cols-3">
+              <TrustPoint title="Starter" body="A useful starter system for onboarding and transactional essentials, not a crippled sampler." />
+              <TrustPoint title="Pro" body="The primary route for the complete component, layout, workflow, and guidance archive." />
+              <TrustPoint title="Enterprise" body="Commercial deployment rights, white-label or internal reuse, priority support, and 12 months updates." />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-14 sm:py-16">
+        <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12">
+          <h2 className="max-w-[20ch] font-serif text-[2rem] font-semibold leading-tight text-white sm:text-[2.5rem]">
+            One rebuild cycle usually costs more than a licence.
+          </h2>
+          <p className="mt-4 max-w-[34rem] text-[0.98rem] leading-8 text-[var(--th-text-secondary)]">
+            This is an operational speed purchase. The value is fewer rebuilds, faster QA, and production consistency across every send.
+          </p>
+        </div>
+      </section>
+
+      <section className="border-t border-[var(--border-subtle)] bg-[var(--bg-surface)] py-14 sm:py-16">
+        <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12">
+          <div className="grid gap-7 lg:grid-cols-[minmax(0,0.88fr)_minmax(0,1.12fr)] lg:items-start">
+            <div>
+              <p className="text-[0.82rem] font-semibold uppercase tracking-[0.11em] text-[var(--action-primary)]">
+                Not ready to buy?
+              </p>
+              <h2 className="mt-3 max-w-[19ch] font-serif text-[2rem] font-semibold leading-tight text-white sm:text-[2.45rem]">
+                Keep evaluation demand in the funnel.
+              </h2>
+              <p className="mt-4 max-w-[34rem] text-[0.98rem] leading-8 text-[var(--th-text-secondary)]">
+                Teams comparing email systems can request the production QA checklist, then return to Pro or Enterprise when they are ready to standardise.
               </p>
             </div>
+            <LeadCaptureForm source="pricing_checklist" />
+          </div>
+        </div>
+      </section>
 
-            <div className="flex flex-wrap gap-3.5 lg:justify-end">
-              {stripeReady ? (
-                <form action="/api/checkout" method="post">
-                  <input type="hidden" name="productId" value={corePack.productId} />
-                  <input type="hidden" name="billingCycle" value="one_off" />
-                  <TrackableSubmitButton
-                    label={PAID_CTA_LABEL}
-                    event="checkout_start"
-                    payload={{ source: "pricing_final_cta", packId: "pack-1", billingCycle: "one_off" }}
-                    className="inline-flex h-12 items-center rounded-[0.9rem] border border-[var(--action-primary)] bg-[var(--action-primary)] px-6 text-[0.92rem] font-semibold !text-[var(--action-text)] shadow-[0_18px_36px_rgba(0,0,0,0.34)] transition hover:bg-[var(--action-primary-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-                  />
-                </form>
-              ) : (
-                <button
-                  type="button"
-                  disabled
-                  className="inline-flex h-12 items-center rounded-[0.9rem] border border-[var(--action-primary)] bg-[var(--action-primary)] px-6 text-[0.92rem] font-semibold !text-[var(--action-text)] shadow-[0_18px_36px_rgba(0,0,0,0.34)] opacity-80"
-                >
-                  {PAID_CTA_LABEL}
-                </button>
-              )}
-
-              <Link
-                href="/workflows"
-                className="inline-flex h-11 items-center rounded-[0.9rem] border border-slate-200 bg-slate-50 px-5 text-[0.86rem] font-semibold text-slate-900 transition hover:border-slate-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-600 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-              >
-                Explore workflows
-              </Link>
+      <section className="border-t border-[var(--border-subtle)] py-14 sm:py-16">
+        <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12">
+          <div className="grid gap-7 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:items-start">
+            <div>
+              <p className="text-[0.82rem] font-semibold uppercase tracking-[0.11em] text-[var(--action-primary)]">
+                Pricing questions
+              </p>
+              <h2 className="mt-3 max-w-[18ch] font-serif text-[2rem] font-semibold leading-tight text-white sm:text-[2.45rem]">
+                Remove purchase ambiguity.
+              </h2>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {pricingFaq.map((item) => (
+                <article key={item.question} className="border-l border-[var(--border-subtle)] pl-4">
+                  <h3 className="text-[1rem] font-semibold text-white">{item.question}</h3>
+                  <p className="mt-2 text-[0.93rem] leading-7 text-[var(--th-text-secondary)]">{item.answer}</p>
+                </article>
+              ))}
             </div>
           </div>
         </div>
-      </SectionShell>
+      </section>
 
-      <SiteFooter />
+      <SiteFooter showPrimaryCta={false} />
     </main>
+  );
+}
+
+function TrustPoint({ title, body }: { title: string; body: string }) {
+  return (
+    <article className="border-l border-[var(--border-subtle)] pl-4">
+      <p className="text-[0.82rem] uppercase tracking-[0.1em] text-[var(--action-primary)]">{title}</p>
+      <p className="mt-2 text-[0.93rem] leading-7 text-[var(--th-text-secondary)]">{body}</p>
+    </article>
+  );
+}
+
+function TierAside({
+  tier,
+  title,
+  subtitle,
+  points,
+  action,
+}: {
+  tier: PricingTierDefinition;
+  title: string;
+  subtitle: string;
+  points: string[];
+  action:
+    | { kind: "checkout"; source: string }
+    | { kind: "link"; href: string; source: string };
+}) {
+  return (
+    <article id={tier.id} className="rounded-[1rem] border border-[var(--border-subtle)] bg-[var(--bg-canvas)] p-5">
+      <h3 className="text-[1.35rem] font-semibold text-white">{title} · £{tier.priceGbp}</h3>
+      <p className="mt-1 text-[0.9rem] text-[var(--action-primary)]">{subtitle}</p>
+      <ul className="mt-4 space-y-2 text-[0.88rem] leading-7 text-[var(--th-text-secondary)]">
+        {points.map((point) => (
+          <li key={point}>• {point}</li>
+        ))}
+      </ul>
+      {tier.id === "enterprise" ? (
+        <p className="mt-4 text-[0.84rem] leading-6 text-[var(--th-text-muted)]">
+          Enterprise is a commercial deployment licence for reuse rights, white-label or internal rollout, reusable generation framework access, priority support, and 12 months updates.
+        </p>
+      ) : null}
+      <div className="mt-5">
+        {action.kind === "checkout" ? (
+          <CheckoutAction
+            tier={tier}
+            source={action.source}
+            className="inline-flex h-10 items-center rounded-[0.82rem] border border-[var(--border-subtle)] px-3.5 text-[0.84rem] font-semibold text-[var(--th-text-secondary)] transition hover:border-[var(--border-subtle)] hover:text-white"
+          />
+        ) : (
+          <TrackableLink
+            href={action.href}
+            event="final_cta_click"
+            payload={{ source: action.source, tier: tier.id }}
+            className="inline-flex h-10 items-center rounded-[0.82rem] border border-[var(--border-subtle)] px-3.5 text-[0.84rem] font-semibold text-[var(--th-text-secondary)] transition hover:border-[var(--border-subtle)] hover:text-white"
+          >
+            {TEMPLATE_CONFIG.pricing.primaryCtaLabel}
+          </TrackableLink>
+        )}
+      </div>
+    </article>
   );
 }
