@@ -232,7 +232,7 @@ export default async function ComponentDetailPage({ params }: Props) {
               <ul className="mt-3 space-y-2.5 text-[0.96rem] leading-7 text-[var(--th-text-secondary)]">
                 <li className="flex items-start gap-3">
                   <CheckCircle2 className="mt-1 h-4.5 w-4.5 shrink-0 text-white" />
-                  <span>{`Also included in ${MJML_PACK_NAME} for teams that want the full component archive offline.`}</span>
+                  <span>{`Also included in ${MJML_PACK_NAME} for teams that want the full component system offline.`}</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle2 className="mt-1 h-4.5 w-4.5 shrink-0 text-white" />
@@ -423,11 +423,11 @@ export default async function ComponentDetailPage({ params }: Props) {
             <div>
               <p className="text-[1rem] font-semibold uppercase tracking-[0.1em] text-[var(--th-text-secondary)]">Full library</p>
               <h2 className="mt-3 text-[1.7rem] font-semibold leading-[1.08] text-white sm:text-[2.05rem]">
-                Need the entire system available offline
+                Need the entire system available offline?
               </h2>
               <p className="mt-4 max-w-3xl text-[1.06rem] leading-8 text-white">
                 Public component pages are there for reference and one-off use. {MJML_PACK_NAME} is for teams that want the
-                full archive, local source files, compiled HTML, and a quicker implementation handoff.
+                full system archive, local source files, compiled HTML, and a quicker implementation handoff.
               </p>
 
               <div className="mt-6 flex flex-wrap gap-3">
@@ -453,7 +453,7 @@ export default async function ComponentDetailPage({ params }: Props) {
               </p>
               <ul className="mt-4 space-y-3 text-[1rem] leading-8 text-white">
                 <li className="border-b border-[var(--th-border-dark)] pb-2">Stop collecting blocks one page at a time</li>
-                <li className="border-b border-[var(--th-border-dark)] pb-2">Keep the full MJML and compiled HTML archive locally</li>
+                <li className="border-b border-[var(--th-border-dark)] pb-2">Keep the full MJML and compiled HTML system locally</li>
                 <li>Speed up implementation, review, and delivery across projects</li>
               </ul>
             </div>

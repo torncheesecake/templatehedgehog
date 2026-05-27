@@ -19,11 +19,13 @@ Its job is to make the difference between “build it yourself” and “use Hed
 ## SECTION ROLE
 
 This section should feel like:
+
 - a premium comparison feature
 - a persuasive commercial block
 - a visually distinct moment on the page
 
 It should NOT feel like:
+
 - a heading with two generic cards
 - a table dropped into a section
 - a neutral information block
@@ -33,22 +35,28 @@ It should NOT feel like:
 ## CONTENT STRUCTURE
 
 ### Intro
+
 - Eyebrow (optional)
 - Strong heading
 - One short support line
 
 ### Comparison body
+
 Two panels only:
 
 #### Left panel
+
 **Build from scratch**
+
 - muted
 - heavier
 - more effortful
 - slightly flatter treatment
 
 #### Right panel
+
 **Using Hedgehog**
+
 - visually stronger
 - cleaner
 - more resolved
@@ -59,17 +67,20 @@ Two panels only:
 ## LAYOUT
 
 ### Desktop
+
 - Intro spans full width above
 - Two equal-height panels below in a 2-column layout
 - Clear gap between intro and panels
 - Clear gap between panels
 
 ### Tablet
+
 - Intro full width above
 - Panels can remain side by side if comfortable
 - If not, stack with Hedgehog first
 
 ### Mobile
+
 - Intro full width
 - Stack panels vertically
 - Hedgehog panel first
@@ -86,6 +97,7 @@ Each panel should use the same row structure:
 - short explanation
 
 Use 4 rows:
+
 - Time
 - QA passes
 - Consistency
@@ -96,6 +108,7 @@ Use 4 rows:
 ## VISUAL HIERARCHY
 
 ### Build from scratch panel
+
 - darker or more muted surface
 - less contrast
 - restrained border
@@ -103,6 +116,7 @@ Use 4 rows:
 - no strong accent highlights
 
 ### Hedgehog panel
+
 - stronger surface contrast
 - cleaner spacing
 - slightly more elevated feel
@@ -134,6 +148,7 @@ Use 4 rows:
 ## FAILURE CONDITIONS
 
 The section is wrong if:
+
 - it still feels like two cards under a heading
 - both sides feel equally weighted
 - the left side is more visually interesting than the right

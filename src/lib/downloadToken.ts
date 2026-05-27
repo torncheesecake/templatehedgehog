@@ -34,6 +34,10 @@ function getTokenSecret(): string | null {
   return secret ? secret : null;
 }
 
+export function isDownloadTokenConfigured(): boolean {
+  return Boolean(getTokenSecret());
+}
+
 function signPayload(encodedPayload: string, secret: string): string {
   return createHmac("sha256", secret).update(encodedPayload).digest("base64url");
 }

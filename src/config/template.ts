@@ -191,5 +191,5 @@ export function createPageTitle(pageTitle: string): string {
 export const TEMPLATE_CUSTOMISATION_NOTES = {
   code: "Update src/config/template.ts and .env variables to rebrand this template.",
   content:
-    "Update src/data/email-components/library, src/data/email-examples/library, and src/data/workflows for product-specific MJML content and workflow metadata.",
+    "Update src/data/email-components/library, src/data/email-layouts, and src/data/workflows for product-specific MJML content and workflow metadata.",
 };

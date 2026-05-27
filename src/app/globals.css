@@ -4,13 +4,13 @@
 @source "../lib";
 
 :root {
-  color-scheme: light dark;
+  color-scheme: dark;
 
   /* Four core colours. Everything else derives from these roles. */
-  --c-canvas: #f7f8fb;
-  --c-surface: #ffffff;
-  --c-text: #101828;
-  --c-accent: #4f5fd7;
+  --c-canvas: #070b14;
+  --c-surface: #111827;
+  --c-text: #f8fafc;
+  --c-accent: #8b98ff;
 
   --bg-canvas: var(--c-canvas);
   --bg-muted: var(--c-surface);
@@ -26,17 +26,18 @@
 
   --action-primary: var(--c-accent);
   --action-primary-hover: color-mix(in srgb, var(--c-accent) 84%, var(--c-text));
-  --action-text: var(--c-surface);
+  --action-text: var(--c-canvas);
 
-  --text-hero: clamp(2.85rem, 9vw, 5.4rem);
-  --text-h1: clamp(2.35rem, 7vw, 4.85rem);
+  --text-hero: clamp(2.65rem, 6.6vw, 4.35rem);
+  --text-h1: clamp(2.35rem, 6.2vw, 4.35rem);
   --text-h2: clamp(1.85rem, 4.8vw, 3.05rem);
   --text-h3: clamp(1.22rem, 2.5vw, 1.62rem);
   --text-body: clamp(0.98rem, 0.24vw + 0.93rem, 1.08rem);
   --text-small: clamp(0.82rem, 0.18vw + 0.78rem, 0.92rem);
   --space-page-x: clamp(1rem, 4vw, 4rem);
-  --space-section-y: clamp(4.5rem, 9vw, 8rem);
-  --space-section-y-compact: clamp(3rem, 6vw, 5rem);
+  --space-section-y: clamp(4rem, 7vw, 5.8rem);
+  --space-section-y-compact: clamp(3rem, 5vw, 4.5rem);
+  --measure-copy: 38rem;
 
   /* Compatibility aliases used outside the homepage during migration */
   --surface-strong: var(--bg-canvas);
@@ -76,19 +77,6 @@
   --th-text-card: var(--text-secondary);
   --th-text-docs: var(--text-secondary);
   --th-border-dark: var(--border-subtle);
-
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --c-canvas: #070b14;
-    --c-surface: #111827;
-    --c-text: #f8fafc;
-    --c-accent: #8b98ff;
-
-    --action-primary-hover: color-mix(in srgb, var(--c-accent) 78%, var(--c-surface));
-    --action-text: var(--c-canvas);
-  }
 }
 
 html {
@@ -166,6 +154,131 @@ body {
   label {
     font-size: var(--text-small);
     line-height: 1.4;
+  }
+}
+
+@layer components {
+  .th-page {
+    min-height: 100vh;
+    background: var(--bg-canvas);
+    color: var(--text-secondary);
+  }
+
+  .th-container {
+    width: 100%;
+    max-width: 92rem;
+    margin-inline: auto;
+    padding-inline: var(--space-page-x);
+  }
+
+  .th-section {
+    padding-block: var(--space-section-y-compact);
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .th-section:first-of-type {
+    border-top: 0;
+  }
+
+  .th-section-roomy {
+    padding-block: var(--space-section-y);
+  }
+
+  .th-hero-section {
+    padding-block: clamp(3.25rem, 5.2vw, 4.75rem);
+  }
+
+  .th-section-surface {
+    background: var(--bg-surface);
+  }
+
+  .th-eyebrow {
+    font-size: 0.82rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: var(--action-primary);
+  }
+
+  .th-heading-hero {
+    max-width: 13.5ch;
+    font-family: var(--font-serif), ui-serif, Georgia, Cambria, serif;
+    font-size: var(--text-hero);
+    font-weight: 650;
+    line-height: 0.95;
+    letter-spacing: 0;
+    color: var(--text-primary);
+  }
+
+  .th-heading-page {
+    max-width: 16ch;
+    font-family: var(--font-serif), ui-serif, Georgia, Cambria, serif;
+    font-size: var(--text-h1);
+    font-weight: 650;
+    line-height: 1;
+    letter-spacing: 0;
+    color: var(--text-primary);
+  }
+
+  .th-heading-section {
+    max-width: 20ch;
+    font-family: var(--font-serif), ui-serif, Georgia, Cambria, serif;
+    font-size: var(--text-h2);
+    font-weight: 650;
+    line-height: 1.08;
+    letter-spacing: 0;
+    color: var(--text-primary);
+  }
+
+  .th-lede {
+    max-width: var(--measure-copy);
+    margin-top: 1.15rem;
+    font-size: 1.03rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+  }
+
+  .th-copy {
+    max-width: var(--measure-copy);
+    margin-top: 1rem;
+    font-size: 0.98rem;
+    line-height: 1.72;
+    color: var(--text-secondary);
+  }
+
+  .th-metric {
+    border-left: 1px solid var(--border-subtle);
+    padding-left: 1rem;
+  }
+
+  .th-metric[data-highlight="true"] {
+    border-left-color: var(--action-primary);
+  }
+
+  .th-metric-title {
+    font-size: 0.82rem;
+    line-height: 1.25;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-meta);
+  }
+
+  .th-metric[data-highlight="true"] .th-metric-title {
+    color: var(--action-primary);
+  }
+
+  .th-metric-copy {
+    margin-top: 0.55rem;
+    font-size: 0.96rem;
+    line-height: 1.65;
+    color: var(--text-secondary);
+  }
+
+  .th-card {
+    border: 1px solid var(--border-subtle);
+    border-radius: 0.95rem;
+    background: var(--bg-surface);
   }
 }
 

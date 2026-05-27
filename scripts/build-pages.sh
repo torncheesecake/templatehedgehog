@@ -5,6 +5,8 @@ API_DIR="src/app/api"
 TEMP_API_DIR="src/app/__api_disabled_for_pages__"
 SUCCESS_DIR="src/app/success"
 TEMP_SUCCESS_DIR="src/app/__success_disabled_for_pages__"
+CHECKOUT_DIR="src/app/checkout"
+TEMP_CHECKOUT_DIR="src/app/__checkout_disabled_for_pages__"
 
 cleanup() {
   if [ -d "$TEMP_API_DIR" ]; then
@@ -13,6 +15,10 @@ cleanup() {
 
   if [ -d "$TEMP_SUCCESS_DIR" ]; then
     mv "$TEMP_SUCCESS_DIR" "$SUCCESS_DIR"
+  fi
+
+  if [ -d "$TEMP_CHECKOUT_DIR" ]; then
+    mv "$TEMP_CHECKOUT_DIR" "$CHECKOUT_DIR"
   fi
 }
 
@@ -24,6 +30,10 @@ fi
 
 if [ -d "$SUCCESS_DIR" ]; then
   mv "$SUCCESS_DIR" "$TEMP_SUCCESS_DIR"
+fi
+
+if [ -d "$CHECKOUT_DIR" ]; then
+  mv "$CHECKOUT_DIR" "$TEMP_CHECKOUT_DIR"
 fi
 
 STATIC_EXPORT=true next build --webpack

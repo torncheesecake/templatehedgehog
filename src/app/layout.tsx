@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Instrument_Sans, Source_Serif_4 } from "next/font/google";
 import { TEMPLATE_CONFIG } from "@/config/template";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -24,6 +25,8 @@ const sourceSerif = Source_Serif_4({
   display: "swap",
 });
 
+const GOOGLE_TAG_ID = "G-7DTS6Z1FN1";
+
 export const metadata: Metadata = {
   ...createSeoMetadata({
     title: `${TEMPLATE_CONFIG.brandName} | Production-ready email systems`,
@@ -31,7 +34,7 @@ export const metadata: Metadata = {
     path: "/",
     keywords: [
       "production-ready email systems",
-      "MJML email templates",
+      "MJML email systems",
       "compiled HTML email",
       "transactional email system",
       "lifecycle email workflows",
@@ -53,6 +56,18 @@ export default function RootLayout({
   return (
     <html lang="en-GB" className={`${instrumentSans.variable} ${sourceSerif.variable}`}>
       <body className="antialiased">
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_TAG_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){window.dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GOOGLE_TAG_ID}');
+          `}
+        </Script>
         <JsonLd id="template-hedgehog-organisation" data={buildOrganizationJsonLd()} />
         <JsonLd id="template-hedgehog-website" data={buildWebsiteJsonLd()} />
         <JsonLd id="template-hedgehog-software" data={buildSoftwareApplicationJsonLd()} />

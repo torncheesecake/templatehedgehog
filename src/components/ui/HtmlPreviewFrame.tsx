@@ -113,11 +113,11 @@ export function HtmlPreviewFrame({
 
   return (
     <div className={`mx-auto w-full max-w-7xl ${className}`}>
-      <div className="overflow-hidden rounded-[1rem] border border-[var(--th-border-dark)] bg-[var(--bg-surface)]">
+      <div className="overflow-hidden rounded-[0.95rem] border border-[var(--th-border-dark)] bg-[var(--bg-surface)]">
         <div className="border-b border-[var(--th-border-dark)] bg-[var(--bg-canvas)] px-4 py-2 text-[0.78rem] font-semibold tracking-[0.01em] text-[var(--th-text-secondary)]">
           Rendered email preview
         </div>
-        <div className={`${settings.frameClass} overflow-auto p-3.5 sm:p-5`}>
+        <div className={`${settings.frameClass} overflow-auto bg-[var(--bg-canvas)] p-3.5 sm:p-5`}>
           <iframe
             ref={iframeRef}
             title={title}

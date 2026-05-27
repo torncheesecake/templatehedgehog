@@ -233,7 +233,7 @@ export default async function SuccessPage({ searchParams }: SuccessPageProps) {
                 Payment successful
               </h1>
               <p className="mt-2 text-[1rem] leading-8 text-[var(--th-text-secondary)]">
-                Thank you for purchasing {summary?.packName ?? MJML_PACK_NAME}. You purchased v{PACK_VERSION}.
+                Thank you for purchasing {summary?.packName ?? MJML_PACK_NAME}. Your archive is versioned at v{PACK_VERSION}.
               </p>
             </>
           ) : null}
@@ -367,7 +367,7 @@ export default async function SuccessPage({ searchParams }: SuccessPageProps) {
                     href={downloadLink}
                     className="mt-3 inline-flex h-11 items-center rounded-full bg-[var(--action-primary)] px-5 text-[0.93rem] font-semibold !text-[var(--action-text)] transition hover:bg-[var(--action-primary-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2"
                   >
-                    Download pack
+                  Download archive
                   </a>
                 ) : null}
               </div>
@@ -377,7 +377,7 @@ export default async function SuccessPage({ searchParams }: SuccessPageProps) {
                   Next steps
                 </h2>
                 <ul className="mt-2 space-y-1 text-[0.92rem] leading-7 text-[var(--th-text-secondary)]">
-                  <li>1. Open the downloaded pack archive.</li>
+                  <li>1. Open the downloaded archive.</li>
                   <li>2. Customise included components for your production email systems.</li>
                   <li>3. Read integration docs before production send.</li>
                 </ul>
@@ -433,22 +433,16 @@ export default async function SuccessPage({ searchParams }: SuccessPageProps) {
 
           <div className="mt-6 flex flex-wrap gap-3">
             <Link
-              href="/pricing"
-              className="rounded-full border border-[var(--th-border-dark)] bg-[var(--bg-surface)] px-4 py-2 text-[0.9rem] font-semibold text-white transition hover:border-[var(--border-subtle)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2"
-            >
-              View pricing
-            </Link>
-            <Link
               href="/docs"
               className="rounded-full border border-[var(--th-border-dark)] bg-[var(--bg-surface)] px-4 py-2 text-[0.9rem] font-semibold text-white transition hover:border-[var(--border-subtle)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2"
             >
               Open docs
             </Link>
             <Link
-              href="/pricing"
+              href="/support"
               className="rounded-full border border-[var(--th-border-dark)] bg-[var(--bg-surface)] px-4 py-2 text-[0.9rem] font-semibold text-white transition hover:border-[var(--border-subtle)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2"
             >
-              Back to pricing
+              Contact support
             </Link>
           </div>
         </div>

@@ -15,7 +15,7 @@ const pageWidth = "mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12";
 
 const homepageFaq = [
   {
-    question: "Is Template Hedgehog a template marketplace?",
+    question: "Is this just a visual asset download?",
     answer:
       "No. Template Hedgehog is a production email system with MJML source, compiled HTML, layouts, lifecycle workflows, transactional patterns, and implementation guidance.",
   },
@@ -45,8 +45,7 @@ export const metadata: Metadata = createSeoMetadata({
     "MJML source",
     "compiled HTML email",
     "lifecycle email workflows",
-    "transactional email templates",
-    "Artifexa",
+    "transactional email systems",
   ],
 });
 
@@ -61,28 +60,28 @@ export default function Home() {
   const leadLayouts = emailLayouts.slice(0, 2);
 
   return (
-    <main className="min-h-screen bg-[var(--bg-canvas)] text-[var(--th-text-primary)]">
+    <main className="th-page">
       <SiteTopBar theme="hero" heroTone="neutral" />
       <TrackEventOnMount event="homepage_view" payload={{ source: "homepage" }} />
 
-      <section className="border-b border-[var(--border-subtle)] py-10 sm:py-12">
+      <section className="th-section th-hero-section">
         <div className={pageWidth}>
-          <p className="text-[0.82rem] font-semibold uppercase tracking-[0.11em] text-[var(--action-primary)]">
+          <p className="th-eyebrow">
             Production Email System
           </p>
-          <div className="mt-4 grid gap-10 lg:grid-cols-[minmax(0,0.96fr)_minmax(0,1.04fr)] lg:items-end">
+          <div className="mt-5 grid gap-10 lg:grid-cols-[minmax(0,0.96fr)_minmax(0,1.04fr)] lg:items-end">
             <div>
-              <h1 className="max-w-[13ch] font-serif text-[3rem] font-semibold leading-[0.9] tracking-normal text-white sm:text-[3.75rem] lg:text-[3.9rem] 2xl:max-w-[14ch] 2xl:text-[4.6rem]">
+              <h1 className="th-heading-hero">
                 Ship lifecycle and transactional email faster.
               </h1>
-              <p className="mt-5 max-w-[34rem] text-[1.03rem] leading-7 text-[var(--th-text-secondary)]">
-                {TEMPLATE_CONFIG.brandName} is an {TEMPLATE_CONFIG.owner.name} product for teams who need predictable source, cleaner handoff, and production-safe compiled HTML.
+              <p className="th-lede">
+                {TEMPLATE_CONFIG.brandName} gives teams predictable MJML source, cleaner handoff, and production-safe compiled HTML for recurring lifecycle and transactional sends.
               </p>
               <div className="mt-5 grid max-w-[38rem] gap-2 text-[0.86rem] font-semibold text-[var(--th-text-secondary)] sm:grid-cols-2">
                 <p className="border-l border-[var(--action-primary)] pl-3">MJML source and compiled HTML</p>
                 <p className="border-l border-[var(--action-primary)] pl-3">Lifecycle and transactional systems</p>
                 <p className="border-l border-[var(--action-primary)] pl-3">Secure Stripe checkout</p>
-                <p className="border-l border-[var(--action-primary)] pl-3">{TEMPLATE_CONFIG.owner.name} owned product</p>
+                <p className="border-l border-[var(--action-primary)] pl-3">Signed archive delivery</p>
               </div>
               <div className="mt-6 flex flex-wrap items-center gap-3">
                 <TrackableLink
@@ -131,35 +130,35 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-[var(--bg-surface)] py-16 sm:py-18">
+      <section className="th-section th-section-surface">
         <div className={pageWidth}>
           <div className="grid gap-9 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-start">
             <div>
-              <h2 className="max-w-[18ch] font-serif text-[2.2rem] font-semibold leading-[0.95] text-white sm:text-[2.8rem]">
+              <h2 className="th-heading-section">
                 Fewer rebuilds. Faster QA. Cleaner release handoff.
               </h2>
-              <p className="mt-4 max-w-[34rem] text-[1rem] leading-8 text-[var(--th-text-secondary)]">
+              <p className="th-copy">
                 The product is structured around operational workflows, not isolated template fragments. Start from real triggers, adapt safely, and ship with less production churn.
               </p>
             </div>
             <div className="space-y-6">
               <Metric title="Starter" body="Get production-ready quickly with curated onboarding and transactional essentials." />
-                <Metric title="Pro" body="Complete production email system for lifecycle and transactional coverage." highlight />
+              <Metric title="Pro" body="Complete production email system for lifecycle and transactional coverage." highlight />
               <Metric title="Enterprise" body="Deploy commercially with reuse rights, white-label operation, and priority support." />
             </div>
           </div>
         </div>
       </section>
 
-      <section className="border-t border-[var(--border-subtle)] py-14 sm:py-16">
+      <section className="th-section">
         <div className={pageWidth}>
           <div className="grid gap-7 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-start">
             <div>
-              <p className="text-[0.82rem] font-semibold uppercase tracking-[0.11em] text-[var(--action-primary)]">
+              <p className="th-eyebrow">
                 Built for production use
               </p>
-              <h2 className="mt-3 max-w-[20ch] font-serif text-[2rem] font-semibold leading-tight text-white sm:text-[2.45rem]">
-                A system purchase, not a template browse.
+              <h2 className="th-heading-section mt-3">
+                A system purchase, not a folder of fragments.
               </h2>
             </div>
             <div className="grid gap-4 sm:grid-cols-3">
@@ -171,33 +170,33 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-t border-[var(--border-subtle)] py-14 sm:py-16">
+      <section className="th-section">
         <div className={pageWidth}>
           <div className="grid gap-7 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-start">
             <div>
-              <p className="text-[0.82rem] font-semibold uppercase tracking-[0.11em] text-[var(--action-primary)]">
-                Revenue path
+              <p className="th-eyebrow">
+                Operational value
               </p>
-              <h2 className="mt-3 max-w-[20ch] font-serif text-[2rem] font-semibold leading-tight text-white sm:text-[2.45rem]">
-                Built to convert serious email implementation demand.
+              <h2 className="th-heading-section mt-3">
+                Designed for teams that need repeatable delivery.
               </h2>
-              <p className="mt-4 max-w-[35rem] text-[0.98rem] leading-8 text-[var(--th-text-secondary)]">
-                The page directs buyers to Pro, gives Starter a credible entry point, and positions Enterprise around reuse rights and deployment value. Visitors who are not ready to buy can still enter the product funnel.
+              <p className="th-copy">
+                Use Starter for a fast production foundation, Pro for complete lifecycle and transactional coverage, and Enterprise when reuse rights and deployment scale matter.
               </p>
             </div>
             <div className="grid gap-4 sm:grid-cols-3">
-              <Metric title="56 Pro sales" body="At £179, fifty-six Pro purchases reaches roughly £10k gross monthly revenue." highlight />
-              <Metric title="29 Enterprise sales" body="Enterprise is the fastest revenue path when teams need commercial deployment rights." />
-              <Metric title="Lead capture" body="Non-buyers can request the QA checklist, preserving demand for product updates and launch offers." />
+              <Metric title="Starter" body="Launch with a curated foundation for onboarding and transactional essentials." />
+              <Metric title="Pro" body="Standardise recurring email delivery with the complete production system." highlight />
+              <Metric title="Enterprise" body="Use the system across commercial, white-label, and internal deployments." />
             </div>
           </div>
         </div>
       </section>
 
-      <section className="border-y border-[var(--border-subtle)] py-16 sm:py-18">
+      <section className="th-section">
         <div className={pageWidth}>
           <div className="flex flex-wrap items-end justify-between gap-4">
-            <h2 className="max-w-[22ch] font-serif text-[2rem] font-semibold leading-tight text-white sm:text-[2.45rem]">
+            <h2 className="th-heading-section">
               Production artefacts your team can trust before purchase.
             </h2>
             <TrackableLink
@@ -206,7 +205,7 @@ export default function Home() {
               payload={{ source: "homepage_artefacts" }}
               className="inline-flex h-11 items-center rounded-[0.85rem] border border-[var(--border-subtle)] px-5 text-[0.9rem] font-semibold text-white"
             >
-              Open layout archive
+              Inspect layout systems
             </TrackableLink>
           </div>
 
@@ -233,14 +232,14 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-16 sm:py-18">
+      <section className="th-section">
         <div className={pageWidth}>
           <div className="grid gap-7 lg:grid-cols-[minmax(0,1.08fr)_auto] lg:items-center">
             <div>
-              <h2 className="max-w-[22ch] font-serif text-[2rem] font-semibold leading-tight text-white sm:text-[2.45rem]">
+              <h2 className="th-heading-section">
                 {`Start at £${starterTier.priceGbp}. Standardise with Pro at £${proTier.priceGbp}. Scale with Enterprise at £${enterpriseTier.priceGbp}.`}
               </h2>
-              <p className="mt-4 max-w-[34rem] text-[0.98rem] leading-8 text-[var(--th-text-secondary)]">
+              <p className="th-copy">
                 Choose the tier that matches your current operational maturity, then move up without changing your workflow model.
               </p>
             </div>
@@ -256,15 +255,15 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-t border-[var(--border-subtle)] bg-[var(--bg-surface)] py-14 sm:py-16">
+      <section className="th-section th-section-surface">
         <div className={pageWidth}>
           <div className="grid gap-7 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.92fr)] lg:items-start">
             <div>
-              <h2 className="max-w-[22ch] font-serif text-[2rem] font-semibold leading-tight text-white sm:text-[2.45rem]">
+              <h2 className="th-heading-section">
                 What happens after checkout.
               </h2>
-              <p className="mt-4 max-w-[34rem] text-[0.98rem] leading-8 text-[var(--th-text-secondary)]">
-                Payment returns you to a gated success page with the matching pack download, archive metadata, version details, and implementation docs.
+              <p className="th-copy">
+                Payment returns you to a gated success page with the matching archive download, version details, and implementation docs.
               </p>
             </div>
             <div className="space-y-4">
@@ -276,18 +275,18 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-t border-[var(--border-subtle)] py-14 sm:py-16">
+      <section className="th-section">
         <div className={pageWidth}>
           <div className="grid gap-7 lg:grid-cols-[minmax(0,0.88fr)_minmax(0,1.12fr)] lg:items-start">
             <div>
-              <p className="text-[0.82rem] font-semibold uppercase tracking-[0.11em] text-[var(--action-primary)]">
+              <p className="th-eyebrow">
                 Implementation checklist
               </p>
-              <h2 className="mt-3 max-w-[20ch] font-serif text-[2rem] font-semibold leading-tight text-white sm:text-[2.45rem]">
-                Capture teams before they are ready to purchase.
+              <h2 className="th-heading-section mt-3">
+                Evaluate the system before you standardise.
               </h2>
-              <p className="mt-4 max-w-[34rem] text-[0.98rem] leading-8 text-[var(--th-text-secondary)]">
-                The checklist offer gives evaluators a concrete next step while keeping the commercial path focused on Pro checkout.
+              <p className="th-copy">
+                Use the QA checklist to compare your current workflow against a production-ready MJML and compiled HTML delivery model.
               </p>
             </div>
             <LeadCaptureForm source="homepage_checklist" />
@@ -295,14 +294,14 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-t border-[var(--border-subtle)] bg-[var(--bg-surface)] py-14 sm:py-16">
+      <section className="th-section th-section-surface">
         <div className={pageWidth}>
           <div className="grid gap-7 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:items-start">
             <div>
-              <p className="text-[0.82rem] font-semibold uppercase tracking-[0.11em] text-[var(--action-primary)]">
+              <p className="th-eyebrow">
                 Buyer questions
               </p>
-              <h2 className="mt-3 max-w-[18ch] font-serif text-[2rem] font-semibold leading-tight text-white sm:text-[2.45rem]">
+              <h2 className="th-heading-section mt-3">
                 Clear answers before checkout.
               </h2>
             </div>
@@ -333,11 +332,11 @@ function Metric({
   highlight?: boolean;
 }) {
   return (
-    <article className={`border-l pl-4 ${highlight ? "border-[var(--action-primary)]" : "border-[var(--border-subtle)]"}`}>
-      <p className={`text-[0.82rem] uppercase tracking-[0.1em] ${highlight ? "text-[var(--action-primary)]" : "text-[var(--th-text-muted)]"}`}>
+    <article className="th-metric" data-highlight={highlight ? "true" : "false"}>
+      <p className="th-metric-title">
         {title}
       </p>
-      <p className="mt-2 text-[0.96rem] leading-7 text-[var(--th-text-secondary)]">{body}</p>
+      <p className="th-metric-copy">{body}</p>
     </article>
   );
 }

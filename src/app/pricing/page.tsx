@@ -17,17 +17,18 @@ import {
   createSeoMetadata,
 } from "@/lib/seo";
 import { isStripeConfigured } from "@/lib/stripe-server";
+import { isDownloadTokenConfigured } from "@/lib/downloadToken";
 
 export const metadata: Metadata = createSeoMetadata({
   title: "Pricing",
   description:
-    "Starter, Pro, and Enterprise pricing for Template Hedgehog production-ready email systems, owned by Artifexa.",
+    "Starter, Pro, and Enterprise pricing for Template Hedgehog production-ready email systems.",
   path: "/pricing",
   keywords: [
     "Template Hedgehog pricing",
     "MJML email system pricing",
     "production email system licence",
-    "commercial email template licence",
+    "commercial email system licence",
   ],
 });
 
@@ -68,11 +69,14 @@ function CheckoutAction({
   className: string;
 }) {
   const isStaticExport = process.env.STATIC_EXPORT === "true";
-  const stripeReady = !isStaticExport && isStripeConfigured();
+  const checkoutReady = !isStaticExport && isStripeConfigured() && isDownloadTokenConfigured();
+  const setupIssue = !isStripeConfigured()
+    ? "Checkout activates when Stripe environment variables are configured."
+    : "Checkout activates when signed download tokens are configured.";
   const pack = getPackByProductId(tier.stripeLookupKey);
   const label = tier.ctaLabel;
 
-  if (stripeReady && pack) {
+  if (checkoutReady && pack) {
     return (
       <form action="/api/checkout" method="post">
         <input type="hidden" name="productId" value={pack.productId} style={{ caretColor: "transparent" }} />
@@ -88,15 +92,22 @@ function CheckoutAction({
   }
 
   return (
-    <button type="button" disabled className={className}>
-      {label}
-    </button>
+    <div className="space-y-2">
+      <button type="button" disabled className={className}>
+        {isStaticExport ? "Checkout requires live deployment" : label}
+      </button>
+      {!checkoutReady ? (
+        <p className="max-w-[18rem] text-[0.78rem] leading-5 text-[var(--th-text-muted)]">
+          {isStaticExport ? "Checkout requires live deployment." : setupIssue}
+        </p>
+      ) : null}
+    </div>
   );
 }
 
 export default function PricingPage() {
   return (
-    <main className="min-h-screen bg-[var(--bg-canvas)] text-[var(--th-text-primary)]">
+    <main className="th-page">
       <SiteTopBar theme="hero" ctaHref="" />
       <JsonLd id="template-hedgehog-product" data={buildProductJsonLd()} />
       <JsonLd
@@ -107,19 +118,19 @@ export default function PricingPage() {
         ])}
       />
 
-      <section className="border-b border-[var(--border-subtle)] py-18 sm:py-20">
+      <section className="th-section th-section-roomy">
         <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12">
-          <p className="text-[0.82rem] font-semibold uppercase tracking-[0.11em] text-[var(--action-primary)]">
+          <p className="th-eyebrow">
             Pricing
           </p>
-          <h1 className="mt-4 max-w-[16ch] font-serif text-[3rem] font-semibold leading-[0.9] tracking-normal text-white sm:text-[4.8rem]">
+          <h1 className="th-heading-page mt-4">
             Buy the system that matches your shipping stage.
           </h1>
-          <p className="mt-5 max-w-[34rem] text-[1.02rem] leading-8 text-[var(--th-text-secondary)]">
+          <p className="th-lede">
             Serious teams buy this to remove rebuild cycles, standardise implementation handoff, and ship production-safe email faster.
           </p>
           <div className="mt-6 grid max-w-4xl gap-3 text-[0.88rem] font-semibold text-[var(--th-text-secondary)] sm:grid-cols-2 lg:grid-cols-4">
-            <p className="border-l border-[var(--action-primary)] pl-3">Owned by {TEMPLATE_CONFIG.owner.name}</p>
+            <p className="border-l border-[var(--action-primary)] pl-3">Production email systems</p>
             <p className="border-l border-[var(--action-primary)] pl-3">Secure Stripe checkout</p>
             <p className="border-l border-[var(--action-primary)] pl-3">Signed download after payment</p>
             <p className="border-l border-[var(--action-primary)] pl-3">MJML and compiled HTML</p>
@@ -127,13 +138,13 @@ export default function PricingPage() {
         </div>
       </section>
 
-      <section id="pro" className="py-14 sm:py-16">
+      <section id="pro" className="th-section">
         <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12">
           <div className="grid gap-6 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:items-start">
             <article className="border-l border-[var(--border-subtle)] pl-4">
-              <p className="text-[0.82rem] uppercase tracking-[0.1em] text-[var(--action-primary)]">Primary recommendation</p>
-              <h2 className="mt-2 text-[2rem] font-semibold leading-tight text-white">Pro is the default production path.</h2>
-              <p className="mt-3 text-[0.98rem] leading-8 text-[var(--th-text-secondary)]">
+              <p className="th-eyebrow">Primary recommendation</p>
+              <h2 className="th-heading-section mt-3">Pro is the default production path.</h2>
+              <p className="th-copy">
                 If your team ships recurring lifecycle or transactional email, Pro is the complete production email system and the strongest commercial choice.
               </p>
               <div className="mt-6">
@@ -145,10 +156,10 @@ export default function PricingPage() {
               </div>
             </article>
 
-            <article className="rounded-[1rem] border border-[var(--border-subtle)] bg-[var(--bg-surface)] p-6 sm:p-7">
+            <article className="th-card p-6 sm:p-7">
               <p className="text-[0.8rem] uppercase tracking-[0.09em] text-[var(--action-primary)]">Most popular</p>
               <h3 className="mt-2 text-[1.9rem] font-semibold text-white">Pro · £179</h3>
-              <p className="mt-3 text-[0.96rem] leading-8 text-[var(--th-text-secondary)]">{pro.description}</p>
+              <p className="th-copy">{pro.description}</p>
               <ul className="mt-5 space-y-2 text-[0.9rem] leading-7 text-[var(--th-text-secondary)]">
                 {pro.includes.map((item) => (
                   <li key={item}>• {item}</li>
@@ -162,7 +173,7 @@ export default function PricingPage() {
         </div>
       </section>
 
-      <section className="border-y border-[var(--border-subtle)] bg-[var(--bg-surface)] py-12 sm:py-14">
+      <section className="th-section th-section-surface">
         <div className="mx-auto grid w-full max-w-7xl gap-5 px-5 sm:grid-cols-2 sm:px-8 lg:px-12">
           <TierAside
             tier={starter}
@@ -187,49 +198,49 @@ export default function PricingPage() {
         </div>
       </section>
 
-      <section className="border-t border-[var(--border-subtle)] py-14 sm:py-16">
+      <section className="th-section">
         <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12">
           <div className="grid gap-7 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-start">
             <div>
-              <p className="text-[0.82rem] font-semibold uppercase tracking-[0.11em] text-[var(--action-primary)]">
+              <p className="th-eyebrow">
                 Delivery after purchase
               </p>
-              <h2 className="mt-3 max-w-[20ch] font-serif text-[2rem] font-semibold leading-tight text-white sm:text-[2.45rem]">
+              <h2 className="th-heading-section mt-3">
                 The checkout flow maps directly to the archive you receive.
               </h2>
             </div>
             <div className="grid gap-4 sm:grid-cols-3">
               <TrustPoint title="Starter" body="A useful starter system for onboarding and transactional essentials, not a crippled sampler." />
-              <TrustPoint title="Pro" body="The primary route for the complete component, layout, workflow, and guidance archive." />
+              <TrustPoint title="Pro" body="The primary route for the complete component, layout, workflow, and guidance system archive." />
               <TrustPoint title="Enterprise" body="Commercial deployment rights, white-label or internal reuse, priority support, and 12 months updates." />
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-14 sm:py-16">
+      <section className="th-section">
         <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12">
-          <h2 className="max-w-[20ch] font-serif text-[2rem] font-semibold leading-tight text-white sm:text-[2.5rem]">
+          <h2 className="th-heading-section">
             One rebuild cycle usually costs more than a licence.
           </h2>
-          <p className="mt-4 max-w-[34rem] text-[0.98rem] leading-8 text-[var(--th-text-secondary)]">
+          <p className="th-copy">
             This is an operational speed purchase. The value is fewer rebuilds, faster QA, and production consistency across every send.
           </p>
         </div>
       </section>
 
-      <section className="border-t border-[var(--border-subtle)] bg-[var(--bg-surface)] py-14 sm:py-16">
+      <section className="th-section th-section-surface">
         <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12">
           <div className="grid gap-7 lg:grid-cols-[minmax(0,0.88fr)_minmax(0,1.12fr)] lg:items-start">
             <div>
-              <p className="text-[0.82rem] font-semibold uppercase tracking-[0.11em] text-[var(--action-primary)]">
+              <p className="th-eyebrow">
                 Not ready to buy?
               </p>
-              <h2 className="mt-3 max-w-[19ch] font-serif text-[2rem] font-semibold leading-tight text-white sm:text-[2.45rem]">
-                Keep evaluation demand in the funnel.
+              <h2 className="th-heading-section mt-3">
+                Compare your current QA process first.
               </h2>
-              <p className="mt-4 max-w-[34rem] text-[0.98rem] leading-8 text-[var(--th-text-secondary)]">
-                Teams comparing email systems can request the production QA checklist, then return to Pro or Enterprise when they are ready to standardise.
+              <p className="th-copy">
+                Request the production QA checklist if your team wants to review handoff, rendering, and ESP import requirements before choosing a licence.
               </p>
             </div>
             <LeadCaptureForm source="pricing_checklist" />
@@ -237,14 +248,14 @@ export default function PricingPage() {
         </div>
       </section>
 
-      <section className="border-t border-[var(--border-subtle)] py-14 sm:py-16">
+      <section className="th-section">
         <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12">
           <div className="grid gap-7 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:items-start">
             <div>
-              <p className="text-[0.82rem] font-semibold uppercase tracking-[0.11em] text-[var(--action-primary)]">
+              <p className="th-eyebrow">
                 Pricing questions
               </p>
-              <h2 className="mt-3 max-w-[18ch] font-serif text-[2rem] font-semibold leading-tight text-white sm:text-[2.45rem]">
+              <h2 className="th-heading-section mt-3">
                 Remove purchase ambiguity.
               </h2>
             </div>

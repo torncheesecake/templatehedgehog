@@ -68,8 +68,8 @@ export function SiteTopBar({
               href={ctaHref}
               className={
                 isHero
-                  ? "inline-flex h-11 items-center whitespace-nowrap rounded-[0.82rem] border border-[var(--action-primary)] bg-[var(--action-primary)] px-4 text-[0.9rem] font-semibold !text-[var(--action-text)] tracking-[0.01em] transition duration-200 hover:bg-[var(--action-primary-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2 sm:px-5 sm:text-[0.94rem]"
-                  : "inline-flex h-11 items-center whitespace-nowrap rounded-[0.82rem] border border-[var(--action-primary)] bg-[var(--action-primary)] px-4 text-[0.9rem] font-semibold !text-[var(--action-text)] tracking-[0.01em] transition duration-200 hover:-translate-y-0.5 hover:bg-[var(--action-primary-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2 sm:px-5 sm:text-[0.95rem]"
+                  ? "hidden h-11 items-center whitespace-nowrap rounded-[0.82rem] border border-[var(--action-primary)] bg-[var(--action-primary)] px-4 text-[0.9rem] font-semibold !text-[var(--action-text)] tracking-[0.01em] transition duration-200 hover:bg-[var(--action-primary-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2 sm:inline-flex sm:px-5 sm:text-[0.94rem]"
+                  : "hidden h-11 items-center whitespace-nowrap rounded-[0.82rem] border border-[var(--action-primary)] bg-[var(--action-primary)] px-4 text-[0.9rem] font-semibold !text-[var(--action-text)] tracking-[0.01em] transition duration-200 hover:-translate-y-0.5 hover:bg-[var(--action-primary-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2 sm:inline-flex sm:px-5 sm:text-[0.95rem]"
               }
             >
               {ctaLabel}

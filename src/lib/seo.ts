@@ -24,7 +24,7 @@ type BreadcrumbItem = {
 };
 
 export const DEFAULT_SEO_DESCRIPTION =
-  "Template Hedgehog is an Artifexa product for teams shipping production-ready MJML, compiled HTML, lifecycle email, and transactional email systems.";
+  "Template Hedgehog helps teams ship production-ready MJML, compiled HTML, lifecycle email, and transactional email systems.";
 
 function ensureAbsoluteUrl(pathOrUrl: string): string {
   if (/^https?:\/\//i.test(pathOrUrl)) {

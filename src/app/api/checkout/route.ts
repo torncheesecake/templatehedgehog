@@ -1,12 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
+import type Stripe from "stripe";
 import {
   getPackById,
   getPackByProductId,
   isPackPurchasable,
   parseBillingCycle,
+  type BillingCycle,
+  type PackDefinition,
 } from "@/lib/packCatalog";
 import { getStripeServerClient, isStripeConfigured } from "@/lib/stripe-server";
 import { TEMPLATE_CONFIG } from "@/config/template";
+import { isDownloadTokenConfigured } from "@/lib/downloadToken";
 
 type CheckoutPayload = {
   productId?: string;
@@ -16,6 +20,8 @@ type CheckoutPayload = {
 
 const FRIENDLY_SETUP_ERROR =
   "Checkout is not configured yet. Please set STRIPE_SECRET_KEY and try again.";
+const FRIENDLY_DELIVERY_SETUP_ERROR =
+  "Checkout is not fully configured yet. Please set DOWNLOAD_TOKEN_SECRET and try again.";
 const FRIENDLY_CHECKOUT_ERROR =
   "Checkout could not be started right now. Please try again in a moment.";
 
@@ -86,6 +92,52 @@ function isValidEmail(value: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 }
 
+export function buildCheckoutSessionCreateParams({
+  baseUrl,
+  billingCycle,
+  customerEmail,
+  productId,
+  selectedPack,
+  unitAmount,
+}: {
+  baseUrl: string;
+  billingCycle: BillingCycle;
+  customerEmail?: string;
+  productId: string;
+  selectedPack: PackDefinition;
+  unitAmount: number;
+}): Stripe.Checkout.SessionCreateParams {
+  return {
+    mode: "payment",
+    line_items: [
+      {
+        quantity: 1,
+        price_data: {
+          currency: "gbp",
+          unit_amount: unitAmount,
+          product_data: {
+            name: `${TEMPLATE_CONFIG.brandName} ${selectedPack.name}`,
+            description:
+              billingCycle === "one_off"
+                ? `One-time purchase for ${TEMPLATE_CONFIG.brandName} ${selectedPack.name}.`
+                : `Subscription purchase for ${TEMPLATE_CONFIG.brandName} ${selectedPack.name}.`,
+          },
+        },
+      },
+    ],
+    customer_email: customerEmail,
+    success_url: `${baseUrl}/success?session_id={CHECKOUT_SESSION_ID}`,
+    cancel_url: `${baseUrl}/pricing?cancelled=1`,
+    metadata: {
+      productId,
+      packId: selectedPack.id,
+      tierName: selectedPack.name,
+      amountGbp: String(unitAmount / 100),
+      billingCycle,
+    },
+  };
+}
+
 async function parsePayload(request: NextRequest): Promise<CheckoutPayload> {
   if (request.method === "GET") {
     const url = new URL(request.url);
@@ -135,6 +187,13 @@ async function handleCheckout(request: NextRequest): Promise<NextResponse> {
       method: request.method,
     });
     return respondWithFriendlyError(request, FRIENDLY_SETUP_ERROR, 503);
+  }
+
+  if (!isDownloadTokenConfigured()) {
+    logCheckoutEvent("error", "download_token_not_configured", {
+      method: request.method,
+    });
+    return respondWithFriendlyError(request, FRIENDLY_DELIVERY_SETUP_ERROR, 503);
   }
 
   const payload = await parsePayload(request);
@@ -191,35 +250,16 @@ async function handleCheckout(request: NextRequest): Promise<NextResponse> {
 
   let session: Awaited<ReturnType<typeof stripe.checkout.sessions.create>>;
   try {
-    session = await stripe.checkout.sessions.create({
-      mode: "payment",
-      line_items: [
-        {
-          quantity: 1,
-          price_data: {
-            currency: "gbp",
-            unit_amount: unitAmount,
-            product_data: {
-              name: `${TEMPLATE_CONFIG.brandName} ${selectedPack.name}`,
-              description:
-                billingCycle === "one_off"
-                  ? `One-time purchase for ${TEMPLATE_CONFIG.brandName} ${selectedPack.name}, an ${TEMPLATE_CONFIG.owner.name} product.`
-                  : `Subscription purchase for ${TEMPLATE_CONFIG.brandName} ${selectedPack.name}, an ${TEMPLATE_CONFIG.owner.name} product.`,
-            },
-          },
-        },
-      ],
-      customer_email: customerEmail,
-      success_url: `${baseUrl}/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${baseUrl}/pricing?cancelled=1`,
-      metadata: {
-        productId,
-        packId: selectedPack.id,
-        tierName: selectedPack.name,
-        amountGbp: String(unitAmount / 100),
+    session = await stripe.checkout.sessions.create(
+      buildCheckoutSessionCreateParams({
+        baseUrl,
         billingCycle,
-      },
-    });
+        customerEmail,
+        productId,
+        selectedPack,
+        unitAmount,
+      }),
+    );
   } catch (error) {
     logCheckoutEvent("error", "stripe_session_create_failed", {
       method: request.method,

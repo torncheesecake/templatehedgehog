@@ -18,8 +18,8 @@ export const metadata: Metadata = createSeoMetadata({
 });
 
 const inlineCodeClass =
-  "rounded-[0.45rem] border border-[var(--th-border-dark)] bg-slate-900/70 px-1.5 py-0.5 text-[0.88em] font-medium text-slate-100";
-const listClass = "list-disc space-y-2.5 pl-5 marker:text-slate-200";
+  "rounded-[0.45rem] border border-[var(--th-border-dark)] bg-[var(--bg-canvas)] px-1.5 py-0.5 text-[0.88em] font-medium text-white";
+const listClass = "list-disc space-y-2.5 pl-5 marker:text-[var(--action-primary)]";
 
 const sections = [
   { id: "intro", label: "Intro" },
@@ -49,7 +49,7 @@ export default function DocsPage() {
       />
       <DocsSection id="intro" title="Intro">
         <p>
-          {TEMPLATE_CONFIG.brandName} is an {TEMPLATE_CONFIG.owner.name} implementation system for production email.
+          {TEMPLATE_CONFIG.brandName} is an implementation system for production email.
           Layout pages show complete message structure, and component pages let you inspect single blocks when needed.
         </p>
         <p>
@@ -63,7 +63,7 @@ export default function DocsPage() {
         <p>
           A safe working pattern for most teams looks like this:
         </p>
-        <ol className="list-decimal space-y-2.5 pl-5 marker:font-semibold marker:text-slate-200">
+        <ol className="list-decimal space-y-2.5 pl-5 marker:font-semibold marker:text-[var(--action-primary)]">
           <li>Start from the closest layout, then move to component detail when needed.</li>
           <li>Edit the <span className={inlineCodeClass}>MJML</span> source rather than patching compiled HTML by hand.</li>
           <li>Compile to HTML and test the result in your delivery workflow.</li>

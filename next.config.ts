@@ -49,12 +49,32 @@ const redirectConfig = isStaticExport
           permanent: true,
         },
         {
+          source: "/examples/:path*",
+          destination: "/layouts",
+          permanent: true,
+        },
+        {
           source: "/workflows",
           destination: "/layouts",
           permanent: true,
         },
         {
+          source: "/workflows/:path*",
+          destination: "/layouts",
+          permanent: true,
+        },
+        {
           source: "/pack",
+          destination: "/pricing",
+          permanent: true,
+        },
+        {
+          source: "/pack/:path*",
+          destination: "/pricing",
+          permanent: true,
+        },
+        {
+          source: "/auth/:path*",
           destination: "/pricing",
           permanent: true,
         },

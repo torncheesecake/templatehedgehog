@@ -20,7 +20,7 @@
     <mj-column width="33.33%" vertical-align="top" padding="0 8px 18px 8px">
       <mj-image src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=320&h=320&fit=crop&q=85" fluid-on-mobile="true" alt="Extended care plan" border-radius="8px" padding="0 0 10px 0" />
       <mj-text mj-class="small text-primary bold" align="center" padding="0 0 4px 0">Care plan</mj-text>
-      <mj-text mj-class="small text-muted" align="center" padding="0">GBP 79.00</mj-text>
+      <mj-text mj-class="small text-muted" align="center" padding="0">GBP 74.00</mj-text>
     </mj-column>
   </mj-section>
 </mj-wrapper>

@@ -170,7 +170,7 @@ export function PricingOfferCard({
           Explore layouts
         </Link>
         <Link href="/components" className="underline-offset-2 hover:text-[var(--text-primary)] hover:underline">
-          Browse free reference
+          Inspect components
         </Link>
       </div>
     </aside>

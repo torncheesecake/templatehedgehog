@@ -29,6 +29,9 @@
 /output/
 /archive/
 /.data/
+/.artifacts/
+/.gh-pages-local/
+/test-results/
 /private/downloads/*.zip
 
 # debug

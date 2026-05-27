@@ -8,14 +8,12 @@ import {
 import { JsonLd } from "@/components/seo/JsonLd";
 import { SiteTopBar } from "@/components/site/SiteTopBar";
 import { SiteFooter } from "@/components/site/SiteFooter";
-import { cn } from "@/lib/utils";
-import { visualSystem } from "@/components/site/visualSystem";
 import { buildBreadcrumbJsonLd, createSeoMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createSeoMetadata({
   title: "Changelog",
   description:
-    `Release history for the ${TEMPLATE_CONFIG.brandName} MJML components pack.`,
+    `Release history for the ${TEMPLATE_CONFIG.brandName} production email system.`,
   path: "/changelog",
   keywords: [
     "Template Hedgehog changelog",
@@ -35,11 +33,10 @@ function byReverseChronologicalDate(a: ChangelogEntry, b: ChangelogEntry): numbe
 }
 
 export default function ChangelogPage() {
-  const VS = visualSystem;
   const entries = [...CHANGELOG].sort(byReverseChronologicalDate);
 
   return (
-    <main className={cn(VS.templates.content.main, VS.surfaces.page)}>
+    <main className="th-page">
       <SiteTopBar />
       <JsonLd
         id="changelog-breadcrumb"
@@ -48,15 +45,15 @@ export default function ChangelogPage() {
           { name: "Changelog", path: "/changelog" },
         ])}
       />
-      <section className={cn(VS.templates.content.frame, "pb-20")}>
-        <div className={VS.templates.content.body}>
-          <header className={VS.templates.content.heroCard}>
-            <p className={VS.eyebrow.accent}>Release history</p>
-            <h1 className={cn("mt-3 text-[2rem] sm:text-[2.3rem]", VS.headings.page)}>
+      <section className="th-section th-section-roomy">
+        <div className="th-container max-w-6xl">
+          <header>
+            <p className="th-eyebrow">Release history</p>
+            <h1 className="th-heading-page mt-4">
               Changelog
             </h1>
-            <p className={cn("mt-3 max-w-3xl", VS.body.onLight)}>
-              Release notes for the pack and delivery pipeline, with newest changes first.
+            <p className="th-lede">
+              Release notes for the system archive and delivery pipeline, with newest changes first.
             </p>
           </header>
 
@@ -66,11 +63,11 @@ export default function ChangelogPage() {
           >
             {entries.map((entry) => (
               <li key={`${entry.date}-${entry.title}`}>
-                <article className={cn(VS.cards.light, "p-5 sm:p-6")}>
-                  <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-[var(--th-text-secondary)]">
+                <article className="border-t border-[var(--border-subtle)] py-6">
+                  <p className="th-metric-title">
                     <time dateTime={entry.date}>{formatVersionDate(entry.date)}</time>
                   </p>
-                  <h2 className="mt-2 text-[1.35rem] font-semibold text-white">
+                  <h2 className="mt-2 text-[1.35rem] leading-snug text-white">
                     {entry.title}
                   </h2>
                   <ul className="mt-4 space-y-2 text-[0.97rem] leading-7 text-[var(--th-text-secondary)]">

@@ -175,21 +175,35 @@ export function ComponentsGalleryClient({ components }: ComponentsGalleryClientP
 
       <section className="py-10 sm:py-12">
         <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12">
-          <div className="overflow-x-auto">
-            <div className="flex min-w-max gap-5">
-              {remainingComponents.map((component) => (
-                <Link key={component.slug} href={`/components/${component.slug}`} className="group block w-[19rem] shrink-0 rounded-[0.95rem] border border-[var(--th-border-dark)] bg-[var(--bg-surface)] p-4 transition hover:border-[var(--border-subtle)]">
-                  <div className="relative h-[12rem] overflow-hidden rounded-[0.76rem]">
-                    <Image src={component.previewImageUrl} alt={`${component.title} preview`} fill sizes="320px" unoptimized className="object-cover object-top" />
-                  </div>
-                  <p className="mt-3 text-[0.78rem] text-[var(--th-text-secondary)]">{component.category}</p>
+          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+            {remainingComponents.map((component) => (
+              <Link
+                key={component.slug}
+                href={`/components/${component.slug}`}
+                className="group grid gap-4 rounded-[0.95rem] border border-[var(--th-border-dark)] bg-[var(--bg-surface)] p-3.5 transition hover:border-[var(--border-subtle)] sm:grid-cols-[8.5rem_minmax(0,1fr)]"
+              >
+                <div className="relative aspect-[4/3] overflow-hidden rounded-[0.76rem] bg-white sm:h-full sm:min-h-[8rem]">
+                  <Image
+                    src={component.previewImageUrl}
+                    alt={`${component.title} preview`}
+                    fill
+                    sizes="(max-width: 768px) 90vw, 220px"
+                    unoptimized
+                    className="object-cover object-top"
+                  />
+                </div>
+                <div className="min-w-0">
+                  <p className="text-[0.78rem] uppercase tracking-[0.08em] text-[var(--th-text-secondary)]">{component.category}</p>
                   <div className="mt-1 flex items-start justify-between gap-3">
                     <h3 className="text-[1.02rem] font-semibold leading-7 text-white">{component.title}</h3>
                     <ArrowUpRight className="mt-1 h-4.5 w-4.5 shrink-0 text-[var(--th-text-secondary)]" />
                   </div>
-                </Link>
-              ))}
-            </div>
+                  <p className="mt-2 line-clamp-3 text-[0.88rem] leading-6 text-[var(--th-text-secondary)]">
+                    {component.description}
+                  </p>
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>

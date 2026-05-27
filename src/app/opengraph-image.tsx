@@ -40,7 +40,7 @@ export default function OpenGraphImage() {
           }}
         >
           <span>{TEMPLATE_CONFIG.brandName}</span>
-          <span>{`An ${TEMPLATE_CONFIG.owner.name} product`}</span>
+          <span>MJML + compiled HTML</span>
         </div>
 
         <div style={{ display: "flex", flexDirection: "column", gap: 26 }}>

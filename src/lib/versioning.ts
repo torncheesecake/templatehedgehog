@@ -14,7 +14,7 @@ export const CHANGELOG: ChangelogEntry[] = [
     date: "2026-05-19",
     title: "Commercial launch finalisation",
     bulletPoints: [
-      "Added canonical SEO metadata, social previews, structured data, and Artifexa ownership signals.",
+      "Added canonical SEO metadata, social previews, structured data, and ownership signals.",
       "Aligned Starter, Pro, and Enterprise archive delivery with tier-specific checkout metadata.",
       "Strengthened pricing, documentation, and success flows for production launch readiness.",
     ],
@@ -25,7 +25,7 @@ export const CHANGELOG: ChangelogEntry[] = [
     bulletPoints: [
       "Added provider-backed gated download delivery with safer production defaults.",
       "Introduced download smoke coverage for HEAD and GET endpoint flows.",
-      "Added packaged version files and changelog metadata in build output.",
+      "Added version files and changelog metadata in build output.",
     ],
   },
   {
@@ -38,9 +38,9 @@ export const CHANGELOG: ChangelogEntry[] = [
   },
   {
     date: "2026-03-07",
-    title: "Initial MJML components pack release",
+    title: "Initial MJML component archive release",
     bulletPoints: [
-      "Shipped the first public pack with MJML and compiled HTML assets.",
+      "Shipped the first public archive with MJML and compiled HTML assets.",
       "Added compatibility notes and preview assets for core email components.",
     ],
   },

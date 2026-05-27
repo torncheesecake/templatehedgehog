@@ -21,22 +21,24 @@ It combines production MJML architecture, secure Stripe checkout, and token-gate
 
 ## Commercial Tiers
 
-| Tier | Price | Position | Includes |
-| --- | ---: | --- | --- |
-| **Starter** | **£59** | Get production-ready quickly | Curated starter system, onboarding and transactional essentials, 3 layouts, MJML + compiled HTML, setup docs |
-| **Pro** | **£179** | Complete production email system | Full component library, layouts/workflows, lifecycle and transactional systems, token examples, advanced implementation guidance, 6 months updates |
-| **Enterprise** | **£349** | Commercial deployment licence | Commercial reuse rights, white-label/internal deployment, reusable generation framework, priority support, 12 months updates |
+| Tier           |    Price | Position                         | Includes                                                                                                                                           |
+| -------------- | -------: | -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Starter**    |  **£59** | Get production-ready quickly     | Curated starter system, onboarding and transactional essentials, 3 layouts, MJML + compiled HTML, setup docs                                       |
+| **Pro**        | **£179** | Complete production email system | Full component library, layouts/workflows, lifecycle and transactional systems, token examples, advanced implementation guidance, 6 months updates |
+| **Enterprise** | **£349** | Commercial deployment licence    | Commercial reuse rights, white-label/internal deployment, reusable generation framework, priority support, 12 months updates                       |
 
 **Recommended:** Start with Starter, then move to Pro for full operational coverage. Enterprise is for teams needing licensing and deployment scale.
 
 ## What Is Public vs Protected
 
 Public:
+
 - Rendered previews
 - Architecture and implementation guidance
 - Component and layout references
 
 Protected:
+
 - Full raw MJML source before purchase
 - Paid archive delivery behind checkout validation and token gating
 
@@ -102,7 +104,11 @@ Example:
 - `npm run build` - production build
 - `npm run start` - production server
 - `npm run lint` - ESLint
+- `npm run typecheck` - TypeScript validation
 - `npm run test:unit` - unit and API route tests
+- `npm run check` - lint, typecheck, and unit tests
+- `npm run validate` - full local release gate
+- `npm run build:content` - compile generated product content used by the app
 - `npm run build:components` - compile component MJML
 - `npm run build:layouts` - compile layout MJML
 - `npm run build:examples` - compile example MJML
@@ -141,9 +147,7 @@ See [`.env.example`](./.env.example) for full variables.
 Run before deployment:
 
 1. `npm ci`
-2. `npm run lint`
-3. `npm run test:unit`
-4. `npm run build`
+2. `npm run validate`
 
 ## Rebrand and Customise
 
