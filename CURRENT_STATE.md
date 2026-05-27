@@ -14,10 +14,12 @@ Overall health is moderate to good. The project has a coherent Next.js App Route
 - Public proof pages and paid delivery concerns are separated.
 - Rebranding is mostly centralised in `src/config/template.ts`.
 - CI and GitHub Pages workflows are already present.
+- Production Pi deployment is now documented and scriptable through `npm run deploy:pi`.
 
 ## Known Issues
 
 - Static export cannot run server-only commerce routes, so GitHub Pages is a public proof surface rather than the full product backend.
+- Full production currently depends on the self-hosted Raspberry Pi at `matthew@192.168.4.22`; keep `docs/deployment.md` current if the host, service, path, or domain changes.
 - `src/data/email-components/compiled.*`, `src/data/email-layouts/compiled.*`, and `src/data/email-examples/compiled.*` are generated but committed. This is intentional for static rendering, but it increases diff size.
 - Several legacy-compatible routes redirect to newer catalogue routes. Keep them documented so future agents do not remove them accidentally.
 - Generated preview folders and local build artefacts can grow quickly and should stay ignored.

@@ -8,6 +8,7 @@ This folder holds product, growth, UX, and technical planning documents.
 - `homepage-growth-loop.md`: acquisition and conversion loop notes.
 - `comparison-section-blueprint.md`: competitive and comparison section planning.
 - `technical-proof-blueprint.md`: technical proof and implementation trust strategy.
+- `deployment.md`: GitHub Pages and self-hosted Raspberry Pi deployment process.
 
 ## Documentation Standards
 

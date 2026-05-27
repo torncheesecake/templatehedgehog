@@ -79,7 +79,9 @@ The product has two important surfaces:
 
 - Pull requests run CI with install, lint, tests, and build.
 - GitHub Pages deployment uses `npm run build:pages` with static export settings.
-- Production server deployments should run `npm run validate` and require production environment variables from `.env.example`.
+- Full production is self-hosted on the Raspberry Pi at `matthew@192.168.4.22`, with the app at `/srv/templatehedgehog/current`, systemd service `templatehedgehog.service`, and Nginx proxying to `127.0.0.1:3001`.
+- Use `npm run deploy:pi:dry-run` and then `npm run deploy:pi` for the repeatable Pi deployment path. See `docs/deployment.md` before changing the process.
+- Production server deployments should run `npm run validate` or the Pi deployment script, which runs `npm run build` on the target host, and require production environment variables from `.env.example`.
 - Static export disables server-only commerce routes. Treat GitHub Pages as public proof, not the complete paid delivery backend.
 
 ## UX Standards

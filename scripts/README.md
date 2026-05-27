@@ -10,6 +10,7 @@ Build and maintenance scripts live here.
 - `build-layout-addons.ts`: processes optional private layout add-on MJML.
 - `build-pack.ts`: builds the paid downloadable archive.
 - `build-pages.sh`: runs static export for GitHub Pages.
+- `deploy-pi.sh`: deploys the full production app to the self-hosted Raspberry Pi.
 - `regenerate-previews.sh`: regenerates selected public preview assets.
 
 ## Standards
