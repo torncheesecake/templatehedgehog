@@ -1,4 +1,6 @@
 <!-- #-START-# app download superlight  -->
+<!-- Merge fields: {{ app_store_url }}, {{ play_store_url }}. Replace the
+     placehold.co badges with your real store-badge images before sending. -->
 <mj-wrapper mj-class="superlightbg">
   <mj-section>
     <mj-column padding-bottom="0">
@@ -11,10 +13,10 @@
     </mj-column>
     <mj-group>
       <mj-column>
-        <mj-image src="https://placehold.co/135x40/png?text=App+Store" width="135px" align="left" href="https://templatehedgehog.co.uk" target="_blank"
+        <mj-image src="https://placehold.co/135x40/png?text=App+Store" width="135px" align="left" href="{{ app_store_url }}" target="_blank"
           alt="Download on the App Store" /> </mj-column>
       <mj-column css-class="ios-fix">
-        <mj-image src="https://placehold.co/135x40/png?text=Google+Play" width="135px" align="right" href="https://templatehedgehog.co.uk" target="_blank"
+        <mj-image src="https://placehold.co/135x40/png?text=Google+Play" width="135px" align="right" href="{{ play_store_url }}" target="_blank"
           alt="Get it on Google Play" /> </mj-column>
     </mj-group>
   </mj-section>

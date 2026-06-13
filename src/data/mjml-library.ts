@@ -32,9 +32,11 @@ export function loadMjmlLibraryFragment(fileName: string): string {
   }
 }
 
-function getMjmlHead(extraStyleBlocks: string[]): string {
+const DEFAULT_PREVIEW_TEXT = `${TEMPLATE_CONFIG.brandNameCompact} — replace this line with a one-sentence inbox summary`;
+
+function getMjmlHead(extraStyleBlocks: string[], previewText: string): string {
   return `<mj-head>
-    <mj-preview>${TEMPLATE_CONFIG.brandNameCompact} reusable email block</mj-preview>
+    <mj-preview>${previewText}</mj-preview>
     <mj-attributes>
       <mj-all font-family="'Manrope', 'Inter', Arial, sans-serif" />
       <mj-body width="640px" background-color="#f3f4f6" />
@@ -78,7 +80,25 @@ function getMjmlHead(extraStyleBlocks: string[]): string {
     <mj-style>
       .border-top-light { border-top: 1px solid rgba(26, 26, 26, 0.1) !important; }
       .border-bottom-light { border-bottom: 1px solid rgba(26, 26, 26, 0.1) !important; }
-      .grayscale img { filter: grayscale(100%); }
+      /* Used via css-class="center" to centre text blocks. */
+      .center { text-align: center !important; }
+      .center div { text-align: center !important; }
+      /* Used via css-class="ios-fix": keeps grouped columns (e.g. app-store
+         badges, multi-column support rows) side by side on iOS Mail, which can
+         otherwise drop the inline width and wrap them. */
+      @media only screen and (max-width:480px) {
+        .ios-fix { display: inline-block !important; }
+      }
+      /* Dark-mode guard. The color-scheme meta opts the email into the client's
+         own dark handling; this keeps the primary CTA from being inverted to an
+         unreadable state in clients that force-darken (Outlook.com uses
+         [data-ogsc]; Apple Mail / iOS use prefers-color-scheme). */
+      @media (prefers-color-scheme: dark) {
+        .dm-keep-cta td { background-color: #2f67ef !important; }
+        .dm-keep-cta a { color: #ffffff !important; }
+      }
+      [data-ogsc] .dm-keep-cta td { background-color: #2f67ef !important; }
+      [data-ogsc] .dm-keep-cta a { color: #ffffff !important; }
     </mj-style>
     ${extraStyleBlocks.join("\n")}
     <mj-raw>
@@ -109,11 +129,11 @@ function sanitiseMjmlFragment(fragment: string): {
   return { body: cleaned, styleBlocks };
 }
 
-export function wrapMjmlFragment(fragment: string): string {
+export function wrapMjmlFragment(fragment: string, previewText: string = DEFAULT_PREVIEW_TEXT): string {
   const { body, styleBlocks } = sanitiseMjmlFragment(fragment);
 
   const wrapped = `<mjml>
-  ${getMjmlHead(styleBlocks)}
+  ${getMjmlHead(styleBlocks, previewText)}
   <mj-body background-color="#f3f4f6">
 ${body}
   </mj-body>
@@ -122,7 +142,7 @@ ${body}
   return applyTemplateTokens(wrapped);
 }
 
-export function buildMjmlFromLibraryFiles(fileNames: string[]): string {
+export function buildMjmlFromLibraryFiles(fileNames: string[], previewText?: string): string {
   const fragments = fileNames.map((fileName) => loadMjmlLibraryFragment(fileName));
-  return wrapMjmlFragment(fragments.join("\n\n"));
+  return wrapMjmlFragment(fragments.join("\n\n"), previewText);
 }

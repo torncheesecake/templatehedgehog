@@ -33,6 +33,8 @@ export type EmailLayoutRecipe = {
   notes: string[];
   layoutSections: LayoutSection[];
   componentBlocks: LayoutComponentBlock[];
+  sourceFiles: string[];
+  previewText?: string;
   mjmlSource: string;
 };
 
@@ -75,7 +77,9 @@ function createLayout(definition: LayoutDefinition): EmailLayoutRecipe {
     notes: definition.notes,
     layoutSections: definition.layoutSections,
     componentBlocks: definition.componentBlocks,
-    mjmlSource: buildMjmlFromLibraryFiles(definition.sourceFiles),
+    sourceFiles: definition.sourceFiles,
+    previewText: definition.previewText,
+    mjmlSource: buildMjmlFromLibraryFiles(definition.sourceFiles, definition.previewText),
   };
 }
 
@@ -239,11 +243,11 @@ export const emailLayouts: EmailLayoutRecipe[] = [
     title: "Product Showcase Digest",
     system: "newsletter",
     description:
-      "Digest-style product email using a multi-card showcase, testimonial support, and a compliance footer.",
+      "Digest-style product email using a multi-card showcase, approved quote area, and a compliance footer.",
     previewImageUrl: getEmailLayoutPreviewImageUrl("product-showcase-digest"),
     notes: [
       "Good fit for monthly releases, product highlights, or category roundups.",
-      "Adds one trust element before the footer so the email does not read like a bare grid.",
+      "Adds one approved proof area before the footer so the email does not read like a bare grid.",
       "Useful reference for denser marketing sends that still need breathing room.",
     ],
     layoutSections: [
@@ -257,7 +261,7 @@ export const emailLayouts: EmailLayoutRecipe[] = [
       },
       {
         title: "Testimonial",
-        description: "Adds proof before the close.",
+        description: "Adds approved proof before the close.",
       },
       {
         title: "Footer",
@@ -275,7 +279,7 @@ export const emailLayouts: EmailLayoutRecipe[] = [
       },
       {
         componentSlug: "testimonial-quote",
-        notes: "Adds a short proof moment before the footer.",
+        notes: "Adds a short approved proof moment before the footer.",
       },
       {
         componentSlug: "footer-contact-compliance",
@@ -289,11 +293,11 @@ export const emailLayouts: EmailLayoutRecipe[] = [
     title: "Trust And Conversion Brief",
     system: "campaigns",
     description:
-      "Short conversion email built from trust logos, proof content, and one focused CTA block.",
+      "Short conversion email built from approved logos, proof content, and one focused CTA block.",
     previewImageUrl: getEmailLayoutPreviewImageUrl("trust-and-conversion-brief"),
     notes: [
       "Designed for quick B2B conversion nudges and short product pitches.",
-      "Useful when you want credibility and action without building a longer marketing email.",
+      "Useful when you have approved credibility proof and want action without building a longer marketing email.",
       "Works well as a compact sales or consultation follow-up.",
     ],
     layoutSections: [
@@ -303,7 +307,7 @@ export const emailLayouts: EmailLayoutRecipe[] = [
       },
       {
         title: "Trust strip",
-        description: "Shows recognisable logos or badges early in the message.",
+        description: "Shows approved logos or badges early in the message.",
       },
       {
         title: "Proof plus CTA",
@@ -321,11 +325,11 @@ export const emailLayouts: EmailLayoutRecipe[] = [
       },
       {
         componentSlug: "logo-grid-trust-strip",
-        notes: "Supplies a compact trust wall without taking over the email.",
+        notes: "Supplies a compact approved proof area without taking over the email.",
       },
       {
         componentSlug: "testimonial-quote",
-        notes: "Adds proof before the CTA lands.",
+        notes: "Adds approved proof before the CTA lands.",
       },
       {
         componentSlug: "accent-cta-button",
@@ -401,6 +405,7 @@ export const emailLayouts: EmailLayoutRecipe[] = [
       "app-download-superlight.mjml",
       "footer-onboarding.mjml",
     ],
+    previewText: "Your workspace is ready — finish setup in about two minutes.",
   }),
   createLayout({
     slug: "onboarding-step-system",

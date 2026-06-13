@@ -9,7 +9,7 @@
         </mj-text>
       </mj-column>
       <mj-column width="70%" padding="0 15px 0 0">
-        <mj-text mj-class="small light" align="right" padding-top="3px"><a href="https://templatehedgehog.co.uk" target="_blank" style="color:#999999; text-decoration: underline;">Privacy policy</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="https://templatehedgehog.co.uk" target="_blank" style="color:#999999; text-decoration: underline;">Manage preferences</a></mj-text>
+        <mj-text mj-class="small light" align="right" padding-top="3px"><a href="https://templatehedgehog.co.uk" target="_blank" style="color:#999999; text-decoration: underline;">Privacy policy</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="{{ preferences_url }}" target="_blank" style="color:#999999; text-decoration: underline;">Manage preferences</a></mj-text>
       </mj-column>
     </mj-group>
   </mj-section>
@@ -20,7 +20,7 @@
   </mj-section>
   <mj-section padding-top="0" padding-bottom="40px">
     <mj-column>
-      <mj-text mj-class="small light">Add your sender address to the safe-sender list so future updates arrive cleanly. If you’d prefer not to receive emails from us, please <a style="color:#666666; text-decoration:underline;" target="_blank" href="https://templatehedgehog.co.uk/preferences">click here</a> to manage your preferences.</mj-text>
+      <mj-text mj-class="small light">Add your sender address to the safe-sender list so future updates arrive cleanly. If you’d prefer not to receive emails from us, please <a style="color:#666666; text-decoration:underline;" target="_blank" href="{{ preferences_url }}">click here</a> to manage your preferences.</mj-text>
       <mj-text mj-class="small light">Replace app availability and platform eligibility copy with your own production policy.</mj-text>
       <mj-text mj-class="small light">Use your own legal and compliance copy before production send.</mj-text>
       <mj-text mj-class="small light">TemplateHedgehog Ltd. Example House, London, WC2N 5DU.</mj-text>

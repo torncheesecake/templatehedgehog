@@ -11,20 +11,20 @@
       </mj-section>
     </mj-wrapper>
     <mj-wrapper mj-class="superlightbg" full-width="full-width">
-      <mj-section css-class="surveywrap">
-          <mj-column css-class="survey">
+      <mj-section>
+          <mj-column>
             <mj-button mj-class="body whitebg dark button" border="1px solid #dcdcdc" height="59px" width="110px" padding="0" inner-padding="0 20px" align="left">Strongly agree</mj-button>
           </mj-column>
-          <mj-column css-class="survey">
+          <mj-column>
             <mj-button mj-class="body whitebg dark button" border="1px solid #dcdcdc" height="59px" width="110px" padding="0" inner-padding="0 20px" align="left">Agree</mj-button>
          </mj-column>
-          <mj-column css-class="survey">
+          <mj-column>
             <mj-button mj-class="body whitebg dark button" border="1px solid #dcdcdc" height="59px" width="110px" padding="0" inner-padding="0 20px" align="left">Unsure</mj-button>
          </mj-column>
-          <mj-column css-class="survey">
+          <mj-column>
             <mj-button mj-class="body whitebg dark button" border="1px solid #dcdcdc" height="59px" width="110px" padding="0" inner-padding="0 20px" align="left">Disagree</mj-button>
          </mj-column>
-          <mj-column css-class="survey">
+          <mj-column>
             <mj-button mj-class="body whitebg dark button" border="1px solid #dcdcdc" height="59px" width="110px" padding="0" inner-padding="0 20px" align="left">Strongly disagree</mj-button>
           </mj-column>
       </mj-section>
