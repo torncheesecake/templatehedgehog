@@ -1,11 +1,15 @@
 <!-- #-START-# Welcome Email Hero -->
+<!-- Merge fields: {{ user.first_name }}, {{ account.verify_url }}.
+     The first name sits in body copy, not the headline, so a long name wraps
+     gracefully instead of breaking the hero (see qa-notes.md). Set an ESP-side
+     default for user.first_name (e.g. "there") so an empty value still reads. -->
 <mj-wrapper mj-class="whitebg">
   <mj-section padding="44px 35px 28px 35px">
     <mj-column width="520px">
       <mj-text mj-class="label thblue" align="center" padding-bottom="12px">Welcome</mj-text>
       <mj-text mj-class="h2 text-primary extrabold" align="center" padding-bottom="12px">Your workspace is ready</mj-text>
-      <mj-text mj-class="body text-muted" align="center" padding-bottom="22px">Complete setup to invite teammates, import a layout, and send your first production test with confidence.</mj-text>
-      <mj-button mj-class="thbluebg white body bold" align="center" border-radius="999px" inner-padding="16px 34px" href="https://templatehedgehog.co.uk">Start setup</mj-button>
+      <mj-text mj-class="body text-muted" align="center" padding-bottom="22px">Hi {{ user.first_name }}, complete setup to invite teammates, import a layout, and send your first production test with confidence.</mj-text>
+      <mj-button mj-class="thbluebg white body bold" css-class="dm-keep-cta" align="center" border-radius="999px" inner-padding="16px 34px" href="{{ account.verify_url }}">Start setup</mj-button>
     </mj-column>
   </mj-section>
 </mj-wrapper>

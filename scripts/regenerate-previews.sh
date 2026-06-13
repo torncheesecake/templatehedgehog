@@ -28,6 +28,7 @@ import { emailComponents } from "./src/data/email-components";
 import { compiledComponentsBySlug } from "./src/data/email-components/compiled";
 import { emailLayouts } from "./src/data/email-layouts";
 import { compiledLayoutHtmlBySlug } from "./src/data/email-layouts/compiled";
+import { applyPreviewSampleData } from "./src/lib/previewSampleData";
 
 const manifestPath = path.join(process.cwd(), ".tmp", "preview-render", "manifest.json");
 const requestedSlugs = new Set(
@@ -59,7 +60,7 @@ const components = emailComponents
   kind: "component",
   slug: component.slug,
   outputPath: path.join(process.cwd(), "public", component.previewImageUrl.replace(/^\//, "")),
-  html: compiledComponentsBySlug[component.slug] ?? "",
+  html: applyPreviewSampleData(compiledComponentsBySlug[component.slug] ?? ""),
   stageHeight: getComponentStageHeight(component.category),
 }));
 
@@ -69,7 +70,7 @@ const layouts = emailLayouts
   kind: "layout",
   slug: layout.slug,
   outputPath: path.join(process.cwd(), "public", layout.previewImageUrl.replace(/^\//, "")),
-  html: compiledLayoutHtmlBySlug[layout.slug] ?? "",
+  html: applyPreviewSampleData(compiledLayoutHtmlBySlug[layout.slug] ?? ""),
   stageHeight: 1320,
 }));
 

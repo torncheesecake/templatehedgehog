@@ -4,21 +4,21 @@
       </mj-section>
       <mj-section padding-top="0">
         <mj-column>
-          <mj-text mj-class="body dark" css-class="float-left-d center-m center">Research</mj-text>
-          <mj-image src="https://placehold.co/100x100/png?text=103" width="100px" alt="Statistic one" css-class="float-left-d center-m" />
-          <mj-text mj-class="body dark" css-class="float-left-d center-m center">workflows
+          <mj-text mj-class="body dark" css-class="center">Research</mj-text>
+          <mj-image src="https://placehold.co/100x100/png?text=103" width="100px" alt="Statistic one" />
+          <mj-text mj-class="body dark" css-class="center">workflows
           </mj-text>
         </mj-column>
         <mj-column>
-          <mj-text mj-class="body dark" css-class="float-left-d center-m center">Tested</mj-text>
-          <mj-image src="https://placehold.co/100x100/png?text=600" width="100px" alt="Statistic two" css-class="float-left-d center-m" />
-          <mj-text mj-class="body dark" css-class="float-left-d center-m center">workflows
+          <mj-text mj-class="body dark" css-class="center">Tested</mj-text>
+          <mj-image src="https://placehold.co/100x100/png?text=600" width="100px" alt="Statistic two" />
+          <mj-text mj-class="body dark" css-class="center">workflows
           </mj-text>
         </mj-column>
         <mj-column>
-          <mj-text mj-class="body dark" css-class="float-left-d center-m center">Improved</mj-text>
-          <mj-image src="https://placehold.co/150x100/png?text=1010" width="150px" alt="Statistic three" css-class="float-left-d center-m" />
-          <mj-text mj-class="body dark" css-class="float-left-d center-m center">customer journeys
+          <mj-text mj-class="body dark" css-class="center">Improved</mj-text>
+          <mj-image src="https://placehold.co/150x100/png?text=1010" width="150px" alt="Statistic three" />
+          <mj-text mj-class="body dark" css-class="center">customer journeys
           </mj-text>
         </mj-column>
       </mj-section>

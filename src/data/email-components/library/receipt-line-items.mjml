@@ -1,9 +1,11 @@
 <!-- #-START-# Receipt Line Items -->
+<!-- Merge field: {{ invoice.number }}. The line-item rows below are sample
+     data — replace with your ESP's loop construct for real receipts. -->
 <mj-wrapper mj-class="whitebg">
   <mj-section padding-bottom="16px">
     <mj-column width="520px">
       <mj-text mj-class="label thblue" align="left" padding-bottom="10px">Receipt</mj-text>
-      <mj-text mj-class="h4 text-primary extrabold" align="left" padding-bottom="10px">Payment confirmation for invoice #TH-90314</mj-text>
+      <mj-text mj-class="h4 text-primary extrabold" align="left" padding-bottom="10px">Payment confirmation for invoice {{ invoice.number }}</mj-text>
       <mj-text mj-class="body text-muted" align="left">Thanks for your payment. A copy of this receipt has been stored in your billing history.</mj-text>
     </mj-column>
   </mj-section>
