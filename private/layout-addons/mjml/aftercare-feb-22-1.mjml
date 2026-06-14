@@ -1,25 +1,71 @@
+<!-- Purpose: Promote a premium aftercare / support plan with a single clear CTA. -->
+<!-- Components: header-brand-row, accent-cta-button, footer-contact-compliance. -->
+<!-- Production use: Lifecycle email upselling a support or aftercare tier. -->
 <mjml>
   <mj-head>
+    <mj-preview>Get more from your product with the Gold aftercare plan.</mj-preview>
+    <mj-attributes>
+      <mj-all font-family="'Manrope', 'Inter', Arial, sans-serif" />
+      <mj-body width="640px" background-color="#f3f4f6" />
+      <mj-wrapper padding="0" full-width="full-width" />
+      <mj-section padding="28px 34px" />
+      <mj-column padding="0" />
+      <mj-image padding="0 0 14px 0" />
+      <mj-text padding="0 0 12px 0" font-size="16px" line-height="28px" color="#1a1a1a" />
+      <mj-button padding="0" font-size="16px" font-weight="700" border-radius="999px" inner-padding="14px 30px" />
+      <mj-class name="h3" font-size="30px" line-height="34px" font-weight="800" />
+      <mj-class name="body" font-family="'Inter', Arial, sans-serif" font-size="17px" line-height="28px" />
+      <mj-class name="small" font-family="'Inter', Arial, sans-serif" font-size="14px" line-height="23px" />
+      <mj-class name="label" font-family="'Inter', Arial, sans-serif" font-size="12px" font-weight="700" text-transform="uppercase" letter-spacing="0.12em" />
+      <mj-class name="bold" font-weight="700" />
+      <mj-class name="extrabold" font-weight="800" />
+      <mj-class name="white" color="#ffffff" />
+      <mj-class name="light" color="#94a3b8" />
+      <mj-class name="dark" color="#1a1a1a" />
+      <mj-class name="text-primary" color="#1a1a1a" />
+      <mj-class name="text-muted" color="#4a5568" />
+      <mj-class name="thblue" color="#2f67ef" />
+      <mj-class name="whitebg" background-color="#ffffff" />
+      <mj-class name="superlightbg" background-color="#f8fafc" />
+      <mj-class name="thbluebg" background-color="#2f67ef" />
+    </mj-attributes>
+    <mj-style>
+      .border-top-light { border-top: 1px solid rgba(26, 26, 26, 0.1) !important; }
+    </mj-style>
     <mj-raw>
-      <meta name="color-scheme" content="light dark">
-      <meta name="supported-color-schemes" content="light dark">
+      <meta name="color-scheme" content="light dark" />
+      <meta name="supported-color-schemes" content="light dark" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
     </mj-raw>
-    <mj-include path="../styles.mjml" />
-    <mj-title>Get the most from Your Product with Gold Aftercare</mj-title>
-    <mj-preview>Get the most from Your Product with Gold Aftercaree&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp; </mj-preview>
-        
   </mj-head>
   <mj-body mj-class="superlightbg">
-      <mj-wrapper css-class="footerbg" padding-top="20px">
-      <mj-section mj-class="whitebg" border-radius="20px" >
+    <mj-wrapper mj-class="whitebg">
+      <mj-section padding="25px 35px">
+        <mj-column vertical-align="middle">
+          <mj-image src="https://placehold.co/240x80/png?text=Your+Brand+Logo" width="240px" padding="0" align="left" href="https://templatehedgehog.co.uk" alt="Your Brand" />
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <mj-wrapper mj-class="superlightbg" padding-top="20px">
+      <mj-section mj-class="whitebg" border-radius="20px">
         <mj-column>
-          <mj-text mj-class="h3 dark" align="center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
-          <mj-button align="center" background-color="#ffffff" color="#005296" inner-padding="15px 26px 15px 26px" text-decoration="none" text-transform="uppercase" target="_blank" href="https://example.com" font-size="12px" border-radius="3px" mj-class="bold">Call to action</mj-button>
+          <mj-text mj-class="label thblue" align="center" padding-bottom="10px">Gold aftercare</mj-text>
+          <mj-text mj-class="h3 text-primary extrabold" align="center" padding-bottom="12px">Keep your product running at its best</mj-text>
+          <mj-text mj-class="body text-muted" align="center" padding-bottom="22px">Priority response times, proactive health checks, and a named specialist who already knows your setup. Upgrade today and we will move your account over before your next billing date.</mj-text>
+          <mj-button mj-class="thbluebg white body bold" css-class="dm-keep-cta" align="center" border-radius="999px" inner-padding="15px 30px" href="{{ upgrade_url }}">Upgrade to Gold</mj-button>
         </mj-column>
       </mj-section>
       <mj-section>
         <mj-column>
-          <mj-text mj-class="body dark" align="center">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</mj-text>
+          <mj-text mj-class="body text-muted" align="center">Not ready yet, {{ first_name }}? Reply to this email and our team will walk you through exactly what changes for your account.</mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <mj-wrapper mj-class="whitebg">
+      <mj-section padding-bottom="40px">
+        <mj-column>
+          <mj-text mj-class="small light" css-class="border-top-light" padding-top="18px">Replace this footer with your own compliance and unsubscribe copy before production send. Manage preferences <a href="https://templatehedgehog.co.uk/preferences" style="color:#94a3b8; text-decoration:underline;">here</a>. Your Brand Ltd. Example House, London, WC2N 5DU.</mj-text>
         </mj-column>
       </mj-section>
     </mj-wrapper>

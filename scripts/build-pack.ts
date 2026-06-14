@@ -603,7 +603,7 @@ const mjml2html = typeof mjmlModule === "function" ? mjmlModule : mjmlModule.def
 const here = path.dirname(fileURLToPath(import.meta.url));
 const packRoot = path.resolve(here, "..");
 
-const folders = ["components", "layouts", "examples"];
+const folders = ["components", "layouts", "examples", "add-ons"];
 let compiled = 0;
 let failed = 0;
 
@@ -690,12 +690,37 @@ function buildEnterpriseFrameworkReadme(): string {
 }
 
 /**
- * Curated layout add-on inclusion mechanism. The CONTENT is a separate follow-up: an add-on
- * only ships once it passes the same compile + robustness gate as the core set. Until then
- * the manifest is the mechanism, declaring zero curated add-ons (the raw private add-ons are
- * known to contain placeholder copy and are intentionally NOT shipped).
+ * Curated layout add-on inclusion mechanism. An add-on ships only once its source has been
+ * hand-cleaned (no placeholder copy, no example.com assets) and passes the same compile +
+ * robustness gate as the core set: brand tokens inlined per element, the shared dark-mode +
+ * responsive guardrail, and the colour-scheme / webfont head. The slugs below are the first
+ * curated batch; each one is read from private/layout-addons/mjml and transformed through the
+ * Enterprise dialect just like the core templates before it lands in the pack.
  */
-const CURATED_ADDON_SLUGS: readonly string[] = [];
+const CURATED_ADDON_SLUGS: readonly string[] = [
+  "charityemail",
+  "whatisyournetscore-mini",
+  "whatisyournetscore-mini-v2",
+  "aftercare-feb-22-1",
+  "christmas",
+  "erp-hero",
+  "erp-hero-left",
+  "service-disruption-1406",
+  "e3leads24-3-1",
+  "the-hidden-costs-of-relyiong-on-spreadsheets",
+  "algoriq",
+  "fireworks",
+  "magic",
+  "poor-netsuite-0624",
+  "train",
+  "visuallinkedin24",
+];
+
+/** Absolute path to a curated add-on's cleaned MJML source on disk. */
+function getAddonSourcePath(addonMjmlPath: string): string {
+  const relativePath = addonMjmlPath.startsWith("/") ? addonMjmlPath.slice(1) : addonMjmlPath;
+  return path.join(PROJECT_ROOT, relativePath);
+}
 
 function buildAddonManifest(): string {
   const curated = readyLayoutAddons.filter((addon) =>
@@ -717,7 +742,41 @@ function buildAddonManifest(): string {
   return `${JSON.stringify(manifest, null, 2)}\n`;
 }
 
-function addEnterpriseFrameworkAssets(archive: archiver.Archiver): void {
+/**
+ * Materialise the curated layout add-ons into the Enterprise pack. Each add-on's cleaned MJML
+ * source is run through the SAME Enterprise dialect + trusted compile path as the core set, so
+ * its HTML twin carries the inline brand tokens, the dark-mode + responsive guardrail, and the
+ * colour-scheme/webfont head. The shared head.mjml lands in add-ons/mjml so the per-file
+ * `<mj-include path="./head.mjml" />` resolves for the customer's own re-compile.
+ */
+async function addEnterpriseAddonAssets(archive: archiver.Archiver): Promise<void> {
+  const curated = readyLayoutAddons.filter((addon) => CURATED_ADDON_SLUGS.includes(addon.slug));
+  if (curated.length === 0) {
+    return;
+  }
+
+  archive.append(withTrailingNewline(buildEnterpriseSharedHead()), {
+    name: `add-ons/mjml/${ENTERPRISE_SHARED_HEAD_FILENAME}`,
+  });
+
+  for (const addon of curated) {
+    const sourcePath = getAddonSourcePath(addon.mjmlPath);
+    const source = await fs.readFile(sourcePath, "utf8");
+    const { dialectSource, compiledHtml } = await transformAndCompile(
+      "enterprise",
+      addon.slug,
+      source,
+    );
+    archive.append(withTrailingNewline(dialectSource), {
+      name: `add-ons/mjml/${addon.slug}.mjml`,
+    });
+    archive.append(withTrailingNewline(compiledHtml), {
+      name: `add-ons/html/${addon.slug}.html`,
+    });
+  }
+}
+
+async function addEnterpriseFrameworkAssets(archive: archiver.Archiver): Promise<void> {
   const sharedHead = buildEnterpriseSharedHead();
   // Place the shared head beside each tier's MJML so the relative `./head.mjml` include resolves.
   for (const folder of ["components", "layouts", "examples"]) {
@@ -732,8 +791,9 @@ function addEnterpriseFrameworkAssets(archive: archiver.Archiver): void {
   archive.append(buildEnterpriseAssemblerScript(), { name: "framework/assemble.mjs" });
   archive.append(buildEnterpriseFrameworkReadme(), { name: "framework/README.md" });
 
-  // Curated layout add-on inclusion mechanism (content is a separate follow-up step).
+  // Curated layout add-on inclusion mechanism: the manifest plus the cleaned MJML/HTML twins.
   archive.append(buildAddonManifest(), { name: "add-ons/manifest.json" });
+  await addEnterpriseAddonAssets(archive);
 }
 
 async function buildPack(packId: DownloadPackId): Promise<void> {
@@ -803,7 +863,7 @@ async function buildPack(packId: DownloadPackId): Promise<void> {
   }
 
   if (packId === "enterprise") {
-    addEnterpriseFrameworkAssets(archive);
+    await addEnterpriseFrameworkAssets(archive);
   }
 
   archive.append(`${JSON.stringify(versionManifest, null, 2)}\n`, {

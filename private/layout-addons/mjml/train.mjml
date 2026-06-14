@@ -1,44 +1,93 @@
+<!-- Purpose: Themed campaign email with a hero, an accent band, and a CTA. -->
+<!-- Components: header-brand-row, hero image, accent band, accent-cta-button, footer. -->
+<!-- Production use: Playful themed campaign tying a journey metaphor to a clear offer. -->
 <mjml>
   <mj-head>
-    <mj-include path="../styles.mjml" />
-    <mj-title>Your Brand: Your Ticket to Business Success 🚂✨ </mj-title>
-    <mj-preview>All aboard the Your Business Express! Discover how our UK-based experts can accelerate your business journey with Your Product.&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp; </mj-preview>
+    <mj-preview>Your ticket to a faster, smoother business journey.</mj-preview>
+    <mj-attributes>
+      <mj-all font-family="'Manrope', 'Inter', Arial, sans-serif" />
+      <mj-body width="640px" background-color="#f3f4f6" />
+      <mj-wrapper padding="0" full-width="full-width" />
+      <mj-section padding="28px 34px" />
+      <mj-column padding="0" />
+      <mj-image padding="0 0 14px 0" />
+      <mj-text padding="0 0 12px 0" font-size="16px" line-height="28px" color="#1a1a1a" />
+      <mj-button padding="0" font-size="16px" font-weight="700" border-radius="999px" inner-padding="14px 30px" />
+      <mj-class name="h2" font-size="36px" line-height="40px" font-weight="800" />
+      <mj-class name="h4" font-size="26px" line-height="30px" font-weight="800" />
+      <mj-class name="body" font-family="'Inter', Arial, sans-serif" font-size="17px" line-height="28px" />
+      <mj-class name="small" font-family="'Inter', Arial, sans-serif" font-size="14px" line-height="23px" />
+      <mj-class name="label" font-family="'Inter', Arial, sans-serif" font-size="12px" font-weight="700" text-transform="uppercase" letter-spacing="0.12em" />
+      <mj-class name="bold" font-weight="700" />
+      <mj-class name="extrabold" font-weight="800" />
+      <mj-class name="white" color="#ffffff" />
+      <mj-class name="light" color="#94a3b8" />
+      <mj-class name="dark" color="#1a1a1a" />
+      <mj-class name="text-primary" color="#1a1a1a" />
+      <mj-class name="text-muted" color="#4a5568" />
+      <mj-class name="thblue" color="#2f67ef" />
+      <mj-class name="whitebg" background-color="#ffffff" />
+      <mj-class name="superlightbg" background-color="#f8fafc" />
+      <mj-class name="thbluebg" background-color="#2f67ef" />
+      <mj-class name="darkbg" background-color="#102447" />
+    </mj-attributes>
+    <mj-style>
+      .border-top-light { border-top: 1px solid rgba(26, 26, 26, 0.1) !important; }
+    </mj-style>
+    <mj-raw>
+      <meta name="color-scheme" content="light dark" />
+      <meta name="supported-color-schemes" content="light dark" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    </mj-raw>
   </mj-head>
   <mj-body mj-class="whitebg">
-    <mj-include path="../header.mjml" />
+    <mj-wrapper mj-class="whitebg">
+      <mj-section padding="25px 35px">
+        <mj-column vertical-align="middle">
+          <mj-image src="https://placehold.co/240x80/png?text=Your+Brand+Logo" width="240px" padding="0" align="left" href="https://templatehedgehog.co.uk" alt="Your Brand" />
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
     <mj-wrapper>
       <mj-section padding="0">
         <mj-column padding="0">
-          <mj-image src="https://example.com">
+          <mj-image src="https://placehold.co/640x300/png?text=All+Aboard" padding="0" fluid-on-mobile="true" alt="Business journey" />
         </mj-column>
       </mj-section>
     </mj-wrapper>
-    </mj-wrapper>
-    <mj-wrapper>
+    <mj-wrapper mj-class="whitebg">
       <mj-section mj-class="whitebg">
         <mj-column>
-          <mj-text mj-class="body black" align="left" padding-bottom="10px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
-          <mj-text mj-class="body black" align="left" padding-bottom="10px">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</mj-text>
+          <mj-text mj-class="h2 text-primary extrabold" align="left" padding-bottom="10px">All aboard your business journey</mj-text>
+          <mj-text mj-class="body text-muted" align="left" padding-bottom="10px">Hi {{ first_name }}, every great journey needs the right crew. Our UK-based specialists help you map the route, avoid the usual delays, and keep things moving once you are underway.</mj-text>
+          <mj-text mj-class="body text-muted" align="left" padding-bottom="10px">No jargon, no detours, just clear next steps for getting where you want to be.</mj-text>
         </mj-column>
       </mj-section>
     </mj-wrapper>
-    <mj-wrapper>
-      <mj-section mj-class="grapebg">
+    <mj-wrapper mj-class="darkbg">
+      <mj-section mj-class="darkbg">
         <mj-column>
-          <mj-text mj-class="h4 white" align="center" padding-bottom="10px">Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</mj-text>
+          <mj-text mj-class="h4 white" align="center" padding-bottom="10px">Next stop: a setup your team actually enjoys using.</mj-text>
         </mj-column>
       </mj-section>
     </mj-wrapper>
-    <mj-wrapper>
+    <mj-wrapper mj-class="whitebg">
       <mj-section mj-class="whitebg">
         <mj-column>
-          <mj-text mj-class="h2 pink" padding-bottom="10px">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</mj-text>
-          <mj-text mj-class="body dark">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
-          <mj-text mj-class="body dark">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</mj-text>
-          <mj-button mj-class="grapebg white body" padding-top="10px" href="https://example.com">Call to action</mj-button>
+          <mj-text mj-class="h2 text-primary extrabold" padding-bottom="10px">Grab your ticket</mj-text>
+          <mj-text mj-class="body text-muted">Book a short call and we will plan the first leg of the journey together, at a pace that suits your team.</mj-text>
+          <mj-text mj-class="body text-muted">There is no commitment to continue, and you keep everything we map out.</mj-text>
+          <mj-button mj-class="thbluebg white body bold" css-class="dm-keep-cta" align="left" border-radius="999px" inner-padding="15px 30px" href="{{ call_url }}">Book your seat</mj-button>
         </mj-column>
       </mj-section>
     </mj-wrapper>
-    <mj-include path="../footer.mjml" />
+    <mj-wrapper mj-class="whitebg">
+      <mj-section padding-top="0" padding-bottom="40px">
+        <mj-column>
+          <mj-text mj-class="small light" css-class="border-top-light" padding-top="18px">Replace this footer with your own compliance and unsubscribe copy before production send. Manage preferences <a href="https://templatehedgehog.co.uk/preferences" style="color:#94a3b8; text-decoration:underline;">here</a>. Your Brand Ltd. Example House, London, WC2N 5DU.</mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
   </mj-body>
 </mjml>
