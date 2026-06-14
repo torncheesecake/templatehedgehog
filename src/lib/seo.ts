@@ -24,6 +24,11 @@ type BreadcrumbItem = {
   path: string;
 };
 
+type FaqItem = {
+  question: string;
+  answer: string;
+};
+
 export const DEFAULT_SEO_DESCRIPTION =
   "Template Hedgehog is a production-ready email system with editable MJML source, compiled HTML, workflow examples, QA notes, and handoff guidance.";
 
@@ -225,6 +230,21 @@ export function buildBreadcrumbJsonLd(items: BreadcrumbItem[]) {
       position: index + 1,
       name: item.name,
       item: ensureAbsoluteUrl(item.path),
+    })),
+  };
+}
+
+export function buildFaqJsonLd(items: FaqItem[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
     })),
   };
 }

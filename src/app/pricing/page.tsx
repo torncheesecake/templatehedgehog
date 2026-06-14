@@ -28,6 +28,7 @@ import { getEmailWorkflowBySlug } from "@/data/workflows";
 import { getPackByProductId } from "@/lib/packCatalog";
 import {
   buildBreadcrumbJsonLd,
+  buildFaqJsonLd,
   buildProductJsonLd,
   createSeoMetadata,
 } from "@/lib/seo";
@@ -38,7 +39,7 @@ import {
 } from "@/lib/pack";
 
 export const metadata: Metadata = createSeoMetadata({
-  title: "Pricing",
+  title: "Pricing for Core, Pro, and Team",
   description:
     "Core, Pro, and Team pricing for Template Hedgehog production-ready email systems.",
   path: "/pricing",
@@ -181,6 +182,39 @@ const retentionReasons = [
   },
 ] as const;
 
+const pricingFaqs = [
+  {
+    question: "What do I receive when I buy Template Hedgehog?",
+    answer:
+      "Each edition is a downloadable archive of production email systems: editable MJML source, compiled HTML, rendered previews, QA notes, implementation guidance, and workflow examples, kept together so the first implementation is not a blank rebuild.",
+  },
+  {
+    question: "Does Template Hedgehog work with Mailchimp, HubSpot, and other platforms?",
+    answer:
+      "Yes, as a source-to-handoff system. Template Hedgehog prepares reviewed MJML source, compiled HTML, previews, and QA notes for upload into Mailchimp, HubSpot, Salesforce, NetSuite, Klaviyo, Customer.io, or another ESP. Your sending platform still handles audiences, consent, unsubscribe, automation, sending, delivery, and reporting.",
+  },
+  {
+    question: "What is the difference between Core, Pro, and Team?",
+    answer:
+      `Core (£${core.priceGbp}) is the starter archive: welcome, password reset, and order confirmation systems with 11 components, 3 layouts, MJML source, compiled HTML, previews, and setup docs. Pro (£${pro.priceGbp}) is the complete production system: ${COMPONENT_COUNT} components, ${LAYOUT_COUNT} layouts, ${WORKFLOW_COUNT} workflows, QA notes, implementation guidance, and 6 months of updates. Team (£${team.priceGbp}+) is Pro plus commercial reuse rights, white-label or internal deployment, onboarding, priority support, and 12 months of updates.`,
+  },
+  {
+    question: "Do I need to know MJML to use Template Hedgehog?",
+    answer:
+      "Familiarity with markup helps, but every edition also ships compiled, delivery-ready HTML. You can hand the compiled HTML straight to your sending platform for QA or import, or edit the MJML source when you want a maintainable, reusable starting point.",
+  },
+  {
+    question: "Is Template Hedgehog Studio included in any tier?",
+    answer:
+      "No. Template Hedgehog Studio is a planned future workspace on the roadmap. It is in development, not part of the live product, and not included in any current tier. The paid archive is complete and usable today without it.",
+  },
+  {
+    question: "What is the refund cover if delivery fails?",
+    answer:
+      "If the paid archive cannot be delivered, is inaccessible, or materially differs from the described tier contents, support will resolve the issue or refund the purchase.",
+  },
+] as const;
+
 function buildReceiptWorkflowExamples(): ValueReceiptWorkflowExample[] {
   return receiptWorkflowSlugs.flatMap((slug) => {
     const workflow = getEmailWorkflowBySlug(slug);
@@ -274,6 +308,15 @@ export default function PricingPage() {
           { name: "Home", path: "/" },
           { name: "Pricing", path: "/pricing" },
         ])}
+      />
+      <JsonLd
+        id="pricing-faq"
+        data={buildFaqJsonLd(
+          pricingFaqs.map((faq) => ({
+            question: faq.question,
+            answer: faq.answer,
+          })),
+        )}
       />
 
       <V2PageHero
