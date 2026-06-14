@@ -49,7 +49,7 @@ const boundaryItems = [
 ] as const;
 
 export const metadata: Metadata = createSeoMetadata({
-  title: "Sample pack",
+  title: "Free MJML sample pack to inspect",
   description:
     "Inspect the Template Hedgehog public sample pack before buying: MJML source, compiled HTML, QA notes, implementation guide, workflow context, and licence reference.",
   path: "/sample-pack",

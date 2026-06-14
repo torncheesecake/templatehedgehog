@@ -14,7 +14,7 @@ import {
 import { buildBreadcrumbJsonLd, createSeoMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createSeoMetadata({
-  title: "About",
+  title: "About: production email systems",
   description:
     `${TEMPLATE_CONFIG.brandName} is built from hands-on HTML email production work: editable MJML, compiled HTML, QA notes, and handoff-ready systems.`,
   path: "/about",
