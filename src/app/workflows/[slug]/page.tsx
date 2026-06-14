@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight } from "lucide-react";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { SiteTopBar } from "@/components/site/SiteTopBar";
 import {
@@ -14,7 +15,7 @@ import {
 } from "@/components/site/V2Primitives";
 import { emailWorkflows, getEmailWorkflowBySlug } from "@/data/workflows";
 import { STARTER_LAYOUT_SLUGS } from "@/lib/pack";
-import { createSeoMetadata } from "@/lib/seo";
+import { buildBreadcrumbJsonLd, createSeoMetadata } from "@/lib/seo";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -100,6 +101,14 @@ export default async function WorkflowDetailPage({ params }: Props) {
   return (
     <main className="th-page th-monochrome">
       <SiteTopBar theme="hero" ctaTone="inverse" />
+      <JsonLd
+        id="workflow-breadcrumb"
+        data={buildBreadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Workflows", path: "/workflows" },
+          { name: workflow.title, path: `/workflows/${workflow.slug}` },
+        ])}
+      />
       <V2PageHero
         title={workflow.title}
         copy={workflow.summary}
