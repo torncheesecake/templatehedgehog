@@ -16,13 +16,16 @@ import {
   PostPurchaseProof,
   PricingTierCard,
   SupportRefundPanel,
+  Testimonials,
   TestingProofPanel,
+  TrustStrip,
   ValueReceipt,
   type ValueReceiptWorkflowExample,
   V2PageHero,
   V2Section,
   WorkflowAssembly,
 } from "@/components/site/V2Primitives";
+import { hasTestimonials } from "@/data/testimonials";
 import { emailLayouts } from "@/data/email-layouts";
 import { getEmailWorkflowBySlug } from "@/data/workflows";
 import { getPackByProductId } from "@/lib/packCatalog";
@@ -498,6 +501,20 @@ export default function PricingPage() {
           </p>
         </div>
       </V2Section>
+
+      <V2Section
+        title="What you can rely on when you buy."
+        copy="The practical reassurances behind a purchase: how payment and delivery are secured, what happens if something is wrong, what you actually own, and who answers when you ask."
+        surface="surface"
+      >
+        <TrustStrip />
+      </V2Section>
+
+      {hasTestimonials ? (
+        <V2Section surface="surface">
+          <Testimonials />
+        </V2Section>
+      ) : null}
 
       <V2Section
         title="Why Pro becomes the default production choice."

@@ -20,12 +20,14 @@ import {
   LicenceMatrix,
   PostPurchaseProof,
   SupportRefundPanel,
+  Testimonials,
   TestingProofPanel,
   TrustProofGrid,
   ValueReceipt,
   type ValueReceiptWorkflowExample,
 } from "@/components/site/V2Primitives";
 import { getPricingTierById, TEMPLATE_CONFIG } from "@/config/template";
+import { hasTestimonials } from "@/data/testimonials";
 import { getEmailLayoutBySlug } from "@/data/email-layouts";
 import { getEmailWorkflowBySlug } from "@/data/workflows";
 import { withBasePath } from "@/lib/asset-path";
@@ -826,6 +828,14 @@ export default function Home() {
           <FounderProof />
         </div>
       </section>
+
+      {hasTestimonials ? (
+        <section className="border-b border-[var(--border-subtle)] bg-[var(--bg-surface)] py-16 sm:py-20">
+          <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12">
+            <Testimonials />
+          </div>
+        </section>
+      ) : null}
 
       <section className="border-b border-[var(--border-subtle)] bg-white py-16 sm:py-20">
         <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12">
