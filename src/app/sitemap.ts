@@ -37,7 +37,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     buildEntry("/changelog", 0.65, "monthly"),
     buildEntry("/support", 0.55, "monthly"),
     buildEntry("/about", 0.45, "monthly"),
-    buildEntry("/llms.txt", 0.35, "monthly"),
   ];
 
   const componentPages: MetadataRoute.Sitemap = emailComponents.map((component) =>

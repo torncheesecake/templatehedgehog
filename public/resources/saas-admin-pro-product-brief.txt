@@ -37,6 +37,6 @@ Commercial notes:
 - Designed for commercial delivery workflows
 
 Links:
-Template page: https://templatehedgehog.com/templates/saas-admin-pro
-Demo: https://templatehedgehog.com/demo/saas-admin-pro
-Documentation: https://templatehedgehog.com/templates/saas-admin-pro/docs
+Template page: https://templatehedgehog.co.uk/templates/saas-admin-pro
+Demo: https://templatehedgehog.co.uk/demo/saas-admin-pro
+Documentation: https://templatehedgehog.co.uk/templates/saas-admin-pro/docs

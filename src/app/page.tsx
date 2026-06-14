@@ -215,12 +215,14 @@ export const metadata: Metadata = createSeoMetadata({
   path: "/",
   keywords: [
     "modern email production workflow",
+    "MJML email systems",
     "MJML source",
     "compiled HTML email",
     "email QA notes",
     "email handoff guidance",
     "lifecycle email workflows",
     "transactional email systems",
+    "developer email archive",
   ],
 });
 

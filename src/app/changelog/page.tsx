@@ -15,7 +15,7 @@ import { FeatureBlock, V2PageHero, V2Section } from "@/components/site/V2Primiti
 import { buildBreadcrumbJsonLd, createSeoMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createSeoMetadata({
-  title: "Changelog",
+  title: "Changelog and release history",
   description:
     `Release history for the ${TEMPLATE_CONFIG.brandName} production email system.`,
   path: "/changelog",
