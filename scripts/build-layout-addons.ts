@@ -1,6 +1,7 @@
 import { createHash } from "node:crypto";
-import { promises as fs } from "node:fs";
+import { promises as fs, type Dirent } from "node:fs";
 import path from "node:path";
+import { CURATED_ADDON_SLUGS } from "../src/lib/pack";
 
 type ReadyLayoutAddonRecord = {
   slug: string;
@@ -560,9 +561,49 @@ assertSourceBlocksShape(readyLayoutAddons);
   );
 }
 
+const CURATED_SLUG_SET = new Set<string>(CURATED_ADDON_SLUGS);
+
+/**
+ * Guard against clobbering hand-curated add-ons.
+ *
+ * This generator regenerates private/layout-addons/mjml/ from the (private, often absent)
+ * marketing source by sanitising copy down to lorem/example.com placeholders. The 16 curated
+ * add-ons in CURATED_ADDON_SLUGS have been hand-cleaned and SHIP in the Enterprise pack, so a
+ * regeneration must never silently overwrite them. We use belt-and-braces protection:
+ *   1. buildReadyLayoutAddons fails loud (non-zero exit) if the marketing source is absent,
+ *      BEFORE any destructive step (see assertMarketingRootExists at the top of the run).
+ *   2. cleanOutputDirectories preserves the curated *.mjml files (and their previews), and the
+ *      per-folder writer below skips any slug in CURATED_SLUG_SET. So even with the marketing
+ *      source restored, curated content is left exactly as-is.
+ */
+async function removeNonCuratedFiles(
+  dir: string,
+  isProtected: (fileName: string) => boolean,
+): Promise<void> {
+  let entries: Dirent[];
+  try {
+    entries = await fs.readdir(dir, { withFileTypes: true });
+  } catch {
+    return; // directory does not exist yet; nothing to clean
+  }
+  for (const entry of entries) {
+    if (entry.isFile() && !isProtected(entry.name)) {
+      await fs.rm(path.join(dir, entry.name), { force: true });
+    }
+  }
+}
+
 async function cleanOutputDirectories(): Promise<void> {
-  await fs.rm(OUTPUT_MJML_DIR, { recursive: true, force: true });
-  await fs.rm(OUTPUT_PREVIEW_DIR, { recursive: true, force: true });
+  // Preserve curated MJML sources: e.g. "charityemail.mjml" stays, regenerated placeholders go.
+  await removeNonCuratedFiles(OUTPUT_MJML_DIR, (fileName) => {
+    const slug = fileName.replace(/\.mjml$/i, "");
+    return CURATED_SLUG_SET.has(slug);
+  });
+  // Preserve curated previews (any extension) for the same slugs.
+  await removeNonCuratedFiles(OUTPUT_PREVIEW_DIR, (fileName) => {
+    const slug = fileName.replace(/\.[^.]+$/i, "");
+    return CURATED_SLUG_SET.has(slug);
+  });
 }
 
 async function assertMarketingRootExists(): Promise<void> {
@@ -626,6 +667,15 @@ async function buildReadyLayoutAddons(): Promise<void> {
 
     const slug = withUniqueSlug(slugify(folderName), seenSlugs);
     const title = titleCaseFromFolder(folderName);
+
+    // Never overwrite a hand-curated add-on with regenerated placeholder content.
+    if (CURATED_SLUG_SET.has(slug)) {
+      process.stderr.write(
+        `[layout-addons] Skipping curated add-on "${slug}" — preserving hand-cleaned source.\n`,
+      );
+      continue;
+    }
+
     const outputMjmlPath = path.join(OUTPUT_MJML_DIR, `${slug}.mjml`);
     await fs.writeFile(outputMjmlPath, sanitisedMjml, "utf8");
 

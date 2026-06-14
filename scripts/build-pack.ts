@@ -16,6 +16,7 @@ import {
   MJML_PACK_LICENSE_POINTS,
   MJML_PACK_PRIVATE_DIR,
   STARTER_LAYOUT_SLUGS,
+  CURATED_ADDON_SLUGS,
   type DownloadPackId,
   MJML_PACK_PROJECT_STRUCTURE,
   getMjmlPackAbsolutePath,
@@ -51,6 +52,7 @@ const PROJECT_ROOT = process.cwd();
 const PUBLIC_DIR = path.join(PROJECT_ROOT, "public");
 const PACK_IDS: readonly DownloadPackId[] = ["starter", "pro", "enterprise"];
 const STARTER_LAYOUT_SLUG_SET = new Set<string>(STARTER_LAYOUT_SLUGS);
+const CURATED_ADDON_SLUG_SET = new Set<string>(CURATED_ADDON_SLUGS);
 
 type VersionManifest = {
   tier: DownloadPackId;
@@ -689,32 +691,10 @@ function buildEnterpriseFrameworkReadme(): string {
   ].join("\n");
 }
 
-/**
- * Curated layout add-on inclusion mechanism. An add-on ships only once its source has been
- * hand-cleaned (no placeholder copy, no example.com assets) and passes the same compile +
- * robustness gate as the core set: brand tokens inlined per element, the shared dark-mode +
- * responsive guardrail, and the colour-scheme / webfont head. The slugs below are the first
- * curated batch; each one is read from private/layout-addons/mjml and transformed through the
- * Enterprise dialect just like the core templates before it lands in the pack.
- */
-const CURATED_ADDON_SLUGS: readonly string[] = [
-  "charityemail",
-  "whatisyournetscore-mini",
-  "whatisyournetscore-mini-v2",
-  "aftercare-feb-22-1",
-  "christmas",
-  "erp-hero",
-  "erp-hero-left",
-  "service-disruption-1406",
-  "e3leads24-3-1",
-  "the-hidden-costs-of-relyiong-on-spreadsheets",
-  "algoriq",
-  "fireworks",
-  "magic",
-  "poor-netsuite-0624",
-  "train",
-  "visuallinkedin24",
-];
+// CURATED_ADDON_SLUGS is the single source of truth in src/lib/pack.ts. Each add-on ships
+// only once its source has been hand-cleaned (no placeholder copy, no example.com assets)
+// and passes the same compile + robustness gate as the core set. Each is read from
+// private/layout-addons/mjml and transformed through the Enterprise dialect before bundling.
 
 /** Absolute path to a curated add-on's cleaned MJML source on disk. */
 function getAddonSourcePath(addonMjmlPath: string): string {
@@ -724,7 +704,7 @@ function getAddonSourcePath(addonMjmlPath: string): string {
 
 function buildAddonManifest(): string {
   const curated = readyLayoutAddons.filter((addon) =>
-    CURATED_ADDON_SLUGS.includes(addon.slug),
+    CURATED_ADDON_SLUG_SET.has(addon.slug),
   );
   const manifest = {
     description:
@@ -750,7 +730,7 @@ function buildAddonManifest(): string {
  * `<mj-include path="./head.mjml" />` resolves for the customer's own re-compile.
  */
 async function addEnterpriseAddonAssets(archive: archiver.Archiver): Promise<void> {
-  const curated = readyLayoutAddons.filter((addon) => CURATED_ADDON_SLUGS.includes(addon.slug));
+  const curated = readyLayoutAddons.filter((addon) => CURATED_ADDON_SLUG_SET.has(addon.slug));
   if (curated.length === 0) {
     return;
   }

@@ -39,6 +39,32 @@ export const STARTER_LAYOUT_SLUGS = [
   "order-confirmation-system",
 ] as const;
 
+/**
+ * The curated layout add-on slugs shipped in the Enterprise pack. Each one has been
+ * hand-cleaned (no placeholder copy, no example.com assets) and passes the same compile +
+ * robustness gate as the core set. Single source of truth: consumed by scripts/build-pack.ts
+ * (to bundle them), scripts/build-layout-addons.ts (to PROTECT them from being clobbered),
+ * and scripts/verify-packs.ts (to assert their integrity in the built pack).
+ */
+export const CURATED_ADDON_SLUGS = [
+  "charityemail",
+  "whatisyournetscore-mini",
+  "whatisyournetscore-mini-v2",
+  "aftercare-feb-22-1",
+  "christmas",
+  "erp-hero",
+  "erp-hero-left",
+  "service-disruption-1406",
+  "e3leads24-3-1",
+  "the-hidden-costs-of-relyiong-on-spreadsheets",
+  "algoriq",
+  "fireworks",
+  "magic",
+  "poor-netsuite-0624",
+  "train",
+  "visuallinkedin24",
+] as const;
+
 const starterLayoutSlugSet = new Set<string>(STARTER_LAYOUT_SLUGS);
 const starterLayouts = emailLayouts.filter((layout) => starterLayoutSlugSet.has(layout.slug));
 const starterComponentSlugs = new Set(

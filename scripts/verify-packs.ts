@@ -13,6 +13,9 @@
  *         (e) <meta name="color-scheme"> + gstatic font preconnect present
  *         (f) no fonts.googleapis.com Ubuntu @import/link
  *         (g) no templatehedgehog.com leak (the .co.uk production domain is allowed)
+ *   (3) the curated layout add-ons (CURATED_ADDON_SLUGS) are intact in the Enterprise pack:
+ *       every slug present as MJML + compiled HTML, no lorem/ipsum/example.com placeholder
+ *       leakage in the source, and each compiled twin passes the same robustness checks.
  *
  * Exits non-zero on ANY failure.
  *
@@ -23,7 +26,11 @@ import { execFileSync } from "node:child_process";
 import { tmpdir } from "node:os";
 import { mkdtempSync, rmSync } from "node:fs";
 import path from "node:path";
-import { getMjmlPackAbsolutePath, type DownloadPackId } from "../src/lib/pack";
+import {
+  CURATED_ADDON_SLUGS,
+  getMjmlPackAbsolutePath,
+  type DownloadPackId,
+} from "../src/lib/pack";
 
 const PROJECT_ROOT = process.cwd();
 
@@ -141,6 +148,57 @@ function main(): void {
       }
       if (!pass) failures += 1;
       console.log(`  [${pass ? "PASS" : "FAIL"}] ${a.label}`);
+    }
+  }
+
+  // ---- (3) Curated layout add-ons must be intact in the Enterprise pack ----
+  console.log(`\n==== ENTERPRISE PACK — CURATED ADD-ONS (${CURATED_ADDON_SLUGS.length}) ====`);
+  const entZip = zipByTier.get("enterprise")!;
+  const entEntries = new Set(entFiles);
+  const placeholderRe = /lorem|ipsum|example\.com/i;
+
+  for (const slug of CURATED_ADDON_SLUGS) {
+    const mjmlEntry = `add-ons/mjml/${slug}.mjml`;
+    const htmlEntry = `add-ons/html/${slug}.html`;
+    const problems: string[] = [];
+
+    if (!entEntries.has(mjmlEntry)) problems.push("missing MJML");
+    if (!entEntries.has(htmlEntry)) problems.push("missing HTML");
+
+    if (problems.length === 0) {
+      let mjmlSource = "";
+      let html = "";
+      try {
+        mjmlSource = readFromZip(entZip, mjmlEntry);
+        html = readFromZip(entZip, htmlEntry);
+      } catch (err) {
+        problems.push(`read error: ${(err as Error).message}`);
+      }
+
+      if (placeholderRe.test(mjmlSource)) problems.push("placeholder copy (lorem/ipsum/example.com)");
+
+      // Each curated twin must clear the same robustness bar as the core templates. The
+      // dm-keep-cta CTA assertions (b, d) are skipped per add-on that has no CTA button;
+      // the rest (inline fonts, breakpoint, meta+preconnect, no Ubuntu, no .com leak) apply.
+      const hasCta = /class="[^"]*\bdm-keep-cta\b/i.test(html);
+      for (const a of ASSERTIONS) {
+        const isCtaAssertion = a.label.startsWith("(b)") || a.label.startsWith("(d)");
+        if (isCtaAssertion && !hasCta) continue;
+        let pass = false;
+        try {
+          pass = a.check(html);
+        } catch {
+          pass = false;
+        }
+        if (!pass) problems.push(`robustness ${a.label.slice(0, 3)}`);
+      }
+    }
+
+    if (problems.length > 0) {
+      failures += 1;
+      console.log(`  [FAIL] ${slug}: ${problems.join("; ")}`);
+    } else {
+      console.log(`  [PASS] ${slug}`);
     }
   }
 
