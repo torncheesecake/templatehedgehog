@@ -3,7 +3,7 @@
 <!-- Production use: Used by product marketing for lifecycle and release communications. -->
 <mjml>
   <mj-head>
-    <mj-preview>TemplateHedgehog reusable email block</mj-preview>
+    <mj-preview>A new feature is live — see what it does and how it speeds up your work.</mj-preview>
     <mj-attributes>
       <mj-all font-family="'Manrope', 'Inter', Arial, sans-serif" />
       <mj-body width="640px" background-color="#f3f4f6" />

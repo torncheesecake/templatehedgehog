@@ -24,6 +24,7 @@ import {
   MJML_GUARDRAIL_STYLE,
   MJML_HELPER_STYLE,
   MJML_RAW_HEAD,
+  addDarkSurfaceHooks,
   renderSharedAttributes,
 } from "@/data/mjml-library";
 
@@ -107,8 +108,11 @@ function serialiseAttributes(attrs: Attributes, order: string[]): string {
  * The mj-class attribute is removed. Existing css-class is preserved untouched.
  */
 function inlineTokensInBody(body: string): string {
+  // First add the dark-mode surface hook (css-class="dm-surface") onto light-surface
+  // wrappers/sections while their mj-class token is still present, then inline tokens.
+  const hooked = addDarkSurfaceHooks(body);
   // Match opening tags of mj-* elements (including self-closing).
-  return body.replace(
+  return hooked.replace(
     /<(mj-[a-z0-9-]+)((?:\s+[a-zA-Z][a-zA-Z0-9-]*\s*=\s*"[^"]*")*)\s*(\/?)>/g,
     (full, tag: string, attrString: string, selfClose: string) => {
       const { attrs, order } = parseAttributes(attrString);

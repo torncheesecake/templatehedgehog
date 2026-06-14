@@ -53,14 +53,22 @@
       @media only screen and (max-width:480px) {
         .ios-fix { display: inline-block !important; }
       }
-      /* Dark-mode guard. The color-scheme meta opts the email into the client's
-         own dark handling; this keeps the primary CTA from being inverted to an
-         unreadable state in clients that force-darken (Outlook.com uses
-         [data-ogsc]; Apple Mail / iOS use prefers-color-scheme). */
+      /* Dark-mode surface fix (Apple Mail / iOS). Flip the page + main light surfaces to a
+         dark surface and lift text so copy stays legible when the client force-darkens. */
       @media (prefers-color-scheme: dark) {
+        body, .dm-page { background-color: #11151a !important; }
+        .dm-surface, .dm-surface > div, .dm-surface table td { background-color: #1e2329 !important; }
+        .dm-surface div { color: #e8eaed !important; }
+        .dm-surface a:not(.dm-keep-cta) { color: #9db8ff !important; }
+        /* Dark-mode CTA guard (declared last so the branded button keeps its colour). */
         .dm-keep-cta td { background-color: #2f67ef !important; }
         .dm-keep-cta a { color: #ffffff !important; }
       }
+      /* Dark-mode surface fix (Outlook.com uses the [data-ogsc] attribute hook). */
+      [data-ogsc] body, [data-ogsc] .dm-page { background-color: #11151a !important; }
+      [data-ogsc] .dm-surface, [data-ogsc] .dm-surface > div,
+      [data-ogsc] .dm-surface table td { background-color: #1e2329 !important; }
+      [data-ogsc] .dm-surface div { color: #e8eaed !important; }
       [data-ogsc] .dm-keep-cta td { background-color: #2f67ef !important; }
       [data-ogsc] .dm-keep-cta a { color: #ffffff !important; }
     </mj-style>
@@ -74,7 +82,7 @@
   </mj-head>
   <mj-body background-color="#f3f4f6">
 <!-- #-START-# Header -->
-<mj-wrapper mj-class="whitebg">
+<mj-wrapper mj-class="whitebg" css-class="dm-surface">
   <mj-section padding="25px 35px">
     <mj-column vertical-align="middle">
       <mj-text mj-class="h6 text-primary extrabold" align="left" padding-bottom="0">TemplateHedgehog weekly build brief</mj-text>
@@ -93,7 +101,7 @@
      The first name sits in body copy, not the headline, so a long name wraps
      gracefully instead of breaking the hero (see qa-notes.md). Set an ESP-side
      default for user.first_name (e.g. "there") so an empty value still reads. -->
-<mj-wrapper mj-class="whitebg">
+<mj-wrapper mj-class="whitebg" css-class="dm-surface">
   <mj-section padding="44px 35px 28px 35px">
     <mj-column width="520px">
       <mj-text mj-class="label thblue" align="center" padding-bottom="12px">Welcome</mj-text>
@@ -107,7 +115,7 @@
 
 <!-- #-START-# Onboarding Step Card -->
 <!-- Merge field: {{ account.verify_url }} (primary activation destination). -->
-<mj-wrapper mj-class="whitebg">
+<mj-wrapper mj-class="whitebg" css-class="dm-surface">
   <mj-section>
     <mj-column width="520px">
       <mj-text mj-class="label thblue" align="left" padding-bottom="8px">Onboarding step 2 of 4</mj-text>
@@ -122,7 +130,7 @@
 <!-- #-START-# app download superlight  -->
 <!-- Merge fields: {{ app_store_url }}, {{ play_store_url }}. Replace the
      placehold.co badges with your real store-badge images before sending. -->
-<mj-wrapper mj-class="superlightbg">
+<mj-wrapper mj-class="superlightbg" css-class="dm-surface">
   <mj-section>
     <mj-column padding-bottom="0">
       <mj-text mj-class="h3 dark" css-class="center">Download the mobile app</mj-text>
@@ -147,7 +155,7 @@
 <!-- #-START-# footer onboarding -->
 <!-- Merge field: {{ preferences_url }} (per-recipient manage-preferences /
      unsubscribe link). Most ESPs require a working unsubscribe route here. -->
-<mj-wrapper mj-class="whitebg">
+<mj-wrapper mj-class="whitebg" css-class="dm-surface">
   <mj-section padding-top="25px">
     <mj-group>
       <mj-column width="30%" padding="0 0 0 15px">

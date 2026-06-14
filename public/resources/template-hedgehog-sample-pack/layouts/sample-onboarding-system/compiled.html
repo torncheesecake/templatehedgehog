@@ -72,14 +72,22 @@
       @media only screen and (max-width:480px) {
         .ios-fix { display: inline-block !important; }
       }
-      /* Dark-mode guard. The color-scheme meta opts the email into the client's
-         own dark handling; this keeps the primary CTA from being inverted to an
-         unreadable state in clients that force-darken (Outlook.com uses
-         [data-ogsc]; Apple Mail / iOS use prefers-color-scheme). */
+      /* Dark-mode surface fix (Apple Mail / iOS). Flip the page + main light surfaces to a
+         dark surface and lift text so copy stays legible when the client force-darkens. */
       @media (prefers-color-scheme: dark) {
+        body, .dm-page { background-color: #11151a !important; }
+        .dm-surface, .dm-surface > div, .dm-surface table td { background-color: #1e2329 !important; }
+        .dm-surface div { color: #e8eaed !important; }
+        .dm-surface a:not(.dm-keep-cta) { color: #9db8ff !important; }
+        /* Dark-mode CTA guard (declared last so the branded button keeps its colour). */
         .dm-keep-cta td { background-color: #2f67ef !important; }
         .dm-keep-cta a { color: #ffffff !important; }
       }
+      /* Dark-mode surface fix (Outlook.com uses the [data-ogsc] attribute hook). */
+      [data-ogsc] body, [data-ogsc] .dm-page { background-color: #11151a !important; }
+      [data-ogsc] .dm-surface, [data-ogsc] .dm-surface > div,
+      [data-ogsc] .dm-surface table td { background-color: #1e2329 !important; }
+      [data-ogsc] .dm-surface div { color: #e8eaed !important; }
       [data-ogsc] .dm-keep-cta td { background-color: #2f67ef !important; }
       [data-ogsc] .dm-keep-cta a { color: #ffffff !important; }
     </style>
@@ -98,14 +106,14 @@
         >
         <!-- #-START-# Header -->
       <table
-         align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;"
+         align="center" class="dm-surface" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;"
       >
         <tbody>
           <tr>
             <td>
               
         
-      <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="" role="presentation" style="width:640px;" width="640" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+      <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="dm-surface-outlook" role="presentation" style="width:640px;" width="640" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
     
         
       <div  style="margin:0px auto;max-width:640px;">
@@ -263,14 +271,14 @@
      gracefully instead of breaking the hero (see qa-notes.md). Set an ESP-side
      default for user.first_name (e.g. "there") so an empty value still reads. -->
       <table
-         align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;"
+         align="center" class="dm-surface" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;"
       >
         <tbody>
           <tr>
             <td>
               
         
-      <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="" role="presentation" style="width:640px;" width="640" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+      <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="dm-surface-outlook" role="presentation" style="width:640px;" width="640" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
     
         
       <div  style="margin:0px auto;max-width:640px;">
@@ -413,14 +421,14 @@
       </table>
     <!-- #-END-# Welcome Email Hero --><!-- #-START-# Onboarding Step Card --><!-- Merge field: {{ account.verify_url }} (primary activation destination). -->
       <table
-         align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;"
+         align="center" class="dm-surface" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;"
       >
         <tbody>
           <tr>
             <td>
               
         
-      <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="" role="presentation" style="width:640px;" width="640" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+      <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="dm-surface-outlook" role="presentation" style="width:640px;" width="640" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
     
         
       <div  style="margin:0px auto;max-width:640px;">
@@ -564,14 +572,14 @@
     <!-- #-END-# Onboarding Step Card --><!-- #-START-# app download superlight  --><!-- Merge fields: {{ app_store_url }}, {{ play_store_url }}. Replace the
      placehold.co badges with your real store-badge images before sending. -->
       <table
-         align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#f8fafc;background-color:#f8fafc;width:100%;"
+         align="center" class="dm-surface" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#f8fafc;background-color:#f8fafc;width:100%;"
       >
         <tbody>
           <tr>
             <td>
               
         
-      <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="" role="presentation" style="width:640px;" width="640" bgcolor="#f8fafc" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+      <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="dm-surface-outlook" role="presentation" style="width:640px;" width="640" bgcolor="#f8fafc" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
     
         
       <div  style="margin:0px auto;max-width:640px;">
@@ -851,14 +859,14 @@
     <!-- #-END-# app download superlight --><!-- #-START-# footer onboarding --><!-- Merge field: {{ preferences_url }} (per-recipient manage-preferences /
      unsubscribe link). Most ESPs require a working unsubscribe route here. -->
       <table
-         align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;"
+         align="center" class="dm-surface" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;"
       >
         <tbody>
           <tr>
             <td>
               
         
-      <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="" role="presentation" style="width:640px;" width="640" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+      <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="dm-surface-outlook" role="presentation" style="width:640px;" width="640" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
     
         
       <div  style="margin:0px auto;max-width:640px;">

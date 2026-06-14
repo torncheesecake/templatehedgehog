@@ -125,7 +125,19 @@ export const MJML_CLASS_TOKENS: Record<string, Record<string, string>> = {
 
 /**
  * Delivery-critical CSS that must survive in EVERY tier. Kept inline (never relied on
- * an include merge). Carries the responsive breakpoint and the dark-mode CTA guard.
+ * an include merge). Carries the responsive breakpoint, a conservative dark-mode surface
+ * fix, and the dark-mode CTA guard.
+ *
+ * Dark-mode surface fix: in Apple Mail / iOS (prefers-color-scheme) and Outlook.com
+ * ([data-ogsc]), white/light section backgrounds get force-darkened while inline dark text
+ * stays dark, leaving copy unreadable. We flip the page body and the MAIN section surfaces
+ * to a dark surface and lift primary/muted text to light tones, so white sections stay
+ * legible. The surface hook is `.dm-surface`, emitted by the shared head/dialects onto every
+ * wrapper/section that carries a light-surface token (whitebg/superlightbg) — see
+ * DM_SURFACE_CLASS. Deliberately conservative: only body + main surfaces + primary/muted
+ * text are touched; the .dm-keep-cta CTA guard is declared LAST so the branded button keeps
+ * its colour. Class/attribute rules only take effect in clients that honour <style>, which
+ * are exactly the force-darkening clients targeted here.
  */
 export const MJML_GUARDRAIL_STYLE = `      /* Used via css-class="ios-fix": keeps grouped columns (e.g. app-store
          badges, multi-column support rows) side by side on iOS Mail, which can
@@ -133,14 +145,22 @@ export const MJML_GUARDRAIL_STYLE = `      /* Used via css-class="ios-fix": keep
       @media only screen and (max-width:480px) {
         .ios-fix { display: inline-block !important; }
       }
-      /* Dark-mode guard. The color-scheme meta opts the email into the client's
-         own dark handling; this keeps the primary CTA from being inverted to an
-         unreadable state in clients that force-darken (Outlook.com uses
-         [data-ogsc]; Apple Mail / iOS use prefers-color-scheme). */
+      /* Dark-mode surface fix (Apple Mail / iOS). Flip the page + main light surfaces to a
+         dark surface and lift text so copy stays legible when the client force-darkens. */
       @media (prefers-color-scheme: dark) {
+        body, .dm-page { background-color: #11151a !important; }
+        .dm-surface, .dm-surface > div, .dm-surface table td { background-color: #1e2329 !important; }
+        .dm-surface div { color: #e8eaed !important; }
+        .dm-surface a:not(.dm-keep-cta) { color: #9db8ff !important; }
+        /* Dark-mode CTA guard (declared last so the branded button keeps its colour). */
         .dm-keep-cta td { background-color: #2f67ef !important; }
         .dm-keep-cta a { color: #ffffff !important; }
       }
+      /* Dark-mode surface fix (Outlook.com uses the [data-ogsc] attribute hook). */
+      [data-ogsc] body, [data-ogsc] .dm-page { background-color: #11151a !important; }
+      [data-ogsc] .dm-surface, [data-ogsc] .dm-surface > div,
+      [data-ogsc] .dm-surface table td { background-color: #1e2329 !important; }
+      [data-ogsc] .dm-surface div { color: #e8eaed !important; }
       [data-ogsc] .dm-keep-cta td { background-color: #2f67ef !important; }
       [data-ogsc] .dm-keep-cta a { color: #ffffff !important; }`;
 
@@ -217,6 +237,46 @@ ${MJML_RAW_HEAD}
   </mj-head>`;
 }
 
+/** CSS class hook the dark-mode surface fix targets. */
+export const DM_SURFACE_CLASS = "dm-surface";
+
+/**
+ * mj-class tokens that denote a light section/wrapper surface. Any wrapper/section carrying
+ * one of these gets the DM_SURFACE_CLASS hook so the dark-mode surface fix can darken it.
+ */
+const LIGHT_SURFACE_TOKENS = new Set(["whitebg", "superlightbg"]);
+
+/**
+ * Add the dark-mode surface hook (css-class="dm-surface") to every <mj-wrapper>/<mj-section>
+ * that carries a light-surface token (whitebg/superlightbg). This is the single mechanism
+ * that makes the shared dark-mode surface CSS (MJML_GUARDRAIL_STYLE) effective, and it runs
+ * on every assembled document — catalogue (wrapMjmlFragment) and all three tier dialects.
+ * Idempotent: skips elements that already carry the hook.
+ */
+export function addDarkSurfaceHooks(body: string): string {
+  return body.replace(
+    /<(mj-wrapper|mj-section)\b([^>]*?)(\/?)>/gi,
+    (full, tag: string, attrs: string, selfClose: string) => {
+      const mjClassMatch = attrs.match(/\bmj-class\s*=\s*"([^"]*)"/i);
+      if (!mjClassMatch) return full;
+      const tokens = mjClassMatch[1].trim().split(/\s+/);
+      const isLightSurface = tokens.some((t) => LIGHT_SURFACE_TOKENS.has(t));
+      if (!isLightSurface) return full;
+
+      const existingCssClass = attrs.match(/\bcss-class\s*=\s*"([^"]*)"/i);
+      if (existingCssClass) {
+        if (existingCssClass[1].split(/\s+/).includes(DM_SURFACE_CLASS)) return full;
+        const updated = attrs.replace(
+          /(\bcss-class\s*=\s*")([^"]*)(")/i,
+          (_m, p1: string, p2: string, p3: string) => `${p1}${p2} ${DM_SURFACE_CLASS}${p3}`,
+        );
+        return `<${tag}${updated}${selfClose}>`;
+      }
+      return `<${tag}${attrs} css-class="${DM_SURFACE_CLASS}"${selfClose}>`;
+    },
+  );
+}
+
 function sanitiseMjmlFragment(fragment: string): {
   body: string;
   styleBlocks: string[];
@@ -242,7 +302,7 @@ export function wrapMjmlFragment(fragment: string, previewText: string = DEFAULT
   const wrapped = `<mjml>
   ${getMjmlHead(styleBlocks, previewText)}
   <mj-body background-color="#f3f4f6">
-${body}
+${addDarkSurfaceHooks(body)}
   </mj-body>
 </mjml>`;
 

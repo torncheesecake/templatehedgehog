@@ -172,3 +172,22 @@ test("dm-keep-cta survives onto the compiled button in every tier", async () => 
     assert.match(html, /class="[^"]*dm-keep-cta/i, `${tier} must attach dm-keep-cta to the button`);
   }
 });
+
+test("dark-mode surface fix: light surfaces get the dm-surface hook + dark-mode override in every tier", async () => {
+  for (const tier of ["starter", "pro", "enterprise"] as PackTier[]) {
+    const html = await compileTier(tier, SOURCE);
+    // the whitebg wrapper picks up the dm-surface class hook
+    assert.match(html, /class="[^"]*dm-surface/i, `${tier} must hook the whitebg surface`);
+    // and the dark-mode surface override is present for both prefers-color-scheme and [data-ogsc]
+    assert.match(
+      html,
+      /@media[^{]*prefers-color-scheme\s*:\s*dark[\s\S]*?\.dm-surface[^}]*background-color\s*:/i,
+      `${tier} must darken .dm-surface under prefers-color-scheme`,
+    );
+    assert.match(
+      html,
+      /\[data-ogsc\][^{]*\.dm-surface[^}]*background-color\s*:/i,
+      `${tier} must darken .dm-surface under [data-ogsc]`,
+    );
+  }
+});

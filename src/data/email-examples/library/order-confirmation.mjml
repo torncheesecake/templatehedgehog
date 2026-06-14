@@ -3,7 +3,7 @@
 <!-- Production use: Used in ecommerce or subscription flows after successful payment. -->
 <mjml>
   <mj-head>
-    <mj-preview>TemplateHedgehog reusable email block</mj-preview>
+    <mj-preview>Your order is confirmed — here is your summary and what happens next.</mj-preview>
     <mj-attributes>
       <mj-all font-family="'Manrope', 'Inter', Arial, sans-serif" />
       <mj-body width="640px" background-color="#f3f4f6" />
