@@ -8,8 +8,6 @@ import {
   buildOrganizationJsonLd,
   buildSoftwareApplicationJsonLd,
   buildWebsiteJsonLd,
-  createSeoMetadata,
-  DEFAULT_SEO_DESCRIPTION,
 } from "@/lib/seo";
 import "./globals.css";
 
@@ -27,22 +25,11 @@ const sourceSerif = Source_Serif_4({
 
 const GOOGLE_TAG_ID = "G-7DTS6Z1FN1";
 
+// Global, non-route-specific metadata only. Each page owns its own title,
+// description, canonical, and Open Graph through createSeoMetadata so there is
+// a single owner per URL (the homepage owns "/").
 export const metadata: Metadata = {
-  ...createSeoMetadata({
-    title: `${TEMPLATE_CONFIG.brandName} | Modern email production workflow`,
-    description: DEFAULT_SEO_DESCRIPTION,
-    path: "/",
-    keywords: [
-      "modern email production workflow",
-      "MJML email systems",
-      "compiled HTML email",
-      "email QA notes",
-      "email handoff guidance",
-      "transactional email system",
-      "lifecycle email workflows",
-      "developer email archive",
-    ],
-  }),
+  metadataBase: new URL(TEMPLATE_CONFIG.siteUrl),
   icons: {
     icon: withBasePath("/icon-uxwing.svg"),
     shortcut: withBasePath("/icon-uxwing.svg"),
