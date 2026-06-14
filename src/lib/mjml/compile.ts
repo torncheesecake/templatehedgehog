@@ -16,6 +16,12 @@ type MjmlCompileResult = {
 
 type CompileMjmlOptions = {
   trusted?: boolean;
+  /**
+   * Absolute path of the source file. Only used on the trusted build/pack path so
+   * mjml can resolve <mj-include> relative to the file. Ignored on the untrusted path,
+   * where includes are rejected up front by assertSafeUntrustedMjml.
+   */
+  filePath?: string;
 };
 
 function toErrorMessage(error: unknown): string {
@@ -39,6 +45,8 @@ export async function compileMjml(
   }
 
   if (!trusted) {
+    // Untrusted (Studio/local-compile) input must never reach mjml's include resolver.
+    // This rejects <mj-include>, file:// paths and remote mj-font fetches before compilation.
     assertSafeUntrustedMjml(source);
   }
 
@@ -48,6 +56,11 @@ export async function compileMjml(
       validationLevel: "soft",
       keepComments: true,
       minify: false,
+      // Resolve <mj-include> only on the trusted first-party build/pack path (so the
+      // Enterprise shared head resolves at build time). On the untrusted path includes
+      // are already rejected above, so we hard-disable resolution as defence in depth.
+      ignoreIncludes: !trusted,
+      ...(trusted && options.filePath ? { filePath: options.filePath } : {}),
     }) as MjmlCompileResult;
   } catch (error) {
     throw new Error(`MJML compilation failed: ${toErrorMessage(error)}`);

@@ -9,6 +9,23 @@ test("assertSafeUntrustedMjml rejects mj-include", () => {
   );
 });
 
+test("assertSafeUntrustedMjml rejects mj-include in the head (shared head exfil attempt)", () => {
+  assert.throws(
+    () =>
+      assertSafeUntrustedMjml(
+        "<mjml><mj-head><mj-include path=\"../../etc/passwd\" /></mj-head><mj-body></mj-body></mjml>",
+      ),
+    /mj-include/i,
+  );
+});
+
+test("assertSafeUntrustedMjml rejects mj-include with leading whitespace and odd casing", () => {
+  assert.throws(
+    () => assertSafeUntrustedMjml("<mjml><mj-body>< MJ-Include path=\"x.mjml\"></mj-body></mjml>"),
+    /mj-include/i,
+  );
+});
+
 test("assertSafeUntrustedMjml rejects file URLs", () => {
   assert.throws(
     () => assertSafeUntrustedMjml("<mjml><mj-body><mj-text>file://etc/passwd</mj-text></mj-body></mjml>"),
