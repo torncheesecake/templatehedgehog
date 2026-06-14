@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { TEMPLATE_CONFIG } from "@/config/template";
 import { DocsLayout, DocsSection } from "@/components/docs/DocsLayout";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { buildBreadcrumbJsonLd, createSeoMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createSeoMetadata({
-  title: "Docs",
+  title: "Implementation confidence centre",
   description:
-    `Implementation guides for ${TEMPLATE_CONFIG.brandName} layouts, MJML source, compiled HTML, and email client caveats.`,
+    `Source-to-handoff implementation guidance for ${TEMPLATE_CONFIG.brandName} workflows, MJML source, compiled HTML, QA, and platform handoff.`,
   path: "/docs",
   keywords: [
     "MJML implementation docs",
@@ -18,26 +19,202 @@ export const metadata: Metadata = createSeoMetadata({
 });
 
 const inlineCodeClass =
-  "rounded-[0.45rem] border border-[var(--th-border-dark)] bg-[var(--bg-canvas)] px-1.5 py-0.5 text-[0.88em] font-medium text-white";
+  "rounded-[0.45rem] border border-[var(--identity-source-border)] bg-[var(--identity-source-soft)] px-1.5 py-0.5 text-[0.88em] font-medium text-[var(--identity-source)]";
 const listClass = "list-disc space-y-2.5 pl-5 marker:text-[var(--action-primary)]";
 
 const sections = [
-  { id: "intro", label: "Intro" },
-  { id: "workflow", label: "Workflow" },
-  { id: "copy-modes", label: "Copy modes" },
+  { id: "intro", label: "Archive model" },
+  { id: "workflow", label: "Working path" },
+  { id: "copy-modes", label: "Source formats" },
   { id: "outlook", label: "Outlook caveats" },
   { id: "customisation", label: "Safe customisation" },
   { id: "images", label: "Image hosting" },
   { id: "layouts-vs-components", label: "Layouts vs components" },
-  { id: "esp-handoff", label: "ESP handoff" },
+  { id: "esp-handoff", label: "Platform handoff" },
+  { id: "compatibility", label: "Compatibility" },
   { id: "pitfalls", label: "Client pitfalls" },
 ];
+
+const implementationPath = [
+  ["01", "Download archive", "Keep source, compiled output, previews, QA notes, and guidance together."],
+  ["02", "Choose workflow", "Start from the closest lifecycle, transactional, newsletter, or campaign package."],
+  ["03", "Inspect MJML", "Review the editable source and component stack before changing structure."],
+  ["04", "Compile or use HTML", "Compile from source, or use the provided compiled HTML for platform upload."],
+  ["05", "Review preview", "Check the rendered layout so visual changes are caught before handoff."],
+  ["06", "Complete QA", "Review links, images, mobile stacking, footer/legal copy, and merge fields."],
+  ["07", "Handoff into platform", "Move the artefact into Mailchimp, HubSpot, Salesforce, NetSuite, Klaviyo, Customer.io, or your ESP."],
+];
+
+const docsCoverage = [
+  ["Getting started", "What to open first after purchase and how to pick the closest workflow."],
+  ["Working with MJML", "How to treat source as the editable truth and keep changes maintainable."],
+  ["Using compiled HTML", "When to use delivery-ready output for QA, approval, or platform import."],
+  ["QA and rendering checks", "Outlook caveats, mobile stacking, image handling, and client pitfalls."],
+  ["Platform handoff", "How to separate Template Hedgehog artefacts from ESP responsibilities."],
+  ["Compatibility", "How Mailchimp, HubSpot, Salesforce, NetSuite, Klaviyo, and Customer.io fit into the handoff."],
+  ["Licence and updates", "Where product usage, reuse rights, and update expectations fit."],
+  ["Troubleshooting", "How to identify common implementation issues before send."],
+];
+
+const platformCompatibilityNotes = [
+  [
+    "Mailchimp",
+    "Prepare reviewed compiled HTML before import. Mailchimp still handles lists, audience segments, automations, sending, unsubscribe, and reporting.",
+  ],
+  [
+    "HubSpot",
+    "Use Template Hedgehog as source, preview, QA, and compiled-output preparation before HubSpot email production. HubSpot still owns CRM data, workflows, sending, and reporting.",
+  ],
+  [
+    "Salesforce",
+    "Hand over MJML source, compiled HTML, and QA notes for use in Salesforce email tooling. Salesforce still owns journeys, audience data, consent, delivery, and reporting.",
+  ],
+  [
+    "NetSuite",
+    "Prepare valid HTML structure for NetSuite marketing campaign use. Customers remain responsible for upload, campaign configuration, lists, sending, and reporting unless separately agreed.",
+  ],
+  [
+    "Klaviyo",
+    "Prepare production HTML and handoff notes before Klaviyo import. Klaviyo still owns segments, flows, consent, unsubscribe, delivery, and reporting.",
+  ],
+  [
+    "Customer.io",
+    "Prepare the email artefact and handoff notes before Customer.io implementation. Customer.io still owns journeys, profiles, data, delivery, and reporting.",
+  ],
+];
+
+function DocsHeroPanel() {
+  return (
+    <div className="border-y border-[var(--border-subtle)] bg-white px-4 py-5 shadow-[0_22px_65px_rgba(15,23,42,0.06)] sm:px-5">
+      <p className="text-[0.78rem] font-semibold uppercase tracking-[0.08em] text-[var(--identity-source)]">
+        Source to handoff
+      </p>
+      <div className="mt-4 grid gap-0">
+        {["Source", "Compile", "Preview", "QA", "Handoff"].map((step, index) => (
+          <div key={step} className="grid grid-cols-[2.5rem_minmax(0,1fr)] border-t border-[var(--border-subtle)] py-3 first:border-t-0">
+            <span className="text-[0.78rem] font-semibold text-[var(--identity-source)]">0{index + 1}</span>
+            <div>
+              <h2 className="text-[1rem] font-semibold text-[var(--text-primary)]">{step}</h2>
+              <p className="mt-1 text-[0.86rem] leading-6 text-[var(--text-secondary)]">
+                {[
+                  "Start from editable MJML and workflow intent.",
+                  "Create production HTML or use the included compiled output.",
+                  "Inspect the rendered artefact before it leaves the archive.",
+                  "Check links, images, mobile behaviour, tokens, and legal copy.",
+                  "Move the package into the sending platform with boundaries clear.",
+                ][index]}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function DocsPreface() {
+  return (
+    <div className="space-y-12">
+      <section className="border-y border-[var(--border-subtle)] bg-[var(--bg-surface)] px-4 py-6 sm:px-5">
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)]">
+          <div>
+            <p className="text-[0.78rem] font-semibold uppercase tracking-[0.08em] text-[var(--text-meta)]">
+              Implementation pathway
+            </p>
+            <h2 className="mt-2 font-serif text-[clamp(1.9rem,4vw,3rem)] font-semibold leading-[1] text-[var(--text-primary)]">
+              What to do first after purchase.
+            </h2>
+            <p className="mt-4 text-[1rem] leading-8 text-[var(--text-secondary)]">
+              The archive is useful when the route from source to handoff is obvious. Start with the workflow, keep source and output together, and run QA before the ESP takes over.
+            </p>
+          </div>
+          <ol className="grid gap-4 md:grid-cols-2">
+            {implementationPath.map(([number, title, copy]) => (
+              <li key={number} className="border-t border-[var(--border-subtle)] pt-4">
+                <p className="text-[0.76rem] font-semibold text-[var(--identity-source)]">{number}</p>
+                <h3 className="mt-2 text-[1.06rem] font-semibold text-[var(--text-primary)]">{title}</h3>
+                <p className="mt-2 text-[0.9rem] leading-7 text-[var(--text-secondary)]">{copy}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section className="grid gap-10 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)]">
+        <div>
+          <p className="text-[0.78rem] font-semibold uppercase tracking-[0.08em] text-[var(--text-meta)]">
+            What these guides cover
+          </p>
+          <h2 className="mt-2 font-serif text-[clamp(1.9rem,4vw,3rem)] font-semibold leading-[1] text-[var(--text-primary)]">
+            Organised by buyer problem.
+          </h2>
+          <p className="mt-4 text-[1rem] leading-8 text-[var(--text-secondary)]">
+            The details remain technical, but the entry points follow the questions that block a team from using the archive in production.
+          </p>
+        </div>
+        <div className="grid gap-4 md:grid-cols-2">
+          {docsCoverage.map(([title, copy]) => (
+            <article key={title} className="border-t border-[var(--border-subtle)] pt-4">
+              <h3 className="text-[1.04rem] font-semibold text-[var(--text-primary)]">{title}</h3>
+              <p className="mt-2 text-[0.9rem] leading-7 text-[var(--text-secondary)]">{copy}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="border-y border-[var(--border-subtle)] bg-white px-4 py-6 sm:px-5">
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)]">
+          <div>
+            <p className="text-[0.78rem] font-semibold uppercase tracking-[0.08em] text-[var(--identity-source)]">
+              Platform boundary
+            </p>
+            <h2 className="mt-2 font-serif text-[clamp(1.9rem,4vw,3rem)] font-semibold leading-[1] text-[var(--text-primary)]">
+              The archive prepares the artefact. The platform sends it.
+            </h2>
+            <p className="mt-4 text-[1rem] leading-8 text-[var(--text-secondary)]">
+              Use these docs to prepare source, output, preview, QA, and handoff. Do not treat Template Hedgehog as a sending or automation platform.
+            </p>
+          </div>
+          <div className="grid gap-6 md:grid-cols-2">
+            <article className="border-l border-[var(--identity-source-border)] pl-4">
+              <h3 className="text-[1.08rem] font-semibold text-[var(--text-primary)]">Template Hedgehog handles</h3>
+              <ul className="mt-3 space-y-2 text-[0.92rem] leading-7 text-[var(--text-secondary)]">
+                {["MJML source", "Workflow guidance", "QA guidance", "Compiled HTML", "Preview and handoff package"].map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </article>
+            <article className="border-l border-[var(--border-subtle)] pl-4">
+              <h3 className="text-[1.08rem] font-semibold text-[var(--text-primary)]">Sending platforms handle</h3>
+              <ul className="mt-3 space-y-2 text-[0.92rem] leading-7 text-[var(--text-secondary)]">
+                {["Audiences and segments", "Automation", "Unsubscribe", "Consent and GDPR workflow", "Reporting and delivery"].map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+              <p className="mt-4 text-[0.9rem] leading-7 text-[var(--text-secondary)]">
+                Examples: Mailchimp, HubSpot, Salesforce, NetSuite, Klaviyo, Customer.io, or your ESP.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  );
+}
 
 export default function DocsPage() {
   return (
     <DocsLayout
-      title="Developer documentation."
-      summary="Implementation guidance for using MJML components, layouts, and compiled HTML in production email systems."
+      eyebrow="Implementation confidence centre"
+      title="Use the archive without guessing."
+      summary="Source-to-handoff guidance for turning Template Hedgehog from downloaded files into a reviewable production email package."
+      actions={[
+        { href: "/workflows", label: "View workflows", primary: true },
+        { href: "/sample-pack", label: "Inspect sample pack" },
+      ]}
+      heroPanel={<DocsHeroPanel />}
+      preface={<DocsPreface />}
       navItems={sections}
     >
       <JsonLd
@@ -47,10 +224,15 @@ export default function DocsPage() {
           { name: "Docs", path: "/docs" },
         ])}
       />
-      <DocsSection id="intro" title="Intro">
+      <DocsSection id="intro" title="Archive model">
         <p>
-          {TEMPLATE_CONFIG.brandName} is an implementation system for production email.
-          Layout pages show complete message structure, and component pages let you inspect single blocks when needed.
+          {TEMPLATE_CONFIG.brandName} is an implementation system for production email. Layout pages show complete
+          workflow packages, and component pages let you inspect single blocks when one section needs source-level changes.
+        </p>
+        <p>
+          If you are evaluating before purchase, start with the <Link href="/sample-pack">public sample pack</Link>. It
+          shows one complete workflow sample with MJML source, compiled HTML, QA notes, testing notes, implementation
+          guidance, workflow context, and licence reference.
         </p>
         <p>
           The intended editing model is straightforward: treat MJML as the source of truth, compile to HTML when your ESP
@@ -59,12 +241,12 @@ export default function DocsPage() {
         </p>
       </DocsSection>
 
-      <DocsSection id="workflow" title="Recommended workflow">
+      <DocsSection id="workflow" title="Recommended working path">
         <p>
           A safe working pattern for most teams looks like this:
         </p>
         <ol className="list-decimal space-y-2.5 pl-5 marker:font-semibold marker:text-[var(--action-primary)]">
-          <li>Start from the closest layout, then move to component detail when needed.</li>
+          <li>Start from the closest workflow or layout package, then move to component detail when needed.</li>
           <li>Edit the <span className={inlineCodeClass}>MJML</span> source rather than patching compiled HTML by hand.</li>
           <li>Compile to HTML and test the result in your delivery workflow.</li>
           <li>Run quick visual checks in Gmail, Outlook, and Apple Mail before final send.</li>
@@ -75,18 +257,17 @@ export default function DocsPage() {
         </p>
       </DocsSection>
 
-      <DocsSection id="copy-modes" title="Snippet vs standalone">
+      <DocsSection id="copy-modes" title="Block source and full files">
         <p>
-          Component pages expose two copy modes when the sources differ. Use the <span className={inlineCodeClass}>snippet</span>{" "}
-          mode when you are stacking multiple blocks inside one existing <span className={inlineCodeClass}>mj-body</span>.
-          Use the <span className={inlineCodeClass}>standalone</span> mode when you need a complete file that can compile on
-          its own.
+          Component pages expose block-level source and complete files when the sources differ. Use block source when you
+          are stacking multiple sections inside one existing <span className={inlineCodeClass}>mj-body</span>. Use the full
+          file when you need a complete MJML document that can compile on its own.
         </p>
         <ul className={listClass}>
-          <li>MJML snippets are block-level source for composing several sections into the same email.</li>
-          <li>Standalone MJML includes the wrapper, shared classes, and document structure required for independent compilation.</li>
-          <li>HTML snippets are useful for inspection and controlled assembly, but most ESP handoff should use standalone compiled HTML.</li>
-          <li>Compiled standalone HTML is the delivery-ready output for QA, import, and final review.</li>
+          <li>Block MJML is source for composing several sections into the same email.</li>
+          <li>Complete MJML includes the wrapper, shared classes, and document structure required for independent compilation.</li>
+          <li>Block HTML is useful for inspection and controlled assembly, but most platform handoff should use complete compiled HTML.</li>
+          <li>Complete compiled HTML is the delivery-ready output for QA, import, and final review.</li>
         </ul>
       </DocsSection>
 
@@ -147,7 +328,7 @@ export default function DocsPage() {
         </ul>
       </DocsSection>
 
-      <DocsSection id="esp-handoff" title="ESP handoff guidance">
+      <DocsSection id="esp-handoff" title="Platform handoff guidance">
         <p>
           Some teams hand compiled HTML straight to an ESP. Others move through review, QA, or CRM tooling first. The
           important thing is to separate editable source from delivery output.
@@ -156,8 +337,26 @@ export default function DocsPage() {
           <li>Use MJML in version control if developers or marketers will iterate on the email again.</li>
           <li>Use compiled HTML for final import, QA snapshots, or platforms that do not understand MJML.</li>
           <li>Keep a record of the component or layout slug used so future edits start from the right source block.</li>
-          <li>After importing into an ESP, verify that tracking links, merge tags, and unsubscribe logic did not alter structure unexpectedly.</li>
+          <li>After importing into a platform, verify that tracking links, merge tags, and unsubscribe logic did not alter structure unexpectedly.</li>
+          <li>Keep audience selection, consent, automation, unsubscribe, reporting, and delivery inside the sending platform.</li>
         </ul>
+      </DocsSection>
+
+      <DocsSection id="compatibility" title="Compatibility by platform">
+        <p>
+          Template Hedgehog is compatible with these platforms as a source-to-handoff system. Compatibility means the
+          archive prepares MJML source, compiled HTML, previews, QA notes, and handoff guidance before import. It does
+          not mean one-click sync, native account integration, campaign setup, sending, automation, audience management,
+          unsubscribe handling, or reporting.
+        </p>
+        <div className="not-prose mt-6 grid gap-4 md:grid-cols-2">
+          {platformCompatibilityNotes.map(([platform, note]) => (
+            <article key={platform} className="border-t border-[var(--border-subtle)] pt-4">
+              <h3 className="text-[1.05rem] font-semibold text-[var(--text-primary)]">{platform}</h3>
+              <p className="mt-2 text-[0.92rem] leading-7 text-[var(--text-secondary)]">{note}</p>
+            </article>
+          ))}
+        </div>
       </DocsSection>
 
       <DocsSection id="pitfalls" title="Common email client pitfalls">

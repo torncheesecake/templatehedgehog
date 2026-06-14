@@ -1,0 +1,4 @@
+lead_id,company,contact_name,role,email,linkedin,source,net_suite_signal,current_template_problem,campaign_type,package_fit,stage,last_contact,next_action,next_action_date,estimated_value,probability,notes
+NS-001,,,,,,manual research,,,,,research,,,,,,
+NS-002,,,,,,linkedin,,,,,contacted,,,,,,
+NS-003,,,,,,referral,,,,,enquiry received,,,,,,

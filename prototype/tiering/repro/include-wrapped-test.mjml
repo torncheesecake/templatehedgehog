@@ -1,0 +1,16 @@
+<!-- REPRODUCTION TEST: include with <mjml> wrapper in the included file -->
+<mjml>
+  <mj-head>
+    <mj-include path="./shared-head-wrapped.mjml" />
+  </mj-head>
+  <mj-body>
+    <mj-section>
+      <mj-column>
+        <mj-button css-class="dm-keep-cta" href="https://example.com">CTA Button</mj-button>
+        <mj-text css-class="ios-fix">Hello with ios-fix class</mj-text>
+        <mj-text mj-class="repro-token">Hello with repro-token mj-class</mj-text>
+        <mj-text>Plain text (should be #ff0000 / 18px if mj-attributes applied)</mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>

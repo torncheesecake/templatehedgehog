@@ -1,21 +1,69 @@
+<!-- Purpose: Left-aligned hero block over a background image with a headline and CTA. -->
+<!-- Components: header-brand-row, hero-image-left, accent-cta-button. -->
+<!-- Production use: Left-aligned hero variant for a launch or campaign send. -->
 <mjml>
   <mj-head>
-    <mj-include path="../styles.mjml" />
-    <mj-title>Title</mj-title>
-    <mj-preview>Pre-header&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp; </mj-preview>
+    <mj-preview>Run your whole business from one connected platform.</mj-preview>
+    <mj-attributes>
+      <mj-all font-family="'Manrope', 'Inter', Arial, sans-serif" />
+      <mj-body width="640px" background-color="#f3f4f6" />
+      <mj-wrapper padding="0" full-width="full-width" />
+      <mj-section padding="28px 34px" />
+      <mj-column padding="0" />
+      <mj-image padding="0 0 14px 0" />
+      <mj-text padding="0 0 12px 0" font-size="16px" line-height="28px" color="#1a1a1a" />
+      <mj-button padding="0" font-size="16px" font-weight="700" border-radius="999px" inner-padding="14px 30px" />
+      <mj-class name="h1" font-size="42px" line-height="46px" font-weight="800" />
+      <mj-class name="body" font-family="'Inter', Arial, sans-serif" font-size="17px" line-height="28px" />
+      <mj-class name="small" font-family="'Inter', Arial, sans-serif" font-size="14px" line-height="23px" />
+      <mj-class name="label" font-family="'Inter', Arial, sans-serif" font-size="12px" font-weight="700" text-transform="uppercase" letter-spacing="0.12em" />
+      <mj-class name="bold" font-weight="700" />
+      <mj-class name="extrabold" font-weight="800" />
+      <mj-class name="white" color="#ffffff" />
+      <mj-class name="light" color="#94a3b8" />
+      <mj-class name="dark" color="#1a1a1a" />
+      <mj-class name="text-primary" color="#1a1a1a" />
+      <mj-class name="text-muted" color="#4a5568" />
+      <mj-class name="thblue" color="#2f67ef" />
+      <mj-class name="whitebg" background-color="#ffffff" />
+      <mj-class name="superlightbg" background-color="#f8fafc" />
+      <mj-class name="thbluebg" background-color="#2f67ef" />
+    </mj-attributes>
+    <mj-style>
+      .border-top-light { border-top: 1px solid rgba(26, 26, 26, 0.1) !important; }
+    </mj-style>
+    <mj-raw>
+      <meta name="color-scheme" content="light dark" />
+      <meta name="supported-color-schemes" content="light dark" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    </mj-raw>
   </mj-head>
-  <mj-body background-color="#e9e9e9">
-    <mj-wrapper background-url="https://example.com Product.com/core/media/media.nl?id=1222101&c=1018014&h=d0B3Vgdzjn6ge9a-bFTib6OyvibbJ6_SJzeSoFNUg17OfRZb" background-size="700px" background-repeat="no-repeat">
-      <mj-section>
-        <mj-column vertical-align="middle">
-          <mj-image src="https://placehold.co/1200x600/png?text=Template+Image" width="206px" align="left" />
-        </mj-column>
+  <mj-body mj-class="superlightbg">
+    <mj-wrapper mj-class="whitebg">
+      <mj-section padding="20px">
+        <mj-column>
+          <mj-image src="https://placehold.co/240x80/png?text=Your+Brand+Logo" width="206px" padding="0" align="left" href="https://templatehedgehog.co.uk" alt="Your Brand" />
         </mj-column>
       </mj-section>
-      <mj-section>
+    </mj-wrapper>
+    <mj-wrapper mj-class="whitebg">
+      <mj-section padding="0">
+        <mj-column padding="0" vertical-align="middle" width="50%">
+          <mj-image src="https://placehold.co/640x800/png?text=Your+Product" padding="0" fluid-on-mobile="true" alt="Your Product platform overview" />
+        </mj-column>
+        <mj-column vertical-align="middle" width="50%" padding="40px 30px">
+          <mj-text mj-class="label thblue" align="left" padding-bottom="12px">Introducing</mj-text>
+          <mj-text mj-class="h1 text-primary extrabold" align="left" padding-bottom="16px">One platform, one source of truth</mj-text>
+          <mj-text mj-class="body text-muted" align="left" padding-bottom="22px">Connect finance, operations, and reporting so the numbers your team relies on stay accurate and live, without the manual reconciliation.</mj-text>
+          <mj-button mj-class="thbluebg white body bold" css-class="dm-keep-cta" align="left" border-radius="999px" inner-padding="16px 34px" href="{{ demo_url }}">Book a demo</mj-button>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <mj-wrapper mj-class="whitebg">
+      <mj-section padding-top="18px" padding-bottom="40px">
         <mj-column>
-          <mj-spacer height="100px" />
-          <mj-text mj-class="h1" align="center" padding-top="60px" padding-bottom="0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
+          <mj-text mj-class="small light" css-class="border-top-light" padding-top="18px">Replace this footer with your own compliance and unsubscribe copy before production send. Manage preferences <a href="https://templatehedgehog.co.uk/preferences" style="color:#94a3b8; text-decoration:underline;">here</a>. Your Brand Ltd. Example House, London, WC2N 5DU.</mj-text>
         </mj-column>
       </mj-section>
     </mj-wrapper>

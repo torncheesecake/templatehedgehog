@@ -1,0 +1,135 @@
+<!-- DIALECT: PRO (prototype/tiering) -->
+<!-- Source of truth: src/data/email-examples/library/welcome-email.mjml + getMjmlHead() in src/data/mjml-library.ts -->
+<!-- Self-contained <mj-style> stylesheet in this file's own head. Classes applied via css-class. -->
+<!-- No mj-class/mj-attributes token system, no external include. -->
+<!--                                                                                                     -->
+<!-- INLINE-TOKEN PASS (the constant across all three dialects): every css-class-only mj-text ALSO -->
+<!-- carries inline brand font/size/colour attributes (belt-and-braces). This is what keeps the rendered -->
+<!-- output robust in clients that drop <style>, and it stops mjml inlining its Ubuntu default + injecting -->
+<!-- the Ubuntu webfont import. The <mj-style> is now purely ADDITIVE: responsive breakpoint + dark-mode. -->
+<mjml>
+  <mj-head>
+    <mj-preview>Welcome aboard — finish setup and invite your team in two minutes</mj-preview>
+    <mj-style>
+      /* Typography */
+      .t-h2 div { font-family: 'Manrope', 'Inter', Arial, sans-serif !important; font-size: 36px !important; line-height: 40px !important; font-weight: 800 !important; }
+      .t-h3 div { font-family: 'Manrope', 'Inter', Arial, sans-serif !important; font-size: 30px !important; line-height: 34px !important; font-weight: 800 !important; }
+      .t-h4 div { font-family: 'Manrope', 'Inter', Arial, sans-serif !important; font-size: 26px !important; line-height: 30px !important; font-weight: 800 !important; }
+      .t-body div { font-family: 'Inter', Arial, sans-serif !important; font-size: 17px !important; line-height: 28px !important; }
+      .t-small div { font-family: 'Inter', Arial, sans-serif !important; font-size: 14px !important; line-height: 23px !important; }
+      .t-label div { font-family: 'Inter', Arial, sans-serif !important; font-size: 12px !important; line-height: 16px !important; font-weight: 700 !important; text-transform: uppercase !important; letter-spacing: 0.12em !important; }
+      /* Colours */
+      .c-primary div { color: #1a1a1a !important; }
+      .c-muted div { color: #4a5568 !important; }
+      .c-thblue div { color: #2f67ef !important; }
+      .c-light div { color: #94a3b8 !important; }
+      /* Section / surface backgrounds (Pro uses css-class on sections for surfaces) */
+      .bg-white { background-color: #ffffff !important; }
+      .bg-superlight { background-color: #f8fafc !important; }
+      /* Responsive breakpoint */
+      @media only screen and (max-width:480px) {
+        .ios-fix { display: inline-block !important; }
+      }
+      /* Dark-mode CTA guard */
+      @media (prefers-color-scheme: dark) {
+        .dm-keep-cta td { background-color: #2f67ef !important; }
+        .dm-keep-cta a { color: #ffffff !important; }
+      }
+      [data-ogsc] .dm-keep-cta td { background-color: #2f67ef !important; }
+      [data-ogsc] .dm-keep-cta a { color: #ffffff !important; }
+    </mj-style>
+    <mj-raw>
+      <meta name="color-scheme" content="light dark" />
+      <meta name="supported-color-schemes" content="light dark" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    </mj-raw>
+  </mj-head>
+  <mj-body width="640px" background-color="#f3f4f6">
+<!-- #-START-# Header -->
+<mj-wrapper background-color="#ffffff" full-width="full-width" padding="0">
+  <mj-section css-class="bg-white" padding="25px 35px">
+    <mj-column vertical-align="middle">
+      <mj-image src="https://placehold.co/240x80/png?text=TemplateHedgehog+Logo" width="240px" padding="0" align="left" href="https://templatehedgehog.co.uk" alt="TemplateHedgehog" />
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# Header -->
+
+<!-- #-START-# Welcome Email Hero -->
+<mj-wrapper background-color="#ffffff" full-width="full-width" padding="0">
+  <mj-section css-class="bg-white" padding="44px 35px 28px 35px">
+    <mj-column width="520px">
+      <mj-text css-class="t-label c-thblue" font-family="'Inter', Arial, sans-serif" font-size="12px" line-height="16px" font-weight="700" text-transform="uppercase" letter-spacing="0.12em" color="#2f67ef" align="center" padding="0 0 12px 0">Welcome</mj-text>
+      <mj-text css-class="t-h2 c-primary" font-family="'Manrope', 'Inter', Arial, sans-serif" font-size="36px" line-height="40px" font-weight="800" color="#1a1a1a" align="center" padding="0 0 12px 0">Welcome to the product</mj-text>
+      <mj-text css-class="t-body c-muted" font-family="'Inter', Arial, sans-serif" font-size="17px" line-height="28px" color="#4a5568" align="center" padding="0 0 22px 0">Your workspace is ready. Start with the first setup task, then invite the people who need access.</mj-text>
+      <mj-button css-class="dm-keep-cta" align="center" padding="0" background-color="#2f67ef" color="#ffffff" font-family="'Inter', Arial, sans-serif" font-size="16px" font-weight="700" border-radius="999px" inner-padding="16px 34px" href="https://templatehedgehog.co.uk">Start setup</mj-button>
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# Welcome Email Hero -->
+
+<!-- #-START-# Onboarding Step Card -->
+<mj-wrapper background-color="#ffffff" full-width="full-width" padding="0">
+  <mj-section css-class="bg-white" padding="28px 34px">
+    <mj-column width="520px">
+      <mj-text css-class="t-label c-thblue" font-family="'Inter', Arial, sans-serif" font-size="12px" line-height="16px" font-weight="700" text-transform="uppercase" letter-spacing="0.12em" color="#2f67ef" align="left" padding="0 0 8px 0">Onboarding step 2 of 4</mj-text>
+      <mj-text css-class="t-h4 c-primary" font-family="'Manrope', 'Inter', Arial, sans-serif" font-size="26px" line-height="30px" font-weight="800" color="#1a1a1a" align="left" padding="0 0 10px 0">Connect your workspace</mj-text>
+      <mj-text css-class="t-body c-muted" font-family="'Inter', Arial, sans-serif" font-size="17px" line-height="28px" color="#4a5568" align="left" padding="0 0 18px 0">Connect the account your team uses every day so activity, alerts, and handoffs stay in one place.</mj-text>
+      <mj-button css-class="dm-keep-cta" align="left" padding="0" background-color="#2f67ef" color="#ffffff" font-family="'Inter', Arial, sans-serif" font-size="16px" font-weight="700" border-radius="999px" inner-padding="14px 28px" href="https://templatehedgehog.co.uk">Connect now</mj-button>
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# Onboarding Step Card -->
+
+<!-- #-START-# app download superlight  -->
+<mj-wrapper background-color="#f8fafc" full-width="full-width" padding="0">
+  <mj-section css-class="bg-superlight" padding="28px 34px">
+    <mj-column>
+      <mj-text css-class="t-h3 c-primary" font-family="'Manrope', 'Inter', Arial, sans-serif" font-size="30px" line-height="34px" font-weight="800" color="#1a1a1a" align="center" padding="0 0 12px 0">Download the mobile app</mj-text>
+    </mj-column>
+  </mj-section>
+  <mj-section css-class="bg-superlight" padding="0 34px 28px 34px">
+    <mj-column>
+      <mj-text css-class="t-body c-primary" font-family="'Inter', Arial, sans-serif" font-size="17px" line-height="28px" color="#1a1a1a" align="center" padding="0 0 12px 0">Keep approvals, account alerts, and time-sensitive updates close by when your team is away from their desk.</mj-text>
+    </mj-column>
+    <mj-group>
+      <mj-column>
+        <mj-image src="https://placehold.co/135x40/png?text=App+Store" width="135px" align="left" href="https://templatehedgehog.co.uk" target="_blank" alt="Download on the App Store" />
+      </mj-column>
+      <mj-column css-class="ios-fix">
+        <mj-image src="https://placehold.co/135x40/png?text=Google+Play" width="135px" align="right" href="https://templatehedgehog.co.uk" target="_blank" alt="Get it on Google Play" />
+      </mj-column>
+    </mj-group>
+  </mj-section>
+</mj-wrapper>
+<!-- #-END-# app download superlight -->
+
+<!-- #-START-# footer onboarding-->
+<mj-wrapper background-color="#ffffff" full-width="full-width" padding="0">
+  <mj-section css-class="bg-white" padding="25px 34px 0 34px">
+    <mj-group>
+      <mj-column width="30%" padding="0 0 0 15px">
+        <mj-image src="https://placehold.co/240x80/png?text=TemplateHedgehog+Logo" width="55px" height="21px" alt="TemplateHedgehog" align="left" href="https://templatehedgehog.co.uk" target="_blank" />
+      </mj-column>
+      <mj-column width="70%" padding="0 15px 0 0">
+        <mj-text css-class="t-small c-light" font-family="'Inter', Arial, sans-serif" font-size="14px" line-height="23px" color="#94a3b8" align="right" padding="3px 0 0 0"><a href="https://templatehedgehog.co.uk" style="color:#999999; text-decoration: underline;">Privacy policy</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="https://templatehedgehog.co.uk" style="color:#999999; text-decoration: underline;">Manage preferences</a></mj-text>
+      </mj-column>
+    </mj-group>
+  </mj-section>
+  <mj-section css-class="bg-white" padding="3px 34px 0 34px">
+    <mj-column>
+      <mj-divider />
+    </mj-column>
+  </mj-section>
+  <mj-section css-class="bg-white" padding="0 34px 40px 34px">
+    <mj-column>
+      <mj-text css-class="t-small c-light" font-family="'Inter', Arial, sans-serif" font-size="14px" line-height="23px" color="#94a3b8" align="left" padding="0 0 12px 0">Add your sender address to the safe-sender list so future updates arrive cleanly. You're receiving this email because you activated your product's guarantee. If you'd prefer not to receive product support emails, please click <a style="color:#666666; text-decoration:underline;" target="_blank" href="https://templatehedgehog.co.uk/preferences">here</a> to manage your preferences.</mj-text>
+      <mj-text css-class="t-small c-light" font-family="'Inter', Arial, sans-serif" font-size="14px" line-height="23px" color="#94a3b8" align="left" padding="0 0 12px 0">Use your own legal and compliance copy before production send.</mj-text>
+      <mj-text css-class="t-small c-light" font-family="'Inter', Arial, sans-serif" font-size="14px" line-height="23px" color="#94a3b8" align="left" padding="0 0 12px 0">TemplateHedgehog Ltd. Example House, London, WC2N 5DU.</mj-text>
+    </mj-column>
+  </mj-section>
+</mj-wrapper>
+<!--  #-END-# footer onboarding -->
+  </mj-body>
+</mjml>

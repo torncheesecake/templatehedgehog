@@ -1,20 +1,29 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowRight, CheckCircle2, Layers3, Workflow } from "lucide-react";
-import { createPageTitle, TEMPLATE_CONFIG } from "@/config/template";
+import {
+  ArrowRight,
+  CheckCircle2,
+  ClipboardCheck,
+  Code2,
+  FileCode2,
+  Layers3,
+  MonitorCheck,
+  PackageOpen,
+} from "lucide-react";
+import { createPageTitle } from "@/config/template";
 import {
   emailLayouts,
   getEmailLayoutBySlug,
-  getEmailLayoutSystemBySlug,
 } from "@/data/email-layouts";
 import { getEmailComponentBySlug } from "@/data/email-components";
 import { compiledLayoutHtmlBySlug } from "@/data/email-layouts/compiled";
+import { getEmailWorkflowsBySystem } from "@/data/workflows";
 import { TrackEventOnMount } from "@/components/analytics/TrackEventOnMount";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { SiteTopBar } from "@/components/site/SiteTopBar";
-import { HtmlPreviewFrame } from "@/components/ui/HtmlPreviewFrame";
 import { MjmlSourcePanel } from "@/components/ui/MjmlSourcePanel";
 import { MJML_PACK_NAME } from "@/lib/pack";
 import { buildBreadcrumbJsonLd, createSeoMetadata } from "@/lib/seo";
@@ -23,9 +32,154 @@ interface Props {
   params: Promise<{ slug: string }>;
 }
 
+function getDevZedFileName(fileName: string): string | undefined {
+  if (process.env.NODE_ENV !== "development") {
+    return undefined;
+  }
+
+  return fileName;
+}
+
 export function generateStaticParams() {
   return emailLayouts.map((layout) => ({ slug: layout.slug }));
 }
+
+function SectionIntro({
+  label,
+  title,
+  copy,
+}: {
+  label?: string;
+  title: string;
+  copy?: string;
+}) {
+  return (
+    <div className="max-w-3xl">
+      {label ? (
+        <p className="text-[0.78rem] font-semibold uppercase tracking-[0.08em] text-[var(--text-meta)]">
+          {label}
+        </p>
+      ) : null}
+      <h2 className="mt-2 font-serif text-[clamp(1.85rem,4vw,3.15rem)] font-semibold leading-[1] text-[var(--text-primary)]">
+        {title}
+      </h2>
+      {copy ? (
+        <p className="mt-3 text-[1rem] leading-8 text-[var(--text-secondary)]">
+          {copy}
+        </p>
+      ) : null}
+    </div>
+  );
+}
+
+function getWorkflowPurpose(system: string) {
+  switch (system) {
+    case "saas-lifecycle":
+      return {
+        label: "Lifecycle workflow",
+        when:
+          "Use it when a product or SaaS team needs an onboarding, activation, retention, or upgrade email that is ready to adapt.",
+        supports: "Supports customer lifecycle journeys from trigger to handoff.",
+      };
+    case "transactional":
+      return {
+        label: "Transactional workflow",
+        when:
+          "Use it when the send needs account, billing, security, support, or operational clarity more than campaign decoration.",
+        supports:
+          "Supports high-trust operational sends with source, output, QA, and handoff boundaries attached.",
+      };
+    case "newsletter":
+      return {
+        label: "Newsletter workflow",
+        when:
+          "Use it when recurring content, digest, update, or editorial sends need a stable repeatable structure.",
+        supports:
+          "Supports repeatable editorial production with reusable blocks and reviewable content sections.",
+      };
+    case "campaigns":
+    default:
+      return {
+        label: "Campaign workflow",
+        when:
+          "Use it when a launch, announcement, promotion, or conversion send needs a complete structure quickly.",
+        supports: "Supports planned campaign production from editable source to compiled handoff.",
+      };
+  }
+}
+
+function getLayoutQaNotes(system: string): string[] {
+  const shared = [
+    "Review every CTA href after tracking or ESP link wrapping.",
+    "Review image assets and alt text before export or ESP upload.",
+    "Check the mobile stack so the message order still makes sense on narrow screens.",
+    "Confirm footer, legal, preference, and support copy before handoff.",
+    "Confirm platform-specific merge fields, personalisation tokens, and fallback values.",
+  ];
+
+  if (system === "transactional") {
+    return [
+      ...shared,
+      "Check account, billing, security, or support wording against the triggering product event.",
+      "Keep unsubscribe handling aligned with the sending platform and local transactional email rules.",
+    ];
+  }
+
+  if (system === "newsletter") {
+    return [
+      ...shared,
+      "Review every article, digest item, and secondary link before scheduling.",
+      "Confirm unsubscribe, consent, and preference handling remains the sending platform's responsibility.",
+    ];
+  }
+
+  if (system === "saas-lifecycle") {
+    return [
+      ...shared,
+      "Check lifecycle timing, user state assumptions, and activation links before automation setup.",
+      "Confirm audience rules and journey triggers are handled inside the sending platform.",
+    ];
+  }
+
+  return [
+    ...shared,
+    "Check offer dates, campaign destinations, and product claims before upload.",
+    "Confirm audience selection, consent, automation, unsubscribe, and sending are handled by the platform.",
+  ];
+}
+
+const productionPackageItems = [
+  {
+    title: "MJML source",
+    copy: "Editable layout source for adapting copy, block order, imagery, and CTA destinations.",
+    icon: FileCode2,
+  },
+  {
+    title: "Compiled HTML",
+    copy: "Production output for ESP upload, QA review, or developer handoff.",
+    icon: Code2,
+  },
+  {
+    title: "Rendered preview",
+    copy: "Visual proof of the complete email before it moves into a sending platform.",
+    icon: MonitorCheck,
+  },
+  {
+    title: "QA notes",
+    copy: "Practical checks for links, images, mobile stacking, footer/legal copy, and platform tokens.",
+    icon: ClipboardCheck,
+  },
+  {
+    title: "Implementation guidance",
+    copy: "How to move from editable source to compiled output and final platform handoff.",
+    icon: PackageOpen,
+  },
+  {
+    title: "Component breakdown",
+    copy: "The reusable production blocks that make up the workflow package.",
+    icon: Layers3,
+  },
+] as const;
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
@@ -79,11 +233,16 @@ export default async function LayoutDetailPage({ params }: Props) {
     .map((block) => block.componentSlug);
 
   const compiledHtml = compiledLayoutHtmlBySlug[layout.slug] ?? null;
-  const layoutSystem = getEmailLayoutSystemBySlug(layout.system);
+  const workflowPurpose = getWorkflowPurpose(layout.system);
+  const relatedWorkflows = getEmailWorkflowsBySystem(layout.system);
+  const primaryWorkflow =
+    relatedWorkflows.find((workflow) => workflow.linkedLayoutSlug === layout.slug) ??
+    relatedWorkflows[0];
+  const qaNotes = getLayoutQaNotes(layout.system);
 
   return (
-    <main className="min-h-screen text-[var(--th-text-secondary)]">
-      <SiteTopBar />
+    <main className="th-monochrome min-h-screen bg-[var(--bg-canvas)] text-[var(--text-secondary)]">
+      <SiteTopBar theme="hero" ctaTone="inverse" />
       <JsonLd
         id="layout-breadcrumb"
         data={buildBreadcrumbJsonLd([
@@ -97,157 +256,274 @@ export default async function LayoutDetailPage({ params }: Props) {
         payload={{ layoutSlug: layout.slug }}
       />
 
-      <section className="relative isolate mx-auto w-full max-w-7xl overflow-hidden bg-[var(--bg-canvas)] px-5 pb-16 pt-10 sm:px-8 lg:px-12 lg:pb-20 lg:pt-12">
-        <div className="pointer-events-none absolute inset-x-0 top-0 -z-20 h-px bg-[linear-gradient(90deg,transparent,hsl(var(--th-accent-support)/0.46),transparent)]" />
-        <article className="grid gap-10 border-b border-[var(--th-border-dark)] pb-10 xl:grid-cols-[minmax(0,1.08fr)_minmax(360px,0.92fr)] xl:items-start">
-          <div>
-            <p className="text-[1rem] font-semibold uppercase tracking-[0.1em] text-[var(--th-text-secondary)]">
-              {layoutSystem?.title ?? "Layout recipe"}
-            </p>
-            <h1 className="mt-4 text-[2.35rem] font-semibold leading-[1.02] text-white sm:text-[3.2rem]">
-              {layout.title}
-            </h1>
-            <p className="mt-4 max-w-3xl text-[1.14rem] leading-8 text-[var(--th-text-secondary)]">
-              {layout.description}
-            </p>
-
-            <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-[1.03rem] text-[var(--th-text-secondary)]">
-                <span className="inline-flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[var(--action-primary)]" />
-                  {layout.componentBlocks.length} reusable blocks
-                </span>
-                <span className="inline-flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[var(--action-primary)]" />
-                  Part of the {layoutSystem?.title ?? "core"} system
-                </span>
-                <span className="inline-flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[var(--action-primary)]" />
-                  Copyable MJML and compiled HTML
-              </span>
-              <span className="inline-flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-[var(--action-primary)]" />
-                Built from the public production email system
-              </span>
+      <section className="relative isolate overflow-hidden border-b border-[var(--border-subtle)] bg-[var(--bg-canvas)] py-14 sm:py-16">
+        <div className="pointer-events-none absolute inset-x-0 top-0 -z-20 h-px bg-[linear-gradient(90deg,transparent,var(--identity-source),transparent)]" />
+        <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12">
+          <div className="grid gap-10 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] lg:items-end">
+            <div>
+              <p className="text-[0.78rem] font-semibold uppercase tracking-[0.1em] text-[var(--identity-source)]">
+                Deployable workflow package
+              </p>
+              <h1 className="mt-4 max-w-3xl font-serif text-[clamp(2.65rem,5.8vw,5rem)] font-semibold leading-[0.94] text-[var(--text-primary)]">
+                {layout.title}
+              </h1>
+              <p className="mt-5 max-w-2xl text-[1.08rem] leading-8 text-[var(--text-secondary)]">
+                {layout.description}
+              </p>
+              <div className="mt-7 grid gap-4 sm:grid-cols-3">
+                <div className="border-t border-[var(--border-subtle)] pt-4">
+                  <h2 className="text-[0.76rem] font-semibold uppercase tracking-[0.08em] text-[var(--text-meta)]">
+                    Workflow type
+                  </h2>
+                  <p className="mt-2 text-[0.94rem] leading-7 text-[var(--text-secondary)]">
+                    {workflowPurpose.label}
+                  </p>
+                </div>
+                <div className="border-t border-[var(--border-subtle)] pt-4">
+                  <h2 className="text-[0.76rem] font-semibold uppercase tracking-[0.08em] text-[var(--text-meta)]">
+                    When to use it
+                  </h2>
+                  <p className="mt-2 text-[0.94rem] leading-7 text-[var(--text-secondary)]">
+                    {workflowPurpose.when}
+                  </p>
+                </div>
+                <div className="border-t border-[var(--border-subtle)] pt-4">
+                  <h2 className="text-[0.76rem] font-semibold uppercase tracking-[0.08em] text-[var(--text-meta)]">
+                    What you receive
+                  </h2>
+                  <p className="mt-2 text-[0.94rem] leading-7 text-[var(--text-secondary)]">
+                    Source, compiled HTML, rendered preview, QA notes, component structure, and handoff context.
+                  </p>
+                </div>
+              </div>
+              <div className="mt-7 flex flex-wrap gap-3">
+                <Link
+                  href={primaryWorkflow ? `/workflows/${primaryWorkflow.slug}` : "/workflows"}
+                  className="th-btn th-btn-primary"
+                >
+                  View workflow context
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+                <Link href="#production-package" className="th-btn th-btn-secondary text-[var(--text-primary)]">
+                  See package contents
+                </Link>
+              </div>
             </div>
 
-            <div className="mt-7">
-              {compiledHtml ? (
-                <HtmlPreviewFrame
-                  html={compiledHtml}
-                  title={`${layout.title} rendered layout preview`}
-                  className="max-w-none"
-                />
-              ) : (
-                <div className="rounded-[0.9rem] border border-[var(--border-strong)] bg-[var(--bg-accent-soft)] px-4 py-4 text-[1rem] leading-7 text-white">
-                  Layout HTML is currently unavailable for this recipe. Rebuild the layout output to restore the rendered preview.
-                </div>
-              )}
+            <div className="border-y border-[var(--border-subtle)] py-5">
+              <p className="text-[0.78rem] font-semibold uppercase tracking-[0.08em] text-[var(--identity-source)]">
+                Source to handoff
+              </p>
+              <p className="mt-2 text-[1rem] leading-8 text-[var(--text-secondary)]">
+                {workflowPurpose.supports} Template Hedgehog prepares the artefact. The sending platform handles audiences, consent, automation, unsubscribe, reporting, and delivery.
+              </p>
+              <dl className="mt-5 grid gap-4 sm:grid-cols-2">
+                {[
+                  ["Source", "MJML available"],
+                  ["Output", compiledHtml ? "Compiled HTML available" : "Compiled HTML pending"],
+                  ["Preview", "Rendered layout proof"],
+                  ["Handoff", "QA and implementation notes"],
+                ].map(([label, value]) => (
+                  <div key={label} className="border-l border-[var(--border-subtle)] pl-3">
+                    <dt className="text-[0.72rem] font-semibold uppercase tracking-[0.08em] text-[var(--text-meta)]">
+                      {label}
+                    </dt>
+                    <dd className="mt-1 text-[0.92rem] font-semibold text-[var(--text-primary)]">
+                      {value}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
             </div>
           </div>
 
-          <div className="space-y-5">
-            <article className="relative overflow-hidden rounded-[1rem] border border-[var(--th-border-dark)] bg-[var(--bg-canvas)] p-4 sm:p-5">
-              <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,hsl(var(--th-accent-support)/0.42),transparent)]" />
-              <p className="text-[1rem] font-semibold uppercase tracking-[0.09em] text-[var(--th-text-secondary)]">
-                What this recipe covers
-              </p>
-              <h2 className="mt-2 text-[1.4rem] font-semibold text-white">Sections in sequence</h2>
-              <ul className="mt-3 space-y-2.5 text-[0.98rem] leading-7 text-[var(--th-text-secondary)]">
-                {layout.layoutSections.map((section) => (
-                  <li key={`${layout.slug}-${section.title}`} className="flex items-start gap-3">
-                    <CheckCircle2 className="mt-1 h-4.5 w-4.5 shrink-0 text-white" />
-                    <span>
-                      <strong className="font-semibold text-white">{section.title}.</strong>{" "}
-                      {section.description}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </article>
+          <figure className="mt-12 overflow-hidden border-y border-[var(--border-strong)] bg-white shadow-[0_34px_95px_rgba(49,59,114,0.12)]">
+            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[var(--border-subtle)] bg-[var(--bg-surface)] px-4 py-3 sm:px-5">
+              <figcaption>
+                <p className="text-[0.78rem] font-semibold uppercase tracking-[0.08em] text-[var(--identity-source)]">
+                  Rendered preview
+                </p>
+                <p className="mt-1 text-[0.88rem] leading-6 text-[var(--text-secondary)]">
+                  Complete production package preview before upload, QA, and handoff.
+                </p>
+              </figcaption>
+              <span className="text-[0.84rem] font-semibold text-[var(--text-primary)]">
+                {layout.componentBlocks.length} production blocks
+              </span>
+            </div>
+            <div className="relative min-h-[34rem] bg-white sm:min-h-[44rem]">
+              <Image
+                src={layout.previewImageUrl}
+                alt={`${layout.title} rendered workflow package preview`}
+                fill
+                sizes="(max-width: 1280px) 94vw, 1120px"
+                unoptimized
+                priority
+                className="object-contain object-top"
+              />
+            </div>
+          </figure>
+        </div>
+      </section>
 
-            <article className="relative overflow-hidden rounded-[1rem] border border-[var(--th-border-dark)] bg-[var(--bg-canvas)] p-4 sm:p-5">
-              <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,hsl(var(--th-accent-support)/0.42),transparent)]" />
-              <p className="text-[1rem] font-semibold uppercase tracking-[0.09em] text-[var(--th-text-secondary)]">
-                Implementation guidance
-              </p>
-              <h2 className="mt-2 text-[1.4rem] font-semibold text-white">How developers usually use it</h2>
-              <ul className="mt-3 space-y-2.5 text-[0.98rem] leading-7 text-[var(--th-text-secondary)]">
-                <li className="flex items-start gap-3">
-                  <Workflow className="mt-1 h-4.5 w-4.5 shrink-0 text-white" />
-                  <span>Edit the MJML recipe when you want to adjust structure, copy order, imagery, or CTA destinations.</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <Workflow className="mt-1 h-4.5 w-4.5 shrink-0 text-white" />
-                  <span>Use the compiled HTML when your ESP, QA handoff, or review process needs final delivery markup.</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <Workflow className="mt-1 h-4.5 w-4.5 shrink-0 text-white" />
-                  <span>Review the block order below before customising so the message hierarchy stays intact across clients.</span>
-                </li>
-              </ul>
-            </article>
+      <section id="production-package" className="border-b border-[var(--border-subtle)] bg-[var(--bg-surface)] py-14 sm:py-16">
+        <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12">
+          <div className="grid gap-10 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)]">
+            <SectionIntro
+              label="Production package"
+              title="What arrives after purchase"
+              copy={`This is the full workflow package framing: editable source, compiled output, rendered proof, QA guidance, implementation notes, and a component stack your team can inspect. ${MJML_PACK_NAME} keeps the archive local for teams that want source and handoff files together.`}
+            />
+            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+              {productionPackageItems.map((item) => {
+                const Icon = item.icon;
 
-            <article className="relative overflow-hidden rounded-[1rem] border border-[var(--th-border-dark)] bg-[var(--bg-canvas)] p-4 sm:p-5">
-              <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,hsl(var(--th-accent-support)/0.42),transparent)]" />
-              <div className="flex items-start justify-between gap-3">
-                <div>
-                  <p className="text-[1rem] font-semibold uppercase tracking-[0.09em] text-[var(--th-text-secondary)]">
-                    Stack map
-                  </p>
-                  <h2 className="mt-2 text-[1.54rem] font-semibold text-white">Component breakdown</h2>
-                </div>
-                <span className="inline-flex items-center gap-1 rounded-full bg-[var(--bg-accent-soft)] px-2.5 py-1 text-[0.86rem] font-semibold text-white">
-                  <Layers3 className="h-4 w-4" />
-                  {resolvedComponentBlocks.length}
-                </span>
-              </div>
-              <p className="mt-3 text-[0.98rem] leading-7 text-[var(--th-text-secondary)]">
-                Each layout is assembled from reusable blocks. You can inspect the recipe as a whole here, then drop into each component page for single-block edits.
-              </p>
+                return (
+                  <article key={item.title} className="border-t border-[var(--border-subtle)] pt-4">
+                    <Icon className="h-5 w-5 text-[var(--identity-source)]" aria-hidden="true" />
+                    <h3 className="mt-3 text-[1.05rem] font-semibold text-[var(--text-primary)]">
+                      {item.title}
+                    </h3>
+                    <p className="mt-2 text-[0.9rem] leading-7 text-[var(--text-secondary)]">
+                      {item.copy}
+                    </p>
+                  </article>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </section>
 
-              <ol className="mt-3 grid gap-2.5 sm:grid-cols-2">
+      <section className="border-b border-[var(--border-subtle)] bg-[var(--bg-canvas)] py-14 sm:py-16">
+        <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12">
+          <div className="grid gap-12 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)]">
+            <SectionIntro
+              label="Component structure"
+              title="Assembled from reusable production blocks"
+              copy="The layout is not a static screenshot. It is a workflow-ready stack of reusable blocks that can be inspected together or opened individually when a section needs source-level adjustment."
+            />
+
+            <div>
+              <ol className="grid gap-4 md:grid-cols-2">
                 {resolvedComponentBlocks.map((entry) => (
                   <li
                     key={`${layout.slug}-${entry.component.slug}`}
-                    className="rounded-[1rem] border border-[var(--th-border-dark)] bg-[#111933] p-3"
+                    className="border-t border-[var(--border-subtle)] pt-4"
                   >
                     <div className="flex items-start gap-3">
-                      <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[var(--bg-accent-soft)] text-[0.82rem] font-bold text-white">
+                      <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center bg-[var(--identity-source)] text-[0.82rem] font-bold text-[var(--identity-source-on-dark)]">
                         {entry.order}
                       </span>
                       <div className="min-w-0">
                         <Link
                           href={`/components/${entry.component.slug}`}
-                          className="text-[1rem] font-semibold text-white underline-offset-2 transition hover:text-white hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2"
+                          className="text-[1.05rem] font-semibold text-[var(--text-primary)] underline-offset-2 transition hover:text-[var(--identity-source)] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2"
                         >
                           {entry.component.title}
                         </Link>
-                        <p className="mt-1 text-[1rem] uppercase tracking-[0.08em] text-[var(--th-text-secondary)]">
+                        <p className="mt-1 text-[0.76rem] font-semibold uppercase tracking-[0.08em] text-[var(--text-meta)]">
                           {entry.component.category}
                         </p>
                       </div>
                     </div>
-                    <p className="mt-3 text-[0.98rem] leading-7 text-[var(--th-text-secondary)]">{entry.notes}</p>
+                    <p className="mt-3 text-[0.94rem] leading-7 text-[var(--text-secondary)]">
+                      {entry.notes}
+                    </p>
                   </li>
                 ))}
               </ol>
-            </article>
+
+              <div className="mt-8 border-t border-[var(--border-subtle)] pt-5">
+                <h3 className="text-[1.1rem] font-semibold text-[var(--text-primary)]">Message order</h3>
+                <ul className="mt-4 space-y-3 text-[0.96rem] leading-7 text-[var(--text-secondary)]">
+                  {layout.layoutSections.map((section) => (
+                    <li key={`${layout.slug}-${section.title}`} className="flex items-start gap-3">
+                      <CheckCircle2 className="mt-1 h-[1.125rem] w-[1.125rem] shrink-0 text-[var(--identity-source)]" aria-hidden="true" />
+                      <span>
+                        <strong className="font-semibold text-[var(--text-primary)]">{section.title}.</strong>{" "}
+                        {section.description}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {missingComponentSlugs.length > 0 ? (
+                <div className="mt-6 border-y border-[var(--border-strong)] bg-[var(--bg-accent-soft)] px-4 py-3 text-[0.95rem] leading-7 text-[var(--text-primary)]">
+                  Stack mismatch detected. Missing component definitions: {missingComponentSlugs.join(", ")}.
+                </div>
+              ) : null}
+            </div>
           </div>
-        </article>
+        </div>
+      </section>
 
-        {missingComponentSlugs.length > 0 ? (
-          <div className="mt-1 rounded-xl border border-[var(--border-strong)] bg-[var(--bg-accent-soft)] px-4 py-3 text-[1rem] leading-7 text-white">
-            Stack mismatch detected. Missing component definitions: {missingComponentSlugs.join(", ")}.
+      <section className="border-b border-[var(--border-subtle)] bg-[var(--bg-surface)] py-14 sm:py-16">
+        <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12">
+          <div className="grid gap-12 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)]">
+            <SectionIntro
+              label="QA and handoff"
+              title="Ready to prepare, not ready to send by itself"
+              copy="Template Hedgehog prepares the artefact. Mailchimp, HubSpot, Salesforce, NetSuite, Klaviyo, Customer.io, or your ESP still handle audiences, consent, automation, unsubscribe, reporting, and sending."
+            />
+
+            <div className="grid gap-8 xl:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)]">
+              <div>
+                <h3 className="text-[1.1rem] font-semibold text-[var(--text-primary)]">
+                  Layout QA checks
+                </h3>
+                <ul className="mt-4 space-y-3 text-[0.96rem] leading-7 text-[var(--text-secondary)]">
+                  {qaNotes.map((note) => (
+                    <li key={note} className="flex items-start gap-3">
+                      <CheckCircle2 className="mt-1 h-[1.125rem] w-[1.125rem] shrink-0 text-[var(--identity-source)]" aria-hidden="true" />
+                      <span>{note}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="border-y border-[var(--border-subtle)] bg-white px-4 py-5">
+                <h3 className="text-[1.1rem] font-semibold text-[var(--text-primary)]">
+                  Platform boundary
+                </h3>
+                <dl className="mt-4 space-y-4">
+                  <div className="border-l border-[var(--identity-source-border)] pl-3">
+                    <dt className="text-[0.76rem] font-semibold uppercase tracking-[0.08em] text-[var(--identity-source)]">
+                      Template Hedgehog prepares
+                    </dt>
+                    <dd className="mt-1 text-[0.92rem] leading-7 text-[var(--text-secondary)]">
+                      MJML source, compiled HTML, preview, QA guidance, component structure, and handoff context.
+                    </dd>
+                  </div>
+                  <div className="border-l border-[var(--border-subtle)] pl-3">
+                    <dt className="text-[0.76rem] font-semibold uppercase tracking-[0.08em] text-[var(--text-meta)]">
+                      Sending platform handles
+                    </dt>
+                    <dd className="mt-1 text-[0.92rem] leading-7 text-[var(--text-secondary)]">
+                      Audiences, segmentation, consent, automation, unsubscribe, personalisation merge fields, scheduling, sending, and reporting.
+                    </dd>
+                  </div>
+                </dl>
+              </div>
+            </div>
           </div>
-        ) : null}
+        </div>
+      </section>
 
-        <div className="mt-8 border-t border-[var(--th-border-dark)]" />
+      <section className="mx-auto w-full max-w-7xl px-5 py-14 sm:px-8 sm:py-16 lg:px-12">
+        <SectionIntro
+          label="Source and output"
+          title="Copy source after the workflow is understood"
+          copy="MJML and HTML remain available for implementation, but the package value is the complete production workflow: preview, structure, QA, handoff, and source together."
+        />
 
-        <section className="mt-14 grid gap-7 xl:grid-cols-2">
+        <div className="mt-8 grid gap-7 xl:grid-cols-2">
           <MjmlSourcePanel
             source={layout.mjmlSource}
             title="Layout MJML"
-            description="Editable recipe source for adjusting block order, copy, imagery, and destination URLs."
+            description="Editable workflow source for adjusting message order, copy, imagery, and destination URLs."
+            zedFileName={getDevZedFileName(`${layout.slug}-layout.mjml`)}
             copyButtonLabel="Copy MJML"
             successMessage="Layout MJML copied to clipboard"
             analyticsPayload={{ layoutSlug: layout.slug, sourceType: "mjml" }}
@@ -258,69 +534,47 @@ export default async function LayoutDetailPage({ params }: Props) {
               source={compiledHtml}
               language="html"
               title="Compiled HTML"
-              description="Final output for ESP handoff, QA review, and HTML-only delivery workflows."
+              description="Final output for ESP upload, QA review, and handoff workflows."
+              zedFileName={getDevZedFileName(`${layout.slug}-compiled.html`)}
               copyButtonLabel="Copy HTML"
               successMessage="Layout HTML copied to clipboard"
               analyticsPayload={{ layoutSlug: layout.slug, sourceType: "html" }}
             />
           ) : (
-            <article className="overflow-hidden rounded-[1rem] border border-[var(--th-border-dark)] bg-[var(--bg-canvas)]">
-              <div className="border-b border-[var(--th-border-dark)] px-5 py-4 sm:px-6">
-                <h3 className="text-[1.1rem] font-semibold text-white">Compiled HTML</h3>
-                <p className="mt-1 text-[0.9rem] text-[var(--th-text-secondary)]">
-                  Final output for ESP handoff, QA review, and HTML-only delivery workflows.
+            <article className="overflow-hidden rounded-[1rem] border border-[var(--identity-output-border)] bg-[var(--bg-surface)]">
+              <div className="border-b border-[var(--identity-output-border)] bg-[var(--identity-output-soft)] px-5 py-4 sm:px-6">
+                <h3 className="text-[1.1rem] font-semibold text-[var(--text-primary)]">Compiled HTML</h3>
+                <p className="mt-1 text-[0.9rem] text-[var(--text-secondary)]">
+                  Final output for ESP upload, QA review, and handoff workflows.
                 </p>
               </div>
-              <div className="px-5 py-5 text-[1rem] leading-7 text-[var(--th-text-secondary)] sm:px-6">
+              <div className="px-5 py-5 text-[1rem] leading-7 text-[var(--text-secondary)] sm:px-6">
                 Compiled HTML is unavailable for this layout right now. Rebuild the compiled layout registry to repopulate this panel.
               </div>
             </article>
           )}
-        </section>
+        </div>
       </section>
 
-      <section className="relative overflow-hidden border-t border-[var(--th-border-dark)] bg-[var(--bg-canvas)] py-10 sm:py-12">
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,hsl(var(--th-accent-support)/0.46),transparent)]" />
+      <section className="relative overflow-hidden border-t border-[var(--border-subtle)] bg-[var(--bg-canvas)] py-10 sm:py-12">
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,var(--identity-source),transparent)]" />
         <div className="relative mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12">
-          <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.82fr)] lg:items-center">
+          <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
             <div>
-              <p className="text-[1rem] font-semibold uppercase tracking-[0.1em] text-[var(--th-text-secondary)]">Layout system</p>
-              <h2 className="mt-3 text-[1.7rem] font-semibold leading-[1.08] text-white sm:text-[2.05rem]">
-                Use layouts as reference architecture, then edit the underlying blocks
+              <p className="text-[0.78rem] font-semibold uppercase tracking-[0.1em] text-[var(--identity-source)]">
+                Workflow package
+              </p>
+              <h2 className="mt-3 max-w-3xl font-serif text-[clamp(2rem,4vw,3.25rem)] font-semibold leading-[1] text-[var(--text-primary)]">
+                Move from source to handoff with the complete system attached.
               </h2>
-              <p className="mt-4 max-w-3xl text-[1.06rem] leading-8 text-[var(--th-text-secondary)]">
-                These public layout pages exist to show message order, block stacking, and the relationship between a full
-                email and the underlying component system. {MJML_PACK_NAME} is there when your team wants the complete system archive
-                locally for faster assembly and handoff.
+              <p className="mt-4 max-w-3xl text-[1rem] leading-8 text-[var(--text-secondary)]">
+                Layout pages show the deployable artefact, the underlying blocks, and the handoff boundary before your team moves into an ESP.
               </p>
-
-              <div className="mt-6 flex flex-wrap gap-3">
-                <Link
-                  href="/pricing"
-                  className="inline-flex h-11 items-center gap-2 rounded-[0.8rem] border border-[var(--action-primary)] bg-[var(--action-primary)] px-5 text-[1rem] font-semibold tracking-[0.01em] !text-[var(--action-text)] transition duration-200 hover:-translate-y-0.5 hover:bg-[var(--action-primary-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2"
-                >
-                  {TEMPLATE_CONFIG.pricing.primaryCtaLabel}
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-                <Link
-                  href="/docs"
-                  className="inline-flex h-11 items-center rounded-[0.8rem] border border-[var(--th-border-dark)] bg-[var(--bg-surface)] px-5 text-[1rem] font-semibold tracking-[0.01em] text-white transition duration-200 hover:-translate-y-0.5 hover:border-[var(--border-subtle)] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2"
-                >
-                  Read docs
-                </Link>
-              </div>
             </div>
-
-            <div className="rounded-[0.96rem] border border-[var(--th-border-dark)] bg-[#111933] p-5">
-              <p className="text-[1rem] font-semibold uppercase tracking-[0.1em] text-[var(--th-text-secondary)]">
-                This page helps you
-              </p>
-              <ul className="mt-4 space-y-3 text-[1rem] leading-8 text-[var(--th-text-secondary)]">
-                <li className="border-b border-[var(--th-border-dark)] pb-2">See the full compiled email before editing</li>
-                <li className="border-b border-[var(--th-border-dark)] pb-2">Understand which component blocks form the stack</li>
-                <li>Move from recipe-level structure to block-level customisation cleanly</li>
-              </ul>
-            </div>
+            <Link href="/layouts" className="th-btn th-btn-primary w-fit">
+              Explore layouts
+              <ArrowRight className="h-4 w-4" />
+            </Link>
           </div>
         </div>
       </section>

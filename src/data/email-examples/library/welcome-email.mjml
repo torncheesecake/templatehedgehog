@@ -3,7 +3,7 @@
 <!-- Production use: Used in SaaS lifecycle onboarding after signup or account creation. -->
 <mjml>
   <mj-head>
-    <mj-preview>TemplateHedgehog reusable email block</mj-preview>
+    <mj-preview>Welcome aboard. Here are your first steps to get set up in minutes.</mj-preview>
     <mj-attributes>
       <mj-all font-family="'Manrope', 'Inter', Arial, sans-serif" />
       <mj-body width="640px" background-color="#f3f4f6" />

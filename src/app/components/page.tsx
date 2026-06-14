@@ -6,11 +6,19 @@ import { SiteTopBar } from "@/components/site/SiteTopBar";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { buildBreadcrumbJsonLd, createSeoMetadata } from "@/lib/seo";
+import {
+  COMPONENT_COUNT,
+  LAYOUT_COUNT,
+  STARTER_COMPONENT_COUNT,
+  STARTER_LAYOUT_COUNT,
+  STARTER_WORKFLOW_COUNT,
+  WORKFLOW_COUNT,
+} from "@/lib/pack";
 
 export const metadata: Metadata = createSeoMetadata({
-  title: "Production-ready MJML email components",
+  title: "Production email building blocks",
   description:
-    "Browse production-ready MJML components for lifecycle, transactional, onboarding, support, and operational email systems.",
+    "Explore production email blocks for campaign, lifecycle, transactional, newsletter, ecommerce, and handoff workflows.",
   path: "/components",
   keywords: [
     "MJML components",
@@ -32,8 +40,8 @@ export default function ComponentsGalleryPage() {
   }));
 
   return (
-    <main className="min-h-screen bg-[var(--bg-canvas)] text-[var(--th-text-secondary)]">
-      <SiteTopBar theme="hero" />
+    <main className="th-monochrome min-h-screen bg-[var(--bg-canvas)] text-[var(--th-text-secondary)]">
+      <SiteTopBar theme="hero" ctaTone="inverse" />
       <JsonLd
         id="components-breadcrumb"
         data={buildBreadcrumbJsonLd([
@@ -42,7 +50,10 @@ export default function ComponentsGalleryPage() {
         ])}
       />
       <Suspense fallback={null}>
-        <ComponentsGalleryClient components={galleryComponents} />
+        <ComponentsGalleryClient
+          components={galleryComponents}
+          proofSummary={`Core includes archive essentials: ${STARTER_COMPONENT_COUNT} blocks, ${STARTER_LAYOUT_COUNT} layouts, and ${STARTER_WORKFLOW_COUNT} workflows. Pro standardises recurring production with the complete system: ${COMPONENT_COUNT} blocks, ${LAYOUT_COUNT} layouts, and ${WORKFLOW_COUNT} workflows. Team changes reuse rights, onboarding, and support.`}
+        />
       </Suspense>
       <SiteFooter />
     </main>

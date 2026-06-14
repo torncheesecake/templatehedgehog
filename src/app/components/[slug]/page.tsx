@@ -2,14 +2,13 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowRight, CheckCircle2, ShieldCheck } from "lucide-react";
-import { createPageTitle, TEMPLATE_CONFIG } from "@/config/template";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { createPageTitle } from "@/config/template";
 import {
   emailComponents,
   getEmailComponentBySlug,
   getRelatedEmailComponents,
 } from "@/data/email-components";
-import { getEmailLayoutBySlug } from "@/data/email-layouts";
 import { getEmailWorkflowsByComponentSlug } from "@/data/workflows";
 import { compiledComponentsBySlug } from "@/data/email-components/compiled";
 import { ComponentHtmlSourcePanel } from "@/components/email-components/ComponentHtmlSourcePanel";
@@ -18,8 +17,6 @@ import { TrackEventOnMount } from "@/components/analytics/TrackEventOnMount";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { SiteTopBar } from "@/components/site/SiteTopBar";
-import { CompatibilityTable } from "@/components/ui/CompatibilityTable";
-import { HtmlPreviewFrame } from "@/components/ui/HtmlPreviewFrame";
 import { MJML_PACK_NAME } from "@/lib/pack";
 import {
   extractComponentHtmlSnippet,
@@ -61,6 +58,226 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   });
 }
 
+function SectionIntro({
+  label,
+  title,
+  copy,
+}: {
+  label?: string;
+  title: string;
+  copy?: string;
+}) {
+  return (
+    <div className="max-w-3xl">
+      {label ? (
+        <p className="text-[0.78rem] font-semibold uppercase tracking-[0.08em] text-[var(--text-meta)]">
+          {label}
+        </p>
+      ) : null}
+      <h2 className="mt-2 font-serif text-[clamp(1.8rem,4vw,3rem)] font-semibold leading-[1] text-[var(--text-primary)]">
+        {title}
+      </h2>
+      {copy ? (
+        <p className="mt-3 text-[1rem] leading-8 text-[var(--text-secondary)]">
+          {copy}
+        </p>
+      ) : null}
+    </div>
+  );
+}
+
+function CheckList({ items }: { items: string[] }) {
+  return (
+    <ul className="space-y-3 text-[0.98rem] leading-7 text-[var(--text-secondary)]">
+      {items.map((item) => (
+        <li key={item} className="flex items-start gap-3">
+          <CheckCircle2 className="mt-1 h-[1.125rem] w-[1.125rem] shrink-0 text-[var(--action-primary)]" aria-hidden="true" />
+          <span>{item}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function getComponentRole(component: NonNullable<ReturnType<typeof getEmailComponentBySlug>>) {
+  const tags = component.tags.map((tag) => tag.toLowerCase());
+  const roles: Array<{ label: string; copy: string }> = [];
+
+  if (component.category === "Transactional Components" || tags.includes("transactional")) {
+    roles.push({
+      label: "Transactional",
+      copy: "For account, billing, support, and security sends where clarity matters more than decoration.",
+    });
+  }
+
+  if (tags.some((tag) => ["password", "security", "verification", "account"].includes(tag))) {
+    roles.push({
+      label: "Account access",
+      copy: "Useful when the recipient needs a direct, trusted route back into their account.",
+    });
+  }
+
+  if (component.category === "Newsletter Layouts" || tags.some((tag) => tag.includes("newsletter") || tag.includes("digest") || tag === "editorial")) {
+    roles.push({
+      label: "Newsletter",
+      copy: "For repeatable editorial sends, product updates, and digest sections that need a stable rhythm.",
+    });
+  }
+
+  if (component.category === "Heroes" || tags.some((tag) => ["launch", "campaign", "announcement", "promotion", "feature"].includes(tag))) {
+    roles.push({
+      label: "Acquisition",
+      copy: "For campaign intros and launch moments where the first screen needs a clear action.",
+    });
+  }
+
+  if (tags.some((tag) => ["onboarding", "welcome", "activation", "trial"].includes(tag))) {
+    roles.push({
+      label: "Onboarding",
+      copy: "For activation and lifecycle flows where the block needs to move users to the next step.",
+    });
+  }
+
+  if (component.category === "Footers" || tags.some((tag) => ["legal", "privacy", "support"].includes(tag))) {
+    roles.push({
+      label: "Handoff support",
+      copy: "For legal, support, and trust information that needs to survive ESP handoff cleanly.",
+    });
+  }
+
+  if (roles.length === 0) {
+    roles.push({
+      label: "Lifecycle",
+      copy: "For reusable email sections that support product, customer, and operational messages.",
+    });
+  }
+
+  return roles.slice(0, 3);
+}
+
+function getPlacementSummary(component: NonNullable<ReturnType<typeof getEmailComponentBySlug>>) {
+  switch (component.category) {
+    case "Headers":
+      return "At the start of the email, before the main message begins.";
+    case "Heroes":
+      return "At the top of a campaign, launch, onboarding, or announcement send.";
+    case "Buttons":
+      return "After the decision point, where the reader needs a clear next action.";
+    case "Footers":
+      return "At the close of the email, where support, legal, and brand trust need to be retained.";
+    case "Product Sections":
+      return "In the middle of the email, where features, products, or content need structured comparison.";
+    case "Transactional Components":
+      return "Inside account, security, billing, support, or operational messages.";
+    case "Newsletter Layouts":
+      return "Inside recurring editorial, digest, and update emails.";
+    case "Content Blocks":
+    default:
+      return "Between the hero and close, where the message needs explanation, proof, or supporting detail.";
+  }
+}
+
+function getReasonSummary(component: NonNullable<ReturnType<typeof getEmailComponentBySlug>>) {
+  const tags = component.tags.map((tag) => tag.toLowerCase());
+
+  if (tags.some((tag) => ["password", "security", "verification", "account"].includes(tag))) {
+    return "To make account actions feel clear, trusted, and easy to complete.";
+  }
+
+  if (tags.some((tag) => ["newsletter", "digest", "editorial", "blog"].includes(tag))) {
+    return "To keep recurring content sends consistent without rebuilding structure every week.";
+  }
+
+  if (tags.some((tag) => ["launch", "campaign", "announcement", "promotion", "feature"].includes(tag))) {
+    return "To give campaign teams a reliable first block that can move from source to handoff quickly.";
+  }
+
+  if (tags.some((tag) => ["onboarding", "welcome", "activation", "trial"].includes(tag))) {
+    return "To help lifecycle teams guide users towards the next meaningful action.";
+  }
+
+  return "To reuse a production-tested email section without starting from a blank file.";
+}
+
+function getDerivedWorkflowContexts(
+  component: NonNullable<ReturnType<typeof getEmailComponentBySlug>>,
+  linkedWorkflows: ReturnType<typeof getEmailWorkflowsByComponentSlug>,
+) {
+  const contexts = new Map<string, { label: string; href?: string; note: string }>();
+
+  for (const workflow of linkedWorkflows) {
+    contexts.set(workflow.title, {
+      label: workflow.title,
+      href: `/workflows/${workflow.slug}`,
+      note: workflow.goal,
+    });
+  }
+
+  const tags = component.tags.map((tag) => tag.toLowerCase());
+  const addContext = (label: string, href: string, note: string) => {
+    if (!contexts.has(label)) {
+      contexts.set(label, { label, href, note });
+    }
+  };
+
+  if (component.category === "Heroes" || tags.some((tag) => ["launch", "campaign", "announcement", "promotion", "feature"].includes(tag))) {
+    addContext("Product launch", "/workflows/campaign-launch", "Lead with a clear announcement, supporting proof, and one primary CTA.");
+  }
+
+  if (tags.some((tag) => ["onboarding", "welcome", "activation", "trial", "app"].includes(tag))) {
+    addContext("Onboarding", "/workflows/onboarding", "Guide a new or returning user to the next activation step.");
+  }
+
+  if (component.category === "Transactional Components" || tags.some((tag) => ["password", "security", "verification", "account", "support"].includes(tag))) {
+    addContext("Password reset", "/workflows/password-reset", "Keep account-access copy direct, secure, and easy to verify.");
+  }
+
+  if (component.category === "Newsletter Layouts" || tags.some((tag) => tag.includes("newsletter") || tag.includes("digest") || tag === "editorial" || tag === "blog")) {
+    addContext("Weekly digest", "/workflows/newsletter-digest", "Support repeatable content sections and link-heavy editorial sends.");
+  }
+
+  if (contexts.size === 0) {
+    if (component.category === "Headers" || component.category === "Content Blocks") {
+      addContext("Onboarding", "/workflows/onboarding", "Introduce the message clearly and guide the reader to the next step.");
+    } else if (component.category === "Footers") {
+      addContext("Weekly digest", "/workflows/newsletter-digest", "Close recurring sends with stable support, legal, and preference-management context.");
+    } else {
+      addContext("Product launch", "/workflows/campaign-launch", "Place the block inside a campaign structure with clear hierarchy and handoff checks.");
+    }
+  }
+
+  return Array.from(contexts.values()).slice(0, 4);
+}
+
+function getImplementationNotes(
+  component: NonNullable<ReturnType<typeof getEmailComponentBySlug>>,
+  renderingNotes: string[],
+) {
+  const tags = component.tags.map((tag) => tag.toLowerCase());
+  const notes = [
+    "Review every CTA href after the ESP rewrites or tracks links.",
+    "Confirm image assets are absolute HTTPS URLs before handoff.",
+    "Check the mobile preview before placing this block into a full workflow.",
+  ];
+
+  if (component.category === "Footers" || tags.some((tag) => ["legal", "privacy", "support"].includes(tag))) {
+    notes.push("Confirm footer, legal, unsubscribe, and support copy before send.");
+  }
+
+  if (component.category === "Transactional Components" || tags.some((tag) => ["password", "security", "verification", "account"].includes(tag))) {
+    notes.push("Check token expiry, account-access wording, and plain fallback links.");
+  }
+
+  if (component.category === "Newsletter Layouts" || tags.some((tag) => tag.includes("newsletter") || tag.includes("digest"))) {
+    notes.push("Review every content item, image alt text, and link destination before export.");
+  }
+
+  notes.push(...component.accessibilityNotes.slice(0, 2));
+  notes.push(...renderingNotes.slice(0, 2));
+
+  return Array.from(new Set(notes)).slice(0, 7);
+}
+
 export default async function ComponentDetailPage({ params }: Props) {
   const { slug } = await params;
   const component = getEmailComponentBySlug(slug);
@@ -78,10 +295,14 @@ export default async function ComponentDetailPage({ params }: Props) {
   const renderingNotes = compatibility
     .filter((entry) => Boolean(entry.notes))
     .map((entry) => `${entry.client}: ${entry.notes}`);
+  const productionRoles = getComponentRole(component);
+  const workflowContexts = getDerivedWorkflowContexts(component, linkedWorkflows);
+  const implementationNotes = getImplementationNotes(component, renderingNotes);
+  const primaryUsage = component.usageGuidance.slice(0, 3);
 
   return (
-    <main className="min-h-screen text-[var(--th-text-secondary)]">
-      <SiteTopBar theme="hero" />
+    <main className="th-monochrome min-h-screen overflow-x-hidden bg-[var(--bg-canvas)] text-[var(--text-secondary)]">
+      <SiteTopBar theme="hero" ctaTone="inverse" />
       <JsonLd
         id="component-breadcrumb"
         data={buildBreadcrumbJsonLd([
@@ -95,298 +316,197 @@ export default async function ComponentDetailPage({ params }: Props) {
         payload={{ componentSlug: component.slug }}
       />
 
-      <section className="mx-auto w-full max-w-7xl bg-[var(--bg-canvas)] px-5 pb-16 pt-8 sm:px-8 lg:px-12 lg:pb-20 lg:pt-10">
-        <article className="grid gap-8 border-b border-[var(--th-border-dark)] pb-10 lg:grid-cols-[minmax(0,0.94fr)_minmax(0,1.06fr)] lg:items-center">
+      <section className="border-b border-[var(--border-subtle)] bg-[var(--bg-canvas)] py-14 sm:py-18">
+        <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12">
+          <div className="grid gap-10 lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1.22fr)] lg:items-end">
             <div>
-              <p className="text-[1rem] font-semibold uppercase tracking-[0.1em] text-[var(--th-text-secondary)]">
-                Developer reference
+              <p className="text-[0.78rem] font-semibold uppercase tracking-[0.1em] text-[var(--identity-source)]">
+                Production block
               </p>
-              <h1 className="mt-4 text-[2.35rem] font-semibold leading-[1.02] text-white sm:text-[3.1rem]">
+              <h1 className="mt-3 max-w-3xl font-serif text-[clamp(2.6rem,5.8vw,5rem)] font-semibold leading-[0.94] text-[var(--text-primary)]">
                 {component.title}
               </h1>
-              <p className="mt-4 max-w-3xl text-[1.14rem] leading-8 text-[var(--th-text-secondary)]">
+              <p className="mt-5 max-w-2xl text-[1.08rem] leading-8 text-[var(--text-secondary)]">
                 {component.description}
               </p>
-
-              <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-[1.01rem] text-[var(--th-text-secondary)]">
-                <span className="inline-flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[var(--action-primary)]" />
-                  {component.category} block
+              <div className="mt-7 flex flex-wrap gap-2">
+                <span className="border border-[var(--identity-source-border)] bg-[var(--bg-accent-soft)] px-3 py-1.5 text-[0.82rem] font-semibold text-[var(--identity-source)]">
+                  {component.category}
                 </span>
-                <span className="inline-flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[var(--action-primary)]" />
-                  Production documentation page
-                </span>
-                <span className="inline-flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[var(--action-primary)]" />
-                  Source file: {component.sourceFile}
-                </span>
-                <span className="inline-flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[var(--action-primary)]" />
-                  Copyable MJML and compiled HTML
-                </span>
-              </div>
-
-              <div className="mt-7 flex flex-wrap gap-3">
-                <Link
-                  href="/components"
-                  className="inline-flex h-11 items-center rounded-[0.8rem] border border-[var(--th-border-dark)] bg-[var(--bg-canvas)] px-4 text-[1rem] font-semibold text-[var(--th-text-secondary)] transition duration-200 hover:border-[var(--border-subtle)] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-canvas)]"
-                >
-                  All components
-                </Link>
-                <Link
-                  href="/layouts"
-                  className="inline-flex h-11 items-center rounded-[0.8rem] border border-[var(--th-border-dark)] bg-[var(--bg-canvas)] px-4 text-[1rem] font-semibold text-[var(--th-text-secondary)] transition duration-200 hover:border-[var(--border-subtle)] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-canvas)]"
-                >
-                  See layouts
-                </Link>
-                <Link
-                  href="/pricing"
-                  className="inline-flex h-11 items-center gap-2 rounded-[0.8rem] border border-[var(--action-primary)] bg-[var(--action-primary)] px-5 text-[1rem] font-semibold tracking-[0.01em] !text-[var(--action-text)] transition duration-200 hover:bg-[var(--action-primary-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-canvas)]"
-                >
-                  {TEMPLATE_CONFIG.pricing.primaryCtaLabel}
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-              </div>
-
-              <p className="mt-4 text-[1rem] font-semibold uppercase tracking-[0.08em] text-[var(--th-text-secondary)]">
-                Tags: {component.tags.join(" · ")}
-              </p>
-            </div>
-
-            <div className="rounded-[1.15rem] border border-[var(--th-border-dark)] bg-[#111933] p-4 sm:p-5">
-              <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-[var(--th-text-secondary)]">
-                Rendering screenshot
-              </p>
-              <div className="relative mt-2 aspect-[15/11] overflow-hidden rounded-[0.9rem] border border-[var(--th-border-dark)] bg-[var(--bg-surface)]">
-                <Image
-                  src={component.previewImageUrl}
-                  alt={`${component.title} rendering screenshot`}
-                  width={980}
-                  height={760}
-                  unoptimized
-                  preload
-                  className="h-full w-full object-cover object-top"
-                />
-              </div>
-              <p className="mt-3 text-[0.96rem] leading-7 text-[var(--th-text-secondary)]">
-                Preview frame reflects current component rendering and real spacing proportions for production email QA.
-              </p>
-            </div>
-          </article>
-
-        <section className="mt-10 grid gap-7 xl:grid-cols-[minmax(0,1.1fr)_minmax(320px,0.9fr)]">
-          <article className="overflow-hidden rounded-[1rem] border border-[var(--th-border-dark)] bg-[var(--bg-surface)] p-5 sm:p-6">
-            <div>
-              <p className="text-[1rem] font-semibold uppercase tracking-[0.09em] text-[var(--th-text-secondary)]">
-                Live preview
-              </p>
-              <h2 className="mt-2 text-[1.54rem] font-semibold text-white">Rendered component preview</h2>
-              <p className="mt-3 max-w-3xl text-[1.08rem] leading-8 text-[var(--th-text-secondary)]">
-                This preview is rendered from compiled HTML output so you can inspect the actual email structure, not
-                a static mock-up.
-              </p>
-            </div>
-
-            {compiledHtml ? (
-              <div className="mt-5">
-                <HtmlPreviewFrame
-                  html={compiledHtml}
-                  title={`${component.title} rendered preview`}
-                  variant="component"
-                />
-              </div>
-            ) : (
-              <div className="mt-5 rounded-[0.9rem] border border-[var(--border-strong)] bg-[var(--bg-accent-soft)] px-4 py-4 text-[1rem] leading-7 text-white">
-                Compiled HTML is currently unavailable for this component. The screenshot above is still available as a
-                visual reference while the build output is refreshed.
-              </div>
-            )}
-          </article>
-
-          <aside className="overflow-hidden rounded-[1rem] border border-[var(--th-border-dark)] bg-[var(--bg-surface)] p-4 sm:p-5">
-            <section>
-              <p className="text-[1rem] font-semibold uppercase tracking-[0.09em] text-[var(--th-text-secondary)]">
-                Usage guidance
-              </p>
-              <h2 className="mt-2 text-[1.35rem] font-semibold text-white">When to use this block</h2>
-              <ul className="mt-3 space-y-2.5 text-[0.98rem] leading-7 text-[var(--th-text-secondary)]">
-                {component.usageGuidance.map((guidance) => (
-                  <li key={guidance} className="flex items-start gap-3">
-                    <CheckCircle2 className="mt-1 h-4.5 w-4.5 shrink-0 text-white" />
-                    <span>{guidance}</span>
-                  </li>
+                {productionRoles.map((role) => (
+                  <span
+                    key={role.label}
+                    className="border border-[var(--border-subtle)] bg-white px-3 py-1.5 text-[0.82rem] font-semibold text-[var(--text-primary)]"
+                  >
+                    {role.label}
+                  </span>
                 ))}
-              </ul>
-            </section>
+              </div>
+            </div>
 
-            <section className="mt-5 border-t border-[var(--th-border-dark)] pt-5">
-              <p className="text-[1rem] font-semibold uppercase tracking-[0.09em] text-[var(--th-text-secondary)]">
-                Developer notes
-              </p>
-              <h2 className="mt-2 text-[1.35rem] font-semibold text-white">Edit MJML, ship HTML</h2>
-              <p className="mt-3 text-[0.98rem] leading-7 text-[var(--th-text-secondary)]">
-                Use MJML as the editable source of truth. The compiled HTML panel is included for ESP handoff, QA,
-                or integration points that only accept raw HTML.
-              </p>
-              <ul className="mt-3 space-y-2.5 text-[0.96rem] leading-7 text-[var(--th-text-secondary)]">
-                <li className="flex items-start gap-3">
-                  <CheckCircle2 className="mt-1 h-4.5 w-4.5 shrink-0 text-white" />
-                  <span>{`Also included in ${MJML_PACK_NAME} for teams that want the full component system offline.`}</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle2 className="mt-1 h-4.5 w-4.5 shrink-0 text-white" />
-                  <span>Source file name: {component.sourceFile}</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle2 className="mt-1 h-4.5 w-4.5 shrink-0 text-white" />
-                  <span>{compatibility.length} client notes currently documented for this block.</span>
-                </li>
-              </ul>
-            </section>
-
-            <section className="mt-5 border-t border-[var(--th-border-dark)] pt-5">
-              <p className="text-[1rem] font-semibold uppercase tracking-[0.09em] text-[var(--th-text-secondary)]">
-                Accessibility
-              </p>
-              <h2 className="mt-2 text-[1.35rem] font-semibold text-white">Accessibility notes</h2>
-              <ul className="mt-3 space-y-2.5 text-[0.98rem] leading-7 text-[var(--th-text-secondary)]">
-                {component.accessibilityNotes.map((note) => (
-                  <li key={note} className="flex items-start gap-3">
-                    <CheckCircle2 className="mt-1 h-4.5 w-4.5 shrink-0 text-white" />
-                    <span>{note}</span>
-                  </li>
-                ))}
-              </ul>
-            </section>
-
-            {renderingNotes.length > 0 ? (
-              <section className="mt-5 border-t border-[var(--th-border-dark)] pt-5">
-                <p className="text-[1rem] font-semibold uppercase tracking-[0.09em] text-[var(--th-text-secondary)]">
-                  Rendering notes
+            <div className="grid gap-4 sm:grid-cols-3">
+              <div className="border-t border-[var(--border-subtle)] pt-4">
+                <h2 className="text-[0.78rem] font-semibold uppercase tracking-[0.08em] text-[var(--text-meta)]">
+                  Use this block when
+                </h2>
+                <p className="mt-2 text-[0.95rem] leading-7 text-[var(--text-secondary)]">
+                  {primaryUsage[0] ?? getReasonSummary(component)}
                 </p>
-                <h2 className="mt-2 text-[1.35rem] font-semibold text-white">Client-specific guidance</h2>
-                <ul className="mt-3 space-y-2.5 text-[0.98rem] leading-7 text-[var(--th-text-secondary)]">
-                  {renderingNotes.map((note) => (
-                    <li key={note} className="flex items-start gap-3">
-                      <CheckCircle2 className="mt-1 h-4.5 w-4.5 shrink-0 text-white" />
-                      <span>{note}</span>
-                    </li>
-                  ))}
-                </ul>
-              </section>
-            ) : null}
-          </aside>
-        </section>
-
-        <section className="mt-14 border-t border-[var(--th-border-dark)] pt-8">
-          <div className="flex items-start justify-between gap-3">
-            <div>
-              <p className="text-[1rem] font-semibold uppercase tracking-[0.09em] text-[var(--th-text-secondary)]">
-                Client support
-              </p>
-              <h2 className="mt-2 text-[1.54rem] font-semibold text-white">Compatibility</h2>
+              </div>
+              <div className="border-t border-[var(--border-subtle)] pt-4">
+                <h2 className="text-[0.78rem] font-semibold uppercase tracking-[0.08em] text-[var(--text-meta)]">
+                  Typically appears in
+                </h2>
+                <p className="mt-2 text-[0.95rem] leading-7 text-[var(--text-secondary)]">
+                  {getPlacementSummary(component)}
+                </p>
+              </div>
+              <div className="border-t border-[var(--border-subtle)] pt-4">
+                <h2 className="text-[0.78rem] font-semibold uppercase tracking-[0.08em] text-[var(--text-meta)]">
+                  Why it exists
+                </h2>
+                <p className="mt-2 text-[0.95rem] leading-7 text-[var(--text-secondary)]">
+                  {getReasonSummary(component)}
+                </p>
+              </div>
             </div>
-            <span className="inline-flex items-center gap-1 rounded-full bg-[var(--bg-accent-soft)] px-2.5 py-1 text-[0.86rem] font-semibold text-white">
-              <ShieldCheck className="h-4 w-4" />
-              {compatibility.length > 0 ? `${compatibility.length} clients` : "Pending"}
-            </span>
           </div>
-          <p className="mt-3 text-[1.04rem] leading-8 text-[var(--th-text-secondary)]">
-            Rendering support notes across major email clients.
-          </p>
-          {compatibility.length > 0 ? (
-            <div className="mt-4 overflow-x-auto rounded-[0.95rem] border border-[var(--th-border-dark)] bg-[var(--bg-surface)] p-4 sm:p-5">
-              <CompatibilityTable
-                compatibility={compatibility}
-                caption={`${component.title} compatibility matrix`}
+
+          <figure className="mt-12 overflow-hidden border-y border-[var(--border-strong)] bg-white shadow-[0_34px_95px_rgba(49,59,114,0.12)]">
+            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[var(--border-subtle)] bg-[var(--bg-surface)] px-4 py-3 sm:px-5">
+              <figcaption>
+                <p className="text-[0.78rem] font-semibold uppercase tracking-[0.08em] text-[var(--identity-source)]">
+                  Preview
+                </p>
+                <p className="mt-1 text-[0.88rem] leading-6 text-[var(--text-secondary)]">
+                  Rendered production artefact for workflow review before handoff.
+                </p>
+              </figcaption>
+              <Link href="/pricing" className="th-btn th-btn-sm th-btn-primary">
+                Get the production pack
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
+            </div>
+            <div className="relative aspect-[16/10] bg-white sm:aspect-[16/9]">
+              <Image
+                src={component.previewImageUrl}
+                alt={`${component.title} rendered email block preview`}
+                width={1440}
+                height={900}
+                unoptimized
+                preload
+                className="h-full w-full object-contain object-top"
               />
             </div>
-          ) : (
-            <p className="mt-3 text-[1.04rem] leading-8 text-[var(--th-text-secondary)]">
-              Additional compatibility notes for this component will be added as the documentation library expands.
-            </p>
-          )}
-        </section>
+          </figure>
+        </div>
+      </section>
 
-        {linkedWorkflows.length > 0 ? (
-          <section className="mt-14 border-t border-[var(--th-border-dark)] pt-8">
-            <p className="text-[1rem] font-semibold uppercase tracking-[0.09em] text-[var(--th-text-secondary)]">Used in layouts</p>
-            <h2 className="mt-2 text-[1.54rem] font-semibold text-white">
-              Where this block appears in production layout systems
-            </h2>
-            <p className="mt-3 max-w-3xl text-[1.04rem] leading-8 text-[var(--th-text-secondary)]">
-              These layout pages include this component in context, with block order, message structure, and QA guidance alongside
-              the rendered email.
-            </p>
+      <section className="mx-auto w-full max-w-7xl px-5 py-14 sm:px-8 sm:py-18 lg:px-12">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)]">
+          <SectionIntro
+            label="Production role"
+            title="Where this block earns its place"
+            copy="Treat the component as one production section inside a larger message system. It should support the send goal, survive handoff, and remain easy to review before compilation."
+          />
+          <div className="grid gap-5 md:grid-cols-3">
+            {productionRoles.map((role) => (
+              <article key={role.label} className="border-t border-[var(--identity-source-border)] pt-5">
+                <h3 className="text-[1.05rem] font-semibold text-[var(--text-primary)]">{role.label}</h3>
+                <p className="mt-2 text-[0.94rem] leading-7 text-[var(--text-secondary)]">{role.copy}</p>
+              </article>
+            ))}
+          </div>
+        </div>
 
-            <ul className="mt-5 grid gap-4 md:grid-cols-2">
-              {linkedWorkflows.map((workflow) => {
-                const mappedLayout = getEmailLayoutBySlug(workflow.linkedLayoutSlug);
-                const metaLabel = mappedLayout ? mappedLayout.title : "Layout recipe";
+        <div className="mt-14 border-t border-[var(--border-subtle)] pt-10">
+          <div className="grid gap-12 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)]">
+            <SectionIntro
+              label="Workflow context"
+              title="Typically used in"
+              copy="These relationships help buyers understand the block as part of a send, not as an isolated catalogue item."
+            />
+            <div className="grid gap-4 md:grid-cols-2">
+              {workflowContexts.map((context) => {
+                const content = (
+                  <>
+                    <h3 className="text-[1.05rem] font-semibold text-[var(--text-primary)]">{context.label}</h3>
+                    <p className="mt-2 text-[0.94rem] leading-7 text-[var(--text-secondary)]">{context.note}</p>
+                  </>
+                );
 
-                return (
-                  <li key={workflow.slug}>
-                    <Link
-                      href={`/layouts/${workflow.linkedLayoutSlug}`}
-                      className="block rounded-[0.9rem] border border-[var(--th-border-dark)] bg-[var(--bg-surface)] p-4 transition duration-200 hover:border-[var(--border-subtle)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2"
-                    >
-                      <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-[var(--th-text-secondary)]">
-                        {metaLabel}
-                      </p>
-                      <h3 className="mt-2 text-[1.05rem] font-semibold text-white">
-                        {workflow.title}
-                      </h3>
-                      <p className="mt-2 text-[0.94rem] leading-7 text-[var(--th-text-secondary)]">{workflow.summary}</p>
-                    </Link>
-                  </li>
+                return context.href ? (
+                  <Link
+                    key={context.label}
+                    href={context.href}
+                    className="group border-t border-[var(--border-subtle)] pt-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2"
+                  >
+                    {content}
+                    <span className="mt-3 inline-flex items-center gap-2 text-[0.86rem] font-semibold text-[var(--identity-source)] group-hover:text-[var(--action-primary)]">
+                      View workflow
+                      <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                    </span>
+                  </Link>
+                ) : (
+                  <article key={context.label} className="border-t border-[var(--border-subtle)] pt-4">
+                    {content}
+                  </article>
                 );
               })}
-            </ul>
-          </section>
-        ) : null}
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-14 border-t border-[var(--border-subtle)] pt-10">
+          <div className="grid gap-12 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)]">
+            <SectionIntro
+              label="Implementation"
+              title="Practical QA before handoff"
+              copy="Keep the checks short and action-oriented. The goal is to help teams decide whether this block is ready to enter a workflow."
+            />
+            <div>
+              <CheckList items={implementationNotes} />
+            </div>
+          </div>
+        </div>
 
         {relatedComponents.length > 0 ? (
-          <section className="mt-14 border-t border-[var(--th-border-dark)] pt-8">
-            <p className="text-[1rem] font-semibold uppercase tracking-[0.09em] text-[var(--th-text-secondary)]">
-              Related blocks
-            </p>
-            <h2 className="mt-2 text-[1.54rem] font-semibold text-white">Continue building</h2>
-            <p className="mt-3 max-w-3xl text-[1.04rem] leading-8 text-[var(--th-text-secondary)]">
-              These components are closely related by category or usage pattern and are useful when assembling a full email flow.
-            </p>
-
-            <div className="mt-5 grid gap-4 md:grid-cols-3">
-              {relatedComponents.map((relatedComponent) => (
-                <Link
-                  key={relatedComponent.slug}
-                  href={`/components/${relatedComponent.slug}`}
-                  className="rounded-[0.9rem] border border-[var(--th-border-dark)] bg-[var(--bg-surface)] p-4 transition duration-200 hover:border-[var(--border-subtle)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2"
-                >
-                  <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-[var(--th-text-secondary)]">
-                    {relatedComponent.category}
-                  </p>
-                  <h3 className="mt-2 text-[1.05rem] font-semibold text-white">{relatedComponent.title}</h3>
-                  <p className="mt-2 text-[0.94rem] leading-7 text-[var(--th-text-secondary)]">{relatedComponent.description}</p>
-                </Link>
-              ))}
+          <div className="mt-14 border-t border-[var(--border-subtle)] pt-10">
+            <div className="grid gap-12 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)]">
+              <SectionIntro
+                label="Pairs well with"
+                title="Build the next section around it"
+                copy="A production email usually needs a stack of blocks. These nearby sections are a sensible next choice when assembling a full send."
+              />
+              <div className="grid gap-4 md:grid-cols-3">
+                {relatedComponents.map((relatedComponent) => (
+                  <Link
+                    key={relatedComponent.slug}
+                    href={`/components/${relatedComponent.slug}`}
+                    className="group border-t border-[var(--border-subtle)] pt-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2"
+                  >
+                    <p className="text-[0.76rem] font-semibold uppercase tracking-[0.08em] text-[var(--text-meta)]">
+                      {relatedComponent.category}
+                    </p>
+                    <h3 className="mt-2 text-[1.05rem] font-semibold text-[var(--text-primary)] group-hover:text-[var(--action-primary)]">
+                      {relatedComponent.title}
+                    </h3>
+                    <p className="mt-2 text-[0.94rem] leading-7 text-[var(--text-secondary)]">{relatedComponent.description}</p>
+                  </Link>
+                ))}
+              </div>
             </div>
-          </section>
+          </div>
         ) : null}
 
-        <section className="mt-14 border-t border-[var(--th-border-dark)] pt-8">
-          <div className="mb-4">
-            <p className="text-[1rem] font-semibold uppercase tracking-[0.09em] text-[var(--th-text-secondary)]">
-              Source code
-            </p>
-            <h2 className="mt-2 text-[1.54rem] font-semibold text-white">Copy the code you need</h2>
-            <p className="mt-3 max-w-3xl text-[1.04rem] leading-8 text-[var(--th-text-secondary)]">
-              The source and compiled HTML shown below map directly to the rendered preview above.
-              This keeps preview, MJML, and HTML handoff output aligned.
-            </p>
-          </div>
+        <div className="mt-14 border-t border-[var(--border-subtle)] pt-10">
+          <SectionIntro
+            label="Source and output"
+            title="MJML and HTML remain available"
+            copy={`Source stays below the preview and workflow context. Copy MJML when assembling a system, or compiled HTML when preparing ESP handoff. ${MJML_PACK_NAME} includes the full offline archive for teams that need the complete system locally.`}
+          />
 
-          <div className="grid gap-6 xl:grid-cols-2">
+          <div className="mt-7 grid gap-6 xl:grid-cols-2">
             <ComponentMjmlSourcePanel
               snippetSource={mjmlSnippet}
               standaloneSource={component.mjmlSource}
@@ -400,63 +520,19 @@ export default async function ComponentDetailPage({ params }: Props) {
                 componentSlug={component.slug}
               />
             ) : (
-              <article className="overflow-hidden rounded-[1rem] border border-[var(--th-border-dark)] bg-[var(--bg-canvas)]">
-                <div className="border-b border-[var(--th-border-dark)] px-5 py-4 sm:px-6">
-                  <h3 className="text-[1.1rem] font-semibold text-white">Compiled HTML</h3>
-                  <p className="mt-1 text-[0.9rem] text-[var(--th-text-secondary)]">
+              <article className="overflow-hidden rounded-[1rem] border border-[var(--border-subtle)] bg-[var(--bg-surface)]">
+                <div className="border-b border-[var(--border-subtle)] px-5 py-4 sm:px-6">
+                  <h3 className="text-[1.1rem] font-semibold text-[var(--text-primary)]">Compiled HTML</h3>
+                  <p className="mt-1 text-[0.9rem] text-[var(--text-secondary)]">
                     Final output for ESP handoff, QA review, or HTML-only integrations.
                   </p>
                 </div>
-                <div className="px-5 py-5 text-[1rem] leading-7 text-[var(--th-text-secondary)] sm:px-6">
+                <div className="px-5 py-5 text-[1rem] leading-7 text-[var(--text-secondary)] sm:px-6">
                   Compiled HTML is unavailable for this component right now. Rebuild the compiled registry to repopulate
                   this panel.
                 </div>
               </article>
             )}
-          </div>
-        </section>
-      </section>
-
-      <section className="bg-[var(--bg-canvas)] py-10 sm:py-12">
-        <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12">
-          <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.82fr)] lg:items-center">
-            <div>
-              <p className="text-[1rem] font-semibold uppercase tracking-[0.1em] text-[var(--th-text-secondary)]">Full library</p>
-              <h2 className="mt-3 text-[1.7rem] font-semibold leading-[1.08] text-white sm:text-[2.05rem]">
-                Need the entire system available offline?
-              </h2>
-              <p className="mt-4 max-w-3xl text-[1.06rem] leading-8 text-white">
-                Public component pages are there for reference and one-off use. {MJML_PACK_NAME} is for teams that want the
-                full system archive, local source files, compiled HTML, and a quicker implementation handoff.
-              </p>
-
-              <div className="mt-6 flex flex-wrap gap-3">
-                <Link
-                  href="/pricing"
-                  className="inline-flex h-11 items-center gap-2 rounded-[0.8rem] border border-[var(--action-primary)] bg-[var(--action-primary)] px-5 text-[1rem] font-semibold tracking-[0.01em] !text-[var(--action-text)] transition duration-200 hover:bg-[var(--action-primary-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-canvas)]"
-                >
-                  {TEMPLATE_CONFIG.pricing.primaryCtaLabel}
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-                <Link
-                  href="/docs"
-                  className="inline-flex h-11 items-center rounded-[0.8rem] border border-[var(--th-border-dark)] bg-[var(--bg-surface)] px-5 text-[1rem] font-semibold tracking-[0.01em] text-white transition duration-200 hover:border-[var(--border-subtle)] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-canvas)]"
-                >
-                  Read docs
-                </Link>
-              </div>
-            </div>
-
-            <div className="rounded-[0.96rem] border border-[var(--th-border-dark)] bg-[var(--bg-canvas)] p-5">
-              <p className="text-[1rem] font-semibold uppercase tracking-[0.1em] text-[var(--th-text-secondary)]">
-                Why teams upgrade
-              </p>
-              <ul className="mt-4 space-y-3 text-[1rem] leading-8 text-white">
-                <li className="border-b border-[var(--th-border-dark)] pb-2">Stop collecting blocks one page at a time</li>
-                <li className="border-b border-[var(--th-border-dark)] pb-2">Keep the full MJML and compiled HTML system locally</li>
-                <li>Speed up implementation, review, and delivery across projects</li>
-              </ul>
-            </div>
           </div>
         </div>
       </section>

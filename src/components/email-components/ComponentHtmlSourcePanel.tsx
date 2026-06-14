@@ -41,19 +41,19 @@ export function ComponentHtmlSourcePanel({
 
   const modeConfig: Record<HtmlSourceMode, ModeConfig> = {
     snippet: {
-      title: "Compiled HTML snippet",
+      title: "Block HTML",
       description:
         "Component-only compiled markup for block-level inspection and HTML assembly workflows.",
-      copyLabel: "Copy HTML snippet",
-      successMessage: "HTML snippet copied to clipboard",
+      copyLabel: "Copy block HTML",
+      successMessage: "Block HTML copied to clipboard",
       source: normalisedSnippet,
     },
     standalone: {
-      title: "Compiled standalone HTML",
+      title: "Complete HTML file",
       description:
         "Full compiled document including doctype, head, and body for QA or ESP handoff.",
-      copyLabel: "Copy standalone HTML",
-      successMessage: "Standalone HTML copied to clipboard",
+      copyLabel: "Copy full HTML",
+      successMessage: "Full HTML copied to clipboard",
       source: normalisedStandalone,
     },
   };
@@ -75,7 +75,7 @@ export function ComponentHtmlSourcePanel({
             data-active={activeMode === "snippet"}
             className="inline-flex h-10 items-center rounded-[0.62rem] px-4 text-[0.94rem] font-semibold text-[var(--th-text-muted)] transition-colors hover:bg-[var(--bg-accent-soft)] hover:text-[var(--text-primary)] data-[active=true]:bg-[var(--action-primary)] data-[active=true]:!text-[var(--action-text)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2"
           >
-            Snippet
+            Block
           </button>
           <button
             type="button"
@@ -84,7 +84,7 @@ export function ComponentHtmlSourcePanel({
             data-active={activeMode === "standalone"}
             className="inline-flex h-10 items-center rounded-[0.62rem] px-4 text-[0.94rem] font-semibold text-[var(--th-text-muted)] transition-colors hover:bg-[var(--bg-accent-soft)] hover:text-[var(--text-primary)] data-[active=true]:bg-[var(--action-primary)] data-[active=true]:!text-[var(--action-text)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2"
           >
-            Standalone
+            Full file
           </button>
         </div>
       ) : null}

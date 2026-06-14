@@ -1,0 +1,16 @@
+<!-- DIALECT: ENTERPRISE shared head (prototype/tiering) -->
+<!-- Pulled in via <mj-include path="./head.mjml" /> as a DIRECT CHILD of <mjml> in the main file -->
+<!-- (mjml 5.3.0 rejects an included <mj-head> nested inside another <mj-head>). -->
+<!--                                                                                                      -->
+<!-- SCOPE: this shared include carries only de-duplicatable, non-delivery-critical helper classes -->
+<!-- (e.g. .center). The guardrail @media/dark-mode CSS, the <mj-raw> meta/font links, and the brand -->
+<!-- <mj-attributes> tokens are kept INLINE in the main document head so delivery-critical output never -->
+<!-- depends on include-merge behaviour. -->
+<mj-head>
+  <mj-style>
+    .center { text-align: center !important; }
+    .center div { text-align: center !important; }
+    .border-top-light { border-top: 1px solid rgba(26, 26, 26, 0.1) !important; }
+    .border-bottom-light { border-bottom: 1px solid rgba(26, 26, 26, 0.1) !important; }
+  </mj-style>
+</mj-head>

@@ -8,6 +8,7 @@ interface MjmlSourcePanelProps {
   language?: CodeLanguage;
   title?: string;
   description?: string;
+  zedFileName?: string;
   wrapLines?: boolean;
   copyButtonLabel?: string;
   successMessage?: string;
@@ -21,6 +22,7 @@ export function MjmlSourcePanel({
   language = "mjml",
   title = "MJML source",
   description = "Editable source for this component.",
+  zedFileName,
   wrapLines = false,
   copyButtonLabel = "Copy MJML",
   successMessage = "MJML copied to clipboard",
@@ -36,6 +38,7 @@ export function MjmlSourcePanel({
       language={language}
       label={title}
       description={description}
+      zedFileName={zedFileName}
       wrapLines={wrapLines}
       copyButtonLabel={copyButtonLabel}
       successMessage={successMessage}

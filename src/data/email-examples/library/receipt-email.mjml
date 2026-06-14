@@ -3,7 +3,7 @@
 <!-- Production use: Used by billing systems for payment confirmations and finance records. -->
 <mjml>
   <mj-head>
-    <mj-preview>TemplateHedgehog reusable email block</mj-preview>
+    <mj-preview>Your payment receipt, with a full line-item breakdown for your records.</mj-preview>
     <mj-attributes>
       <mj-all font-family="'Manrope', 'Inter', Arial, sans-serif" />
       <mj-body width="640px" background-color="#f3f4f6" />

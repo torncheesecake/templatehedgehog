@@ -1,0 +1,29 @@
+<mjml>
+  <mj-head>
+    <!-- CLAIM 1: mj-style with descendant, @media-wrapped, and attribute selectors -->
+    <mj-style>
+      @media (prefers-color-scheme: dark) {
+        .dm-keep-cta td { background-color: #2f67ef !important; }
+        .dm-keep-cta a { color: #ffffff !important; }
+      }
+      [data-ogsc] .dm-keep-cta td { background-color: #2f67ef !important; }
+      [data-ogsc] .dm-keep-cta a { color: #ffffff !important; }
+      @media only screen and (max-width:480px) {
+        .ios-fix { display: inline-block !important; }
+      }
+    </mj-style>
+
+    <!-- CLAIM 2: mj-raw dropped in included head -->
+    <mj-raw>
+      <meta name="color-scheme" content="light dark" />
+      <meta name="supported-color-schemes" content="light dark" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    </mj-raw>
+
+    <!-- CLAIM 3: mj-attributes dropped in included head -->
+    <mj-attributes>
+      <mj-text font-family="'Manrope', Arial, sans-serif" font-size="18px" color="#ff0000" />
+      <mj-class name="repro-token" font-weight="800" color="#00cc00" />
+    </mj-attributes>
+  </mj-head>
+</mjml>

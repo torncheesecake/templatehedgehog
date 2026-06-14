@@ -2,11 +2,11 @@
 <mj-wrapper mj-class="whitebg">
   <mj-section>
     <mj-column>
-      <mj-image src="https://placehold.co/208x30/png?text=5-star+rating" width="200px" align="center" padding="20px 0" />
-      <mj-text mj-class="h2 dark" align="center">"A clean review block that feels easy to trust."</mj-text>
-      <mj-text mj-class="body medium" align="center">Verified customer</mj-text>
+      <mj-image src="https://placehold.co/208x30/png?text=Rating+placeholder" width="200px" align="center" padding="20px 0" />
+      <mj-text mj-class="h2 dark" align="center">"Add a real approved review here."</mj-text>
+      <mj-text mj-class="body medium" align="center">Reviewer name</mj-text>
       <mj-text mj-class="small light" align="center">
-        5-star rating summary &#160;&#160; | &#160;&#160; Ready for testimonials, product reviews, or proof points
+        Replace this content only when the review and rating are approved for use.
       </mj-text>
       <!-- #-START-# Centred CTA -->
       <mj-social font-size="14px" icon-size="30px" mode="horizontal" align="center">

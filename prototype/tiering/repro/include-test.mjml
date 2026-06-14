@@ -1,0 +1,20 @@
+<!-- REPRODUCTION TEST: all problematic content in included head only -->
+<mjml>
+  <mj-head>
+    <mj-include path="./shared-head.mjml" />
+  </mj-head>
+  <mj-body>
+    <mj-section>
+      <mj-column>
+        <!-- Uses dm-keep-cta (requires @media dark + [data-ogsc] from included head) -->
+        <mj-button css-class="dm-keep-cta" href="https://example.com">CTA Button</mj-button>
+        <!-- Uses ios-fix (requires @media max-width from included head) -->
+        <mj-text css-class="ios-fix">Hello with ios-fix class</mj-text>
+        <!-- Uses repro-token mj-class (requires mj-attributes from included head) -->
+        <mj-text mj-class="repro-token">Hello with repro-token mj-class</mj-text>
+        <!-- Plain text: font/color from mj-attributes default if included -->
+        <mj-text>Plain text (should be #ff0000 / 18px if mj-attributes applied)</mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>

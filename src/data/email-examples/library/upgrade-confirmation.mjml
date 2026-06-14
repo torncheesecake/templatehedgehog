@@ -3,7 +3,7 @@
 <!-- Production use: Used after billing upgrades or plan changes in SaaS products. -->
 <mjml>
   <mj-head>
-    <mj-preview>TemplateHedgehog reusable email block</mj-preview>
+    <mj-preview>Your upgrade is live. Here is what is now unlocked on your account.</mj-preview>
     <mj-attributes>
       <mj-all font-family="'Manrope', 'Inter', Arial, sans-serif" />
       <mj-body width="640px" background-color="#f3f4f6" />

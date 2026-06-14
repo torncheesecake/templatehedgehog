@@ -73,17 +73,16 @@ export interface PricingTierDefinition {
 export const PRICING_TIERS: readonly PricingTierDefinition[] = [
   {
     id: "starter",
-    name: "Starter",
+    name: "Core",
     priceGbp: 59,
     stripeLookupKey: "template_hedgehog_starter",
     position: "Get production-ready quickly",
     description:
-      "A useful starter system for teams that need dependable onboarding and transactional email foundations.",
-    ctaLabel: "Get Starter - £59",
+      "A complete starter system for teams that need dependable welcome, password reset, and order confirmation email foundations.",
+    ctaLabel: "Buy Core - £59",
     updatesWindow: "Standard updates included",
     includes: [
-      "Curated starter system",
-      "Onboarding and transactional essentials",
+      "Welcome, password reset, and order confirmation systems",
       "3 layouts",
       "MJML + compiled HTML",
       "Setup docs",
@@ -97,11 +96,11 @@ export const PRICING_TIERS: readonly PricingTierDefinition[] = [
     position: "Complete production email system",
     description:
       "The primary production path for teams shipping lifecycle and transactional email systems every month.",
-    ctaLabel: "Get Pro - £179",
+    ctaLabel: "Buy Pro - £179",
     updatesWindow: "6 months of updates",
     includes: [
-      "Full component library",
-      "Layouts/workflows",
+      "Complete workflow archive",
+      "All layouts and production blocks",
       "Lifecycle + transactional systems",
       "Token examples",
       "Advanced implementation guidance",
@@ -111,13 +110,13 @@ export const PRICING_TIERS: readonly PricingTierDefinition[] = [
   },
   {
     id: "enterprise",
-    name: "Enterprise",
+    name: "Team",
     priceGbp: 349,
     stripeLookupKey: "template_hedgehog_enterprise",
     position: "Commercial deployment licence",
     description:
       "A commercial deployment licence for teams reusing the system across internal, client, or white-label delivery.",
-    ctaLabel: "Get Enterprise - £349",
+    ctaLabel: "Get Team - £349",
     updatesWindow: "12 months priority updates and support",
     includes: [
       "Commercial reuse rights",
@@ -131,7 +130,7 @@ export const PRICING_TIERS: readonly PricingTierDefinition[] = [
 
 export const PRIMARY_CTA_HREF = "/pricing";
 export const PRIMARY_CTA_LABEL = PRICING_TIERS.find((tier) => tier.id === "pro")?.ctaLabel
-  ?? "Get Pro - £179";
+  ?? "Buy Pro - £179";
 
 export const TEMPLATE_CONFIG = {
   brandName,

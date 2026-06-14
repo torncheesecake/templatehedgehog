@@ -1,34 +1,83 @@
+<!-- Purpose: Operational notice informing customers of a temporary service disruption. -->
+<!-- Components: header-brand-row, single-image-left (notice), footer-contact-compliance. -->
+<!-- Production use: Transactional/operational alert for downtime or incidents. -->
 <mjml>
   <mj-head>
-    <mj-include path="../styles.mjml" />
-    <mj-title>Notice of Service Disruption on June 14, 2024</mj-title>
-    <mj-preview>Normal service will soon resume&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp; </mj-preview>
+    <mj-preview>A short update on a service disruption and when normal service resumes.</mj-preview>
+    <mj-attributes>
+      <mj-all font-family="'Manrope', 'Inter', Arial, sans-serif" />
+      <mj-body width="640px" background-color="#f3f4f6" />
+      <mj-wrapper padding="0" full-width="full-width" />
+      <mj-section padding="28px 34px" />
+      <mj-column padding="0" />
+      <mj-image padding="0 0 14px 0" />
+      <mj-text padding="0 0 12px 0" font-size="16px" line-height="28px" color="#1a1a1a" />
+      <mj-button padding="0" font-size="16px" font-weight="700" border-radius="999px" inner-padding="14px 30px" />
+      <mj-class name="h2" font-size="36px" line-height="40px" font-weight="800" />
+      <mj-class name="body" font-family="'Inter', Arial, sans-serif" font-size="17px" line-height="28px" />
+      <mj-class name="small" font-family="'Inter', Arial, sans-serif" font-size="14px" line-height="23px" />
+      <mj-class name="label" font-family="'Inter', Arial, sans-serif" font-size="12px" font-weight="700" text-transform="uppercase" letter-spacing="0.12em" />
+      <mj-class name="bold" font-weight="700" />
+      <mj-class name="extrabold" font-weight="800" />
+      <mj-class name="white" color="#ffffff" />
+      <mj-class name="light" color="#94a3b8" />
+      <mj-class name="dark" color="#1a1a1a" />
+      <mj-class name="text-primary" color="#1a1a1a" />
+      <mj-class name="text-muted" color="#4a5568" />
+      <mj-class name="thblue" color="#2f67ef" />
+      <mj-class name="whitebg" background-color="#ffffff" />
+      <mj-class name="superlightbg" background-color="#f8fafc" />
+      <mj-class name="thbluebg" background-color="#2f67ef" />
+    </mj-attributes>
+    <mj-style>
+      .border-top-light { border-top: 1px solid rgba(26, 26, 26, 0.1) !important; }
+    </mj-style>
+    <mj-raw>
+      <meta name="color-scheme" content="light dark" />
+      <meta name="supported-color-schemes" content="light dark" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    </mj-raw>
   </mj-head>
   <mj-body mj-class="whitebg">
-    <mj-include path="../header.mjml" />
-     <mj-wrapper>
+    <mj-wrapper mj-class="whitebg">
+      <mj-section padding="25px 35px">
+        <mj-column vertical-align="middle">
+          <mj-image src="https://placehold.co/240x80/png?text=Your+Brand+Logo" width="240px" padding="0" align="left" href="https://templatehedgehog.co.uk" alt="Your Brand" />
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <mj-wrapper>
       <mj-section padding="0">
         <mj-column padding="0">
-          <mj-image src="https://example.com" padding="0px" alt="New Year Celebration">
+          <mj-image src="https://placehold.co/640x200/png?text=Service+Notice" padding="0" fluid-on-mobile="true" alt="Service notice" />
         </mj-column>
       </mj-section>
     </mj-wrapper>
     <mj-wrapper mj-class="whitebg">
       <mj-section>
         <mj-column>
-          <mj-text mj-class="h2 black" align="left" padding-bottom="10px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
+          <mj-text mj-class="label thblue" align="left" padding-bottom="10px">Service notice</mj-text>
+          <mj-text mj-class="h2 text-primary extrabold" align="left" padding-bottom="10px">A temporary disruption to your service</mj-text>
+          <mj-text mj-class="body text-muted" align="left">Hi {{ first_name }}, we are writing to let you know about a short disruption affecting some accounts today. Our team identified the issue quickly and is already working to restore normal service.</mj-text>
         </mj-column>
       </mj-section>
     </mj-wrapper>
     <mj-wrapper>
       <mj-section padding-top="0">
         <mj-column>
-          <mj-text mj-class="body black" align="left">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</mj-text>
-          <mj-text mj-class="body dark" align="left">Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</mj-text>
-          <mj-text mj-class="body dark">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</mj-text>
+          <mj-text mj-class="body text-muted" align="left">No action is needed on your side. Any work in progress has been saved, and you may notice slower response times until the fix is fully rolled out.</mj-text>
+          <mj-text mj-class="body text-muted" align="left">We will send a follow-up the moment everything is back to normal. You can track live status and timestamps on our status page at any time.</mj-text>
+          <mj-button mj-class="thbluebg white body bold" css-class="dm-keep-cta" align="left" border-radius="999px" inner-padding="15px 30px" href="{{ status_url }}">View status page</mj-button>
         </mj-column>
       </mj-section>
     </mj-wrapper>
-    <mj-include path="../footer.mjml" />
+    <mj-wrapper mj-class="whitebg">
+      <mj-section padding-bottom="40px">
+        <mj-column>
+          <mj-text mj-class="small light" css-class="border-top-light" padding-top="18px">You are receiving this operational notice because you have an active account with Your Brand. Replace this footer with your own compliance copy before production send. Your Brand Ltd. Example House, London, WC2N 5DU.</mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
   </mj-body>
 </mjml>

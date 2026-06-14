@@ -3,7 +3,7 @@
 <!-- Production use: Used in lifecycle automation 3-7 days before trial expiry. -->
 <mjml>
   <mj-head>
-    <mj-preview>TemplateHedgehog reusable email block</mj-preview>
+    <mj-preview>Your trial ends soon. See what you have built and keep it with a plan.</mj-preview>
     <mj-attributes>
       <mj-all font-family="'Manrope', 'Inter', Arial, sans-serif" />
       <mj-body width="640px" background-color="#f3f4f6" />

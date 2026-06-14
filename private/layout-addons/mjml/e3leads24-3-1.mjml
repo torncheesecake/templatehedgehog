@@ -1,31 +1,75 @@
+<!-- Purpose: Lead-gen email with a single image, value copy, and one CTA. -->
+<!-- Components: header-brand-row, single-image-left, accent-cta-button, footer-contact-compliance. -->
+<!-- Production use: Mid-funnel nurture email driving to a demo or guide. -->
 <mjml>
   <mj-head>
-    <mj-include path="../styles.mjml" />
-    <mj-title>Unlock Your Business Potential with Your Product Your Business</mj-title>
-    <mj-preview>Integrate, streamline, and scale your business with Your Product Your Business. Learn how to unlock your potential!&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp; </mj-preview>
+    <mj-preview>Integrate, streamline, and scale your business on one platform.</mj-preview>
+    <mj-attributes>
+      <mj-all font-family="'Manrope', 'Inter', Arial, sans-serif" />
+      <mj-body width="640px" background-color="#f3f4f6" />
+      <mj-wrapper padding="0" full-width="full-width" />
+      <mj-section padding="28px 34px" />
+      <mj-column padding="0" />
+      <mj-image padding="0 0 14px 0" />
+      <mj-text padding="0 0 12px 0" font-size="16px" line-height="28px" color="#1a1a1a" />
+      <mj-button padding="0" font-size="16px" font-weight="700" border-radius="999px" inner-padding="14px 30px" />
+      <mj-class name="h1" font-size="42px" line-height="46px" font-weight="800" />
+      <mj-class name="body" font-family="'Inter', Arial, sans-serif" font-size="17px" line-height="28px" />
+      <mj-class name="small" font-family="'Inter', Arial, sans-serif" font-size="14px" line-height="23px" />
+      <mj-class name="label" font-family="'Inter', Arial, sans-serif" font-size="12px" font-weight="700" text-transform="uppercase" letter-spacing="0.12em" />
+      <mj-class name="bold" font-weight="700" />
+      <mj-class name="extrabold" font-weight="800" />
+      <mj-class name="white" color="#ffffff" />
+      <mj-class name="light" color="#94a3b8" />
+      <mj-class name="dark" color="#1a1a1a" />
+      <mj-class name="text-primary" color="#1a1a1a" />
+      <mj-class name="text-muted" color="#4a5568" />
+      <mj-class name="thblue" color="#2f67ef" />
+      <mj-class name="whitebg" background-color="#ffffff" />
+      <mj-class name="superlightbg" background-color="#f8fafc" />
+      <mj-class name="thbluebg" background-color="#2f67ef" />
+    </mj-attributes>
+    <mj-style>
+      .border-top-light { border-top: 1px solid rgba(26, 26, 26, 0.1) !important; }
+    </mj-style>
+    <mj-raw>
+      <meta name="color-scheme" content="light dark" />
+      <meta name="supported-color-schemes" content="light dark" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    </mj-raw>
   </mj-head>
   <mj-body mj-class="whitebg">
-    <mj-include path="../header.mjml" />
-    <mj-wrapper>
+    <mj-wrapper mj-class="whitebg">
+      <mj-section padding="25px 35px">
+        <mj-column vertical-align="middle">
+          <mj-image src="https://placehold.co/240x80/png?text=Your+Brand+Logo" width="240px" padding="0" align="left" href="https://templatehedgehog.co.uk" alt="Your Brand" />
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <mj-wrapper mj-class="whitebg">
       <mj-section>
         <mj-column>
-          <mj-image src="https://example.com" alt="Handshake" />
-          <mj-text mj-class="h1 dark" align="left" padding-top="10px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus sed mauris tristique aliquet.</mj-text>
-          <mj-text mj-class="body dark" align="left">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</mj-text>
-          <mj-text mj-class="body dark">Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</mj-text>
-          <mj-text mj-class="body dark" align="center">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</mj-text>
+          <mj-image src="https://placehold.co/640x360/png?text=Your+Product" fluid-on-mobile="true" alt="Teams collaborating on Your Product" />
+          <mj-text mj-class="h1 text-primary extrabold" align="left" padding-top="10px" padding-bottom="12px">Unlock your business potential</mj-text>
+          <mj-text mj-class="body text-muted" align="left">Bring your data, workflows, and reporting onto one platform and give every team a single, trusted view. Less manual stitching, faster decisions, fewer surprises.</mj-text>
+          <mj-text mj-class="body text-muted" align="left">{{ first_name }}, see how teams like yours moved from scattered spreadsheets to a connected setup in a single quarter.</mj-text>
         </mj-column>
       </mj-section>
     </mj-wrapper>
-    <mj-wrapper>
-      <mj-section mj-class="whitebg" padding-top="0">
+    <mj-wrapper mj-class="whitebg">
+      <mj-section padding-top="0">
         <mj-column>
-          <mj-button mj-class="mediumbluebg white body" padding-top="10px" href="https://example.com">Call to action</mj-button>
+          <mj-button mj-class="thbluebg white body bold" css-class="dm-keep-cta" align="left" border-radius="999px" inner-padding="15px 30px" href="{{ demo_url }}">See how it works</mj-button>
         </mj-column>
       </mj-section>
     </mj-wrapper>
-    </mj-section>
+    <mj-wrapper mj-class="whitebg">
+      <mj-section padding-bottom="40px">
+        <mj-column>
+          <mj-text mj-class="small light" css-class="border-top-light" padding-top="18px">Replace this footer with your own compliance and unsubscribe copy before production send. Manage preferences <a href="https://templatehedgehog.co.uk/preferences" style="color:#94a3b8; text-decoration:underline;">here</a>. Your Brand Ltd. Example House, London, WC2N 5DU.</mj-text>
+        </mj-column>
+      </mj-section>
     </mj-wrapper>
-    <mj-include path="../footer.mjml" />
   </mj-body>
 </mjml>

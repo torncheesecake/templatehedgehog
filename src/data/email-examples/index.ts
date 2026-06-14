@@ -6,6 +6,7 @@ import {
   getEmailLayoutBySlug,
 } from "@/data/email-layouts";
 import { applyTemplateTokens } from "@/lib/templateTokens";
+import { addDarkSurfaceHooks } from "@/data/mjml-library";
 
 export type EmailExampleImplementation = {
   slug: string;
@@ -53,7 +54,8 @@ function loadExampleMjml(fileName: string): string {
     if (!content) {
       throw new Error("file is empty");
     }
-    return applyTemplateTokens(content);
+    // Add the dark-mode surface hook so the shared dark-mode CSS can darken light sections.
+    return addDarkSurfaceHooks(applyTemplateTokens(content));
   } catch (error) {
     const detail = error instanceof Error ? error.message : String(error);
     throw new Error(

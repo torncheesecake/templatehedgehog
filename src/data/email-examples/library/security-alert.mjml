@@ -3,7 +3,7 @@
 <!-- Production use: Used for logins, device changes, or other account security events. -->
 <mjml>
   <mj-head>
-    <mj-preview>TemplateHedgehog reusable email block</mj-preview>
+    <mj-preview>New sign-in detected on your account. Review it and act if it was not you.</mj-preview>
     <mj-attributes>
       <mj-all font-family="'Manrope', 'Inter', Arial, sans-serif" />
       <mj-body width="640px" background-color="#f3f4f6" />

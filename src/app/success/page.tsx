@@ -65,6 +65,21 @@ type SuccessState =
   | "download_unavailable"
   | "static_preview";
 
+const postPurchaseUseItems = [
+  {
+    title: "Start from the closest workflow",
+    copy: "Open the workflow or layout package that matches the real send first. Treat components as building blocks once the send intent is clear.",
+  },
+  {
+    title: "Keep source and output together",
+    copy: "Use MJML as the editable source of truth and compiled HTML as the handoff snapshot for review, QA, or ESP import.",
+  },
+  {
+    title: "QA before platform import",
+    copy: "Review links, images, mobile stacking, footer/legal copy, merge fields, and platform boundaries before the sending platform takes over.",
+  },
+] as const;
+
 async function getBaseUrl(): Promise<string> {
   const configuredBaseUrl =
     process.env.NEXT_PUBLIC_APP_URL ?? process.env.NEXT_PUBLIC_SITE_URL;
@@ -207,10 +222,12 @@ export default async function SuccessPage({ searchParams }: SuccessPageProps) {
   const downloadLink = downloadToken
     ? `/api/downloads/${encodeURIComponent(downloadToken)}`
     : null;
+  const showArchiveDetails = successState !== "missing_or_invalid_session";
+  const showCheckoutSummary = !isStaticExport && Boolean(summary);
 
   return (
     <main className={VS.templates.content.main}>
-      <SiteTopBar ctaHref="/pricing" ctaLabel="View pricing" />
+      <SiteTopBar ctaHref="/pricing" ctaLabel="View pricing" ctaTone="inverse" />
       <TrackEventOnMount
         event="visit_success"
         payload={{
@@ -274,41 +291,65 @@ export default async function SuccessPage({ searchParams }: SuccessPageProps) {
             </>
           ) : null}
 
-          <div className={cn(VS.cards.lightSoft, "mt-4 rounded-xl px-4 py-3")}>
-            <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-[var(--th-text-secondary)]">
-              Library version
-            </p>
-            <p className="mt-1 text-[0.98rem] font-semibold text-white">
-              v{PACK_VERSION}
-            </p>
-            <p className="mt-1 text-[0.9rem] text-[var(--th-text-secondary)]">
-              Last updated: {lastUpdatedLabel}
-            </p>
-          </div>
+          {showArchiveDetails ? (
+            <>
+              <div className={cn(VS.cards.lightSoft, "mt-4 rounded-xl px-4 py-3")}>
+                <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-[var(--th-text-secondary)]">
+                  Library version
+                </p>
+                <p className="mt-1 text-[0.98rem] font-semibold text-white">
+                  v{PACK_VERSION}
+                </p>
+                <p className="mt-1 text-[0.9rem] text-[var(--th-text-secondary)]">
+                  Last updated: {lastUpdatedLabel}
+                </p>
+              </div>
 
-          <div className={cn(VS.cards.lightSoft, "mt-4 rounded-xl px-4 py-3")}>
-            <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-[var(--th-text-secondary)]">
-              Archive details
-            </p>
-            <dl className="mt-2 grid gap-2 text-[0.92rem] text-[var(--th-text-secondary)]">
-              <div className="flex items-center justify-between gap-4">
-                <dt>Components</dt>
-                <dd className="font-semibold text-white">{summary?.componentCount ?? COMPONENT_COUNT}</dd>
+              <div className={cn(VS.cards.lightSoft, "mt-4 rounded-xl px-4 py-3")}>
+                <p className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-[var(--th-text-secondary)]">
+                  Archive details
+                </p>
+                <dl className="mt-2 grid gap-2 text-[0.92rem] text-[var(--th-text-secondary)]">
+                  <div className="flex items-center justify-between gap-4">
+                    <dt>Components</dt>
+                    <dd className="font-semibold text-white">{summary?.componentCount ?? COMPONENT_COUNT}</dd>
+                  </div>
+                  <div className="flex items-center justify-between gap-4">
+                    <dt>Layouts included</dt>
+                    <dd className="font-semibold text-white">{summary?.layoutCount ?? LAYOUT_COUNT}</dd>
+                  </div>
+                  <div className="flex items-center justify-between gap-4">
+                    <dt>Workflows</dt>
+                    <dd className="font-semibold text-white">{summary?.workflowCount ?? "Full"}</dd>
+                  </div>
+                  <div className="flex items-center justify-between gap-4">
+                    <dt>Archive size</dt>
+                    <dd className="font-semibold text-white">{packSizeInfo.formatted}</dd>
+                  </div>
+                </dl>
               </div>
-              <div className="flex items-center justify-between gap-4">
-                <dt>Layouts included</dt>
-                <dd className="font-semibold text-white">{summary?.layoutCount ?? LAYOUT_COUNT}</dd>
-              </div>
-              <div className="flex items-center justify-between gap-4">
-                <dt>Workflows</dt>
-                <dd className="font-semibold text-white">{summary?.workflowCount ?? "Full"}</dd>
-              </div>
-              <div className="flex items-center justify-between gap-4">
-                <dt>Archive size</dt>
-                <dd className="font-semibold text-white">{packSizeInfo.formatted}</dd>
-              </div>
-            </dl>
-          </div>
+
+              <article className={cn(VS.cards.lightSoft, "mt-4 rounded-xl p-4")}>
+                <h2 className="text-[1rem] font-semibold text-white">
+                  What you now own
+                </h2>
+                <p className="mt-2 text-[0.95rem] leading-7 text-[var(--th-text-secondary)]">
+                  The archive is a production email system: editable source, compiled output, previews, QA notes, workflow context, and handoff guidance kept together so the first implementation is not a blank rebuild.
+                </p>
+                <div className="mt-4 grid gap-3 md:grid-cols-3">
+                  {postPurchaseUseItems.map((item) => (
+                    <div key={item.title} className="rounded-xl border border-[var(--th-border-dark)] bg-[var(--bg-surface)] p-3">
+                      <h3 className="text-[0.95rem] font-semibold text-white">{item.title}</h3>
+                      <p className="mt-2 text-[0.86rem] leading-6 text-[var(--th-text-secondary)]">{item.copy}</p>
+                    </div>
+                  ))}
+                </div>
+                <p className="mt-4 text-[0.9rem] leading-7 text-[var(--th-text-secondary)]">
+                  Studio is in development as a future before-send workspace for workflow selection, editing, compile, preview, QA, handoff preparation, and ZIP export. The archive is complete without Studio and remains yours either way.
+                </p>
+              </article>
+            </>
+          ) : null}
 
           {!isStaticExport && !stripeConfigured ? (
             <div className="mt-4 rounded-xl border border-[var(--border-strong)] bg-[var(--bg-accent-soft)] px-4 py-3 text-[0.92rem] text-white">
@@ -316,7 +357,7 @@ export default async function SuccessPage({ searchParams }: SuccessPageProps) {
             </div>
           ) : null}
 
-          {!isStaticExport ? (
+          {showCheckoutSummary ? (
             <details className={cn(VS.cards.lightSoft, "mt-6 rounded-xl p-4")}>
               <summary className="cursor-pointer text-[1rem] font-semibold uppercase tracking-[0.08em] text-[var(--th-text-secondary)]">
                 Checkout summary
@@ -359,13 +400,16 @@ export default async function SuccessPage({ searchParams }: SuccessPageProps) {
           {successState === "valid_session" ? (
             <>
               <div className="mt-6 rounded-xl border border-[var(--th-border-dark)] bg-[var(--bg-surface)] p-4">
-                <p className="text-[0.95rem] leading-7 text-[var(--th-text-secondary)]">
-                  Download link:
+                <p className="text-[1rem] font-semibold text-[var(--text-primary)]">
+                  Secure archive download
+                </p>
+                <p className="mt-2 text-[0.95rem] leading-7 text-[var(--th-text-secondary)]">
+                  Use this signed link to download {summary?.archiveFilename ?? getMjmlPackFilename("pro")}. Keep the archive structure intact so source, compiled output, previews, QA notes, and documentation stay together.
                 </p>
                 {downloadStatus.available && downloadLink ? (
                   <a
                     href={downloadLink}
-                    className="mt-3 inline-flex h-11 items-center rounded-full bg-[var(--action-primary)] px-5 text-[0.93rem] font-semibold !text-[var(--action-text)] transition hover:bg-[var(--action-primary-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2"
+                    className="th-btn th-btn-sm th-btn-primary mt-3"
                   >
                   Download archive
                   </a>
@@ -377,16 +421,26 @@ export default async function SuccessPage({ searchParams }: SuccessPageProps) {
                   Next steps
                 </h2>
                 <ul className="mt-2 space-y-1 text-[0.92rem] leading-7 text-[var(--th-text-secondary)]">
-                  <li>1. Open the downloaded archive.</li>
-                  <li>2. Customise included components for your production email systems.</li>
-                  <li>3. Read integration docs before production send.</li>
+                  <li>1. Choose the closest workflow or layout package.</li>
+                  <li>2. Edit the MJML source, or use the included compiled HTML when you need a delivery-ready snapshot.</li>
+                  <li>3. Review the rendered preview and complete the QA notes before handoff.</li>
+                  <li>4. Paste or upload the artefact into your sending platform. Audiences, consent, automation, unsubscribe, reporting, and delivery stay there.</li>
+                  <li>5. Join the Studio waitlist if you want updates on the future before-send workspace.</li>
                 </ul>
-                <Link
-                  href="/docs"
-                  className="mt-3 inline-flex rounded-full border border-[var(--th-border-dark)] bg-[var(--bg-surface)] px-4 py-2 text-[0.88rem] font-semibold text-white transition hover:border-[var(--border-subtle)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2"
-                >
-                  Implementation docs
-                </Link>
+                <div className="mt-3 flex flex-wrap gap-3">
+                  <Link
+                    href="/docs"
+                    className="th-btn th-btn-sm th-btn-secondary"
+                  >
+                    Implementation docs
+                  </Link>
+                  <Link
+                    href="/studio"
+                    className="th-btn th-btn-sm th-btn-secondary"
+                  >
+                    Join Studio waitlist
+                  </Link>
+                </div>
               </article>
             </>
           ) : null}
@@ -395,15 +449,15 @@ export default async function SuccessPage({ searchParams }: SuccessPageProps) {
             <div className="mt-6 flex flex-wrap gap-3">
               <Link
                 href="/pricing"
-                className="rounded-full bg-[var(--action-primary)] px-4 py-2 text-[0.9rem] font-semibold !text-[var(--action-text)] transition hover:bg-[var(--action-primary-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2"
+                className="th-btn th-btn-sm th-btn-primary"
               >
                 Go to pricing
               </Link>
               <Link
-                href="/docs"
-                className="rounded-full border border-[var(--th-border-dark)] bg-[var(--bg-surface)] px-4 py-2 text-[0.9rem] font-semibold text-white transition hover:border-[var(--border-subtle)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2"
+                href="/support"
+                className="th-btn th-btn-sm th-btn-secondary"
               >
-                Open docs
+                Contact support
               </Link>
             </div>
           ) : null}
@@ -412,13 +466,13 @@ export default async function SuccessPage({ searchParams }: SuccessPageProps) {
             <div className="mt-6 flex flex-wrap gap-3">
               <Link
                 href="/pricing"
-                className="rounded-full bg-[var(--action-primary)] px-4 py-2 text-[0.9rem] font-semibold !text-[var(--action-text)] transition hover:bg-[var(--action-primary-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2"
+                className="th-btn th-btn-sm th-btn-primary"
               >
                 View pricing
               </Link>
               <Link
                 href="/layouts"
-                className="rounded-full border border-[var(--th-border-dark)] bg-[var(--bg-surface)] px-4 py-2 text-[0.9rem] font-semibold text-white transition hover:border-[var(--border-subtle)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2"
+                className="th-btn th-btn-sm th-btn-secondary"
               >
                 View layouts
               </Link>
@@ -431,20 +485,22 @@ export default async function SuccessPage({ searchParams }: SuccessPageProps) {
             </div>
           ) : null}
 
-          <div className="mt-6 flex flex-wrap gap-3">
-            <Link
-              href="/docs"
-              className="rounded-full border border-[var(--th-border-dark)] bg-[var(--bg-surface)] px-4 py-2 text-[0.9rem] font-semibold text-white transition hover:border-[var(--border-subtle)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2"
-            >
-              Open docs
-            </Link>
-            <Link
-              href="/support"
-              className="rounded-full border border-[var(--th-border-dark)] bg-[var(--bg-surface)] px-4 py-2 text-[0.9rem] font-semibold text-white transition hover:border-[var(--border-subtle)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2"
-            >
-              Contact support
-            </Link>
-          </div>
+          {successState !== "missing_or_invalid_session" ? (
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Link
+                href="/docs"
+                className="th-btn th-btn-sm th-btn-secondary"
+              >
+                Open docs
+              </Link>
+              <Link
+                href="/support"
+                className="th-btn th-btn-sm th-btn-secondary"
+              >
+                Contact support
+              </Link>
+            </div>
+          ) : null}
         </div>
       </section>
       <SiteFooter />

@@ -34,8 +34,8 @@ export function CTAButton({ href, label, tone = "primary", className }: CTAButto
       href={href}
       className={cn(
         tone === "primary"
-          ? "inline-flex h-11 items-center rounded-[0.82rem] border border-[var(--action-primary)] bg-[var(--action-primary)] px-5 text-[0.92rem] font-semibold !text-[var(--action-text)] transition hover:bg-[var(--action-primary-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2"
-          : "inline-flex h-11 items-center rounded-[0.82rem] border border-[var(--border-subtle)] bg-[var(--bg-surface)] px-5 text-[0.92rem] font-semibold text-[var(--text-primary)] transition hover:border-[var(--border-strong)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2",
+          ? "th-btn th-btn-sm th-btn-primary"
+          : "th-btn th-btn-sm th-btn-secondary",
         className,
       )}
     >

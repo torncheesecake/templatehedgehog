@@ -22,8 +22,8 @@ export const metadata: Metadata = createSeoMetadata({
 
 export default function LayoutsGalleryPage() {
   return (
-    <main className="min-h-screen bg-[var(--bg-canvas)] text-[var(--th-text-secondary)]">
-      <SiteTopBar theme="hero" />
+    <main className="th-monochrome min-h-screen bg-[var(--bg-canvas)] text-[var(--th-text-secondary)]">
+      <SiteTopBar theme="hero" ctaTone="inverse" />
       <JsonLd
         id="layouts-breadcrumb"
         data={buildBreadcrumbJsonLd([

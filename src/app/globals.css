@@ -4,29 +4,60 @@
 @source "../lib";
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 
-  /* Four core colours. Everything else derives from these roles. */
-  --c-canvas: #070b14;
-  --c-surface: #111827;
-  --c-text: #f8fafc;
-  --c-accent: #8b98ff;
+  /* Core palette */
+  --c-canvas: #f8fafc;
+  --c-surface: #ffffff;
+  --c-amethyst: #462255;
+  --c-indigo: #313b72;
+  --c-mint: #62a87c;
+
+  /* Role tokens */
+  --colour-structural: var(--c-indigo);
+  --colour-emotional: var(--c-amethyst);
+  --colour-action: var(--c-mint);
+  --colour-reading: var(--c-canvas);
+  --colour-paper: var(--c-surface);
+  --colour-high-priority: #ffffff;
+  --colour-ink: var(--c-indigo);
+  --colour-body: #334155;
+  --colour-muted: #4f5f78;
+  --colour-border: #d9dee8;
+  --colour-border-strong: #bdc7d6;
 
   --bg-canvas: var(--c-canvas);
-  --bg-muted: var(--c-surface);
+  --bg-muted: #eef2f7;
   --bg-surface: var(--c-surface);
-  --bg-accent-soft: color-mix(in srgb, var(--c-accent) 13%, var(--c-surface));
+  --bg-structural: var(--colour-structural);
+  --bg-emotional: var(--colour-emotional);
+  --bg-accent-soft: color-mix(in srgb, var(--colour-action) 14%, var(--c-surface));
+  --bg-structural-soft: color-mix(in srgb, var(--colour-structural) 9%, var(--c-surface));
+  --bg-emotional-soft: color-mix(in srgb, var(--colour-emotional) 8%, var(--c-surface));
 
-  --text-primary: var(--c-text);
-  --text-secondary: color-mix(in srgb, var(--c-text) 72%, var(--c-canvas));
-  --text-meta: color-mix(in srgb, var(--c-text) 54%, var(--c-canvas));
+  /* Product identity roles */
+  --identity-source: var(--colour-emotional);
+  --identity-source-soft: color-mix(in srgb, var(--colour-emotional) 10%, var(--c-surface));
+  --identity-source-muted: color-mix(in srgb, var(--colour-emotional) 22%, var(--c-surface));
+  --identity-source-border: color-mix(in srgb, var(--colour-emotional) 42%, var(--border-subtle));
+  --identity-source-on-dark: #f5edf8;
+  --identity-output: var(--colour-structural);
+  --identity-output-soft: color-mix(in srgb, var(--colour-structural) 10%, var(--c-surface));
+  --identity-output-border: color-mix(in srgb, var(--colour-structural) 38%, var(--border-subtle));
 
-  --border-subtle: color-mix(in srgb, var(--c-text) 14%, transparent);
-  --border-strong: color-mix(in srgb, var(--c-text) 22%, transparent);
+  --text-primary: var(--colour-ink);
+  --text-secondary: var(--colour-body);
+  --text-meta: var(--colour-muted);
+  --text-on-structural: var(--colour-high-priority);
+  --text-on-structural-muted: #dce5ee;
 
-  --action-primary: var(--c-accent);
-  --action-primary-hover: color-mix(in srgb, var(--c-accent) 84%, var(--c-text));
-  --action-text: var(--c-canvas);
+  --border-subtle: var(--colour-border);
+  --border-strong: var(--colour-border-strong);
+  --border-on-structural: color-mix(in srgb, var(--colour-high-priority) 18%, transparent);
+
+  --action-primary: var(--colour-action);
+  --action-primary-hover: color-mix(in srgb, var(--colour-action) 82%, var(--colour-structural));
+  --action-text: #ffffff;
 
   --text-hero: clamp(2.65rem, 6.6vw, 4.35rem);
   --text-h1: clamp(2.35rem, 6.2vw, 4.35rem);
@@ -56,8 +87,8 @@
   --accent-primary: var(--action-primary);
   --accent-secondary: var(--action-primary-hover);
   --accent-support: var(--text-primary);
-  --th-accent: 235 63% 58%;
-  --th-accent-support: 235 63% 58%;
+  --th-accent: 142 29% 52%;
+  --th-accent-support: 142 29% 52%;
   --dune-focus: var(--action-primary);
   --dune-deep: var(--bg-canvas);
   --hedgehog-core-navy: var(--bg-canvas);
@@ -162,6 +193,78 @@ body {
     min-height: 100vh;
     background: var(--bg-canvas);
     color: var(--text-secondary);
+  }
+
+  .studio-shell :where(h1, h2, h3, p, small) {
+    max-inline-size: none;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    color: inherit;
+    text-wrap: inherit;
+  }
+
+  .studio-shell .text-white {
+    color: #ffffff !important;
+  }
+
+  .studio-shell .text-slate-100 {
+    color: #f1f5f9 !important;
+  }
+
+  .studio-shell .text-slate-200 {
+    color: #e2e8f0 !important;
+  }
+
+  .studio-shell .text-slate-300 {
+    color: #cbd5e1 !important;
+  }
+
+  .studio-shell .text-slate-400 {
+    color: #94a3b8 !important;
+  }
+
+  .studio-shell .text-slate-500 {
+    color: #64748b !important;
+  }
+
+  .th-monochrome {
+    --action-primary: #000000;
+    --action-primary-hover: #262626;
+    --action-text: #ffffff;
+    --bg-accent-soft: #f5f5f5;
+    --bg-canvas: #ffffff;
+    --bg-emotional: #000000;
+    --bg-emotional-soft: #f5f5f5;
+    --bg-structural: #000000;
+    --bg-structural-soft: #f5f5f5;
+    --bg-surface: #ffffff;
+    --border-on-structural: rgba(255, 255, 255, 0.2);
+    --border-strong: #000000;
+    --border-subtle: #d4d4d4;
+    --colour-action: #000000;
+    --colour-body: #111111;
+    --colour-emotional: #000000;
+    --colour-high-priority: #ffffff;
+    --colour-ink: #000000;
+    --colour-muted: #404040;
+    --colour-paper: #ffffff;
+    --colour-reading: #ffffff;
+    --colour-structural: #000000;
+    --identity-output: #000000;
+    --identity-output-border: #000000;
+    --identity-output-soft: #f5f5f5;
+    --identity-source: #000000;
+    --identity-source-border: #000000;
+    --identity-source-muted: #e5e5e5;
+    --identity-source-on-dark: #ffffff;
+    --identity-source-soft: #f5f5f5;
+    --text-meta: #404040;
+    --text-on-structural: #ffffff;
+    --text-on-structural-muted: #f5f5f5;
+    --text-primary: #000000;
+    --text-secondary: #111111;
   }
 
   .th-container {
@@ -280,6 +383,86 @@ body {
     border-radius: 0.95rem;
     background: var(--bg-surface);
   }
+
+  .th-btn {
+    display: inline-flex;
+    min-height: 3rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 999px;
+    padding-inline: 1.25rem;
+    font-size: 0.92rem;
+    font-weight: 650;
+    line-height: 1.2;
+    text-align: center;
+    white-space: nowrap;
+    transition:
+      background-color 180ms ease,
+      border-color 180ms ease,
+      color 180ms ease;
+  }
+
+  .th-btn-sm {
+    min-height: 2.75rem;
+    font-size: 0.9rem;
+  }
+
+  .th-btn-primary {
+    border: 1px solid var(--action-primary);
+    background: var(--action-primary);
+    color: var(--action-text) !important;
+  }
+
+  .th-btn-primary:hover {
+    background: var(--action-primary-hover);
+    border-color: var(--action-primary-hover);
+  }
+
+  .th-btn-primary-on-dark {
+    border: 1px solid #ffffff;
+    background: #ffffff;
+    color: #000000 !important;
+  }
+
+  .th-btn-primary-on-dark:hover {
+    background: #e5e5e5;
+    border-color: #e5e5e5;
+  }
+
+  .th-btn-secondary {
+    border: 1px solid var(--border-subtle);
+    background: #ffffff;
+    color: var(--text-primary) !important;
+  }
+
+  .th-btn-secondary:hover {
+    border-color: var(--border-strong);
+  }
+
+  .th-btn-secondary-on-dark {
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    background: transparent;
+    color: #ffffff !important;
+  }
+
+  .th-btn-secondary-on-dark:hover {
+    border-color: rgba(255, 255, 255, 0.55);
+  }
+
+  .th-btn:focus-visible {
+    outline: none;
+    box-shadow:
+      0 0 0 2px var(--bg-canvas),
+      0 0 0 4px var(--action-primary);
+  }
+
+  .th-btn-primary-on-dark:focus-visible,
+  .th-btn-secondary-on-dark:focus-visible {
+    box-shadow:
+      0 0 0 2px #000000,
+      0 0 0 4px #ffffff;
+  }
 }
 
 @layer utilities {
@@ -372,11 +555,49 @@ body {
   background: transparent !important;
 }
 
+.code-surface {
+  background: color-mix(in srgb, var(--bg-structural) 92%, black);
+  contain: paint;
+  color: #e5e7eb;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
 .code-surface .shiki {
+  counter-reset: code-line;
+  display: inline-block;
   margin: 0 !important;
   min-width: 100%;
   border-radius: 0.75rem;
-  color: var(--text-meta) !important;
+  color: #e5e7eb !important;
+}
+
+.code-surface .shiki code {
+  display: block;
+  font-size: 0 !important;
+  line-height: 0 !important;
+}
+
+.code-surface .shiki .line {
+  counter-increment: code-line;
+  display: block;
+  font-size: 0.9rem;
+  line-height: 1.75;
+  min-height: 1.75em;
+  padding-left: 4.25rem;
+  position: relative;
+}
+
+.code-surface .shiki .line::before {
+  color: color-mix(in srgb, #e5e7eb 48%, transparent);
+  content: counter(code-line);
+  font-variant-numeric: tabular-nums;
+  left: 0;
+  padding-right: 1.25rem;
+  position: absolute;
+  text-align: right;
+  user-select: none;
+  width: 3rem;
 }
 
 .code-surface[data-wrap-lines="true"] .shiki {
@@ -388,6 +609,28 @@ body {
 .code-surface[data-wrap-lines="false"] .shiki {
   width: max-content;
   white-space: pre !important;
+}
+
+@media (max-width: 640px) {
+  .code-surface[data-wrap-lines="false"] .shiki {
+    width: 100%;
+    white-space: pre-wrap !important;
+    word-break: break-word;
+  }
+
+  .code-surface .shiki code,
+  .code-surface .shiki .line {
+    display: block;
+    max-width: 100%;
+    overflow: hidden;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .code-surface .shiki span {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
 }
 
 .section-transition {

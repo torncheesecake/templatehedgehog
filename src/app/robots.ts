@@ -9,9 +9,10 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/dashboard/", "/api/", "/demo/", "/templates/", "/examples/", "/workflows/", "/pack", "/auth/"],
+        disallow: ["/dashboard/", "/api/", "/demo/", "/templates/", "/examples/", "/pack", "/auth/"],
       },
     ],
     sitemap: buildAbsoluteUrl("/sitemap.xml"),
+    host: buildAbsoluteUrl("/"),
   };
 }

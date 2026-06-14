@@ -62,9 +62,9 @@ export const visualSystem = {
     lightSoft:
       "rounded-[0.9rem] border border-[var(--border-subtle)] bg-[var(--bg-surface)]",
     dark:
-      "rounded-[1rem] border border-[var(--border-subtle)] bg-[var(--bg-surface)]",
+      "rounded-[1rem] border border-[var(--border-on-structural)] bg-[var(--bg-structural)]",
     darkDeep:
-      "rounded-[1rem] border border-[var(--border-subtle)] bg-[var(--bg-canvas)]",
+      "rounded-[1rem] border border-[var(--border-on-structural)] bg-[var(--bg-structural)]",
   },
   dividers: {
     soft: "border-[var(--th-border-dark)]",
@@ -73,8 +73,8 @@ export const visualSystem = {
   },
   surfaces: {
     page: "bg-[var(--bg-canvas)]",
-    dark: "bg-[var(--bg-canvas)]",
-    darkDeep: "bg-[var(--bg-canvas)]",
+    dark: "bg-[var(--bg-structural)]",
+    darkDeep: "bg-[var(--bg-structural)]",
     light: "bg-[var(--bg-surface)]",
     lightAlt: "bg-[var(--bg-surface)]",
   },
@@ -88,7 +88,7 @@ export const visualSystem = {
       cta: "py-[var(--space-section-y)]",
     },
     surfaces: {
-      dark: "bg-[var(--bg-canvas)]",
+      dark: "bg-[var(--bg-structural)]",
       mid: "bg-[var(--bg-surface)]",
       light: "bg-[var(--bg-surface)]",
     },

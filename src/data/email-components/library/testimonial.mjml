@@ -2,10 +2,10 @@
 <mj-wrapper mj-class="whitebg">
   <mj-section padding="50px 50px">
     <mj-column>
-      <mj-text mj-class="h3 text-primary extrabold" align="center" padding-bottom="20px">"TemplateHedgehog gave us a reusable MJML baseline our team could ship with in days, not weeks."</mj-text>
-      <mj-text mj-class="body text-primary bold" align="center" padding-bottom="5px">Alex Morgan</mj-text>
-      <mj-text mj-class="small text-muted" align="center" padding-bottom="5px">Email Engineering Lead</mj-text>
-      <mj-text mj-class="small bold" align="center" padding="0" color="#2f67ef">B2B SaaS Team</mj-text>
+      <mj-text mj-class="h3 text-primary extrabold" align="center" padding-bottom="20px">"Add a real approved customer quote here."</mj-text>
+      <mj-text mj-class="body text-primary bold" align="center" padding-bottom="5px">Customer name</mj-text>
+      <mj-text mj-class="small text-muted" align="center" padding-bottom="5px">Role or team</mj-text>
+      <mj-text mj-class="small bold" align="center" padding="0" color="#2f67ef">Company name</mj-text>
     </mj-column>
   </mj-section>
 </mj-wrapper>

@@ -3,7 +3,7 @@
 <!-- Production use: Used for recurring newsletter and editorial programmes. -->
 <mjml>
   <mj-head>
-    <mj-preview>TemplateHedgehog reusable email block</mj-preview>
+    <mj-preview>This week's edit: the stories, updates, and reads worth your time.</mj-preview>
     <mj-attributes>
       <mj-all font-family="'Manrope', 'Inter', Arial, sans-serif" />
       <mj-body width="640px" background-color="#f3f4f6" />
