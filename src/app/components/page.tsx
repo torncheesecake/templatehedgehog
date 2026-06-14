@@ -11,7 +11,6 @@ import {
   LAYOUT_COUNT,
   STARTER_COMPONENT_COUNT,
   STARTER_LAYOUT_COUNT,
-  STARTER_WORKFLOW_COUNT,
   WORKFLOW_COUNT,
 } from "@/lib/pack";
 
@@ -52,7 +51,7 @@ export default function ComponentsGalleryPage() {
       <Suspense fallback={null}>
         <ComponentsGalleryClient
           components={galleryComponents}
-          proofSummary={`Core includes archive essentials: ${STARTER_COMPONENT_COUNT} blocks, ${STARTER_LAYOUT_COUNT} layouts, and ${STARTER_WORKFLOW_COUNT} workflows. Pro standardises recurring production with the complete system: ${COMPONENT_COUNT} blocks, ${LAYOUT_COUNT} layouts, and ${WORKFLOW_COUNT} workflows. Team changes reuse rights, onboarding, and support.`}
+          proofSummary={`Core is the essential starting system: ${STARTER_COMPONENT_COUNT} blocks across ${STARTER_LAYOUT_COUNT} layouts (welcome, onboarding, reset, confirmation) in the simplest inline dialect. Pro standardises recurring production with the complete system: ${COMPONENT_COUNT} blocks, ${LAYOUT_COUNT} layouts, ${WORKFLOW_COUNT} workflows, and a self-contained class stylesheet in every file. Team changes reuse rights, onboarding, and support.`}
         />
       </Suspense>
       <SiteFooter />

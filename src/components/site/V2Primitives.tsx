@@ -661,29 +661,43 @@ const postPurchaseSteps = [
   },
 ] as const;
 
-const licenceRows = [
-  {
-    tier: "Core",
-    use: "Your own small self-serve implementation",
-    receives: "11 components, 3 layouts, 3 workflows, MJML source, compiled HTML, previews, and setup docs",
-    rights: "Use inside your own implementation. Redistribution, resale, and white-label reuse are not included.",
-    updates: "Standard fixes for the purchased archive version",
-  },
-  {
-    tier: "Pro",
-    use: "Recurring production email work for your organisation",
-    receives: "82 components, 18 layouts, 13 workflows, token examples, QA notes, advanced guidance, and compiled output",
-    rights: "Use the full archive for your own organisation's production email work. Client resale, redistribution, and white-label reuse are not included.",
-    updates: "6 months of versioned updates",
-  },
-  {
-    tier: "Team",
-    use: "Client work, white-label use, or internal rollout across teams",
-    receives: "Full Pro archive plus commercial reuse rights, white-label/internal deployment, reusable generation framework, and priority support",
-    rights: "Commercial reuse rights for approved client, white-label, or internal deployment workflows. Source archive resale is still not permitted.",
-    updates: "12 months of updates and priority support",
-  },
-] as const;
+/**
+ * Pack counts, passed in from server pages so this module never imports the
+ * Node-only pack helpers (which would poison the client bundle).
+ */
+export type LicenceCounts = {
+  starterComponentCount: number;
+  starterLayoutCount: number;
+  componentCount: number;
+  layoutCount: number;
+  workflowCount: number;
+};
+
+function buildLicenceRows(counts: LicenceCounts) {
+  return [
+    {
+      tier: "Core",
+      use: "The essential starting system for your own implementation",
+      receives: `${counts.starterComponentCount} components, ${counts.starterLayoutCount} layouts (welcome, onboarding, password reset, order confirmation) in the simplest inline dialect, MJML source, compiled HTML, previews, and setup docs`,
+      rights: "Use inside your own implementation. Redistribution, resale, and white-label reuse are not included.",
+      updates: "Standard fixes for the purchased archive version",
+    },
+    {
+      tier: "Pro",
+      use: "Recurring production email work for your organisation",
+      receives: `${counts.componentCount} components, ${counts.layoutCount} layouts, ${counts.workflowCount} workflows, a self-contained class stylesheet in every file, token examples, QA notes, advanced guidance, and compiled output`,
+      rights: "Use the full archive for your own organisation's production email work. Client resale, redistribution, and white-label reuse are not included.",
+      updates: "6 months of versioned updates",
+    },
+    {
+      tier: "Team",
+      use: "Client work, white-label use, or internal rollout across teams",
+      receives: "Full Pro archive plus a shared framework head, commercial reuse rights, white-label/internal deployment, reusable generation framework, and priority support",
+      rights: "Commercial reuse rights for approved client, white-label, or internal deployment workflows. Source archive resale is still not permitted.",
+      updates: "12 months of updates and priority support",
+    },
+  ] as const;
+}
 
 const testingChecks = [
   "MJML source and compiled HTML are kept together for every sampled workflow.",
@@ -866,7 +880,8 @@ export function PostPurchaseProof() {
   );
 }
 
-export function LicenceMatrix() {
+export function LicenceMatrix({ counts }: { counts: LicenceCounts }) {
+  const licenceRows = buildLicenceRows(counts);
   return (
     <article className="overflow-hidden border-y border-[var(--border-strong)] bg-white shadow-[0_22px_60px_rgba(15,23,42,0.08)]">
       <div className="grid gap-4 border-b border-[var(--border-subtle)] bg-[linear-gradient(135deg,#ffffff_0%,var(--bg-canvas)_100%)] px-5 py-5 sm:px-6 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1fr)] lg:items-end">

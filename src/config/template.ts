@@ -76,14 +76,14 @@ export const PRICING_TIERS: readonly PricingTierDefinition[] = [
     name: "Core",
     priceGbp: 59,
     stripeLookupKey: "template_hedgehog_starter",
-    position: "Get production-ready quickly",
+    position: "The essential starting system",
     description:
-      "A complete starter system for teams that need dependable welcome, password reset, and order confirmation email foundations.",
+      "The essential starting system: the lifecycle, transactional, and confirmation emails every product needs, welcome, onboarding, password reset, and order confirmation, in the simplest production-ready inline dialect.",
     ctaLabel: "Buy Core - £59",
     updatesWindow: "Standard updates included",
     includes: [
-      "Welcome, password reset, and order confirmation systems",
-      "3 layouts",
+      "Welcome, onboarding, password reset, and order confirmation systems",
+      "Simplest production-ready inline dialect",
       "MJML + compiled HTML",
       "Setup docs",
     ],

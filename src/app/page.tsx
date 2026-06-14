@@ -34,7 +34,8 @@ import { withBasePath } from "@/lib/asset-path";
 import {
   COMPONENT_COUNT,
   LAYOUT_COUNT,
-  STARTER_WORKFLOW_COUNT,
+  STARTER_COMPONENT_COUNT,
+  STARTER_LAYOUT_COUNT,
   WORKFLOW_COUNT,
 } from "@/lib/pack";
 import { createSeoMetadata, DEFAULT_SEO_DESCRIPTION } from "@/lib/seo";
@@ -194,8 +195,8 @@ const editionCards = [
   {
     name: "Core",
     price: `£${coreTier.priceGbp}`,
-    outcome: "Core covers the first production journeys.",
-    copy: `${STARTER_WORKFLOW_COUNT} complete starter workflows for welcome, password reset, and order confirmation email, with 11 components, 3 layouts, editable MJML, compiled HTML, previews, and setup docs.`,
+    outcome: "Core is the essential starting system.",
+    copy: `The lifecycle, transactional, and confirmation emails every product needs: welcome, onboarding, password reset, and order confirmation, in the simplest production-ready inline dialect. ${STARTER_COMPONENT_COUNT} components, ${STARTER_LAYOUT_COUNT} layouts, editable MJML, compiled HTML, previews, and setup docs.`,
   },
   {
     name: "Pro",
@@ -854,7 +855,7 @@ export default function Home() {
         <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12">
           <SectionHeader
             title="Choose the edition by operating need."
-            copy={`Core is the essential archive starter for the first production journeys. Pro is the main buying path: the full source-to-handoff archive, ${COMPONENT_COUNT} components, ${LAYOUT_COUNT} layouts, and ${WORKFLOW_COUNT} workflows. Team is Pro plus commercial reuse, rollout support, and longer updates.`}
+            copy={`Core is the essential starting system: welcome, onboarding, password reset, and order confirmation in the simplest production-ready inline dialect. Pro is the main buying path: more coverage and a more sophisticated architecture, with the full source-to-handoff archive of ${COMPONENT_COUNT} components, ${LAYOUT_COUNT} layouts, ${WORKFLOW_COUNT} workflows, and a self-contained class stylesheet in every file. Team is Pro plus a shared framework head, commercial reuse, rollout support, and longer updates.`}
           />
           <div className="grid gap-4 md:grid-cols-3">
             {editionCards.map((edition) => (
@@ -871,7 +872,15 @@ export default function Home() {
             copy="The hesitation point is usually not the files. It is whether the licence fits, how updates are accessed, and what happens if delivery fails."
           />
           <div className="grid gap-6">
-            <LicenceMatrix />
+            <LicenceMatrix
+              counts={{
+                starterComponentCount: STARTER_COMPONENT_COUNT,
+                starterLayoutCount: STARTER_LAYOUT_COUNT,
+                componentCount: COMPONENT_COUNT,
+                layoutCount: LAYOUT_COUNT,
+                workflowCount: WORKFLOW_COUNT,
+              }}
+            />
             <SupportRefundPanel />
           </div>
         </div>

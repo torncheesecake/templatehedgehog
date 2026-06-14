@@ -38,6 +38,8 @@ import {
 import {
   COMPONENT_COUNT,
   LAYOUT_COUNT,
+  STARTER_COMPONENT_COUNT,
+  STARTER_LAYOUT_COUNT,
   WORKFLOW_COUNT,
 } from "@/lib/pack";
 
@@ -117,7 +119,7 @@ const buyerJourneys = [
   {
     buyer: "SaaS founder",
     problem: "You need credible product emails before a full lifecycle or email engineering function exists, and you cannot afford fragile one-off sends.",
-    outcome: "Start with the essential customer journeys, then upgrade when email production becomes a recurring operating system.",
+    outcome: "Start with the essential starting system, welcome, onboarding, reset, and confirmation, then move to Pro when email production becomes a recurring operating system.",
     workflows: [
       { label: "Onboarding activation", href: "/workflows/onboarding" },
       { label: "Password reset", href: "/workflows/password-reset" },
@@ -199,7 +201,7 @@ const pricingFaqs = [
   {
     question: "What is the difference between Core, Pro, and Team?",
     answer:
-      `Core (£${core.priceGbp}) is the starter archive: welcome, password reset, and order confirmation systems with 11 components, 3 layouts, MJML source, compiled HTML, previews, and setup docs. Pro (£${pro.priceGbp}) is the complete production system: ${COMPONENT_COUNT} components, ${LAYOUT_COUNT} layouts, ${WORKFLOW_COUNT} workflows, QA notes, implementation guidance, and 6 months of updates. Team (£${team.priceGbp}+) is Pro plus commercial reuse rights, white-label or internal deployment, onboarding, priority support, and 12 months of updates.`,
+      `Core (£${core.priceGbp}) is the essential starting system: the welcome, onboarding, password reset, and order confirmation emails every product needs, in the simplest production-ready inline dialect, with ${STARTER_COMPONENT_COUNT} components, ${STARTER_LAYOUT_COUNT} layouts, MJML source, compiled HTML, previews, and setup docs. Pro (£${pro.priceGbp}) adds coverage and a more sophisticated architecture: ${COMPONENT_COUNT} components, ${LAYOUT_COUNT} layouts, ${WORKFLOW_COUNT} workflows, a self-contained class stylesheet in every file, QA notes, implementation guidance, and 6 months of updates. Team (£${team.priceGbp}+) is Pro plus a shared framework head, commercial reuse rights, white-label or internal deployment, onboarding, priority support, and 12 months of updates.`,
   },
   {
     question: "Do I need to know MJML to use Template Hedgehog?",
@@ -324,7 +326,7 @@ export default function PricingPage() {
 
       <V2PageHero
         title="Buy the right email system."
-        copy="Core is the £59 archive essentials pack. Pro is the £179 production system for recurring source-to-handoff work. Team is Pro with commercial reuse rights, onboarding, priority support, and longer updates."
+        copy="Core is the £59 essential starting system: welcome, onboarding, reset, and confirmation in the simplest inline dialect. Pro is the £179 production system for recurring source-to-handoff work, adding coverage and a more sophisticated architecture. Team is Pro with a shared framework, commercial reuse rights, onboarding, priority support, and longer updates."
         actions={[
           { href: "#pro", label: "Buy Pro - £179", primary: true },
           { href: "#buyer-pathways", label: "Find your path" },
@@ -439,7 +441,7 @@ export default function PricingPage() {
 
       <V2Section
         title="Core ships first journeys. Pro standardises. Team scales."
-        copy={`Core is the essential archive starter: three complete workflows with source files, compiled HTML, previews, and setup docs. Pro is the main buying path for recurring email production: the complete archive, ${COMPONENT_COUNT} components, ${LAYOUT_COUNT} layouts, ${WORKFLOW_COUNT} workflows, QA, handoff guidance, and updates. Team keeps Pro, then adds permission, onboarding, support, and a longer update window.`}
+        copy={`Core is the essential starting system: the welcome, onboarding, password reset, and order confirmation emails every product needs, in the simplest production-ready inline dialect, with source files, compiled HTML, previews, and setup docs. Pro is the main buying path for recurring email production. It adds coverage and a more sophisticated architecture: the complete archive of ${COMPONENT_COUNT} components, ${LAYOUT_COUNT} layouts, ${WORKFLOW_COUNT} workflows, a self-contained class stylesheet in every file, QA, handoff guidance, and updates. Team keeps Pro, then adds a shared framework head, permission, onboarding, support, and a longer update window.`}
         surface="surface"
       >
         <div id="editions" className="grid gap-5 lg:grid-cols-3">
@@ -447,14 +449,14 @@ export default function PricingPage() {
             <PricingTierCard
               name="Core"
               price={`£${core.priceGbp}`}
-              outcome="Start shipping."
-              copy="Best when you need the first production journeys covered cleanly: welcome, password reset, and order confirmation systems with 11 components, 3 layouts, 3 workflows, MJML source, compiled HTML, previews, and setup docs."
+              outcome="The essential starting system."
+              copy={`The lifecycle, transactional, and confirmation emails every product needs: welcome, onboarding, password reset, and order confirmation, in the simplest production-ready inline dialect. ${STARTER_COMPONENT_COUNT} components, ${STARTER_LAYOUT_COUNT} layouts, MJML source, compiled HTML, previews, and setup docs.`}
               points={[
-                "SaaS welcome, password reset, and order confirmation systems",
-                "Editable MJML and compiled HTML outputs",
-                "Setup docs for first implementation",
+                "Welcome, onboarding, password reset, and order confirmation systems",
+                "Simplest production-ready inline dialect, tokens resolved on the element",
+                "Editable MJML, compiled HTML, and setup docs",
               ]}
-              badge="3 workflows"
+              badge="Starting system"
               action={<CheckoutAction tier={core} source="pricing_core" />}
               tone="neutral"
             />
@@ -464,13 +466,14 @@ export default function PricingPage() {
               name="Pro"
               price={`£${pro.priceGbp}`}
               outcome="Standardise delivery."
-              copy="Best when email production is recurring and you need a repeatable source-to-handoff system: 82 components, 18 layouts, 13 workflows, editable source, compiled HTML, previews, QA notes, implementation guidance, and 6 months of updates."
+              copy={`Best when email production is recurring and you need more coverage and a more sophisticated architecture: ${COMPONENT_COUNT} components, ${LAYOUT_COUNT} layouts, ${WORKFLOW_COUNT} workflows, with a self-contained class stylesheet in every file, editable source, compiled HTML, previews, QA notes, implementation guidance, and 6 months of updates.`}
               points={[
                 "Full source and output archive across lifecycle, transactional, and campaign email",
+                "Self-contained class stylesheet in every file, not just inline tokens",
                 "Token examples, QA notes, and implementation guidance",
                 "Versioned workflow updates for 6 months",
               ]}
-              badge="13 workflows"
+              badge={`${WORKFLOW_COUNT} workflows`}
               action={<CheckoutAction tier={pro} source="pricing_pro" tone="onDark" />}
               highlighted
               tone="amethyst"
@@ -480,8 +483,9 @@ export default function PricingPage() {
             name="Team"
             price={`£${team.priceGbp}+`}
             outcome="Scale operations."
-            copy="Best when the same production artefacts will be reused across clients, teams, or internal systems: Pro archive, commercial reuse rights, onboarding, white-label/internal deployment, priority support, and 12 months of updates."
+            copy="Best when the same production artefacts will be reused across clients, teams, or internal systems: the Pro archive with a shared framework head, commercial reuse rights, onboarding, white-label/internal deployment, priority support, and 12 months of updates."
             points={[
+              "Shared framework head, restyle once across the archive",
               "Commercial reuse rights for the Pro archive",
               "White-label or internal deployment",
               "Reusable generation framework",
@@ -518,7 +522,7 @@ export default function PricingPage() {
 
       <V2Section
         title="Why Pro becomes the default production choice."
-        copy="Core is useful when the first workflows are enough. Pro is the commercial choice when email production is recurring and mistakes in source, QA, or handoff cost more than the licence."
+        copy="Core is the right call when the essential starting system is enough. Pro is the commercial choice when email production is recurring: it adds the wider archive and a more sophisticated source architecture, and mistakes in source, QA, or handoff cost more than the licence."
       >
         <div className="grid gap-6 md:grid-cols-3">
           {proProductionReasons.map((item) => (
@@ -571,7 +575,15 @@ export default function PricingPage() {
         copy="The hesitation point is usually not the files. It is whether the licence fits, how updates are accessed, and what happens if delivery fails."
       >
         <div className="grid gap-6">
-          <LicenceMatrix />
+          <LicenceMatrix
+            counts={{
+              starterComponentCount: STARTER_COMPONENT_COUNT,
+              starterLayoutCount: STARTER_LAYOUT_COUNT,
+              componentCount: COMPONENT_COUNT,
+              layoutCount: LAYOUT_COUNT,
+              workflowCount: WORKFLOW_COUNT,
+            }}
+          />
           <SupportRefundPanel />
         </div>
       </V2Section>
@@ -596,11 +608,11 @@ export default function PricingPage() {
         </div>
       </V2Section>
 
-      <V2Section title="Why upgrade?" copy="The upgrade path is about archive depth first, then reuse rights and support. Pro changes what you receive. Team changes what you are allowed and supported to do with it.">
+      <V2Section title="Why upgrade?" copy="The upgrade path moves on two axes: more coverage and a more sophisticated source architecture. Pro changes what you receive and how the source is built. Team changes what you are allowed and supported to do with it.">
         <div className="grid gap-6 md:grid-cols-3">
-          <FeatureBlock title="Core to Pro" copy="Move to Pro when the 3 Core workflows are not enough and you need the full set of lifecycle, transactional, and campaign systems." />
-          <FeatureBlock title="Pro to Team" copy="Move to Team when reuse rights, white-label delivery, priority support, or a longer update window matter." />
-          <FeatureBlock title="Team difference" copy="Team does not add more templates than Pro. It adds permission, support, and operational cover." />
+          <FeatureBlock title="Core to Pro" copy={`Move to Pro when the ${STARTER_LAYOUT_COUNT} Core systems are not enough and you need the full lifecycle, transactional, and campaign set, plus a more sophisticated architecture: a self-contained class stylesheet in every file rather than the inline dialect.`} />
+          <FeatureBlock title="Pro to Team" copy="Move to Team when reuse rights, white-label delivery, a shared framework head, priority support, or a longer update window matter." />
+          <FeatureBlock title="Team difference" copy="Team does not add more templates than Pro. It adds a shared framework head, permission, support, and operational cover." />
         </div>
       </V2Section>
 

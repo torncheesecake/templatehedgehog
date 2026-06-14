@@ -141,7 +141,7 @@ export default function SamplePackPage() {
               Inspect the sample, then choose the archive.
             </h2>
             <p className="mt-4 max-w-2xl text-[1rem] leading-8 !text-[var(--text-on-structural-muted)]">
-              Use the sample to check source quality, compiled output, QA notes, and handoff structure. Buy Core for the starter system, Pro for recurring production, or Team when reuse rights and support matter.
+              Use the sample to check source quality, compiled output, QA notes, and handoff structure. Buy Core for the essential starting system, Pro for recurring production, or Team when reuse rights and support matter.
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
