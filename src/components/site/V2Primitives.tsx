@@ -685,7 +685,7 @@ function buildLicenceRows(counts: LicenceCounts) {
     {
       tier: "Pro",
       use: "Recurring production email work for your organisation",
-      receives: `${counts.componentCount} components, ${counts.layoutCount} layouts, ${counts.workflowCount} workflows, a self-contained class stylesheet in every file, token examples, QA notes, advanced guidance, and compiled output`,
+      receives: `${counts.componentCount} components, ${counts.layoutCount} layouts, ${counts.workflowCount} workflows, token examples, QA notes, advanced guidance, and compiled output, authored in a more maintainable stylesheet architecture`,
       rights: "Use the full archive for your own organisation's production email work. Client resale, redistribution, and white-label reuse are not included.",
       updates: "6 months of versioned updates",
     },

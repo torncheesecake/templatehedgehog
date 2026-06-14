@@ -855,7 +855,7 @@ export default function Home() {
         <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12">
           <SectionHeader
             title="Choose the edition by operating need."
-            copy={`Core is the essential starting system: welcome, onboarding, password reset, and order confirmation in the simplest production-ready inline dialect. Pro is the main buying path: more coverage and a more sophisticated architecture, with the full source-to-handoff archive of ${COMPONENT_COUNT} components, ${LAYOUT_COUNT} layouts, ${WORKFLOW_COUNT} workflows, and a self-contained class stylesheet in every file. Team is Pro plus a shared framework head, commercial reuse, rollout support, and longer updates.`}
+            copy={`Core is the essential starting system: welcome, onboarding, password reset, and order confirmation in the simplest production-ready inline dialect. Pro is the main buying path: the full source-to-handoff archive of ${COMPONENT_COUNT} components, ${LAYOUT_COUNT} layouts, and ${WORKFLOW_COUNT} workflows with their data contracts, authored in a more maintainable stylesheet architecture. Team is Pro plus a shared framework head, commercial reuse, rollout support, and longer updates.`}
           />
           <div className="grid gap-4 md:grid-cols-3">
             {editionCards.map((edition) => (

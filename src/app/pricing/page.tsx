@@ -201,7 +201,7 @@ const pricingFaqs = [
   {
     question: "What is the difference between Core, Pro, and Team?",
     answer:
-      `Core (£${core.priceGbp}) is the essential starting system: the welcome, onboarding, password reset, and order confirmation emails every product needs, in the simplest production-ready inline dialect, with ${STARTER_COMPONENT_COUNT} components, ${STARTER_LAYOUT_COUNT} layouts, MJML source, compiled HTML, previews, and setup docs. Pro (£${pro.priceGbp}) adds coverage and a more sophisticated architecture: ${COMPONENT_COUNT} components, ${LAYOUT_COUNT} layouts, ${WORKFLOW_COUNT} workflows, a self-contained class stylesheet in every file, QA notes, implementation guidance, and 6 months of updates. Team (£${team.priceGbp}+) is Pro plus a shared framework head, commercial reuse rights, white-label or internal deployment, onboarding, priority support, and 12 months of updates.`,
+      `Core (£${core.priceGbp}) is the essential starting system: the welcome, onboarding, password reset, and order confirmation emails every product needs, in the simplest production-ready inline dialect, with ${STARTER_COMPONENT_COUNT} components, ${STARTER_LAYOUT_COUNT} layouts, MJML source, compiled HTML, previews, and setup docs. Pro (£${pro.priceGbp}) is the full archive: ${COMPONENT_COUNT} components, ${LAYOUT_COUNT} layouts, and ${WORKFLOW_COUNT} workflows with their data contracts, QA notes, implementation guidance, and 6 months of updates, authored in a more maintainable stylesheet architecture. Team (£${team.priceGbp}+) is Pro plus a shared framework head, commercial reuse rights, white-label or internal deployment, onboarding, priority support, and 12 months of updates.`,
   },
   {
     question: "Do I need to know MJML to use Template Hedgehog?",
@@ -326,7 +326,7 @@ export default function PricingPage() {
 
       <V2PageHero
         title="Buy the right email system."
-        copy="Core is the £59 essential starting system: welcome, onboarding, reset, and confirmation in the simplest inline dialect. Pro is the £179 production system for recurring source-to-handoff work, adding coverage and a more sophisticated architecture. Team is Pro with a shared framework, commercial reuse rights, onboarding, priority support, and longer updates."
+        copy="Core is the £59 essential starting system: welcome, onboarding, reset, and confirmation in the simplest inline dialect. Pro is the £179 production system for recurring source-to-handoff work: the full archive across lifecycle, transactional, and campaign email, authored in a more maintainable stylesheet architecture. Team is Pro with a shared framework, commercial reuse rights, onboarding, priority support, and longer updates."
         actions={[
           { href: "#pro", label: "Buy Pro - £179", primary: true },
           { href: "#buyer-pathways", label: "Find your path" },
@@ -441,7 +441,7 @@ export default function PricingPage() {
 
       <V2Section
         title="Core ships first journeys. Pro standardises. Team scales."
-        copy={`Core is the essential starting system: the welcome, onboarding, password reset, and order confirmation emails every product needs, in the simplest production-ready inline dialect, with source files, compiled HTML, previews, and setup docs. Pro is the main buying path for recurring email production. It adds coverage and a more sophisticated architecture: the complete archive of ${COMPONENT_COUNT} components, ${LAYOUT_COUNT} layouts, ${WORKFLOW_COUNT} workflows, a self-contained class stylesheet in every file, QA, handoff guidance, and updates. Team keeps Pro, then adds a shared framework head, permission, onboarding, support, and a longer update window.`}
+        copy={`Core is the essential starting system: the welcome, onboarding, password reset, and order confirmation emails every product needs, in the simplest production-ready inline dialect, with source files, compiled HTML, previews, and setup docs. Pro is the main buying path for recurring email production: the complete archive of ${COMPONENT_COUNT} components, ${LAYOUT_COUNT} layouts, and ${WORKFLOW_COUNT} workflows with their data contracts, QA, handoff guidance, and updates, authored in a more maintainable stylesheet architecture. Team keeps Pro, then adds a shared framework head, permission, onboarding, support, and a longer update window.`}
         surface="surface"
       >
         <div id="editions" className="grid gap-5 lg:grid-cols-3">
@@ -466,12 +466,12 @@ export default function PricingPage() {
               name="Pro"
               price={`£${pro.priceGbp}`}
               outcome="Standardise delivery."
-              copy={`Best when email production is recurring and you need more coverage and a more sophisticated architecture: ${COMPONENT_COUNT} components, ${LAYOUT_COUNT} layouts, ${WORKFLOW_COUNT} workflows, with a self-contained class stylesheet in every file, editable source, compiled HTML, previews, QA notes, implementation guidance, and 6 months of updates.`}
+              copy={`Best when email production is recurring and you need the full archive: ${COMPONENT_COUNT} components, ${LAYOUT_COUNT} layouts, and ${WORKFLOW_COUNT} workflows with their data contracts, editable source, compiled HTML, previews, QA notes, implementation guidance, and 6 months of updates, authored in a more maintainable stylesheet architecture.`}
               points={[
                 "Full source and output archive across lifecycle, transactional, and campaign email",
-                "Self-contained class stylesheet in every file, not just inline tokens",
                 "Token examples, QA notes, and implementation guidance",
                 "Versioned workflow updates for 6 months",
+                "Authored with a self-contained class stylesheet for easier upkeep",
               ]}
               badge={`${WORKFLOW_COUNT} workflows`}
               action={<CheckoutAction tier={pro} source="pricing_pro" tone="onDark" />}
@@ -522,7 +522,7 @@ export default function PricingPage() {
 
       <V2Section
         title="Why Pro becomes the default production choice."
-        copy="Core is the right call when the essential starting system is enough. Pro is the commercial choice when email production is recurring: it adds the wider archive and a more sophisticated source architecture, and mistakes in source, QA, or handoff cost more than the licence."
+        copy="Core is the right call when the essential starting system is enough. Pro is the commercial choice when email production is recurring: it adds the wider archive across lifecycle, transactional, and campaign email, and mistakes in source, QA, or handoff cost more than the licence."
       >
         <div className="grid gap-6 md:grid-cols-3">
           {proProductionReasons.map((item) => (
@@ -608,9 +608,9 @@ export default function PricingPage() {
         </div>
       </V2Section>
 
-      <V2Section title="Why upgrade?" copy="The upgrade path moves on two axes: more coverage and a more sophisticated source architecture. Pro changes what you receive and how the source is built. Team changes what you are allowed and supported to do with it.">
+      <V2Section title="Why upgrade?" copy="The upgrade path is mostly about coverage: Pro changes how much of your email work the archive covers. Team changes what you are allowed and supported to do with it.">
         <div className="grid gap-6 md:grid-cols-3">
-          <FeatureBlock title="Core to Pro" copy={`Move to Pro when the ${STARTER_LAYOUT_COUNT} Core systems are not enough and you need the full lifecycle, transactional, and campaign set, plus a more sophisticated architecture: a self-contained class stylesheet in every file rather than the inline dialect.`} />
+          <FeatureBlock title="Core to Pro" copy={`Move to Pro when the ${STARTER_LAYOUT_COUNT} Core systems are not enough and you need the full lifecycle, transactional, and campaign set with their data contracts. The source is also authored in a more maintainable stylesheet architecture than the Core inline dialect.`} />
           <FeatureBlock title="Pro to Team" copy="Move to Team when reuse rights, white-label delivery, a shared framework head, priority support, or a longer update window matter." />
           <FeatureBlock title="Team difference" copy="Team does not add more templates than Pro. It adds a shared framework head, permission, support, and operational cover." />
         </div>
