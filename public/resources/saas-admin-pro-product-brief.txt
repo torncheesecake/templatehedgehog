@@ -1,0 +1,42 @@
+TemplateHedgehog - SaaS Admin Pro Product Brief
+
+Product:
+SaaS Admin Pro
+
+Summary:
+Premium B2B admin template designed for subscription and service businesses that need a complete interface system, not isolated screens.
+
+Who it is for:
+- SaaS founders and operators
+- Product and growth teams
+- Agencies delivering B2B web products
+
+What is included:
+- 8 complete workflow modules
+- 40+ production-ready screens
+- 22+ reusable UI blocks
+- Documentation for implementation and handover
+
+Core modules:
+- Executive overview
+- Customer intelligence
+- Billing operations
+- Board reporting
+- Team permissions
+- Launch onboarding
+- Settings controls
+- Authentication journey
+
+Technology:
+- Next.js App Router
+- React 19
+- Tailwind CSS v4
+
+Commercial notes:
+- Licence starts at £299
+- Designed for commercial delivery workflows
+
+Links:
+Template page: https://templatehedgehog.com/templates/saas-admin-pro
+Demo: https://templatehedgehog.com/demo/saas-admin-pro
+Documentation: https://templatehedgehog.com/templates/saas-admin-pro/docs

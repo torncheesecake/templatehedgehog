@@ -7,11 +7,22 @@ import { track } from "@/lib/analytics";
 type LeadCaptureFormProps = {
   source: string;
   compact?: boolean;
+  submitLabel?: string;
+  description?: string;
+  successMessage?: string;
+  showChecklistLink?: boolean;
 };
 
 type FormState = "idle" | "submitting" | "success" | "error";
 
-export function LeadCaptureForm({ source, compact = false }: LeadCaptureFormProps) {
+export function LeadCaptureForm({
+  source,
+  compact = false,
+  submitLabel = "Get QA checklist",
+  description = "Receive the production email QA checklist and product update notes. No generic newsletter.",
+  successMessage,
+  showChecklistLink = true,
+}: LeadCaptureFormProps) {
   const [email, setEmail] = useState("");
   const [state, setState] = useState<FormState>("idle");
   const [message, setMessage] = useState("");
@@ -47,7 +58,7 @@ export function LeadCaptureForm({ source, compact = false }: LeadCaptureFormProp
 
       track("lead_capture_submit", { source });
       setState("success");
-      setMessage(payload.message ?? "Saved. We will send product updates and implementation notes.");
+      setMessage(successMessage ?? payload.message ?? "Saved. We will send product updates and implementation notes.");
       setEmail("");
     } catch {
       setState("error");
@@ -80,26 +91,26 @@ export function LeadCaptureForm({ source, compact = false }: LeadCaptureFormProp
         <button
           type="submit"
           disabled={state === "submitting"}
-          className="inline-flex h-12 items-center justify-center rounded-[0.82rem] border border-[var(--action-primary)] bg-[var(--action-primary)] px-5 text-[0.92rem] font-semibold !text-[var(--action-text)] transition hover:bg-[var(--action-primary-hover)] disabled:cursor-not-allowed disabled:opacity-70"
+          className="th-btn th-btn-primary disabled:cursor-not-allowed disabled:opacity-70"
         >
-          {state === "submitting" ? "Saving" : "Get QA checklist"}
+          {state === "submitting" ? "Saving" : submitLabel}
           {state === "submitting" ? null : <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />}
         </button>
       </div>
       <p className="mt-3 text-[0.86rem] leading-6 text-[var(--text-secondary)]">
-        Receive the production email QA checklist and product update notes. No generic newsletter.
+        {description}
       </p>
       {message ? (
         <div
           className={`mt-3 flex items-start gap-2 text-[0.86rem] font-semibold leading-6 ${
-            state === "success" ? "text-[var(--text-primary)]" : "text-[var(--action-primary)]"
+            state === "success" ? "text-[var(--text-primary)]" : "text-[var(--colour-emotional)]"
           }`}
           role="status"
         >
           {state === "success" ? <CheckCircle2 className="mt-1 h-4 w-4 shrink-0" aria-hidden="true" /> : null}
           <span>
             {message}
-            {state === "success" ? (
+            {state === "success" && showChecklistLink ? (
               <>
                 {" "}
                 <a

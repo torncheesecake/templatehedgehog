@@ -53,7 +53,7 @@ export function LayoutPreviewStage({
           <div className="grid h-full place-items-center bg-[var(--bg-canvas)] px-5 text-center">
             <div>
               <ImageOff className="mx-auto h-6 w-6 text-[var(--th-text-secondary)]" />
-              <p className="mt-3 text-[0.92rem] font-semibold text-white">
+              <p className="mt-3 text-[0.92rem] font-semibold text-[var(--text-primary)]">
                 Preview unavailable
               </p>
               <p className="mt-1 text-[0.85rem] leading-6 text-[var(--th-text-secondary)]">
@@ -65,7 +65,7 @@ export function LayoutPreviewStage({
       </div>
 
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/35 via-transparent to-transparent" />
-      <p className="absolute bottom-2 left-3 z-20 rounded-[0.6rem] border border-[var(--th-border-dark)] bg-[var(--bg-canvas)]/90 px-2.5 py-1 text-[0.68rem] font-semibold tracking-[0.01em] text-white">
+      <p className="absolute bottom-2 left-3 z-20 rounded-[0.6rem] border border-black/20 bg-black/78 px-2.5 py-1 text-[0.68rem] font-semibold tracking-[0.01em] !text-[var(--colour-high-priority)]">
         {blockCount} blocks • {sectionCount} sections
       </p>
     </div>

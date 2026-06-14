@@ -15,7 +15,7 @@ export const CHANGELOG: ChangelogEntry[] = [
     title: "Commercial launch finalisation",
     bulletPoints: [
       "Added canonical SEO metadata, social previews, structured data, and ownership signals.",
-      "Aligned Starter, Pro, and Enterprise archive delivery with tier-specific checkout metadata.",
+      "Aligned Core, Pro, and Team archive delivery with tier-specific checkout metadata.",
       "Strengthened pricing, documentation, and success flows for production launch readiness.",
     ],
   },

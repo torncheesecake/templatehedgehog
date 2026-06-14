@@ -1,0 +1,9 @@
+<mjml>
+  <mj-head>
+    <mj-include path="./realrepro_head.mjml" />
+    <mj-preview>pv</mj-preview>
+    <mj-raw><meta name="cs" content="light dark" /></mj-raw>
+    <mj-attributes><mj-all font-family="Arial" /></mj-attributes>
+  </mj-head>
+  <mj-body><mj-section><mj-column><mj-text css-class="ZZSTYLE">x</mj-text></mj-column></mj-section></mj-body>
+</mjml>

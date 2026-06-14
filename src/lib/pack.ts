@@ -70,7 +70,7 @@ export const MJML_PACK_INCLUDED = [
 ] as const;
 
 export const MJML_PACK_LICENSE_POINTS = [
-  "Use is governed by the purchased Starter, Pro, or Enterprise tier",
+  "Use is governed by the purchased Core, Pro, or Team tier",
   "Keep purchased source files inside your organisation or approved delivery workflow",
   "Redistribution or resale of the source archive is not permitted",
 ] as const;

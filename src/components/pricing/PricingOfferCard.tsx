@@ -54,7 +54,7 @@ export function PricingOfferCard({
 
   return (
     <aside className="relative overflow-hidden rounded-[1.2rem] border border-[var(--border-subtle)] bg-[var(--bg-surface)] p-5 sm:p-8">
-      <span className="pointer-events-none absolute inset-x-8 top-0 h-px bg-[linear-gradient(90deg,transparent,hsl(var(--th-accent-support)/0.52),transparent)]" />
+      <span className="pointer-events-none absolute inset-x-8 top-0 h-px bg-[linear-gradient(90deg,transparent,var(--identity-source),transparent)]" />
       <p className="text-[1rem] font-semibold uppercase tracking-[0.1em] text-[var(--text-meta)]">
         {TEMPLATE_CONFIG.productName}
       </p>
@@ -102,10 +102,10 @@ export function PricingOfferCard({
         </p>
       </div>
 
-      <div className="mt-6 rounded-[0.9rem] border border-[var(--border-subtle)] bg-[var(--bg-canvas)] p-4 text-[0.84rem] text-[var(--text-secondary)]">
+      <div className="mt-6 rounded-[0.9rem] border border-[var(--identity-source-border)] bg-[var(--identity-source-soft)] p-4 text-[0.84rem] text-[var(--text-secondary)]">
         <div className="flex items-center justify-between gap-3">
-          <span>Version</span>
-          <span className="font-semibold text-[var(--text-primary)]">{versionLabel}</span>
+          <span className="font-semibold text-[var(--identity-source)]">Version</span>
+          <span className="font-semibold text-[var(--identity-source)]">{versionLabel}</span>
         </div>
         <div className="mt-2 flex items-center justify-between gap-3 border-t border-[var(--border-subtle)] pt-2">
           <span>Last updated</span>
@@ -133,7 +133,7 @@ export function PricingOfferCard({
         </li>
         <li className="flex items-start gap-2.5">
           <span className="mt-[0.58rem] h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--action-primary)]" />
-          Pro production use. Enterprise covers commercial reuse and white-label deployment
+          Pro production use. Team covers commercial reuse and white-label deployment
         </li>
       </ul>
 
@@ -145,7 +145,7 @@ export function PricingOfferCard({
             label={ctaLabel}
             event="checkout_start"
             payload={{ source: "pricing_page", productId, billingCycle: "one_off" }}
-            className="inline-flex h-12 w-full items-center justify-center rounded-[0.9rem] border border-[var(--action-primary)] bg-[var(--action-primary)] px-5 text-[0.94rem] font-semibold !text-[var(--action-text)] shadow-[0_18px_34px_rgba(0,0,0,0.3)] transition hover:bg-[var(--action-primary-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-canvas)]"
+            className="th-btn th-btn-primary w-full"
           />
         </form>
       ) : (
@@ -153,7 +153,7 @@ export function PricingOfferCard({
           <button
             type="button"
             disabled
-            className="inline-flex h-12 w-full items-center justify-center rounded-[0.9rem] border border-[var(--action-primary)] bg-[var(--action-primary)] px-5 text-[0.94rem] font-semibold !text-[var(--action-text)] shadow-[0_18px_34px_rgba(0,0,0,0.3)]"
+            className="th-btn th-btn-primary w-full disabled:cursor-not-allowed disabled:opacity-70"
           >
             {ctaLabel}
           </button>

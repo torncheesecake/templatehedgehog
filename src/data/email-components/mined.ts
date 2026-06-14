@@ -399,18 +399,19 @@ export const minedEmailComponents: EmailComponent[] = [
     slug: "review-cta-centred",
     title: "Review CTA Centred",
     category: "Content Blocks",
-    description: "Centred review prompt with rating proof and a clear follow-up action.",
+    description: "Centred review prompt for approved rating or review proof and a clear follow-up action.",
     tags: ["review", "rating", "testimonial", "cta"],
     sourceFile: "review-centred.mjml",
     previewImageUrl: "/email-shots-v3/review-cta-centred.png",
     compatibility: standardCompatibility("Centred review prompts are dependable, though Outlook can tighten the spacing between the rating asset and CTA."),
     usageGuidance: [
-      "Use in post-purchase or post-activation emails when the primary goal is to gather a review or proof point.",
+      "Use in post-purchase or post-activation emails when the primary goal is to gather or show an approved review.",
       "Keep the proof line brief so the CTA remains the main action instead of getting buried in metadata.",
     ],
     accessibilityNotes: [
       "Summarise the rating context in text because a star image alone does not communicate the score to all readers.",
       "Use a CTA label that explicitly refers to leaving or reading a review.",
+      "Do not publish placeholder review content as real customer proof.",
     ],
   }),
   makeComponent({

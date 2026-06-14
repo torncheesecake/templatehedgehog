@@ -1,0 +1,44 @@
+<!-- REPRODUCTION TEST: identical content written inline (no include) -->
+<mjml>
+  <mj-head>
+    <!-- CLAIM 1: mj-style with descendant, @media-wrapped, and attribute selectors INLINE -->
+    <mj-style>
+      @media (prefers-color-scheme: dark) {
+        .dm-keep-cta td { background-color: #2f67ef !important; }
+        .dm-keep-cta a { color: #ffffff !important; }
+      }
+      [data-ogsc] .dm-keep-cta td { background-color: #2f67ef !important; }
+      [data-ogsc] .dm-keep-cta a { color: #ffffff !important; }
+      @media only screen and (max-width:480px) {
+        .ios-fix { display: inline-block !important; }
+      }
+    </mj-style>
+
+    <!-- CLAIM 2: mj-raw INLINE -->
+    <mj-raw>
+      <meta name="color-scheme" content="light dark" />
+      <meta name="supported-color-schemes" content="light dark" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    </mj-raw>
+
+    <!-- CLAIM 3: mj-attributes INLINE -->
+    <mj-attributes>
+      <mj-text font-family="'Manrope', Arial, sans-serif" font-size="18px" color="#ff0000" />
+      <mj-class name="repro-token" font-weight="800" color="#00cc00" />
+    </mj-attributes>
+  </mj-head>
+  <mj-body>
+    <mj-section>
+      <mj-column>
+        <!-- Uses dm-keep-cta -->
+        <mj-button css-class="dm-keep-cta" href="https://example.com">CTA Button</mj-button>
+        <!-- Uses ios-fix -->
+        <mj-text css-class="ios-fix">Hello with ios-fix class</mj-text>
+        <!-- Uses repro-token mj-class -->
+        <mj-text mj-class="repro-token">Hello with repro-token mj-class</mj-text>
+        <!-- Plain text: font/color from mj-attributes default -->
+        <mj-text>Plain text (should be #ff0000 / 18px if mj-attributes applied)</mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>

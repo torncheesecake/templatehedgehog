@@ -2,6 +2,7 @@ import { MetadataRoute } from "next";
 import { TEMPLATE_CONFIG } from "@/config/template";
 import { emailComponents } from "@/data/email-components";
 import { emailLayouts } from "@/data/email-layouts";
+import { emailWorkflows } from "@/data/workflows";
 import { PACK_LAST_UPDATED } from "@/lib/versioning";
 
 export const dynamic = "force-static";
@@ -25,13 +26,18 @@ function buildEntry(
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [
     buildEntry("/", 1, "weekly"),
+    buildEntry("/workflows", 0.98, "weekly"),
     buildEntry("/components", 0.95, "weekly"),
     buildEntry("/layouts", 0.9, "weekly"),
+    buildEntry("/sample-pack", 0.86, "monthly"),
+    buildEntry("/studio", 0.84, "monthly"),
     buildEntry("/docs", 0.8, "monthly"),
     buildEntry("/pricing", 0.8, "weekly"),
+    buildEntry("/services/netsuite-email-templates", 0.7, "monthly"),
     buildEntry("/changelog", 0.65, "monthly"),
     buildEntry("/support", 0.55, "monthly"),
     buildEntry("/about", 0.45, "monthly"),
+    buildEntry("/llms.txt", 0.35, "monthly"),
   ];
 
   const componentPages: MetadataRoute.Sitemap = emailComponents.map((component) =>
@@ -42,5 +48,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     buildEntry(`/layouts/${layout.slug}`, 0.78, "weekly"),
   );
 
-  return [...staticPages, ...componentPages, ...layoutPages];
+  const workflowPages: MetadataRoute.Sitemap = emailWorkflows.map((workflow) =>
+    buildEntry(`/workflows/${workflow.slug}`, 0.82, "weekly"),
+  );
+
+  return [...staticPages, ...workflowPages, ...componentPages, ...layoutPages];
 }

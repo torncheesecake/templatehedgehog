@@ -29,16 +29,18 @@ const GOOGLE_TAG_ID = "G-7DTS6Z1FN1";
 
 export const metadata: Metadata = {
   ...createSeoMetadata({
-    title: `${TEMPLATE_CONFIG.brandName} | Production-ready email systems`,
+    title: `${TEMPLATE_CONFIG.brandName} | Modern email production workflow`,
     description: DEFAULT_SEO_DESCRIPTION,
     path: "/",
     keywords: [
-      "production-ready email systems",
+      "modern email production workflow",
       "MJML email systems",
       "compiled HTML email",
+      "email QA notes",
+      "email handoff guidance",
       "transactional email system",
       "lifecycle email workflows",
-      "developer email system",
+      "developer email archive",
     ],
   }),
   icons: {

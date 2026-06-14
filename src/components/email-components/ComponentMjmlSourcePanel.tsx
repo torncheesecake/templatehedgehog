@@ -41,19 +41,19 @@ export function ComponentMjmlSourcePanel({
 
   const modeConfig: Record<MjmlSourceMode, ModeConfig> = {
     snippet: {
-      title: "MJML snippet",
+      title: "Block MJML",
       description:
-        "Component block only. Use this when assembling an email from multiple reusable sections inside a project that already includes the shared MJML classes.",
-      copyLabel: "Copy snippet",
-      successMessage: "MJML snippet copied to clipboard",
+        "Section-only MJML for assembling an email from multiple reusable production blocks inside a shared project.",
+      copyLabel: "Copy block MJML",
+      successMessage: "Block MJML copied to clipboard",
       source: normalisedSnippet,
     },
     standalone: {
-      title: "Standalone MJML",
+      title: "Complete MJML file",
       description:
-        "Full file with framework and wrapper so this block compiles independently.",
-      copyLabel: "Copy standalone MJML",
-      successMessage: "Standalone MJML copied to clipboard",
+        "Full file with framework and wrapper so this block can be compiled and reviewed independently.",
+      copyLabel: "Copy full MJML",
+      successMessage: "Full MJML copied to clipboard",
       source: normalisedStandalone,
     },
   };
@@ -75,7 +75,7 @@ export function ComponentMjmlSourcePanel({
             data-active={activeMode === "snippet"}
             className="inline-flex h-10 items-center rounded-[0.62rem] px-4 text-[0.94rem] font-semibold text-[var(--th-text-muted)] transition-colors hover:bg-[var(--bg-accent-soft)] hover:text-[var(--text-primary)] data-[active=true]:bg-[var(--action-primary)] data-[active=true]:!text-[var(--action-text)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2"
           >
-            Snippet
+            Block
           </button>
           <button
             type="button"
@@ -84,15 +84,15 @@ export function ComponentMjmlSourcePanel({
             data-active={activeMode === "standalone"}
             className="inline-flex h-10 items-center rounded-[0.62rem] px-4 text-[0.94rem] font-semibold text-[var(--th-text-muted)] transition-colors hover:bg-[var(--bg-accent-soft)] hover:text-[var(--text-primary)] data-[active=true]:bg-[var(--action-primary)] data-[active=true]:!text-[var(--action-text)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2"
           >
-            Standalone
+            Full file
           </button>
         </div>
       ) : null}
 
       {activeMode === "snippet" ? (
         <p className="rounded-[0.82rem] border border-[var(--border-strong)] bg-[var(--bg-accent-soft)] px-3.5 py-2.5 text-[0.88rem] leading-6 text-[var(--text-primary)]">
-          Snippet assembly: place this block inside the same <code className="font-semibold">&lt;mj-body&gt;</code> as your
-          other snippets, then stack sections in send order.
+          Block assembly: place this section inside the same <code className="font-semibold">&lt;mj-body&gt;</code> as your
+          other production blocks, then stack sections in send order.
         </p>
       ) : null}
 

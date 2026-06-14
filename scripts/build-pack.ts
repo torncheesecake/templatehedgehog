@@ -120,6 +120,7 @@ function toLayoutMetadata(layout: EmailLayoutRecipe): PackLayoutMetadata {
     notes: layout.notes,
     layoutSections: layout.layoutSections,
     componentBlocks: layout.componentBlocks,
+    sourceFiles: layout.sourceFiles,
   };
 }
 

@@ -1,0 +1,16 @@
+<!-- DIALECT: ENTERPRISE shared head (prototype/tiering) -->
+<!-- Pulled in via <mj-include path="./head.mjml" /> from the main file. -->
+<!--                                                                                                      -->
+<!-- SCOPE LIMITATION (mjml 5.0.0-beta.2): an included head's <mj-style> is TREE-SHAKEN to only the rules -->
+<!-- whose class is directly referenced via css-class on an element; <mj-raw> and <mj-attributes> in an -->
+<!-- included head are dropped entirely. So this include carries ONLY simple, directly-referenced helper -->
+<!-- classes (e.g. .center used via css-class="center"). The guardrail @media/dark-mode CSS, the <mj-raw> -->
+<!-- meta/font links, and the <mj-attributes> tokens all live in the MAIN file. -->
+<mj-head>
+  <mj-style>
+    .center { text-align: center !important; }
+    .center div { text-align: center !important; }
+    .border-top-light { border-top: 1px solid rgba(26, 26, 26, 0.1) !important; }
+    .border-bottom-light { border-bottom: 1px solid rgba(26, 26, 26, 0.1) !important; }
+  </mj-style>
+</mj-head>

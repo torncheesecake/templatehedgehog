@@ -5,6 +5,7 @@ import {
   PRICING_TIERS,
   TEMPLATE_CONFIG,
 } from "@/config/template";
+import { PACK_LAST_UPDATED, PACK_VERSION } from "@/lib/versioning";
 
 type PageType = "website" | "article";
 
@@ -24,7 +25,7 @@ type BreadcrumbItem = {
 };
 
 export const DEFAULT_SEO_DESCRIPTION =
-  "Template Hedgehog helps teams ship production-ready MJML, compiled HTML, lifecycle email, and transactional email systems.";
+  "Template Hedgehog is a production-ready email system with editable MJML source, compiled HTML, workflow examples, QA notes, and handoff guidance.";
 
 function ensureAbsoluteUrl(pathOrUrl: string): string {
   if (/^https?:\/\//i.test(pathOrUrl)) {
@@ -75,7 +76,7 @@ export function createSeoMetadata({
           url: imageUrl,
           width: 1200,
           height: 630,
-          alt: `${TEMPLATE_CONFIG.brandName} production email system preview`,
+          alt: `${TEMPLATE_CONFIG.brandName} source-to-handoff email production workflow preview`,
         },
       ],
     },
@@ -85,6 +86,7 @@ export function createSeoMetadata({
       description,
       images: [imageUrl],
     },
+    category: "technology",
     robots: noIndex
       ? {
           index: false,
@@ -103,10 +105,12 @@ export function buildOrganizationJsonLd() {
     "@id": `${TEMPLATE_CONFIG.siteUrl}/#organisation`,
     name: TEMPLATE_CONFIG.owner.name,
     url: ownerUrl,
+    logo: buildAbsoluteUrl("/brand/hedgehog-mark.svg"),
     brand: {
       "@type": "Brand",
       name: TEMPLATE_CONFIG.brandName,
       url: TEMPLATE_CONFIG.siteUrl,
+      logo: buildAbsoluteUrl("/brand/hedgehog-mark.svg"),
     },
     contactPoint: {
       "@type": "ContactPoint",
@@ -127,6 +131,7 @@ export function buildWebsiteJsonLd() {
     url: TEMPLATE_CONFIG.siteUrl,
     description: DEFAULT_SEO_DESCRIPTION,
     inLanguage: "en-GB",
+    dateModified: PACK_LAST_UPDATED,
     publisher: {
       "@id": `${TEMPLATE_CONFIG.siteUrl}/#organisation`,
     },
@@ -150,7 +155,14 @@ export function buildProductJsonLd() {
       "@id": `${TEMPLATE_CONFIG.siteUrl}/#organisation`,
     },
     category: "DeveloperApplication",
+    audience: {
+      "@type": "Audience",
+      audienceType: "Email developers, lifecycle marketers, SaaS teams, and product teams shipping production email",
+    },
     image: TEMPLATE_CONFIG.urls.openGraphImage,
+    url: TEMPLATE_CONFIG.urls.pricing,
+    sku: "template-hedgehog-email-system",
+    releaseDate: PACK_LAST_UPDATED,
     description: DEFAULT_SEO_DESCRIPTION,
     offers: PRICING_TIERS.map((tier) => ({
       "@type": "Offer",
@@ -172,9 +184,20 @@ export function buildSoftwareApplicationJsonLd() {
     "@id": `${TEMPLATE_CONFIG.siteUrl}/#software-application`,
     name: TEMPLATE_CONFIG.brandName,
     applicationCategory: "DeveloperApplication",
+    applicationSubCategory: "Email production system",
     operatingSystem: "Web, MJML, HTML",
     url: TEMPLATE_CONFIG.siteUrl,
     image: TEMPLATE_CONFIG.urls.openGraphImage,
+    softwareVersion: PACK_VERSION,
+    dateModified: PACK_LAST_UPDATED,
+    featureList: [
+      "Editable MJML source",
+      "Compiled production HTML",
+      "Rendered email previews",
+      "Workflow examples",
+      "QA notes",
+      "Implementation and handoff guidance",
+    ],
     description: DEFAULT_SEO_DESCRIPTION,
     creator: {
       "@id": `${TEMPLATE_CONFIG.siteUrl}/#organisation`,

@@ -129,18 +129,19 @@ export const expandedEmailComponents: EmailComponent[] = [
     slug: "logo-grid-trust-wall",
     title: "Logo Grid",
     category: "Content Blocks",
-    description: "Trust strip of partner or customer logos for proof and credibility sections.",
+    description: "Placeholder logo strip for approved customer, partner, or integration marks.",
     tags: ["logos", "trust", "proof", "brand"],
     sourceFile: "logo-grid.mjml",
     previewImageUrl: "/email-shots-v3/newsletter-editorial.png",
     compatibility: standardCompatibility("Multiple logo columns can tighten slightly in Outlook desktop."),
     usageGuidance: [
-      "Use between a hero and CTA when you need a lightweight proof layer.",
+      "Use between a hero and CTA when you have approved logos or partner marks to show.",
       "Normalise logo sizes before export so the strip stays consistent.",
     ],
     accessibilityNotes: [
       "Use alt text that distinguishes each logo if the marks communicate meaning.",
       "Do not let low-contrast greyscale treatments make the logos unreadable.",
+      "Do not publish placeholder logos as real customer proof.",
     ],
   }),
   makeComponent({

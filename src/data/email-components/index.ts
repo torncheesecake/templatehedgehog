@@ -405,7 +405,7 @@ const coreEmailComponents: EmailComponent[] = [
     title: "Testimonial / Quote",
     category: "Content Blocks",
     description:
-      "Customer quote section for social proof in marketing and nurture emails.",
+      "Quote section for real approved customer proof in marketing and nurture emails.",
     tags: ["testimonial", "quote", "proof", "content"],
     sourceFile: "testimonial.mjml",
     previewImageUrl: "/email-shots-v3/testimonial-component.png",
@@ -430,13 +430,14 @@ const coreEmailComponents: EmailComponent[] = [
       },
     ],
     usageGuidance: [
-      "Use near conversion sections to reinforce trust without adding another large content block.",
+      "Use near conversion sections only when a real approved quote is available.",
       "Keep the quote concise so it reads like evidence rather than body copy.",
       "Pair it with a CTA below when the testimonial is part of a sales sequence.",
     ],
     accessibilityNotes: [
       "Attribute the quote clearly so it is understandable without relying on visual styling.",
       "Do not use oversized decorative quotation marks that could distract from the actual copy.",
+      "Do not publish placeholder quote content as real customer proof.",
     ],
     mjmlSource: wrapMjmlFragment(testimonialFragment),
   },

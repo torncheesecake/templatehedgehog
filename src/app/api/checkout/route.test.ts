@@ -62,7 +62,7 @@ test("checkout session params preserve canonical Pro metadata", () => {
   });
 });
 
-test("checkout session params preserve canonical Starter and Enterprise pricing", () => {
+test("checkout session params preserve canonical Core and Team pricing", () => {
   const starter = getPackById("starter");
   const enterprise = getPackById("enterprise");
 
@@ -82,8 +82,10 @@ test("checkout session params preserve canonical Starter and Enterprise pricing"
   });
 
   assert.equal(starterParams.metadata?.amountGbp, "59");
+  assert.equal(starterParams.metadata?.tierName, "Core");
   assert.equal(starterParams.line_items?.[0]?.price_data?.unit_amount, 5900);
   assert.equal(enterpriseParams.metadata?.amountGbp, "349");
+  assert.equal(enterpriseParams.metadata?.tierName, "Team");
   assert.equal(enterpriseParams.line_items?.[0]?.price_data?.unit_amount, 34900);
 });
 

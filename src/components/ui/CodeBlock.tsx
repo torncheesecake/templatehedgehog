@@ -13,6 +13,7 @@ interface CodeBlockProps {
   language: CodeLanguage;
   label: string;
   description?: string;
+  zedFileName?: string;
   wrapLines?: boolean;
   copyButtonLabel?: string;
   successMessage?: string;
@@ -51,7 +52,16 @@ function escapeHtml(source: string): string {
 }
 
 function fallbackHighlightedHtml(code: string): string {
-  return `<pre class="shiki"><code>${escapeHtml(code)}</code></pre>`;
+  const lines = escapeHtml(code)
+    .split("\n")
+    .map((line) => `<span class="line">${line || " "}</span>`)
+    .join("");
+
+  return `<pre class="shiki"><code>${lines}</code></pre>`;
+}
+
+function loadingHighlightedHtml(): string {
+  return fallbackHighlightedHtml("Formatting code preview...");
 }
 
 async function getFormattedCode(code: string): Promise<string> {
@@ -118,6 +128,7 @@ export function CodeBlock({
   language,
   label,
   description,
+  zedFileName,
   wrapLines = false,
   copyButtonLabel = "Copy code",
   successMessage = "Code copied to clipboard",
@@ -127,6 +138,7 @@ export function CodeBlock({
   className = "",
 }: CodeBlockProps) {
   const [isCopying, setIsCopying] = useState(false);
+  const [isOpeningZed, setIsOpeningZed] = useState(false);
   const [toast, setToast] = useState<ToastState>({
     open: false,
     message: "",
@@ -135,7 +147,7 @@ export function CodeBlock({
   const [liveMessage, setLiveMessage] = useState("");
   const initialCode = useMemo(() => normaliseSource(code), [code]);
   const [formattedCode, setFormattedCode] = useState(initialCode);
-  const [highlightedHtml, setHighlightedHtml] = useState(() => fallbackHighlightedHtml(initialCode));
+  const [highlightedHtml, setHighlightedHtml] = useState(() => loadingHighlightedHtml());
   const [isPreparing, setIsPreparing] = useState(false);
 
   useEffect(() => {
@@ -152,6 +164,7 @@ export function CodeBlock({
     let cancelled = false;
     const prepare = async () => {
       setIsPreparing(true);
+      setHighlightedHtml(loadingHighlightedHtml());
       const nextFormatted = await getFormattedCode(initialCode);
       const nextHighlighted = await getHighlightedHtml(nextFormatted);
 
@@ -180,6 +193,20 @@ export function CodeBlock({
     setLiveMessage(message);
   };
 
+  const isMjmlSource = language === "mjml";
+  const panelClass = isMjmlSource
+    ? "border-[var(--identity-source-border)] bg-[var(--bg-surface)]"
+    : "border-[var(--identity-output-border)] bg-[var(--bg-surface)]";
+  const headerClass = isMjmlSource
+    ? "border-[var(--identity-source-border)] bg-[var(--identity-source-soft)]"
+    : "border-[var(--identity-output-border)] bg-[var(--identity-output-soft)]";
+  const labelClass = isMjmlSource
+    ? "text-[var(--identity-source)]"
+    : "text-[var(--identity-output)]";
+  const codeFrameClass = isMjmlSource
+    ? "border-[var(--identity-source-border)]"
+    : "border-[var(--identity-output-border)]";
+
   const handleCopy = async () => {
     if (isCopying || isPreparing) return;
     if (!formattedCode.trim()) {
@@ -205,12 +232,41 @@ export function CodeBlock({
     }
   };
 
+  const handleOpenWithZed = async () => {
+    if (!zedFileName || isOpeningZed || isPreparing) return;
+
+    setIsOpeningZed(true);
+    try {
+      const response = await fetch("/api/dev/open-in-zed", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          fileName: zedFileName,
+          content: formattedCode,
+        }),
+      });
+      const body = (await response.json().catch(() => ({}))) as { message?: string; error?: string };
+      if (response.ok) {
+        showToast(body.message ?? "Opened in Zed", "success");
+      } else {
+        showToast(body.error ?? "Could not open Zed.", "error");
+      }
+    } catch {
+      showToast("Could not open Zed.", "error");
+    } finally {
+      setIsOpeningZed(false);
+    }
+  };
+
   return (
     <>
-      <article className={`min-w-0 max-w-full overflow-hidden rounded-[1rem] border border-[var(--th-border-dark)] bg-[var(--bg-canvas)] ${className}`}>
-        <div className="flex min-w-0 flex-wrap items-start justify-between gap-3 border-b border-[var(--th-border-dark)] px-5 py-4 sm:px-6">
+      <article className={`min-w-0 max-w-full overflow-hidden rounded-[1rem] border ${panelClass} ${className}`}>
+        <div className={`flex min-w-0 flex-wrap items-start justify-between gap-3 border-b px-5 py-4 sm:px-6 ${headerClass}`}>
           <div className="min-w-0 flex-1">
-            <h2 className="text-[1.1rem] font-semibold text-white">
+            <p className={`text-[0.72rem] font-semibold uppercase tracking-[0.08em] ${labelClass}`}>
+              {isMjmlSource ? "Editable source" : "Compiled output"}
+            </p>
+            <h2 className="mt-1 text-[1.1rem] font-semibold text-[var(--text-primary)]">
               {label}
             </h2>
             {description ? (
@@ -219,24 +275,36 @@ export function CodeBlock({
               </p>
             ) : null}
           </div>
-          <button
-            type="button"
-            onClick={handleCopy}
-            disabled={isCopying || isPreparing}
-            className="inline-flex h-10 shrink-0 items-center gap-2 rounded-[0.8rem] border border-[var(--action-primary)] bg-[var(--action-primary)] px-4 text-[0.8rem] font-semibold uppercase tracking-[0.06em] !text-[var(--action-text)] transition hover:bg-[var(--action-primary-hover)] disabled:cursor-not-allowed disabled:opacity-60 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2"
-          >
-            {isCopying || isPreparing ? (
-              <>
-                <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
-                {isCopying ? "Copying" : "Formatting"}
-              </>
-            ) : (
-              <>
-                <Copy className="h-4 w-4" aria-hidden="true" />
-                {copyButtonLabel}
-              </>
-            )}
-          </button>
+          <div className="flex shrink-0 flex-wrap items-center gap-2">
+            {zedFileName ? (
+              <button
+                type="button"
+                onClick={handleOpenWithZed}
+                disabled={isOpeningZed || isPreparing}
+                className="inline-flex h-10 items-center rounded-[0.8rem] border border-[var(--identity-source-border)] bg-[var(--bg-surface)] px-4 text-[0.8rem] font-semibold uppercase tracking-[0.06em] text-[var(--text-primary)] transition hover:border-[var(--border-strong)] hover:bg-white disabled:cursor-not-allowed disabled:opacity-60 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2"
+              >
+                {isOpeningZed ? "Opening Zed" : "Open with Zed"}
+              </button>
+            ) : null}
+            <button
+              type="button"
+              onClick={handleCopy}
+              disabled={isCopying || isPreparing}
+              className="inline-flex h-10 items-center gap-2 rounded-[0.8rem] border border-[var(--action-primary)] bg-[var(--action-primary)] px-4 text-[0.8rem] font-semibold uppercase tracking-[0.06em] !text-[var(--action-text)] transition hover:bg-[var(--action-primary-hover)] disabled:cursor-not-allowed disabled:opacity-60 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2"
+            >
+              {isCopying || isPreparing ? (
+                <>
+                  <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
+                  {isCopying ? "Copying" : "Formatting"}
+                </>
+              ) : (
+                <>
+                  <Copy className="h-4 w-4" aria-hidden="true" />
+                  {copyButtonLabel}
+                </>
+              )}
+            </button>
+          </div>
         </div>
         <p className="sr-only" role="status" aria-live="polite">
           {liveMessage}
@@ -244,7 +312,7 @@ export function CodeBlock({
         <div
           tabIndex={0}
           aria-label={`${label} code block`}
-          className="max-h-[620px] w-full max-w-full overflow-auto rounded-b-[1rem] border-t border-[var(--th-border-dark)] bg-[var(--bg-canvas)] focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[var(--action-primary)]"
+          className={`max-h-[620px] w-full max-w-full overflow-auto rounded-b-[1rem] border-t bg-[color-mix(in_srgb,var(--bg-structural)_92%,black)] focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[var(--action-primary)] ${codeFrameClass}`}
         >
           <div
             className="code-surface min-w-full p-5 sm:p-6"
