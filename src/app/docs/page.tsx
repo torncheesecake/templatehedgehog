@@ -83,16 +83,6 @@ const platformCompatibilityNotes = [
   ],
 ];
 
-const studioAlphaPath = [
-  "Choose workflow",
-  "Edit content",
-  "Compile MJML",
-  "Preview output",
-  "Complete QA",
-  "Prepare handoff",
-  "Export ZIP",
-] as const;
-
 function DocsHeroPanel() {
   return (
     <div className="border-y border-[var(--border-subtle)] bg-white px-4 py-5 shadow-[0_22px_65px_rgba(15,23,42,0.06)] sm:px-5">
@@ -209,40 +199,6 @@ function DocsPreface() {
         </div>
       </section>
 
-      <section className="border-y border-[var(--border-subtle)] bg-[var(--bg-surface)] px-4 py-6 sm:px-5">
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)]">
-          <div>
-            <p className="text-[0.78rem] font-semibold uppercase tracking-[0.08em] text-[var(--identity-source)]">
-              Template Hedgehog Studio
-            </p>
-            <h2 className="mt-2 font-serif text-[clamp(1.9rem,4vw,3rem)] font-semibold leading-[1] text-[var(--text-primary)]">
-              Future workspace direction for everything before send.
-            </h2>
-            <p className="mt-4 text-[1rem] leading-8 text-[var(--text-secondary)]">
-              Template Hedgehog Studio is the future workspace concept for choosing workflows, editing content, compiling, previewing, QA, preparing handoff, and exporting ZIPs without adding accounts, cloud storage, integrations, or sending. It is not live product UI. The paid archive is complete without Studio and remains yours either way.
-            </p>
-            <Link href="/studio" className="mt-5 inline-flex th-btn th-btn-sm th-btn-secondary">
-              Join Studio waitlist
-            </Link>
-          </div>
-          <div className="grid gap-4 md:grid-cols-2">
-            <article className="border-t border-[var(--border-subtle)] pt-4">
-              <h3 className="text-[1.04rem] font-semibold text-[var(--text-primary)]">Studio helps you</h3>
-              <ul className="mt-3 space-y-2 text-[0.92rem] leading-7 text-[var(--text-secondary)]">
-                {studioAlphaPath.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </article>
-            <article className="border-t border-[var(--border-subtle)] pt-4">
-              <h3 className="text-[1.04rem] font-semibold text-[var(--text-primary)]">Studio does not replace your ESP</h3>
-              <p className="mt-3 text-[0.92rem] leading-7 text-[var(--text-secondary)]">
-                Studio does not send emails, manage audiences, manage consent, handle unsubscribe, run automation, provide reporting, or connect to platform APIs. Mailchimp, HubSpot, Salesforce, NetSuite, Klaviyo, Customer.io, or your ESP handles that work.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }
@@ -277,11 +233,6 @@ export default function DocsPage() {
           If you are evaluating before purchase, start with the <Link href="/sample-pack">public sample pack</Link>. It
           shows one complete workflow sample with MJML source, compiled HTML, QA notes, testing notes, implementation
           guidance, workflow context, and licence reference.
-        </p>
-        <p>
-          Template Hedgehog Studio is the future workspace direction. It is intended to help with
-          everything before send, but it does not replace the ESP that manages audiences, consent, unsubscribe,
-          automation, delivery, and reporting.
         </p>
         <p>
           The intended editing model is straightforward: treat MJML as the source of truth, compile to HTML when your ESP

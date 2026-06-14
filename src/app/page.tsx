@@ -199,13 +199,13 @@ const editionCards = [
     name: "Pro",
     price: `£${proTier.priceGbp}`,
     outcome: "Pro standardises production.",
-    copy: `The complete source-to-handoff archive for recurring email production: ${COMPONENT_COUNT} components, ${LAYOUT_COUNT} layouts, ${WORKFLOW_COUNT} workflows, source, compiled HTML, previews, QA notes, handoff guidance, 6 months of updates, and Studio waitlist priority while Studio is in development.`,
+    copy: `The complete source-to-handoff archive for recurring email production: ${COMPONENT_COUNT} components, ${LAYOUT_COUNT} layouts, ${WORKFLOW_COUNT} workflows, source, compiled HTML, previews, QA notes, handoff guidance, and 6 months of updates.`,
   },
   {
     name: "Team",
     price: `£${teamTier.priceGbp}+`,
     outcome: "Team adds rights, rollout, and support.",
-    copy: "Pro plus commercial reuse rights, white-label or internal deployment, reusable generation framework, priority support, 12 months of updates, and Studio waitlist priority while Studio is in development.",
+    copy: "Pro plus commercial reuse rights, white-label or internal deployment, reusable generation framework, priority support, and 12 months of updates.",
   },
 ];
 
@@ -842,22 +842,12 @@ export default function Home() {
         <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12">
           <SectionHeader
             title="Choose the edition by operating need."
-            copy={`Core is the essential archive starter for the first production journeys. Pro is the main buying path: the full source-to-handoff archive, ${COMPONENT_COUNT} components, ${LAYOUT_COUNT} layouts, ${WORKFLOW_COUNT} workflows, and Studio waitlist priority while Studio is in development. Team is Pro plus commercial reuse, rollout support, and longer updates.`}
+            copy={`Core is the essential archive starter for the first production journeys. Pro is the main buying path: the full source-to-handoff archive, ${COMPONENT_COUNT} components, ${LAYOUT_COUNT} layouts, and ${WORKFLOW_COUNT} workflows. Team is Pro plus commercial reuse, rollout support, and longer updates.`}
           />
           <div className="grid gap-4 md:grid-cols-3">
             {editionCards.map((edition) => (
               <EditionCard key={edition.name} edition={edition} highlighted={edition.name === "Pro"} />
             ))}
-          </div>
-          <div className="mt-5 border-y border-[var(--border-subtle)] bg-white px-4 py-4 sm:px-5">
-            <div className="grid gap-4 md:grid-cols-[minmax(0,1fr)_auto] md:items-center">
-              <p className="text-[0.96rem] leading-7 text-[var(--text-secondary)]">
-                <span className="font-semibold text-[var(--text-primary)]">Template Hedgehog Studio</span> is the future workspace direction for everything before send: choose workflows, edit content, compile, preview, QA, prepare handoff, and export ZIPs. It is not live product UI. The paid archive is complete without Studio and remains yours either way; your sending platform still handles audiences, consent, unsubscribe, automation, delivery, and reporting.
-              </p>
-              <Link href="/studio" className="th-btn th-btn-sm th-btn-secondary">
-                Join Studio waitlist
-              </Link>
-            </div>
           </div>
         </div>
       </section>

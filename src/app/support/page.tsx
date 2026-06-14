@@ -47,7 +47,7 @@ const faqItems = [
   },
   {
     q: "Is Studio included?",
-    a: "Template Hedgehog Studio is the future workspace direction for choosing workflows, editing content, compiling, previewing, QA, preparing handoff, and exporting ZIPs. It is not live product UI. The paid archive is complete without Studio and remains yours either way. Studio will not send emails or manage audiences, consent, unsubscribe, automation, delivery, or reporting.",
+    a: "No. Template Hedgehog Studio is a planned future workspace and is not part of any current tier. The paid archive is complete and usable today without it. See the Studio roadmap page to register interest.",
   },
   {
     q: "What happens if the archive is inaccessible?",
@@ -75,10 +75,6 @@ const supportPaths = [
   {
     title: "Pre-purchase inspection",
     copy: "Use the sample pack to inspect source quality, compiled output, QA notes, workflow context, and licence boundaries before choosing Core, Pro, or Team.",
-  },
-  {
-    title: "Studio waitlist question",
-    copy: "Send the workflow, browser, and the before-send step that is blocked: edit, compile, preview, QA, handoff, or export.",
   },
   {
     title: "Licence or reuse question",
@@ -137,31 +133,6 @@ export default function SupportPage() {
               {item}
             </div>
           ))}
-        </div>
-      </V2Section>
-
-      <V2Section
-        title="Studio support boundary."
-        copy="Studio support follows the same before-send boundary as the archive. It helps with local workflow preparation, not live sending operations."
-        surface="surface"
-      >
-        <div className="grid gap-6 md:grid-cols-2">
-          <FeatureBlock
-            title="Included with Pro and Team"
-            copy="Template Hedgehog Studio is in development as a future before-send workspace for choosing workflows, editing content, compiling, previewing, QA, preparing handoff, and exporting ZIPs. The paid archive is complete without Studio and remains yours either way."
-          />
-          <FeatureBlock
-            title="Your sending platform still sends"
-            copy="Studio does not send emails, manage audiences, manage consent, handle unsubscribe, run automation, provide reporting, or connect to platform APIs."
-          />
-        </div>
-        <div className="mt-6 flex flex-wrap gap-3">
-          <Link href="/studio" className="th-btn th-btn-sm th-btn-secondary">
-            Join Studio waitlist
-          </Link>
-          <Link href="/pricing#pro" className="th-btn th-btn-sm th-btn-primary">
-            View Pro
-          </Link>
         </div>
       </V2Section>
 

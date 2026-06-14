@@ -136,22 +136,6 @@ const buyerJourneys = [
   },
 ] as const;
 
-const studioAlphaSteps = [
-  "Choose workflow",
-  "Edit content",
-  "Compile",
-  "Preview",
-  "QA",
-  "Prepare handoff",
-  "Export ZIP",
-] as const;
-
-const studioBoundaryItems = [
-  "Studio does not send emails.",
-  "Studio does not manage audiences, consent, unsubscribe, automation, delivery, or reporting.",
-  "Your sending platform handles the live campaign, audience, compliance, and results.",
-] as const;
-
 const proProductionReasons = [
   {
     title: "More workflows, fewer rebuilds",
@@ -409,7 +393,7 @@ export default function PricingPage() {
 
       <V2Section
         title="Core ships first journeys. Pro standardises. Team scales."
-        copy={`Core is the essential archive starter: three complete workflows with source files, compiled HTML, previews, and setup docs. Pro is the main buying path for recurring email production: the complete archive, ${COMPONENT_COUNT} components, ${LAYOUT_COUNT} layouts, ${WORKFLOW_COUNT} workflows, QA, handoff guidance, updates, and Studio waitlist priority while Studio is in development. Team keeps Pro, then adds permission, onboarding, support, a longer update window, and Studio waitlist priority.`}
+        copy={`Core is the essential archive starter: three complete workflows with source files, compiled HTML, previews, and setup docs. Pro is the main buying path for recurring email production: the complete archive, ${COMPONENT_COUNT} components, ${LAYOUT_COUNT} layouts, ${WORKFLOW_COUNT} workflows, QA, handoff guidance, and updates. Team keeps Pro, then adds permission, onboarding, support, and a longer update window.`}
         surface="surface"
       >
         <div id="editions" className="grid gap-5 lg:grid-cols-3">
@@ -434,10 +418,9 @@ export default function PricingPage() {
               name="Pro"
               price={`£${pro.priceGbp}`}
               outcome="Standardise delivery."
-              copy="Best when email production is recurring and you need a repeatable source-to-handoff system: 82 components, 18 layouts, 13 workflows, editable source, compiled HTML, previews, QA notes, implementation guidance, 6 months of updates, and Studio waitlist priority while Studio is in development."
+              copy="Best when email production is recurring and you need a repeatable source-to-handoff system: 82 components, 18 layouts, 13 workflows, editable source, compiled HTML, previews, QA notes, implementation guidance, and 6 months of updates."
               points={[
                 "Full source and output archive across lifecycle, transactional, and campaign email",
-                "Studio waitlist priority while Studio is in development",
                 "Token examples, QA notes, and implementation guidance",
                 "Versioned workflow updates for 6 months",
               ]}
@@ -451,9 +434,8 @@ export default function PricingPage() {
             name="Team"
             price={`£${team.priceGbp}+`}
             outcome="Scale operations."
-            copy="Best when the same production artefacts will be reused across clients, teams, or internal systems: Pro archive, commercial reuse rights, onboarding, white-label/internal deployment, priority support, 12 months of updates, and Studio waitlist priority while Studio is in development."
+            copy="Best when the same production artefacts will be reused across clients, teams, or internal systems: Pro archive, commercial reuse rights, onboarding, white-label/internal deployment, priority support, and 12 months of updates."
             points={[
-              "Studio waitlist priority while Studio is in development",
               "Commercial reuse rights for the Pro archive",
               "White-label or internal deployment",
               "Reusable generation framework",
@@ -485,48 +467,14 @@ export default function PricingPage() {
         </div>
       </V2Section>
 
-      <V2Section
-        title="Studio is the future before-send workspace direction."
-        copy="Template Hedgehog Studio is not live product UI. It is a planned workspace direction for preparing email packages locally without turning Template Hedgehog into a sending platform."
-      >
-        <div className="grid gap-6 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
-          <div className="border-y border-[var(--border-subtle)] bg-white p-5 shadow-[0_18px_45px_rgba(15,23,42,0.06)] sm:p-6">
-            <p className="text-[0.78rem] font-semibold uppercase tracking-[0.08em] text-[var(--identity-source)]">
-              Template Hedgehog Studio
-            </p>
-            <h3 className="mt-2 text-[1.55rem] font-semibold text-[var(--text-primary)]">
-              Everything before send.
-            </h3>
-            <p className="mt-3 text-[0.96rem] leading-8 text-[var(--text-secondary)]">
-              The intended Studio workflow is to choose workflows, edit content, compile MJML, inspect the preview, complete QA, prepare platform handoff, and export ZIPs. Studio is in development, not part of the live product experience. The paid archive remains complete without Studio.
-            </p>
-            <div className="mt-5 flex flex-wrap gap-3">
-              <Link href="/studio" className="th-btn th-btn-sm th-btn-secondary">
-                Join Studio waitlist
-              </Link>
-              <Link href="#pro" className="th-btn th-btn-sm th-btn-primary">
-                View Pro
-              </Link>
-            </div>
-          </div>
-          <div className="grid gap-4 md:grid-cols-2">
-            <article className="border-t border-[var(--border-subtle)] pt-4">
-              <h3 className="text-[1.04rem] font-semibold text-[var(--text-primary)]">Studio handles</h3>
-              <ul className="mt-3 space-y-2 text-[0.92rem] leading-7 text-[var(--text-secondary)]">
-                {studioAlphaSteps.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </article>
-            <article className="border-t border-[var(--border-subtle)] pt-4">
-              <h3 className="text-[1.04rem] font-semibold text-[var(--text-primary)]">Sending platform handles</h3>
-              <ul className="mt-3 space-y-2 text-[0.92rem] leading-7 text-[var(--text-secondary)]">
-                {studioBoundaryItems.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </article>
-          </div>
+      <V2Section title="On the roadmap">
+        <div className="max-w-3xl border-t border-[var(--border-subtle)] pt-6">
+          <p className="text-[0.78rem] font-semibold uppercase tracking-[0.08em] text-[var(--text-meta)]">
+            Not included in any tier
+          </p>
+          <p className="mt-3 text-[1.02rem] leading-8 text-[var(--text-secondary)]">
+            Template Hedgehog Studio is a planned future workspace for preparing email packages before send. It is in development, not part of the live product, and not included in any current tier. The paid archive is complete and usable today without it. You can register interest on the <Link href="/studio" className="font-semibold text-[var(--action-primary)]">Studio roadmap page</Link>.
+          </p>
         </div>
       </V2Section>
 
