@@ -264,7 +264,7 @@ export function StudioWorkspace({ data }: StudioWorkspaceProps) {
                 Template Hedgehog Studio - Private Alpha
               </p>
               <p className="mt-1 text-[0.8rem] font-semibold leading-5 text-slate-100">
-                Included with Pro and Team. Everything before send.
+                On the roadmap, not included in any tier. Everything before send.
               </p>
               <p className="mt-1 text-[0.8rem] leading-5 text-slate-300">
                 Local-first workspace to choose workflows, edit content, compile, preview, QA, prepare handoff, and export ZIPs.
