@@ -446,6 +446,14 @@ export default function PricingPage() {
             tone="indigo"
           />
         </div>
+        <div className="mt-5 border-y border-[var(--border-strong)] bg-white px-5 py-4 sm:px-6">
+          <p className="text-[0.78rem] font-semibold uppercase tracking-[0.08em] text-[var(--text-meta)]">
+            Refund cover
+          </p>
+          <p className="mt-2 text-[0.96rem] leading-7 text-[var(--text-secondary)]">
+            Buy with confidence. If the paid archive cannot be delivered, is inaccessible, or does not match the tier described on this page, email <a href={`mailto:${TEMPLATE_CONFIG.supportEmail}`} className="font-semibold text-[var(--action-primary)]">{TEMPLATE_CONFIG.supportEmail}</a> with your purchase email or Stripe receipt and we will resolve it or refund you. Full <Link href="/support" className="font-semibold text-[var(--action-primary)]">refund and support terms</Link> are on the support page.
+          </p>
+        </div>
       </V2Section>
 
       <V2Section

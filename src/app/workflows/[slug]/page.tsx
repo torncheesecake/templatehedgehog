@@ -37,7 +37,7 @@ function getPackageAccessItems(workflow: NonNullable<ReturnType<typeof getEmailW
     return [
       "Public workflow page: intent, trigger, required fields, variants, QA risks, handoff steps, and linked layout.",
       "Core archive: MJML source, compiled HTML, preview, and setup guidance for this starter workflow.",
-      "Pro archive: this workflow plus the full recurring workflow set, QA notes, implementation guidance, Studio waitlist priority while Studio is in development, and updates.",
+      "Pro archive: this workflow plus the full recurring workflow set, QA notes, implementation guidance, and updates.",
     ];
   }
 
