@@ -17,6 +17,7 @@ import {
   UserCheck,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { testimonials, type Testimonial } from "@/data/testimonials";
 
 const pageWidth = "mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12";
 
@@ -1095,5 +1096,110 @@ export function PricingTierCard({
       </ul>
       <div className="mt-6">{action}</div>
     </article>
+  );
+}
+
+const trustSignals = [
+  {
+    title: "Secure, verified checkout",
+    copy: "Payment runs through Stripe, and delivery is released only after a signature-verified Stripe webhook confirms the purchase.",
+    icon: ShieldCheck,
+  },
+  {
+    title: "Refund cover",
+    copy: "If the paid archive cannot be delivered, is inaccessible, or does not match the tier described, support will resolve it or refund the purchase.",
+    icon: CheckCircle2,
+  },
+  {
+    title: "Source you own and can move",
+    copy: "You receive editable MJML and compiled HTML you keep inside the licence, ready to hand to Mailchimp, HubSpot, Salesforce, NetSuite, Klaviyo, or any ESP.",
+    icon: Code2,
+  },
+  {
+    title: "Founder-led support",
+    copy: "Support is handled directly by email for purchase, download, archive, and licence questions, not routed through a ticket queue.",
+    icon: UserCheck,
+  },
+] as const;
+
+export function TrustStrip() {
+  return (
+    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {trustSignals.map((signal) => {
+        const Icon = signal.icon;
+        return (
+          <article
+            key={signal.title}
+            className="flex min-h-full flex-col border border-[var(--border-subtle)] bg-white p-5 shadow-[0_18px_45px_rgba(15,23,42,0.06)]"
+          >
+            <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[var(--identity-source-soft)] text-[var(--identity-source)]">
+              <Icon className="h-4 w-4" aria-hidden="true" />
+            </span>
+            <h3 className="mt-4 text-[1.05rem] font-semibold text-[var(--text-primary)]">{signal.title}</h3>
+            <p className="mt-2 flex-1 text-[0.9rem] leading-7 text-[var(--text-secondary)]">{signal.copy}</p>
+          </article>
+        );
+      })}
+    </div>
+  );
+}
+
+function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
+  const attribution = [testimonial.role, testimonial.company].filter(Boolean).join(", ");
+
+  return (
+    <figure className="flex min-h-full flex-col border border-[var(--border-subtle)] bg-white p-5 shadow-[0_18px_45px_rgba(15,23,42,0.06)] sm:p-6">
+      <blockquote className="flex-1 text-[1.02rem] leading-8 text-[var(--text-primary)]">
+        “{testimonial.quote}”
+      </blockquote>
+      {(testimonial.name || attribution) ? (
+        <figcaption className="mt-5 border-t border-[var(--border-subtle)] pt-4">
+          {testimonial.name ? (
+            <p className="text-[0.92rem] font-semibold text-[var(--text-primary)]">{testimonial.name}</p>
+          ) : null}
+          {attribution ? (
+            <p className="mt-0.5 text-[0.86rem] leading-6 text-[var(--text-secondary)]">{attribution}</p>
+          ) : null}
+        </figcaption>
+      ) : null}
+    </figure>
+  );
+}
+
+/**
+ * Renders nothing while the testimonials data file is empty, so the site
+ * never shows a hollow or fabricated "what customers say" block.
+ */
+export function Testimonials({
+  title = "What buyers say.",
+  copy,
+}: {
+  title?: string;
+  copy?: string;
+}) {
+  const published = testimonials.filter((item) => item.permissionConfirmed !== false);
+
+  if (published.length === 0) {
+    return null;
+  }
+
+  return (
+    <div>
+      {(title || copy) ? (
+        <div className="mb-8 max-w-3xl">
+          {title ? (
+            <h2 className="font-serif text-[clamp(2rem,4.4vw,3.35rem)] font-semibold leading-[1] text-[var(--text-primary)]">
+              {title}
+            </h2>
+          ) : null}
+          {copy ? <p className="mt-4 text-[1rem] leading-8 text-[var(--text-secondary)]">{copy}</p> : null}
+        </div>
+      ) : null}
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {published.map((testimonial, index) => (
+          <TestimonialCard key={`${testimonial.name ?? "anon"}-${index}`} testimonial={testimonial} />
+        ))}
+      </div>
+    </div>
   );
 }
