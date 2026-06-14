@@ -1,11 +1,11 @@
 <!-- DIALECT: ENTERPRISE shared head (prototype/tiering) -->
-<!-- Pulled in via <mj-include path="./head.mjml" /> from the main file. -->
+<!-- Pulled in via <mj-include path="./head.mjml" /> as a DIRECT CHILD of <mjml> in the main file -->
+<!-- (mjml 5.3.0 rejects an included <mj-head> nested inside another <mj-head>). -->
 <!--                                                                                                      -->
-<!-- SCOPE LIMITATION (mjml 5.0.0-beta.2): an included head's <mj-style> is TREE-SHAKEN to only the rules -->
-<!-- whose class is directly referenced via css-class on an element; <mj-raw> and <mj-attributes> in an -->
-<!-- included head are dropped entirely. So this include carries ONLY simple, directly-referenced helper -->
-<!-- classes (e.g. .center used via css-class="center"). The guardrail @media/dark-mode CSS, the <mj-raw> -->
-<!-- meta/font links, and the <mj-attributes> tokens all live in the MAIN file. -->
+<!-- SCOPE: this shared include carries only de-duplicatable, non-delivery-critical helper classes -->
+<!-- (e.g. .center). The guardrail @media/dark-mode CSS, the <mj-raw> meta/font links, and the brand -->
+<!-- <mj-attributes> tokens are kept INLINE in the main document head so delivery-critical output never -->
+<!-- depends on include-merge behaviour. -->
 <mj-head>
   <mj-style>
     .center { text-align: center !important; }

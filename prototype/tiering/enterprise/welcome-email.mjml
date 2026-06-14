@@ -2,17 +2,17 @@
 <!-- Source of truth: src/data/email-examples/library/welcome-email.mjml + getMjmlHead() in src/data/mjml-library.ts -->
 <!-- Shared NON-CRITICAL helper styles are externalised to ./head.mjml and pulled in via <mj-include>. -->
 <!--                                                                                                       -->
-<!-- BLOCKER (mjml 5.0.0-beta.2, verified by bisection): an <mj-include>d head has its <mj-style> -->
-<!-- TREE-SHAKEN. Only rules whose class is directly referenced via css-class survive; descendant / -->
-<!-- @media-wrapped selectors (e.g. @media(prefers-color-scheme) .dm-keep-cta td, [data-ogsc] ...) are -->
-<!-- DROPPED, and <mj-raw>/<mj-attributes> in an included head are dropped entirely. -->
-<!-- Therefore the GUARDRAIL <mj-style> (responsive breakpoint + dark-mode guard) is kept INLINE here so -->
-<!-- it survives; only de-duplicatable helper classes go in the include. <mj-attributes> tokens also stay here. -->
+<!-- mjml 5.3.0 include semantics (verified): an included <mj-head> fragment must be a DIRECT CHILD of -->
+<!-- <mjml> (not nested inside another <mj-head>, which v5 validation rejects). With ignoreIncludes:false -->
+<!-- on the trusted build path the include resolves and its <mj-style> is emitted. We still keep the -->
+<!-- GUARDRAIL <mj-style> (responsive + dark-mode) and the brand <mj-raw>/<mj-attributes> tokens INLINE in -->
+<!-- the document head: delivery-critical CSS must not depend on include-merge edge cases, and the -->
+<!-- inline-token pass (the cross-dialect constant) is what keeps the rendered output robust. -->
 <mjml>
+  <mj-include path="./head.mjml" />
   <mj-head>
     <mj-preview>Welcome aboard — finish setup and invite your team in two minutes</mj-preview>
-    <mj-include path="./head.mjml" />
-    <!-- Guardrail <mj-style> kept INLINE (an included head tree-shakes these @media/attribute selectors away). -->
+    <!-- Guardrail <mj-style> kept INLINE (delivery-critical CSS does not rely on include merge). -->
     <mj-style>
       @media only screen and (max-width:480px) {
         .ios-fix { display: inline-block !important; }
@@ -24,7 +24,7 @@
       [data-ogsc] .dm-keep-cta td { background-color: #2f67ef !important; }
       [data-ogsc] .dm-keep-cta a { color: #ffffff !important; }
     </mj-style>
-    <!-- mj-raw meta/font links stay in the main file: an included head drops <mj-raw> in mjml 5.0.0-beta.2. -->
+    <!-- mj-raw meta/font links kept in the main head so delivery-critical tags never depend on include merge. -->
     <mj-raw>
       <meta name="color-scheme" content="light dark" />
       <meta name="supported-color-schemes" content="light dark" />

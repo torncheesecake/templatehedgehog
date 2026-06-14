@@ -71,8 +71,8 @@
       [data-ogsc] .dm-keep-cta td { background-color: #2f67ef !important; }
       [data-ogsc] .dm-keep-cta a { color: #ffffff !important; }
     </style>
-    <!-- Guardrail <mj-style> kept INLINE (an included head tree-shakes these @media/attribute selectors away). -->
-<!-- mj-raw meta/font links stay in the main file: an included head drops <mj-raw> in mjml 5.0.0-beta.2. -->
+    <!-- Guardrail <mj-style> kept INLINE (delivery-critical CSS does not rely on include merge). -->
+<!-- mj-raw meta/font links kept in the main head so delivery-critical tags never depend on include merge. -->
 <meta name="color-scheme" content="light dark" />
       <meta name="supported-color-schemes" content="light dark" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
