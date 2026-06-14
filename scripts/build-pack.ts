@@ -1,11 +1,10 @@
 import { createWriteStream, promises as fs } from "node:fs";
 import { once } from "node:events";
+import os from "node:os";
 import path from "node:path";
 import archiver from "archiver";
 import { type EmailComponent, emailComponents } from "../src/data/email-components";
-import { compiledComponentsBySlug } from "../src/data/email-components/compiled";
 import { type EmailExampleImplementation, emailExamples } from "../src/data/email-examples";
-import { compiledExamplesBySlug } from "../src/data/email-examples/compiled";
 import {
   type EmailLayoutRecipe,
   type EmailLayoutSystem,
@@ -13,7 +12,6 @@ import {
   emailLayoutSystems,
 } from "../src/data/email-layouts";
 import { type EmailWorkflow, emailWorkflows } from "../src/data/workflows";
-import { compiledLayoutHtmlBySlug } from "../src/data/email-layouts/compiled";
 import {
   MJML_PACK_LICENSE_POINTS,
   MJML_PACK_PRIVATE_DIR,
@@ -25,6 +23,17 @@ import {
 } from "../src/lib/pack";
 import { CHANGELOG, PACK_LAST_UPDATED, PACK_VERSION } from "../src/lib/versioning";
 import { TEMPLATE_CONFIG } from "../src/config/template";
+import { compileMjml } from "../src/lib/mjml/compile";
+import {
+  buildEnterpriseSharedHead,
+  ENTERPRISE_SHARED_HEAD_FILENAME,
+  toDialect,
+} from "../src/lib/mjml/dialects";
+import {
+  MJML_CLASS_TOKENS,
+  MJML_ELEMENT_DEFAULTS,
+} from "../src/data/mjml-library";
+import { readyLayoutAddons } from "../src/data/layout-addons/generated";
 
 type PackComponentMetadata = Omit<EmailComponent, "mjmlSource">;
 type PackLayoutMetadata = Omit<EmailLayoutRecipe, "mjmlSource">;
@@ -439,17 +448,53 @@ function getPreviewSourcePath(previewImageUrl: string): string {
   return path.join(PUBLIC_DIR, relativePath);
 }
 
-async function addComponentAssets(
-  archive: archiver.Archiver,
-  component: EmailComponent,
-): Promise<void> {
-  const compiledHtml = compiledComponentsBySlug[component.slug];
-  if (!compiledHtml) {
-    throw new Error(
-      `[build-pack] Missing compiled HTML for "${component.slug}". Run npm run build:components first.`,
-    );
+function withTrailingNewline(value: string): string {
+  return value.endsWith("\n") ? value : `${value}\n`;
+}
+
+/**
+ * Transform an item's mjmlSource into the requested tier dialect, then compile it on the
+ * TRUSTED build path to produce the HTML twin that ships beside it.
+ *
+ * For Enterprise, the dialect emits an `<mj-include path="./head.mjml" />`. We materialise
+ * the transformed source and the shared head.mjml side by side in a temp dir so mjml can
+ * resolve the include at build time (ignoreIncludes:false via compileMjml's trusted path).
+ * The same head.mjml is written into each tier folder of the ZIP by addSharedHeadAssets.
+ */
+async function transformAndCompile(
+  packId: DownloadPackId,
+  slug: string,
+  mjmlSource: string,
+): Promise<{ dialectSource: string; compiledHtml: string }> {
+  const dialectSource = toDialect(packId, mjmlSource);
+
+  let compiledHtml: string;
+  if (packId !== "enterprise") {
+    compiledHtml = await compileMjml(dialectSource, { trusted: true });
+  } else {
+    const dir = await fs.mkdtemp(path.join(os.tmpdir(), `th-pack-${packId}-`));
+    try {
+      const mainPath = path.join(dir, `${slug}.mjml`);
+      await fs.writeFile(mainPath, dialectSource, "utf8");
+      await fs.writeFile(
+        path.join(dir, ENTERPRISE_SHARED_HEAD_FILENAME),
+        buildEnterpriseSharedHead(),
+        "utf8",
+      );
+      compiledHtml = await compileMjml(dialectSource, { trusted: true, filePath: mainPath });
+    } finally {
+      await fs.rm(dir, { recursive: true, force: true });
+    }
   }
 
+  return { dialectSource, compiledHtml };
+}
+
+async function addComponentAssets(
+  archive: archiver.Archiver,
+  packId: DownloadPackId,
+  component: EmailComponent,
+): Promise<void> {
   if (!component.previewImageUrl.toLowerCase().endsWith(".png")) {
     throw new Error(`[build-pack] Preview for "${component.slug}" must be a PNG image.`);
   }
@@ -457,15 +502,18 @@ async function addComponentAssets(
   const previewSourcePath = getPreviewSourcePath(component.previewImageUrl);
   await fs.access(previewSourcePath);
 
-  archive.append(
-    component.mjmlSource.endsWith("\n") ? component.mjmlSource : `${component.mjmlSource}\n`,
-    { name: `components/mjml/${component.slug}.mjml` },
+  const { dialectSource, compiledHtml } = await transformAndCompile(
+    packId,
+    component.slug,
+    component.mjmlSource,
   );
 
-  archive.append(compiledHtml.endsWith("\n") ? compiledHtml : `${compiledHtml}\n`, {
+  archive.append(withTrailingNewline(dialectSource), {
+    name: `components/mjml/${component.slug}.mjml`,
+  });
+  archive.append(withTrailingNewline(compiledHtml), {
     name: `components/html/${component.slug}.html`,
   });
-
   archive.file(previewSourcePath, {
     name: `components/previews/${component.slug}.png`,
   });
@@ -473,42 +521,219 @@ async function addComponentAssets(
 
 async function addLayoutAssets(
   archive: archiver.Archiver,
+  packId: DownloadPackId,
   layout: EmailLayoutRecipe,
 ): Promise<void> {
-  const compiledHtml = compiledLayoutHtmlBySlug[layout.slug];
-  if (!compiledHtml) {
-    throw new Error(
-      `[build-pack] Missing compiled layout HTML for "${layout.slug}". Run npm run build:layouts first.`,
-    );
-  }
+  const { dialectSource, compiledHtml } = await transformAndCompile(
+    packId,
+    layout.slug,
+    layout.mjmlSource,
+  );
 
-  archive.append(layout.mjmlSource.endsWith("\n") ? layout.mjmlSource : `${layout.mjmlSource}\n`, {
+  archive.append(withTrailingNewline(dialectSource), {
     name: `layouts/mjml/${layout.slug}.mjml`,
   });
-
-  archive.append(compiledHtml.endsWith("\n") ? compiledHtml : `${compiledHtml}\n`, {
+  archive.append(withTrailingNewline(compiledHtml), {
     name: `layouts/html/${layout.slug}.html`,
   });
 }
 
 async function addExampleAssets(
   archive: archiver.Archiver,
+  packId: DownloadPackId,
   example: EmailExampleImplementation,
 ): Promise<void> {
-  const compiledHtml = compiledExamplesBySlug[example.slug];
-  if (!compiledHtml) {
-    throw new Error(
-      `[build-pack] Missing compiled example HTML for "${example.slug}". Run npm run build:examples first.`,
-    );
-  }
+  const { dialectSource, compiledHtml } = await transformAndCompile(
+    packId,
+    example.slug,
+    example.mjmlSource,
+  );
 
-  archive.append(example.mjmlSource.endsWith("\n") ? example.mjmlSource : `${example.mjmlSource}\n`, {
+  archive.append(withTrailingNewline(dialectSource), {
     name: `examples/mjml/${example.slug}.mjml`,
   });
-
-  archive.append(compiledHtml.endsWith("\n") ? compiledHtml : `${compiledHtml}\n`, {
+  archive.append(withTrailingNewline(compiledHtml), {
     name: `examples/html/${example.slug}.html`,
   });
+}
+
+// ---------------------------------------------------------------------------
+// Enterprise framework deliverable
+// ---------------------------------------------------------------------------
+// Enterprise's value is the FRAMEWORK: a single source of truth (shared head +
+// design-token registry), an assembler that restyles the whole set from one place,
+// and a curated layout add-on inclusion mechanism. The per-file <mj-include
+// path="./head.mjml" /> emitted by the Enterprise dialect is satisfied by writing the
+// shared head into each tier folder below.
+
+const ENTERPRISE_TOKEN_REGISTRY = {
+  description:
+    "Canonical design-token registry. Edit these values (or the shared head.mjml) to restyle every Enterprise template at once. Mirrors src/data/mjml-library.ts in the product source.",
+  fonts: {
+    base: "'Manrope', 'Inter', Arial, sans-serif",
+    body: "'Inter', Arial, sans-serif",
+  },
+  elementDefaults: MJML_ELEMENT_DEFAULTS,
+  classTokens: MJML_CLASS_TOKENS,
+} as const;
+
+function buildEnterpriseAssemblerScript(): string {
+  return `#!/usr/bin/env node
+/**
+ * Enterprise framework assembler.
+ *
+ * Compiles every MJML template in this pack to email-safe HTML in one pass, resolving the
+ * shared head.mjml include on the trusted local path. Run from the pack root:
+ *
+ *   npm install mjml
+ *   node framework/assemble.mjs
+ *
+ * Restyle the whole set from ONE place: edit framework/design-tokens.json (reference) and
+ * the per-folder head.mjml, then re-run this script.
+ */
+import { readdirSync, readFileSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import { createRequire } from "node:module";
+
+const require = createRequire(import.meta.url);
+const mjmlModule = require("mjml");
+const mjml2html = typeof mjmlModule === "function" ? mjmlModule : mjmlModule.default;
+
+const here = path.dirname(fileURLToPath(import.meta.url));
+const packRoot = path.resolve(here, "..");
+
+const folders = ["components", "layouts", "examples"];
+let compiled = 0;
+let failed = 0;
+
+for (const folder of folders) {
+  const mjmlDir = path.join(packRoot, folder, "mjml");
+  const htmlDir = path.join(packRoot, folder, "html");
+  if (!existsSync(mjmlDir)) continue;
+  if (!existsSync(htmlDir)) mkdirSync(htmlDir, { recursive: true });
+
+  for (const file of readdirSync(mjmlDir)) {
+    if (!file.endsWith(".mjml") || file === "head.mjml") continue;
+    const srcPath = path.join(mjmlDir, file);
+    const source = readFileSync(srcPath, "utf8");
+    const result = mjml2html(source, {
+      validationLevel: "soft",
+      keepComments: true,
+      minify: false,
+      ignoreIncludes: false,
+      filePath: srcPath,
+    });
+    const out = result instanceof Promise ? await result : result;
+    if (out.errors && out.errors.length) {
+      failed += 1;
+      console.error("[assemble] " + folder + "/" + file + ": " + out.errors.length + " error(s)");
+      continue;
+    }
+    writeFileSync(path.join(htmlDir, file.replace(/\\.mjml$/, ".html")), out.html, "utf8");
+    compiled += 1;
+  }
+}
+
+console.log("Assembled " + compiled + " template(s)" + (failed ? ", " + failed + " failed" : ""));
+if (failed) process.exit(1);
+`;
+}
+
+function buildEnterpriseFrameworkReadme(): string {
+  return [
+    "# Enterprise Framework",
+    "",
+    "This pack is not just templates — it is a small framework for producing and restyling a",
+    "whole email system from one source of truth.",
+    "",
+    "## What's in here",
+    "",
+    "- `components/mjml/head.mjml`, `layouts/mjml/head.mjml`, `examples/mjml/head.mjml` — the",
+    "  SHARED head. Each template pulls it in with `<mj-include path=\"./head.mjml\" />`. Edit one",
+    "  place to change the shared `<mj-style>` (responsive + dark-mode guard + helper classes).",
+    "- `framework/design-tokens.json` — the canonical design-token registry (fonts, element",
+    "  defaults, named class tokens). The same tokens are inlined onto every element in each",
+    "  template, so rendering stays robust even where a client ignores `<style>`.",
+    "- `framework/assemble.mjs` — recompiles every template to HTML in one pass, resolving the",
+    "  shared head include locally.",
+    "- `add-ons/manifest.json` — the curated layout add-on inclusion mechanism (see below).",
+    "",
+    "## Restyle everything from one place",
+    "",
+    "1. Edit the shared `head.mjml` (shared `<mj-style>`) and/or the brand colours/fonts in your",
+    "   templates' inline tokens (see `framework/design-tokens.json` for the canonical values).",
+    "2. Re-run the assembler:",
+    "",
+    "```bash",
+    "npm install mjml",
+    "node framework/assemble.mjs",
+    "```",
+    "",
+    "3. The `*/html/` twins are regenerated, ready for QA and ESP handoff.",
+    "",
+    "## Why tokens are ALSO inlined per element",
+    "",
+    "Brand fonts/colours are written as inline attributes on every element (not only via the",
+    "shared `<mj-style>`). That is deliberate: many clients drop `<style>`, so the inline tokens",
+    "are what guarantee consistent rendering. The shared head/`<mj-style>` is additive — it",
+    "carries the responsive breakpoint and the dark-mode CTA guard.",
+    "",
+    "## Curated layout add-ons",
+    "",
+    "`add-ons/manifest.json` lists the curated, production-checked layout add-ons bundled with",
+    "this Enterprise pack. Add-on CONTENT is curated separately; a template only ships once it",
+    "passes the same compile + robustness gate as the core set. When add-ons are present, their",
+    "MJML lands in `add-ons/mjml/` with compiled twins in `add-ons/html/`.",
+    "",
+  ].join("\n");
+}
+
+/**
+ * Curated layout add-on inclusion mechanism. The CONTENT is a separate follow-up: an add-on
+ * only ships once it passes the same compile + robustness gate as the core set. Until then
+ * the manifest is the mechanism, declaring zero curated add-ons (the raw private add-ons are
+ * known to contain placeholder copy and are intentionally NOT shipped).
+ */
+const CURATED_ADDON_SLUGS: readonly string[] = [];
+
+function buildAddonManifest(): string {
+  const curated = readyLayoutAddons.filter((addon) =>
+    CURATED_ADDON_SLUGS.includes(addon.slug),
+  );
+  const manifest = {
+    description:
+      "Curated layout add-ons bundled with the Enterprise pack. An add-on is listed here only after it passes the same compile + robustness gate as the core templates. Files live under add-ons/mjml and add-ons/html.",
+    curatedCount: curated.length,
+    availableForCurationCount: readyLayoutAddons.length,
+    addOns: curated.map((addon) => ({
+      slug: addon.slug,
+      title: addon.title,
+      description: addon.description,
+      mjmlPath: `add-ons/mjml/${addon.slug}.mjml`,
+      htmlPath: `add-ons/html/${addon.slug}.html`,
+    })),
+  };
+  return `${JSON.stringify(manifest, null, 2)}\n`;
+}
+
+function addEnterpriseFrameworkAssets(archive: archiver.Archiver): void {
+  const sharedHead = buildEnterpriseSharedHead();
+  // Place the shared head beside each tier's MJML so the relative `./head.mjml` include resolves.
+  for (const folder of ["components", "layouts", "examples"]) {
+    archive.append(withTrailingNewline(sharedHead), {
+      name: `${folder}/mjml/${ENTERPRISE_SHARED_HEAD_FILENAME}`,
+    });
+  }
+
+  archive.append(`${JSON.stringify(ENTERPRISE_TOKEN_REGISTRY, null, 2)}\n`, {
+    name: "framework/design-tokens.json",
+  });
+  archive.append(buildEnterpriseAssemblerScript(), { name: "framework/assemble.mjs" });
+  archive.append(buildEnterpriseFrameworkReadme(), { name: "framework/README.md" });
+
+  // Curated layout add-on inclusion mechanism (content is a separate follow-up step).
+  archive.append(buildAddonManifest(), { name: "add-ons/manifest.json" });
 }
 
 async function buildPack(packId: DownloadPackId): Promise<void> {
@@ -568,13 +793,17 @@ async function buildPack(packId: DownloadPackId): Promise<void> {
   });
 
   for (const component of packContent.components) {
-    await addComponentAssets(archive, component);
+    await addComponentAssets(archive, packId, component);
   }
   for (const layout of packContent.layouts) {
-    await addLayoutAssets(archive, layout);
+    await addLayoutAssets(archive, packId, layout);
   }
   for (const example of packContent.examples) {
-    await addExampleAssets(archive, example);
+    await addExampleAssets(archive, packId, example);
+  }
+
+  if (packId === "enterprise") {
+    addEnterpriseFrameworkAssets(archive);
   }
 
   archive.append(`${JSON.stringify(versionManifest, null, 2)}\n`, {
