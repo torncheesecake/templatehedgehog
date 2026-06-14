@@ -3,7 +3,7 @@
 <!-- Production use: Used for campaign pushes, seasonal promotions, and discount windows. -->
 <mjml>
   <mj-head>
-    <mj-preview>Limited time — your offer is waiting, but not for long. See the deal.</mj-preview>
+    <mj-preview>Limited time. Your offer is waiting, but not for long. See the deal.</mj-preview>
     <mj-attributes>
       <mj-all font-family="'Manrope', 'Inter', Arial, sans-serif" />
       <mj-body width="640px" background-color="#f3f4f6" />

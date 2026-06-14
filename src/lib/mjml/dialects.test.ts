@@ -191,3 +191,29 @@ test("dark-mode surface fix: light surfaces get the dm-surface hook + dark-mode 
     );
   }
 });
+
+// A bare mj-table (no font-family) would otherwise compile with mjml-core's Ubuntu default.
+const TABLE_SOURCE = `<mjml>
+  <mj-head>
+    <mj-preview>Receipt</mj-preview>
+    <mj-attributes>
+      <mj-all font-family="'Manrope', 'Inter', Arial, sans-serif" />
+    </mj-attributes>
+  </mj-head>
+  <mj-body background-color="#f3f4f6">
+    <mj-section><mj-column>
+      <mj-table><tr><td>Item</td><td>Amount</td></tr></mj-table>
+    </mj-column></mj-section>
+  </mj-body>
+</mjml>
+`;
+
+test("mj-table gets the brand font inline so no Ubuntu default leaks in any tier", async () => {
+  for (const tier of ["starter", "pro", "enterprise"] as PackTier[]) {
+    const out = toDialect(tier, TABLE_SOURCE);
+    // the transform sets the brand font-family inline on the bare mj-table
+    assert.match(out, /<mj-table[^>]*font-family="'Manrope', 'Inter', Arial, sans-serif"/i, `${tier} source must inline the table font`);
+    const html = await compileTier(tier, TABLE_SOURCE);
+    assert.ok(!/Ubuntu/i.test(html), `${tier} compiled HTML must contain no Ubuntu default`);
+  }
+});

@@ -19,6 +19,7 @@
  *    inline so output never depends on include-merge behaviour.
  */
 import {
+  MJML_BASE_FONT_FAMILY,
   MJML_CLASS_TOKENS,
   MJML_ELEMENT_DEFAULTS,
   MJML_GUARDRAIL_STYLE,
@@ -27,6 +28,15 @@ import {
   addDarkSurfaceHooks,
   renderSharedAttributes,
 } from "@/data/mjml-library";
+
+/**
+ * Built-in MJML elements that hard-code font-family:Ubuntu in mjml-core 5.3.0 and are not
+ * covered by the shared <mj-attributes> mj-all default. We set the brand font-family inline
+ * on them so the compiled HTML never carries the Ubuntu default (which also stops mjml
+ * injecting the Google Fonts Ubuntu @import/<link> into the head). Inline font-family
+ * overrides the core default, verified against mjml 5.3.0.
+ */
+const UBUNTU_DEFAULT_TAGS = new Set(["mj-table", "mj-social"]);
 
 export type PackTier = "starter" | "pro" | "enterprise";
 
@@ -135,6 +145,12 @@ function inlineTokensInBody(body: string): string {
       }
 
       for (const [k, v] of tokenAttrsFor(classNames)) resolved.set(k, v);
+
+      // mj-table / mj-social hard-code font-family:Ubuntu in mjml-core. Set the brand font
+      // inline (still beaten by an explicit element font-family below) so no Ubuntu leaks.
+      if (UBUNTU_DEFAULT_TAGS.has(tag)) {
+        resolved.set("font-family", MJML_BASE_FONT_FAMILY);
+      }
 
       // explicit attributes on the element win, except mj-class which we are removing
       const newOrder: string[] = [];

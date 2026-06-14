@@ -3,7 +3,7 @@
 <!-- Production use: Used by fulfilment systems when an order has shipped or changed status. -->
 <mjml>
   <mj-head>
-    <mj-preview>Good news — your order has shipped. Track it every step to your door.</mj-preview>
+    <mj-preview>Good news. Your order has shipped. Track it every step to your door.</mj-preview>
     <mj-attributes>
       <mj-all font-family="'Manrope', 'Inter', Arial, sans-serif" />
       <mj-body width="640px" background-color="#f3f4f6" />

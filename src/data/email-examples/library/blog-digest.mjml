@@ -3,7 +3,7 @@
 <!-- Production use: Used by content teams for blog roundup and traffic recirculation. -->
 <mjml>
   <mj-head>
-    <mj-preview>Fresh from the blog — our featured read plus more to explore this week.</mj-preview>
+    <mj-preview>Fresh from the blog: our featured read plus more to explore this week.</mj-preview>
     <mj-attributes>
       <mj-all font-family="'Manrope', 'Inter', Arial, sans-serif" />
       <mj-body width="640px" background-color="#f3f4f6" />

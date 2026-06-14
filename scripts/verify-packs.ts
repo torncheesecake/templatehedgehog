@@ -202,6 +202,31 @@ function main(): void {
     }
   }
 
+  // ---- (4) Zero "Ubuntu" in ALL delivered HTML across every tier ----
+  // The brand font is inlined on mj-table / mj-social (mjml-core's Ubuntu default tags), so
+  // no compiled HTML should carry the Ubuntu default glyph or its Google Fonts @import/link.
+  console.log("\n==== NO UBUNTU DEFAULT-FONT LEAK (all delivered HTML) ====");
+  for (const tier of tiers) {
+    const zipPath = zipByTier.get(tier)!;
+    const htmlEntries = listZip(zipPath).filter((entry) => entry.endsWith(".html"));
+    const offenders: string[] = [];
+    for (const entry of htmlEntries) {
+      let html = "";
+      try {
+        html = readFromZip(zipPath, entry);
+      } catch {
+        continue;
+      }
+      if (/Ubuntu/i.test(html)) offenders.push(entry);
+    }
+    if (offenders.length > 0) {
+      failures += 1;
+      console.log(`  [FAIL] ${tier}: ${offenders.length} HTML file(s) leak Ubuntu: ${offenders.join(", ")}`);
+    } else {
+      console.log(`  [PASS] ${tier}: 0 of ${htmlEntries.length} HTML files contain "Ubuntu"`);
+    }
+  }
+
   console.log(`\n==== RESULT: ${failures === 0 ? "ALL GENERATED TIERS GREEN" : `${failures} FAILURE(S)`} ====`);
   if (failures > 0) process.exit(1);
 }
