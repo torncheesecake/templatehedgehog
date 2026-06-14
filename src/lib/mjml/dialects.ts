@@ -253,12 +253,14 @@ ${body}
  */
 function toEnterprise(parsed: ParsedDoc, headIncludePath: string): string {
   const body = inlineTokensInBody(parsed.body);
+  // The shared head.mjml carries <mj-style> AND <mj-raw> (meta + fonts), because mjml 5.3.0
+  // drops the document head's own <mj-style>/<mj-raw> once an include head is present.
+  // The document head keeps only <mj-preview> + <mj-attributes> tokens, which DO merge.
   return `${parsed.leadingComments}<mjml>
   <mj-include path="${headIncludePath}" />
   <mj-head>
     <mj-preview>${previewOrDefault(parsed.previewText)}</mj-preview>
     ${renderSharedAttributes()}
-${MJML_RAW_HEAD}
   </mj-head>
   ${parsed.bodyOpenTag}
 ${body}
@@ -312,12 +314,15 @@ export function toDialect(
 export function buildEnterpriseSharedHead(): string {
   return `<!-- Shared head for the Enterprise framework. Restyle the shared <mj-style> here once;
      every template that includes it picks up the change. Brand design tokens are also
-     inlined per-element in each template (see the framework README in this pack). -->
+     inlined per-element in each template (see the framework README in this pack).
+     Carries <mj-raw> meta + webfont links too: mjml 5.3.0 emits the INCLUDED head's
+     <mj-style>/<mj-raw> and drops the document head's own once an include is present. -->
 <mj-head>
     <mj-style>
 ${MJML_HELPER_STYLE}
 ${MJML_GUARDRAIL_STYLE}
     </mj-style>
+${MJML_RAW_HEAD}
 </mj-head>
 `;
 }

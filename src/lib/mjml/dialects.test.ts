@@ -148,6 +148,24 @@ test("COMPILED Enterprise output (include resolved on trusted path) retains guar
   assert.ok(!/Ubuntu/i.test(html), "no Ubuntu default in compiled Enterprise");
 });
 
+test("COMPILED output carries the color-scheme meta + gstatic preconnect in EVERY tier", async () => {
+  // Regression guard: the Enterprise include-merge must not drop the document head's
+  // <mj-raw> meta/preconnect (they are carried in the shared head for that tier).
+  for (const tier of ["starter", "pro", "enterprise"] as PackTier[]) {
+    const html = await compileTier(tier, SOURCE);
+    assert.match(
+      html,
+      /<meta[^>]*name="color-scheme"[^>]*content="[^"]*dark/i,
+      `${tier} must keep the color-scheme meta`,
+    );
+    assert.match(
+      html,
+      /<link[^>]*rel="preconnect"[^>]*href="https:\/\/fonts\.gstatic\.com/i,
+      `${tier} must keep the gstatic preconnect`,
+    );
+  }
+});
+
 test("dm-keep-cta survives onto the compiled button in every tier", async () => {
   for (const tier of ["starter", "pro", "enterprise"] as PackTier[]) {
     const html = await compileTier(tier, SOURCE);

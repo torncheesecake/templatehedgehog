@@ -10,6 +10,7 @@
     "build:layouts": "tsx scripts/build-layouts.ts",
     "build:pack": "tsx scripts/build-pack.ts",
     "build:sample-pack": "tsx scripts/build-sample-pack.ts",
+    "verify:packs": "tsx scripts/verify-packs.ts",
     "predev": "npm run build:content",
     "prebuild": "npm run build:content",
     "prestart": "npm run build:content",
