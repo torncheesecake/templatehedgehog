@@ -135,7 +135,18 @@ export function SiteFooter({ flush = false, theme = "dark", showPrimaryCta = tru
 
           <div className={`flex flex-wrap items-center justify-between gap-3 border-t pt-5 ${isDark ? "border-white/15" : "border-[var(--border-subtle)]"}`}>
             <p className={`text-[0.9rem] ${isDark ? "!text-[var(--text-on-structural-muted)]" : "text-[var(--text-meta)]"}`}>
-              Copyright {currentYear} {TEMPLATE_CONFIG.owner.name}. {TEMPLATE_CONFIG.brandName} is a product of {TEMPLATE_CONFIG.owner.name}.
+              Copyright {currentYear} {TEMPLATE_CONFIG.owner.name}. {TEMPLATE_CONFIG.brandName} is a product of{" "}
+              {TEMPLATE_CONFIG.owner.url ? (
+                <a
+                  href={TEMPLATE_CONFIG.owner.url}
+                  className="underline underline-offset-2 transition hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action-primary)] focus-visible:ring-offset-2"
+                >
+                  {TEMPLATE_CONFIG.owner.name}
+                </a>
+              ) : (
+                TEMPLATE_CONFIG.owner.name
+              )}
+              .
             </p>
             <div className="flex items-center gap-2.5">
               <span

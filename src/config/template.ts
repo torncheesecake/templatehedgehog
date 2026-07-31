@@ -21,6 +21,7 @@ const DEFAULT_CONTACT_EMAIL = "hello@templatehedgehog.co.uk";
 const DEFAULT_COMPANY_LEGAL_NAME = "Artifexa";
 const DEFAULT_COMPANY_ADDRESS = "Artifexa, United Kingdom";
 const DEFAULT_PRODUCT_OWNER_NAME = "Artifexa";
+const DEFAULT_PRODUCT_OWNER_URL = "https://artifexa.co.uk";
 const DEFAULT_TAGLINE =
   "Production-ready email systems for teams shipping lifecycle and transactional email faster.";
 const DEFAULT_ACCENT_PRIMARY = "#8191EC";
@@ -47,7 +48,8 @@ const companyAddress =
   readEnv("NEXT_PUBLIC_COMPANY_ADDRESS") ?? DEFAULT_COMPANY_ADDRESS;
 const productOwnerName =
   readEnv("NEXT_PUBLIC_PRODUCT_OWNER_NAME") ?? DEFAULT_PRODUCT_OWNER_NAME;
-const productOwnerUrl = readEnv("NEXT_PUBLIC_PRODUCT_OWNER_URL");
+const productOwnerUrl =
+  readEnv("NEXT_PUBLIC_PRODUCT_OWNER_URL") ?? DEFAULT_PRODUCT_OWNER_URL;
 const tagline = readEnv("NEXT_PUBLIC_TAGLINE") ?? DEFAULT_TAGLINE;
 const accentPrimary =
   readEnv("NEXT_PUBLIC_ACCENT_PRIMARY") ?? DEFAULT_ACCENT_PRIMARY;
