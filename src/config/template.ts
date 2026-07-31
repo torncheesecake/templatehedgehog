@@ -21,6 +21,7 @@ const DEFAULT_CONTACT_EMAIL = "hello@templatehedgehog.co.uk";
 const DEFAULT_COMPANY_LEGAL_NAME = "Artifexa";
 const DEFAULT_COMPANY_ADDRESS = "Artifexa, United Kingdom";
 const DEFAULT_PRODUCT_OWNER_NAME = "Artifexa";
+const DEFAULT_PRODUCT_OWNER_URL = "https://artifexa.co.uk";
 const DEFAULT_TAGLINE =
   "Production-ready email systems for teams shipping lifecycle and transactional email faster.";
 const DEFAULT_ACCENT_PRIMARY = "#8191EC";
@@ -47,7 +48,8 @@ const companyAddress =
   readEnv("NEXT_PUBLIC_COMPANY_ADDRESS") ?? DEFAULT_COMPANY_ADDRESS;
 const productOwnerName =
   readEnv("NEXT_PUBLIC_PRODUCT_OWNER_NAME") ?? DEFAULT_PRODUCT_OWNER_NAME;
-const productOwnerUrl = readEnv("NEXT_PUBLIC_PRODUCT_OWNER_URL");
+const productOwnerUrl =
+  readEnv("NEXT_PUBLIC_PRODUCT_OWNER_URL") ?? DEFAULT_PRODUCT_OWNER_URL;
 const tagline = readEnv("NEXT_PUBLIC_TAGLINE") ?? DEFAULT_TAGLINE;
 const accentPrimary =
   readEnv("NEXT_PUBLIC_ACCENT_PRIMARY") ?? DEFAULT_ACCENT_PRIMARY;
@@ -76,14 +78,14 @@ export const PRICING_TIERS: readonly PricingTierDefinition[] = [
     name: "Core",
     priceGbp: 59,
     stripeLookupKey: "template_hedgehog_starter",
-    position: "Get production-ready quickly",
+    position: "The essential starting system",
     description:
-      "A complete starter system for teams that need dependable welcome, password reset, and order confirmation email foundations.",
+      "The essential starting system: the lifecycle, transactional, and confirmation emails every product needs, welcome, onboarding, password reset, and order confirmation, in the simplest production-ready inline dialect.",
     ctaLabel: "Buy Core - £59",
     updatesWindow: "Standard updates included",
     includes: [
-      "Welcome, password reset, and order confirmation systems",
-      "3 layouts",
+      "Welcome, onboarding, password reset, and order confirmation systems",
+      "Simplest production-ready inline dialect",
       "MJML + compiled HTML",
       "Setup docs",
     ],

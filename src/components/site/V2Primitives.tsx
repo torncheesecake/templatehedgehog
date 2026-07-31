@@ -17,6 +17,7 @@ import {
   UserCheck,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { testimonials, type Testimonial } from "@/data/testimonials";
 
 const pageWidth = "mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12";
 
@@ -660,29 +661,43 @@ const postPurchaseSteps = [
   },
 ] as const;
 
-const licenceRows = [
-  {
-    tier: "Core",
-    use: "Your own small self-serve implementation",
-    receives: "11 components, 3 layouts, 3 workflows, MJML source, compiled HTML, previews, and setup docs",
-    rights: "Use inside your own implementation. Redistribution, resale, and white-label reuse are not included.",
-    updates: "Standard fixes for the purchased archive version",
-  },
-  {
-    tier: "Pro",
-    use: "Recurring production email work for your organisation",
-    receives: "82 components, 18 layouts, 13 workflows, token examples, QA notes, advanced guidance, and compiled output",
-    rights: "Use the full archive for your own organisation's production email work. Client resale, redistribution, and white-label reuse are not included.",
-    updates: "6 months of versioned updates",
-  },
-  {
-    tier: "Team",
-    use: "Client work, white-label use, or internal rollout across teams",
-    receives: "Full Pro archive plus commercial reuse rights, white-label/internal deployment, reusable generation framework, and priority support",
-    rights: "Commercial reuse rights for approved client, white-label, or internal deployment workflows. Source archive resale is still not permitted.",
-    updates: "12 months of updates and priority support",
-  },
-] as const;
+/**
+ * Pack counts, passed in from server pages so this module never imports the
+ * Node-only pack helpers (which would poison the client bundle).
+ */
+export type LicenceCounts = {
+  starterComponentCount: number;
+  starterLayoutCount: number;
+  componentCount: number;
+  layoutCount: number;
+  workflowCount: number;
+};
+
+function buildLicenceRows(counts: LicenceCounts) {
+  return [
+    {
+      tier: "Core",
+      use: "The essential starting system for your own implementation",
+      receives: `${counts.starterComponentCount} components, ${counts.starterLayoutCount} layouts (welcome, onboarding, password reset, order confirmation) in the simplest inline dialect, MJML source, compiled HTML, previews, and setup docs`,
+      rights: "Use inside your own implementation. Redistribution, resale, and white-label reuse are not included.",
+      updates: "Standard fixes for the purchased archive version",
+    },
+    {
+      tier: "Pro",
+      use: "Recurring production email work for your organisation",
+      receives: `${counts.componentCount} components, ${counts.layoutCount} layouts, ${counts.workflowCount} workflows, token examples, QA notes, advanced guidance, and compiled output, authored in a more maintainable stylesheet architecture`,
+      rights: "Use the full archive for your own organisation's production email work. Client resale, redistribution, and white-label reuse are not included.",
+      updates: "6 months of versioned updates",
+    },
+    {
+      tier: "Team",
+      use: "Client work, white-label use, or internal rollout across teams",
+      receives: "Full Pro archive plus a shared framework head, commercial reuse rights, white-label/internal deployment, reusable generation framework, and priority support",
+      rights: "Commercial reuse rights for approved client, white-label, or internal deployment workflows. Source archive resale is still not permitted.",
+      updates: "12 months of updates and priority support",
+    },
+  ] as const;
+}
 
 const testingChecks = [
   "MJML source and compiled HTML are kept together for every sampled workflow.",
@@ -865,7 +880,8 @@ export function PostPurchaseProof() {
   );
 }
 
-export function LicenceMatrix() {
+export function LicenceMatrix({ counts }: { counts: LicenceCounts }) {
+  const licenceRows = buildLicenceRows(counts);
   return (
     <article className="overflow-hidden border-y border-[var(--border-strong)] bg-white shadow-[0_22px_60px_rgba(15,23,42,0.08)]">
       <div className="grid gap-4 border-b border-[var(--border-subtle)] bg-[linear-gradient(135deg,#ffffff_0%,var(--bg-canvas)_100%)] px-5 py-5 sm:px-6 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1fr)] lg:items-end">
@@ -1095,5 +1111,110 @@ export function PricingTierCard({
       </ul>
       <div className="mt-6">{action}</div>
     </article>
+  );
+}
+
+const trustSignals = [
+  {
+    title: "Secure, verified checkout",
+    copy: "Payment runs through Stripe, and delivery is released only after a signature-verified Stripe webhook confirms the purchase.",
+    icon: ShieldCheck,
+  },
+  {
+    title: "Refund cover",
+    copy: "If the paid archive cannot be delivered, is inaccessible, or does not match the tier described, support will resolve it or refund the purchase.",
+    icon: CheckCircle2,
+  },
+  {
+    title: "Source you own and can move",
+    copy: "You receive editable MJML and compiled HTML you keep inside the licence, ready to hand to Mailchimp, HubSpot, Salesforce, NetSuite, Klaviyo, or any ESP.",
+    icon: Code2,
+  },
+  {
+    title: "Founder-led support",
+    copy: "Support is handled directly by email for purchase, download, archive, and licence questions, not routed through a ticket queue.",
+    icon: UserCheck,
+  },
+] as const;
+
+export function TrustStrip() {
+  return (
+    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {trustSignals.map((signal) => {
+        const Icon = signal.icon;
+        return (
+          <article
+            key={signal.title}
+            className="flex min-h-full flex-col border border-[var(--border-subtle)] bg-white p-5 shadow-[0_18px_45px_rgba(15,23,42,0.06)]"
+          >
+            <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[var(--identity-source-soft)] text-[var(--identity-source)]">
+              <Icon className="h-4 w-4" aria-hidden="true" />
+            </span>
+            <h3 className="mt-4 text-[1.05rem] font-semibold text-[var(--text-primary)]">{signal.title}</h3>
+            <p className="mt-2 flex-1 text-[0.9rem] leading-7 text-[var(--text-secondary)]">{signal.copy}</p>
+          </article>
+        );
+      })}
+    </div>
+  );
+}
+
+function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
+  const attribution = [testimonial.role, testimonial.company].filter(Boolean).join(", ");
+
+  return (
+    <figure className="flex min-h-full flex-col border border-[var(--border-subtle)] bg-white p-5 shadow-[0_18px_45px_rgba(15,23,42,0.06)] sm:p-6">
+      <blockquote className="flex-1 text-[1.02rem] leading-8 text-[var(--text-primary)]">
+        “{testimonial.quote}”
+      </blockquote>
+      {(testimonial.name || attribution) ? (
+        <figcaption className="mt-5 border-t border-[var(--border-subtle)] pt-4">
+          {testimonial.name ? (
+            <p className="text-[0.92rem] font-semibold text-[var(--text-primary)]">{testimonial.name}</p>
+          ) : null}
+          {attribution ? (
+            <p className="mt-0.5 text-[0.86rem] leading-6 text-[var(--text-secondary)]">{attribution}</p>
+          ) : null}
+        </figcaption>
+      ) : null}
+    </figure>
+  );
+}
+
+/**
+ * Renders nothing while the testimonials data file is empty, so the site
+ * never shows a hollow or fabricated "what customers say" block.
+ */
+export function Testimonials({
+  title = "What buyers say.",
+  copy,
+}: {
+  title?: string;
+  copy?: string;
+}) {
+  const published = testimonials.filter((item) => item.permissionConfirmed !== false);
+
+  if (published.length === 0) {
+    return null;
+  }
+
+  return (
+    <div>
+      {(title || copy) ? (
+        <div className="mb-8 max-w-3xl">
+          {title ? (
+            <h2 className="font-serif text-[clamp(2rem,4.4vw,3.35rem)] font-semibold leading-[1] text-[var(--text-primary)]">
+              {title}
+            </h2>
+          ) : null}
+          {copy ? <p className="mt-4 text-[1rem] leading-8 text-[var(--text-secondary)]">{copy}</p> : null}
+        </div>
+      ) : null}
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {published.map((testimonial, index) => (
+          <TestimonialCard key={`${testimonial.name ?? "anon"}-${index}`} testimonial={testimonial} />
+        ))}
+      </div>
+    </div>
   );
 }

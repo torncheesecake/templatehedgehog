@@ -35,6 +35,7 @@ export const LAYOUT_SYSTEM_COUNT = emailLayoutSystems.length;
 
 export const STARTER_LAYOUT_SLUGS = [
   "saas-welcome-system",
+  "onboarding-step-system",
   "password-reset-system",
   "order-confirmation-system",
 ] as const;

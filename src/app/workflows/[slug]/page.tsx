@@ -199,7 +199,7 @@ export default async function WorkflowDetailPage({ params }: Props) {
       <CTASection
         title={tierLabel === "Core included" ? "Start with this workflow in Core." : "Use this workflow inside Pro."}
         copy={tierLabel === "Core included"
-          ? "Core is enough when the essential starter workflows solve the immediate implementation. Pro is the upgrade when the same source-to-handoff process becomes recurring work across more sends."
+          ? "Core is the essential starting system: the welcome, onboarding, reset, and confirmation emails every product needs, in the simplest production-ready inline dialect. Pro adds the full lifecycle, transactional, and campaign archive when the same source-to-handoff process becomes recurring work across more sends, authored in a more maintainable stylesheet architecture."
           : "Pro is the archive for teams that keep rebuilding production emails and need repeatable workflows, editable MJML, compiled HTML, QA notes, implementation guidance, and updates."}
         href={pricingHref}
         label={tierLabel === "Core included" ? "View Core" : "View Pro"}
